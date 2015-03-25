@@ -1,0 +1,42 @@
+\select@language {ngerman}
+\contentsline {chapter}{\numberline {1}Einf\IeC {\"u}hrung}{1}{chapter.2}
+\contentsline {chapter}{\numberline {2}Grundlagen}{2}{chapter.3}
+\contentsline {section}{\numberline {2.1}Grundprinzipien}{2}{section.4}
+\contentsline {chapter}{\numberline {3}Konzept}{3}{chapter.5}
+\contentsline {section}{\numberline {3.1}Runden und Zeitablauf}{3}{section.6}
+\contentsline {section}{\numberline {3.2}Die Welt}{3}{section.7}
+\contentsline {section}{\numberline {3.3}Grenzen}{3}{section.8}
+\contentsline {section}{\numberline {3.4}Nebel des Krieges}{3}{section.9}
+\contentsline {section}{\numberline {3.5}Rohstoffe}{4}{section.10}
+\contentsline {section}{\numberline {3.6}Einheiten}{4}{section.11}
+\contentsline {subsection}{\numberline {3.6.1}Nahk\IeC {\"a}mpfer}{4}{subsection.12}
+\contentsline {subsection}{\numberline {3.6.2}Magier}{5}{subsection.13}
+\contentsline {subsection}{\numberline {3.6.3}Held}{5}{subsection.14}
+\contentsline {subsection}{\numberline {3.6.4}Fernk\IeC {\"a}mpfer und Belagerungsmaschinen}{5}{subsection.15}
+\contentsline {subsection}{\numberline {3.6.5}Schiffe}{5}{subsection.16}
+\contentsline {section}{\numberline {3.7}Geb\IeC {\"a}ude}{6}{section.17}
+\contentsline {section}{\numberline {3.8}Hauptgeb\IeC {\"a}ude}{6}{section.18}
+\contentsline {section}{\numberline {3.9}Portale}{6}{section.19}
+\contentsline {section}{\numberline {3.10}Wohngeb\IeC {\"a}ude}{6}{section.20}
+\contentsline {section}{\numberline {3.11}Steinbruch, Windm\IeC {\"u}hlen, Brunnen, ???}{7}{section.21}
+\contentsline {section}{\numberline {3.12}T\IeC {\"u}rme}{7}{section.22}
+\contentsline {section}{\numberline {3.13}Mauer}{7}{section.23}
+\contentsline {section}{\numberline {3.14}Einbeziehen der realen Welt}{7}{section.24}
+\contentsline {subsection}{\numberline {3.14.1}Globale Faktoren}{7}{subsection.25}
+\contentsline {subsection}{\numberline {3.14.2}Lokale Faktoren}{8}{subsection.26}
+\contentsline {subsection}{\numberline {3.14.3}Benutzerspezifische Faktoren}{8}{subsection.27}
+\contentsline {section}{\numberline {3.15}Kampfsystem}{8}{section.28}
+\contentsline {chapter}{\numberline {4}Fortf\IeC {\"u}hrende Ideen}{9}{chapter.29}
+\contentsline {section}{\numberline {4.1}Pl\IeC {\"u}ndern}{9}{section.30}
+\contentsline {section}{\numberline {4.2}Quests}{9}{section.31}
+\contentsline {subsection}{\numberline {4.2.1}Capture the Item}{9}{subsection.32}
+\contentsline {subsection}{\numberline {4.2.2}Sacrifice}{9}{subsection.33}
+\contentsline {subsection}{\numberline {4.2.3}Race}{9}{subsection.34}
+\contentsline {subsection}{\numberline {4.2.4}Zombie Invasion}{9}{subsection.35}
+\contentsline {section}{\numberline {4.3}Ausbau der Helden}{9}{section.36}
+\contentsline {section}{\numberline {4.4}Techologiebaum / Zauberbaum?}{10}{section.37}
+\contentsline {section}{\numberline {4.5}Orb of Might}{10}{section.38}
+\contentsline {section}{\numberline {4.6}Talentbaum}{10}{section.39}
+\contentsline {section}{\numberline {4.7}Rassen}{10}{section.40}
+\contentsline {chapter}{\numberline {5}Zusammenfassung}{11}{chapter.41}
+\contentsline {section}{\numberline {5.1}Fazit}{11}{section.42}

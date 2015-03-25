@@ -1,0 +1,262 @@
+% !TeX spellcheck = de-DE
+%-------------------------------------------------------------------------------
+%   LaTeX Vorlage für Wissenschaftliche Arbeiten an der Fachhochschule Erfurt
+%   Version: 0.4
+%   Datum:   2011-03-09
+%   Autor:   Stephan Rothe
+%   email:   stephan_rothe@gmx.de
+%----------------------------------------------------------------------------
+
+%-------------------------------------- 
+%   Header  
+%--------------------------------------      
+\documentclass[
+		abstractoff,
+		appendixprefix=true,		
+		a4paper,                  % Papierformat A4
+		10pt,                     % Schriftgröße 10pt
+		headings=normal,          % kleinere Überschriften verwenden
+		chapterprefix=false,      % Einfügen von "Anhang" bzw. "Kapitel" in Überschrift
+		oneside,
+		openright,                % einseitiges Layout
+		titlepage,                % Titleseite verwenden
+		listof=totoc,             % alle Listen in das Inhaltsverzeichnis
+		headsepline,              % Trennlinie zum Seitenkopf Bereich headings
+		plainheadsepline,         % Trennlinie zum Seitenkopf Bereich Plain
+		bibliography=totoc,       % das Literaturverzeichnis in den TOC
+		parskip=half-,						% Abstand nach Absatz
+		numbers=noenddot					% damit hinter der letzten Ziffer kein Punkt steht (Kapitelnummerierung)
+	]{scrreprt}                 % verwende KOMA-Report
+
+%--------------------------------------
+%   Packages
+%--------------------------------------  
+\usepackage[utf8]{inputenc}   % Zeichenkodierung
+\usepackage[T1]{fontenc}      % Schriftart
+\usepackage[ngerman]{babel}   % Babel-System
+\usepackage[left=4cm, right=3cm, top=2.5cm, bottom=2.5cm]{geometry} % Seitenränder
+\usepackage{array}            % erweiterte Tabelleneigenschaften
+\usepackage{graphicx}         % Grafiken
+\usepackage{subfigure}        % Grafiken nebeneinander mit (a) und (b)
+
+%---------------------------------------
+%  Befehl für Schriftart Helvet / Arial
+%---------------------------------------
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage[scaled]{helvet}
+
+%%%%%%%%%%%%%%%%2 Alternative Schriftarten%%%%%%%%%%%%%%%%%%%%
+%\usepackage{lmodern}					% Schriftart
+%\usepackage{palatino}          % Schriftart Palatino (besser am Bildschirm zu lesen)
+
+\usepackage[onehalfspacing]{setspace} % 1,5 facher zeilen bastand aber nur im text nicht in Fußnoten oder verzeichnissen
+
+\usepackage{amssymb}	 				% Mathesymbole
+\usepackage{amsfonts}					% mathematische Schriftarten
+\usepackage{amsmath}					% Mathepaket
+\usepackage{cancel}						% Durchstreichungen wie beim kürzen
+\usepackage{mathcomp}					% weitere Symbole
+\usepackage{scrhack}
+\usepackage[babel,german=quotes]{csquotes}
+\usepackage[ngerman]{translator}
+
+%--------------------------------------
+%   Metainformation 
+%--------------------------------------
+\newcommand{\art}{}
+\newcommand{\titel}{Game Design}
+\newcommand{\untertitel}{}
+\newcommand{\autor}{Bernd Schmidt}
+\newcommand{\hochschule}{Fachhochschule Erfurt}
+\newcommand{\fachgebiet}{Angewandte Informatik}
+\newcommand{\keywords}{aa, bb, cc, dd}
+\newcommand{\ort}{Erfurt}
+
+	
+%-------------------------------------- 
+%   PDF Lesezeichen und Hyperlinks
+%--------------------------------------
+\usepackage[
+	pdfauthor={\autor},
+	pdftitle={{\titel { - }\untertitel}},
+	pdfsubject={{\titel { - }\untertitel}},
+	pdfkeywords={\keywords},
+	pdfpagelabels = {true},
+	pdfstartview = {FitV},
+	colorlinks = {true},
+	linkcolor = {black},
+	citecolor = {black},
+	urlcolor = {blue},
+	bookmarksopen = {true},
+	bookmarksopenlevel = {3},
+	bookmarksnumbered = {true},
+	plainpages = {false},
+	hypertexnames = {false}
+]{hyperref}
+\usepackage[acronym,toc]{glossaries}
+
+
+%--------------------------------------
+%   Kopf- & Fusszeile 
+%--------------------------------------
+\usepackage[automark,plainheadsepline,autooneside]{scrpage2}
+\pagestyle{scrheadings}
+\setheadsepline{.4pt}                                   %Separate Linie im Kopf
+\clearscrheadfoot                                       %Kopf und Fuzeile lschen
+\ihead[\hochschule]{\hochschule}                        % im Kopf -> links
+\ohead[\fachgebiet]{\fachgebiet}                        % im Kopf -> rechts
+\cfoot[\pagemark]{\pagemark}                            % Seitenzahl
+\renewcommand*{\headfont}{\upshape\sffamily\scriptsize} % Schrift Kopfzeile
+\renewcommand*{\footfont}{\normalfont\sffamily\small}   % Schrift Fuzeile
+
+
+%--------------------------------------
+%   Quellcode-Listing Einstellungen
+%   http://rasehorn.net/blog/2007/06/latex-code-listings-mit-syntax-highlighting-in-c/
+%--------------------------------------
+
+\usepackage{xcolor,listings}                %bindet das Paket Listings ein
+\definecolor{comment}{rgb}{.15,.4,.15}     % hellgruen
+\definecolor{keywd1}{rgb}{.15,.15,.6}      % dunkelblau
+\definecolor{keywd2}{rgb}{.35,.5,.55}      % hellblau
+\definecolor{string}{rgb}{.5,.15,.15}      % dunkelrot
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+% Der lstset-Befehl ermglicht haufenweise Einstellungen zur Formatierung
+
+
+\lstset{language=java,
+basicstyle={\tiny} ,
+keywordstyle=\color{blue!80!black!100},
+identifierstyle=,
+commentstyle=\color{green!50!black!100},
+stringstyle=\ttfamily,
+breaklines=true,
+numbers=left,
+numberstyle=\tiny,
+frame=single,
+backgroundcolor=\color{blue!3},
+caption={Java-Code},
+captionpos=t,
+% %UTF8 gebastle verdammtes tex grml
+literate= %
+{Ä}{{\"A}}1
+v{Ö}{{\"O}}1
+{Ü}{{\"U}}1
+{ß}{{\ss}}1
+{ä}{{\"a}}1
+{ö}{{\"o}}1
+{ü}{{\"u}}1
+{~}{{\textasciitilde}}1
+}
+
+\lstdefinelanguage{XML}
+{
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  morekeywords={xmlns,version,type}% list your attributes here
+}
+
+
+
+%\renewcommand{\lstlistingname}{Quellcodeausschnitt}
+%\renewcommand{\lstlistlistingname}{Quellcodeausschnittsverzeichnis}
+%\hyphenation{Ver-arbeit-ungs-ketten}
+%\hyphenation{ Ein-gangs-pro-zess}
+%\hyphenation{Aus-gangs-pro-z#ess}
+%\hyphenation{Web-client}
+%\hyphenation{DMS-Web-client}
+\makeindex 
+%-------------------------------------- 
+%   Dokumentenbeginn
+%--------------------------------------
+\begin{document}
+
+%--------------------------------------
+%   Titelseite
+%--------------------------------------
+\begin{titlepage}
+	\pdfbookmark[-1]{\titel}{Marke}	%Titel wird bei Lesezeichen angezeigt
+	
+	\titlehead{
+		\begin{flushright}
+			\includegraphics[width=0.45\textwidth]{images/Logo_Informatik.pdf}
+		\end{flushright}
+	}
+	\title{\Huge\titel}                          	% Titel der Arbeit
+	\author{\textbf{\autor}}                           % Verfasser
+	\maketitle                                
+\end{titlepage}
+
+%--------------------------------------
+%   Seitennummerierung
+%--------------------------------------
+\pagenumbering{Roman}
+
+
+%--------------------------------------
+%   Inhalts-, Abbildungs-, Tabellenverzeichnis
+%--------------------------------------
+\pdfbookmark[0]{\contentsname}{tocanc}
+\tableofcontents  % Inhalt
+%\listoffigures    % Abbildungen
+%\listoftables     % Tabellen
+%\lstlistoflistings %Listings
+\cleardoublepage
+
+%--------------------------------------
+%   Zähler für römische Nummerierung
+%--------------------------------------
+\newcounter{exterior}
+\setcounter{exterior}{\value{page}}
+
+\pagenumbering{arabic}
+
+
+
+%--------------------------------------
+%   Einfügen der Kapitel
+%--------------------------------------
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\begin{onehalfspace}
+\include{einleitung}
+\include{grundlagen}
+\include{konzept}
+\include{umsetzung}
+\include{zusammenfassung}
+\end{onehalfspace}
+
+
+
+%--------------------------------------
+%   Seitennummerierung - Römisch
+%--------------------------------------
+\pagenumbering{Roman}
+\setcounter{page}{\value{exterior}}
+
+%--------------------------------------
+%   Literaturverzeichnis mit BiBTeX
+%--------------------------------------
+\nocite{*} % baue alle Eintrge aus bib/literatur ein
+\bibliographystyle{alphadin}
+
+\bibliography{literatur}
+\clearpage
+\glsaddall
+%--------------------------------------
+%   Anhang
+%--------------------------------------
+
+%--------------------------------------
+%   Dokumentenende
+%--------------------------------------
+\end{document}
+
+

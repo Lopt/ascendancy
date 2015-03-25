@@ -1,0 +1,192 @@
+\chapter{Konzept}
+\label{Konzept}
+
+\section{Runden und Zeitablauf}
+Es existieren keine Spielrunden im klassischen Sinne. Jedes Objekt kann allerdings in einer bestimmten zeitlichen Spanne nur eine Aktion ausführen. Die Aktion wird dabei sofort ausgeführt. Danach benötigt das Objekt eine gewisse Zeit, eh es erneut eine Aktion ausführen darf. Die Zeitspanne ist immer gleich.
+
+Schickt man Einheiten an eine Stelle, so bewegen sie sich umgehend von einem Ort zum anderen. Dort benötigen sie allerdings eine entsprechende Zeit, bevor man sie weiter schicken kann.
+
+Der Zeitabstand sollte dabei klein genug sein, dass der Spieler sich nicht langweilt (oder man findet noch etwas, was er zwischen durch machen kann?), und das genug Zeit besteht, um andere Spieler über die Aktion zu informieren.
+
+\section{Die Welt}
+Die Welt besteht aus vielen Hexagonalen Feldern. Das Terrain der Felder ist von dem Terrain der echten Welt abhängig. Das heißt, dort wo in der echten Welt ein See ist, ist in dem Spiel ebenfalls ein See beziehungsweise das Terrain Wasser.
+
+\section{Grenzen}
+Der Spieler kann nur innerhalb seiner Reichweite Aktionen ausführen. Einheiten, welche sich außerhalb seiner Reichweite befinden, können nicht bewegt werden. 
+
+Es können verschiedene Gebäude gebaut werden, welche es ermöglichen einen bestimmten Bereich für sich zu beanspruchen. Selbst wenn der Spieler nicht vor Ort ist, kann er innerhalb der Grenzen jede Aktion ausführen. 
+
+So kann der Spieler jederzeit sein Gebiet verteidigen, muss jedoch beim Angriff auf ein fremdes Gebiet selbst vor Ort sein.
+
+Grenzen dürfen sich nicht überlappen. Gebäude, welche Land beanspruchen, können nicht gebaut werden wenn Grenzen sich überlappen würden.
+
+
+
+
+\section{Nebel des Krieges}
+Es existiert kein Nebel des Krieges. Es kann alles gesehen werden.
+
+\section{Rohstoffe}
+
+Rohstoffe sind die zentrale Komponente in jedem Aufbau / Strategiespiel. Es existieren 4 Rohstoffe, welche den 4 Elementen entsprechen: Feuer, Wasser, Erde, Luft.
+
+Jeder Rohstoff soll sich bei der Erstellung von Einheiten und Gebäuden entsprechend ihres Aspektes auswirken. Baut man eine Mauer mit Erde, hält sie mehr aus. Baut man sie mit Feuer, so schädigt sie Angreifer zusätzlich.
+
+Der Rohstofferhalt ist von der realen Umgebung abhängig. Dort wo Wasser ist, erhält man eben Wasser. Der Spieler erhält Rohstoffe abhängig von dem Terrain welches sich innerhalb seines Standpunkts befindet, in regelmäßigen Zeitabständen.
+
+Zusätzlich kann er durch Gebäude, wie Steinbrüche, Windmühlen... Rohstoffe erhalten.
+
+\begin{itemize}
+\item Feuer (Wald, Park, ...)
+\item Wasser (Seen, Flüsse, Meer, ...)
+\item Erde (Straßen, Städte, Dörfer, Gebäude, ...)
+\item Luft (Acker, Wiesen, Alles andere...)
+\end{itemize}
+
+\section{Einheiten}
+
+Einheiten sind auf der Karte sichtbare Objekte. Sie können sich nur an Land bewegen. 
+\begin{itemize}
+\item Angriff 
+\item Verteidigung
+\item Leben
+\item Zugweite / Aktionen
+\end{itemize}
+
+
+\subsection{Nahkämpfer}
+Die geläufigsten Einheiten sollen die Nahkämpfer sein. Sie sollen recht billig sein.
+Diese lassen sich in die 4 Kategorien einordnen:
+
+\begin{itemize}
+\item Schwertkämpfer (Wasser: Leben)
+\item Speerkämpfer (Luft: Schnell)
+\item Schwergerüstet (Erde: Verteidigung)
+\item Barbar (Feuer: Angriff)
+\end{itemize}
+
+\subsection{Magier}
+Magier sollen deutlich teurer als reguläre Nahkämpfer sein. Ihre Stärke liegt in einer Spezialfähigkeit, abhängig von ihrem Element. 
+
+\begin{itemize}
+\item Feuer (Macht gut Schaden)
+\item Wasser (Heilen)
+\item Luft (??? Ideen: Kurzfristige Portale, Über Wasser laufen, Unsichtbarkeit, Illusion...)
+\item Stein (Kurzfristige Mauer)
+\end{itemize}
+
+\subsection{Held}
+Helden sollen entweder extrem selten oder einmalig sein. Man erhält diese nur schwer.
+
+Sie sind herausragende Kämpfer und jeder anderen Einheit überlegen. Zusätzlich erhalten sämtliche Verbündeten in der Nähe einen Multiplikator, abhängig von dem Element des Helden.
+
+\begin{itemize}
+\item Feuer (Angriffsmultiplikator)
+\item Erde (Verteidigungsmultiplikator)
+\item Wasser (Lebensmultiplikator)
+\item Luft (Geschwindigkeitsmultiplikator)
+\end{itemize}
+
+\subsection{Fernkämpfer und Belagerungsmaschinen}
+Fernkämpfer wurden aus Balancing Gründen nicht mit hinein genommen. Falls jemand verspätet oder gar nicht reagiert, wäre es mit Fernkämpfern möglich, große Teile der feindlichen Armee ohne eigene Verluste zu überwältigen. Dies ist nicht gewollt. 
+
+Möglicherweise lässt sich ein Balancing erreichen, in dem die Fernkämpfer sehr lange Nachladezeiten besitzen. Die Nachteile müssten nur so groß sein, das es nicht praktikabel ist, mit Fernkämpfern eine ganze Armee zu zerstören.
+
+Belagerungsmaschinen, ein Trébuchet, welches relativ selten schiesst, allerdings eine hohe Reichweite und hohen Schaden besitzt, wäre denkbar. Womöglich mit zusätzlichen Schaden gegen Gebäude, dafür verringerten Schaden gegenüber Einheiten.
+
+
+\subsection{Schiffe}
+Schiffe oder andere Wassertaugliche Fahrzeuge existieren nicht. Der Spieler muss in der Nähe sein, um Einheiten bewegen zu können, auf Gewässern würden aber ohnehin sehr wenige Spieler unterwegs sein.
+
+Es ist zudem ein Taktisches Element, dies gibt den Spielern die Möglichkeit, ihre Verteidigung an Flüssen oder Gewässern auszurichten.
+
+
+
+\section{Gebäude}
+Gebäude sind auf der Karte sichtbare, stationäre Objekte. Sie können nicht auf Wasser gebaut werden.
+\begin{itemize}
+\item Angriff 
+\item Verteidigung
+\item Leben
+\end{itemize}
+
+Die Größe sowie Form von den Gebäuden kann dabei variieren.
+
+Gebäude können nur innerhalb der eigenen Grenzen gebaut werden. Ausnahme hierbei sind jene Gebäude, welche Land beanspruchen, wie Hauptgebäude und Außenposten.
+
+
+\section{Hauptgebäude}
+Das Hauptgebäude ist die Zentrale des eigenen Landes. Das Hauptgebäude beansprucht das Land in der näheren Umgebung. 
+
+Die Zerstörung eines Hauptgebäudes sollte möglichst langwierig sein, um dem Verteidigten Spieler selbst in Nacht- und Nebelaktionen noch die Chance zu geben, 
+
+Im Gegensatz dazu gibt es noch Außenposten, jene besitzen eine geringere Grenze. Falls ein Hauptgebäude zerstört wird, kann ein Außenposten als neues Hauptgebäude ausgewählt werden.
+
+Personen ohne Außenposten können sich einen beliebigen, freien Platz für ein neues Hauptgebäude aussuchen.
+
+Hauptgebäuden und Außenposten können benannt werden.
+
+\section{Portale}
+Portale sind eine Möglichkeit, um Einheiten schnell von einem Punkt zu einem anderen zu bringen. Sie dienen dabei als zeitverzögerter Langstreckentransporter, die es auch ermöglichen, Einheiten von einer realen Stadt zu einer anderen zu transportieren.
+
+\section{Wohngebäude}
+Wohngebäude erhöhen das Bevölkerungslimit. Wenn man über dem Limit ist, können keine neuen Einheiten mehr erschaffen werden.
+
+\section{Steinbruch, Windmühlen, Brunnen, ???}
+Dient zum Rohstofferhalt innerhalb eines Bereich des jeweiligen Gebäudes. Brunnen sollten, da man nicht auf Wasser bauen können soll, eine höhere Reichweite haben.
+
+\section{Türme}
+Türme bringen Multiplikatoren für Angriff (Feuer), Verteidigung (Erde), Leben (Wasser) und Signalisieren  dem Spieler über Einheitenbewegungen (Luft). 
+
+
+\section{Mauer}
+Mauern sollen feindliche Truppen das Einmaschieren erschweren. Es soll dabei verschiedene Mauern geben:
+
+\begin{itemize}
+\item Feuer (Brennt, Macht Schaden)
+\item Erde (Hält mehr aus)
+\item Luft (??? Buffs / Debuffs, Multiplikatoren))
+\item Wasser (??? Buffs / Debuffs, Multiplikatoren)
+\end{itemize}
+
+\section{Einbeziehen der realen Welt}
+Das Spiel soll darauf ausgelegt werden, bestimmte Faktoren aus der realen Welt einzubeziehen. Dabei wird zwischen globalen, lokalen und benutzerspezifischen Faktoren unterschieden. 
+
+\subsection{Globale Faktoren}
+\begin{itemize}
+\item Realer Goldpreis (Tauschpreise im Spiel)
+\item Kohle
+\item Holzwert-Preise
+\item DAX
+\end{itemize}
+
+\subsection{Lokale Faktoren}
+\begin{itemize}
+\item Wetter 
+\item Terrain 
+\item Uhrzeit (time.h)
+\item Jahreszeit (time.h)
+\item Arbeitslosenrate in der Gegend
+\item Grundstückpreise
+\item Verbrechensrate
+\item Geburt / Sterberate
+\end{itemize}
+
+\subsection{Benutzerspezifische Faktoren}
+\begin{itemize}
+\item Betriebssystem des verwendeten Mobiltelefons
+\item Spielzeiten
+\end{itemize}
+
+
+\section{Kampfsystem}
+\begin{itemize}
+\item Jede Einheit kann in einem definierten Zeitraum einmalig angreifen
+\item Die Verteidigende Einheit schlägt zurück, dies zählt nicht als Angriff
+\item Der Verteidiger erhält Vorteile, der Angreifer einen Malus (?)
+\item Es existieren Zufallskomponenten
+\end{itemize}
+
+
+Wasser ist gut gegen Feuer. Feuer ist gut gegen Erde. Erde ist gut gegen Luft. Luft ist gut gegen Wasser. 
+
