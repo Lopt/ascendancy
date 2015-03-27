@@ -1,9 +1,10 @@
 ﻿using System;
-namespace ascendancy.base
+
+namespace ascendancy._base
 {
 	public class MyClass
 	{
-		public MyClass()
+		public MyClass ()
 		{
 		}
 	}

@@ -1,6 +1,12 @@
-﻿<Properties StartupItem="ascendancy.client/ascendancy.client.iOS/ascendancy.client.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.2" />
-  <MonoDevelop.Ide.Workbench />
+﻿<Properties StartupItem="ascendancy.client/ascendancy.client.Android/ascendancy.client.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus_5_API_21_x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ascendancy.client/ascendancy.client.Common/GameAppDelegate.cs">
+    <Files>
+      <File FileName="../ascendancy.base/MyClass.cs" Line="1" Column="1" />
+      <File FileName="ascendancy.client/ascendancy.client.Common/GameLayer.cs" Line="1" Column="1" />
+      <File FileName="ascendancy.client/ascendancy.client.Common/GameAppDelegate.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
