@@ -1,7 +1,0 @@
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/client/ascendencyClient/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile78.AssemblyAttribute.cs
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/client/ascendencyClient/bin/Debug/ascendencyClient.dll.mdb
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/client/ascendencyClient/bin/Debug/ascendencyClient.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/client/ascendencyClient/obj/Debug/ascendencyClient.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/client/ascendencyClient/obj/Debug/ascendencyClient.dll.mdb
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/client/ascendencyClient/bin/Debug/Xamarin.Forms.Core.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/client/ascendencyClient/bin/Debug/Xamarin.Forms.Xaml.dll
