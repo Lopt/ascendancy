@@ -2,6 +2,13 @@
 using Foundation;
 using UIKit;
 using CocosSharp;
+using XLabs.Forms;
+using Xamarin.Forms;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.Geolocation;
+using XLabs.Platform.Services.Media;
+using XLabs.Platform.Services.IO;
+using XLabs.Platform.Device;
 
 namespace client
 {
@@ -20,6 +27,15 @@ namespace client
 		//
 		public override void FinishedLaunching (UIApplication app)
 		{
+
+			// aktivating Xamarin.Forms
+			global::Xamarin.Forms.Forms.Init ();
+			// Register XLabs Services
+			DependencyService.Register<TextToSpeechService> ();
+			DependencyService.Register<Geolocator> ();
+			DependencyService.Register<SoundService> ();
+			DependencyService.Register<AppleDevice> ();
+
 			CCApplication application = new CCApplication ();
 			application.ApplicationDelegate = new GameAppDelegate ();
 

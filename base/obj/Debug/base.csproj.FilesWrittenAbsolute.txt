@@ -1,0 +1,10 @@
+/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile7.AssemblyAttribute.cs
+/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/base.dll.mdb
+/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/base.dll
+/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/obj/Debug/base.dll
+/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/obj/Debug/base.dll.mdb
+/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/Newtonsoft.Json.dll
+/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/PCLStorage.dll
+/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/PCLStorage.Abstractions.dll
+/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/SQLitePCL.raw.dll
+/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/SQLite-net.dll
