@@ -138,11 +138,6 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Content\animations\" />
-    <Folder Include="Assets\Content\fonts\" />
-    <Folder Include="Assets\Content\sounds\" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="Assets\Content\images\ld\monkey.xnb" />
     <AndroidAsset Include="Assets\Content\images\hd\monkey.xnb" />
   </ItemGroup>
