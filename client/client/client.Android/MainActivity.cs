@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework;
 
 using CocosSharp;
 
-namespace ascendancy
+namespace client
 {
 	[Activity (
 		Label = "client.Android",

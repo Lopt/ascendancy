@@ -2,7 +2,7 @@
 using CocosSharp;
 
 
-namespace ascendancy
+namespace client
 {
 	public class GameAppDelegate : CCApplicationDelegate
 	{
