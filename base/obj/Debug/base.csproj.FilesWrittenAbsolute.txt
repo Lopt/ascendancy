@@ -8,17 +8,3 @@
 /Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/PCLStorage.Abstractions.dll
 /Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/SQLitePCL.raw.dll
 /Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/SQLite-net.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/mscorlib.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.Core.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.Linq.Queryable.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.Linq.Parallel.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.Runtime.InteropServices.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.Collections.Concurrent.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.ComponentModel.EventBasedAsync.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.ComponentModel.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.IO.Compression.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.Net.Primitives.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.Net.Requests.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.Net.NetworkInformation.dll
-/Users/schotteMac/Documents/Entwicklung/Projekte/XamarinProjects/ascendancy/base/bin/Debug/System.Reflection.Primitives.dll

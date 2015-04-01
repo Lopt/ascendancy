@@ -6,10 +6,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Microsoft.Xna.Framework;
-
+using XLabs.Forms;
 using CocosSharp;
+using Xamarin.Forms;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.Geolocation;
+using XLabs.Platform.Services.Media;
+using XLabs.Platform.Device;
 
-namespace ascendancy
+namespace client
 {
 	[Activity (
 		Label = "client.Android",
@@ -26,6 +31,13 @@ namespace ascendancy
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
+			// aktivating Xamarin.Forms
+			global::Xamarin.Forms.Forms.Init (this, bundle);
+			// Register XLabs Services
+			DependencyService.Register<TextToSpeechService> ();
+			DependencyService.Register<Geolocator> ();
+			DependencyService.Register<SoundService> ();
+			DependencyService.Register<AndroidDevice> ();
 
 			var application = new CCApplication ();
 			application.ApplicationDelegate = new GameAppDelegate ();
