@@ -9,7 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client.Common", "client\cli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client.Droid", "client\client\client.Android\client.Droid.csproj", "{8E2EAACD-7971-4F63-8254-01DF89447F99}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "client.iOS", "client\client\client.iOS\client.iOS.csproj", "{25870EA1-5A09-4AE6-A17A-7CBDF81B1F82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client.iOS", "client\client\client.iOS\client.iOS.csproj", "{25870EA1-5A09-4AE6-A17A-7CBDF81B1F82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client.iOS", "client\client\client.iOS\client.iOS.csproj", "{25870EA1-5A09-4AE6-A17A-7CBDF81B1F82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

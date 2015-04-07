@@ -140,7 +140,13 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\images\ld\monkey.xnb" />
     <AndroidAsset Include="Assets\Content\images\hd\monkey.xnb" />
+    <AndroidAsset Include="Assets\Content\fonts\arial-22.xnb" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\..\..\packages\Xamarin.Forms.1.4.1.6349\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\packages\Xamarin.Forms.1.4.1.6349\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <ItemGroup>
+    <Folder Include="Assets\Content\fonts\" />
+    <Folder Include="Assets\Content\sounds\" />
+    <Folder Include="Assets\Content\animations\" />
+  </ItemGroup>
 </Project>

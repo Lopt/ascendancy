@@ -1,13 +1,16 @@
-﻿<Properties StartupItem="server/server.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="firefox" />
-  <MonoDevelop.Ide.Workbench />
+﻿<Properties StartupItem="client/client/client.iOS/client.iOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.2" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/GameAppDelegate.cs">
+    <Files>
+      <File FileName="client/client/client.Android/MainActivity.cs" Line="17" Column="1" />
+      <File FileName="client/client/client.iOS/AppDelegate.cs" Line="28" Column="11" />
+      <File FileName="client/client/client.Common/TestScene.cs" Line="113" Column="47" />
+      <File FileName="client/client/client.Common/model/Geolocation.cs" Line="87" Column="39" />
+      <File FileName="client/client/client.Common/GameAppDelegate.cs" Line="59" Column="62" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <DisabledProjects>
-    <String>client/client/client.Android/client.droid.csproj</String>
-    <String>client/client/client.Android/client.Droid.csproj</String>
-    <String>client/client/client.Common/client.Common.csproj</String>
-  </DisabledProjects>
 </Properties>

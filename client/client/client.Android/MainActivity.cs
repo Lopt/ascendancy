@@ -13,38 +13,42 @@ using XLabs.Platform.Services;
 using XLabs.Platform.Services.Geolocation;
 using XLabs.Platform.Services.Media;
 using XLabs.Platform.Device;
+using client.Common;
 
-namespace client
+namespace client.Droid
 {
-	[Activity (
-		Label = "client.Android",
-		AlwaysRetainTaskState = true,
-		Icon = "@drawable/icon",
-		Theme = "@android:style/Theme.NoTitleBar",
-		ScreenOrientation = ScreenOrientation.Landscape | ScreenOrientation.ReverseLandscape,
-		LaunchMode = LaunchMode.SingleInstance,
-		MainLauncher = true,
-		ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden)
+    [Activity(
+        Label = "client.Android",
+        AlwaysRetainTaskState = true,
+        Icon = "@drawable/icon",
+        Theme = "@android:style/Theme.NoTitleBar",
+        ScreenOrientation = ScreenOrientation.Portrait | ScreenOrientation.ReversePortrait,
+        LaunchMode = LaunchMode.SingleInstance,
+        MainLauncher = true,
+        ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden)
     ]
-	public class MainActivity : AndroidGameActivity
-	{
-		protected override void OnCreate (Bundle bundle)
-		{
-			base.OnCreate (bundle);
-			// aktivating Xamarin.Forms
-			global::Xamarin.Forms.Forms.Init (this, bundle);
-			// Register XLabs Services
-			DependencyService.Register<TextToSpeechService> ();
-			DependencyService.Register<Geolocator> ();
-			DependencyService.Register<SoundService> ();
-			DependencyService.Register<AndroidDevice> ();
+    public class MainActivity : AndroidGameActivity
+    {
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
 
-			var application = new CCApplication ();
-			application.ApplicationDelegate = new GameAppDelegate ();
-			SetContentView (application.AndroidContentView);
-			application.StartGame ();
-		}
-	}
+            // aktivating Xamarin.Forms
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            // Register XLabs Services
+            DependencyService.Register<TextToSpeechService>();
+            DependencyService.Register<Geolocator>();
+            DependencyService.Register<SoundService>();
+            DependencyService.Register<AndroidDevice>();
+
+            var application = new CCApplication();
+            application.ApplicationDelegate = new GameAppDelegate();
+            SetContentView(application.AndroidContentView);
+            application.StartGame();
+        }
+            
+    }
 }
 
 
