@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<Properties StartupItem="server/server.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="firefox" />
   <MonoDevelop.Ide.Workbench ActiveDocument="base/model/Position.cs">
@@ -5,16 +6,30 @@
       <File FileName="base/model/Entity.cs" Line="1" Column="1" />
       <File FileName="base/model/LatLon.cs" Line="1" Column="1" />
       <File FileName="base/model/Position.cs" Line="3" Column="3" />
+=======
+﻿<Properties StartupItem="client/client/client.iOS/client.iOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.2" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/GameAppDelegate.cs">
+    <Files>
+      <File FileName="client/client/client.Android/MainActivity.cs" Line="17" Column="1" />
+      <File FileName="client/client/client.iOS/AppDelegate.cs" Line="28" Column="11" />
+      <File FileName="client/client/client.Common/TestScene.cs" Line="113" Column="47" />
+      <File FileName="client/client/client.Common/model/Geolocation.cs" Line="87" Column="39" />
+      <File FileName="client/client/client.Common/GameAppDelegate.cs" Line="59" Column="62" />
+>>>>>>> 4fdcb5bc67043a1de47a6f1a6ecd428d994d11f8
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+<<<<<<< HEAD
   <DisabledProjects>
     <String>client/client/client.Android/client.droid.csproj</String>
     <String>client/client/client.Android/client.Droid.csproj</String>
     <String>client/client/client.Common/client.Common.csproj</String>
     <String>client/client/client.iOS/client.iOS.csproj</String>
   </DisabledProjects>
+=======
+>>>>>>> 4fdcb5bc67043a1de47a6f1a6ecd428d994d11f8
 </Properties>

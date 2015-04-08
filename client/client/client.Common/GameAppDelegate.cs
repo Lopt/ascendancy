@@ -1,55 +1,63 @@
 ﻿using System;
 using CocosSharp;
+using Xamarin.Forms;
 
 
-namespace client
+namespace client.Common
 {
-	public class GameAppDelegate : CCApplicationDelegate
-	{
-		public override void ApplicationDidFinishLaunching (CCApplication application, CCWindow mainWindow)
-		{
-			application.PreferMultiSampling = false;
-			application.ContentRootDirectory = "Content";
-			application.ContentSearchPaths.Add ("animations");
-			application.ContentSearchPaths.Add ("fonts");
-			application.ContentSearchPaths.Add ("sounds");
+    public class GameAppDelegate : CCApplicationDelegate
+    {
+        public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
+        {
+            application.PreferMultiSampling = false;
+            application.ContentRootDirectory = "Content";
+            application.ContentSearchPaths.Add("animations");
+            application.ContentSearchPaths.Add("fonts");
+            application.ContentSearchPaths.Add("sounds");
 
-			CCSize windowSize = mainWindow.WindowSizeInPixels;
+            CCSize windowSize = mainWindow.WindowSizeInPixels;
 
-			float desiredWidth = 1024.0f;
-			float desiredHeight = 768.0f;
+            float desiredWidth = 1024.0f;
+            float desiredHeight = 768.0f;
             
-			// This will set the world bounds to be (0,0, w, h)
-			// CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
-			CCScene.SetDefaultDesignResolution (desiredWidth, desiredHeight, CCSceneResolutionPolicy.ShowAll);
+            // This will set the world bounds to be (0,0, w, h)
+            // CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
+            CCScene.SetDefaultDesignResolution(windowSize.Width, windowSize.Height, CCSceneResolutionPolicy.ShowAll);
             
-			// Determine whether to use the high or low def versions of our images
-			// Make sure the default texel to content size ratio is set correctly
-			// Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
-			if (desiredWidth < windowSize.Width) {
-				application.ContentSearchPaths.Add ("images/hd");
-				CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
-			} else {
-				application.ContentSearchPaths.Add ("images/ld");
-				CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
-			}
-            
-			CCScene scene = new CCScene (mainWindow);
-			GameLayer gameLayer = new GameLayer ();
+            // Determine whether to use the high or low def versions of our images
+            // Make sure the default texel to content size ratio is set correctly
+            // Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
+            if (desiredWidth < windowSize.Width)
+            {
+                application.ContentSearchPaths.Add("images/hd");
+                CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
+            }
+            else
+            {
+                application.ContentSearchPaths.Add("images/ld");
+                CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
+            }
 
-			scene.AddChild (gameLayer);
 
-			mainWindow.RunWithScene (scene);
-		}
+            CCScene Gamescene = new CCScene(mainWindow);
+            GameLayer gameLayer = new GameLayer();
+            Gamescene.AddChild(gameLayer);
 
-		public override void ApplicationDidEnterBackground (CCApplication application)
-		{
-			application.Paused = true;
-		}
+            CCScene MyTestScene = new TestScene(mainWindow);
 
-		public override void ApplicationWillEnterForeground (CCApplication application)
-		{
-			application.Paused = false;
-		}
-	}
+            mainWindow.RunWithScene(MyTestScene);
+        }
+
+        public override void ApplicationDidEnterBackground(CCApplication application)
+        {
+            Geolocation.GetInstance.StopListening();
+            application.Paused = true;
+        }
+
+        public override void ApplicationWillEnterForeground(CCApplication application)
+        {
+            Geolocation.GetInstance.StartListening(10000, 4);
+            application.Paused = false;
+        }
+    }
 }
