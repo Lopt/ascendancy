@@ -22,8 +22,10 @@ namespace @base.model
 		}
 
 		public LatLon AsLatLon ()
-		{
-            var zoom = 15;
+        {            
+            cell_size = 4;
+            // earth range / cell size
+            zoom = 40075036 / cell_size;
 			var n = Math.PI - ((2.0 * Math.PI * m_y) / Math.Pow(2.0, zoom));
 
 			var lat = (float)((m_x / Math.Pow(2.0, zoom) * 360.0) - 180.0);

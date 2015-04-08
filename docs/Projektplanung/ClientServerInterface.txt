@@ -1,0 +1,67 @@
+
+### Request ###
+
+Login
+{
+    "ID" : UUID,
+    "Position": Position,
+}
+
+Standard
+{
+    "SessionID": UUID,
+}
+
+GetRegions
+{
+    "RegionPositions": [RegionPositions, RegionPositions, ...]
+}
+
+GetActions : Standard
+{
+    "RegionPositions": [RegionPositions, RegionPositions, ...]
+}
+
+DoActions : GetActions
+{
+    "Action" : [Action, Action, ]
+}
+
+
+
+### Responses ###
+
+EResponseType
+{
+    Login, 
+    Standard,
+    LoadRegion
+    ChangeSettings,
+}
+
+Standard
+{
+    "ResponseType": EResponseType
+    "Actions": [Action, Action, ...]
+}
+
+Region : Standard
+{
+    "RegionData": [RegionData, RegionData]
+}
+
+Login : Standard
+{
+    "Exception": int
+}
+
+ChangeSettings : Standard
+{
+    "Exception": int
+}
+
+
+
+### Terrain Laden
+HTTP Request an Server:
+    "RegionsTerrain": [RegionTerrain, RegionTerrain, ...],
