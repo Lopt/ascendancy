@@ -1,6 +1,7 @@
 ﻿using System;
 using CocosSharp;
 using Xamarin.Forms;
+using CocosDenshion;
 
 
 namespace client.Common
@@ -39,13 +40,14 @@ namespace client.Common
             }
 
 
-            CCScene Gamescene = new CCScene(mainWindow);
-            GameLayer gameLayer = new GameLayer();
-            Gamescene.AddChild(gameLayer);
+//            CCScene Gamescene = new CCScene(mainWindow);
+//            GameLayer gameLayer = new GameLayer();
+//            Gamescene.AddChild(gameLayer);
+         
+            CCScene MyGeolocationScene = new GeolocationScene(mainWindow);
+            //CCScene MyDeviceScene = new DeviceScene(mainWindow);
 
-            CCScene MyTestScene = new TestScene(mainWindow);
-
-            mainWindow.RunWithScene(MyTestScene);
+            mainWindow.RunWithScene(MyGeolocationScene);
         }
 
         public override void ApplicationDidEnterBackground(CCApplication application)

@@ -10,6 +10,7 @@ using XLabs.Platform.Services.Media;
 using XLabs.Platform.Services.IO;
 using XLabs.Platform.Device;
 using client.Common;
+using XLabs.Ioc;
 
 namespace client.iOS
 {
@@ -28,14 +29,18 @@ namespace client.iOS
         //
         public override void FinishedLaunching(UIApplication app)
         {
+            if (!Resolver.IsSet)
+            {
+                this.SetIoc();
+            }
 
             // aktivating Xamarin.Forms
             global::Xamarin.Forms.Forms.Init();
             // Register XLabs Services
-            DependencyService.Register<TextToSpeechService>();
+            // DependencyService.Register<TextToSpeechService>();
             DependencyService.Register<Geolocator>();
-            DependencyService.Register<SoundService>();
-            DependencyService.Register<AppleDevice>();
+            // DependencyService.Register<SoundService>();
+            //DependencyService.Register<AppleDevice>();
 
             CCApplication application = new CCApplication();
             application.ApplicationDelegate = new GameAppDelegate();
@@ -46,6 +51,19 @@ namespace client.iOS
         static void Main(string[] args)
         {
             UIApplication.Main(args, null, "AppDelegate");
+        }
+
+        private void SetIoc()
+        {
+            var resolverContainer = new SimpleContainer();
+
+            resolverContainer.Register<IDevice>(t => AppleDevice.CurrentDevice)
+                .Register<IAccelerometer>(t => t.Resolve<IDevice>().Accelerometer)
+            //                .Register<ITextToSpeechService, TextToSpeechService>()
+                .Register<IDependencyContainer>(resolverContainer);
+
+
+            Resolver.SetResolver(resolverContainer.GetResolver());
         }
     }
 }
