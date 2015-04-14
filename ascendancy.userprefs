@@ -1,12 +1,15 @@
-﻿<Properties StartupItem="client/client/client.iOS/client.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.2" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/GameAppDelegate.cs">
+﻿<Properties StartupItem="client/client/client.Android/client.Droid.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="Android.AVD_for_Nexus_4_by_Google" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/GeolocationScene.cs">
     <Files>
-      <File FileName="client/client/client.Android/MainActivity.cs" Line="17" Column="1" />
-      <File FileName="client/client/client.iOS/AppDelegate.cs" Line="28" Column="11" />
-      <File FileName="client/client/client.Common/TestScene.cs" Line="113" Column="47" />
-      <File FileName="client/client/client.Common/model/Geolocation.cs" Line="87" Column="39" />
-      <File FileName="client/client/client.Common/GameAppDelegate.cs" Line="59" Column="62" />
+      <File FileName="client/client/client.Common/GameAppDelegate.cs" Line="45" Column="45" />
+      <File FileName="client/client/client.Android/MainActivity.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.Common/GeolocationScene.cs" Line="23" Column="12" />
+      <File FileName="client/client/client.Common/model/Geolocation.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.Android/Properties/AndroidManifest.xml" Line="1" Column="1" />
+      <File FileName="client/client/client.Common/DeviceScene.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.iOS/AppDelegate.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.Common/model/viewBaseModel.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
