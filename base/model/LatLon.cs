@@ -12,7 +12,9 @@ namespace @base.model
 
 		public Position AsPosition ()
 		{
-			var zoom = 15;
+            cell_size = 4;
+            // earth range / cell size
+            zoom = 40075036 / cell_size;
 			var x = (float)((lon + 180.0) / 360.0 * (1 << zoom));
 			var y = (float)((1.0 - Math.Log(Math.Tan(lat * Math.PI / 180.0) + 
 				1.0 / Math.Cos(lat * Math.PI / 180.0)) / Math.PI) / 2.0 * (1 << zoom));
