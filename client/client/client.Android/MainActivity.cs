@@ -14,11 +14,13 @@ using XLabs.Platform.Services.Geolocation;
 using XLabs.Platform.Services.Media;
 using XLabs.Platform.Device;
 using client.Common;
+using XLabs.Ioc;
+using Android.Net.Rtp;
 
 namespace client.Droid
 {
     [Activity(
-        Label = "client.Android",
+        Label = "Ascendancy",
         AlwaysRetainTaskState = true,
         Icon = "@drawable/icon",
         Theme = "@android:style/Theme.NoTitleBar",
@@ -33,19 +35,37 @@ namespace client.Droid
         {
             base.OnCreate(bundle);
 
+            if (!Resolver.IsSet)
+            {
+                this.SetIoc();
+            }
+           
+
             // aktivating Xamarin.Forms
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             // Register XLabs Services
-            DependencyService.Register<TextToSpeechService>();
+            //DependencyService.Register<TextToSpeechService>();
             DependencyService.Register<Geolocator>();
-            DependencyService.Register<SoundService>();
-            DependencyService.Register<AndroidDevice>();
 
             var application = new CCApplication();
             application.ApplicationDelegate = new GameAppDelegate();
             SetContentView(application.AndroidContentView);
             application.StartGame();
+        }
+
+
+        private void SetIoc()
+        {
+            var resolverContainer = new SimpleContainer();
+
+            resolverContainer.Register<IDevice>(t => AndroidDevice.CurrentDevice)
+                .Register<IAccelerometer>(t => t.Resolve<IDevice>().Accelerometer)
+//                .Register<ITextToSpeechService, TextToSpeechService>()
+                .Register<IDependencyContainer>(resolverContainer);
+            
+
+            Resolver.SetResolver(resolverContainer.GetResolver());
         }
             
     }

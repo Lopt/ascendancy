@@ -7,6 +7,7 @@ using XLabs.Platform.Services.Geolocation;
 using Xamarin.Forms.Xaml;
 using System.Threading.Tasks;
 using System.Threading;
+using XLabs.Platform.Device;
 
 namespace client.Common
 {
@@ -31,6 +32,7 @@ namespace client.Common
 
             IsBusy = false;
             IsPositionChanged = false;
+            Position pos = new Position();
         }
 
         public static Geolocation GetInstance{ get { return _instance; } }
@@ -39,7 +41,7 @@ namespace client.Common
 
         #region Geolocator
 
-        private IGeolocator _geolocator = null;
+        private readonly IGeolocator _geolocator = null;
         private CancellationTokenSource _tokensource = null;
         private readonly TaskScheduler _scheduler = null;
 
@@ -170,7 +172,7 @@ namespace client.Common
         public static string PropertyNameLongitude = "Longitude";
         private string _longitude;
 
-        //the potential position error radius in meters
+
         [Column("Altitude")]
         public string Altitude
         { 
@@ -220,6 +222,7 @@ namespace client.Common
         public static string PropertyNameHeading = "Heading";
         private string _heading;
 
+        //the potential position error radius in meters
         [Column("Accuracy")]
         public string Accuracy
         { 
