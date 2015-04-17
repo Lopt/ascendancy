@@ -4,7 +4,7 @@ namespace @base.model.definitions
 {
     public class UnitDefinition : Definition
     {
-        enum UnitDefinitionType
+        public enum UnitDefinitionType
         {
             Swordfighter,
             Babarian,
@@ -14,9 +14,9 @@ namespace @base.model.definitions
         }
       
         public UnitDefinition(Guid guid, DefinitionType type, 
-            UnitType unitType, @base.control.Action[] actions, int attack, int defense, int health, int moves)
+            UnitDefinitionType unitType, @base.control.Action[] actions, int attack, int defense, int health, int moves) 
+            : base(guid, type)
         {
-            base.Definition(guid, type);
 
             m_unitType = unitType;
             m_actions = actions;
@@ -26,7 +26,7 @@ namespace @base.model.definitions
             m_moves = moves;
         }
 
-        public @base.control.Action Actions
+        public @base.control.Action[] Actions
         {
             get { return m_actions; }
         }

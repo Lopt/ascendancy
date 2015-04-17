@@ -7,16 +7,9 @@ namespace @base.model
 	{
 		public RegionManager ()
 		{
-			for (int regionX = 0; regionX < Constants.numberOfRegionsX; ++regionX)
-			{
-				for (int regionY = 0; regionY < Constants.numberOfRegionsY; ++regionY)
-				{
-					_regions.Add(Region(RegionPosition(regionX, regionY)));
-				}
-			}
 		}
 
-		extern public Region GetRegion(RegionPosition regionPosition);
+        public extern Region GetRegion(RegionPosition regionPosition);
 
 		KeyedCollection<RegionPosition, Region> _regions;
 	}

@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace @base.model
 {
     public class RegionPosition : Object
@@ -10,9 +11,10 @@ namespace @base.model
             m_regionY = regionY;
         }
 
-        public Position AsPosition()
+        public RegionPosition(Position position)
         {
-            Position(m_regionX * Constants.regionSizeX, m_regionY * Constants.regionSizeY);
+            m_regionX = (int) (position.X / Constants.regionSizeX);
+            m_regionY = (int) (position.Y / Constants.regionSizeY);
         }
 
         public int RegionX
@@ -25,9 +27,10 @@ namespace @base.model
             get { return m_regionY; }
         }
 
-        public override bool Equals(RegionPosition obj)
+        public override bool Equals(Object obj)
         {
-            return (obj.m_regionX == m_regionX && obj.m_regionY == m_regionY);
+            var regionPosition = (RegionPosition) obj;
+            return (regionPosition.m_regionX == m_regionX && regionPosition.m_regionY == m_regionY);
         }
 
         public override int GetHashCode()

@@ -4,7 +4,7 @@ namespace @base.model.definitions
 {
     public class TerrainDefinition : Definition
     {
-        enum TerrainDefintionType
+        public enum TerrainDefintionType
         {
             Water = 0,
             Street = 1,
@@ -13,15 +13,14 @@ namespace @base.model.definitions
         }
       
         public TerrainDefinition(Guid guid, DefinitionType type,
-            UnitType terrainType, int[] ressources)
+            TerrainDefintionType terrainType, int[] ressources)
+            : base(guid, type)
         {
-            base.TerrainDefinition(guid, type);
-
             m_terrainType = terrainType;
             m_ressources = ressources;
         }
 
-        public int Ressources
+        public int[] Ressources
         {
             get { return m_ressources; }
         }
@@ -32,7 +31,7 @@ namespace @base.model.definitions
         }
 
         private TerrainDefintionType m_terrainType;
-        private int m_ressources;
+        private int[] m_ressources;
 
     }
 }

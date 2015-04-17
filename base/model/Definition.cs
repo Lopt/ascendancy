@@ -22,7 +22,7 @@ namespace @base.model
             get { return this.m_guid; }
         }
 
-        public Guid Type
+        public DefinitionType Type
         {
             get { return this.m_type; }
         }

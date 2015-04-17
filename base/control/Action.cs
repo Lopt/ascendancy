@@ -15,7 +15,7 @@ namespace @base.control
         {
             m_parameters = parameters;
             m_regions = regions;
-            m_actionType = ActionType;
+            m_actionType = actionType;
         }
 
 

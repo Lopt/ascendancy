@@ -10,27 +10,24 @@ namespace @base.model
             m_lon = lon;
 		}
 
-		public Position AsPosition ()
-		{
-            cell_size = 4;
-            // earth range / cell size
-            zoom = 40075036 / cell_size;
-			var x = (float)((lon + 180.0) / 360.0 * (1 << zoom));
-			var y = (float)((1.0 - Math.Log(Math.Tan(lat * Math.PI / 180.0) + 
-				1.0 / Math.Cos(lat * Math.PI / 180.0)) / Math.PI) / 2.0 * (1 << zoom));
+        public LatLon (Position position)
+        {
+            var zoom = Constants.earthCircumference / Constants.cellSize;
+            var n = Math.PI - ((2.0 * Math.PI * position.Y) / zoom);
 
-			return new CPosition (x, y);
-		}
+            m_lon = (float)((position.X / zoom * 360.0) - 180.0);
+            m_lat = (float)(180.0 / Math.PI * Math.Atan(Math.Sinh(n)));
+        }
 
 		public double Lat
 		{
-            set { this.m_lat = value; }
+            //set { this.m_lat = value; }
             get { return this.m_lat; }
 		}
 
 		public double Lon
 		{
-            set { this.m_lon = value; }
+            //set { this.m_lon = value; }
             get { return this.m_lon; }
 		}
 

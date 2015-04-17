@@ -15,6 +15,7 @@ namespace @base.model
         }
 
         private Guid m_guid;
+
         private view.Entity m_view;
         private model.Definition m_definition;
 
