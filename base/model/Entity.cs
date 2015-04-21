@@ -4,9 +4,10 @@ namespace @base.model
 {
 	public class Entity
 	{
-		public Entity ()
+        public Entity (Guid guid, model.Definition defintion)
 		{
-
+            m_guid = guid; 
+            m_definition = defintion;
 		}
             
         public Guid GUID

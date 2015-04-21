@@ -6,15 +6,13 @@ namespace @base.model.definitions
     {
         public enum UnitDefinitionType
         {
-            Swordfighter,
-            Babarian,
-            Spearbearer,
-            HeavyInfantry,
+            Fighter,
+            Mage,
             Hero
         }
       
         public UnitDefinition(Guid guid, DefinitionType type, 
-            UnitDefinitionType unitType, @base.control.Action[] actions, int attack, int defense, int health, int moves) 
+            UnitDefinitionType unitType, @base.control.action.Action[] actions, int attack, int defense, int health, int moves) 
             : base(guid, type)
         {
 
@@ -26,7 +24,7 @@ namespace @base.model.definitions
             m_moves = moves;
         }
 
-        public @base.control.Action[] Actions
+        public @base.control.action.Action[] Actions
         {
             get { return m_actions; }
         }
@@ -57,7 +55,7 @@ namespace @base.model.definitions
         }
 
         private UnitDefinitionType m_unitType;
-        private @base.control.Action[] m_actions;
+        private @base.control.action.Action[] m_actions;
         private int m_attack;
         private int m_defense;
         private int m_health;

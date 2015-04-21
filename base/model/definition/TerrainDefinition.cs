@@ -4,16 +4,25 @@ namespace @base.model.definitions
 {
     public class TerrainDefinition : Definition
     {
-        public enum TerrainDefintionType
+        public enum TerrainDefinitionType
         {
             Water = 0,
-            Street = 1,
-            Building = 2,
-            Wood = 3,
+            Buildings = 1,
+            Woods = 2,
+            Grassland = 3,
+            Fields = 4,
+            Streets = 5,
+            NotDefined = 6,
+            Forbidden = 7,
+            Town = 8,
+            Glacier = 9,
+            Beach = 10,
+            Park = 11,
+            Invalid = 12
         }
       
         public TerrainDefinition(Guid guid, DefinitionType type,
-            TerrainDefintionType terrainType, int[] ressources)
+            TerrainDefinitionType terrainType, int[] ressources)
             : base(guid, type)
         {
             m_terrainType = terrainType;
@@ -25,12 +34,12 @@ namespace @base.model.definitions
             get { return m_ressources; }
         }
 
-        public TerrainDefintionType TerrainType
+        public TerrainDefinitionType TerrainType
         {
             get { return m_terrainType; }
         }
 
-        private TerrainDefintionType m_terrainType;
+        private TerrainDefinitionType m_terrainType;
         private int[] m_ressources;
 
     }

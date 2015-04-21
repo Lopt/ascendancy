@@ -27,6 +27,17 @@ namespace @base.model
             get { return m_regionY; }
         }
 
+        public int MajorX
+        {
+            get { return m_regionX / Constants.majorRegionSizeX; }
+        }
+
+        public int MajorY
+        {
+            get { return m_regionY / Constants.majorRegionSizeY; }
+        }
+
+
         public override bool Equals(Object obj)
         {
             var regionPosition = (RegionPosition) obj;
@@ -35,7 +46,7 @@ namespace @base.model
 
         public override int GetHashCode()
         {
-            return m_regionX * Constants.regionSizeY + m_regionY;
+            return m_regionX * m_regionY;
         }
 
         private readonly int m_regionX;

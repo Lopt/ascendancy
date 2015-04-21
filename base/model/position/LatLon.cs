@@ -33,10 +33,6 @@ namespace @base.model
 
 		private double m_lat;
 		private double m_lon;
-
-		private readonly double degreesToRadiansRatio = 180d / Math.PI;
-		private readonly double radiansToDegreesRatio = Math.PI / 180d;
-
 	}
 }
 
