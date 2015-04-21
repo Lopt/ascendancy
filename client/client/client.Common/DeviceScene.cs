@@ -38,6 +38,7 @@ namespace client.Common
         CCLabelTtf LabelTimeZoneOffset;
         CCLabelTtf LabelDeviceMemory;
         CCLabelTtf LabelNetworkStatus;
+        CCLabelTtf LabelTestClient;
        
 
         string DeviceId;
@@ -51,11 +52,19 @@ namespace client.Common
         string TimeZoneOffset;
         string DeviceMemory;
         string NetworkStatus;
+        string TestClient;
+        string Antwort;
+
+        Network network;
 
         public DeviceLayer()
             : base()
         {
             mDevice = Device.GetInstance;
+
+            network = new Network();
+            network.Test();
+            Antwort = network.antwort;
 
             DeviceId = Device.PropertyNameDeviceId;
             DeviceName = Device.PropertyNameDeviceName;
@@ -68,6 +77,7 @@ namespace client.Common
             TimeZoneOffset = Device.PropertyNameTimeZoneOffset;
             DeviceMemory = Device.PropertyNameDeviceMemory;
             NetworkStatus = "NetworkStatus";
+            TestClient = "TestClient";
 
             LabelDeviceId = new CCLabelTtf(DeviceId, "arial", 22);
             LabelDeviceName = new CCLabelTtf(DeviceName, "arial", 22);
@@ -80,6 +90,7 @@ namespace client.Common
             LabelTimeZoneOffset = new CCLabelTtf(TimeZoneOffset, "arial", 22);
             LabelDeviceMemory = new CCLabelTtf(DeviceMemory, "arial", 22);    
             LabelNetworkStatus = new CCLabelTtf(NetworkStatus, "arial", 22); 
+            LabelTestClient = new CCLabelTtf(TestClient, "arial", 22);
 
 
             var touchListener = new CCEventListenerTouchAllAtOnce();
@@ -105,6 +116,7 @@ namespace client.Common
             this.AddChild(LabelTimeZoneOffset);
             this.AddChild(LabelDeviceMemory);
             this.AddChild(LabelNetworkStatus);
+            this.AddChild(LabelTestClient);
 
             this.Schedule(SetDeviceInfo);
 
@@ -157,6 +169,10 @@ namespace client.Common
             LabelNetworkStatus.PositionX = VisibleBoundsWorldspace.MinX + 20;
             LabelNetworkStatus.PositionY = VisibleBoundsWorldspace.MaxY - 320;
             LabelNetworkStatus.AnchorPoint = CCPoint.AnchorUpperLeft;
+
+            LabelTestClient.PositionX = VisibleBoundsWorldspace.MinX + 20;
+            LabelTestClient.PositionY = VisibleBoundsWorldspace.MaxY - 350;
+            LabelTestClient.AnchorPoint = CCPoint.AnchorUpperLeft;
         }
 
         void SetDeviceInfo(float FrameTimesInSecond)
@@ -173,7 +189,7 @@ namespace client.Common
             LabelTimeZoneOffset.Text = TimeZoneOffset + " = " + mDevice.TimeZoneOffset;
             LabelDeviceMemory.Text = DeviceMemory + " = " + mDevice.DeviceMemory;
             LabelNetworkStatus.Text = NetworkStatus + " = " + mDevice.Network.InternetConnectionStatus().ToString();
-
+            LabelTestClient.Text = TestClient + " = " + network.antwort;
         }
 
     }
