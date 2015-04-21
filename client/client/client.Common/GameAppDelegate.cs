@@ -45,10 +45,10 @@ namespace client.Common
 //            Gamescene.AddChild(gameLayer);
          
 //            CCScene MyGeolocationScene = new GeolocationScene(mainWindow);
-            //CCScene MyDeviceScene = new DeviceScene(mainWindow);
-            CCScene MyTouchTestScene = new TouchTestScene(mainWindow);
+            CCScene MyDeviceScene = new DeviceScene(mainWindow);
+            //CCScene MyTouchTestScene = new TouchTestScene(mainWindow);
 
-            mainWindow.RunWithScene(MyTouchTestScene);
+            mainWindow.RunWithScene(MyDeviceScene);
         }
 
         public override void ApplicationDidEnterBackground(CCApplication application)
