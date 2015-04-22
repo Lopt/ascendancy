@@ -2,20 +2,23 @@
 
 namespace client.Common.helper
 {
-    public class ClientConstants
-    {
-        public ClientConstants()
-        {
-        }
+	public class ClientConstants
+	{
+		public ClientConstants ()
+		{
+		}
 
-        public static string Content = "Content";
-        public static string animations = "animations";
-        public static string fonts = "fonts";
-        public static string sounds = "sounds";
-        public static string images_hd = "images/hd";
-        public static string images_ld = "images/ld";
-        public static string images_terrain = "images/terrain";
+		public const string CONTENT = "Content";
+		public const string ANIMATIONS = "animations";
+		public const string FONTS = "fonts";
+		public const string SOUNDS = "sounds";
+		public const string IMAGES_HD = "images/hd";
+		public const string IMAGES_LD = "images/ld";
+		public const string IMAGES_TERRAIN = "images/terrain";
+			   
+		public const string REGIONSERVERPATH = "http://derfalke.no-ip.biz/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
+		public const string TERRAINSERVERPATH = "http://derfalke.no-ip.biz/terrain.json";
             
-    }
+	}
 }
 

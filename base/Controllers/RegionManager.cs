@@ -7,7 +7,7 @@ using @base.model.definitions;
 namespace @base.control
 {
     public class RegionManager
-	{
+    {
         /// <summary>
         /// Replaces parts of the path with MajorRegion and MinorRegion of the given Region Position
         /// </summary>
@@ -35,15 +35,15 @@ namespace @base.control
             var terrainManager = World.Instance.TerrainManager;
 
             int[,] terrainsTypes = JsonConvert.DeserializeObject<int[,]>(json);
-            var terrains = new TerrainDefinition[Constants.regionSizeX, Constants.regionSizeY];
+            var terrains = new TerrainDefinition[Constants.REGIONSIZE_X, Constants.REGIONSIZE_Y];
 
-            for (int cellX = 0; cellX < Constants.regionSizeX; ++cellX)
+            for (int cellX = 0; cellX < Constants.REGIONSIZE_X; ++cellX)
             {
-                for (int cellY = 0; cellY < Constants.regionSizeY; ++cellY)
+                for (int cellY = 0; cellY < Constants.REGIONSIZE_Y; ++cellY)
                 {
                     var terrainType = terrainsTypes[cellX, cellY];
                     terrains[cellX, cellY] = terrainManager.GetTerrainDefinition(
-                        (TerrainDefinition.TerrainDefinitionType) terrainType);
+                        (TerrainDefinition.TerrainDefinitionType)terrainType);
                 }
             }
 

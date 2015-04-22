@@ -6,14 +6,14 @@ namespace @base.model
     {
         public CellPosition(int cellX, int cellY)
         {
-            m_cellX = ((int) cellX % Constants.regionSizeX);
-            m_cellY = ((int) cellY % Constants.regionSizeY);
+            m_cellX = ((int) cellX % Constants.REGIONSIZE_X);
+            m_cellY = ((int) cellY % Constants.REGIONSIZE_Y);
         }
 
         public CellPosition(Position position)
         {
-            m_cellX = ((int) position.X % Constants.regionSizeX);
-            m_cellY = ((int) position.Y % Constants.regionSizeY);
+            m_cellX = ((int) position.X % Constants.REGIONSIZE_X);
+            m_cellY = ((int) position.Y % Constants.REGIONSIZE_Y);
         }
 
         public int CellX
@@ -34,7 +34,7 @@ namespace @base.model
 
         public override int GetHashCode()
         {
-            return m_cellX * Constants.regionSizeY + m_cellY;
+            return m_cellX * Constants.REGIONSIZE_Y + m_cellY;
         }
 
         private readonly int m_cellX;
