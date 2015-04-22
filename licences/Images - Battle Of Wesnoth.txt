@@ -1,0 +1,3 @@
+http://wiki.wesnoth.org/Wesnoth:Copyrights
+
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html

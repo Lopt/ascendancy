@@ -1,0 +1,6 @@
+http://www.openstreetmap.org/copyright/en
+
+http://opendatacommons.org/licenses/odbl/
+http://creativecommons.org/licenses/by-sa/2.0/
+
+© OpenStreetMap contributors
