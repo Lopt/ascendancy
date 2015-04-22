@@ -4,8 +4,8 @@ namespace @base.model
 {
 	public class Constants
 	{
-        // size of a cell at the equator (in meters * 4)
-        public const double cellSize = 4 * 4; 
+        // size of a cell at the equator (in meters)
+        public const double cellSize = 4; 
 
         // earth size at equator (in meters)
         public const double earthCircumference = 40075036.0;

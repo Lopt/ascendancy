@@ -34,19 +34,20 @@
     <Compile Include="model\Account.cs" />
     <Compile Include="model\Constants.cs" />
     <Compile Include="model\Entity.cs" />
-    <Compile Include="model\LatLon.cs" />
-    <Compile Include="model\Position.cs" />
-    <Compile Include="model\Region.cs" />
-    <Compile Include="model\RegionManager.cs" />
-    <Compile Include="model\RegionPosition.cs" />
-    <Compile Include="model\Singleton.cs" />
     <Compile Include="model\World.cs" />
     <Compile Include="view\Entity.cs" />
-    <Compile Include="model\Definition.cs" />
-    <Compile Include="model\UnitDefinition.cs" />
-    <Compile Include="model\TerrainDefinition.cs" />
     <Compile Include="model\Ressources.cs" />
-    <Compile Include="control\Action.cs" />
+    <Compile Include="model\position\LatLon.cs" />
+    <Compile Include="model\position\Position.cs" />
+    <Compile Include="model\position\RegionPosition.cs" />
+    <Compile Include="model\position\CellPosition.cs" />
+    <Compile Include="model\definition\TerrainDefinition.cs" />
+    <Compile Include="model\definition\UnitDefinition.cs" />
+    <Compile Include="model\definition\Definition.cs" />
+    <Compile Include="model\map\Region.cs" />
+    <Compile Include="model\manager\TerrainManager.cs" />
+    <Compile Include="model\manager\RegionManager.cs" />
+    <Compile Include="control\action\Action.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -73,6 +74,11 @@
     <Folder Include="model\" />
     <Folder Include="view\" />
     <Folder Include="control\" />
+    <Folder Include="model\manager\" />
+    <Folder Include="model\definition\" />
+    <Folder Include="model\position\" />
+    <Folder Include="model\map\" />
+    <Folder Include="control\action\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
