@@ -31,23 +31,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="model\Account.cs" />
-    <Compile Include="model\Constants.cs" />
-    <Compile Include="model\Entity.cs" />
-    <Compile Include="model\World.cs" />
-    <Compile Include="view\Entity.cs" />
-    <Compile Include="model\Ressources.cs" />
-    <Compile Include="model\position\LatLon.cs" />
-    <Compile Include="model\position\Position.cs" />
-    <Compile Include="model\position\RegionPosition.cs" />
-    <Compile Include="model\position\CellPosition.cs" />
-    <Compile Include="model\definition\TerrainDefinition.cs" />
-    <Compile Include="model\definition\UnitDefinition.cs" />
-    <Compile Include="model\definition\Definition.cs" />
-    <Compile Include="model\map\Region.cs" />
-    <Compile Include="model\manager\TerrainManager.cs" />
-    <Compile Include="model\manager\RegionManager.cs" />
-    <Compile Include="control\action\Action.cs" />
+    <Compile Include="Controllers\action\Action.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Constants.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\World.cs" />
+    <Compile Include="Models\Ressources.cs" />
+    <Compile Include="Models\Definition\TerrainDefinition.cs" />
+    <Compile Include="Models\Definition\UnitDefinition.cs" />
+    <Compile Include="Models\Definition\Definition.cs" />
+    <Compile Include="Models\Manager\TerrainManager.cs" />
+    <Compile Include="Models\Manager\RegionManager.cs" />
+    <Compile Include="Models\Map\Region.cs" />
+    <Compile Include="Models\Position\LatLon.cs" />
+    <Compile Include="Models\Position\Position.cs" />
+    <Compile Include="Models\Position\RegionPosition.cs" />
+    <Compile Include="Models\Position\CellPosition.cs" />
+    <Compile Include="Views\Entity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -71,14 +71,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="model\" />
-    <Folder Include="view\" />
-    <Folder Include="control\" />
-    <Folder Include="model\manager\" />
-    <Folder Include="model\definition\" />
-    <Folder Include="model\position\" />
-    <Folder Include="model\map\" />
-    <Folder Include="control\action\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Controllers\action\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Definition\" />
+    <Folder Include="Models\Manager\" />
+    <Folder Include="Models\Map\" />
+    <Folder Include="Models\Position\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

@@ -27,18 +27,18 @@ namespace client.Common
     {
         Device mDevice = null;
 
-        CCLabelTtf LabelDeviceId;
-        CCLabelTtf LabelDeviceName;
-        CCLabelTtf LabelManufacturer;
-        CCLabelTtf LabelBatteryLevel;
-        CCLabelTtf LabelFirmwareVersion;
-        CCLabelTtf LabelHardwareVersion;
-        CCLabelTtf LabelLanguageCode;
-        CCLabelTtf LabelTimeZone;
-        CCLabelTtf LabelTimeZoneOffset;
-        CCLabelTtf LabelDeviceMemory;
-        CCLabelTtf LabelNetworkStatus;
-        CCLabelTtf LabelTestClient;
+        CCLabel LabelDeviceId;
+        CCLabel LabelDeviceName;
+        CCLabel LabelManufacturer;
+        CCLabel LabelBatteryLevel;
+        CCLabel LabelFirmwareVersion;
+        CCLabel LabelHardwareVersion;
+        CCLabel LabelLanguageCode;
+        CCLabel LabelTimeZone;
+        CCLabel LabelTimeZoneOffset;
+        CCLabel LabelDeviceMemory;
+        CCLabel LabelNetworkStatus;
+        CCLabel LabelTestClient;
        
 
         string DeviceId;
@@ -79,18 +79,18 @@ namespace client.Common
             NetworkStatus = "NetworkStatus";
             TestClient = "TestClient";
 
-            LabelDeviceId = new CCLabelTtf(DeviceId, "arial", 22);
-            LabelDeviceName = new CCLabelTtf(DeviceName, "arial", 22);
-            LabelManufacturer = new CCLabelTtf(Manufacturer, "arial", 22);
-            LabelBatteryLevel = new CCLabelTtf(BatteryLevel, "arial", 22);
-            LabelFirmwareVersion = new CCLabelTtf(FirmwareVersion, "arial", 22);
-            LabelHardwareVersion = new CCLabelTtf(HardwareVersion, "arial", 22);
-            LabelLanguageCode = new CCLabelTtf(LanguageCode, "arial", 22);
-            LabelTimeZone = new CCLabelTtf(TimeZone, "arial", 22);
-            LabelTimeZoneOffset = new CCLabelTtf(TimeZoneOffset, "arial", 22);
-            LabelDeviceMemory = new CCLabelTtf(DeviceMemory, "arial", 22);    
-            LabelNetworkStatus = new CCLabelTtf(NetworkStatus, "arial", 22); 
-            LabelTestClient = new CCLabelTtf(TestClient, "arial", 22);
+            LabelDeviceId = new CCLabel(DeviceId, "arial", 22);
+            LabelDeviceName = new CCLabel(DeviceName, "arial", 22);
+            LabelManufacturer = new CCLabel(Manufacturer, "arial", 22);
+            LabelBatteryLevel = new CCLabel(BatteryLevel, "arial", 22);
+            LabelFirmwareVersion = new CCLabel(FirmwareVersion, "arial", 22);
+            LabelHardwareVersion = new CCLabel(HardwareVersion, "arial", 22);
+            LabelLanguageCode = new CCLabel(LanguageCode, "arial", 22);
+            LabelTimeZone = new CCLabel(TimeZone, "arial", 22);
+            LabelTimeZoneOffset = new CCLabel(TimeZoneOffset, "arial", 22);
+            LabelDeviceMemory = new CCLabel(DeviceMemory, "arial", 22);    
+            LabelNetworkStatus = new CCLabel(NetworkStatus, "arial", 22); 
+            LabelTestClient = new CCLabel(TestClient, "arial", 22);
 
 
             var touchListener = new CCEventListenerTouchAllAtOnce();

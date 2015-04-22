@@ -6,12 +6,12 @@ namespace test
 {
     class MainClass
     {
-        public static void Main (string[] args)
+        public static void Main(string[] args)
         {
             var world = @base.model.World.Instance;
 
-            var terrainManager = new TerrainManager ();
-            var regionManager = new RegionManager ();
+            var terrainManager = new TerrainManager();
+            var regionManager = new RegionManager();
 
             var latlon = new @base.model.LatLon(50.9849, 11.0442);
             var position = new @base.model.Position(latlon);

@@ -2,6 +2,7 @@
 using CocosSharp;
 using Xamarin.Forms;
 using CocosDenshion;
+using client.Common.helper;
 
 
 namespace client.Common
@@ -11,10 +12,10 @@ namespace client.Common
         public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
         {
             application.PreferMultiSampling = false;
-            application.ContentRootDirectory = "Content";
-            application.ContentSearchPaths.Add("animations");
-            application.ContentSearchPaths.Add("fonts");
-            application.ContentSearchPaths.Add("sounds");
+            application.ContentRootDirectory = ClientConstants.Content;
+            application.ContentSearchPaths.Add(ClientConstants.animations);
+            application.ContentSearchPaths.Add(ClientConstants.fonts);
+            application.ContentSearchPaths.Add(ClientConstants.sounds);
 
             CCSize windowSize = mainWindow.WindowSizeInPixels;
 
@@ -30,12 +31,12 @@ namespace client.Common
             // Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
             if (desiredWidth < windowSize.Width)
             {
-                application.ContentSearchPaths.Add("images/hd");
+                application.ContentSearchPaths.Add(ClientConstants.images_hd);
                 CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
             }
             else
             {
-                application.ContentSearchPaths.Add("images/ld");
+                application.ContentSearchPaths.Add(ClientConstants.images_ld);
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
 
