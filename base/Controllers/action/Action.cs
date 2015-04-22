@@ -11,6 +11,12 @@ namespace @base.control.action
             Attack,
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="base.control.action.Action"/> class.
+        /// </summary>
+        /// <param name="actionType">Action type.</param>
+        /// <param name="regions">Affected Regions of this action.</param>
+        /// <param name="parameters">Parameters.</param>
         public Action(ActionType actionType, @base.model.Region[] regions, string parameters)
         {
             m_parameters = parameters;
@@ -19,16 +25,25 @@ namespace @base.control.action
             m_actionTime = DateTime.Now;
         }
 
+        /// <summary>
+        /// Returns if the action is even possible.
+        /// </summary>
         public bool Possible()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Apply action-related changes to the world.
+        /// </summary>
         public bool Do()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// In case of errors, revert the world data to a valid state.
+        /// </summary>
         public bool Catch()
         {
             throw new NotImplementedException();

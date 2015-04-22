@@ -17,7 +17,9 @@ namespace test
             var position = new @base.model.Position(latlon);
             var regionPosition = new @base.model.RegionPosition(position);
             var cellPosition = new @base.model.CellPosition(position);
-            Console.WriteLine("/" + regionPosition.MajorX.ToString() + "/" + regionPosition.MajorY.ToString() + "/germany-" + regionPosition.RegionX.ToString() + "-" + regionPosition.RegionY.ToString() + ".png");
+
+            var terrain = world.RegionManager.GetRegion(regionPosition).GetTerrain(cellPosition);
+            //Console.WriteLine("/" + regionPosition.MajorX.ToString() + "/" + regionPosition.MajorY.ToString() + "/germany-" + regionPosition.RegionX.ToString() + "-" + regionPosition.RegionY.ToString() + ".png");
             //Console.WriteLine (world.RegionManager.GetRegion(new @base.model.RegionPosition(41504, 26188)).GetTerrain(new @base.model.CellPosition(31, 31)).TerrainType);
         
         }

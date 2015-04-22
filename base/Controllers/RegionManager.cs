@@ -8,7 +8,13 @@ namespace @base.control
 {
     public class RegionManager
 	{
-        public string PathReplace(string path, RegionPosition regionPosition)
+        /// <summary>
+        /// Paths the replace.
+        /// </summary>
+        /// <returns>The replace.</returns>
+        /// <param name="path">Path.</param>
+        /// <param name="regionPosition">Region position.</param>
+        public string ReplacePath(string path, RegionPosition regionPosition)
         {
             path = path.Replace("$MajorRegionX", regionPosition.MajorX.ToString());
             path = path.Replace("$MajorRegionY", regionPosition.MajorY.ToString());
