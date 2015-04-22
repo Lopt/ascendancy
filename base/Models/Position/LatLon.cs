@@ -12,7 +12,7 @@ namespace @base.model
 
         public LatLon (Position position)
         {
-            var zoom = Constants.earthCircumference / Constants.cellSize;
+            var zoom = Constants.EARTHCIRCUMFERENCE / Constants.CELLSIZE;
             var n = Math.PI - ((2.0 * Math.PI * position.Y) / zoom);
 
             m_lon = (float)((position.X / zoom * 360.0) - 180.0);

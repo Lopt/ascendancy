@@ -10,12 +10,12 @@ namespace server.control
 	{
         public RegionManager()
         {
-            for (int regionX = Constants.startX; regionX < Constants.endX; ++ regionX)
+            for (int regionX = Constants.START_X; regionX < Constants.END_X; ++ regionX)
             {
-                for (int regionY = Constants.startY; regionY < Constants.endY; ++ regionY)
+                for (int regionY = Constants.START_Y; regionY < Constants.END_Y; ++ regionY)
                 {
                     var regionPosition = new RegionPosition(regionX, regionY);
-                    var path = ReplacePath(Constants.regionFile, regionPosition);
+                    var path = ReplacePath(Constants.REGIONFILE, regionPosition);
                     string json = System.IO.File.ReadAllText(path);
                     var region = JsonToRegion(json, regionPosition);
                     World.Instance.RegionManager.AddRegion(region);

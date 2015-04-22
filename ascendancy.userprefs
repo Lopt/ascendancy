@@ -1,6 +1,6 @@
 ﻿<Properties StartupItem="client/client/client.iOS/client.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/Try-Tests/DeviceScene.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.3" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/Helper/ClientConstants.cs">
     <Files>
       <File FileName="client/client/client.Common/Controllers/RegionController.cs" Line="1" Column="1" />
       <File FileName="client/client/client.Common/Controllers/TerrainController.cs" Line="1" Column="1" />
@@ -9,12 +9,16 @@
       <File FileName="client/client/client.Common/Views/EndScene.cs" Line="1" Column="1" />
       <File FileName="client/client/client.Common/Models/Device.cs" Line="1" Column="1" />
       <File FileName="client/client/client.Common/Controllers/NetworkController.cs" Line="1" Column="1" />
-      <File FileName="client/client/client.Common/GameAppDelegate.cs" Line="19" Column="80" />
-      <File FileName="base/Models/Constants.cs" Line="1" Column="1" />
-      <File FileName="client/client/client.Common/Helper/ClientConstants.cs" Line="1" Column="1" />
-      <File FileName="client/client/client.Common/Try-Tests/Network.cs" Line="21" Column="12" />
-      <File FileName="client/client/client.Common/Try-Tests/GameLayer.cs" Line="27" Column="38" />
+      <File FileName="client/client/client.Common/GameAppDelegate.cs" Line="1" Column="1" />
+      <File FileName="base/Models/Constants.cs" Line="37" Column="2" />
+      <File FileName="client/client/client.Common/Helper/ClientConstants.cs" Line="20" Column="40" />
+      <File FileName="client/client/client.Common/Try-Tests/Network.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.Common/Try-Tests/GameLayer.cs" Line="1" Column="1" />
       <File FileName="client/client/client.Common/Try-Tests/DeviceScene.cs" Line="182" Column="66" />
+      <File FileName="base/Models/Manager/RegionManager.cs" Line="1" Column="1" />
+      <File FileName="base/Controllers/RegionManager.cs" Line="1" Column="1" />
+      <File FileName="base/Models/Position/RegionPosition.cs" Line="1" Column="1" />
+      <File FileName="base/Models/Manager/TerrainManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
