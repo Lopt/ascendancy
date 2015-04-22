@@ -40,6 +40,7 @@ namespace client.Common
         CCLabel LabelNetworkStatus;
         CCLabel LabelTestClient;
        
+        CCSprite water;
 
         string DeviceId;
         string DeviceName;
@@ -92,6 +93,8 @@ namespace client.Common
             LabelNetworkStatus = new CCLabel(NetworkStatus, "arial", 22); 
             LabelTestClient = new CCLabel(TestClient, "arial", 22);
 
+            water = new CCSprite("water");
+
 
             var touchListener = new CCEventListenerTouchAllAtOnce();
             touchListener.OnTouchesEnded = (touches, ccevent) =>
@@ -117,6 +120,7 @@ namespace client.Common
             this.AddChild(LabelDeviceMemory);
             this.AddChild(LabelNetworkStatus);
             this.AddChild(LabelTestClient);
+            this.AddChild(water);
 
             this.Schedule(SetDeviceInfo);
 
@@ -173,6 +177,9 @@ namespace client.Common
             LabelTestClient.PositionX = VisibleBoundsWorldspace.MinX + 20;
             LabelTestClient.PositionY = VisibleBoundsWorldspace.MaxY - 350;
             LabelTestClient.AnchorPoint = CCPoint.AnchorUpperLeft;
+
+            water.AnchorPoint = CCPoint.AnchorMiddle;
+            water.Position = this.VisibleBoundsWorldspace.Center;
         }
 
         void SetDeviceInfo(float FrameTimesInSecond)

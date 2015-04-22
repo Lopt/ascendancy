@@ -16,6 +16,7 @@ namespace client.Common
             application.ContentSearchPaths.Add(ClientConstants.animations);
             application.ContentSearchPaths.Add(ClientConstants.fonts);
             application.ContentSearchPaths.Add(ClientConstants.sounds);
+            application.ContentSearchPaths.Add(ClientConstants.images_terrain);
 
             CCSize windowSize = mainWindow.WindowSizeInPixels;
 
