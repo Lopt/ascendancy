@@ -1,21 +1,21 @@
-﻿<Properties StartupItem="client/client/client.Android/client.Droid.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="Android.AVD_for_Nexus_4_by_Google" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/Network.cs">
+﻿<Properties StartupItem="client/client/client.iOS/client.iOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.3" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/GameAppDelegate.cs">
     <Files>
-      <File FileName="client/client/client.Common/Network.cs" Line="28" Column="140" />
-      <File FileName="client/client/client.Common/DeviceScene.cs" Line="66" Column="1" />
-      <File FileName="base/model/definition/TerrainDefinition.cs" Line="27" Column="27" />
-      <File FileName="base/model/definition/UnitDefinition.cs" Line="1" Column="1" />
-      <File FileName="base/model/manager/RegionManager.cs" Line="9" Column="9" />
-      <File FileName="test/Program.cs" Line="20" Column="20" />
-      <File FileName="server/Controllers/RegionManager.cs" Line="1" Column="1" />
-      <File FileName="server/Models/World.cs" Line="1" Column="1" />
-      <File FileName="base/model/manager/TerrainManager.cs" Line="10" Column="10" />
-      <File FileName="base/model/map/Region.cs" Line="1" Column="1" />
-      <File FileName="base/model/Constants.cs" Line="6" Column="6" />
-      <File FileName="base/model/position/RegionPosition.cs" Line="35" Column="35" />
-      <File FileName="base/control/Action.cs" Line="9" Column="9" />
+      <File FileName="client/client/client.Common/Controllers/RegionController.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.Common/Controllers/TerrainController.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.Common/Views/StartScene.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.Common/Views/GameScene.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.Common/Views/EndScene.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.Common/Models/Device.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.Common/Controllers/NetworkController.cs" Line="1" Column="1" />
+      <File FileName="client/client/client.Common/GameAppDelegate.cs" Line="39" Column="77" />
+      <File FileName="base/Models/Constants.cs" Line="33" Column="125" />
+      <File FileName="client/client/client.Common/Helper/ClientConstants.cs" Line="22" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

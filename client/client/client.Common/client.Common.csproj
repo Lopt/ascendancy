@@ -31,14 +31,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameAppDelegate.cs" />
-    <Compile Include="GameLayer.cs" />
-    <Compile Include="model\viewBaseModel.cs" />
-    <Compile Include="model\Geolocation.cs" />
-    <Compile Include="model\Device.cs" />
-    <Compile Include="GeolocationScene.cs" />
-    <Compile Include="DeviceScene.cs" />
-    <Compile Include="TouchTestScene.cs" />
-    <Compile Include="Network.cs" />
+    <Compile Include="Controllers\RegionController.cs" />
+    <Compile Include="Controllers\TerrainController.cs" />
+    <Compile Include="Controllers\NetworkController.cs" />
+    <Compile Include="Helper\ClientConstants.cs" />
+    <Compile Include="Models\viewBaseModel.cs" />
+    <Compile Include="Models\Geolocation.cs" />
+    <Compile Include="Models\Device.cs" />
+    <Compile Include="Try-Tests\DeviceScene.cs" />
+    <Compile Include="Try-Tests\GameLayer.cs" />
+    <Compile Include="Try-Tests\GeolocationScene.cs" />
+    <Compile Include="Try-Tests\Network.cs" />
+    <Compile Include="Try-Tests\TouchTestScene.cs" />
+    <Compile Include="Views\StartScene.cs" />
+    <Compile Include="Views\GameScene.cs" />
+    <Compile Include="Views\EndScene.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\..\packages\Xamarin.Forms.1.4.2.6355\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\packages\Xamarin.Forms.1.4.2.6355\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -99,7 +106,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="model\" />
-    <Folder Include="helper\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Helper\" />
+    <Folder Include="Models\" />
+    <Folder Include="Try-Tests\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\base\base.csproj">
+      <Project>{163A206B-36D1-46D5-AA19-B515F7350C6E}</Project>
+      <Name>base</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
