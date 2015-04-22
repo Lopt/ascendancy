@@ -48,6 +48,7 @@
     <Compile Include="Models\Position\RegionPosition.cs" />
     <Compile Include="Models\Position\CellPosition.cs" />
     <Compile Include="Views\Entity.cs" />
+    <Compile Include="Controllers\RegionManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
