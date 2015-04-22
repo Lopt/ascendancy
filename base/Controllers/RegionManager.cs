@@ -9,11 +9,11 @@ namespace @base.control
     public class RegionManager
 	{
         /// <summary>
-        /// Paths the replace.
+        /// Replaces parts of the path with MajorRegion and MinorRegion of the given Region Position
         /// </summary>
-        /// <returns>The replace.</returns>
-        /// <param name="path">Path.</param>
-        /// <param name="regionPosition">Region position.</param>
+        /// <returns>Path with replaced $MajorRegion and $MinorRegion </returns>
+        /// <param name="path">Template-Path</param>
+        /// <param name="regionPosition">Region Position.</param>
         public string ReplacePath(string path, RegionPosition regionPosition)
         {
             path = path.Replace("$MajorRegionX", regionPosition.MajorX.ToString());
@@ -23,7 +23,13 @@ namespace @base.control
 
             return path;
         }
-    
+
+        /// <summary>
+        /// Converts a JSON String to a Region.
+        /// </summary>
+        /// <returns>Region which was created by the JSON String.</returns>
+        /// <param name="json">JSON - int[,]</param>
+        /// <param name="regionPosition">Region position.</param>
         public Region JsonToRegion(string json, RegionPosition regionPosition)
         {           
             var terrainManager = World.Instance.TerrainManager;

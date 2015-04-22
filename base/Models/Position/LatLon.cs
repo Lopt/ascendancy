@@ -4,12 +4,22 @@ namespace @base.model
 {
 	public class LatLon
 	{
+        /// <summary>
+        /// Initializes a new instance of the <see cref="base.model.LatLon"/> class.
+        /// A LatLon is an Latitude/Longitude Position of (spheric) earth.
+        /// </summary>
+        /// <param name="lat">Latitude</param>
+        /// <param name="lon">Longitude</param>
 		public LatLon (double lat, double lon)
 		{
             m_lat = lat;
             m_lon = lon;
 		}
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="base.model.LatLon"/> class.
+        /// </summary>
+        /// <param name="position">Position which should be converted to a LatLon Position.</param>
         public LatLon (Position position)
         {
             var zoom = Constants.earthCircumference / Constants.cellSize;
