@@ -4,10 +4,18 @@
     <Files>
       <File FileName="client/client/client.Common/Network.cs" Line="28" Column="140" />
       <File FileName="client/client/client.Common/DeviceScene.cs" Line="66" Column="1" />
+      <File FileName="base/model/definition/TerrainDefinition.cs" Line="27" Column="27" />
+      <File FileName="base/model/definition/UnitDefinition.cs" Line="1" Column="1" />
+      <File FileName="base/model/manager/RegionManager.cs" Line="9" Column="9" />
+      <File FileName="test/Program.cs" Line="20" Column="20" />
+      <File FileName="server/Controllers/RegionManager.cs" Line="1" Column="1" />
+      <File FileName="server/Models/World.cs" Line="1" Column="1" />
+      <File FileName="base/model/manager/TerrainManager.cs" Line="10" Column="10" />
+      <File FileName="base/model/map/Region.cs" Line="1" Column="1" />
+      <File FileName="base/model/Constants.cs" Line="6" Column="6" />
+      <File FileName="base/model/position/RegionPosition.cs" Line="35" Column="35" />
+      <File FileName="base/control/Action.cs" Line="9" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

@@ -16,13 +16,13 @@ namespace server.control
                 {
                     var terrainManager = World.Instance.TerrainManager;
                     var regionPosition = new RegionPosition(regionX, regionY);
-                    var file = Constants.regionFile;
+                    var path = Constants.regionFile;
 
-                    file = file.Replace("$MajorRegionX", regionPosition.MajorX.ToString());
-                    file = file.Replace("$MajorRegionY", regionPosition.MajorY.ToString());
-                    file = file.Replace("$MinorRegionX", regionPosition.RegionX.ToString());
-                    file = file.Replace("$MinorRegionY", regionPosition.RegionY.ToString());
-                    string json = System.IO.File.ReadAllText(file);
+                    path = path.Replace("$MajorRegionX", regionPosition.MajorX.ToString());
+                    path = path.Replace("$MajorRegionY", regionPosition.MajorY.ToString());
+                    path = path.Replace("$MinorRegionX", regionPosition.RegionX.ToString());
+                    path = path.Replace("$MinorRegionY", regionPosition.RegionY.ToString());
+                    string json = System.IO.File.ReadAllText(path);
 
                     int[,] terrainsTypes = JsonConvert.DeserializeObject<int[,]>(json);
                     var terrains = new TerrainDefinition[Constants.regionSizeX, Constants.regionSizeY];
