@@ -13,4 +13,13 @@ test/bin
 base/bin
 base/obj
 ascendancy.sln
+ascendancy.userprefs
 
+
+Backup/
+_UpgradeReport_Files/
+UpgradeLog/
+UpgradeLog.XML
+UpgradeLog.htm
+UpgradeLog2.XML
+UpgradeLog2.htm

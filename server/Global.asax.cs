@@ -13,11 +13,12 @@ namespace server
 		public static void RegisterRoutes (RouteCollection routes)
 		{
 			routes.IgnoreRoute ("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{resource}.config/{*pathInfo}");
 
 			routes.MapRoute (
 				"Default",
 				"{controller}/{action}/{id}",
-				new { controller = "Home", action = "Index", id = "" }
+				new { controller = "Login", action = "LoginID", id = "" }
 			);
 
 		}
