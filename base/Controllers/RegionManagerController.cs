@@ -39,11 +39,11 @@ namespace @base.control
             var terrainManager = World.Instance.TerrainManager;
 
             int[,] terrainsTypes = JsonConvert.DeserializeObject<int[,]>(json);
-            var terrains = new TerrainDefinition[Constants.REGIONSIZE_X, Constants.REGIONSIZE_Y];
+            var terrains = new TerrainDefinition[Constants.REGION_SIZE_X, Constants.REGION_SIZE_Y];
 
-            for (int cellX = 0; cellX < Constants.REGIONSIZE_X; ++cellX)
+            for (int cellX = 0; cellX < Constants.REGION_SIZE_X; ++cellX)
             {
-                for (int cellY = 0; cellY < Constants.REGIONSIZE_Y; ++cellY)
+                for (int cellY = 0; cellY < Constants.REGION_SIZE_Y; ++cellY)
                 {
                     var terrainType = terrainsTypes[cellX, cellY];
                     terrains[cellX, cellY] = terrainManager.GetTerrainDefinition(

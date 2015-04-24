@@ -10,7 +10,7 @@ namespace server.control
 		public TerrainManagerController ()
 		{
             var world = World.Instance;
-            string json = System.IO.File.ReadAllText(@base.model.Constants.TERRAINFILE);
+            string json = System.IO.File.ReadAllText(@base.model.Constants.TERRAIN_FILE);
             var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>>(json);
 
             foreach (var terrain in terrainDefintions)

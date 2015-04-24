@@ -13,8 +13,8 @@ namespace @base.model
 
         public RegionPosition(Position position)
         {
-            m_regionX = (int)(position.X / Constants.REGIONSIZE_X);
-            m_regionY = (int)(position.Y / Constants.REGIONSIZE_Y);
+            m_regionX = (int)(position.X / Constants.REGION_SIZE_X);
+            m_regionY = (int)(position.Y / Constants.REGION_SIZE_Y);
         }
 
         public int RegionX
@@ -29,12 +29,12 @@ namespace @base.model
 
         public int MajorX
         {
-            get { return m_regionX / Constants.MAJORREGIONSIZE_X; }
+            get { return m_regionX / Constants.MAJOR_REGION_SIZE_X; }
         }
 
         public int MajorY
         {
-            get { return m_regionY / Constants.MAJORREGIONSIZE_Y; }
+            get { return m_regionY / Constants.MAJOR_REGION_SIZE_Y; }
         }
 
 

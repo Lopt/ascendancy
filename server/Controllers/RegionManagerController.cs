@@ -18,7 +18,7 @@ namespace server.control
 			var region = RegionManager.GetRegion (regionPosition);
 			if (!region.Exist)
 			{
-				var path = ReplacePath(Constants.REGIONFILE, regionPosition);
+				var path = ReplacePath(Constants.REGION_FILE, regionPosition);
 				try 
 				{
 					string json = System.IO.File.ReadAllText(path);

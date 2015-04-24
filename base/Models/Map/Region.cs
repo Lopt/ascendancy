@@ -9,7 +9,7 @@ namespace @base.model
         public Region (RegionPosition regionPosition)
         {
             m_regionPosition = regionPosition;
-            m_terrains = new TerrainDefinition[Constants.REGIONSIZE_X, Constants.REGIONSIZE_Y];
+            m_terrains = new TerrainDefinition[Constants.REGION_SIZE_X, Constants.REGION_SIZE_Y];
             m_entities = new ObservableCollection<Entity>();
             m_inQueue = new ObservableCollection<@base.control.action.Action>();
             m_completed = new ObservableCollection<@base.control.action.Action>();
