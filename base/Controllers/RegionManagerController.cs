@@ -6,8 +6,18 @@ using @base.model.definitions;
 
 namespace @base.control
 {
-    public class RegionManager
+    public class RegionManagerController 
     {
+        public RegionManagerController(RegionManager regionManager)
+        {
+            m_regionManager = regionManager;
+        }
+
+        virtual public Region GetRegion(RegionPosition regionPosition)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Replaces parts of the path with MajorRegion and MinorRegion of the given Region Position
         /// </summary>
@@ -24,14 +34,8 @@ namespace @base.control
             return path;
         }
 
-        /// <summary>
-        /// Converts a JSON String to a Region.
-        /// </summary>
-        /// <returns>Region which was created by the JSON String.</returns>
-        /// <param name="json">JSON - int[,]</param>
-        /// <param name="regionPosition">Region position.</param>
-        public Region JsonToRegion(string json, RegionPosition regionPosition)
-        {           
+        public  TerrainDefinition[ , ] JsonToTerrain(string json)
+        {
             var terrainManager = World.Instance.TerrainManager;
 
             int[,] terrainsTypes = JsonConvert.DeserializeObject<int[,]>(json);
@@ -46,9 +50,29 @@ namespace @base.control
                         (TerrainDefinition.TerrainDefinitionType)terrainType);
                 }
             }
+            return terrains;
+        }
 
+        /// <summary>
+        /// Converts a JSON String to a Region.
+        /// </summary>
+        /// <returns>Region which was created by the JSON String.</returns>
+        /// <param name="json">JSON - int[,]</param>
+        /// <param name="regionPosition">Region position.</param>
+        public Region JsonToRegion(string json, RegionPosition regionPosition)
+        {   
+            var terrains = JsonToTerrain(json);
             return new Region(regionPosition, terrains);
         }
+
+        public RegionManager RegionManager
+        {
+            get { return m_regionManager; }
+        }
+
+        private RegionManager m_regionManager;
+
+
     }
 }
 

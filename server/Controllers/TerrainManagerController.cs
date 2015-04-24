@@ -5,9 +5,9 @@ using Newtonsoft.Json;
 
 namespace server.control
 {
-    public class TerrainManager
+	public class TerrainManagerController : @base.control.TerrainManagerController
 	{
-        public TerrainManager ()
+		public TerrainManagerController ()
 		{
             var world = World.Instance;
             string json = System.IO.File.ReadAllText(@base.model.Constants.TERRAINFILE);

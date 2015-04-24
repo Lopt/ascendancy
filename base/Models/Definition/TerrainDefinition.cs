@@ -41,7 +41,6 @@ namespace @base.model.definitions
 
         private TerrainDefinitionType m_terrainType;
         private int[] m_ressources;
-
     }
 }
 

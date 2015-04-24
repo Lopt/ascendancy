@@ -17,7 +17,13 @@ namespace @base.model
             m_y = (float)((1.0 - Math.Log(Math.Tan(latLon.Lat * Math.PI / 180.0) +
                 1.0 / Math.Cos(latLon.Lat * Math.PI / 180.0)) / Math.PI) / 2.0 * zoom);
         }
-            
+
+        public Position(RegionPosition regionPosition, CellPosition cellPosition)
+        {
+            m_x = regionPosition.RegionX * Constants.REGIONSIZE_X + cellPosition.CellX;
+            m_y = regionPosition.RegionY * Constants.REGIONSIZE_Y + cellPosition.CellY;
+        }
+
 		public double X
 		{
 			get { return this.m_x; }

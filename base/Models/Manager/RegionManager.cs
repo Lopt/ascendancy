@@ -16,7 +16,9 @@ namespace @base.model
             {
                 return m_regions[regionPosition];
             }
-            return new Region(regionPosition);
+            var region =  new Region(regionPosition);
+
+            return region;
         }
             
         public void AddRegion (Region region)
