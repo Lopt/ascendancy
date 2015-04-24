@@ -1,10 +1,14 @@
 ﻿<Properties StartupItem="client/client/client.iOS/client.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="base/Controllers/RegionManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.3" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/Models/Geolocation.cs">
     <Files>
-      <File FileName="base/Controllers/RegionManager.cs" Line="32" Column="32" />
-      <File FileName="test/Program.cs" Line="1" Column="1" />
-      <File FileName="base/Controllers/action/Action.cs" Line="10" Column="10" />
+      <File FileName="client/client/client.Common/Controllers/RegionController.cs" Line="16" Column="10" />
+      <File FileName="base/Models/Map/Region.cs" Line="50" Column="35" />
+      <File FileName="base/Models/Position/CellPosition.cs" Line="23" Column="1" />
+      <File FileName="base/Controllers/RegionManager.cs" Line="33" Column="78" />
+      <File FileName="client/client/client.Common/Try-Tests/DeviceScene.cs" Line="184" Column="39" />
+      <File FileName="client/client/client.Common/Models/Geolocation.cs" Line="34" Column="1" />
+      <File FileName="client/client/client.Common/Controllers/NetworkController.cs" Line="39" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
