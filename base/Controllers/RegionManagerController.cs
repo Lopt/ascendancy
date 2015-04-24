@@ -34,6 +34,11 @@ namespace @base.control
             return path;
         }
 
+        /// <summary>
+        /// Converts JSON to an TerrainDefinition[ , ]
+        /// </summary>
+        /// <returns>A two-dimensional array of TerrainDefinitions</returns>
+        /// <param name="json">JSON loaded from the server</param>
         public  TerrainDefinition[ , ] JsonToTerrain(string json)
         {
             var terrainManager = World.Instance.TerrainManager;
@@ -57,7 +62,7 @@ namespace @base.control
         /// Converts a JSON String to a Region.
         /// </summary>
         /// <returns>Region which was created by the JSON String.</returns>
-        /// <param name="json">JSON - int[,]</param>
+        /// <param name="json">JSON</param>
         /// <param name="regionPosition">Region position.</param>
         public Region JsonToRegion(string json, RegionPosition regionPosition)
         {   

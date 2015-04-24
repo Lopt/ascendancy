@@ -40,6 +40,7 @@ namespace @base.control.action
 
         /// <summary>
         /// Apply action-related changes to the world.
+        /// Returns True if everything worked, otherwise False
         /// </summary>
         virtual public bool Do()
         {

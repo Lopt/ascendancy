@@ -15,10 +15,7 @@ namespace test
 			controller.RegionManagerController = new RegionManagerController ();
 			controller.TerrainManagerController = new TerrainManagerController ();
 
-
-
 			var testAccount = new @base.model.Account (Guid.NewGuid(), "Test");
-
 
 			var latlon = new @base.model.LatLon(50.9849, 11.0442);
 			var position = new @base.model.Position(latlon);
