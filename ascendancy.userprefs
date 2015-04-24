@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="test/test.csproj">
+﻿<Properties StartupItem="client/client/client.iOS/client.iOS.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="base/Controllers/RegionManager.cs">
     <Files>
@@ -8,11 +8,6 @@
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <DisabledProjects>
-    <String>client/client/client.iOS/client.iOS.csproj</String>
-    <String>client/client/client.Common/client.Common.csproj</String>
-    <String>client/client/client.Android/client.Droid.csproj</String>
-  </DisabledProjects>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
