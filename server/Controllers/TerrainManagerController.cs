@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using @base.model;
+using server.model;
 using Newtonsoft.Json;
 
 namespace server.control
 {
-    public class TerrainManager
+	public class TerrainManagerController : @base.control.TerrainManagerController
 	{
-        public TerrainManager ()
+		public TerrainManagerController ()
 		{
-            var world = World.Instance;
-            string json = System.IO.File.ReadAllText(@base.model.Constants.TERRAINFILE);
+            string json = System.IO.File.ReadAllText(ServerConstants.TERRAIN_FILE);
             var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>>(json);
 
             foreach (var terrain in terrainDefintions)
             {
-                world.TerrainManager.AddTerrainDefinition(terrain);
+                TerrainManager.AddTerrainDefinition(terrain);
             }
         }
 

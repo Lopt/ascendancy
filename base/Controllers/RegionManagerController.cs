@@ -6,8 +6,18 @@ using @base.model.definitions;
 
 namespace @base.control
 {
-    public class RegionManager
+    public class RegionManagerController 
     {
+        public RegionManagerController()
+        {
+            m_regionManager = World.Instance.RegionManager;
+        }
+
+        virtual public Region GetRegion(RegionPosition regionPosition)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Replaces parts of the path with MajorRegion and MinorRegion of the given Region Position
         /// </summary>
@@ -24,6 +34,25 @@ namespace @base.control
             return path;
         }
 
+        public  TerrainDefinition[ , ] JsonToTerrain(string json)
+        {
+            var terrainManager = World.Instance.TerrainManager;
+
+            int[,] terrainsTypes = JsonConvert.DeserializeObject<int[,]>(json);
+            var terrains = new TerrainDefinition[Constants.REGION_SIZE_X, Constants.REGION_SIZE_Y];
+
+            for (int cellX = 0; cellX < Constants.REGION_SIZE_X; ++cellX)
+            {
+                for (int cellY = 0; cellY < Constants.REGION_SIZE_Y; ++cellY)
+                {
+                    var terrainType = terrainsTypes[cellX, cellY];
+                    terrains[cellX, cellY] = terrainManager.GetTerrainDefinition(
+                        (TerrainDefinition.TerrainDefinitionType)terrainType);
+                }
+            }
+            return terrains;
+        }
+
         /// <summary>
         /// Converts a JSON String to a Region.
         /// </summary>
@@ -31,24 +60,19 @@ namespace @base.control
         /// <param name="json">JSON - int[,]</param>
         /// <param name="regionPosition">Region position.</param>
         public Region JsonToRegion(string json, RegionPosition regionPosition)
-        {           
-            var terrainManager = World.Instance.TerrainManager;
-
-            int[,] terrainsTypes = JsonConvert.DeserializeObject<int[,]>(json);
-            var terrains = new TerrainDefinition[Constants.REGIONSIZE_X, Constants.REGIONSIZE_Y];
-
-            for (int cellX = 0; cellX < Constants.REGIONSIZE_X; ++cellX)
-            {
-                for (int cellY = 0; cellY < Constants.REGIONSIZE_Y; ++cellY)
-                {
-                    var terrainType = terrainsTypes[cellX, cellY];
-                    terrains[cellX, cellY] = terrainManager.GetTerrainDefinition(
-                        (TerrainDefinition.TerrainDefinitionType)terrainType);
-                }
-            }
-
+        {   
+            var terrains = JsonToTerrain(json);
             return new Region(regionPosition, terrains);
         }
+
+        public RegionManager RegionManager
+        {
+            get { return m_regionManager; }
+        }
+
+        private RegionManager m_regionManager;
+
+
     }
 }
 

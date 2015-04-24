@@ -5,26 +5,19 @@ using client.Common.helper;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using @base.control;
 
 namespace client.Common.controller
 {
-	public sealed class TerrainController
+	public class TerrainController : TerrainManagerController
 	{
-		#region Singelton
 
-		private static readonly TerrainController _instance = new TerrainController ();
-
-		private TerrainController ()
+		public TerrainController ()
 		{
 			_network = NetworkController.GetInstance;
-			_terrainManager	= World.Instance.TerrainManager;
 			TerrainDefinitionCount = 0;
 			LoadTerrainDefinitionsAsync ();
 		}
-
-		public static TerrainController GetInstance{ get { return _instance; } }
-
-		#endregion
 
 		#region Terrain
 
@@ -35,7 +28,7 @@ namespace client.Common.controller
 			var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>> (json);
 
 			foreach (var terrain in terrainDefintions) {
-				_terrainManager.AddTerrainDefinition (terrain);
+				TerrainManager.AddTerrainDefinition (terrain);
 				TerrainDefinitionCount++;
 			}
 
@@ -53,7 +46,6 @@ namespace client.Common.controller
 		#region private Fields
 
 		private NetworkController _network;
-		private TerrainManager _terrainManager;
 
 		#endregion
 	}

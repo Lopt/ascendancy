@@ -7,27 +7,16 @@ using client.Common.controller;
 
 namespace client.Common.Controllers
 {
-	public sealed class RegionController
+	public class RegionController : RegionManagerController
 	{
-		#region Singelton
-
-		private static readonly RegionController _instance = new RegionController ();
-
-		private RegionController ()
+		public RegionController ()
 		{
 			_networkController = NetworkController.GetInstance;
 			_geolocation = Geolocation.GetInstance;
-			_regionManager = World.Instance.RegionManager;
-			_terrainController = TerrainController.GetInstance;
-			_controlRegionManager	= new @base.control.RegionManager ();
+			_terrainController = Controller.Instance.TerrainManagerController as TerrainController;
 			region = null;
 
-
 		}
-
-		public static RegionController GetInstance{ get { return _instance; } }
-
-		#endregion
 
 		public Region region{ get; private set; }
 
@@ -49,16 +38,16 @@ namespace client.Common.Controllers
 
 		public async Task LoadRegionAsync (RegionPosition _regionPosition)
 		{
-			string path = _controlRegionManager.ReplacePath (ClientConstants.REGION_SERVER_PATH, _regionPosition);
+			string path = ReplacePath (ClientConstants.REGION_SERVER_PATH, _regionPosition);
 
 			await _networkController.LoadTerrainsAsync (path);
 			if (_terrainController.TerrainDefinitionCount > 0)
-				region = _controlRegionManager.JsonToRegion (_networkController.JsonTerrainsString, _regionPosition);
+				region = JsonToRegion (_networkController.JsonTerrainsString, _regionPosition);
 		}
 
 		public void AddRegion (Region _region)
 		{
-			_regionManager.AddRegion (_region);
+			RegionManager.AddRegion (_region);
 		}
 
 		public Region GetRegion (Position _gameWorldPosition)
@@ -68,7 +57,7 @@ namespace client.Common.Controllers
 
 		public Region GetRegion (RegionPosition _regionPosition)
 		{
-			return _regionManager.GetRegion (_regionPosition);
+			return RegionManager.GetRegion (_regionPosition);
 		}
 
 		#endregion
@@ -77,8 +66,6 @@ namespace client.Common.Controllers
 
 		private NetworkController _networkController;
 		private Geolocation _geolocation;
-		private @base.model.RegionManager _regionManager;
-		private @base.control.RegionManager _controlRegionManager;
 		private TerrainController _terrainController;
 
 		#endregion

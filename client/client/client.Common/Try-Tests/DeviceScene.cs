@@ -8,6 +8,7 @@ using System.Threading;
 using System.Runtime.InteropServices;
 using @base.model;
 using client.Common.Controllers;
+using @base.control;
 
 namespace client.Common
 {
@@ -67,6 +68,7 @@ namespace client.Common
 
 		Network network;
 		Region region;
+		RegionController regionController;
 
 		public DeviceLayer ()
 			: base ()
@@ -75,8 +77,8 @@ namespace client.Common
 
 			network = new Network ();
 			network.Test ();
-
-			RegionController.GetInstance.LoadRegionAsync (new @base.model.RegionPosition (166016, 104736));
+			regionController = Controller.Instance.RegionManagerController as RegionController;
+			regionController.LoadRegionAsync (new @base.model.RegionPosition (166016, 104736));
 
 
 			DeviceId = Device.PropertyNameDeviceId;
@@ -235,7 +237,7 @@ namespace client.Common
 			} catch (Exception e) {
 			}
 			LabelTestGuid.Text = def;
-			region = RegionController.GetInstance.region;
+			region = regionController.region;
 			if (region != null)
 				LabelTestRegion.Text = region.RegionPosition.RegionX.ToString ();
 		}
