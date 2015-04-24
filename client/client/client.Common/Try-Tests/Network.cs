@@ -24,7 +24,7 @@ namespace client.Common
 		{
            
 			try {
-				HttpResponseMessage response = await client.GetAsync (new Uri ("http://derfalke.no-ip.biz/world/2594/1636/germany-41505-26190.json"));
+				HttpResponseMessage response = await client.GetAsync (new Uri ("http://derfalke.no-ip.biz/world/10376/6546/germany-166016-104736.json"));
 				if (response != null) {
 					response.EnsureSuccessStatusCode ();
 					var erg = await response.Content.ReadAsStringAsync ();

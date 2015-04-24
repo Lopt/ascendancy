@@ -16,8 +16,8 @@ namespace client.Common.helper
 		public const string IMAGES_LD = "images/ld";
 		public const string IMAGES_TERRAIN = "images/terrain";
 			   
-		public const string REGIONSERVERPATH = "http://derfalke.no-ip.biz/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
-		public const string TERRAINSERVERPATH = "http://derfalke.no-ip.biz/terrain.json";
+		public const string REGION_SERVER_PATH = "http://derfalke.no-ip.biz/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
+		public const string TERRAIN_TYPES_SERVER_PATH = "http://derfalke.no-ip.biz/terrain.json";
             
 	}
 }

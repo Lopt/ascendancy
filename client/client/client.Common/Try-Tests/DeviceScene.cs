@@ -6,6 +6,8 @@ using XLabs.Platform.Services.Geolocation;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Runtime.InteropServices;
+using @base.model;
+using client.Common.Controllers;
 
 namespace client.Common
 {
@@ -39,6 +41,9 @@ namespace client.Common
 		CCLabel LabelDeviceMemory;
 		CCLabel LabelNetworkStatus;
 		CCLabel LabelTestClient;
+
+		CCLabel LabelTestGuid;
+		CCLabel LabelTestRegion;
        
 		CCSprite water;
 		CCSprite beach;
@@ -56,8 +61,12 @@ namespace client.Common
 		string NetworkStatus;
 		string TestClient;
 		string Antwort;
+		string def = "";
+		string reg = "";
+
 
 		Network network;
+		Region region;
 
 		public DeviceLayer ()
 			: base ()
@@ -66,7 +75,9 @@ namespace client.Common
 
 			network = new Network ();
 			network.Test ();
-			Antwort = network.antwort;
+
+			RegionController.GetInstance.LoadRegionAsync (new @base.model.RegionPosition (166016, 104736));
+
 
 			DeviceId = Device.PropertyNameDeviceId;
 			DeviceName = Device.PropertyNameDeviceName;
@@ -93,6 +104,8 @@ namespace client.Common
 			LabelDeviceMemory = new CCLabel (DeviceMemory, "arial", 22);    
 			LabelNetworkStatus = new CCLabel (NetworkStatus, "arial", 22); 
 			LabelTestClient = new CCLabel (TestClient, "arial", 22);
+			LabelTestGuid = new CCLabel (def, "arial", 22);
+			LabelTestRegion = new CCLabel (reg, "arial", 22);
 
 			water = new CCSprite ("water");
 			beach = new CCSprite ("beach");
@@ -122,6 +135,8 @@ namespace client.Common
 			this.AddChild (LabelTestClient);
 			this.AddChild (water);
 			this.AddChild (beach);
+			this.AddChild (LabelTestGuid);
+			this.AddChild (LabelTestRegion);
 
 			this.Schedule (SetDeviceInfo);
 
@@ -189,6 +204,13 @@ namespace client.Common
 //			beach.Position.X = VisibleBoundsWorldspace.MinX + (x + length / 2);
 //			beach.Position.Y = VisibleBoundsWorldspace.MinX + y;
 
+			LabelTestGuid.PositionX = VisibleBoundsWorldspace.MinX + 20;
+			LabelTestGuid.PositionY = VisibleBoundsWorldspace.MaxY - 400;
+			LabelTestGuid.AnchorPoint = CCPoint.AnchorUpperLeft;
+
+			LabelTestRegion.PositionX = VisibleBoundsWorldspace.MinX + 20;
+			LabelTestRegion.PositionY = VisibleBoundsWorldspace.MaxY - 430;
+			LabelTestRegion.AnchorPoint = CCPoint.AnchorUpperLeft;
 		}
 
 		void SetDeviceInfo (float FrameTimesInSecond)
@@ -205,7 +227,17 @@ namespace client.Common
 			LabelTimeZoneOffset.Text = TimeZoneOffset + " = " + mDevice.TimeZoneOffset;
 			LabelDeviceMemory.Text = DeviceMemory + " = " + mDevice.DeviceMemory;
 			LabelNetworkStatus.Text = NetworkStatus + " = " + mDevice.Network.InternetConnectionStatus ().ToString ();
-			LabelTestClient.Text = TestClient + " = " + network.antwort;
+			Antwort = network.antwort;
+			if (Antwort != null)
+				LabelTestClient.Text = TestClient + " = " + network.antwort;
+			try {
+				def = World.Instance.TerrainManager.GetTerrainDefinition (new Guid ("d76bb197-59ca-437f-89e7-69d772b62ea6")).TerrainType.ToString ();
+			} catch (Exception e) {
+			}
+			LabelTestGuid.Text = def;
+			region = RegionController.GetInstance.region;
+			if (region != null)
+				LabelTestRegion.Text = region.RegionPosition.RegionX.ToString ();
 		}
 
 	}

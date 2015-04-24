@@ -2,6 +2,8 @@
 using @base.model;
 using @base.control;
 using client.Common.helper;
+using System.Threading.Tasks;
+using client.Common.controller;
 
 namespace client.Common.Controllers
 {
@@ -13,10 +15,13 @@ namespace client.Common.Controllers
 
 		private RegionController ()
 		{
-			_network = NetworkController.GetInstance;
+			_networkController = NetworkController.GetInstance;
 			_geolocation = Geolocation.GetInstance;
-			_regionManager = new @base.model.RegionManager ();
+			_regionManager = World.Instance.RegionManager;
+			_terrainController = TerrainController.GetInstance;
 			_controlRegionManager	= new @base.control.RegionManager ();
+			region = null;
+
 
 		}
 
@@ -24,56 +29,36 @@ namespace client.Common.Controllers
 
 		#endregion
 
+		public Region region{ get; private set; }
+
 		#region Region
 
-		public Region LoadRegion ()
+		public async Task LoadRegionAsync ()
 		{
-			var geolocationPosition = _geolocation.CurrentPosition;
+			var geolocationPosition = _geolocation.CurrentGamePosition;
 
-			return LoadRegion (geolocationPosition.Latitude, geolocationPosition.Longitude);
+			await LoadRegionAsync (geolocationPosition);
 		}
 
-		public Region LoadRegion (double _Latitude, double _Longitude)
-		{
-			LatLon latLon	= new LatLon (_Latitude, _Longitude);
-			return LoadRegion (latLon);
-		}
-
-		public Region LoadRegion (LatLon _latlon)
-		{
-			Position gameWorldPosition = new Position (_latlon);
-			return LoadRegion (gameWorldPosition);
-		}
-
-		public Region LoadRegion (Position _gameWorldPosition)
+		public async Task LoadRegionAsync (Position _gameWorldPosition)
 		{
 			RegionPosition regionPosition	= new RegionPosition (_gameWorldPosition);
 
-			return LoadRegion (regionPosition);
+			await LoadRegionAsync (regionPosition);
 		}
 
-		public Region LoadRegion (RegionPosition _regionPosition)
+		public async Task LoadRegionAsync (RegionPosition _regionPosition)
 		{
-			string path = _controlRegionManager.ReplacePath (ClientConstants.REGIONSERVERPATH, _regionPosition);
+			string path = _controlRegionManager.ReplacePath (ClientConstants.REGION_SERVER_PATH, _regionPosition);
 
-			_network.LoadTerrainsAsync (path);
-
-			return _controlRegionManager.JsonToRegion (_network.JsonTerrainsString, _regionPosition);
+			await _networkController.LoadTerrainsAsync (path);
+			if (_terrainController.TerrainDefinitionCount > 0)
+				region = _controlRegionManager.JsonToRegion (_networkController.JsonTerrainsString, _regionPosition);
 		}
 
 		public void AddRegion (Region _region)
 		{
 			_regionManager.AddRegion (_region);
-		}
-
-		public Region GetRegion (double _latitude, double _longitude)
-		{
-			return GetRegion (new LatLon (_latitude, _longitude));
-		}
-
-		public Region GetRegion (LatLon _latlon)
-		{
-			return GetRegion (new Position (_latlon));
 		}
 
 		public Region GetRegion (Position _gameWorldPosition)
@@ -90,10 +75,11 @@ namespace client.Common.Controllers
 
 		#region private Fields
 
-		private NetworkController _network;
+		private NetworkController _networkController;
 		private Geolocation _geolocation;
 		private @base.model.RegionManager _regionManager;
 		private @base.control.RegionManager _controlRegionManager;
+		private TerrainController _terrainController;
 
 		#endregion
 	}

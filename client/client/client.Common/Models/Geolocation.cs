@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using XLabs.Platform.Device;
 
+
 namespace client.Common
 {
 	[Table ("Geolocation")]
@@ -112,11 +113,29 @@ namespace client.Common
 				TimeStamp = _currentPosition.Timestamp.ToString ("G");
 				Heading = _currentPosition.Heading.ToString ();
 				Accuracy = _currentPosition.Accuracy.ToString ();
+				CurrentGamePosition = new @base.model.Position (new @base.model.LatLon (_currentPosition.Latitude, _currentPosition.Longitude));
+				StringGamePosition = string.Format ("PosX = {0}, PosY = {1}", CurrentGamePosition.X, CurrentGamePosition.Y);
+
 			}
 		}
 
 		public static string PropertyNameCurrentPosition = "CurrentPosition";
 		private Position _currentPosition;
+
+
+		[Column ("CurrentGamePosition")]
+		public @base.model.Position CurrentGamePosition { 
+			get { return _currentGamePosition; }
+			set {
+				SetProperty (_currentGamePosition, value, (val) => {
+					_currentGamePosition = val;
+				}, PropertyNameCurrentGamePosition);
+			}
+		}
+
+		public static string PropertyNameCurrentGamePosition = "CurrentGamePosition";
+		private @base.model.Position _currentGamePosition;
+
 
 		[Column ("LastPosition")]
 		public Position LastPosition { 
@@ -124,12 +143,28 @@ namespace client.Common
 			set {
 				SetProperty (_lastPosition, value, (val) => {
 					_lastPosition = val;
+					LastGamePosition = new @base.model.Position (new @base.model.LatLon (val.Latitude, val.Longitude));
 				}, PropertyNameLastPosition);
 			}
 		}
 
 		public static string PropertyNameLastPosition = "LastPosition";
 		private Position _lastPosition;
+
+
+		[Column ("LastGamePosition")]
+		public @base.model.Position LastGamePosition { 
+			get { return _lastGamePosition; }
+			set {
+				SetProperty (_lastGamePosition, value, (val) => {
+					_lastGamePosition = val;
+				}, PropertyNameLastGamePosition);
+			}
+		}
+
+		public static string PropertyNameLastGamePosition = "LastGamePosition";
+		private @base.model.Position _lastGamePosition;
+
 
 		[Column ("Latitude")]
 		public string Latitude { 
@@ -165,6 +200,20 @@ namespace client.Common
 				SetProperty (_altitude, value, (val) => {
 					_altitude = val;
 				}, PropertyNameAltitude);
+			}
+		}
+
+		public static string PropertyNameStringGamePosition = "StringGamePosition";
+		private string _stringGamePosition;
+
+
+		[Column ("StringGamePosition")]
+		public string StringGamePosition { 
+			get { return _stringGamePosition; }
+			set {
+				SetProperty (_stringGamePosition, value, (val) => {
+					_stringGamePosition = val;
+				}, PropertyNameStringGamePosition);
 			}
 		}
 

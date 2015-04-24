@@ -3,6 +3,8 @@ using CocosSharp;
 using Xamarin.Forms;
 using CocosDenshion;
 using client.Common.helper;
+using client.Common.Controllers;
+
 
 
 namespace client.Common
@@ -37,7 +39,6 @@ namespace client.Common
 				application.ContentSearchPaths.Add (ClientConstants.IMAGES_LD);
 				CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
 			}
-
 
 //            CCScene Gamescene = new CCScene(mainWindow);
 //            GameLayer gameLayer = new GameLayer();
