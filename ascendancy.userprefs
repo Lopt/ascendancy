@@ -1,23 +1,17 @@
-﻿<Properties StartupItem="test/test.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="test/Program.cs">
+﻿<Properties StartupItem="client/client/client.iOS/client.iOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.3" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/Models/Geolocation.cs">
     <Files>
-      <File FileName="base/Controllers/RegionManager.cs" Line="1" Column="1" />
-      <File FileName="test/Program.cs" Line="4" Column="4" />
-      <File FileName="base/Controllers/action/CreateHeadquarter.cs" Line="51" Column="51" />
-      <File FileName="base/Models/Account.cs" Line="34" Column="34" />
-      <File FileName="base/Models/Position/LatLon.cs" Line="1" Column="1" />
-      <File FileName="base/Models/Constants.cs" Line="31" Column="31" />
-      <File FileName="base/Models/Position/CellPosition.cs" Line="29" Column="29" />
-      <File FileName="base/Models/Map/Region.cs" Line="39" Column="39" />
+      <File FileName="client/client/client.Common/Controllers/RegionController.cs" Line="16" Column="10" />
+      <File FileName="base/Models/Map/Region.cs" Line="50" Column="35" />
+      <File FileName="base/Models/Position/CellPosition.cs" Line="23" Column="1" />
+      <File FileName="base/Controllers/RegionManager.cs" Line="33" Column="78" />
+      <File FileName="client/client/client.Common/Try-Tests/DeviceScene.cs" Line="184" Column="39" />
+      <File FileName="client/client/client.Common/Models/Geolocation.cs" Line="34" Column="1" />
+      <File FileName="client/client/client.Common/Controllers/NetworkController.cs" Line="39" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <DisabledProjects>
-    <String>client/client/client.iOS/client.iOS.csproj</String>
-    <String>client/client/client.Common/client.Common.csproj</String>
-    <String>client/client/client.Android/client.Droid.csproj</String>
-  </DisabledProjects>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

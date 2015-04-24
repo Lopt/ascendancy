@@ -11,252 +11,222 @@ using XLabs.Platform.Device;
 
 namespace client.Common
 {
-    [Table("Geolocation")]
-    public sealed class Geolocation : viewBaseModel
-    {
-        #region Singelton
+	[Table ("Geolocation")]
+	public sealed class Geolocation : viewBaseModel
+	{
+		#region Singelton
 
-        private static readonly Geolocation _instance = new Geolocation();
+		private static readonly Geolocation _instance = new Geolocation ();
 
-        private Geolocation()
-        {
-            _geolocator = DependencyService.Get<IGeolocator>();
-            _geolocator.DesiredAccuracy = 1.0;
-            _geolocator.PositionChanged += OnPositionChanged;
+		private Geolocation ()
+		{
+			_geolocator = DependencyService.Get<IGeolocator> ();
+			_geolocator.DesiredAccuracy = 1.0;
+			_geolocator.PositionChanged += OnPositionChanged;
 
-            _tokensource = new CancellationTokenSource();
-            _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+			_tokensource = new CancellationTokenSource ();
+			_scheduler = TaskScheduler.FromCurrentSynchronizationContext ();
 
-            CurrentPosition = new Position();
-            LastPosition = new Position();
+			CurrentPosition = new Position ();
+			LastPosition = new Position ();
 
-            IsBusy = false;
-            IsPositionChanged = false;
-            Position pos = new Position();
-        }
+			IsBusy = false;
+			IsPositionChanged = false;
+		}
 
-        public static Geolocation GetInstance{ get { return _instance; } }
+		public static Geolocation GetInstance{ get { return _instance; } }
 
-        #endregion
+		#endregion
 
-        #region Geolocator
+		#region Geolocator
 
-        private readonly IGeolocator _geolocator = null;
-        private CancellationTokenSource _tokensource = null;
-        private readonly TaskScheduler _scheduler = null;
+		private readonly IGeolocator _geolocator = null;
+		private CancellationTokenSource _tokensource = null;
+		private readonly TaskScheduler _scheduler = null;
 
-        public bool IsBusy{ get; private set; }
+		public bool IsBusy{ get; private set; }
 
-        public bool IsPositionChanged{ get; private set; }
+		public bool IsPositionChanged{ get; private set; }
 
-        public bool IsGeolocationAvailable{ get { return _geolocator.IsGeolocationAvailable; } }
+		public bool IsGeolocationAvailable{ get { return _geolocator.IsGeolocationAvailable; } }
 
-        public bool IsGeolocationEnabled{ get { return _geolocator.IsGeolocationEnabled; } }
+		public bool IsGeolocationEnabled{ get { return _geolocator.IsGeolocationEnabled; } }
 
-        public bool IsGeolocationListening{ get { return _geolocator.IsListening; } }
+		public bool IsGeolocationListening{ get { return _geolocator.IsListening; } }
 
-        public void StartListening(uint _MinTimeIntervallInMilliSec, double _MinDistance)
-        {
-            _geolocator.StartListening(_MinTimeIntervallInMilliSec, _MinDistance);
-        }
+		public void StartListening (uint _MinTimeIntervallInMilliSec, double _MinDistance)
+		{
+			_geolocator.StartListening (_MinTimeIntervallInMilliSec, _MinDistance);
+		}
 
-        public void StopListening()
-        {
-            _geolocator.StopListening();
-        }
+		public void StopListening ()
+		{
+			_geolocator.StopListening ();
+		}
 
-        private async void OnPositionChanged(object sender, PositionEventArgs e)
-        {
-            await GetPosition();
-            IsPositionChanged = true;
-        }
+		private async void OnPositionChanged (object sender, PositionEventArgs e)
+		{
+			await GetPosition ();
+			IsPositionChanged = true;
+		}
 
-        private async Task GetPosition()
-        {  
-            if (_geolocator == null)
-                return;
-            IsBusy = true;
-            await _geolocator.GetPositionAsync(timeout: 4000, cancelToken: _tokensource.Token, includeHeading: true)
-                .ContinueWith(t =>
-                {
-                    IsBusy = false;
-                    if (t.IsFaulted)
-                        Status = ((GeolocationException)t.Exception.InnerException).Error.ToString();
-                    else if (t.IsCanceled)
-                        Status = "Canceled";
-                    else
-                    {
-                        Status = "ok";
-                        CurrentPosition = t.Result;
-                    }
+		private async Task GetPosition ()
+		{  
+			if (_geolocator == null)
+				return;
+			IsBusy = true;
+			await _geolocator.GetPositionAsync (timeout: 4000, cancelToken: _tokensource.Token, includeHeading: true)
+                .ContinueWith (t => {
+				IsBusy = false;
+				if (t.IsFaulted)
+					Status = ((GeolocationException)t.Exception.InnerException).Error.ToString ();
+				else if (t.IsCanceled)
+					Status = "Canceled";
+				else {
+					Status = "ok";
+					CurrentPosition = t.Result;
+				}
 
-                }, _scheduler);
-        }
+			}, _scheduler);
+		}
 
-        #endregion
+		#endregion
 
-        #region ViewPoperties
+		#region ViewPoperties
 
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+		[PrimaryKey, AutoIncrement]
+		public int Id { get; set; }
 
-        [Column("CurrentPosition")]
-        public Position CurrentPosition
-        { 
-            get { return _currentPosition; }
-            set
-            {
-                SetProperty(_currentPosition, value, (val) =>
-                    {
-                        LastPosition = _currentPosition;
-                        _currentPosition = val;
-                    }, PropertyNameCurrentPosition);
+		[Column ("CurrentPosition")]
+		public Position CurrentPosition { 
+			get { return _currentPosition; }
+			set {
+				SetProperty (_currentPosition, value, (val) => {
+					LastPosition = _currentPosition;
+					_currentPosition = val;
+				}, PropertyNameCurrentPosition);
 
-                Latitude = _currentPosition.Latitude.ToString("N4");
-                Longitude = _currentPosition.Longitude.ToString("N4");
-                Altitude = _currentPosition.Altitude.ToString();
-                TimeStamp = _currentPosition.Timestamp.ToString("G");
-                Heading = _currentPosition.Heading.ToString();
-                Accuracy = _currentPosition.Accuracy.ToString();
-            }
-        }
+				Latitude = _currentPosition.Latitude.ToString ("N4");
+				Longitude = _currentPosition.Longitude.ToString ("N4");
+				Altitude = _currentPosition.Altitude.ToString ();
+				TimeStamp = _currentPosition.Timestamp.ToString ("G");
+				Heading = _currentPosition.Heading.ToString ();
+				Accuracy = _currentPosition.Accuracy.ToString ();
+			}
+		}
 
-        public static string PropertyNameCurrentPosition = "CurrentPosition";
-        private Position _currentPosition;
+		public static string PropertyNameCurrentPosition = "CurrentPosition";
+		private Position _currentPosition;
 
-        [Column("LastPosition")]
-        public Position LastPosition
-        { 
-            get { return _lastPosition; }
-            set
-            {
-                SetProperty(_lastPosition, value, (val) =>
-                    {
-                        _lastPosition = val;
-                    }, PropertyNameLastPosition);
-            }
-        }
+		[Column ("LastPosition")]
+		public Position LastPosition { 
+			get { return _lastPosition; }
+			set {
+				SetProperty (_lastPosition, value, (val) => {
+					_lastPosition = val;
+				}, PropertyNameLastPosition);
+			}
+		}
 
-        public static string PropertyNameLastPosition = "LastPosition";
-        private Position _lastPosition;
+		public static string PropertyNameLastPosition = "LastPosition";
+		private Position _lastPosition;
 
-        [Column("Latitude")]
-        public string Latitude
-        { 
-            get { return _latitude; }
-            set
-            {
-                SetProperty(_latitude, value, (val) =>
-                    {
-                        _latitude = val;
-                    }, PropertyNameLatitude);
-            }
-        }
+		[Column ("Latitude")]
+		public string Latitude { 
+			get { return _latitude; }
+			set {
+				SetProperty (_latitude, value, (val) => {
+					_latitude = val;
+				}, PropertyNameLatitude);
+			}
+		}
 
-        public static string PropertyNameLatitude = "Latitude";
-        private string _latitude;
+		public static string PropertyNameLatitude = "Latitude";
+		private string _latitude;
 
-        [Column("Longitude")]
-        public string Longitude
-        { 
-            get { return _longitude; }
-            set
-            {
-                SetProperty(_longitude, value, (val) =>
-                    {
-                        _longitude = val;
-                    }, PropertyNameLongitude);
-            }
-        }
+		[Column ("Longitude")]
+		public string Longitude { 
+			get { return _longitude; }
+			set {
+				SetProperty (_longitude, value, (val) => {
+					_longitude = val;
+				}, PropertyNameLongitude);
+			}
+		}
 
-        public static string PropertyNameLongitude = "Longitude";
-        private string _longitude;
+		public static string PropertyNameLongitude = "Longitude";
+		private string _longitude;
 
 
-        [Column("Altitude")]
-        public string Altitude
-        { 
-            get { return _altitude; }
-            set
-            {
-                SetProperty(_altitude, value, (val) =>
-                    {
-                        _altitude = val;
-                    }, PropertyNameAltitude);
-            }
-        }
+		[Column ("Altitude")]
+		public string Altitude { 
+			get { return _altitude; }
+			set {
+				SetProperty (_altitude, value, (val) => {
+					_altitude = val;
+				}, PropertyNameAltitude);
+			}
+		}
 
-        public static string PropertyNameAltitude = "Altitude";
-        private string _altitude;
+		public static string PropertyNameAltitude = "Altitude";
+		private string _altitude;
 
-        [Column("TimeStamp")]
-        public string TimeStamp
-        { 
-            get { return _timeStamp; }
-            set
-            {
-                SetProperty(_timeStamp, value, (val) =>
-                    {
-                        _timeStamp = val;
-                    }, PropertyNameTimeStamp);
-            }
-        }
+		[Column ("TimeStamp")]
+		public string TimeStamp { 
+			get { return _timeStamp; }
+			set {
+				SetProperty (_timeStamp, value, (val) => {
+					_timeStamp = val;
+				}, PropertyNameTimeStamp);
+			}
+		}
 
-        public static string PropertyNameTimeStamp = "TimeStamp";
-        private string _timeStamp;
+		public static string PropertyNameTimeStamp = "TimeStamp";
+		private string _timeStamp;
 
-        //Heading in dergees relative to the north
-        [Column("Heading")]
-        public string Heading
-        { 
-            get { return _heading; }
-            set
-            {
-                SetProperty(_heading, value, (val) =>
-                    {
-                        _heading = val;
-                    }, PropertyNameHeading);
-            }
-        }
+		//Heading in dergees relative to the north
+		[Column ("Heading")]
+		public string Heading { 
+			get { return _heading; }
+			set {
+				SetProperty (_heading, value, (val) => {
+					_heading = val;
+				}, PropertyNameHeading);
+			}
+		}
 
-        public static string PropertyNameHeading = "Heading";
-        private string _heading;
+		public static string PropertyNameHeading = "Heading";
+		private string _heading;
 
-        //the potential position error radius in meters
-        [Column("Accuracy")]
-        public string Accuracy
-        { 
-            get { return _accuracy; }
-            set
-            {
-                SetProperty(_accuracy, value, (val) =>
-                    {
-                        _accuracy = val;
-                    }, PropertyNameAccuracy);
-            }
-        }
+		//the potential position error radius in meters
+		[Column ("Accuracy")]
+		public string Accuracy { 
+			get { return _accuracy; }
+			set {
+				SetProperty (_accuracy, value, (val) => {
+					_accuracy = val;
+				}, PropertyNameAccuracy);
+			}
+		}
 
-        public static string PropertyNameAccuracy = "Accuracy";
-        private string _accuracy;
+		public static string PropertyNameAccuracy = "Accuracy";
+		private string _accuracy;
 
-        [Column("Status")]
-        public string Status
-        { 
-            get { return _status; }
-            set
-            {
-                SetProperty(_status, value, (val) =>
-                    {
-                        _status = val;
-                    }, PropertyNameStatus);
-            }
-        }
+		[Column ("Status")]
+		public string Status { 
+			get { return _status; }
+			set {
+				SetProperty (_status, value, (val) => {
+					_status = val;
+				}, PropertyNameStatus);
+			}
+		}
 
-        public static string PropertyNameStatus = "Status";
-        private string _status;
+		public static string PropertyNameStatus = "Status";
+		private string _status;
 
-        #endregion
-    }
+		#endregion
+	}
         
 }
     
