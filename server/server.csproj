@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Controllers\RegionManagerController.cs" />
     <Compile Include="Controllers\TerrainManagerController.cs" />
+    <Compile Include="Models\ServerConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

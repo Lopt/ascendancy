@@ -25,12 +25,6 @@ namespace @base.model
         public const int START_Y = 26184;
         public const int END_Y = 26191;
 
-        // Warning: Paths may be with an backshlash (\) instead of an slash (/) on windows
-        // path to the terrain file
-        public const string TERRAIN_FILE = @"data/terrain.json";
-
-        // path to the terrain file
-        public const string REGION_FILE = @"data/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
     }
 }
 

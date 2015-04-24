@@ -12,7 +12,7 @@ namespace test
             var world = @base.model.World.Instance;
 			var controller = @base.control.Controller.Instance;
 
-			controller.RegionManagerController = new RegionManagerController (@base.model.World.Instance.RegionManager);
+			controller.RegionManagerController = new RegionManagerController ();
 			controller.TerrainManagerController = new TerrainManagerController ();
 
 

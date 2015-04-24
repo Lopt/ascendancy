@@ -8,9 +8,9 @@ namespace @base.control
 {
     public class RegionManagerController 
     {
-        public RegionManagerController(RegionManager regionManager)
+        public RegionManagerController()
         {
-            m_regionManager = regionManager;
+            m_regionManager = World.Instance.RegionManager;
         }
 
         virtual public Region GetRegion(RegionPosition regionPosition)

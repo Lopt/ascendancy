@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using @base.model;
+using server.model;
 using Newtonsoft.Json;
 
 namespace server.control
@@ -9,13 +9,12 @@ namespace server.control
 	{
 		public TerrainManagerController ()
 		{
-            var world = World.Instance;
-            string json = System.IO.File.ReadAllText(@base.model.Constants.TERRAIN_FILE);
+            string json = System.IO.File.ReadAllText(ServerConstants.TERRAIN_FILE);
             var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>>(json);
 
             foreach (var terrain in terrainDefintions)
             {
-                world.TerrainManager.AddTerrainDefinition(terrain);
+                TerrainManager.AddTerrainDefinition(terrain);
             }
         }
 
