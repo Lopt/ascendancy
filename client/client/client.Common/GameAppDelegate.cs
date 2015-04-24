@@ -3,6 +3,12 @@ using CocosSharp;
 using Xamarin.Forms;
 using CocosDenshion;
 using client.Common.helper;
+using client.Common.Controllers;
+using @base.model;
+using @base.control;
+using client.Common.controller;
+
+
 
 
 namespace client.Common
@@ -22,6 +28,11 @@ namespace client.Common
 
 			float desiredWidth = 1024.0f;
 			float desiredHeight = 768.0f;
+
+			var world = World.Instance;
+			var controller = Controller.Instance;
+			controller.TerrainManagerController = new TerrainController ();
+			controller.RegionManagerController = new RegionController ();
             
 			// This will set the world bounds to be (0,0, w, h)
 			// CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
@@ -37,7 +48,6 @@ namespace client.Common
 				application.ContentSearchPaths.Add (ClientConstants.IMAGES_LD);
 				CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
 			}
-
 
 //            CCScene Gamescene = new CCScene(mainWindow);
 //            GameLayer gameLayer = new GameLayer();

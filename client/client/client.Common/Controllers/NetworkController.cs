@@ -35,6 +35,8 @@ namespace client.Common.Controllers
 
 		public string JsonTerrainsString{ get; private set; }
 
+		public string JsonTerrainTypeString{ get; private set; }
+
 		public async Task LoadTerrainsAsync (string _JsonRegionServerPath)
 		{
 			try {
@@ -48,6 +50,21 @@ namespace client.Common.Controllers
 				throw ex;
 			}
 		
+		}
+
+		public async Task LoadTerrainTypesAsync (string _JsonTerrainTypeServerPath)
+		{
+			try {
+				HttpResponseMessage response = await _client.GetAsync (new Uri (_JsonTerrainTypeServerPath));
+				if (response != null) {
+					response.EnsureSuccessStatusCode ();
+					JsonTerrainTypeString = await response.Content.ReadAsStringAsync ();
+				}
+			} catch (Exception ex) {
+				ExceptionMessage = ex.Message;
+				throw ex;
+			}
+
 		}
 
 		#endregion
