@@ -12,7 +12,7 @@ namespace @base.model.definitions
         }
       
         public UnitDefinition(Guid guid, DefinitionType type, 
-            UnitDefinitionType unitType, @base.control.action.Action[] actions, int attack, int defense, int health, int moves) 
+            UnitDefinitionType unitType, control.action.Action[] actions, int attack, int defense, int health, int moves) 
             : base(guid, type)
         {
 
@@ -55,7 +55,7 @@ namespace @base.model.definitions
         }
 
         private UnitDefinitionType m_unitType;
-        private @base.control.action.Action[] m_actions;
+        private control.action.Action[] m_actions;
         private int m_attack;
         private int m_defense;
         private int m_health;

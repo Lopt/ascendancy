@@ -5,9 +5,10 @@ using @base.model.definitions;
 
 namespace @base.model
 {
-	public class Entity
+    public class Entity : ModelEntity
 	{
         public Entity (Guid guid, Definition defintion, CombinedPosition position)
+            : base()
 		{
             m_guid = guid; 
             m_definition = defintion;
@@ -33,9 +34,6 @@ namespace @base.model
         private Guid m_guid;
         private CombinedPosition m_position;
         private Definition m_definition;
-
-        private view.Entity m_view;
-
 	}
 }
 

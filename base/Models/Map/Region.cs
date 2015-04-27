@@ -11,8 +11,8 @@ namespace @base.model
             m_regionPosition = regionPosition;
             m_terrains = new TerrainDefinition[Constants.REGION_SIZE_X, Constants.REGION_SIZE_Y];
             m_entities = new ObservableCollection<Entity>();
-            m_inQueue = new ObservableCollection<@base.control.action.Action>();
-            m_completed = new ObservableCollection<@base.control.action.Action>();
+            m_inQueue = new ObservableCollection<control.action.Action>();
+            m_completed = new ObservableCollection<control.action.Action>();
             m_exist = false;
         }
 
@@ -21,8 +21,8 @@ namespace @base.model
             m_regionPosition = regionPosition;
             m_terrains = terrains;
             m_entities = new ObservableCollection<Entity>();
-            m_inQueue = new ObservableCollection<@base.control.action.Action>();
-            m_completed = new ObservableCollection<@base.control.action.Action>();
+            m_inQueue = new ObservableCollection<control.action.Action>();
+            m_completed = new ObservableCollection<control.action.Action>();
             m_exist = true;
         }
 
@@ -49,7 +49,7 @@ namespace @base.model
             return value;
         }
 
-        public void AddAction(@base.control.action.Action action)
+        public void AddAction(control.action.Action action)
         {
             m_inQueue.Add(action);
         }
@@ -113,8 +113,8 @@ namespace @base.model
         bool m_exist;
 
         // special break of the MVC Pattern
-        private ObservableCollection<@base.control.action.Action> m_completed;
-        private ObservableCollection<@base.control.action.Action> m_inQueue;
+        private ObservableCollection<control.action.Action> m_completed;
+        private ObservableCollection<control.action.Action> m_inQueue;
 
 	} 
 }

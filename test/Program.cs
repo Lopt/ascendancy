@@ -1,5 +1,5 @@
 ﻿using System;
-using server.control;
+using @base.model;
 using Newtonsoft.Json;
 using System.Collections.Concurrent;
 
@@ -9,22 +9,22 @@ namespace test
     {
         public static void Main(string[] args)
         {
-            var world = @base.model.World.Instance;
+            var world = World.Instance;
 			var controller = @base.control.Controller.Instance;
 
-			controller.RegionManagerController = new RegionManagerController ();
-			controller.TerrainManagerController = new TerrainManagerController ();
+			controller.RegionManagerController = new server.control.RegionManagerController ();
+			controller.TerrainManagerController = new server.control.TerrainManagerController ();
 			controller.AccountManagerController = new @base.control.AccountManagerController ();
 
-			var testAccount = new @base.model.Account (Guid.NewGuid(), "Test");
+			var testAccount = new Account (Guid.NewGuid(), "Test");
 
-			var latlon = new @base.model.LatLon(50.9849, 11.0442);
-			var position = new @base.model.Position(latlon);
-			var combinedPos = new @base.model.CombinedPosition(position);
+			var latlon = new LatLon(50.9849, 11.0442);
+			var position = new Position(latlon);
+			var combinedPos = new CombinedPosition(position);
 			var affectedRegion = controller.RegionManagerController.GetRegion (combinedPos.RegionPosition);
 
 			var parameters = new ConcurrentDictionary<string, object> ();
-			var regions = new @base.model.Region[1] { affectedRegion };
+			var regions = new Region[1] { affectedRegion };
 
 			parameters [@base.control.action.CreateHeadquarter.CREATE_POSITION] = combinedPos;
 			var action = new @base.control.action.CreateHeadquarter (

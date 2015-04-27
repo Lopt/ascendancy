@@ -3,9 +3,10 @@ using System.Collections.ObjectModel;
 
 namespace @base.model
 {
-	public class Account
+	public class Account : ModelEntity
 	{
         public Account (Guid guid)
+            : base()
         {
             m_guid = guid;
             m_username = "???";

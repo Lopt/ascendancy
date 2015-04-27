@@ -1,13 +1,33 @@
 ﻿using System;
 
-namespace @base.Models
+namespace @base.view
 {
-    public class ModelEntity
-    {
-        public ModelEntity()
+	public class ViewEntity
+	{
+        public ViewEntity (model.ModelEntity model)
+		{   
+            m_model = model;
+            if (m_model.View == null)
+            {
+                throw new Exception("ModelEntity.Control already has an ControlEntity.");
+            }
+            m_model.View = this;
+		}
+
+        ~ViewEntity()
         {
-            m_
+            if (m_model.View == this)
+            {
+                m_model.View = null;
+            }
         }
-    }
+
+        model.ModelEntity Model
+        {
+            get { return m_model; }
+        }
+
+        private model.ModelEntity m_model;
+	}
 }
 
