@@ -2,15 +2,15 @@
 
 namespace @base.view
 {
-	public class Entity
+	public class ViewEntity
 	{
-        public Entity (@base.model.Entity model)
+        public ViewEntity (@base.model.ModelEntity model)
 		{   
             m_model = model;
 		}
 
 
-        private @base.model.Entity m_model;
+        private @base.model.ModelEntity m_model;
 
 	}
 }

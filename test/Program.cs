@@ -14,6 +14,7 @@ namespace test
 
 			controller.RegionManagerController = new RegionManagerController ();
 			controller.TerrainManagerController = new TerrainManagerController ();
+			controller.AccountManagerController = new @base.control.AccountManagerController ();
 
 			var testAccount = new @base.model.Account (Guid.NewGuid(), "Test");
 

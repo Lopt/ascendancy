@@ -12,8 +12,8 @@ test/obj
 test/bin
 base/bin
 base/obj
-.ascendancy.sln
-.ascendancy.userprefs
+./ascendancy.sln
+./ascendancy.userprefs
 
 
 Backup/

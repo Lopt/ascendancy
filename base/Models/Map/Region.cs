@@ -83,7 +83,10 @@ namespace @base.model
             m_completed.Add(action);
         }
             
-
+        /// <summary>
+        /// Returns the first action
+        /// </summary>
+        /// <returns>Action which should be executed</returns>
         public @base.control.action.Action GetAction()
         {
             if (m_inQueue.Count > 0)
@@ -93,6 +96,12 @@ namespace @base.model
             return null;
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="base.model.Region"/> really exist.
+        /// Empty regions always return false. A region is empty if the terrain can't be loaded.
+        /// (as example, bescause there were connection issues at the client - or the region file don't exist)
+        /// </summary>
+        /// <value><c>true</c> if exist; otherwise, <c>false</c>.</value>
         public bool Exist
         {
             get { return m_exist; }
@@ -101,10 +110,12 @@ namespace @base.model
         private RegionPosition m_regionPosition;
         private TerrainDefinition[ , ] m_terrains;
         private ObservableCollection<Entity> m_entities;
+        bool m_exist;
+
+        // special break of the MVC Pattern
         private ObservableCollection<@base.control.action.Action> m_completed;
         private ObservableCollection<@base.control.action.Action> m_inQueue;
 
-        bool m_exist;
 	} 
 }
 
