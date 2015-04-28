@@ -16,7 +16,6 @@ namespace server.control
 
         public APIController()
         {
-            var db = new SQLiteConnection ("./test.db");
         }
 
 		public void DoAction(@base.model.Account account, 
