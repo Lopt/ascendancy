@@ -4,9 +4,9 @@ using System.Collections.Concurrent;
 
 namespace @server.control
 {
-	public class Account : @base.control.ControlEntity
+	public class AccountController : @base.control.ControlEntity
     {
-		public Account (@base.model.Account account)
+		public AccountController (@base.model.Account account)
 			: base(account)
 		{
             m_regionStatus = new ConcurrentDictionary<@base.model.Region, DateTime> (); 

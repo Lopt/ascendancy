@@ -20,7 +20,7 @@ namespace test
 			controller.AccountManagerController = new @base.control.AccountManagerController ();
 
 			var testAccount = new Account (Guid.NewGuid(), "Test");
-            var testAccountC = new server.control.Account (testAccount);
+			var testAccountC = new server.control.AccountController (testAccount);
 
 			var latlon = new LatLon(50.9849, 11.0442);
 			var position = new Position(latlon);

@@ -38,7 +38,7 @@ namespace server.control
 			// List<@base.model.Region>, List<@base.control.action.Action> 
 			var controller = @base.control.Controller.Instance;
 			var regionManagerC = controller.RegionManagerController;
-			var accountC = (@server.control.Account) account.Control;
+			var accountC = (@server.control.AccountController) account.Control;
 
             var entityDict = new Dictionary<@base.model.RegionPosition, @base.model.Region.DatedEntities> ();
             var actionDict = new Dictionary<@base.model.RegionPosition, @base.model.Region.DatedActions> ();
