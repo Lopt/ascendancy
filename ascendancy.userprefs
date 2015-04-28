@@ -1,19 +1,15 @@
-﻿<Properties StartupItem="test/test.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="base/Models/Map/Region.cs">
+﻿<Properties StartupItem="server/server.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="firefox" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="server/Global.asax.cs">
     <Files>
-      <File FileName="test/Program.cs" Line="39" Column="39" />
-      <File FileName="base/Controllers/Controller.cs" Line="28" Column="28" />
-      <File FileName="base/Controllers/AccountManagerController.cs" Line="1" Column="1" />
-      <File FileName="base/Models/ModelEntity.cs" Line="10" Column="10" />
-      <File FileName="base/Views/Entity.cs" Line="34" Column="34" />
-      <File FileName="base/Models/Map/Region.cs" Line="29" Column="29" />
+      <File FileName="server/Global.asax.cs" Line="15" Column="15" />
+      <File FileName="server/Global.asax" Line="1" Column="1" />
+      <File FileName="server/Controllers/LoginController.cs" Line="25" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="base/Controllers/action/CreateHeadquarter.cs" line="63" offsetX="392" offsetY="1116" expression="region" liveUpdate="False" />
     <Watch file="base/Controllers/action/CreateHeadquarter.cs" line="66" offsetX="352" offsetY="1170" expression="this.Regions" liveUpdate="False" />
-    <Watch file="test/Program.cs" line="48" offsetX="760" offsetY="846" expression="affectedRegion" liveUpdate="False" />
     <Watch file="server/Controllers/RegionManagerController.cs" line="36" offsetX="272" offsetY="630" expression="region" liveUpdate="False" />
     <Watch file="base/Controllers/action/CreateHeadquarter.cs" line="68" offsetX="360" offsetY="1206" expression="region" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>

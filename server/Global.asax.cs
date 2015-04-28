@@ -17,8 +17,8 @@ namespace server
 
 			routes.MapRoute (
 				"Default",
-				"{controller}/{action}/{id}",
-				new { controller = "Login", action = "LoginID", id = "" }
+				"{controller}/{action}",
+				new { controller = "Login", action = "LoginID"}
 			);
 
 		}
@@ -31,6 +31,7 @@ namespace server
 		protected void Application_Start ()
 		{
             //Database.SetInitializer(new ASDInitializer());
+
 			AreaRegistration.RegisterAllAreas ();
 			RegisterGlobalFilters (GlobalFilters.Filters);
 			RegisterRoutes (RouteTable.Routes);

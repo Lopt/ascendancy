@@ -115,11 +115,11 @@
     <Compile Include="Controllers\RegionManagerController.cs" />
     <Compile Include="Controllers\TerrainManagerController.cs" />
     <Compile Include="Models\ServerConstants.cs" />
-    <Compile Include="Models\Account.cs" />
     <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

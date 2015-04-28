@@ -30,9 +30,10 @@ namespace server.Controllers
         //}
              
       //  [HttpPost]
-        public async Task<List<User>> LoginID(string ID)
+        public string LoginID()
         {
-			return null;
+			return "Hello World";
+/*			return null;
 /*            DBLogin LoginQuery = new DBLogin();
             List<User> UserGuid =  await LoginQuery.GetUserLoginID(ID);
             return UserGuid;*/
