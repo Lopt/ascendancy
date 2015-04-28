@@ -12,11 +12,15 @@ namespace test
             var world = World.Instance;
 			var controller = @base.control.Controller.Instance;
 
+
+			var api = new server.control.APIController ();
+
 			controller.RegionManagerController = new server.control.RegionManagerController ();
 			controller.TerrainManagerController = new server.control.TerrainManagerController ();
 			controller.AccountManagerController = new @base.control.AccountManagerController ();
 
 			var testAccount = new Account (Guid.NewGuid(), "Test");
+            var testAccountC = new server.control.Account (testAccount);
 
 			var latlon = new LatLon(50.9849, 11.0442);
 			var position = new Position(latlon);
@@ -24,33 +28,26 @@ namespace test
 			var affectedRegion = controller.RegionManagerController.GetRegion (combinedPos.RegionPosition);
 
 			var parameters = new ConcurrentDictionary<string, object> ();
-			var regions = new Region[1] { affectedRegion };
 
-			parameters [@base.control.action.CreateHeadquarter.CREATE_POSITION] = combinedPos;
+            parameters [@base.control.action.CreateHeadquarter.CREATE_POSITION] = combinedPos;
 			var action = new @base.control.action.CreateHeadquarter (
 				             testAccount,
-				             regions,
 				             parameters);
 
-			foreach (var region in action.Regions)
-			{
-				region.AddAction (action);
-			}
 
-			var action2 = affectedRegion.GetAction();
-			if (action2.Possible())
-			{
-				if (!action2.Do())
-				{
-					action2.Catch();
-				}
-			}
+            Region[] regions = { affectedRegion };
+            RegionPosition[] regionPositions = { affectedRegion.RegionPosition };
+			@base.control.action.Action[] actions = { action };
+			
+			
+            var test = api.LoadRegions (testAccount, regionPositions);
 
-			affectedRegion.ActionCompleted ();
+            api.DoAction (testAccount, actions);
+            api.Worker(regions);
 
-			Console.WriteLine(affectedRegion.GetEntity(combinedPos.CellPosition).GUID);
+            var test2 = api.LoadRegions (testAccount, regionPositions);
 
-
+            var bla = test2.ActionDict;
 			/*
             var regionPosition = new @base.model.RegionPosition(position);
             var cellPosition = new @base.model.CellPosition(position);

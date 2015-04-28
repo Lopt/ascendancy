@@ -96,6 +96,7 @@
     <Compile Include="Controllers\TerrainManagerController.cs" />
     <Compile Include="Models\ServerConstants.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Controllers\APIController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

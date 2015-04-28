@@ -7,7 +7,7 @@ namespace @base.control
         public ControlEntity (model.ModelEntity model)
         {   
             m_model = model;
-            if (m_model.Control == null)
+            if (m_model.Control != null)
             {
                 throw new Exception("ModelEntity.Control already has an ControlEntity.");
             }

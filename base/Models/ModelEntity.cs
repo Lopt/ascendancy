@@ -8,13 +8,13 @@ namespace @base.model
         {
         }
 
-        public view.ViewEntity View
+        virtual public view.ViewEntity View
         {
             get { return m_viewEntity; }
             set { m_viewEntity = value; }
         }
 
-        public control.ControlEntity Control
+        virtual public control.ControlEntity Control
         {
             get { return m_controlEntity; }
             set { m_controlEntity = value; }
