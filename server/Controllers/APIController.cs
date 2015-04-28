@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using SQLite;
 
 namespace server.control
 {
@@ -15,6 +16,7 @@ namespace server.control
 
         public APIController()
         {
+            var db = new SQLiteConnection ("./test.db");
         }
 
 		public void DoAction(@base.model.Account account, 
@@ -81,13 +83,17 @@ namespace server.control
 				var action = region.GetAction ();
 				if (action.Possible ())
 				{
-					if (!action.Do ())
-					{
+                    if (action.Do ())
+                    {
+                        region.ActionCompleted ();
+                    }
+                    else
+                    {
 						action.Catch ();
 					}
 				}
-				region.ActionCompleted ();
 			}
 		}
+
     }
 }
