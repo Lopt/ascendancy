@@ -31,14 +31,21 @@ namespace @base.control
             set { m_regionManagerController = value; }
 		}
 
-		public TerrainManagerController TerrainManagerController
-		{
+        public TerrainManagerController TerrainManagerController
+        {
             get { return m_terrainManagerController; }
             set { m_terrainManagerController = value; }
-		}
+        }
 
-		RegionManagerController m_regionManagerController;
-		TerrainManagerController m_terrainManagerController;
+        public AccountManagerController AccountManagerController
+        {
+            get { return m_accountManagerController; }
+            set { m_accountManagerController = value; }
+        }
+
+        RegionManagerController m_regionManagerController;
+        TerrainManagerController m_terrainManagerController;
+        AccountManagerController m_accountManagerController;
 	}
 }
 

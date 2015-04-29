@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 
 namespace @base.model
 {
@@ -25,22 +26,29 @@ namespace @base.model
         {
             m_regionManager = new RegionManager ();
             m_terrainManager = new TerrainManager ();
+            m_accounts = new ConcurrentDictionary<Guid, Account> ();
         }
 
         public RegionManager RegionManager
         {
             get { return m_regionManager; }
-            set { m_regionManager = value; }
+//            set { m_regionManager = value; }
         }
 
         public TerrainManager TerrainManager
         {
             get { return m_terrainManager; }
-            set { m_terrainManager = value; }
+//            set { m_terrainManager = value; }
         }
-            
-		protected RegionManager m_regionManager;
-        protected TerrainManager m_terrainManager;
+
+        public ConcurrentDictionary<Guid, Account> Accounts
+        {
+            get { return m_accounts; }
+        }
+
+		private RegionManager m_regionManager;
+        private TerrainManager m_terrainManager;
+        private ConcurrentDictionary<Guid, Account> m_accounts;
 	}
 }
 

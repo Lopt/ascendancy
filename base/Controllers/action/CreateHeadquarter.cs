@@ -16,10 +16,16 @@ namespace @base.control.action
         /// <param name="actionType">Action type.</param>
         /// <param name="regions">Affected Regions of this action.</param>
         /// <param name="parameters">Parameters.</param>
-        public CreateHeadquarter(Account account, @base.model.Region[] regions,
+        public CreateHeadquarter(Account account,
             ConcurrentDictionary<string, object> parameters)
-            : base(account, ActionType.Create, regions, parameters)
+            : base(account, ActionType.Create, parameters)
         {
+        }
+
+        public override Region GetMainRegion()
+        {
+            var combinedPos = (CombinedPosition) Parameters[CREATE_POSITION];
+            return Controller.Instance.RegionManagerController.GetRegion(combinedPos.RegionPosition); 
         }
 
         /// <summary>
@@ -65,7 +71,7 @@ namespace @base.control.action
                 combinedPos);
 
             entity.Position = combinedPos;
-            region.AddEntity(entity);
+            region.AddEntity(ActionTime, entity);
 
             return true;
         }

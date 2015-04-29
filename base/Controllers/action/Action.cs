@@ -20,14 +20,18 @@ namespace @base.control.action
         /// <param name="actionType">Action type.</param>
         /// <param name="regions">Affected Regions of this action.</param>
         /// <param name="parameters">Parameters.</param>
-        public Action(Account account, ActionType actionType, @base.model.Region[] regions,
+        public Action(Account account, ActionType actionType,
             ConcurrentDictionary<string, object> parameters)
         {
             m_account = account;
             m_parameters = parameters;
-            m_regions = regions;
             m_actionType = actionType;
             m_actionTime = DateTime.Now;
+        }
+
+        virtual public Region GetMainRegion()
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -59,12 +63,7 @@ namespace @base.control.action
         {
             get { return m_parameters; }
         }
-
-        public @base.model.Region[] Regions
-        {
-            get { return m_regions; }
-        }
-
+           
         public ActionType Type
         {
             get { return m_actionType; }
@@ -81,7 +80,6 @@ namespace @base.control.action
         }
 
         private ConcurrentDictionary<string, object> m_parameters;
-        private @base.model.Region[] m_regions;
         private ActionType m_actionType;
         private DateTime m_actionTime; 
         private Account m_account;

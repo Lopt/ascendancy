@@ -1,6 +1,6 @@
-﻿
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,13 +12,13 @@ namespace server
 	{
 		public static void RegisterRoutes (RouteCollection routes)
 		{
-			routes.IgnoreRoute ("{resource}.axd/{*pathInfo}");
-            routes.IgnoreRoute("{resource}.config/{*pathInfo}");
+//			routes.IgnoreRoute ("{resource}.axd/{*pathInfo}");
+//            routes.IgnoreRoute("{resource}.config/{*pathInfo}");
 
 			routes.MapRoute (
 				"Default",
-				"{controller}/{action}/{id}",
-				new { controller = "Login", action = "LoginID", id = "" }
+				"{controller}/{action}",
+				new { controller = "Login", action = "LoginID"}
 			);
 
 		}
@@ -30,6 +30,8 @@ namespace server
 
 		protected void Application_Start ()
 		{
+            //Database.SetInitializer(new ASDInitializer());
+
 			AreaRegistration.RegisterAllAreas ();
 			RegisterGlobalFilters (GlobalFilters.Filters);
 			RegisterRoutes (RouteTable.Routes);
