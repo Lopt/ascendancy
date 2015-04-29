@@ -112,27 +112,6 @@
     <Reference Include="ExifLib">
       <HintPath>..\..\..\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
-    <Reference Include="XLabs.Ioc">
-      <HintPath>..\..\..\packages\XLabs.IoC.2.0.5575\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Core">
-      <HintPath>..\..\..\packages\XLabs.Core.2.0.5575\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Platform.iOS">
-      <HintPath>..\..\..\packages\XLabs.Platform.2.0.5575\lib\Xamarin.iOS10\XLabs.Platform.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Platform">
-      <HintPath>..\..\..\packages\XLabs.Platform.2.0.5575\lib\Xamarin.iOS10\XLabs.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Serialization">
-      <HintPath>..\..\..\packages\XLabs.Serialization.2.0.5575\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Forms.iOS">
-      <HintPath>..\..\..\packages\XLabs.Forms.2.0.5575\lib\Xamarin.iOS10\XLabs.Forms.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Forms">
-      <HintPath>..\..\..\packages\XLabs.Forms.2.0.5575\lib\Xamarin.iOS10\XLabs.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="ModernHttpClient">
       <HintPath>..\..\..\packages\modernhttpclient.2.3.0\lib\Xamarin.iOS10\ModernHttpClient.dll</HintPath>
     </Reference>
@@ -168,6 +147,27 @@
     </Reference>
     <Reference Include="box2d">
       <HintPath>..\..\..\packages\CocosSharp.iOS.1.4.0.0\lib\Xamarin.iOS10\box2d.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Ioc">
+      <HintPath>..\..\..\packages\XLabs.IoC.2.0.5593\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Core">
+      <HintPath>..\..\..\packages\XLabs.Core.2.0.5593\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform.iOS">
+      <HintPath>..\..\..\packages\XLabs.Platform.2.0.5593\lib\Xamarin.iOS10\XLabs.Platform.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform">
+      <HintPath>..\..\..\packages\XLabs.Platform.2.0.5593\lib\Xamarin.iOS10\XLabs.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Serialization">
+      <HintPath>..\..\..\packages\XLabs.Serialization.2.0.5593\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Forms.iOS">
+      <HintPath>..\..\..\packages\XLabs.Forms.2.0.5593\lib\Xamarin.iOS10\XLabs.Forms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Forms">
+      <HintPath>..\..\..\packages\XLabs.Forms.2.0.5593\lib\Xamarin.iOS10\XLabs.Forms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +279,8 @@
     <BundleResource Include="Content\images\terrain\wood-tan2.png" />
     <BundleResource Include="Content\images\terrain\wood-tan3.png" />
     <BundleResource Include="Content\images\terrain\wood-tan4.png" />
+    <BundleResource Include="Content\worldmap-32x32-iso-stag.xnb" />
+    <BundleResource Include="Content\tiletest.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\animations\" />

@@ -9,19 +9,22 @@ using System.Runtime.InteropServices;
 using @base.model;
 using client.Common.Controllers;
 using @base.control;
+using client.Common.TryTests;
 
 namespace client.Common
 {
 	public class DeviceScene: CCScene
 	{
 		CCLayerColor mDeviceLayer;
+		WorldTestLayerTileMap mWorld;
 
 		public DeviceScene (CCWindow _MainWindow)
 			: base (_MainWindow)
 		{
 			mDeviceLayer = new DeviceLayer ();
-
-			this.AddChild (mDeviceLayer);
+			mWorld = new WorldTestLayerTileMap ();
+			//this.AddChild (mDeviceLayer);
+			this.AddChild (mWorld);
 		}
 	}
 
@@ -112,13 +115,13 @@ namespace client.Common
 			water = new CCSprite ("water");
 			beach = new CCSprite ("beach");
 
-			var touchListener = new CCEventListenerTouchAllAtOnce ();
-			touchListener.OnTouchesEnded = (touches, ccevent) => {
-				Window.DefaultDirector.ReplaceScene (new GeolocationScene (Window));
-			};
+//			var touchListener = new CCEventListenerTouchAllAtOnce ();
+//			touchListener.OnTouchesEnded = (touches, ccevent) => {
+//				Window.DefaultDirector.ReplaceScene (new GeolocationScene (Window));
+//			};
 
 
-			this.AddEventListener (touchListener, this);
+//			this.AddEventListener (touchListener, this);
 
 			this.Color = CCColor3B.Gray;
 			this.Opacity = 255;
@@ -197,10 +200,13 @@ namespace client.Common
 			LabelTestClient.AnchorPoint = CCPoint.AnchorUpperLeft;
 
 			water.AnchorPoint = CCPoint.AnchorMiddle;
-			water.Position = this.VisibleBoundsWorldspace.Center;
+			water.Position = this.VisibleBoundsWorldspace.UpperRight;
 			var length = water.Position.Length;
 			var x = water.Position.X;
 			var y = water.Position.Y;
+			var h = water.ContentSize.Height;
+			var w = water.ContentSize.Width;
+			var i = this.VisibleBoundsWorldspace.Size;
 
 //			beach.AnchorPoint = CCPoint.AnchorMiddle;
 //			beach.Position.X = VisibleBoundsWorldspace.MinX + (x + length / 2);
