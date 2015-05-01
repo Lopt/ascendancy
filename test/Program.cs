@@ -9,6 +9,9 @@ namespace test
     {
         public static void Main(string[] args)
         {
+			var request = new @base.connection.LoginRequest (new Position (0, 0), "test", "test");
+			Console.WriteLine(JsonConvert.SerializeObject (request));
+
             var world = World.Instance;
 			var controller = @base.control.Controller.Instance;
 
@@ -17,10 +20,10 @@ namespace test
 
 			controller.RegionManagerController = new server.control.RegionManagerController ();
 			controller.TerrainManagerController = new server.control.TerrainManagerController ();
-			controller.AccountManagerController = new @base.control.AccountManagerController ();
+			controller.AccountManagerController = new server.control.AccountManagerController ();
 
 			var testAccount = new Account (Guid.NewGuid(), "Test");
-			var testAccountC = new server.control.AccountController (testAccount);
+			var testAccountC = new server.control.AccountController (testAccount, "Test");
 
 			var latlon = new LatLon(50.9849, 11.0442);
 			var position = new Position(latlon);

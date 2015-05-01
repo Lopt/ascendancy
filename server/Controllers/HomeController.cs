@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 
-namespace test10.Controllers
+namespace server.Controllers
 {
 	public class HomeController : Controller
 	{

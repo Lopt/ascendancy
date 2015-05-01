@@ -1,9 +1,11 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace @base.model
 {
 	public class Position
 	{
+        [JsonConstructor]
         public Position (double x, double y)
 		{
 			m_x = x;

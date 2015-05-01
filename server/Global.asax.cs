@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace test10
+namespace server
 {
 	public class MvcApplication : System.Web.HttpApplication
 	{
@@ -15,13 +15,19 @@ namespace test10
 			routes.IgnoreRoute ("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute (
+				"Login",                                           
+				"Login",
+				new { controller = "HTTP", action = "Login" }  
+			);
+
+			routes.MapRoute (
 				"Default",
-				"{controller}/{action}/{id}",
-				new { controller = "Home", action = "Index", id = "" }
+				"{controller}",
+				new { controller = "HTTP", action = "Error" }
 			);
 
 		}
-
+		
 		public static void RegisterGlobalFilters (GlobalFilterCollection filters)
 		{
 			filters.Add (new HandleErrorAttribute ());
@@ -29,6 +35,20 @@ namespace test10
 
 		protected void Application_Start ()
 		{
+			var world = @base.model.World.Instance;
+			var controller = @base.control.Controller.Instance;
+
+			var api = new server.control.APIController ();
+
+			controller.RegionManagerController = new server.control.RegionManagerController ();
+			controller.TerrainManagerController = new server.control.TerrainManagerController ();
+			controller.AccountManagerController = new server.control.AccountManagerController ();
+
+			var testAccount = new @base.model.Account (Guid.NewGuid(), "Test");
+			var testAccountC = new server.control.AccountController (testAccount, "Test");
+
+			controller.AccountManagerController.Registrate (testAccount);
+
 			AreaRegistration.RegisterAllAreas ();
 			RegisterGlobalFilters (GlobalFilters.Filters);
 			RegisterRoutes (RouteTable.Routes);
