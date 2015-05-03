@@ -1,35 +1,17 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using @base.model;
-using @base.model.definitions;
+using Newtonsoft.Json;
 
 namespace @base.control.action
 {
-    public class Action
+    public class Action : control.ControlEntity
     {
-        public enum ActionType 
+        public Action(model.ModelEntity model)
+            : base(model)
         {
-            Create,
-            Move,
-            Attack,
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="base.control.action.Action"/> class.
-        /// </summary>
-        /// <param name="actionType">Action type.</param>
-        /// <param name="regions">Affected Regions of this action.</param>
-        /// <param name="parameters">Parameters.</param>
-        public Action(Account account, ActionType actionType,
-            ConcurrentDictionary<string, object> parameters)
-        {
-            m_account = account;
-            m_parameters = parameters;
-            m_actionType = actionType;
-            m_actionTime = DateTime.Now;
-        }
-
-        virtual public Region GetMainRegion()
+        virtual public model.Region GetMainRegion()
         {
             throw new NotImplementedException();
         }
@@ -58,31 +40,6 @@ namespace @base.control.action
         {
             throw new NotImplementedException();
         }
-
-        public ConcurrentDictionary<string, object> Parameters
-        {
-            get { return m_parameters; }
-        }
-           
-        public ActionType Type
-        {
-            get { return m_actionType; }
-        }
-
-        public DateTime ActionTime
-        {
-            get { return m_actionTime; }
-        }
-
-        public Account Account
-        {
-            get { return m_account; }
-        }
-
-        private ConcurrentDictionary<string, object> m_parameters;
-        private ActionType m_actionType;
-        private DateTime m_actionTime; 
-        private Account m_account;
 
     }
 }

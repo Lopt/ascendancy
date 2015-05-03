@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace @base.model
 {
@@ -8,12 +9,14 @@ namespace @base.model
         {
         }
 
+        [JsonIgnore]
         virtual public view.ViewEntity View
         {
             get { return m_viewEntity; }
             set { m_viewEntity = value; }
         }
 
+        [JsonIgnore]
         virtual public control.ControlEntity Control
         {
             get { return m_controlEntity; }

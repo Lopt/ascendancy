@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Concurrent;
+using System.Collections.ObjectModel;
 
 namespace @base.connection
 {
@@ -12,13 +12,11 @@ namespace @base.connection
             INTERNAL_ERROR,
         }
 
-        public Response(ReponseStatus status,
-            ConcurrentDictionary<model.RegionPosition, model.Region.DatedActions> actions,
-            ConcurrentDictionary<model.RegionPosition, model.Region.DatedEntities> entities)
+        public Response()
         {
-            m_status = status;
-            m_entities = entities;
-            m_actions = actions;
+            m_status = ReponseStatus.INTERNAL_ERROR;
+            m_entities = new ObservableCollection<ObservableCollection<model.Entity>>();
+            m_actions = new ObservableCollection<ObservableCollection<model.Action>>();
         }
 
         public ReponseStatus Status
@@ -27,20 +25,20 @@ namespace @base.connection
             set { m_status = value; }
         }
 
-        public ConcurrentDictionary<model.RegionPosition, model.Region.DatedActions> Actions
+        public ObservableCollection<ObservableCollection<model.Action>> Actions
         {
             get { return m_actions; }
             set { m_actions = value; }
         }
 
-        public ConcurrentDictionary<model.RegionPosition, model.Region.DatedEntities> Entities
+        public ObservableCollection<ObservableCollection<model.Entity>> Entities
         {
             get { return m_entities; }
             set { m_entities = value; }
         }
 
-        ConcurrentDictionary<model.RegionPosition, model.Region.DatedActions> m_actions;
-        ConcurrentDictionary<model.RegionPosition, model.Region.DatedEntities> m_entities;
+        ObservableCollection<ObservableCollection<model.Action>> m_actions;
+        ObservableCollection<ObservableCollection<model.Entity>> m_entities;
         ReponseStatus m_status;
 
     }

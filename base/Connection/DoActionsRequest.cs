@@ -2,21 +2,21 @@
 
 namespace @base.connection
 {
-    public class DoActionRequest : Request
+    public class DoActionsRequest : Request
     {
-        public DoActionRequest(Guid sessionID, model.Position position, control.action.Action[] actions)
+        public DoActionsRequest(Guid sessionID, model.Position position, model.Action[] actions)
             : base(sessionID, position)
         {
             m_actions = actions;
         }
             
-        public control.action.Action[] Actions
+        public model.Action[] Actions
         {
             get { return m_actions; }
             set { m_actions = value; }
         }
 
-        control.action.Action[] m_actions;
+        model.Action[] m_actions;
     }
 }
 

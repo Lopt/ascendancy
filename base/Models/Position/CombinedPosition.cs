@@ -1,4 +1,6 @@
 ﻿using System;
+using Newtonsoft.Json.Linq;
+
 using @base.model;
 
 namespace @base.model
@@ -16,6 +18,13 @@ namespace @base.model
             m_regionPosition = regionPosition;
             m_cellPosition = cellPosition;
 		}
+
+        public CombinedPosition (JContainer obj)
+        {
+            m_regionPosition = new RegionPosition((JContainer) obj.SelectToken("RegionPosition"));
+            m_cellPosition = new CellPosition((JContainer) obj.SelectToken("CellPosition"));
+        }
+
 
         public RegionPosition RegionPosition
 		{

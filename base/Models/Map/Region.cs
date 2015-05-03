@@ -2,6 +2,7 @@
 using @base.model.definitions;
 using System.Collections.ObjectModel;
 using System.Collections.Concurrent;
+using System.ComponentModel;
 
 namespace @base.model
 {
@@ -15,14 +16,21 @@ namespace @base.model
                 set { m_dateTime = value; }
             }
 
-            public ObservableCollection<control.action.Action> Actions
+            public ObservableCollection<model.Action> Actions
             {
                 get { return m_actions; }
                 set { m_actions = value; }
             }
 
+            public RegionPosition RegionPosition
+            {
+                get { return m_regionPosition; }
+                set { m_regionPosition = value; }
+            }
+
+            RegionPosition m_regionPosition;
             DateTime m_dateTime;
-            ObservableCollection<control.action.Action> m_actions;
+            ObservableCollection<model.Action> m_actions;
         }
 
         public class DatedEntities
@@ -39,6 +47,14 @@ namespace @base.model
                 set { m_entities = value; }
             }
 
+            public RegionPosition RegionPosition
+            {
+                get { return m_regionPosition; }
+                set { m_regionPosition = value; }
+            }
+
+
+            RegionPosition m_regionPosition;
             DateTime m_dateTime;
             ObservableCollection<Entity> m_entities;
         }
@@ -50,8 +66,8 @@ namespace @base.model
             m_entities  = new DatedEntities();
             m_entities.Entities = new ObservableCollection<Entity>();
             m_actions   = new DatedActions();
-            m_actions.Actions = new ObservableCollection<control.action.Action>();
-            m_inQueue   = new ObservableCollection<control.action.Action>();
+            m_actions.Actions = new ObservableCollection<model.Action>();
+            m_inQueue   = new ObservableCollection<model.Action>();
             m_exist     = false;
         }
 
@@ -61,7 +77,7 @@ namespace @base.model
             m_terrains  = terrains;
             m_entities  = new DatedEntities();
             m_actions   = new DatedActions();
-            m_inQueue   = new ObservableCollection<control.action.Action>();
+            m_inQueue   = new ObservableCollection<model.Action>();
             m_exist     = true;
         }
 
@@ -84,7 +100,7 @@ namespace @base.model
             return value;
         }
 
-        public void AddAction(control.action.Action action)
+        public void AddAction(model.Action action)
         {
             m_inQueue.Add(action);
         }
@@ -121,6 +137,7 @@ namespace @base.model
 
             newDatedEntities.DateTime = dateTime;
             newDatedEntities.Entities = newEntities;
+            newDatedEntities.RegionPosition = RegionPosition;
 
             m_entities = newDatedEntities;
         }
@@ -129,7 +146,7 @@ namespace @base.model
         {
             var action = m_inQueue[0];
             var newDatedActions = new DatedActions();
-            var newActions = new ObservableCollection<control.action.Action>(m_actions.Actions);
+            var newActions = new ObservableCollection<model.Action>(m_actions.Actions);
             newActions.Insert(0, action);
 
             newDatedActions.DateTime = action.ActionTime;
@@ -151,7 +168,7 @@ namespace @base.model
             var returnActions = new DatedActions();
             var currentActions = m_actions;
 
-            var actionsCollection = new ObservableCollection<control.action.Action>();
+            var actionsCollection = new ObservableCollection<model.Action>();
             foreach (var action in currentActions.Actions)
             {
                 if (action.ActionTime <= startTime)
@@ -163,6 +180,7 @@ namespace @base.model
 
             returnActions.Actions = actionsCollection;
             returnActions.DateTime = currentActions.DateTime;
+            returnActions.RegionPosition = RegionPosition;
 
             return returnActions;
         }
@@ -171,7 +189,7 @@ namespace @base.model
         /// Returns the first action
         /// </summary>
         /// <returns>Action which should be executed</returns>
-        public control.action.Action GetAction()
+        public model.Action GetAction()
         {
             if (m_inQueue.Count > 0)
             {
@@ -203,7 +221,7 @@ namespace @base.model
 
         DatedEntities m_entities;
         DatedActions m_actions;
-        ObservableCollection<control.action.Action> m_inQueue;
+        ObservableCollection<model.Action> m_inQueue;
 
 	} 
 }

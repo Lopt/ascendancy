@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using Newtonsoft.Json.Linq;
 
 namespace @base.model
 {
@@ -14,6 +16,12 @@ namespace @base.model
         {
             m_cellX = ((int) position.X % Constants.REGION_SIZE_X);
             m_cellY = ((int) position.Y % Constants.REGION_SIZE_Y);
+        }
+
+        public CellPosition(JContainer obj)
+        {
+            m_cellX = (int) obj.SelectToken("CellX");
+            m_cellY = (int) obj.SelectToken("CellY");
         }
 
         public int CellX

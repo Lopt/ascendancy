@@ -7,27 +7,50 @@ namespace server.control
 {
     public class APIController
     {
+		// TODO: find better singleton implementation
+		// http://csharpindepth.com/articles/general/singleton.aspx
+		// NOT lazy-singletons: throws useless exceptions when initialisation failed
+		private static APIController instance=null;
+
+		public static APIController Instance
+		{
+			get
+			{
+				if (instance==null)
+				{
+					instance = new APIController();
+				}
+				return instance;
+			}
+		}
+
+		private APIController()
+		{
+		}
+
+
         public class RegionData
         {
-            public Dictionary<@base.model.RegionPosition, @base.model.Region.DatedEntities> EntityDict;
-            public Dictionary<@base.model.RegionPosition, @base.model.Region.DatedActions>  ActionDict;
+			public ObservableCollection<ObservableCollection<@base.model.Entity>> EntityDict;
+			public ObservableCollection<ObservableCollection<@base.model.Action>> ActionDict;
         }
 
-
-        public APIController()
-        {
-        }
+		public @base.model.Account Login(string username, string password)
+		{			
+			var controller = @base.control.Controller.Instance;
+			var accountManagerC = (control.AccountManagerController)controller.AccountManagerController;
+			return accountManagerC.Login (username, password);
+		}
 
 		public void DoAction(@base.model.Account account, 
-							 @base.control.action.Action[] actions)
+							 @base.model.Action[] actions)
 		{
 			foreach (var action in actions)
 			{
-				if (action.Account == account)
-				{
-					var region = action.GetMainRegion ();
-					region.AddAction (action);
-				}
+				action.Account = account;
+				action.ActionTime = DateTime.Now;
+				var region = action.GetMainRegion ();
+				region.AddAction (action);
 			}
 		}
 
@@ -39,8 +62,8 @@ namespace server.control
 			var regionManagerC = controller.RegionManagerController;
 			var accountC = (@server.control.AccountController) account.Control;
 
-            var entityDict = new Dictionary<@base.model.RegionPosition, @base.model.Region.DatedEntities> ();
-            var actionDict = new Dictionary<@base.model.RegionPosition, @base.model.Region.DatedActions> ();
+			var entityDict = new ObservableCollection<ObservableCollection<@base.model.Entity>> ();
+			var actionDict = new ObservableCollection<ObservableCollection<@base.model.Action>> ();
 
 			foreach (var regionPosition in regionPositions)
 			{
@@ -53,14 +76,14 @@ namespace server.control
 					if (status != null)
                     { 
                         var actions = region.GetCompletedActions (status.Value);
-                        actionDict [region.RegionPosition] = actions;
+						actionDict.Add(actions.Actions);
                         newStatus = actions.DateTime;
                     }
                     // account hasn't loaded the region
 					else
                     {
-                        var entities = region.GetEntities ();
-                        entityDict [region.RegionPosition] = entities;
+                        var entities = region.GetEntities();
+						entityDict.Add(entities.Entities);
                         newStatus = entities.DateTime;
                     }
 
@@ -75,20 +98,23 @@ namespace server.control
 		}
 
 
-		public void Worker(@base.model.Region[] regions)
+		public void Worker()
 		{
-			foreach (var region in regions)
+			foreach (var regionPair in @base.model.World.Instance.RegionManager.Regions)
 			{
-				var action = region.GetAction ();
-				if (action.Possible ())
+				var action = regionPair.Value.GetAction ();
+				if (action != null)
 				{
-                    if (action.Do ())
-                    {
-                        region.ActionCompleted ();
-                    }
-                    else
-                    {
-						action.Catch ();
+					if (action.Possible ())
+					{
+						if (action.Do ())
+						{
+							regionPair.Value.ActionCompleted ();
+						}
+						else
+						{
+							action.Catch ();
+						}
 					}
 				}
 			}

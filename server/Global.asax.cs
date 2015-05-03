@@ -21,6 +21,19 @@ namespace server
 			);
 
 			routes.MapRoute (
+				"LoadRegions",                                           
+				"LoadRegions",
+				new { controller = "HTTP", action = "LoadRegions" }  
+			);
+
+			routes.MapRoute (
+				"DoActions",                                           
+				"DoActions",
+				new { controller = "HTTP", action = "DoActions" }  
+			);
+
+
+			routes.MapRoute (
 				"Default",
 				"{controller}",
 				new { controller = "HTTP", action = "Error" }
@@ -38,7 +51,7 @@ namespace server
 			var world = @base.model.World.Instance;
 			var controller = @base.control.Controller.Instance;
 
-			var api = new server.control.APIController ();
+			var api = server.control.APIController.Instance;
 
 			controller.RegionManagerController = new server.control.RegionManagerController ();
 			controller.TerrainManagerController = new server.control.TerrainManagerController ();

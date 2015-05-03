@@ -1,10 +1,13 @@
 ﻿using System;
-
+using System.Collections.Concurrent;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace @base.model
 {
     public class RegionPosition : Object
     {
+        [JsonConstructor]
         public RegionPosition(int regionX, int regionY)
         {
             m_regionX = regionX;
@@ -17,6 +20,12 @@ namespace @base.model
             m_regionY = (int)(position.Y / Constants.REGION_SIZE_Y);
         }
 
+        public RegionPosition(JContainer obj)
+        {
+            m_regionX = (int) obj.SelectToken("RegionX");
+            m_regionY = (int) obj.SelectToken("RegionY");
+        }
+
         public int RegionX
         {
             get { return m_regionX; }
@@ -27,11 +36,13 @@ namespace @base.model
             get { return m_regionY; }
         }
 
+        [JsonIgnore]
         public int MajorX
         {
             get { return m_regionX / Constants.MAJOR_REGION_SIZE_X; }
         }
 
+        [JsonIgnore]
         public int MajorY
         {
             get { return m_regionY / Constants.MAJOR_REGION_SIZE_Y; }
@@ -53,4 +64,3 @@ namespace @base.model
         private readonly int m_regionY;
     }
 }
-

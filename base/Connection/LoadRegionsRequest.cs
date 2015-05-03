@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace @base.connection
 {
-    public class GetRegionRequest : Request
+    public class LoadRegionsRequest : Request
     {
-        public GetRegionRequest(Guid sessionID, model.Position position, model.RegionPosition[] regionPositions)
+        public LoadRegionsRequest(Guid sessionID, model.Position position, model.RegionPosition[] regionPositions)
             : base(sessionID, position)
         {
             m_regionPositions = regionPositions;

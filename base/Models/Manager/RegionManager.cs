@@ -26,6 +26,11 @@ namespace @base.model
             m_regions[region.RegionPosition] = region;
         }
 
+        public ConcurrentDictionary<RegionPosition, Region> Regions
+        {
+            get { return m_regions; }
+        }
+
         private ConcurrentDictionary<RegionPosition, Region> m_regions;
 	}
 }

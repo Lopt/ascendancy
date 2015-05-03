@@ -14,23 +14,32 @@ namespace server.control
 			m_sessions = new ConcurrentDictionary<Guid, Account> ();
 		}
 
-		public bool Login(string username, string password)
+		public Account Login(string username, string password)
 		{
-			foreach (var account in World.Instance.Accounts)
+			foreach (var accountPair in World.Instance.Accounts)
 			{
-				if (account.Value.UserName == username)
+				if (accountPair.Value.UserName == username)
 				{
-					var accountC = (AccountController)account.Value.Control;
+					var accountC = (AccountController)accountPair.Value.Control;
 					if (accountC.Login (username, password))
 					{
-						m_sessions [accountC.SessionID] = account.Value;
-						return true;
+						m_sessions [accountC.SessionID] = accountPair.Value;
+						return accountPair.Value;
 					}
 				}
 			}
-			return false;
+			return null;
 		}
-	
+
+		public Account GetAccountBySession(Guid sessionID)
+		{
+			Account account = null;
+			if (m_sessions.TryGetValue (sessionID, out account))
+			{
+				return account;
+			}
+			return null;
+		}
 
 		ConcurrentDictionary<Guid, Account> m_sessions;
     }

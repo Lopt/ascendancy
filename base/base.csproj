@@ -47,7 +47,6 @@
     <Compile Include="Models\Position\RegionPosition.cs" />
     <Compile Include="Models\Position\CellPosition.cs" />
     <Compile Include="Controllers\action\CreateHeadquarter.cs" />
-    <Compile Include="Controllers\action\Action.cs" />
     <Compile Include="Models\Position\CombinedPosition.cs" />
     <Compile Include="Controllers\RegionManagerController.cs" />
     <Compile Include="Controllers\Controller.cs" />
@@ -59,8 +58,11 @@
     <Compile Include="Connection\Request.cs" />
     <Compile Include="Connection\LoginRequest.cs" />
     <Compile Include="Connection\Response.cs" />
-    <Compile Include="Connection\DoActionRequest.cs" />
-    <Compile Include="Connection\GetRegionRequest.cs" />
+    <Compile Include="Connection\LoginResponse.cs" />
+    <Compile Include="Connection\LoadRegionsRequest.cs" />
+    <Compile Include="Connection\DoActionsRequest.cs" />
+    <Compile Include="Models\Action.cs" />
+    <Compile Include="Controllers\action\Action.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
