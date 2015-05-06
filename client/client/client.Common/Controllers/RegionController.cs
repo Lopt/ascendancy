@@ -4,6 +4,7 @@ using @base.control;
 using client.Common.helper;
 using System.Threading.Tasks;
 using client.Common.controller;
+using CocosSharp;
 
 namespace client.Common.Controllers
 {
@@ -14,11 +15,10 @@ namespace client.Common.Controllers
 			_networkController = NetworkController.GetInstance;
 			_geolocation = Geolocation.GetInstance;
 			_terrainController = Controller.Instance.TerrainManagerController as TerrainController;
-			region = null;
+			_region = null;
 
 		}
 
-		public Region region{ get; private set; }
 
 		#region Region
 
@@ -42,22 +42,26 @@ namespace client.Common.Controllers
 
 			await _networkController.LoadTerrainsAsync (path);
 			if (_terrainController.TerrainDefinitionCount > 0)
-				region = JsonToRegion (_networkController.JsonTerrainsString, _regionPosition);
-		}
+				_region = JsonToRegion (_networkController.JsonTerrainsString, _regionPosition);
 
-		public void AddRegion (Region _region)
-		{
 			RegionManager.AddRegion (_region);
 		}
 
-		public Region GetRegion (Position _gameWorldPosition)
+
+		public void SetTilesInMap (CCTileMapLayer mapLayer, CCTileMapCoordinates mapUpperLeftCoordinate)
 		{
-			return GetRegion (new RegionPosition (_gameWorldPosition));
+			for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
+				for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
+					SetTileInMap (mapLayer, new CellPosition (_region.RegionPosition.RegionX + x, _region.RegionPosition.RegionY + y)
+						, new CCTileMapCoordinates (mapUpperLeftCoordinate.Column + x, mapUpperLeftCoordinate.Row + y));
+				}
+			}
 		}
 
-		public Region GetRegion (RegionPosition _regionPosition)
+		public void SetTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat)
 		{
-			return RegionManager.GetRegion (_regionPosition);
+			var gid = _terrainController.TerrainDefToTileGid (_region.GetTerrain (cellPosition));
+			mapLayer.SetTileGID (gid, mapCoordinat);
 		}
 
 		#endregion
@@ -67,6 +71,7 @@ namespace client.Common.Controllers
 		private NetworkController _networkController;
 		private Geolocation _geolocation;
 		private TerrainController _terrainController;
+		private Region _region;
 
 		#endregion
 	}

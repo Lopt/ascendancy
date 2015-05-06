@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using @base.control;
+using CocosSharp;
+using @base.model.definitions;
+using System.Linq.Expressions;
 
 namespace client.Common.controller
 {
@@ -34,6 +37,52 @@ namespace client.Common.controller
 
 		}
 
+		public CCTileGidAndFlags TerrainDefToTileGid (TerrainDefinition terraindefinition)
+		{
+			CCTileGidAndFlags Gid;
+			switch (terraindefinition.TerrainType) {
+			case TerrainDefinition.TerrainDefinitionType.Beach:
+				Gid = new CCTileGidAndFlags (ClientConstants.BEACH_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.Buildings:
+				Gid = new CCTileGidAndFlags (ClientConstants.BUILDINGS_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.Fields:
+				Gid = new CCTileGidAndFlags (ClientConstants.FIELDS_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.Forbidden:
+				Gid = new CCTileGidAndFlags (ClientConstants.FORBIDDEN_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.Glacier:
+				Gid = new CCTileGidAndFlags (ClientConstants.GLACIER_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.Grassland:
+				Gid = new CCTileGidAndFlags (ClientConstants.GRASSLAND_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.Invalid:
+				Gid = new CCTileGidAndFlags (ClientConstants.INVALID_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.NotDefined:
+				Gid = new CCTileGidAndFlags (ClientConstants.NOTDEFINED_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.Park:
+				Gid = new CCTileGidAndFlags (ClientConstants.PARK_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.Streets:
+				Gid = new CCTileGidAndFlags (ClientConstants.STREETS_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.Town:
+				Gid = new CCTileGidAndFlags (ClientConstants.TOWN_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.Water:
+				Gid = new CCTileGidAndFlags (ClientConstants.WATER_GID);
+				break;
+			case TerrainDefinition.TerrainDefinitionType.Woods:
+				Gid = new CCTileGidAndFlags (ClientConstants.WOODS_GID);
+				break;
+			}
+			return Gid;
+		}
 
 		#endregion
 

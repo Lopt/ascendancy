@@ -29,6 +29,7 @@ namespace client.Common
 			float desiredWidth = 1024.0f;
 			float desiredHeight = 768.0f;
 
+			// erstellen der Welt und anlegen bzw. verknüpfen mit den Controllern
 			var world = World.Instance;
 			var controller = Controller.Instance;
 			controller.TerrainManagerController = new TerrainController ();
