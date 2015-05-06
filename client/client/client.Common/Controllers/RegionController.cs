@@ -41,9 +41,10 @@ namespace client.Common.Controllers
 			string path = ReplacePath (ClientConstants.REGION_SERVER_PATH, _regionPosition);
 
 			await _networkController.LoadTerrainsAsync (path);
-			if (_terrainController.TerrainDefinitionCount > 0)
+			if (_terrainController.TerrainDefinitionCount > 12)
 				_region = JsonToRegion (_networkController.JsonTerrainsString, _regionPosition);
 
+			// TODO check region
 			RegionManager.AddRegion (_region);
 		}
 
@@ -53,7 +54,7 @@ namespace client.Common.Controllers
 			for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
 				for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
 					SetTileInMap (mapLayer, new CellPosition (_region.RegionPosition.RegionX + x, _region.RegionPosition.RegionY + y)
-						, new CCTileMapCoordinates (mapUpperLeftCoordinate.Column + x, mapUpperLeftCoordinate.Row + y));
+						, MapCellPosToTilePos ((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y)));
 				}
 			}
 		}
@@ -63,6 +64,13 @@ namespace client.Common.Controllers
 			var gid = _terrainController.TerrainDefToTileGid (_region.GetTerrain (cellPosition));
 			mapLayer.SetTileGID (gid, mapCoordinat);
 		}
+
+						
+		public CCTileMapCoordinates MapCellPosToTilePos (int x, int y)
+		{
+			return new CCTileMapCoordinates (x / 2, (y * 2) + (x % 2));			
+		}
+
 
 		#endregion
 
