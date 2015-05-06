@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
-using @base.model;
 using @base.control;
 using @base.model.definitions;
 
@@ -9,6 +8,12 @@ namespace @base.control.action
 {
     public class CreateHeadquarter : Action
     {
+        public CreateHeadquarter(model.ModelEntity model)
+            : base(model)
+        {
+        }
+
+
         public const string CREATE_POSITION = "CreatePosition";
         /// <summary>
         /// Initializes a new instance of the <see cref="base.control.action.Action"/> class.
@@ -16,15 +21,10 @@ namespace @base.control.action
         /// <param name="actionType">Action type.</param>
         /// <param name="regions">Affected Regions of this action.</param>
         /// <param name="parameters">Parameters.</param>
-        public CreateHeadquarter(Account account,
-            ConcurrentDictionary<string, object> parameters)
-            : base(account, ActionType.Create, parameters)
+        public override model.Region GetMainRegion()
         {
-        }
-
-        public override Region GetMainRegion()
-        {
-            var combinedPos = (CombinedPosition) Parameters[CREATE_POSITION];
+            var action = (model.Action)Model;
+            var combinedPos = new model.CombinedPosition((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
             return Controller.Instance.RegionManagerController.GetRegion(combinedPos.RegionPosition); 
         }
 
@@ -32,9 +32,11 @@ namespace @base.control.action
         /// Returns if the action is even possible.
         /// </summary>
         public override bool Possible()
-        {
+        {   
+            var action = (model.Action)Model;
+            
             var regionManagerC = Controller.Instance.RegionManagerController;
-            if (Account.Headquarters.Count == 0)
+            if (action.Account.Headquarters.Count == 0)
             {
                 /*
                 if (Parameters.ContainsKey(CREATE_POSITION))
@@ -58,20 +60,22 @@ namespace @base.control.action
         /// </summary>
         public override bool Do()
         {   
+            var action = (model.Action)Model;
+
             var regionManagerC = Controller.Instance.RegionManagerController;
-            var combinedPos = (CombinedPosition) Parameters[CREATE_POSITION];
+            var combinedPos = new model.CombinedPosition((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
             var region = regionManagerC.GetRegion(combinedPos.RegionPosition);
 
-            var entity = new Entity(Guid.NewGuid(), 
+            var entity = new @base.model.Entity(Guid.NewGuid(), 
                 new UnitDefinition(Guid.NewGuid(),
-                    Definition.DefinitionType.building,
+                    model.definitions.UnitDefinition.DefinitionType.building,
                     UnitDefinition.UnitDefinitionType.Hero,
                     new Action[0], 
                     0, 0, 0, 0),
                 combinedPos);
 
             entity.Position = combinedPos;
-            region.AddEntity(ActionTime, entity);
+            region.AddEntity(action.ActionTime, entity);
 
             return true;
         }

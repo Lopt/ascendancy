@@ -47,7 +47,6 @@
     <Compile Include="Models\Position\RegionPosition.cs" />
     <Compile Include="Models\Position\CellPosition.cs" />
     <Compile Include="Controllers\action\CreateHeadquarter.cs" />
-    <Compile Include="Controllers\action\Action.cs" />
     <Compile Include="Models\Position\CombinedPosition.cs" />
     <Compile Include="Controllers\RegionManagerController.cs" />
     <Compile Include="Controllers\Controller.cs" />
@@ -56,6 +55,14 @@
     <Compile Include="Models\ModelEntity.cs" />
     <Compile Include="Controllers\ControlEntity.cs" />
     <Compile Include="Views\ViewEntity.cs" />
+    <Compile Include="Connection\Request.cs" />
+    <Compile Include="Connection\LoginRequest.cs" />
+    <Compile Include="Connection\Response.cs" />
+    <Compile Include="Connection\LoginResponse.cs" />
+    <Compile Include="Connection\LoadRegionsRequest.cs" />
+    <Compile Include="Connection\DoActionsRequest.cs" />
+    <Compile Include="Models\Action.cs" />
+    <Compile Include="Controllers\action\Action.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -87,6 +94,7 @@
     <Folder Include="Models\Map\" />
     <Folder Include="Models\Position\" />
     <Folder Include="Views\" />
+    <Folder Include="Connection\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

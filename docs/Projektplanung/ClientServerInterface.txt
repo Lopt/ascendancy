@@ -3,21 +3,17 @@
 
 Login
 {
-    "ID" : UUID,
+    "Username" : string,
+    "Password": string,
+}
+
+Request
+{
+    "SessionID": UUID,
     "Position": Position,
 }
 
-Standard
-{
-    "SessionID": UUID,
-}
-
 GetRegions
-{
-    "RegionPositions": [RegionPositions, RegionPositions, ...]
-}
-
-GetActions : Standard
 {
     "RegionPositions": [RegionPositions, RegionPositions, ...]
 }

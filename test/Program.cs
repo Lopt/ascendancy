@@ -9,34 +9,62 @@ namespace test
     {
         public static void Main(string[] args)
         {
+			var latlon = new LatLon(50.9849, 11.0442);
+			var position = new Position(latlon);
+			var combinedPos = new CombinedPosition(position);
+			//var affectedRegion = controller.RegionManagerController.GetRegion (combinedPos.RegionPosition);
+
+
+			var request = new @base.connection.LoginRequest (new Position (0, 0), "Test", "Test");
+			Console.WriteLine(JsonConvert.SerializeObject (request));
+
+			RegionPosition[] regionPositions = {combinedPos.RegionPosition };
+
+			var request2 = new @base.connection.LoadRegionsRequest (Guid.NewGuid(), position, regionPositions);
+			Console.WriteLine(JsonConvert.SerializeObject (request2));
+
+			var testAccount = new Account (Guid.NewGuid(), "Test");
+			var testAccountC = new server.control.AccountController (testAccount, "Test");
+
+
+			var parameters = new ConcurrentDictionary<string, object> ();
+			parameters [@base.control.action.CreateHeadquarter.CREATE_POSITION] = combinedPos;
+			var action = new @base.model.Action (testAccount, @base.model.Action.ActionType.CreateHeadquarter, parameters);
+
+			@base.model.Action[] actions = { action, };
+
+			var request3 = new @base.connection.DoActionsRequest (Guid.NewGuid(), position, actions);
+
+
+			//			var response = new @base.connection.Response();
+//			var requestdoubled = JsonConvert.DeserializeObject<@base.connection.Response>(JsonConvert.SerializeObject(response));
+
+			Console.WriteLine(JsonConvert.SerializeObject (request3));
+
+
+
+
+			/*
             var world = World.Instance;
 			var controller = @base.control.Controller.Instance;
 
+			Region[] regions = { affectedRegion };
 
 			var api = new server.control.APIController ();
 
 			controller.RegionManagerController = new server.control.RegionManagerController ();
 			controller.TerrainManagerController = new server.control.TerrainManagerController ();
-			controller.AccountManagerController = new @base.control.AccountManagerController ();
+			controller.AccountManagerController = new server.control.AccountManagerController ();
 
-			var testAccount = new Account (Guid.NewGuid(), "Test");
-			var testAccountC = new server.control.AccountController (testAccount);
 
-			var latlon = new LatLon(50.9849, 11.0442);
-			var position = new Position(latlon);
-			var combinedPos = new CombinedPosition(position);
-			var affectedRegion = controller.RegionManagerController.GetRegion (combinedPos.RegionPosition);
 
 			var parameters = new ConcurrentDictionary<string, object> ();
-
             parameters [@base.control.action.CreateHeadquarter.CREATE_POSITION] = combinedPos;
 			var action = new @base.control.action.CreateHeadquarter (
 				             testAccount,
 				             parameters);
 
 
-            Region[] regions = { affectedRegion };
-            RegionPosition[] regionPositions = { affectedRegion.RegionPosition };
 			@base.control.action.Action[] actions = { action };
 			
 			

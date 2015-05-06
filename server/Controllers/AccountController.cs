@@ -6,10 +6,12 @@ namespace @server.control
 {
 	public class AccountController : @base.control.ControlEntity
     {
-		public AccountController (@base.model.Account account)
+		public AccountController (@base.model.Account account, string password)
 			: base(account)
 		{
             m_regionStatus = new ConcurrentDictionary<@base.model.Region, DateTime> (); 
+			m_password = password;
+			m_sessionID = Guid.Empty;
 		}
 
         public void RegionRefreshed(@base.model.Region region, DateTime dateTime)
@@ -32,8 +34,26 @@ namespace @server.control
 			return null;
 		}
 
+		public bool Login(string username, string password)
+		{
+			var account = (@base.model.Account) Model;
+			if (account.UserName == username && password == m_password)
+			{
+				m_sessionID = Guid.NewGuid ();
+				m_regionStatus.Clear ();
+				return true;
+			}
+			return false;
+		}
+
+		public Guid SessionID
+		{
+			get { return m_sessionID; }
+		}
 
 		ConcurrentDictionary<@base.model.Region, DateTime> m_regionStatus;
+		string m_password;
+		Guid m_sessionID;
 	}
 }
 

@@ -16,6 +16,16 @@ namespace @base.control
         {
             return World.Instance.Accounts[guid];
         }
+
+        public bool Registrate(Account account)
+        {
+            if (!World.Instance.Accounts.ContainsKey(account.GUID))
+            {
+                World.Instance.Accounts[account.GUID] = account;
+                return true;
+            }
+            return false;
+        }
     }
 
 
