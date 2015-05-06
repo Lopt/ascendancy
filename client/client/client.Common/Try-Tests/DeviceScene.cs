@@ -9,19 +9,21 @@ using System.Runtime.InteropServices;
 using @base.model;
 using client.Common.Controllers;
 using @base.control;
+using client.Common.TryTests;
 
 namespace client.Common
 {
 	public class DeviceScene: CCScene
 	{
-		CCLayerColor mDeviceLayer;
+		CCLayerColor mLayer;
 
 		public DeviceScene (CCWindow _MainWindow)
 			: base (_MainWindow)
 		{
-			mDeviceLayer = new DeviceLayer ();
+			mLayer = new DeviceLayer ();
+			mLayer = new WorldTestLayerTileMap ();
 
-			this.AddChild (mDeviceLayer);
+			this.AddChild (mLayer);
 		}
 	}
 
@@ -237,9 +239,9 @@ namespace client.Common
 			} catch (Exception e) {
 			}
 			LabelTestGuid.Text = def;
-			region = regionController.region;
-			if (region != null)
-				LabelTestRegion.Text = region.RegionPosition.RegionX.ToString ();
+//			region = regionController.region;
+//			if (region != null)
+//				LabelTestRegion.Text = region.RegionPosition.RegionX.ToString ();
 		}
 
 	}

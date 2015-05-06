@@ -53,12 +53,12 @@ namespace client.Common.Controllers
 		//			_region.AddTerrain (_terrainController.TerrainManager.);
 		//		}
 
-		public void SetTilesInMap(CCTileMapLayer mapLayer, CCTileMapCoordinates mapUpperLeftCoordinate)
+		public void SetTilesInMap (CCTileMapLayer mapLayer, CCTileMapCoordinates mapUpperLeftCoordinate)
 		{
 			for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
 				for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
-					SetTileInMap (mapLayer ,new CellPosition(_region.RegionPosition.RegionX + x, _region.RegionPosition.RegionY + y)
-						, new CCTileMapCoordinates(mapUpperLeftCoordinate.Column + x, mapUpperLeftCoordinate.Row + y));
+					SetTileInMap (mapLayer, new CellPosition (_region.RegionPosition.RegionX + x, _region.RegionPosition.RegionY + y)
+						, new CCTileMapCoordinates (mapUpperLeftCoordinate.Column + x, mapUpperLeftCoordinate.Row + y));
 				}
 			}
 		}
@@ -67,7 +67,7 @@ namespace client.Common.Controllers
 		{
 			var gid = _terrainController.TerrainDefToTileGid (_region.GetTerrain (cellPosition));
 			mapLayer.SetTileGID (gid, mapCoordinat);
-			_region.
+			//_region.
 		}
 
 		#endregion

@@ -39,35 +39,49 @@ namespace client.Common.controller
 
 		public CCTileGidAndFlags TerrainDefToTileGid (TerrainDefinition terraindefinition)
 		{
+			CCTileGidAndFlags Gid;
 			switch (terraindefinition.TerrainType) {
 			case TerrainDefinition.TerrainDefinitionType.Beach:
-				return new CCTileGidAndFlags (ClientConstants.BEACH_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.BEACH_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.Buildings:
-				return new CCTileGidAndFlags (ClientConstants.BUILDINGS_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.BUILDINGS_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.Fields:
-				return new CCTileGidAndFlags (ClientConstants.FIELDS_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.FIELDS_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.Forbidden:
-				return new CCTileGidAndFlags (ClientConstants.FORBIDDEN_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.FORBIDDEN_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.Glacier:
-				return new CCTileGidAndFlags (ClientConstants.GLACIER_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.GLACIER_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.Grassland:
-				return new CCTileGidAndFlags (ClientConstants.GRASSLAND_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.GRASSLAND_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.Invalid:
-				return new CCTileGidAndFlags (ClientConstants.INVALID_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.INVALID_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.NotDefined:
-				return new CCTileGidAndFlags (ClientConstants.NOTDEFINED_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.NOTDEFINED_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.Park:
-				return new CCTileGidAndFlags (ClientConstants.PARK_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.PARK_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.Streets:
-				return new CCTileGidAndFlags (ClientConstants.STREETS_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.STREETS_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.Town:
-				return new CCTileGidAndFlags (ClientConstants.TOWN_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.TOWN_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.Water:
-				return new CCTileGidAndFlags (ClientConstants.WATER_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.WATER_GID);
+				break;
 			case TerrainDefinition.TerrainDefinitionType.Woods:
-				return new CCTileGidAndFlags (ClientConstants.WOODS_GID);
+				Gid = new CCTileGidAndFlags (ClientConstants.WOODS_GID);
+				break;
 			}
-			;
+			return Gid;
 		}
 
 		#endregion
