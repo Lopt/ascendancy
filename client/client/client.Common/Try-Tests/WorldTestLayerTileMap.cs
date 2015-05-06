@@ -25,6 +25,7 @@ namespace client.Common.TryTests
 			TileMap = new CCTileMap ("worldmap-32x32-iso-stag");
 			//var info = new CCTileMapInfo ();
 			AddChild (TileMap);
+
 		
 			CCLayerColor color = new CCLayerColor (new CCColor4B (0, 0, 255, 255));
 			AddChild (color, -1);
