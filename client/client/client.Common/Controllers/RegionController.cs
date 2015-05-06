@@ -47,11 +47,6 @@ namespace client.Common.Controllers
 			RegionManager.AddRegion (_region);
 		}
 
-		//		public void AddTerrainToRegion()
-		//		{
-		//			// fehlt getAllTerrains in TerrainManager
-		//			_region.AddTerrain (_terrainController.TerrainManager.);
-		//		}
 
 		public void SetTilesInMap (CCTileMapLayer mapLayer, CCTileMapCoordinates mapUpperLeftCoordinate)
 		{
@@ -67,7 +62,6 @@ namespace client.Common.Controllers
 		{
 			var gid = _terrainController.TerrainDefToTileGid (_region.GetTerrain (cellPosition));
 			mapLayer.SetTileGID (gid, mapCoordinat);
-			//_region.
 		}
 
 		#endregion
