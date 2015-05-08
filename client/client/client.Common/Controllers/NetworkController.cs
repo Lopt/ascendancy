@@ -16,16 +16,16 @@ namespace client.Common.Controllers
 	{
 		#region Singelton
 
-		private static readonly NetworkController _instance = new NetworkController ();
+		private static readonly NetworkController m_instance = new NetworkController ();
 
 		private NetworkController ()
 		{
 			ExceptionMessage = "";
 			JsonTerrainsString = "";
-			_client = new HttpClient (new NativeMessageHandler ());
+			m_client = new HttpClient (new NativeMessageHandler ());
 		}
 
-		public static NetworkController GetInstance{ get { return _instance; } }
+		public static NetworkController GetInstance{ get { return m_instance; } }
 
 		#endregion
 
@@ -37,10 +37,10 @@ namespace client.Common.Controllers
 
 		public string JsonTerrainTypeString{ get; private set; }
 
-		public async Task LoadTerrainsAsync (string _JsonRegionServerPath)
+		public async Task LoadTerrainsAsync (string jsonRegionServerPath)
 		{
 			try {
-				HttpResponseMessage response = await _client.GetAsync (new Uri (_JsonRegionServerPath));
+				HttpResponseMessage response = await m_client.GetAsync (new Uri (jsonRegionServerPath));
 				if (response != null) {
 					response.EnsureSuccessStatusCode ();
 					JsonTerrainsString = await response.Content.ReadAsStringAsync ();
@@ -52,10 +52,10 @@ namespace client.Common.Controllers
 		
 		}
 
-		public async Task LoadTerrainTypesAsync (string _JsonTerrainTypeServerPath)
+		public async Task LoadTerrainTypesAsync (string jsonTerrainTypeServerPath)
 		{
 			try {
-				HttpResponseMessage response = await _client.GetAsync (new Uri (_JsonTerrainTypeServerPath));
+				HttpResponseMessage response = await m_client.GetAsync (new Uri (jsonTerrainTypeServerPath));
 				if (response != null) {
 					response.EnsureSuccessStatusCode ();
 					JsonTerrainTypeString = await response.Content.ReadAsStringAsync ();
@@ -71,7 +71,7 @@ namespace client.Common.Controllers
 
 		#region private Fields
 
-		private HttpClient _client;
+		private HttpClient m_client;
 
 		#endregion
 	}

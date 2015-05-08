@@ -22,7 +22,7 @@ namespace client.Common
 			application.ContentSearchPaths.Add (ClientConstants.ANIMATIONS);
 			application.ContentSearchPaths.Add (ClientConstants.FONTS);
 			application.ContentSearchPaths.Add (ClientConstants.SOUNDS);
-			application.ContentSearchPaths.Add (ClientConstants.IMAGES_TERRAIN);
+			application.ContentSearchPaths.Add (ClientConstants.TILES);
 
 			CCSize windowSize = mainWindow.WindowSizeInPixels;
 

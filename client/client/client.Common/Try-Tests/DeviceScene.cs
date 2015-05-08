@@ -16,12 +16,17 @@ namespace client.Common
 	public class DeviceScene: CCScene
 	{
 		CCLayerColor mLayer;
+		RegionController regionController;
+		Region region;
 
 		public DeviceScene (CCWindow _MainWindow)
 			: base (_MainWindow)
 		{
-			mLayer = new DeviceLayer ();
-			mLayer = new WorldTestLayerTileMap ();
+			regionController = Controller.Instance.RegionManagerController as RegionController;
+			region = regionController.GetRegion (new @base.model.RegionPosition (166148, 104835));
+
+			//mLayer = new DeviceLayer ();
+			mLayer = new WorldTestLayerTileMap (new @base.model.RegionPosition (166148, 104835));
 
 			this.AddChild (mLayer);
 		}
@@ -79,8 +84,9 @@ namespace client.Common
 
 			network = new Network ();
 			network.Test ();
-			regionController = Controller.Instance.RegionManagerController as RegionController;
-			regionController.LoadRegionAsync (new @base.model.RegionPosition (166016, 104736));
+//			regionController = Controller.Instance.RegionManagerController as RegionController;
+//			var pos = new @base.model.RegionPosition (166148, 104835);
+			//regionController.LoadRegionAsync (pos);
 
 
 			DeviceId = Device.PropertyNameDeviceId;

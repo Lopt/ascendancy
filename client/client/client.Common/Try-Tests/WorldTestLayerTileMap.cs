@@ -5,6 +5,10 @@ using SQLitePCL;
 using Microsoft.Xna.Framework.Input.Touch;
 using System.Diagnostics;
 using client.Common.Models;
+using client.Common.Controllers;
+using @base.control;
+using @base.model;
+
 
 namespace client.Common.TryTests
 {
@@ -17,12 +21,17 @@ namespace client.Common.TryTests
 		float X;
 		float Y;
 		Stopwatch Watch;
+		RegionController regionController;
+		bool MapIsChanged = true;
+		RegionPosition m_regionPosition = null;
 
-		public WorldTestLayerTileMap ()
+		public WorldTestLayerTileMap (RegionPosition regionPosition)
 		{
+			regionController = Controller.Instance.RegionManagerController as RegionController;
+			m_regionPosition = regionPosition;
 			Watch = new Stopwatch ();
 			//CCTile tile = new CCTile ();
-			TileMap = new CCTileMap ("worldmap-32x32-iso-stag");
+			TileMap = new CCTileMap ("Worldmap-64x16-smalltiles-iso");
 			//var info = new CCTileMapInfo ();
 			AddChild (TileMap);
 
@@ -52,6 +61,8 @@ namespace client.Common.TryTests
 			AddEventListener (touchListenerMove);
 			AddEventListener (touchListenerBegan);
 			//AddEventListener (touchListenerEnd);
+
+			this.Schedule (SetMap);
 		}
 
 		protected override void AddedToScene ()
@@ -61,7 +72,17 @@ namespace client.Common.TryTests
 			TileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MaxX / 2;
 			TileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MaxY / 2;
 			TileMap.TileLayersContainer.AnchorPoint = new CCPoint (0.5f, 0.25f);
-		
+
+		}
+
+		void SetMap (float FrameTimesInSecond)
+		{
+			if (regionController.GetRegion (m_regionPosition).Exist && MapIsChanged) {
+				regionController.SetTilesInMap (TileMap.LayerNamed ("Layer 0"), new CCTileMapCoordinates (0, 0), regionController.GetRegion (m_regionPosition));
+				MapIsChanged = false;
+			}
+				
+
 		}
 
 		void onTouchesMoved (List<CCTouch> touches, CCEvent touchEvent)
@@ -74,8 +95,8 @@ namespace client.Common.TryTests
 		bool onTouchBegan (CCTouch touch, CCEvent touchEvent)
 		{
 			Watch.Start ();
-			var layer = TileMap.LayerNamed ("Kachelebene 1");
-			//var layer = TileMap.LayerNamed ("Layer 0");
+			//var layer = TileMap.LayerNamed ("Kachelebene 1");
+			var layer = TileMap.LayerNamed ("Layer 0");
 			var layersize = layer.LayerSize;
 			var layertyp = layer.MapType;
 			var layersetinfo = layer.TileSetInfo;
@@ -109,13 +130,13 @@ namespace client.Common.TryTests
 			Watch.Stop ();
 			if (Watch.ElapsedMilliseconds > 2000) {
 				Watch.Reset ();
-				var layer = TileMap.LayerNamed ("Kachelebene 1");
-				//var layer = TileMap.LayerNamed ("Layer 0");
+				//var layer = TileMap.LayerNamed ("Kachelebene 1");
+				var layer = TileMap.LayerNamed ("Layer 0");
 
 				var location = layer.WorldToParentspace (touch.Location);
 				var tileCoordinates = layer.ClosestTileCoordAtNodePosition (location);
 
-				drawNode.DrawHexagonForIsoStagMap (175.0f, layer, tileCoordinates, new CCColor4F (CCColor3B.Red), 255, 3.0f);
+				drawNode.DrawHexagonForIsoStagMap (83.0f, layer, tileCoordinates, new CCColor4F (CCColor3B.Red), 255, 3.0f);
 
 			}
 		
