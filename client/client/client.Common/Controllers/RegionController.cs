@@ -5,6 +5,7 @@ using client.Common.helper;
 using System.Threading.Tasks;
 using client.Common.controller;
 using CocosSharp;
+using @base.model.definitions;
 
 namespace client.Common.Controllers
 {
@@ -21,31 +22,30 @@ namespace client.Common.Controllers
 
 		#region Region
 
-		public async Task LoadRegionAsync ()
+		public Region GetRegionByGeolocator ()
 		{
 			var geolocationPosition = m_geolocation.CurrentGamePosition;
-
-			await LoadRegionAsync (geolocationPosition);
+			return GetRegionByGamePosition (geolocationPosition);
 		}
 
-		public async Task LoadRegionAsync (Position gameWorldPosition)
+		public Region GetRegionByGamePosition (Position gameWorldPosition)
 		{
 			RegionPosition regionPosition	= new RegionPosition (gameWorldPosition);
-
-			await LoadRegionAsync (regionPosition);
+			return GetRegion (regionPosition);
 		}
 
-		public async Task LoadRegionAsync (RegionPosition regionPosition)
+		public async Task LoadRegionAsync (Region region)
 		{
-			string path = ReplacePath (ClientConstants.REGION_SERVER_PATH, regionPosition);
-			Region region = null;
+			string path = ReplacePath (ClientConstants.REGION_SERVER_PATH, region.RegionPosition);
+			TerrainDefinition[,] terrain = null;
 
 			await m_networkController.LoadTerrainsAsync (path);
 			if (m_terrainController.TerrainDefinitionCount > 12)
-				region = JsonToRegion (m_networkController.JsonTerrainsString, regionPosition);
+				terrain = JsonToTerrain (m_networkController.JsonTerrainsString);
 
-			if (region != null)
-				RegionManager.AddRegion (region);
+			if (terrain != null)
+				region.AddTerrain (terrain);
+			RegionManager.AddRegion (region);
 		}
 
 
@@ -81,10 +81,11 @@ namespace client.Common.Controllers
 		public override Region GetRegion (RegionPosition regionPosition)
 		{
 			var region = RegionManager.GetRegion (regionPosition);
-			if(!region.Exist)
-			{
-				await LoadRegionAsync (regionPosition);
+			if (!region.Exist) {
+				LoadRegionAsync (region);
 			}
+
+			return region;
 		}
 
 		#endregion

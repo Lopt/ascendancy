@@ -77,7 +77,7 @@ namespace client.Common.TryTests
 
 		void SetMap (float FrameTimesInSecond)
 		{
-			if (regionController.GetRegion (m_regionPosition) != null && MapIsChanged) {
+			if (regionController.GetRegion (m_regionPosition).Exist && MapIsChanged) {
 				regionController.SetTilesInMap (TileMap.LayerNamed ("Layer 0"), new CCTileMapCoordinates (0, 0), regionController.GetRegion (m_regionPosition));
 				MapIsChanged = false;
 			}

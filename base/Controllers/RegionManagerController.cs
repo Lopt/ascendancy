@@ -15,7 +15,7 @@ namespace @base.control
 
         virtual public Region GetRegion(RegionPosition regionPosition)
         {
-            throw NotImplementedException;
+            throw new NotImplementedException();
         }
 
 
