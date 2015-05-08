@@ -6,7 +6,7 @@ using @base.model.definitions;
 
 namespace @base.control
 {
-    public class RegionManagerController 
+    public class RegionManagerController
     {
         public RegionManagerController()
         {
@@ -15,7 +15,7 @@ namespace @base.control
 
         virtual public Region GetRegion(RegionPosition regionPosition)
         {
-            throw new NotImplementedException();
+            throw NotImplementedException;
         }
 
 
