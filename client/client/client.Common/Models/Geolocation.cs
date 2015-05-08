@@ -17,16 +17,16 @@ namespace client.Common
 	{
 		#region Singelton
 
-		private static readonly Geolocation _instance = new Geolocation ();
+		private static readonly Geolocation m_instance = new Geolocation ();
 
 		private Geolocation ()
 		{
-			_geolocator = DependencyService.Get<IGeolocator> ();
-			_geolocator.DesiredAccuracy = 1.0;
-			_geolocator.PositionChanged += OnPositionChanged;
+			m_geolocator = DependencyService.Get<IGeolocator> ();
+			m_geolocator.DesiredAccuracy = 1.0;
+			m_geolocator.PositionChanged += OnPositionChanged;
 
-			_tokensource = new CancellationTokenSource ();
-			_scheduler = TaskScheduler.FromCurrentSynchronizationContext ();
+			m_tokensource = new CancellationTokenSource ();
+			m_scheduler = TaskScheduler.FromCurrentSynchronizationContext ();
 
 			CurrentPosition = new Position ();
 			LastPosition = new Position ();
@@ -35,34 +35,34 @@ namespace client.Common
 			IsPositionChanged = false;
 		}
 
-		public static Geolocation GetInstance{ get { return _instance; } }
+		public static Geolocation GetInstance{ get { return m_instance; } }
 
 		#endregion
 
 		#region Geolocator
 
-		private readonly IGeolocator _geolocator = null;
-		private CancellationTokenSource _tokensource = null;
-		private readonly TaskScheduler _scheduler = null;
+		private readonly IGeolocator m_geolocator = null;
+		private CancellationTokenSource m_tokensource = null;
+		private readonly TaskScheduler m_scheduler = null;
 
 		public bool IsBusy{ get; private set; }
 
 		public bool IsPositionChanged{ get; private set; }
 
-		public bool IsGeolocationAvailable{ get { return _geolocator.IsGeolocationAvailable; } }
+		public bool IsGeolocationAvailable{ get { return m_geolocator.IsGeolocationAvailable; } }
 
-		public bool IsGeolocationEnabled{ get { return _geolocator.IsGeolocationEnabled; } }
+		public bool IsGeolocationEnabled{ get { return m_geolocator.IsGeolocationEnabled; } }
 
-		public bool IsGeolocationListening{ get { return _geolocator.IsListening; } }
+		public bool IsGeolocationListening{ get { return m_geolocator.IsListening; } }
 
 		public void StartListening (uint _MinTimeIntervallInMilliSec, double _MinDistance)
 		{
-			_geolocator.StartListening (_MinTimeIntervallInMilliSec, _MinDistance);
+			m_geolocator.StartListening (_MinTimeIntervallInMilliSec, _MinDistance);
 		}
 
 		public void StopListening ()
 		{
-			_geolocator.StopListening ();
+			m_geolocator.StopListening ();
 		}
 
 		private async void OnPositionChanged (object sender, PositionEventArgs e)
@@ -73,10 +73,10 @@ namespace client.Common
 
 		private async Task GetPosition ()
 		{  
-			if (_geolocator == null)
+			if (m_geolocator == null)
 				return;
 			IsBusy = true;
-			await _geolocator.GetPositionAsync (timeout: 4000, cancelToken: _tokensource.Token, includeHeading: true)
+			await m_geolocator.GetPositionAsync (timeout: 4000, cancelToken: m_tokensource.Token, includeHeading: true)
                 .ContinueWith (t => {
 				IsBusy = false;
 				if (t.IsFaulted)
@@ -88,7 +88,7 @@ namespace client.Common
 					CurrentPosition = t.Result;
 				}
 
-			}, _scheduler);
+			}, m_scheduler);
 		}
 
 		#endregion
@@ -100,179 +100,179 @@ namespace client.Common
 
 		[Column ("CurrentPosition")]
 		public Position CurrentPosition { 
-			get { return _currentPosition; }
+			get { return m_currentPosition; }
 			set {
-				SetProperty (_currentPosition, value, (val) => {
-					LastPosition = _currentPosition;
-					_currentPosition = val;
+				SetProperty (m_currentPosition, value, (val) => {
+					LastPosition = m_currentPosition;
+					m_currentPosition = val;
 				}, PropertyNameCurrentPosition);
 
-				Latitude = _currentPosition.Latitude.ToString ("N4");
-				Longitude = _currentPosition.Longitude.ToString ("N4");
-				Altitude = _currentPosition.Altitude.ToString ();
-				TimeStamp = _currentPosition.Timestamp.ToString ("G");
-				Heading = _currentPosition.Heading.ToString ();
-				Accuracy = _currentPosition.Accuracy.ToString ();
-				CurrentGamePosition = new @base.model.Position (new @base.model.LatLon (_currentPosition.Latitude, _currentPosition.Longitude));
+				Latitude = m_currentPosition.Latitude.ToString ("N4");
+				Longitude = m_currentPosition.Longitude.ToString ("N4");
+				Altitude = m_currentPosition.Altitude.ToString ();
+				TimeStamp = m_currentPosition.Timestamp.ToString ("G");
+				Heading = m_currentPosition.Heading.ToString ();
+				Accuracy = m_currentPosition.Accuracy.ToString ();
+				CurrentGamePosition = new @base.model.Position (new @base.model.LatLon (m_currentPosition.Latitude, m_currentPosition.Longitude));
 				StringGamePosition = string.Format ("PosX = {0}, PosY = {1}", CurrentGamePosition.X, CurrentGamePosition.Y);
 
 			}
 		}
 
 		public static string PropertyNameCurrentPosition = "CurrentPosition";
-		private Position _currentPosition;
+		private Position m_currentPosition;
 
 
 		[Column ("CurrentGamePosition")]
 		public @base.model.Position CurrentGamePosition { 
-			get { return _currentGamePosition; }
+			get { return m_currentGamePosition; }
 			set {
-				SetProperty (_currentGamePosition, value, (val) => {
-					_currentGamePosition = val;
+				SetProperty (m_currentGamePosition, value, (val) => {
+					m_currentGamePosition = val;
 				}, PropertyNameCurrentGamePosition);
 			}
 		}
 
 		public static string PropertyNameCurrentGamePosition = "CurrentGamePosition";
-		private @base.model.Position _currentGamePosition;
+		private @base.model.Position m_currentGamePosition;
 
 
 		[Column ("LastPosition")]
 		public Position LastPosition { 
-			get { return _lastPosition; }
+			get { return m_lastPosition; }
 			set {
-				SetProperty (_lastPosition, value, (val) => {
-					_lastPosition = val;
+				SetProperty (m_lastPosition, value, (val) => {
+					m_lastPosition = val;
 					LastGamePosition = new @base.model.Position (new @base.model.LatLon (val.Latitude, val.Longitude));
 				}, PropertyNameLastPosition);
 			}
 		}
 
 		public static string PropertyNameLastPosition = "LastPosition";
-		private Position _lastPosition;
+		private Position m_lastPosition;
 
 
 		[Column ("LastGamePosition")]
 		public @base.model.Position LastGamePosition { 
-			get { return _lastGamePosition; }
+			get { return m_lastGamePosition; }
 			set {
-				SetProperty (_lastGamePosition, value, (val) => {
-					_lastGamePosition = val;
+				SetProperty (m_lastGamePosition, value, (val) => {
+					m_lastGamePosition = val;
 				}, PropertyNameLastGamePosition);
 			}
 		}
 
 		public static string PropertyNameLastGamePosition = "LastGamePosition";
-		private @base.model.Position _lastGamePosition;
+		private @base.model.Position m_lastGamePosition;
 
 
 		[Column ("Latitude")]
 		public string Latitude { 
-			get { return _latitude; }
+			get { return m_latitude; }
 			set {
-				SetProperty (_latitude, value, (val) => {
-					_latitude = val;
+				SetProperty (m_latitude, value, (val) => {
+					m_latitude = val;
 				}, PropertyNameLatitude);
 			}
 		}
 
 		public static string PropertyNameLatitude = "Latitude";
-		private string _latitude;
+		private string m_latitude;
 
 		[Column ("Longitude")]
 		public string Longitude { 
-			get { return _longitude; }
+			get { return m_longitude; }
 			set {
-				SetProperty (_longitude, value, (val) => {
-					_longitude = val;
+				SetProperty (m_longitude, value, (val) => {
+					m_longitude = val;
 				}, PropertyNameLongitude);
 			}
 		}
 
 		public static string PropertyNameLongitude = "Longitude";
-		private string _longitude;
+		private string m_longitude;
 
 
 		[Column ("Altitude")]
 		public string Altitude { 
-			get { return _altitude; }
+			get { return m_altitude; }
 			set {
-				SetProperty (_altitude, value, (val) => {
-					_altitude = val;
+				SetProperty (m_altitude, value, (val) => {
+					m_altitude = val;
 				}, PropertyNameAltitude);
 			}
 		}
 
 		public static string PropertyNameStringGamePosition = "StringGamePosition";
-		private string _stringGamePosition;
+		private string m_stringGamePosition;
 
 
 		[Column ("StringGamePosition")]
 		public string StringGamePosition { 
-			get { return _stringGamePosition; }
+			get { return m_stringGamePosition; }
 			set {
-				SetProperty (_stringGamePosition, value, (val) => {
-					_stringGamePosition = val;
+				SetProperty (m_stringGamePosition, value, (val) => {
+					m_stringGamePosition = val;
 				}, PropertyNameStringGamePosition);
 			}
 		}
 
 		public static string PropertyNameAltitude = "Altitude";
-		private string _altitude;
+		private string m_altitude;
 
 		[Column ("TimeStamp")]
 		public string TimeStamp { 
-			get { return _timeStamp; }
+			get { return m_timeStamp; }
 			set {
-				SetProperty (_timeStamp, value, (val) => {
-					_timeStamp = val;
+				SetProperty (m_timeStamp, value, (val) => {
+					m_timeStamp = val;
 				}, PropertyNameTimeStamp);
 			}
 		}
 
 		public static string PropertyNameTimeStamp = "TimeStamp";
-		private string _timeStamp;
+		private string m_timeStamp;
 
 		//Heading in dergees relative to the north
 		[Column ("Heading")]
 		public string Heading { 
-			get { return _heading; }
+			get { return m_heading; }
 			set {
-				SetProperty (_heading, value, (val) => {
-					_heading = val;
+				SetProperty (m_heading, value, (val) => {
+					m_heading = val;
 				}, PropertyNameHeading);
 			}
 		}
 
 		public static string PropertyNameHeading = "Heading";
-		private string _heading;
+		private string m_heading;
 
 		//the potential position error radius in meters
 		[Column ("Accuracy")]
 		public string Accuracy { 
-			get { return _accuracy; }
+			get { return m_accuracy; }
 			set {
-				SetProperty (_accuracy, value, (val) => {
-					_accuracy = val;
+				SetProperty (m_accuracy, value, (val) => {
+					m_accuracy = val;
 				}, PropertyNameAccuracy);
 			}
 		}
 
 		public static string PropertyNameAccuracy = "Accuracy";
-		private string _accuracy;
+		private string m_accuracy;
 
 		[Column ("Status")]
 		public string Status { 
-			get { return _status; }
+			get { return m_status; }
 			set {
-				SetProperty (_status, value, (val) => {
-					_status = val;
+				SetProperty (m_status, value, (val) => {
+					m_status = val;
 				}, PropertyNameStatus);
 			}
 		}
 
 		public static string PropertyNameStatus = "Status";
-		private string _status;
+		private string m_status;
 
 		#endregion
 	}

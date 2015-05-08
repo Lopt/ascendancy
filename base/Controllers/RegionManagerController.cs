@@ -6,7 +6,7 @@ using @base.model.definitions;
 
 namespace @base.control
 {
-    public class RegionManagerController 
+    public class RegionManagerController
     {
         public RegionManagerController()
         {

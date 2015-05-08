@@ -17,15 +17,16 @@ namespace client.Common
 	{
 		CCLayerColor mLayer;
 		RegionController regionController;
+		Region region;
 
 		public DeviceScene (CCWindow _MainWindow)
 			: base (_MainWindow)
 		{
 			regionController = Controller.Instance.RegionManagerController as RegionController;
-			regionController.LoadRegionAsync (new @base.model.RegionPosition (166148, 104835));
+			region = regionController.GetRegion (new @base.model.RegionPosition (166148, 104835));
 
 			//mLayer = new DeviceLayer ();
-			mLayer = new WorldTestLayerTileMap ();
+			mLayer = new WorldTestLayerTileMap (new @base.model.RegionPosition (166148, 104835));
 
 			this.AddChild (mLayer);
 		}

@@ -7,6 +7,8 @@ using System.Diagnostics;
 using client.Common.Models;
 using client.Common.Controllers;
 using @base.control;
+using @base.model;
+
 
 namespace client.Common.TryTests
 {
@@ -21,11 +23,12 @@ namespace client.Common.TryTests
 		Stopwatch Watch;
 		RegionController regionController;
 		bool MapIsChanged = true;
+		RegionPosition m_regionPosition = null;
 
-		public WorldTestLayerTileMap ()
+		public WorldTestLayerTileMap (RegionPosition regionPosition)
 		{
 			regionController = Controller.Instance.RegionManagerController as RegionController;
-
+			m_regionPosition = regionPosition;
 			Watch = new Stopwatch ();
 			//CCTile tile = new CCTile ();
 			TileMap = new CCTileMap ("Worldmap-64x16-smalltiles-iso");
@@ -74,8 +77,8 @@ namespace client.Common.TryTests
 
 		void SetMap (float FrameTimesInSecond)
 		{
-			if (MapIsChanged) {
-				regionController.SetTilesInMap (TileMap.LayerNamed ("Layer 0"), new CCTileMapCoordinates (0, 0));
+			if (regionController.GetRegion (m_regionPosition).Exist && MapIsChanged) {
+				regionController.SetTilesInMap (TileMap.LayerNamed ("Layer 0"), new CCTileMapCoordinates (0, 0), regionController.GetRegion (m_regionPosition));
 				MapIsChanged = false;
 			}
 				

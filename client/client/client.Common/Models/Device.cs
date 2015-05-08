@@ -12,246 +12,215 @@ using XLabs.Ioc;
 
 namespace client.Common
 {
-    [Table("Device")]
-    public sealed class Device : viewBaseModel
-    {
+	[Table ("Device")]
+	public sealed class Device : viewBaseModel
+	{
 
-        #region Singelton
+		#region Singelton
 
-        private static readonly Device _instance = new Device();
+		private static readonly Device m_instance = new Device ();
 
-        private Device()
-        {
-            _device = Resolver.Resolve<IDevice>();
-            Accelerometer = Resolver.Resolve<IAccelerometer>();//_device.Accelerometer;
-            BluetoothHub = _device.BluetoothHub;
-            Display = _device.Display;
-            Gyroscope = _device.Gyroscope;
-            MediaPicker = _device.MediaPicker;
-            Microphone = _device.Microphone;
-            Network = _device.Network;
-            PhoneService = _device.PhoneService;
-            Battery = _device.Battery;
+		private Device ()
+		{
+			m_device = Resolver.Resolve<IDevice> ();
+			Accelerometer = Resolver.Resolve<IAccelerometer> ();//_device.Accelerometer;
+			BluetoothHub = m_device.BluetoothHub;
+			Display = m_device.Display;
+			Gyroscope = m_device.Gyroscope;
+			MediaPicker = m_device.MediaPicker;
+			Microphone = m_device.Microphone;
+			Network = m_device.Network;
+			PhoneService = m_device.PhoneService;
+			Battery = m_device.Battery;
 
-            Battery.OnLevelChange += (object sender, XLabs.EventArgs<int> e) =>
-            {
-                BatteryLevel = Battery.Level.ToString();
-            };
+			Battery.OnLevelChange += (object sender, XLabs.EventArgs<int> e) => {
+				BatteryLevel = Battery.Level.ToString ();
+			};
 
-            BatteryLevel = Battery.Level.ToString();
-            DeviceId = _device.Id;
-            FirmwareVersion = _device.FirmwareVersion;
-            HardwareVersion = _device.HardwareVersion;
-            LanguageCode = _device.LanguageCode;
-            Manufacturer = _device.Manufacturer;
-            DeviceName = _device.Name;
-            TimeZone = _device.TimeZone;
-            TimeZoneOffset = _device.TimeZoneOffset.ToString();
-            DeviceMemory = _device.TotalMemory.ToString();
+			BatteryLevel = Battery.Level.ToString ();
+			DeviceId = m_device.Id;
+			FirmwareVersion = m_device.FirmwareVersion;
+			HardwareVersion = m_device.HardwareVersion;
+			LanguageCode = m_device.LanguageCode;
+			Manufacturer = m_device.Manufacturer;
+			DeviceName = m_device.Name;
+			TimeZone = m_device.TimeZone;
+			TimeZoneOffset = m_device.TimeZoneOffset.ToString ();
+			DeviceMemory = m_device.TotalMemory.ToString ();
 
        
-        }
+		}
 
-        public static Device GetInstance{ get { return _instance; } }
+		public static Device GetInstance{ get { return m_instance; } }
 
-        #endregion
+		#endregion
 
-        #region Device
+		#region Device
 
-        private readonly IDevice _device = null;
+		private readonly IDevice m_device = null;
 
-        //TODO solve Exception IAccelerometer why returns null
-        public IAccelerometer Accelerometer{ get; private set; }
+		//TODO solve Exception IAccelerometer why returns null
+		public IAccelerometer Accelerometer{ get; private set; }
 
-        public IBattery Battery { get; private set; }
+		public IBattery Battery { get; private set; }
 
-        public IBluetoothHub BluetoothHub{ get; private set; }
+		public IBluetoothHub BluetoothHub{ get; private set; }
 
-        public IDisplay Display{ get; private set; }
+		public IDisplay Display{ get; private set; }
 
-        //TODO solve Exception IGyroscope why returns null
-        public IGyroscope Gyroscope{ get; private set; }
+		//TODO solve Exception IGyroscope why returns null
+		public IGyroscope Gyroscope{ get; private set; }
 
-        public IMediaPicker MediaPicker{ get; private set; }
+		public IMediaPicker MediaPicker{ get; private set; }
 
-        //TODO solve Exception IAudioStream why returns null
-        public IAudioStream Microphone{ get; private set; }
+		//TODO solve Exception IAudioStream why returns null
+		public IAudioStream Microphone{ get; private set; }
 
-        public INetwork Network{ get; private set; }
+		public INetwork Network{ get; private set; }
 
-        //TODO solve Exception IPhoneService why returns null
-        public IPhoneService PhoneService{ get; private set; }
+		//TODO solve Exception IPhoneService why returns null
+		public IPhoneService PhoneService{ get; private set; }
 
-        #endregion
+		#endregion
 
-        #region ViewPoperties
+		#region ViewPoperties
 
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+		[PrimaryKey, AutoIncrement]
+		public int Id { get; set; }
 
-        [Column("BatteryLevel")]
-        public string BatteryLevel
-        { 
-            get { return _batteryLevel; }
-            set
-            {
-                SetProperty(_batteryLevel, value, (val) =>
-                    {
-                        _batteryLevel = val;
-                    }, PropertyNameBatteryLevel);
-            }
-        }
+		[Column ("BatteryLevel")]
+		public string BatteryLevel { 
+			get { return m_batteryLevel; }
+			set {
+				SetProperty (m_batteryLevel, value, (val) => {
+					m_batteryLevel = val;
+				}, PropertyNameBatteryLevel);
+			}
+		}
 
-        public static string PropertyNameBatteryLevel = "BatteryLevel";
-        private string _batteryLevel;
+		public static string PropertyNameBatteryLevel = "BatteryLevel";
+		private string m_batteryLevel;
 
-        [Column("DeviceId")]
-        public string DeviceId
-        { 
-            get { return _deviceId; }
-            set
-            {
-                SetProperty(_deviceId, value, (val) =>
-                    {
-                        _deviceId = val;
-                    }, PropertyNameDeviceId);
-            }
-        }
+		[Column ("DeviceId")]
+		public string DeviceId { 
+			get { return m_deviceId; }
+			set {
+				SetProperty (m_deviceId, value, (val) => {
+					m_deviceId = val;
+				}, PropertyNameDeviceId);
+			}
+		}
 
-        public static string PropertyNameDeviceId = "DeviceId";
-        private string _deviceId;
+		public static string PropertyNameDeviceId = "DeviceId";
+		private string m_deviceId;
 
-        [Column("FirmwareVersion")]
-        public string FirmwareVersion
-        { 
-            get { return _firmwareVersion; }
-            set
-            {
-                SetProperty(_firmwareVersion, value, (val) =>
-                    {
-                        _firmwareVersion = val;
-                    }, PropertyNameFirmwareVersion);
-            }
-        }
+		[Column ("FirmwareVersion")]
+		public string FirmwareVersion { 
+			get { return m_firmwareVersion; }
+			set {
+				SetProperty (m_firmwareVersion, value, (val) => {
+					m_firmwareVersion = val;
+				}, PropertyNameFirmwareVersion);
+			}
+		}
 
-        public static string PropertyNameFirmwareVersion = "FirmwareVersion";
-        private string _firmwareVersion;
+		public static string PropertyNameFirmwareVersion = "FirmwareVersion";
+		private string m_firmwareVersion;
 
-        [Column("HardwareVersion")]
-        public string HardwareVersion
-        { 
-            get { return _hardwareVersion; }
-            set
-            {
-                SetProperty(_hardwareVersion, value, (val) =>
-                    {
-                        _hardwareVersion = val;
-                    }, PropertyNameHardwareVersion);
-            }
-        }
+		[Column ("HardwareVersion")]
+		public string HardwareVersion { 
+			get { return m_hardwareVersion; }
+			set {
+				SetProperty (m_hardwareVersion, value, (val) => {
+					m_hardwareVersion = val;
+				}, PropertyNameHardwareVersion);
+			}
+		}
 
-        public static string PropertyNameHardwareVersion = "HardwareVersion";
-        private string _hardwareVersion;
+		public static string PropertyNameHardwareVersion = "HardwareVersion";
+		private string m_hardwareVersion;
 
-        [Column("LanguageCode")]
-        public string LanguageCode
-        { 
-            get { return _languageCode; }
-            set
-            {
-                SetProperty(_languageCode, value, (val) =>
-                    {
-                        _languageCode = val;
-                    }, PropertyNameLanguageCode);
-            }
-        }
+		[Column ("LanguageCode")]
+		public string LanguageCode { 
+			get { return m_languageCode; }
+			set {
+				SetProperty (m_languageCode, value, (val) => {
+					m_languageCode = val;
+				}, PropertyNameLanguageCode);
+			}
+		}
 
-        public static string PropertyNameLanguageCode = "LanguageCode";
-        private string _languageCode;
+		public static string PropertyNameLanguageCode = "LanguageCode";
+		private string m_languageCode;
 
-        [Column("Manufacturer")]
-        public string Manufacturer
-        { 
-            get { return _manufacturer; }
-            set
-            {
-                SetProperty(_manufacturer, value, (val) =>
-                    {
-                        _manufacturer = val;
-                    }, PropertyNameManufacturer);
-            }
-        }
+		[Column ("Manufacturer")]
+		public string Manufacturer { 
+			get { return m_manufacturer; }
+			set {
+				SetProperty (m_manufacturer, value, (val) => {
+					m_manufacturer = val;
+				}, PropertyNameManufacturer);
+			}
+		}
 
-        public static string PropertyNameManufacturer = "Manufacturer";
-        private string _manufacturer;
+		public static string PropertyNameManufacturer = "Manufacturer";
+		private string m_manufacturer;
 
-        [Column("DeviceName")]
-        public string DeviceName
-        { 
-            get { return _deviceName; }
-            set
-            {
-                SetProperty(_deviceName, value, (val) =>
-                    {
-                        _deviceName = val;
-                    }, PropertyNameDeviceName);
-            }
-        }
+		[Column ("DeviceName")]
+		public string DeviceName { 
+			get { return m_deviceName; }
+			set {
+				SetProperty (m_deviceName, value, (val) => {
+					m_deviceName = val;
+				}, PropertyNameDeviceName);
+			}
+		}
 
-        public static string PropertyNameDeviceName = "DeviceName";
-        private string _deviceName;
+		public static string PropertyNameDeviceName = "DeviceName";
+		private string m_deviceName;
 
-        [Column("TimeZone")]
-        public string TimeZone
-        { 
-            get { return _timeZone; }
-            set
-            {
-                SetProperty(_timeZone, value, (val) =>
-                    {
-                        _timeZone = val;
-                    }, PropertyNameTimeZone);
-            }
-        }
+		[Column ("TimeZone")]
+		public string TimeZone { 
+			get { return m_timeZone; }
+			set {
+				SetProperty (m_timeZone, value, (val) => {
+					m_timeZone = val;
+				}, PropertyNameTimeZone);
+			}
+		}
 
-        public static string PropertyNameTimeZone = "TimeZone";
-        private string _timeZone;
+		public static string PropertyNameTimeZone = "TimeZone";
+		private string m_timeZone;
 
-        [Column("TimeZoneOffset")]
-        public string TimeZoneOffset
-        { 
-            get { return _timeZoneOffset; }
-            set
-            {
-                SetProperty(_timeZoneOffset, value, (val) =>
-                    {
-                        _timeZoneOffset = val;
-                    }, PropertyNameTimeZoneOffset);
-            }
-        }
+		[Column ("TimeZoneOffset")]
+		public string TimeZoneOffset { 
+			get { return m_timeZoneOffset; }
+			set {
+				SetProperty (m_timeZoneOffset, value, (val) => {
+					m_timeZoneOffset = val;
+				}, PropertyNameTimeZoneOffset);
+			}
+		}
 
-        public static string PropertyNameTimeZoneOffset = "TimeZoneOffset";
-        private string _timeZoneOffset;
+		public static string PropertyNameTimeZoneOffset = "TimeZoneOffset";
+		private string m_timeZoneOffset;
 
 
-        [Column("DeviceMemory")]
-        public string DeviceMemory
-        { 
-            get { return _deviceMemory; }
-            set
-            {
-                SetProperty(_deviceMemory, value, (val) =>
-                    {
-                        _deviceMemory = val;
-                    }, PropertyNameDeviceMemory);
-            }
-        }
+		[Column ("DeviceMemory")]
+		public string DeviceMemory { 
+			get { return m_deviceMemory; }
+			set {
+				SetProperty (m_deviceMemory, value, (val) => {
+					m_deviceMemory = val;
+				}, PropertyNameDeviceMemory);
+			}
+		}
 
-        public static string PropertyNameDeviceMemory = "DeviceMemory";
-        private string _deviceMemory;
+		public static string PropertyNameDeviceMemory = "DeviceMemory";
+		private string m_deviceMemory;
 
-        #endregion
+		#endregion
       
-    }
+	}
 }
 
