@@ -115,6 +115,8 @@ namespace client.Common
 				Accuracy = m_currentPosition.Accuracy.ToString ();
 				CurrentGamePosition = new @base.model.Position (new @base.model.LatLon (m_currentPosition.Latitude, m_currentPosition.Longitude));
 				StringGamePosition = string.Format ("PosX = {0}, PosY = {1}", CurrentGamePosition.X, CurrentGamePosition.Y);
+				CurrentRegionPosition = new @base.model.RegionPosition (CurrentGamePosition);
+				CurrentCellPosition = new @base.model.CellPosition (CurrentGamePosition);
 
 			}
 		}
@@ -137,6 +139,34 @@ namespace client.Common
 		private @base.model.Position m_currentGamePosition;
 
 
+		[Column ("CurrentRegionPosition")]
+		public @base.model.RegionPosition CurrentRegionPosition { 
+			get { return m_currentRegionPosition; }
+			set {
+				SetProperty (m_currentRegionPosition, value, (val) => {
+					m_currentRegionPosition = val;
+				}, PropertyNameCurrentRegionPosition);
+			}
+		}
+
+		public static string PropertyNameCurrentRegionPosition = "CurrentRegionPosition";
+		private @base.model.RegionPosition m_currentRegionPosition;
+
+
+		[Column ("CurrentCellPosition")]
+		public @base.model.CellPosition CurrentCellPosition { 
+			get { return m_currentCellPosition; }
+			set {
+				SetProperty (m_currentCellPosition, value, (val) => {
+					m_currentCellPosition = val;
+				}, PropertyNameCurrentCellPosition);
+			}
+		}
+
+		public static string PropertyNameCurrentCellPosition = "CurrentCellPosition";
+		private @base.model.CellPosition m_currentCellPosition;
+
+
 		[Column ("LastPosition")]
 		public Position LastPosition { 
 			get { return m_lastPosition; }
@@ -144,6 +174,8 @@ namespace client.Common
 				SetProperty (m_lastPosition, value, (val) => {
 					m_lastPosition = val;
 					LastGamePosition = new @base.model.Position (new @base.model.LatLon (val.Latitude, val.Longitude));
+					LastRegionPosition = new @base.model.RegionPosition (LastGamePosition);
+					LastCellPosition = new @base.model.CellPosition (LastGamePosition);
 				}, PropertyNameLastPosition);
 			}
 		}
@@ -166,6 +198,34 @@ namespace client.Common
 		private @base.model.Position m_lastGamePosition;
 
 
+		[Column ("LastRegionPosition")]
+		public @base.model.RegionPosition LastRegionPosition { 
+			get { return m_lastRegionPosition; }
+			set {
+				SetProperty (m_lastRegionPosition, value, (val) => {
+					m_lastRegionPosition = val;
+				}, PropertyNameLastRegionPosition);
+			}
+		}
+
+		public static string PropertyNameLastRegionPosition = "LastRegionPosition";
+		private @base.model.RegionPosition m_lastRegionPosition;
+
+
+		[Column ("LastCellPosition")]
+		public @base.model.CellPosition LastCellPosition { 
+			get { return m_lastCellPosition; }
+			set {
+				SetProperty (m_lastCellPosition, value, (val) => {
+					m_lastCellPosition = val;
+				}, PropertyNameLastCellPosition);
+			}
+		}
+
+		public static string PropertyNameLastCellPosition = "LastCellPosition";
+		private @base.model.CellPosition m_lastCellPosition;
+
+
 		[Column ("Latitude")]
 		public string Latitude { 
 			get { return m_latitude; }
@@ -178,6 +238,7 @@ namespace client.Common
 
 		public static string PropertyNameLatitude = "Latitude";
 		private string m_latitude;
+
 
 		[Column ("Longitude")]
 		public string Longitude { 
@@ -220,6 +281,7 @@ namespace client.Common
 		public static string PropertyNameAltitude = "Altitude";
 		private string m_altitude;
 
+
 		[Column ("TimeStamp")]
 		public string TimeStamp { 
 			get { return m_timeStamp; }
@@ -232,6 +294,7 @@ namespace client.Common
 
 		public static string PropertyNameTimeStamp = "TimeStamp";
 		private string m_timeStamp;
+
 
 		//Heading in dergees relative to the north
 		[Column ("Heading")]
@@ -247,6 +310,7 @@ namespace client.Common
 		public static string PropertyNameHeading = "Heading";
 		private string m_heading;
 
+
 		//the potential position error radius in meters
 		[Column ("Accuracy")]
 		public string Accuracy { 
@@ -260,6 +324,7 @@ namespace client.Common
 
 		public static string PropertyNameAccuracy = "Accuracy";
 		private string m_accuracy;
+
 
 		[Column ("Status")]
 		public string Status { 

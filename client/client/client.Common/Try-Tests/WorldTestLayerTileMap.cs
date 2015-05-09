@@ -31,7 +31,7 @@ namespace client.Common.TryTests
 			m_regionPosition = regionPosition;
 			Watch = new Stopwatch ();
 			//CCTile tile = new CCTile ();
-			TileMap = new CCTileMap ("Worldmap-64x16-smalltiles-iso");
+			TileMap = new CCTileMap ("Worldmap-32x32(64x16)");
 			//var info = new CCTileMapInfo ();
 			AddChild (TileMap);
 

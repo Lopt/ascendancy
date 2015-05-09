@@ -7,6 +7,7 @@ using client.Common.Controllers;
 using @base.model;
 using @base.control;
 using client.Common.controller;
+using client.Common.view;
 
 
 
@@ -23,6 +24,7 @@ namespace client.Common
 			application.ContentSearchPaths.Add (ClientConstants.FONTS);
 			application.ContentSearchPaths.Add (ClientConstants.SOUNDS);
 			application.ContentSearchPaths.Add (ClientConstants.TILES);
+			application.ContentSearchPaths.Add (ClientConstants.IMAGES);
 
 			CCSize windowSize = mainWindow.WindowSizeInPixels;
 
@@ -42,23 +44,23 @@ namespace client.Common
 			// Determine whether to use the high or low def versions of our images
 			// Make sure the default texel to content size ratio is set correctly
 			// Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
-			if (desiredWidth < windowSize.Width) {
-				application.ContentSearchPaths.Add (ClientConstants.IMAGES_HD);
-				CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
-			} else {
-				application.ContentSearchPaths.Add (ClientConstants.IMAGES_LD);
-				CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
-			}
+//			if (desiredWidth < windowSize.Width) {
+//				application.ContentSearchPaths.Add (ClientConstants.IMAGES_HD);
+//				CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
+//			} else {
+//				application.ContentSearchPaths.Add (ClientConstants.IMAGES_LD);
+//				CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
+//			}
 
 //            CCScene Gamescene = new CCScene(mainWindow);
 //            GameLayer gameLayer = new GameLayer();
 //            Gamescene.AddChild(gameLayer);
          
 //            CCScene MyGeolocationScene = new GeolocationScene(mainWindow);
-			CCScene MyDeviceScene = new DeviceScene (mainWindow);
+			//CCScene MyDeviceScene = new DeviceScene (mainWindow);
 			//CCScene MyTouchTestScene = new TouchTestScene(mainWindow);
-
-			mainWindow.RunWithScene (MyDeviceScene);
+			StartScene startScene = new StartScene (mainWindow);
+			mainWindow.RunWithScene (startScene);
 		}
 
 		public override void ApplicationDidEnterBackground (CCApplication application)
