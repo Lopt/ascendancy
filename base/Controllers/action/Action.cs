@@ -11,7 +11,7 @@ namespace @base.control.action
         {
         }
 
-        virtual public model.Region GetMainRegion()
+        virtual public ConcurrentBag<model.Region> GetAffectedRegions()
         {
             throw new NotImplementedException();
         }
@@ -28,7 +28,7 @@ namespace @base.control.action
         /// Apply action-related changes to the world.
         /// Returns True if everything worked, otherwise False
         /// </summary>
-        virtual public bool Do()
+        virtual public ConcurrentBag<model.Region> Do()
         {
             throw new NotImplementedException();
         }

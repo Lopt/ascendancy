@@ -12,7 +12,6 @@ namespace @base.model
         {
             CreateHeadquarter,
             Move,
-            Attack,
         }
 
         /// <summary>
@@ -34,30 +33,27 @@ namespace @base.model
             {
                 case(ActionType.CreateHeadquarter):
                     Control = new control.action.CreateHeadquarter(this);
-                    break;
-                
+                    break;   
             }
-
         }
-
-        virtual public Region GetMainRegion()
-        {
-            return ((control.action.Action)Control).GetMainRegion();
-        }
-
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
-        virtual public bool Possible()
+        public bool Possible()
         {
             return ((control.action.Action)Control).Possible();
+        }
+
+        public ConcurrentBag<model.Region> GetAffectedRegions()
+        {
+            return ((control.action.Action)Control).GetAffectedRegions();
         }
 
         /// <summary>
         /// Apply action-related changes to the world.
         /// Returns True if everything worked, otherwise False
         /// </summary>
-        virtual public bool Do()
+        public ConcurrentBag<model.Region> Do()
         {
             return ((control.action.Action)Control).Do();
         }
@@ -65,7 +61,7 @@ namespace @base.model
         /// <summary>
         /// In case of errors, revert the world data to a valid state.
         /// </summary>
-        virtual public bool Catch()
+        public bool Catch()
         {
             return ((control.action.Action)Control).Catch();
         }
