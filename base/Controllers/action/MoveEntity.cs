@@ -1,32 +1,43 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.ObjectModel;
 
 using @base.control;
 using @base.model.definitions;
 
 namespace @base.control.action
-{
-    public class CreateHeadquarter : Action
+{ /*
+    public class MoveEntity : Action
     {
-        public CreateHeadquarter(model.ModelEntity model)
+        public MoveEntity(model.ModelEntity model)
             : base(model)
         {
         }
 
 
-        public const string CREATE_POSITION = "CreatePosition";
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="base.control.action.Action"/> class.
-        /// </summary>
-        /// <param name="actionType">Action type.</param>
-        /// <param name="regions">Affected Regions of this action.</param>
-        /// <param name="parameters">Parameters.</param>
-        override public ConcurrentBag<model.Region> GetAffectedRegions()
+        public const string CREATE_POSITION = "EntityPosition";
+        public const string CREATE_UNIT_TYPE = "NewPosition";
+
+        public override model.Region[] GetAffectedRegions()
         {
             var action = (model.Action)Model;
-            var combinedPos = new model.CombinedPosition((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
-            return new ConcurrentBag<model.Region>() { Controller.Instance.RegionManagerController.GetRegion(combinedPos.RegionPosition) }; 
+            var startPosition = new model.Position((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
+            //            var newPosition = new model.CombinedPosition((Newtonsoft.Json.Linq.JContainer) action.Parameters[NEW_POSITION]);
+            return Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition); 
+        }
+
+        public ObservableCollection<model.CombinedPosition> FindWay(model.Position start, model.Position end)
+        {
+            var xDiff = start.X - end.X;
+            var yDiff = start.Y - end.Y;
+
+            for (int xAdd = 1; xAdd < xDiff; ++xAdd)
+            {
+                var position = (new Position(start.X + xAdd, start.Y + yDiff));
+            }
+
+            return null; 
         }
 
         /// <summary>
@@ -37,11 +48,8 @@ namespace @base.control.action
             var action = (model.Action)Model;
             
             var regionManagerC = Controller.Instance.RegionManagerController;
-            return true;
 
-            if (action.Account.Headquarters.Count == 0)
-            {
-                /*
+                
                 if (Parameters.ContainsKey(CREATE_POSITION))
                 {
                     var positionC = (CombinedPosition) Parameters[CREATE_POSITION];
@@ -51,17 +59,15 @@ namespace @base.control.action
                     {
                         return true;
                     }
-                }*/
+                }
                 return true;
-            }
-            return false;
         }
 
         /// <summary>
         /// Apply action-related changes to the world.
         /// Returns false if something went terrible wrong
         /// </summary>
-        public override ConcurrentBag<model.Region> Do()
+        public override model.Region[] Do()
         {   
             var action = (model.Action)Model;
 
@@ -80,7 +86,7 @@ namespace @base.control.action
             entity.Position = combinedPos;
             region.AddEntity(action.ActionTime, entity);
 
-            return new ConcurrentBag<model.Region>() { region };
+            return true;
         }
 
         /// <summary>
@@ -90,6 +96,6 @@ namespace @base.control.action
         {
             throw new NotImplementedException();
         }
-    }
+    }*/
 }
 

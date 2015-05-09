@@ -3,6 +3,7 @@ using @base.model.definitions;
 using System.Collections.ObjectModel;
 using System.Collections.Concurrent;
 using System.ComponentModel;
+using System.Threading;
 
 namespace @base.model
 {
@@ -67,8 +68,8 @@ namespace @base.model
             m_entities.Entities = new ObservableCollection<Entity>();
             m_actions   = new DatedActions();
             m_actions.Actions = new ObservableCollection<model.Action>();
-            m_inQueue   = new ObservableCollection<model.Action>();
             m_exist     = false;
+            m_mutex     = new Mutex();
         }
 
         public Region (RegionPosition regionPosition, TerrainDefinition[ , ] terrains)
@@ -77,8 +78,8 @@ namespace @base.model
             m_terrains  = terrains;
             m_entities  = new DatedEntities();
             m_actions   = new DatedActions();
-            m_inQueue   = new ObservableCollection<model.Action>();
             m_exist     = true;
+            m_mutex     = new Mutex();
         }
 
         public void AddTerrain(TerrainDefinition[ , ] terrains)
@@ -98,11 +99,6 @@ namespace @base.model
                     TerrainDefinition.TerrainDefinitionType.Forbidden);
             }
             return value;
-        }
-
-        public void AddAction(model.Action action)
-        {
-            m_inQueue.Add(action);
         }
 
         public Entity GetEntity(CellPosition cellPosition)
@@ -142,6 +138,7 @@ namespace @base.model
             m_entities = newDatedEntities;
         }
 
+        /*
         public void ActionCompleted()
         {
             var action = m_inQueue[0];
@@ -157,7 +154,7 @@ namespace @base.model
             m_inQueue.RemoveAt(0);
 
         }
-
+        */
         public DatedEntities GetEntities()
         {
             return m_entities;
@@ -184,19 +181,6 @@ namespace @base.model
 
             return returnActions;
         }
-            
-        /// <summary>
-        /// Returns the first action
-        /// </summary>
-        /// <returns>Action which should be executed</returns>
-        public model.Action GetAction()
-        {
-            if (m_inQueue.Count > 0)
-            {
-                return m_inQueue[0];
-            }
-            return null;
-        }
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="base.model.Region"/> really exist.
@@ -214,6 +198,20 @@ namespace @base.model
             get { return m_regionPosition; }
         }
 
+        public bool TryLockRegion()
+        {
+            return m_mutex.WaitOne(0);
+        }
+
+        public void Release()
+        {
+            m_mutex.ReleaseMutex();
+        }
+
+        public void AddCompletedAction(model.Action action)
+        {
+            m_actions.Actions.Add(action);
+        }
 
         bool m_exist;
         RegionPosition m_regionPosition;
@@ -221,8 +219,8 @@ namespace @base.model
 
         DatedEntities m_entities;
         DatedActions m_actions;
-        ObservableCollection<model.Action> m_inQueue;
 
+        Mutex m_mutex;
 	} 
 }
 

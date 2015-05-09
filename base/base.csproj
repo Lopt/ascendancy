@@ -63,6 +63,7 @@
     <Compile Include="Connection\DoActionsRequest.cs" />
     <Compile Include="Models\Action.cs" />
     <Compile Include="Controllers\action\Action.cs" />
+    <Compile Include="Controllers\action\MoveEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

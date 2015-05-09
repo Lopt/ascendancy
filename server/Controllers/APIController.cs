@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using SQLite;
 
 namespace server.control
@@ -26,6 +27,7 @@ namespace server.control
 
 		private APIController()
 		{
+			m_Actions = new ConcurrentQueue<@base.model.Action> ();
 		}
 
 
@@ -49,8 +51,10 @@ namespace server.control
 			{
 				action.Account = account;
 				action.ActionTime = DateTime.Now;
-				var region = action.GetMainRegion ();
-				region.AddAction (action);
+
+				m_Actions.Enqueue(action);
+
+				Worker ();
 			}
 		}
 
@@ -97,28 +101,80 @@ namespace server.control
 			//return regionList;
 		}
 
-
-		public void Worker()
+		public bool WorkAction(@base.model.Action action)
 		{
-			foreach (var regionPair in @base.model.World.Instance.RegionManager.Regions)
+			if (action != null)
 			{
-				var action = regionPair.Value.GetAction ();
-				if (action != null)
+				var gotLocked = new HashSet<@base.model.Region> ();
+				try
 				{
-					if (action.Possible ())
+					var affectedRegions = action.GetAffectedRegions();
+					foreach (var region in affectedRegions)
 					{
-						if (action.Do ())
+						if (region.TryLockRegion())
 						{
-							regionPair.Value.ActionCompleted ();
+							gotLocked.Add(region);
 						}
 						else
 						{
-							action.Catch ();
+							break;
+						}
+					}
+
+
+					if (gotLocked.Count == affectedRegions.Count)
+					{
+						if (action.Possible())
+						{
+							var changedRegions = action.Do();
+							if (changedRegions.Count != 0)
+							{
+								foreach (var region in changedRegions)
+								{
+									region.AddCompletedAction(action);
+								}
+								return true;
+							}
+							else
+							{
+								action.Catch ();
+								return false;
+							}
 						}
 					}
 				}
+				catch
+				{
+					return false;
+				}
+				finally
+				{
+					foreach (var region in gotLocked)
+					{
+						region.Release ();
+					}
+				}
 			}
+			return false;
 		}
 
+
+		public void Worker()
+		{
+			@base.model.Action action;
+
+			//while (true)
+			//{
+				if (m_Actions.TryDequeue (out action))
+				{
+					if (!WorkAction (action))
+					{
+						m_Actions.Enqueue (action);
+					}
+				}
+			//}
+		}
+
+		ConcurrentQueue<@base.model.Action> m_Actions;
     }
 }
