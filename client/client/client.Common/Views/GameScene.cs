@@ -11,7 +11,6 @@ namespace client.Common.view
 			: base (_MainWindow)
 		{
 			m_region = new WorldLayer (Geolocation.GetInstance.CurrentRegionPosition);
-			//m_TopMiddleLayer = new RegionLayer (new @base.model.RegionPosition (166148, 104835));
 			this.AddChild (m_region);
 
 		}

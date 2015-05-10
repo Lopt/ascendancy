@@ -1,6 +1,7 @@
 ﻿using System;
 using CocosSharp;
 using @base.model;
+using client.Common.helper;
 
 namespace client.Common.Helper
 {
@@ -33,6 +34,13 @@ namespace client.Common.Helper
 			var x = tileMapCoordinates.Column;
 			var y = tileMapCoordinates.Row;
 			return new CellPosition ((x * 2) + (y % 2), y / 2);
+		}
+
+		public static CCPoint TilePosToMapPoint (CCTileMapCoordinates tileMapCoordinates)
+		{
+			float x = tileMapCoordinates.Column / 80.0f;
+			float y = tileMapCoordinates.Row / 320.0f;
+			return new CCPoint (x, y / 2.0f);
 		}
 	}
 }

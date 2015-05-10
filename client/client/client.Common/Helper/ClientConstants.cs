@@ -26,7 +26,9 @@ namespace client.Common.helper
 		public const string TILEMAP_FILE = "Worldmap-160x160(320x80)";
 		public const string LAYER_TERRAIN = "Layer 0";
 		public const string LAYEREN_TITIES = "Layer 1";
-		public const float TILE_IMAGE_Width = 83.0f;
+		public const float TILE_IMAGE_WIDTH = 83.0f;
+		public const int TILEMAP_WIDTH = 80;
+		public const int TILEMAP_HIGH = 320;
 
 		#endregion
 

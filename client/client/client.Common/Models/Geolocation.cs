@@ -47,7 +47,7 @@ namespace client.Common
 
 		public bool IsBusy{ get; private set; }
 
-		public bool IsPositionChanged{ get; private set; }
+		public bool IsPositionChanged{ get; set; }
 
 		public bool IsGeolocationAvailable{ get { return m_geolocator.IsGeolocationAvailable; } }
 

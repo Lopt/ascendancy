@@ -12,12 +12,6 @@ namespace client.Common.view
 			m_LogoLayer = new LogoLayer ();
 			this.AddChild (m_LogoLayer);
 
-			var touchListener = new CCEventListenerTouchAllAtOnce ();
-			touchListener.OnTouchesEnded = (touches, ccevent) => {
-				Window.DefaultDirector.ReplaceScene (new GameScene (Window));
-			};
-
-			this.AddEventListener (touchListener);
 		}
 
 		#region Properties

@@ -7,30 +7,29 @@ using client.Common.Models;
 using client.Common.helper;
 using @base.model;
 using client.Common.Helper;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace client.Common.Views
 {
 	public class WorldLayer : CCLayerColor
 	{
-		public WorldLayer (RegionPosition RegionPosition)
+		public WorldLayer (RegionPosition regionPosition)
 			: base ()
 		{
 			m_RegContr = Controller.Instance.RegionManagerController as RegionController;
-			m_MiddleRegionPosition = RegionPosition;
-			m_TopMiddleRegionPosition = new RegionPosition (m_MiddleRegionPosition.RegionX, m_MiddleRegionPosition.RegionY + 1);
-
-			m_RegContr.GetRegion (m_MiddleRegionPosition);
-			m_RegContr.GetRegion (m_TopMiddleRegionPosition);
+			m_CurrentRegionPosition = regionPosition;
 
 			m_WorldTileMap = new CCTileMap (ClientConstants.TILEMAP_FILE);
-
-			m_MapIsChanged = true;
 			m_Geolocation = Geolocation.GetInstance;
+
 			m_CurrentPosition = new DrawNode ();
+			m_WorldTileMap.TileLayersContainer.AddChild (m_CurrentPosition);
+
 			m_Terrainlayer = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_TERRAIN);
 
-			m_WorldTileMap.TileLayersContainer.AddChild (m_CurrentPosition);
+			SetRegionsOnce ();
+			SetCurrentPositionOnce ();
 
 			this.AddChild (m_WorldTileMap);
 
@@ -38,12 +37,13 @@ namespace client.Common.Views
 			this.Schedule (CheckGeolocation);
 			this.Schedule (SetCurrentPosition);
 
-			var MoveWorldListener = new CCEventListenerTouchAllAtOnce ();
-			MoveWorldListener.OnTouchesMoved = OnMoveWorld;
+			var TouchListener = new CCEventListenerTouchAllAtOnce ();
+			TouchListener.OnTouchesMoved = onTouchesMoved;
+			TouchListener.OnTouchesBegan = onTouchesBegan;
+			TouchListener.OnTouchesEnded = onTouchesEnded;
 
 
-			this.AddEventListener (MoveWorldListener);
-
+			this.AddEventListener (TouchListener);
 		}
 
 		#region overide
@@ -52,9 +52,12 @@ namespace client.Common.Views
 		{
 			base.AddedToScene ();
 
-			m_WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MaxX / 2;
-			m_WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MaxY / 2;
-			m_WorldTileMap.TileLayersContainer.AnchorPoint = new CCPoint (0.5f, 0.25f);
+			var TileCoordinate = m_RegContr.GetCurrentTileInMap (m_Geolocation.CurrentGamePosition);
+			m_WorldTileMap.TileLayersContainer.AnchorPoint = Modify.TilePosToMapPoint (TileCoordinate);
+			m_WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
+			m_WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
+			m_WorldTileMap.TileLayersContainer.Scale = 0.5f;
+			//m_WorldTileMap.TileLayersContainer.AnchorPoint = new CCPoint (0.5f, 0.25f);
 
 		}
 
@@ -62,12 +65,24 @@ namespace client.Common.Views
 
 		#region Listener
 
-		void OnMoveWorld (List<CCTouch> touches, CCEvent touchEvent)
+		void onTouchesMoved (List<CCTouch> touches, CCEvent touchEvent)
 		{
 			var touch = touches [0];
 			CCPoint diff = touch.Delta;
 			m_WorldTileMap.TileLayersContainer.Position += diff;
+
 		}
+
+		void onTouchesBegan (List<CCTouch> touches, CCEvent touchEvent)
+		{
+
+		}
+
+		void onTouchesEnded (List<CCTouch> touches, CCEvent touchEvent)
+		{
+
+		}
+
 
 		#endregion
 
@@ -75,12 +90,9 @@ namespace client.Common.Views
 
 		void SetRegions (float FrameTimesInSecond)
 		{
-			if (m_RegContr.GetRegion (m_MiddleRegionPosition).Exist && m_MapIsChanged) {
-				m_RegContr.SetTilesInMap (m_Terrainlayer, new CCTileMapCoordinates (64, 64), m_RegContr.GetRegion (m_MiddleRegionPosition));
-				m_RegContr.SetTilesInMap (m_Terrainlayer, new CCTileMapCoordinates (64, 32), m_RegContr.GetRegion (m_TopMiddleRegionPosition));
-				m_MapIsChanged = false;
+			if (m_MapIsChanged) {
+				SetRegionsOnce ();
 			}
-
 		}
 
 		void SetEntitys (float FrameTimesInSecond)
@@ -91,11 +103,8 @@ namespace client.Common.Views
 
 		void SetCurrentPosition (float FrameTimesInSecond)
 		{
-			if (m_Geolocation.IsPositionChanged && m_Geolocation.CurrentRegionPosition.Equals (m_MiddleRegionPosition)) {
-				var CellPos = m_Geolocation.CurrentCellPosition;
-				var TileCoordinate = Modify.MapCellPosToTilePos (CellPos.CellX + 64, CellPos.CellY + 64);
-				m_CurrentPosition.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_Width, m_Terrainlayer,
-					TileCoordinate, new CCColor4F (CCColor3B.Red), 255, 3.0f);
+			if (m_Geolocation.IsPositionChanged) {
+				SetCurrentPositionOnce ();
 			}
 
 		}
@@ -103,6 +112,26 @@ namespace client.Common.Views
 		void CheckGeolocation (float FrameTimesInSecond)
 		{
 			m_MapIsChanged = m_Geolocation.IsPositionChanged;
+			m_Geolocation.IsPositionChanged = false;
+		}
+
+		#endregion
+
+		#region
+
+		void SetRegionsOnce ()
+		{		
+			m_RegContr.SetTilesINMap160 (m_Terrainlayer, m_RegContr.GetRegion (m_CurrentRegionPosition));
+			m_MapIsChanged = false;
+		}
+
+		void SetCurrentPositionOnce ()
+		{
+			var TileCoordinate = m_RegContr.GetCurrentTileInMap (m_Geolocation.CurrentGamePosition);
+			m_CurrentPosition.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_WIDTH, m_Terrainlayer,
+				TileCoordinate, new CCColor4F (CCColor3B.Red), 255, 3.0f);
+
+			m_CurrentRegionPosition = m_Geolocation.CurrentRegionPosition;
 		}
 
 		#endregion
@@ -113,12 +142,13 @@ namespace client.Common.Views
 		CCTileMapLayer m_Terrainlayer;
 
 		RegionController m_RegContr;
-		RegionPosition m_MiddleRegionPosition;
-		RegionPosition m_TopMiddleRegionPosition;
+		RegionPosition m_CurrentRegionPosition;
 
 		bool m_MapIsChanged;
 		DrawNode m_CurrentPosition;
 		Geolocation m_Geolocation;
+
+		float m_Scale = 1.0f;
 
 		#endregion
 	}
