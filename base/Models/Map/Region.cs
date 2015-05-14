@@ -157,29 +157,57 @@ namespace @base.model
         */
         public DatedEntities GetEntities()
         {
-            return m_entities;
+            try
+            {
+                LockRegion();
+                return m_entities;
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                Release();
+            }
+
+            return null;
         }
 
         public DatedActions GetCompletedActions(DateTime startTime)
         {
-            var returnActions = new DatedActions();
-            var currentActions = m_actions;
-
-            var actionsCollection = new ObservableCollection<model.Action>();
-            foreach (var action in currentActions.Actions)
+            try
             {
-                if (action.ActionTime <= startTime)
+                LockRegion();
+                var returnActions = new DatedActions();
+                var currentActions = m_actions;
+
+                var actionsCollection = new ObservableCollection<model.Action>();
+                foreach (var action in currentActions.Actions)
                 {
-                    break;
+                    if (action.ActionTime <= startTime)
+                    {
+                        break;
+                    }
+                    actionsCollection.Add(action);
                 }
-                actionsCollection.Add(action);
+
+                returnActions.Actions = actionsCollection;
+                returnActions.DateTime = currentActions.DateTime;
+                returnActions.RegionPosition = RegionPosition;
+
+                return returnActions;
+            }
+            catch
+            {
+                
+            }
+            finally
+            {
+                Release();
             }
 
-            returnActions.Actions = actionsCollection;
-            returnActions.DateTime = currentActions.DateTime;
-            returnActions.RegionPosition = RegionPosition;
-
-            return returnActions;
+            return null;
         }
 
         /// <summary>
@@ -203,6 +231,11 @@ namespace @base.model
             return m_mutex.WaitOne(0);
         }
 
+        public bool LockRegion()
+        {
+            return m_mutex.WaitOne(-1);
+        }
+
         public void Release()
         {
             m_mutex.ReleaseMutex();
@@ -210,7 +243,14 @@ namespace @base.model
 
         public void AddCompletedAction(model.Action action)
         {
-            m_actions.Actions.Add(action);
+            var newDatedActions = new DatedActions();
+            var newActions = new ObservableCollection<Action>(m_actions.Actions);
+            newActions.Insert(0, action);
+
+            newDatedActions.DateTime = action.ActionTime;
+            newDatedActions.Actions = newActions;
+
+            m_actions = newDatedActions;
         }
 
         bool m_exist;

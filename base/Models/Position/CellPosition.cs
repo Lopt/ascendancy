@@ -18,6 +18,12 @@ namespace @base.model
             m_cellY = ((int) position.Y % Constants.REGION_SIZE_Y);
         }
 
+        public CellPosition(PositionI position)
+        {
+            m_cellX = (position.X % Constants.REGION_SIZE_X);
+            m_cellY = (position.Y % Constants.REGION_SIZE_Y);
+        }
+
         public CellPosition(JContainer obj)
         {
             m_cellX = (int) obj.SelectToken("CellX");

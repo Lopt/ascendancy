@@ -5,27 +5,27 @@ using @base.model;
 
 namespace @base.model
 {
-    public class CombinedPosition
+    public class CombinedPositionA
 	{
-        public CombinedPosition (Position position)
+        public CombinedPositionA (Position position)
         {
             m_regionPosition = new RegionPosition(position);
             m_cellPosition = new CellPosition(position);
         }
 
-        public CombinedPosition (RegionPosition regionPosition, CellPosition cellPosition)
+        public CombinedPositionA (RegionPosition regionPosition, CellPosition cellPosition)
 		{
             m_regionPosition = regionPosition;
             m_cellPosition = cellPosition;
 		}
 
-        public CombinedPosition (JContainer obj)
+        public CombinedPositionA (JContainer obj)
         {
             m_regionPosition = new RegionPosition((JContainer) obj.SelectToken("RegionPosition"));
             m_cellPosition = new CellPosition((JContainer) obj.SelectToken("CellPosition"));
         }
 
-        public CombinedPosition Add(int X, int Y)
+        public CombinedPositionA Add(int X, int Y)
         {
             var newCellX = m_cellPosition.CellX + X % Constants.REGION_SIZE_X;
             var newCellY = m_cellPosition.CellY + Y % Constants.REGION_SIZE_Y;
@@ -33,7 +33,7 @@ namespace @base.model
             var newRegionX = m_regionPosition.RegionX + X / Constants.REGION_SIZE_X;
             var newRegionY = m_regionPosition.RegionY + Y / Constants.REGION_SIZE_Y;
 
-            return new CombinedPosition(new RegionPosition(newRegionX, newRegionY),
+            return new CombinedPositionA(new RegionPosition(newRegionX, newRegionY),
                 new CellPosition(newCellX, newCellY));
         }
             
