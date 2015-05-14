@@ -175,19 +175,21 @@
       <Project>{92AF0C3C-1F4F-4070-B925-F587F0C8063F}</Project>
       <Name>client.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\base\base.csproj">
+      <Project>{163A206B-36D1-46D5-AA19-B515F7350C6E}</Project>
+      <Name>base</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Content\images\ld\monkey.png" />
     <BundleResource Include="Content\images\hd\monkey.png" />
     <BundleResource Include="Content\fonts\arial-22.xnb" />
-    <BundleResource Include="Content\tiles\terrain-small-sheet.png" />
-    <BundleResource Include="Content\tiles\tiletest.png" />
-    <BundleResource Include="Content\tiles\worldmap-32x32-iso-stag.xnb" />
-    <BundleResource Include="Content\tiles\Worldmap-32x32-smalltiles-iso.xnb" />
-    <BundleResource Include="Content\tiles\Worldmap-96x96-smalltiles-iso.xnb" />
-    <BundleResource Include="Content\tiles\Worldmap-160x160-smalltiles-iso.xnb" />
-    <BundleResource Include="Content\tiles\Worldmap-64x16-smalltiles-iso.xnb" />
+    <BundleResource Include="Content\tiles\Spritesheet_with_space.png" />
+    <BundleResource Include="Content\tiles\Worldmap-32x32%2864x16%29.xnb" />
+    <BundleResource Include="Content\tiles\Worldmap-96x96%28192x48%29.xnb" />
+    <BundleResource Include="Content\tiles\Worldmap-160x160%28320x80%29.xnb" />
+    <BundleResource Include="Content\images\Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\animations\" />

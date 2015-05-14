@@ -7,6 +7,7 @@ using client.Common.Controllers;
 using @base.model;
 using @base.control;
 using client.Common.controller;
+using client.Common.view;
 
 
 
@@ -23,6 +24,7 @@ namespace client.Common
 			application.ContentSearchPaths.Add (ClientConstants.FONTS);
 			application.ContentSearchPaths.Add (ClientConstants.SOUNDS);
 			application.ContentSearchPaths.Add (ClientConstants.TILES);
+			application.ContentSearchPaths.Add (ClientConstants.IMAGES);
 
 			CCSize windowSize = mainWindow.WindowSizeInPixels;
 
@@ -34,6 +36,7 @@ namespace client.Common
 			var controller = Controller.Instance;
 			controller.TerrainManagerController = new TerrainController ();
 			controller.RegionManagerController = new RegionController ();
+
             
 			// This will set the world bounds to be (0,0, w, h)
 			// CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
@@ -55,10 +58,10 @@ namespace client.Common
 //            Gamescene.AddChild(gameLayer);
          
 //            CCScene MyGeolocationScene = new GeolocationScene(mainWindow);
-			CCScene MyDeviceScene = new DeviceScene (mainWindow);
+			//CCScene MyDeviceScene = new DeviceScene (mainWindow);
 			//CCScene MyTouchTestScene = new TouchTestScene(mainWindow);
-
-			mainWindow.RunWithScene (MyDeviceScene);
+			StartScene startScene = new StartScene (mainWindow);
+			mainWindow.RunWithScene (startScene);
 		}
 
 		public override void ApplicationDidEnterBackground (CCApplication application)

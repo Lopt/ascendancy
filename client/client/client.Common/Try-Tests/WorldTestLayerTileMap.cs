@@ -31,7 +31,7 @@ namespace client.Common.TryTests
 			m_regionPosition = regionPosition;
 			Watch = new Stopwatch ();
 			//CCTile tile = new CCTile ();
-			TileMap = new CCTileMap ("Worldmap-64x16-smalltiles-iso");
+			TileMap = new CCTileMap ("Worldmap-32x32(64x16)");
 			//var info = new CCTileMapInfo ();
 			AddChild (TileMap);
 
@@ -78,7 +78,7 @@ namespace client.Common.TryTests
 		void SetMap (float FrameTimesInSecond)
 		{
 			if (regionController.GetRegion (m_regionPosition).Exist && MapIsChanged) {
-				regionController.SetTilesInMap (TileMap.LayerNamed ("Layer 0"), new CCTileMapCoordinates (0, 0), regionController.GetRegion (m_regionPosition));
+				regionController.SetTilesInMap32 (TileMap.LayerNamed ("Layer 0"), new CCTileMapCoordinates (0, 0), regionController.GetRegion (m_regionPosition));
 				MapIsChanged = false;
 			}
 				
