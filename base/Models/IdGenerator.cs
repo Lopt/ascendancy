@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Threading;
 
-namespace @base
+namespace @base.model
 {
     public class IdGenerator
     {
-        static int currentId;
+        static int m_currentId;
         static public int GetId()
         {
-            return Interlocked.Increment(ref currentId);
+            return Interlocked.Increment(ref m_currentId);
         }
     }
 }
