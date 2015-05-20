@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
 using SQLite;
+using System.Threading;
 
 namespace server.control
 {
@@ -54,7 +55,7 @@ namespace server.control
 
 				m_Actions.Enqueue(action);
 
-				Worker ();
+				ThreadPool.QueueUserWorkItem (new WaitCallback (Worker));
 			}
 		}
 
@@ -159,22 +160,25 @@ namespace server.control
 		}
 
 
-		public void Worker()
+		public void Worker(object state)
 		{
 			@base.model.Action action;
 
-			//while (true)
-			//{
+			while (!m_Actions.IsEmpty)
+			{
 				if (m_Actions.TryDequeue (out action))
 				{
+					action.ActionTime = DateTime.Now;
 					if (!WorkAction (action))
 					{
 						m_Actions.Enqueue (action);
 					}
 				}
-			//}
+				System.Threading.Thread.Sleep(10); 
+			}
 		}
 
 		ConcurrentQueue<@base.model.Action> m_Actions;
+
     }
 }

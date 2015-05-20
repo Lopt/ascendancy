@@ -8,21 +8,22 @@ import os.path
 import json
 import sys
 import threading
+import random
 
 import Image
 
 
-def get_file_path(lat_nr, lon_nr, ending, special=""):
+def get_file_path(lat_nr, lon_nr, ending, special="", folder="World"):
     folder_multiplier = 16
     
     if special:
         special = "-" + special
-    if not os.path.exists("World/%s" % (str(lat_nr / folder_multiplier ),)):
-        os.system("mkdir World/%s" % (str(lat_nr / folder_multiplier ),))
-    if not os.path.exists("World/%s/%s" % (str(lat_nr / folder_multiplier ), str(lon_nr / folder_multiplier ),)):
-        os.system("mkdir World/%s/%s" % (str(lat_nr / folder_multiplier ), str(lon_nr / folder_multiplier ),))
+    if not os.path.exists("%s/%s" % (folder, str(lat_nr / folder_multiplier ),)):
+        os.system("mkdir %s/%s" % (folder, str(lat_nr / folder_multiplier ),))
+    if not os.path.exists("%s/%s/%s" % (folder, str(lat_nr / folder_multiplier ), str(lon_nr / folder_multiplier ),)):
+        os.system("mkdir %s/%s/%s" % (folder, str(lat_nr / folder_multiplier ), str(lon_nr / folder_multiplier ),))
 
-    return "World/%s/%s/germany-%s-%s%s.%s" % (str(lat_nr / folder_multiplier ), str(lon_nr / folder_multiplier ), lat_nr, lon_nr, special, ending)
+    return "%s/%s/%s/germany-%s-%s%s.%s" % (folder, str(lat_nr / folder_multiplier ), str(lon_nr / folder_multiplier ), lat_nr, lon_nr, special, ending)
 
 
 
@@ -32,7 +33,7 @@ def as_position(lat, lon):
     y = float((1.0 - math.log(math.tan(float(lat) * math.pi / 180.0) + \
     1.0 / math.cos(lat * math.pi / 180.0)) / math.pi) / 2.0 * (zoom))
 
-    return x, y;
+    return x, y
 
 def as_lat_lon (x, y):
     zoom = 40075036.0 / cell_pixel
@@ -46,7 +47,7 @@ def as_lat_lon (x, y):
 def as_region_position(x, y):
     return int(x / region_size) * region_size, int(y / region_size) * region_size
     
-
+ 
 
 class Vector3:
     def __init__(self, x, y, z = 0):
@@ -78,8 +79,10 @@ Vector = Vector3
 
 def crop_osm(lat, lon, lat_end, lon_end, lat_nr, lon_nr):
     path = get_file_path(lat_nr, lon_nr, "osm")
+    if os.path.exists(path): return
+
     
-    command = "osmosis --read-xml file=germany-part-website.osm --bounding-box \
+    command = "osmosis --read-xml file=germany-part.osm --bounding-box \
  top=%s bottom=%s left=%s right=%s  completeRelations=no completeWays=no \
  cascadingRelations=yes clipIncompleteEntities=false \
  --buffer bufferCapacity=12000 --write-xml file=%s" % (lat, lat_end, lon, lon_end, path)
@@ -88,6 +91,8 @@ def crop_osm(lat, lon, lat_end, lon_end, lat_nr, lon_nr):
     os.system(command)
 
 def convert_osm_to_svg(lat_nr, lon_nr):
+    path = get_file_path(lat_nr, lon_nr, "svg")
+    if os.path.exists(path): return
     path = get_file_path(lat_nr, lon_nr, "osm")
     
     command = "./osmarender -r stylesheets/stylesheet_9.xml %s" % (path,)
@@ -97,6 +102,8 @@ def convert_osm_to_svg(lat_nr, lon_nr):
 def convert_svg_to_png(lat_nr, lon_nr):
     path_png = get_file_path(lat_nr, lon_nr, "png")
     path_svg = get_file_path(lat_nr, lon_nr, "svg")
+    if os.path.exists(path_png): return
+
 
     command = "rsvg-convert --width=%s --height=%s --format=png --output  %s  %s" % (str((region_pixel + border_pixel)), str((region_pixel + border_pixel)), path_png, path_svg)
     print "Command: ", command
@@ -105,15 +112,15 @@ def convert_svg_to_png(lat_nr, lon_nr):
 
 
 def convert_png_to_json(lat_nr, lon_nr):
-    path_png  = get_file_path(lat_nr, lon_nr, "png")
-    path_json = get_file_path(lat_nr, lon_nr, "json")
+    path_json = get_file_path(lat_nr, lon_nr, "json", folder="json")
+    if os.path.exists(path_json): return
 
+    path_png  = get_file_path(lat_nr, lon_nr, "png")    
     img = Image.open(path_png)
+        
+    terrain = [] 
     
-    #if os.path.isfile(path_json): return
-    
-    terrain = []
-    for x in range(0, img.size[0], int(cell_pixel * 0.75)): #cell_pixel
+    for x in range(0, img.size[0], int(cell_pixel)): #cell_pixel  * 0.75
         terrain_row = []
         for y in range(0, img.size[1], cell_pixel):            
             possible_terrains = []
@@ -155,7 +162,6 @@ def convert_png_to_json(lat_nr, lon_nr):
             terrain_id = terrain_types[choosen][0]
             terrain_row.append(terrain_id)
         terrain.append(terrain_row)
-    
     infos = terrain
 #             "Number": (lat_nr, lon_nr),
 #             "LatLon": (lat, lon),
@@ -165,15 +171,18 @@ def convert_png_to_json(lat_nr, lon_nr):
     
     with open(path_json, "wb+") as handle:
         handle.write(json.dumps(infos))
-    print path_json 
     
 def crop_png(lat_nr, lon_nr):
     path = get_file_path(lat_nr, lon_nr, "png")
-    image = Image.open("%s" % (path,))
-
+    try:
+        image = Image.open("%s" % (path,))
+    except:
+        print "FEHLER:", lat_nr, lon_nr
+        return
     new_image = image.crop((border_pixel / 2, border_pixel / 2, image.size[0] - border_pixel / 2, image.size[1] - border_pixel / 2))
     path = get_file_path(lat_nr, lon_nr, "png", "cutted")
     new_image.save("%s" % path)
+    return True
     
 def cut_pngs_into_tiles(lat_nr, lon_nr):
     path = get_file_path(lat_nr, lon_nr, "png", "cutted")
@@ -184,8 +193,8 @@ def cut_pngs_into_tiles(lat_nr, lon_nr):
     tiles_latlon = []
     for x in range(max_x):
         for y in range(max_y):
-            new_lat_nr = (lat_nr * region_size / real_region_pixel) + x
-            new_lon_nr = (lon_nr  * region_size / real_region_pixel) + y
+            new_lat_nr = (lat_nr / real_region_size) + x
+            new_lon_nr = (lon_nr / real_region_size) + y
             tiles_latlon.append((new_lat_nr, new_lon_nr))
             path = get_file_path(new_lat_nr, new_lon_nr, "png")
             if os.path.isfile(path): continue
@@ -195,12 +204,14 @@ def cut_pngs_into_tiles(lat_nr, lon_nr):
 #    new_image = image.crop((border_pixel / 2, border_pixel / 2, region_pixel + border_pixel / 2, region_pixel + border_pixel / 2))
 
 def convert_json_to_image(lat_nr, lon_nr):    
-    path_json = get_file_path(lat_nr, lon_nr, "json")
-    path_png = get_file_path(lat_nr, lon_nr, "png", "Img")
+
+    path_png  = get_file_path(lat_nr, lon_nr, "png", folder="png")
+    path_json = get_file_path(lat_nr, lon_nr, "json", folder="json")
+    
     with open(path_json, "rb+") as handler:
         terrains = json.load(handler)
 
-    if os.path.isfile(path_png): return
+    #if os.path.isfile(path_png): return
     tilesize_x = 72  * 0.75
     tilesize_y = 72
     
@@ -223,13 +234,16 @@ def convert_json_to_image(lat_nr, lon_nr):
     
 
 def worker(regions):
+    regions.reverse()
+    #random.shuffle(regions)
     while len(regions):
         lat, lon, lat_end, lon_end, lat_nr, lon_nr = regions.pop()
-        #if not os.path.isfile("/%s/%s/germany-%s-%s.osm" % (str(lat_nr / 16), str(lon_nr / 16), lat_nr, lon_nr)):
-        #crop_osm(lat, lon, lat_end, lon_end, lat_nr, lon_nr)   
-        #convert_osm_to_svg(lat_nr, lon_nr)
-        #convert_svg_to_png(lat_nr, lon_nr)
-        #crop_png(lat_nr, lon_nr)
+        
+        crop_osm(lat, lon, lat_end, lon_end, lat_nr, lon_nr)   
+        convert_osm_to_svg(lat_nr, lon_nr)
+        print "len", len(regions)
+        convert_svg_to_png(lat_nr, lon_nr)
+        crop_png(lat_nr, lon_nr)
         new_latlon_nrs = cut_pngs_into_tiles(lat_nr, lon_nr)
         for new_lat_nr, new_lon_nr in new_latlon_nrs:
             convert_png_to_json(new_lat_nr, new_lon_nr)
@@ -257,13 +271,13 @@ for number in terrain_types:
     terrain_types[number].append(Image.open("images/%s" % imagename)) 
 
 
-thread_count = 3
+thread_count = 4
 
-start_lat = 51.05
-start_lon = 10.9        
+start_lat = 51.45
+start_lon = 10.55        
 
-end_lat = 50.95
-end_lon = 11.1
+end_lat = 50.55
+end_lon = 11.45
 
 cell_pixel = 4 # meters
 region_size = 512 # cells per regions
@@ -287,28 +301,37 @@ neighbours = [Vector(0, 0), Vector(0, 1), Vector(1, 0),  Vector(-1, 0), Vector(0
 
 regions = []
 
-for y in xrange(start_y, end_y, region_size):
-    for x in xrange(start_x, end_x, region_size):
-        x1 = x - border_size / 2
-        y1 = y - border_size / 2
-        x2 = x + border_size / 2
-        y2 = y + border_size / 2
-        
-        
-        region_start_lat, region_start_lon = as_lat_lon(x1, y1)
-        region_end_lat, region_end_lon = as_lat_lon(x2 + region_size, y2 + region_size)
-        #regions.append((region_start_lat, region_start_lon, region_end_lat, region_end_lon, int(x / region_size), int(y / region_size)))
 
-threads = []
+def main():
+    for y in xrange(start_y, end_y, region_size):
+        for x in xrange(start_x, end_x, region_size):
+            x1 = x - border_size / 2
+            y1 = y - border_size / 2
+            x2 = x + border_size / 2
+            y2 = y + border_size / 2
+            
+            
+            region_start_lat, region_start_lon = as_lat_lon(x1, y1)
+            region_end_lat, region_end_lon = as_lat_lon(x2 + region_size, y2 + region_size)
+            regions.append((region_start_lat, region_start_lon, region_end_lat, region_end_lon, x, y))
+    threads = []
+    
+    for thread_nr in range(thread_count):
+        t = threading.Thread(target=worker, args=(regions, ))
+        t.start()
+        threads.append(t)
+    
+    # wait for the threads to finish
+    for thread in threads:
+        thread.join()
 
-for thread_nr in range(thread_count):
-    t = threading.Thread(target=worker, args=(regions, ))
-    t.start()
-    threads.append(t)
 
-# wait for the threads to finish
-for thread in threads:
-    thread.join()
+pos = as_position(50.9849, 11.0442)
+#lat_lon = as_lat_lon(5316738.328188333, 3354722.9170058006)
+print pos
+print int(pos[0] / real_region_size), int(pos[1] / real_region_size)
+print int(pos[0] % real_region_size), int(pos[1] % real_region_size)
+main()
 
 #convert_png_to_json(41535, 26184)
 #convert_json_to_image(41535, 26184)

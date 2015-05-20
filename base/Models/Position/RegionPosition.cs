@@ -20,6 +20,13 @@ namespace @base.model
             m_regionY = (int)(position.Y / Constants.REGION_SIZE_Y);
         }
 
+        public RegionPosition(PositionI position)
+        {
+            m_regionX = (int)(position.X / Constants.REGION_SIZE_X);
+            m_regionY = (int)(position.Y / Constants.REGION_SIZE_Y);
+        }
+
+
         public RegionPosition(JContainer obj)
         {
             m_regionX = (int) obj.SelectToken("RegionX");

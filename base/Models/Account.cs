@@ -10,14 +10,14 @@ namespace @base.model
         {
             m_guid = guid;
             m_username = "???";
-            m_headquarters = new ObservableCollection<CombinedPosition>();
+            m_headquarters = new ObservableCollection<PositionI>();
         }
 
         public Account (Guid guid, string userName)
         {
             m_guid = guid;
             m_username = userName;
-            m_headquarters = new ObservableCollection<CombinedPosition>();
+            m_headquarters = new ObservableCollection<PositionI>();
         }
 
 		public Guid GUID
@@ -31,14 +31,14 @@ namespace @base.model
 			get { return this.m_username; }
         }
 
-        public ObservableCollection<CombinedPosition> Headquarters
+        public ObservableCollection<PositionI> Headquarters
         {
             get { return m_headquarters; }
         }
 
 		private Guid m_guid;
 		private string m_username;
-        private ObservableCollection<CombinedPosition> m_headquarters;
+        private ObservableCollection<PositionI> m_headquarters;
 
 	}
 }

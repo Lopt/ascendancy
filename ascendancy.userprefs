@@ -1,44 +1,15 @@
-<<<<<<< HEAD
-﻿<Properties StartupItem="client/client/client.Android/client.Droid.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/Try-Tests/WorldTestLayerTileMap.cs">
-    <Files>
-      <File FileName="client/client/client.Common/Try-Tests/WorldTestLayerTileMap.cs" Line="24" Column="64" />
-      <File FileName="client/client/client.Common/Try-Tests/DeviceScene.cs" Line="26" Column="6" />
-      <File FileName="base/Controllers/RegionManagerController.cs" Line="1" Column="1" />
-      <File FileName="base/Models/Constants.cs" Line="1" Column="1" />
-      <File FileName="client/client/client.Common/Controllers/TerrainController.cs" Line="1" Column="1" />
-      <File FileName="client/client/client.Common/GameAppDelegate.cs" Line="32" Column="73" />
-      <File FileName="client/client/client.Common/Controllers/NetworkController.cs" Line="1" Column="1" />
-      <File FileName="client/client/client.Common/Models/Geolocation.cs" Line="1" Column="1" />
-      <File FileName="client/client/client.iOS/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="client/client/client.Common/Helper/ClientConstants.cs" Line="1" Column="1" />
-      <File FileName="../../../CocosSharp-master/src/tileMap_parallax_nodes/CCTileMap.cs" Line="83" Column="9" />
-      <File FileName="../../../CocosSharp-master/src/tileMap_parallax_nodes/CCTileMapLayer.cs" Line="26" Column="53" />
-      <File FileName="../../../CocosSharp-master/src/tileMap_parallax_nodes/CCTileMapInfo.cs" Line="1" Column="1" />
-=======
 ﻿<Properties StartupItem="server/server.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="firefox" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="server/Global.asax.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Ad-Hoc|iPhone" PreferredExecutionTarget="firefox" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="base/Controllers/action/CreateHeadquarter.cs">
     <Files>
-      <File FileName="server/Global.asax.cs" Line="15" Column="15" />
-      <File FileName="server/Global.asax" Line="1" Column="1" />
-      <File FileName="server/Controllers/LoginController.cs" Line="25" Column="25" />
->>>>>>> 01ba209b8a99d3f0b101d068c06e9f1bf8c9b664
+      <File FileName="base/Models/Map/Region.cs" Line="1" Column="1" />
+      <File FileName="base/Controllers/action/MoveEntity.cs" Line="1" Column="1" />
+      <File FileName="base/Controllers/action/CreateHeadquarter.cs" Line="6" Column="1" />
+      <File FileName="base/Controllers/action/Action.cs" Line="18" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
-    <Watch file="base/Controllers/action/CreateHeadquarter.cs" line="63" offsetX="392" offsetY="1116" expression="region" liveUpdate="False" />
-    <Watch file="base/Controllers/action/CreateHeadquarter.cs" line="66" offsetX="352" offsetY="1170" expression="this.Regions" liveUpdate="False" />
-    <Watch file="server/Controllers/RegionManagerController.cs" line="36" offsetX="272" offsetY="630" expression="region" liveUpdate="False" />
-    <Watch file="base/Controllers/action/CreateHeadquarter.cs" line="68" offsetX="360" offsetY="1206" expression="region" liveUpdate="False" />
-  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
-  <DisabledProjects>
-    <String>client/client/client.iOS/client.iOS.csproj</String>
-    <String>client/client/client.Common/client.Common.csproj</String>
-    <String>client/client/client.Android/client.Droid.csproj</String>
-  </DisabledProjects>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

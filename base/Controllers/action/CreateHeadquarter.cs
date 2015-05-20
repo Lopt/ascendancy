@@ -25,8 +25,8 @@ namespace @base.control.action
         override public ConcurrentBag<model.Region> GetAffectedRegions()
         {
             var action = (model.Action)Model;
-            var combinedPos = new model.CombinedPosition((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
-            return new ConcurrentBag<model.Region>() { Controller.Instance.RegionManagerController.GetRegion(combinedPos.RegionPosition) }; 
+            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
+            return new ConcurrentBag<model.Region>() { Controller.Instance.RegionManagerController.GetRegion(positionI.RegionPosition) }; 
         }
 
         /// <summary>
@@ -66,18 +66,18 @@ namespace @base.control.action
             var action = (model.Action)Model;
 
             var regionManagerC = Controller.Instance.RegionManagerController;
-            var combinedPos = new model.CombinedPosition((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
-            var region = regionManagerC.GetRegion(combinedPos.RegionPosition);
+            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
+            var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
-            var entity = new @base.model.Entity(Guid.NewGuid(), 
+            var entity = new @base.model.Entity(IdGenerator.GetId(), 
                 new UnitDefinition(Guid.NewGuid(),
                     model.definitions.UnitDefinition.DefinitionType.building,
                     UnitDefinition.UnitDefinitionType.Hero,
                     new Action[0], 
                     0, 0, 0, 0),
-                combinedPos);
+                positionI);
 
-            entity.Position = combinedPos;
+            entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);
 
             return new ConcurrentBag<model.Region>() { region };

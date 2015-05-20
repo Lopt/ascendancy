@@ -81,7 +81,6 @@ namespace server.Controllers
 			{
 				api.DoAction (account, doActionRequest.Actions);
 				response.Status = @base.connection.Response.ReponseStatus.OK;
-				api.Worker ();
 			}
 
 			return JsonConvert.SerializeObject (response);

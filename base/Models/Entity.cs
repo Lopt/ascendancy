@@ -2,37 +2,39 @@
 
 using @base.model;
 using @base.model.definitions;
+using Newtonsoft.Json;
 
 namespace @base.model
 {
     public class Entity : ModelEntity
 	{
-        public Entity (Guid guid, Definition defintion, CombinedPosition position)
+        public Entity (int id, Definition defintion, PositionI position)
             : base()
 		{
-            m_guid = guid; 
+            m_id = id; 
             m_definition = defintion;
             m_position = position;
 		}
             
-        public Guid GUID
+        public int ID
         {
-            get { return m_guid; }
+            get { return m_id; }
         }
 
+        [JsonIgnore]
         public Definition Definition
         {
             get { return m_definition; }
         }
 
-        public CombinedPosition Position
+        public PositionI Position
         {
             get { return m_position; }
             set { m_position = value; }
         }
 
-        private Guid m_guid;
-        private CombinedPosition m_position;
+        private int m_id;
+        private PositionI m_position;
         private Definition m_definition;
 	}
 }
