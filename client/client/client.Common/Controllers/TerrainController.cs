@@ -27,7 +27,6 @@ namespace client.Common.controller
 		public async Task LoadTerrainDefinitionsAsync ()
 		{
 			// startet prüfen
-			GameAppDelegate.m_Loading = GameAppDelegate.Loading.TerrainTypeLoading;
 			await _network.LoadTerrainTypesAsync (ClientConstants.TERRAIN_TYPES_SERVER_PATH);
 			var json = _network.JsonTerrainTypeString;
 			var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>> (json);
@@ -36,7 +35,6 @@ namespace client.Common.controller
 				TerrainManager.AddTerrainDefinition (terrain);
 				TerrainDefinitionCount++;
 			}
-			GameAppDelegate.m_Loading = GameAppDelegate.Loading.TerrainTypeLoaded;
 		}
 
 		public CCTileGidAndFlags TerrainDefToTileGid (TerrainDefinition terraindefinition)

@@ -7,6 +7,7 @@ using client.Common.controller;
 using CocosSharp;
 using @base.model.definitions;
 using client.Common.Helper;
+using client.Common.Models;
 
 namespace client.Common.Controllers
 {
@@ -104,7 +105,8 @@ namespace client.Common.Controllers
 			for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
 				for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
 					var NewCellPosition = new CellPosition (x, y);
-					SetTileInMap (mapLayer, NewCellPosition, Modify.MapCellPosToTilePos ((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y)), region);		
+					var MapCellPosition = new MapCellPosition ((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y));
+					SetTileInMap (mapLayer, NewCellPosition, MapCellPosition.GetTileMapCoordinates (), region);		
 				}
 			}
 		}
@@ -151,7 +153,8 @@ namespace client.Common.Controllers
 				OffsetY = 0;
 			}
 
-			return Modify.MapCellPosToTilePos (MapCellX, MapCellY);
+			var MapCellPosition = new MapCellPosition (MapCellX, MapCellY);
+			return MapCellPosition.GetTileMapCoordinates ();
 		}
 
 		#endregion

@@ -50,13 +50,19 @@ namespace client.Common.Views
 			base.AddedToScene ();
 
 			var TileCoordinate = m_RegContr.GetCurrentTileInMap (m_Geolocation.CurrentGamePosition);
-			var mapcell = Modify.TilePosToMapCellPos (TileCoordinate);
-			var anchor = Modify.TilePosToMapPoint (TileCoordinate);
+			var MapCellPosition = new MapCellPosition (TileCoordinate);
+			var anchor = MapCellPosition.GetMapPoint ();
+//			m_WorldTileMap.PositionX = 0;
+//			m_WorldTileMap.PositionY = 0;
+
+//			var point = new CCPoint3 (anchor.X * m_WorldTileMap.TileLayersContainer.ContentSize.Width + VisibleBoundsWorldspace.MidX, anchor.Y * m_WorldTileMap.TileLayersContainer.ContentSize.Height + VisibleBoundsWorldspace.MidY, Camera.CenterInWorldspace.Z);
+//			this.Camera.TargetInWorldspace = point;
+
 			m_WorldTileMap.TileLayersContainer.AnchorPoint = anchor;
 			m_WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
 			m_WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
-			m_WorldTileMap.TileLayersContainer.Scale = 0.125f;
-			m_WorldTileMap.TileLayersContainer.AnchorPoint = new CCPoint (0.5f, 0.25f);
+			m_WorldTileMap.TileLayersContainer.Scale = 0.5f;
+			//m_WorldTileMap.TileLayersContainer.AnchorPoint = new CCPoint (0.5f, 0.25f);
 
 		}
 
