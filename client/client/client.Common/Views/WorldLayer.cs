@@ -8,6 +8,7 @@ using client.Common.helper;
 using @base.model;
 using client.Common.Helper;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.Xna.Framework;
 
 
 namespace client.Common.Views
@@ -18,7 +19,6 @@ namespace client.Common.Views
 			: base ()
 		{
 			m_RegContr = Controller.Instance.RegionManagerController as RegionController;
-			m_CurrentRegionPosition = regionPosition;
 
 			m_WorldTileMap = new CCTileMap (ClientConstants.TILEMAP_FILE);
 			m_Geolocation = Geolocation.GetInstance;
@@ -28,14 +28,13 @@ namespace client.Common.Views
 
 			m_Terrainlayer = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_TERRAIN);
 
-			SetRegionsOnce ();
-			SetCurrentPositionOnce ();
+			SetRegionsOnce (m_Geolocation.CurrentRegionPosition);
+			SetCurrentPositionOnce (m_Geolocation.CurrentGamePosition);
 
 			this.AddChild (m_WorldTileMap);
 
-			this.Schedule (SetRegions);
 			this.Schedule (CheckGeolocation);
-			this.Schedule (SetCurrentPosition);
+
 
 			var TouchListener = new CCEventListenerTouchAllAtOnce ();
 			TouchListener.OnTouchesMoved = onTouchesMoved;
@@ -53,11 +52,13 @@ namespace client.Common.Views
 			base.AddedToScene ();
 
 			var TileCoordinate = m_RegContr.GetCurrentTileInMap (m_Geolocation.CurrentGamePosition);
-			m_WorldTileMap.TileLayersContainer.AnchorPoint = Modify.TilePosToMapPoint (TileCoordinate);
+			var mapcell = Modify.TilePosToMapCellPos (TileCoordinate);
+			var anchor = Modify.TilePosToMapPoint (TileCoordinate);
+			m_WorldTileMap.TileLayersContainer.AnchorPoint = anchor;
 			m_WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
 			m_WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
-			m_WorldTileMap.TileLayersContainer.Scale = 0.5f;
-			//m_WorldTileMap.TileLayersContainer.AnchorPoint = new CCPoint (0.5f, 0.25f);
+			m_WorldTileMap.TileLayersContainer.Scale = 0.125f;
+			m_WorldTileMap.TileLayersContainer.AnchorPoint = new CCPoint (0.5f, 0.25f);
 
 		}
 
@@ -88,50 +89,41 @@ namespace client.Common.Views
 
 		#region Scheduling
 
-		void SetRegions (float FrameTimesInSecond)
-		{
-			if (m_MapIsChanged) {
-				SetRegionsOnce ();
-			}
-		}
-
 		void SetEntitys (float FrameTimesInSecond)
 		{
 			//TODO 
 			throw new NotImplementedException ();
 		}
 
-		void SetCurrentPosition (float FrameTimesInSecond)
-		{
-			if (m_Geolocation.IsPositionChanged) {
-				SetCurrentPositionOnce ();
-			}
-
-		}
 
 		void CheckGeolocation (float FrameTimesInSecond)
 		{
-			m_MapIsChanged = m_Geolocation.IsPositionChanged;
-			m_Geolocation.IsPositionChanged = false;
+			if (m_Geolocation.IsPositionChanged) {
+				SetRegionsOnce (m_Geolocation.CurrentRegionPosition);
+				SetCurrentPositionOnce (m_Geolocation.CurrentGamePosition);
+				counter++;
+			}
+//			if (GameAppDelegate.m_Loading >= GameAppDelegate.Loading.RegionLoaded) {
+//				m_Geolocation.IsPositionChanged = false;
+//			}
+
 		}
 
 		#endregion
 
 		#region
 
-		void SetRegionsOnce ()
+		void SetRegionsOnce (RegionPosition regionPosition)
 		{		
-			m_RegContr.SetTilesINMap160 (m_Terrainlayer, m_RegContr.GetRegion (m_CurrentRegionPosition));
-			m_MapIsChanged = false;
+			m_RegContr.LoadRegions (regionPosition);
+			m_RegContr.SetTilesINMap160 (m_Terrainlayer, m_RegContr.GetRegion (regionPosition));
 		}
 
-		void SetCurrentPositionOnce ()
+		void SetCurrentPositionOnce (Position position)
 		{
-			var TileCoordinate = m_RegContr.GetCurrentTileInMap (m_Geolocation.CurrentGamePosition);
+			var TileCoordinate = m_RegContr.GetCurrentTileInMap (position);
 			m_CurrentPosition.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_WIDTH, m_Terrainlayer,
 				TileCoordinate, new CCColor4F (CCColor3B.Red), 255, 3.0f);
-
-			m_CurrentRegionPosition = m_Geolocation.CurrentRegionPosition;
 		}
 
 		#endregion
@@ -142,13 +134,12 @@ namespace client.Common.Views
 		CCTileMapLayer m_Terrainlayer;
 
 		RegionController m_RegContr;
-		RegionPosition m_CurrentRegionPosition;
 
-		bool m_MapIsChanged;
 		DrawNode m_CurrentPosition;
 		Geolocation m_Geolocation;
 
 		float m_Scale = 1.0f;
+		int counter = 0;
 
 		#endregion
 	}

@@ -16,6 +16,20 @@ namespace client.Common
 {
 	public class GameAppDelegate : CCApplicationDelegate
 	{
+		public enum Loading
+		{
+			Started,
+			TerrainTypeLoading,
+			TerrainTypeLoaded,
+			RegionLoading,
+			RegionLoaded,
+			EntitiesLoading,
+			EntitiesLoaded,
+			Done,
+		}
+
+		public static Loading m_Loading = Loading.Started;
+
 		public override void ApplicationDidFinishLaunching (CCApplication application, CCWindow mainWindow)
 		{
 			application.PreferMultiSampling = false;
@@ -37,7 +51,9 @@ namespace client.Common
 			controller.TerrainManagerController = new TerrainController ();
 			controller.RegionManagerController = new RegionController ();
 
-            
+			var terrainController = Controller.Instance.TerrainManagerController as TerrainController;
+			terrainController.LoadTerrainDefinitionsAsync ();
+
 			// This will set the world bounds to be (0,0, w, h)
 			// CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
 			CCScene.SetDefaultDesignResolution (windowSize.Width, windowSize.Height, CCSceneResolutionPolicy.ShowAll);
@@ -72,7 +88,7 @@ namespace client.Common
 
 		public override void ApplicationWillEnterForeground (CCApplication application)
 		{
-			Geolocation.GetInstance.StartListening (10000, 4);
+			Geolocation.GetInstance.StartListening (1000, 4);
 			application.Paused = false;
 		}
 	}
