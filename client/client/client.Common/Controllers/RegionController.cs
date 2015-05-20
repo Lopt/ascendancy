@@ -35,27 +35,16 @@ namespace client.Common.Controllers
 			return GetRegion (regionPosition);
 		}
 
-		public void LoadRegions (RegionPosition regionPosition)
-		{
-			var WorldRegions = GetWorldNearRegionPositions (regionPosition);
-
-			foreach (var RegionPosition in WorldRegions) {
-				GetRegion (RegionPosition);
-			}
-			GameAppDelegate.m_Loading = GameAppDelegate.Loading.RegionLoaded;
-		}
-
 		public override Region GetRegion (RegionPosition regionPosition)
 		{
 			var region = RegionManager.GetRegion (regionPosition);
 			if (!region.Exist) {
-				GameAppDelegate.m_Loading = GameAppDelegate.Loading.RegionLoading;
 				LoadRegionAsync (region);
 			}
-
-			GameAppDelegate.m_Loading = GameAppDelegate.Loading.RegionLoaded;
-			return RegionManager.GetRegion (regionPosition);
+				
+			return region;
 		}
+
 
 		private async Task LoadRegionAsync (Region region)
 		{
@@ -63,12 +52,30 @@ namespace client.Common.Controllers
 			TerrainDefinition[,] terrain = null;
 
 			await m_networkController.LoadTerrainsAsync (path);
+
 			if (GameAppDelegate.m_Loading >= GameAppDelegate.Loading.TerrainTypeLoaded)
 				terrain = JsonToTerrain (m_networkController.JsonTerrainsString);
 
 			if (terrain != null)
 				region.AddTerrain (terrain);
 			RegionManager.AddRegion (region);
+		}
+
+		public async Task LoadRegionsAsync ()
+		{
+			await LoadRegionsAsync (m_geolocation.CurrentRegionPosition);
+		}
+
+		public async Task LoadRegionsAsync (RegionPosition regionPosition)
+		{
+			var WorldRegions = GetWorldNearRegionPositions (regionPosition);
+
+			foreach (var RegionPosition in WorldRegions) {
+				var region = RegionManager.GetRegion (RegionPosition);
+				if (!region.Exist) {
+					await LoadRegionAsync (region);
+				}
+			}
 		}
 
 		#endregion

@@ -26,6 +26,7 @@ namespace client.Common.controller
 
 		public async Task LoadTerrainDefinitionsAsync ()
 		{
+			// startet prüfen
 			GameAppDelegate.m_Loading = GameAppDelegate.Loading.TerrainTypeLoading;
 			await _network.LoadTerrainTypesAsync (ClientConstants.TERRAIN_TYPES_SERVER_PATH);
 			var json = _network.JsonTerrainTypeString;
