@@ -8,6 +8,7 @@ using @base.model;
 using @base.control;
 using client.Common.controller;
 using client.Common.view;
+using System.Threading.Tasks;
 
 
 
@@ -33,12 +34,8 @@ namespace client.Common
 		public override void ApplicationDidFinishLaunching (CCApplication application, CCWindow mainWindow)
 		{
 			application.PreferMultiSampling = false;
-			application.ContentRootDirectory = ClientConstants.CONTENT;
-			application.ContentSearchPaths.Add (ClientConstants.ANIMATIONS);
-			application.ContentSearchPaths.Add (ClientConstants.FONTS);
-			application.ContentSearchPaths.Add (ClientConstants.SOUNDS);
-			application.ContentSearchPaths.Add (ClientConstants.TILES);
-			application.ContentSearchPaths.Add (ClientConstants.IMAGES);
+
+			SetContentPaths (application);
 
 			CCSize windowSize = mainWindow.WindowSizeInPixels;
 
@@ -46,13 +43,7 @@ namespace client.Common
 			float desiredHeight = 768.0f;
 
 			// erstellen der Welt und anlegen bzw. verknüpfen mit den Controllern
-			var world = World.Instance;
-			var controller = Controller.Instance;
-			controller.TerrainManagerController = new TerrainController ();
-			controller.RegionManagerController = new RegionController ();
-
-			var terrainController = Controller.Instance.TerrainManagerController as TerrainController;
-			terrainController.LoadTerrainDefinitionsAsync ();
+			InitWorld ();
 
 			// This will set the world bounds to be (0,0, w, h)
 			// CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
@@ -69,15 +60,10 @@ namespace client.Common
 				CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
 			}
 
-//            CCScene Gamescene = new CCScene(mainWindow);
-//            GameLayer gameLayer = new GameLayer();
-//            Gamescene.AddChild(gameLayer);
-         
-//            CCScene MyGeolocationScene = new GeolocationScene(mainWindow);
-			//CCScene MyDeviceScene = new DeviceScene (mainWindow);
-			//CCScene MyTouchTestScene = new TouchTestScene(mainWindow);
 			StartScene startScene = new StartScene (mainWindow);
 			mainWindow.RunWithScene (startScene);
+
+			InitLoading ();
 		}
 
 		public override void ApplicationDidEnterBackground (CCApplication application)
@@ -90,6 +76,38 @@ namespace client.Common
 		{
 			Geolocation.GetInstance.StartListening (1000, 4);
 			application.Paused = false;
+		}
+
+		private async Task InitLoading ()
+		{
+			m_Loading = Loading.TerrainTypeLoading;
+			var terrainController = Controller.Instance.TerrainManagerController as TerrainController;
+			await terrainController.LoadTerrainDefinitionsAsync ();
+			m_Loading = Loading.TerrainTypeLoaded;
+
+			m_Loading = Loading.RegionLoading;
+			var regionController = Controller.Instance.RegionManagerController as RegionController;
+			await regionController.LoadRegionsAsync ();
+			m_Loading = Loading.RegionLoaded;
+			m_Loading = Loading.Done;
+		}
+
+		private void InitWorld ()
+		{
+			var world = World.Instance;
+			var controller = Controller.Instance;
+			controller.TerrainManagerController = new TerrainController ();
+			controller.RegionManagerController = new RegionController ();
+		}
+
+		private void SetContentPaths (CCApplication application)
+		{
+			application.ContentRootDirectory = ClientConstants.CONTENT;
+			application.ContentSearchPaths.Add (ClientConstants.ANIMATIONS);
+			application.ContentSearchPaths.Add (ClientConstants.FONTS);
+			application.ContentSearchPaths.Add (ClientConstants.SOUNDS);
+			application.ContentSearchPaths.Add (ClientConstants.TILES);
+			application.ContentSearchPaths.Add (ClientConstants.IMAGES);
 		}
 	}
 }

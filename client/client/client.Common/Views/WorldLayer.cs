@@ -9,6 +9,7 @@ using @base.model;
 using client.Common.Helper;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.Xna.Framework;
+using System.Threading.Tasks;
 
 
 namespace client.Common.Views
@@ -27,9 +28,6 @@ namespace client.Common.Views
 			m_WorldTileMap.TileLayersContainer.AddChild (m_CurrentPosition);
 
 			m_Terrainlayer = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_TERRAIN);
-
-			SetRegionsOnce (m_Geolocation.CurrentRegionPosition);
-			SetCurrentPositionOnce (m_Geolocation.CurrentGamePosition);
 
 			this.AddChild (m_WorldTileMap);
 
@@ -99,13 +97,9 @@ namespace client.Common.Views
 		void CheckGeolocation (float FrameTimesInSecond)
 		{
 			if (m_Geolocation.IsPositionChanged) {
-				SetRegionsOnce (m_Geolocation.CurrentRegionPosition);
-				SetCurrentPositionOnce (m_Geolocation.CurrentGamePosition);
-				counter++;
+				DrawRegions (m_Geolocation.CurrentRegionPosition);
+				m_Geolocation.IsPositionChanged = false;
 			}
-//			if (GameAppDelegate.m_Loading >= GameAppDelegate.Loading.RegionLoaded) {
-//				m_Geolocation.IsPositionChanged = false;
-//			}
 
 		}
 
@@ -113,17 +107,21 @@ namespace client.Common.Views
 
 		#region
 
-		void SetRegionsOnce (RegionPosition regionPosition)
-		{		
-			m_RegContr.LoadRegions (regionPosition);
-			m_RegContr.SetTilesINMap160 (m_Terrainlayer, m_RegContr.GetRegion (regionPosition));
-		}
 
 		void SetCurrentPositionOnce (Position position)
 		{
 			var TileCoordinate = m_RegContr.GetCurrentTileInMap (position);
 			m_CurrentPosition.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_WIDTH, m_Terrainlayer,
 				TileCoordinate, new CCColor4F (CCColor3B.Red), 255, 3.0f);
+		}
+
+		async Task DrawRegions (RegionPosition regionPosition)
+		{
+			GameAppDelegate.m_Loading = GameAppDelegate.Loading.RegionLoading;
+			await m_RegContr.LoadRegionsAsync ();
+			GameAppDelegate.m_Loading = GameAppDelegate.Loading.RegionLoaded;
+			m_RegContr.SetTilesINMap160 (m_Terrainlayer, m_RegContr.GetRegion (m_Geolocation.CurrentRegionPosition));
+			SetCurrentPositionOnce (m_Geolocation.CurrentGamePosition);
 		}
 
 		#endregion
