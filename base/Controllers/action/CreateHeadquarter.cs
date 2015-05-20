@@ -69,7 +69,7 @@ namespace @base.control.action
             var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
-            var entity = new @base.model.Entity(IdGenerator.GetId(), 
+            var entity = new @base.model.Entity(model.IdGenerator.GetId(), 
                 new UnitDefinition(Guid.NewGuid(),
                     model.definitions.UnitDefinition.DefinitionType.building,
                     UnitDefinition.UnitDefinitionType.Hero,
