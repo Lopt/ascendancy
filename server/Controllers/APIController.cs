@@ -30,7 +30,7 @@ namespace server.control
 		{
 			m_Actions = new ConcurrentQueue<@base.model.Action> ();
 		}
-
+			
 
         public class RegionData
         {
@@ -64,7 +64,8 @@ namespace server.control
 		{
 			// List<@base.model.Region>, List<@base.control.action.Action> 
 			var controller = @base.control.Controller.Instance;
-			var regionManagerC = controller.RegionManagerController;
+			var regionManagerC = controller.RegionStatesController.Curr;
+
 			var accountC = (@server.control.AccountController) account.Control;
 
 			var entityDict = new ObservableCollection<ObservableCollection<@base.model.Entity>> ();
@@ -78,19 +79,17 @@ namespace server.control
 					var status = accountC.GetRegionStatus (region);
                     var newStatus = new DateTime ();
                     // account has already loaded the region - now just load changes (actions)
-					if (status != null)
+					if (status == null)
                     { 
-                        var actions = region.GetCompletedActions (status.Value);
-						actionDict.Add(actions.Actions);
-                        newStatus = actions.DateTime;
+						var entities = region.GetEntities();
+						entityDict.Add(entities.Entities);
+						newStatus = entities.DateTime;
+						status = new System.DateTime();
                     }
                     // account hasn't loaded the region
-					else
-                    {
-                        var entities = region.GetEntities();
-						entityDict.Add(entities.Entities);
-                        newStatus = entities.DateTime;
-                    }
+					var actions = region.GetCompletedActions (status.Value);
+					actionDict.Add(actions.Actions);
+					newStatus = actions.DateTime;
 
                     accountC.RegionRefreshed (region, newStatus);
 				}
@@ -106,10 +105,14 @@ namespace server.control
 		{
 			if (action != null)
 			{
+				var regionStatesController = @base.control.Controller.Instance.RegionStatesController;
+
+				var actionC = (action.Control as @base.control.action.Action);
 				var gotLocked = new HashSet<@base.model.Region> ();
+
 				try
 				{
-					var affectedRegions = action.GetAffectedRegions();
+					var affectedRegions = actionC.GetAffectedRegions(regionStatesController.Next);
 					foreach (var region in affectedRegions)
 					{
 						if (region.TryLockRegion())
@@ -125,20 +128,21 @@ namespace server.control
 
 					if (gotLocked.Count == affectedRegions.Count)
 					{
-						if (action.Possible())
+						if (actionC.Possible(regionStatesController.Next))
 						{
-							var changedRegions = action.Do();
+							var changedRegions = actionC.Do(regionStatesController.Next);
 							if (changedRegions.Count != 0)
 							{
 								foreach (var region in changedRegions)
 								{
-									region.AddCompletedAction(action);
+									var regionCurr = regionStatesController.Curr.GetRegion(region.RegionPosition);
+									regionCurr.AddCompletedAction(action);
 								}
 								return true;
 							}
 							else
 							{
-								action.Catch ();
+								actionC.Catch (regionStatesController.Next);
 								return false;
 							}
 						}

@@ -11,6 +11,9 @@ namespace server.model
 
 		// path to the terrain file
         public static readonly string REGION_FILE = Path.Combine("data", "world", "$MajorRegionX", "$MajorRegionY", "germany-$MinorRegionX-$MinorRegionY.json");
+
+		// time when all game datas should cleaned in milliseconds
+		public static readonly int CLEANING_INTERVALL = 1 * 60 * 1000; // minutes * seconds * milliseconds
 	}
 }
 

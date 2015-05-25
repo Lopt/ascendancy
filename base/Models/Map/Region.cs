@@ -60,6 +60,17 @@ namespace @base.model
             ObservableCollection<Entity> m_entities;
         }
 
+        public Region(Region region)
+        {
+            m_regionPosition = region.m_regionPosition;
+            m_terrains  = region.m_terrains;
+            m_entities  = region.m_entities;
+            m_actions   = new DatedActions();
+            m_actions.Actions = new ObservableCollection<model.Action>();
+            m_exist     = region.m_exist;
+            m_mutex     = region.m_mutex;
+        }
+
         public Region (RegionPosition regionPosition)
         {
             m_regionPosition = regionPosition;

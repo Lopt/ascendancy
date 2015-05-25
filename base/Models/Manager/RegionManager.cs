@@ -3,9 +3,9 @@ using System.Collections.Concurrent;
 
 namespace @base.model
 {
-	public class RegionManager
+    public class RegionManager
 	{
-        public RegionManager ()
+        public RegionManager (RegionManager parent = null)
         {
             m_regions = new ConcurrentDictionary<RegionPosition, Region> ();
         }
@@ -29,9 +29,11 @@ namespace @base.model
         public ConcurrentDictionary<RegionPosition, Region> Regions
         {
             get { return m_regions; }
+            set { m_regions = value; }
         }
 
         private ConcurrentDictionary<RegionPosition, Region> m_regions;
+
 	}
 }
 

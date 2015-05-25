@@ -5,11 +5,23 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Threading;
 
 namespace server
 {
 	public class MvcApplication : System.Web.HttpApplication
 	{
+		public enum Phases
+		{
+			Started,
+			Init,
+			Running,
+			Exit,
+		}
+
+		public static Phases Phase = Phases.Started; 
+
+
 		public static void RegisterRoutes (RouteCollection routes)
 		{
 			routes.IgnoreRoute ("{resource}.axd/{*pathInfo}");
@@ -50,12 +62,19 @@ namespace server
 
 		protected void Application_Start ()
 		{
+			Phase = Phases.Init;
 			var world = @base.model.World.Instance;
 			var controller = @base.control.Controller.Instance;
 
 			var api = server.control.APIController.Instance;
 
-			controller.RegionManagerController = new server.control.RegionManagerController ();
+			var regionManagerLastC = new control.RegionManagerController (null, world.RegionStates.Last);
+			var regionManagerCurrC = new control.RegionManagerController (regionManagerLastC, world.RegionStates.Curr);
+			var regionManagerNextC = new control.RegionManagerController (regionManagerCurrC, world.RegionStates.Next);
+
+			controller.RegionStatesController = new @base.control.RegionStatesController (regionManagerLastC,
+																						  regionManagerCurrC,
+																						  regionManagerNextC);
 			controller.TerrainManagerController = new server.control.TerrainManagerController ();
 			controller.AccountManagerController = new server.control.AccountManagerController ();
 
@@ -64,9 +83,15 @@ namespace server
 
 			controller.AccountManagerController.Registrate (testAccount);
 
+			var cleanC = new @server.control.CleaningController ();
+			ThreadPool.QueueUserWorkItem (new WaitCallback (cleanC.Run));
+
+			Phase = Phases.Running;
+
 			AreaRegistration.RegisterAllAreas ();
 			RegisterGlobalFilters (GlobalFilters.Filters);
 			RegisterRoutes (RouteTable.Routes);
+
 		}
 	}
 }

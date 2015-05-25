@@ -8,16 +8,16 @@ namespace @base.control
 {
     public class RegionManagerController
     {
-        public RegionManagerController()
+        public RegionManagerController(RegionManagerController parent, RegionManager regionManager)
         {
-            m_regionManager = World.Instance.RegionManager;
+            Parent = parent;
+            RegionManager = regionManager;
         }
 
         virtual public Region GetRegion(RegionPosition regionPosition)
         {
             throw new NotImplementedException();
         }
-
 
         /// <summary>
         /// Replaces parts of the path with MajorRegion and MinorRegion of the given Region Position
@@ -71,14 +71,9 @@ namespace @base.control
             return new Region(regionPosition, terrains);
         }
 
-        public RegionManager RegionManager
-        {
-            get { return m_regionManager; }
-        }
 
-        private RegionManager m_regionManager;
-
-
+        public model.RegionManager RegionManager;
+        public RegionManagerController Parent;
     }
 }
 

@@ -25,10 +25,10 @@ namespace @base.control
 		{
 		}
 
-		public RegionManagerController RegionManagerController
+        public RegionStatesController RegionStatesController
 		{
-			get { return m_regionManagerController; }
-            set { m_regionManagerController = value; }
+            get { return m_regionStatesController; }
+            set { m_regionStatesController = value; }
 		}
 
         public TerrainManagerController TerrainManagerController
@@ -43,7 +43,7 @@ namespace @base.control
             set { m_accountManagerController = value; }
         }
 
-        RegionManagerController m_regionManagerController;
+        RegionStatesController m_regionStatesController;
         TerrainManagerController m_terrainManagerController;
         AccountManagerController m_accountManagerController;
 	}

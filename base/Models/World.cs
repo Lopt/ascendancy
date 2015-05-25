@@ -5,6 +5,8 @@ namespace @base.model
 {
 	public class World
 	{
+
+
         // TODO: find better singleton implementation
         // http://csharpindepth.com/articles/general/singleton.aspx
         // NOT lazy-singletons: throws useless exceptions when initialisation failed
@@ -24,31 +26,19 @@ namespace @base.model
 
         private World()
         {
-            m_regionManager = new RegionManager ();
-            m_terrainManager = new TerrainManager ();
-            m_accounts = new ConcurrentDictionary<Guid, Account> ();
+            var last = new RegionManager();
+            var curr = new RegionManager(last);
+            var next = new RegionManager(curr);
+
+            RegionStates = new RegionStates (last, curr, next);
+            TerrainManager = new TerrainManager ();
+            Accounts = new ConcurrentDictionary<Guid, Account> ();
         }
 
-        public RegionManager RegionManager
-        {
-            get { return m_regionManager; }
-//            set { m_regionManager = value; }
-        }
+        public RegionStates RegionStates;
+        public TerrainManager TerrainManager;
+        public ConcurrentDictionary<Guid, Account> Accounts;
 
-        public TerrainManager TerrainManager
-        {
-            get { return m_terrainManager; }
-//            set { m_terrainManager = value; }
-        }
-
-        public ConcurrentDictionary<Guid, Account> Accounts
-        {
-            get { return m_accounts; }
-        }
-
-		private RegionManager m_regionManager;
-        private TerrainManager m_terrainManager;
-        private ConcurrentDictionary<Guid, Account> m_accounts;
 	}
 }
 

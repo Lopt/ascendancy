@@ -59,6 +59,7 @@ namespace server.Controllers
 				var regionActions = api.LoadRegions (account, loadRegionRequest.RegionPositions);
 				response.Entities = regionActions.EntityDict;
 				response.Actions = regionActions.ActionDict;
+				response.Status = @base.connection.Response.ReponseStatus.OK;
 			}
 
 			return JsonConvert.SerializeObject (response);
