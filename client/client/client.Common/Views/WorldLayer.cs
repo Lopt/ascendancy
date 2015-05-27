@@ -61,7 +61,7 @@ namespace client.Common.Views
 			m_WorldTileMap.TileLayersContainer.AnchorPoint = anchor;
 			m_WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
 			m_WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
-			m_WorldTileMap.TileLayersContainer.Scale = 0.5f;
+			m_WorldTileMap.TileLayersContainer.Scale = 0.8f;
 			//m_WorldTileMap.TileLayersContainer.AnchorPoint = new CCPoint (0.5f, 0.25f);
 
 		}

@@ -88,7 +88,7 @@ namespace client.Common
 					Status = "Canceled";
 				else {
 					Status = "ok";
-					CurrentPosition = t.Result;
+					CurrentPosition = t.Result as Position;
 				}
 
 			}, m_scheduler);
