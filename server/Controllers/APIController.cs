@@ -29,7 +29,7 @@ namespace server.control
 		private APIController()
 		{
 			m_Actions = new ConcurrentQueue<@base.model.Action> ();
-			m_ResetHandler = new AutoResetEvent(false);
+			m_hasNewAction = false;
 		}
 			
 
@@ -55,8 +55,8 @@ namespace server.control
 				action.ActionTime = DateTime.Now;
 
 				m_Actions.Enqueue(action);
-				m_ResetHandler.Set();
 			}
+			m_hasNewAction = true;
 		}
 
         public RegionData LoadRegions(@base.model.Account account,
@@ -170,27 +170,25 @@ namespace server.control
 
 			while (MvcApplication.Phase != MvcApplication.Phases.Exit)
 			{
-				m_ResetHandler.WaitOne();
-
-				while (!m_Actions.IsEmpty)
+				while (!m_hasNewAction)
 				{
-					if (m_Actions.TryDequeue (out action))
+					Thread.Sleep (model.ServerConstants.ACTION_THREAD_SLEEP);
+				}
+
+				if (m_Actions.TryDequeue (out action))
+				{
+					action.ActionTime = DateTime.Now;
+					if (!WorkAction (action))
 					{
-						action.ActionTime = DateTime.Now;
-						if (!WorkAction (action))
-						{
-							m_Actions.Enqueue (action);
-						}
-					}
-					else
-					{
-						//Thread.Sleep (model.ServerConstants.THREADING_SLEEPING_TIME);
+						m_Actions.Enqueue (action);
 					}
 				}
+
+				m_hasNewAction = !m_Actions.IsEmpty;
 			}
 		}
 
-		AutoResetEvent m_ResetHandler;
+		bool m_hasNewAction;
 		ConcurrentQueue<@base.model.Action> m_Actions;
 
     }
