@@ -14,6 +14,10 @@ namespace server.model
 
 		// time when all game datas should cleaned in milliseconds
 		public static readonly int CLEANING_INTERVALL = 1 * 60 * 1000; // minutes * seconds * milliseconds
+
+		// threads which execute actions
+		public static readonly int ACTION_THREADS = 8;
+
 	}
 }
 

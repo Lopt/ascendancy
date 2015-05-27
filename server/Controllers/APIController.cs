@@ -29,6 +29,7 @@ namespace server.control
 		private APIController()
 		{
 			m_Actions = new ConcurrentQueue<@base.model.Action> ();
+			m_ResetHandler = new AutoResetEvent(false);
 		}
 			
 
@@ -54,8 +55,7 @@ namespace server.control
 				action.ActionTime = DateTime.Now;
 
 				m_Actions.Enqueue(action);
-
-				ThreadPool.QueueUserWorkItem (new WaitCallback (Worker));
+				m_ResetHandler.Set();
 			}
 		}
 
@@ -76,7 +76,7 @@ namespace server.control
 				var region = regionManagerC.GetRegion (regionPosition);
 				if (region.Exist)
 				{
-					var status = accountC.GetRegionStatus (region);
+					var status = accountC.GetRegionStatus (regionPosition);
                     var newStatus = new DateTime ();
                     // account has already loaded the region - now just load changes (actions)
 					if (status == null)
@@ -91,7 +91,7 @@ namespace server.control
 					actionDict.Add(actions.Actions);
 					newStatus = actions.DateTime;
 
-                    accountC.RegionRefreshed (region, newStatus);
+					accountC.RegionRefreshed (regionPosition, newStatus);
 				}
 			}
             var regionData = new RegionData ();
@@ -168,20 +168,29 @@ namespace server.control
 		{
 			@base.model.Action action;
 
-			while (!m_Actions.IsEmpty)
+			while (MvcApplication.Phase != MvcApplication.Phases.Exit)
 			{
-				if (m_Actions.TryDequeue (out action))
+				m_ResetHandler.WaitOne();
+
+				while (!m_Actions.IsEmpty)
 				{
-					action.ActionTime = DateTime.Now;
-					if (!WorkAction (action))
+					if (m_Actions.TryDequeue (out action))
 					{
-						m_Actions.Enqueue (action);
+						action.ActionTime = DateTime.Now;
+						if (!WorkAction (action))
+						{
+							m_Actions.Enqueue (action);
+						}
+					}
+					else
+					{
+						//Thread.Sleep (model.ServerConstants.THREADING_SLEEPING_TIME);
 					}
 				}
-				System.Threading.Thread.Sleep(10); 
 			}
 		}
 
+		AutoResetEvent m_ResetHandler;
 		ConcurrentQueue<@base.model.Action> m_Actions;
 
     }

@@ -64,7 +64,7 @@ namespace @base.model
 
         public override int GetHashCode()
         {
-            return m_regionX * m_regionY;
+            return m_regionX * 1000000 + m_regionY;
         }
 
         private readonly int m_regionX;

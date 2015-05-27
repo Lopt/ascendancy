@@ -168,57 +168,30 @@ namespace @base.model
         */
         public DatedEntities GetEntities()
         {
-            try
-            {
-                LockRegion();
-                return m_entities;
-            }
-            catch
-            {
-
-            }
-            finally
-            {
-                Release();
-            }
-
-            return null;
+            return m_entities;
         }
 
         public DatedActions GetCompletedActions(DateTime startTime)
         {
-            try
-            {
-                LockRegion();
-                var returnActions = new DatedActions();
-                var currentActions = m_actions;
+            var returnActions = new DatedActions();
+            var currentActions = m_actions;
 
-                var actionsCollection = new ObservableCollection<model.Action>();
-                foreach (var action in currentActions.Actions)
+            var actionsCollection = new ObservableCollection<model.Action>();
+            foreach (var action in currentActions.Actions)
+            {
+                if (action.ActionTime <= startTime)
                 {
-                    if (action.ActionTime <= startTime)
-                    {
-                        break;
-                    }
-                    actionsCollection.Add(action);
+                    break;
                 }
-
-                returnActions.Actions = actionsCollection;
-                returnActions.DateTime = currentActions.DateTime;
-                returnActions.RegionPosition = RegionPosition;
-
-                return returnActions;
-            }
-            catch
-            {
-                
-            }
-            finally
-            {
-                Release();
+                actionsCollection.Add(action);
             }
 
-            return null;
+            returnActions.Actions = actionsCollection;
+            returnActions.DateTime = currentActions.DateTime;
+            returnActions.RegionPosition = RegionPosition;
+
+            return returnActions;
+
         }
 
         /// <summary>
@@ -239,13 +212,9 @@ namespace @base.model
 
         public bool TryLockRegion()
         {
-            return m_mutex.WaitOne(0);
+            return m_mutex.WaitOne(Constants.REGION_LOCK_WAIT_TIME);
         }
-
-        public bool LockRegion()
-        {
-            return m_mutex.WaitOne(-1);
-        }
+           
 
         public void Release()
         {

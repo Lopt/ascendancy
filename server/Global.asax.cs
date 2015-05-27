@@ -81,6 +81,12 @@ namespace server
 			var testAccount = new @base.model.Account (Guid.NewGuid(), "Test");
 			var testAccountC = new server.control.AccountController (testAccount, "Test");
 
+
+			for (int Index = 0; Index < model.ServerConstants.ACTION_THREADS; ++Index)
+			{
+				ThreadPool.QueueUserWorkItem (new WaitCallback (server.control.APIController.Instance.Worker));
+			}
+
 			controller.AccountManagerController.Registrate (testAccount);
 
 			var cleanC = new @server.control.CleaningController ();

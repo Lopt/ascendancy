@@ -9,14 +9,14 @@ namespace @server.control
 		public AccountController (@base.model.Account account, string password)
 			: base(account)
 		{
-            m_regionStatus = new ConcurrentDictionary<@base.model.Region, DateTime> (); 
+            m_regionStatus = new ConcurrentDictionary<@base.model.RegionPosition, DateTime> (); 
 			m_password = password;
 			m_sessionID = Guid.Empty;
 		}
 
-        public void RegionRefreshed(@base.model.Region region, DateTime dateTime)
+		public void RegionRefreshed(@base.model.RegionPosition regionPosition, DateTime dateTime)
 		{
-            m_regionStatus [region] = dateTime;
+            m_regionStatus [regionPosition] = dateTime;
 		}
 
 		/// <summary>
@@ -24,10 +24,10 @@ namespace @server.control
 		/// </summary>
 		/// <returns>A DateTime when the last action of a specific region was transfered. <b>null</b> if it wasn't loaded before.</returns>
 		/// <param name="region">Region.</param>
-		public DateTime? GetRegionStatus(@base.model.Region region)
+		public DateTime? GetRegionStatus(@base.model.RegionPosition regionPosition)
 		{
 			DateTime dateTime = new DateTime();
-			if (m_regionStatus.TryGetValue (region, out dateTime))
+			if (m_regionStatus.TryGetValue (regionPosition, out dateTime))
 			{
 				return dateTime;
 			}
@@ -51,7 +51,7 @@ namespace @server.control
 			get { return m_sessionID; }
 		}
 
-		ConcurrentDictionary<@base.model.Region, DateTime> m_regionStatus;
+		ConcurrentDictionary<@base.model.RegionPosition, DateTime> m_regionStatus;
 		string m_password;
 		Guid m_sessionID;
 	}
