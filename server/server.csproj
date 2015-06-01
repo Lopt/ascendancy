@@ -101,10 +101,18 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="scripts\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\DBLogin.cs" />
+    <Compile Include="DB\DBBuildings.cs" />
+    <Compile Include="DB\DBHandle.cs" />
+    <Compile Include="DB\DBAccount.cs" />
+    <Compile Include="DB\DBRessource.cs" />
+    <Compile Include="DB\DBUnits.cs" />
+    <Compile Include="DB\Model\TableAccount.cs" />
+    <Compile Include="DB\Model\TableBuilding.cs" />
+    <Compile Include="DB\Model\TableData.cs" />
+    <Compile Include="DB\Model\TableRessource.cs" />
+    <Compile Include="DB\Model\TableUnit.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

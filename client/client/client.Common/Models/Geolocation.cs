@@ -10,6 +10,7 @@ using System.Threading;
 using XLabs.Platform.Device;
 
 
+
 namespace client.Common
 {
 	[Table ("Geolocation")]
@@ -29,6 +30,8 @@ namespace client.Common
 			m_scheduler = TaskScheduler.FromCurrentSynchronizationContext ();
 
 			CurrentPosition = new Position ();
+			CurrentPosition.Latitude = 50.98520741;
+			CurrentPosition.Longitude = 11.04233265;
 			LastPosition = new Position ();
 
 			IsBusy = false;
@@ -85,7 +88,7 @@ namespace client.Common
 					Status = "Canceled";
 				else {
 					Status = "ok";
-					CurrentPosition = t.Result;
+					CurrentPosition = t.Result as Position;
 				}
 
 			}, m_scheduler);

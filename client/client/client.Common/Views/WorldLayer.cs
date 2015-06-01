@@ -8,6 +8,8 @@ using client.Common.helper;
 using @base.model;
 using client.Common.Helper;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.Xna.Framework;
+using System.Threading.Tasks;
 
 
 namespace client.Common.Views
@@ -18,7 +20,6 @@ namespace client.Common.Views
 			: base ()
 		{
 			m_RegContr = Controller.Instance.RegionManagerController as RegionController;
-			m_CurrentRegionPosition = regionPosition;
 
 			m_WorldTileMap = new CCTileMap (ClientConstants.TILEMAP_FILE);
 			m_Geolocation = Geolocation.GetInstance;
@@ -28,14 +29,10 @@ namespace client.Common.Views
 
 			m_Terrainlayer = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_TERRAIN);
 
-			SetRegionsOnce ();
-			SetCurrentPositionOnce ();
-
 			this.AddChild (m_WorldTileMap);
 
-			this.Schedule (SetRegions);
 			this.Schedule (CheckGeolocation);
-			this.Schedule (SetCurrentPosition);
+
 
 			var TouchListener = new CCEventListenerTouchAllAtOnce ();
 			TouchListener.OnTouchesMoved = onTouchesMoved;
@@ -53,10 +50,18 @@ namespace client.Common.Views
 			base.AddedToScene ();
 
 			var TileCoordinate = m_RegContr.GetCurrentTileInMap (m_Geolocation.CurrentGamePosition);
-			m_WorldTileMap.TileLayersContainer.AnchorPoint = Modify.TilePosToMapPoint (TileCoordinate);
+			var MapCellPosition = new MapCellPosition (TileCoordinate);
+			var anchor = MapCellPosition.GetMapPoint ();
+//			m_WorldTileMap.PositionX = 0;
+//			m_WorldTileMap.PositionY = 0;
+
+//			var point = new CCPoint3 (anchor.X * m_WorldTileMap.TileLayersContainer.ContentSize.Width + VisibleBoundsWorldspace.MidX, anchor.Y * m_WorldTileMap.TileLayersContainer.ContentSize.Height + VisibleBoundsWorldspace.MidY, Camera.CenterInWorldspace.Z);
+//			this.Camera.TargetInWorldspace = point;
+
+			m_WorldTileMap.TileLayersContainer.AnchorPoint = anchor;
 			m_WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
 			m_WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
-			m_WorldTileMap.TileLayersContainer.Scale = 0.5f;
+			m_WorldTileMap.TileLayersContainer.Scale = 0.8f;
 			//m_WorldTileMap.TileLayersContainer.AnchorPoint = new CCPoint (0.5f, 0.25f);
 
 		}
@@ -88,50 +93,41 @@ namespace client.Common.Views
 
 		#region Scheduling
 
-		void SetRegions (float FrameTimesInSecond)
-		{
-			if (m_MapIsChanged) {
-				SetRegionsOnce ();
-			}
-		}
-
 		void SetEntitys (float FrameTimesInSecond)
 		{
 			//TODO 
 			throw new NotImplementedException ();
 		}
 
-		void SetCurrentPosition (float FrameTimesInSecond)
-		{
-			if (m_Geolocation.IsPositionChanged) {
-				SetCurrentPositionOnce ();
-			}
-
-		}
 
 		void CheckGeolocation (float FrameTimesInSecond)
 		{
-			m_MapIsChanged = m_Geolocation.IsPositionChanged;
-			m_Geolocation.IsPositionChanged = false;
+			if (m_Geolocation.IsPositionChanged) {
+				DrawRegions (m_Geolocation.CurrentRegionPosition);
+				m_Geolocation.IsPositionChanged = false;
+			}
+
 		}
 
 		#endregion
 
 		#region
 
-		void SetRegionsOnce ()
-		{		
-			m_RegContr.SetTilesINMap160 (m_Terrainlayer, m_RegContr.GetRegion (m_CurrentRegionPosition));
-			m_MapIsChanged = false;
-		}
 
-		void SetCurrentPositionOnce ()
+		void SetCurrentPositionOnce (Position position)
 		{
-			var TileCoordinate = m_RegContr.GetCurrentTileInMap (m_Geolocation.CurrentGamePosition);
+			var TileCoordinate = m_RegContr.GetCurrentTileInMap (position);
 			m_CurrentPosition.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_WIDTH, m_Terrainlayer,
 				TileCoordinate, new CCColor4F (CCColor3B.Red), 255, 3.0f);
+		}
 
-			m_CurrentRegionPosition = m_Geolocation.CurrentRegionPosition;
+		async Task DrawRegions (RegionPosition regionPosition)
+		{
+			GameAppDelegate.m_Loading = GameAppDelegate.Loading.RegionLoading;
+			await m_RegContr.LoadRegionsAsync ();
+			GameAppDelegate.m_Loading = GameAppDelegate.Loading.RegionLoaded;
+			m_RegContr.SetTilesINMap160 (m_Terrainlayer, m_RegContr.GetRegion (m_Geolocation.CurrentRegionPosition));
+			SetCurrentPositionOnce (m_Geolocation.CurrentGamePosition);
 		}
 
 		#endregion
@@ -142,13 +138,12 @@ namespace client.Common.Views
 		CCTileMapLayer m_Terrainlayer;
 
 		RegionController m_RegContr;
-		RegionPosition m_CurrentRegionPosition;
 
-		bool m_MapIsChanged;
 		DrawNode m_CurrentPosition;
 		Geolocation m_Geolocation;
 
 		float m_Scale = 1.0f;
+		int counter = 0;
 
 		#endregion
 	}

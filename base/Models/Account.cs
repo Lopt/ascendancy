@@ -1,10 +1,12 @@
 ﻿using System;
+using SQLite;
 using System.Collections.ObjectModel;
 
 namespace @base.model
 {
 	public class Account : ModelEntity
 	{
+       
         public Account (Guid guid)
             : base()
         {

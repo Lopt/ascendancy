@@ -7,6 +7,7 @@ using client.Common.controller;
 using CocosSharp;
 using @base.model.definitions;
 using client.Common.Helper;
+using client.Common.Models;
 
 namespace client.Common.Controllers
 {
@@ -37,18 +38,14 @@ namespace client.Common.Controllers
 
 		public override Region GetRegion (RegionPosition regionPosition)
 		{
-
-			var WorldRegions = GetWorldNearRegionPositions (regionPosition);
-
-			foreach (var RegionPosition in WorldRegions) {
-				var region = RegionManager.GetRegion (RegionPosition);
-				if (!region.Exist) {
-					LoadRegionAsync (region);
-				}
+			var region = RegionManager.GetRegion (regionPosition);
+			if (!region.Exist) {
+				LoadRegionAsync (region);
 			}
-
-			return RegionManager.GetRegion (regionPosition);
+				
+			return region;
 		}
+
 
 		private async Task LoadRegionAsync (Region region)
 		{
@@ -56,12 +53,30 @@ namespace client.Common.Controllers
 			TerrainDefinition[,] terrain = null;
 
 			await m_networkController.LoadTerrainsAsync (path);
-			if (m_terrainController.TerrainDefinitionCount > 12)
+
+			if (GameAppDelegate.m_Loading >= GameAppDelegate.Loading.TerrainTypeLoaded)
 				terrain = JsonToTerrain (m_networkController.JsonTerrainsString);
 
 			if (terrain != null)
 				region.AddTerrain (terrain);
 			RegionManager.AddRegion (region);
+		}
+
+		public async Task LoadRegionsAsync ()
+		{
+			await LoadRegionsAsync (m_geolocation.CurrentRegionPosition);
+		}
+
+		public async Task LoadRegionsAsync (RegionPosition regionPosition)
+		{
+			var WorldRegions = GetWorldNearRegionPositions (regionPosition);
+
+			foreach (var RegionPosition in WorldRegions) {
+				var region = RegionManager.GetRegion (RegionPosition);
+				if (!region.Exist) {
+					await LoadRegionAsync (region);
+				}
+			}
 		}
 
 		#endregion
@@ -74,23 +89,24 @@ namespace client.Common.Controllers
 			int OffsetX = 0;
 			int OffsetY = 0;
 
-			for (int x = 0; x < 5; x++) {
-				for (int y = 0; y < 5; y++) {
+			for (int y = 0; y < 5; y++) {
+				for (int x = 0; x < 5; x++) {
 					var Region = GetRegion (WorldRegionPositions [x, y]);
 					SetTilesInMap32 (mapLayer, new CCTileMapCoordinates (OffsetX, OffsetY), Region);
-					OffsetY += 32;
+					OffsetX += 32;
 				}
-				OffsetX += 32;
-				OffsetY = 0;
+				OffsetY += 32;
+				OffsetX = 0;
 			}
 		}
 
 		public void SetTilesInMap32 (CCTileMapLayer mapLayer, CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
 		{
-			for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
-				for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
-					SetTileInMap (mapLayer, new CellPosition (region.RegionPosition.RegionX + x, region.RegionPosition.RegionY + y)
-						, Modify.MapCellPosToTilePos ((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y)), region);
+			for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
+				for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
+					var NewCellPosition = new CellPosition (x, y);
+					var MapCellPosition = new MapCellPosition ((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y));
+					SetTileInMap (mapLayer, NewCellPosition, MapCellPosition.GetTileMapCoordinates (), region);		
 				}
 			}
 		}
@@ -103,12 +119,8 @@ namespace client.Common.Controllers
 
 		public void SetEntitysInMap (CCTileMapLayer mapLayer, CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
 		{
-			for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
-				for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
-					SetEntityInMap (mapLayer, new CellPosition (region.RegionPosition.RegionX + x, region.RegionPosition.RegionY + y)
-						, Modify.MapCellPosToTilePos ((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y)), region);
-				}
-			}
+			//TODO set function
+			throw new NotImplementedException ();
 		}
 
 		public void SetEntityInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
@@ -122,18 +134,18 @@ namespace client.Common.Controllers
 
 		public CCTileMapCoordinates GetCurrentTileInMap (Position position)
 		{
-			var RegionPosition = new RegionPosition (position);
-			var CellPosition = new CellPosition (position);
-			var WorldRegions = GetWorldNearRegionPositions (RegionPosition);
+			var RegionPos = new RegionPosition (position);
+			var CellPos = new CellPosition (position);
+			var WorldRegions = GetWorldNearRegionPositions (RegionPos);
 			int OffsetX = 0;
 			int OffsetY = 0;
 			int MapCellX = -1;
 			int MapCellY = -1;
 			for (int x = 0; x < 5; x++) {
 				for (int y = 0; y < 5; y++) {
-					if (RegionPosition.Equals (WorldRegions [x, y])) {
-						MapCellX = CellPosition.CellX + OffsetX;
-						MapCellY = CellPosition.CellY + OffsetY;
+					if (RegionPos.Equals (WorldRegions [x, y])) {
+						MapCellX = CellPos.CellX + OffsetX;
+						MapCellY = CellPos.CellY + OffsetY;
 					}
 					OffsetY += 32;
 				}
@@ -141,7 +153,8 @@ namespace client.Common.Controllers
 				OffsetY = 0;
 			}
 
-			return Modify.MapCellPosToTilePos (MapCellX, MapCellY);
+			var MapCellPosition = new MapCellPosition (MapCellX, MapCellY);
+			return MapCellPosition.GetTileMapCoordinates ();
 		}
 
 		#endregion
@@ -151,7 +164,6 @@ namespace client.Common.Controllers
 
 		public RegionPosition[,] GetWorldNearRegionPositions (RegionPosition regionPosition)
 		{
-			// TODO to set the true offset must talk with Bernd
 			int OffsetX = -2;
 			int OffsetY = -2;
 

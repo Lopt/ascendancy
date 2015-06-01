@@ -19,13 +19,14 @@ namespace client.Common.controller
 		{
 			_network = NetworkController.GetInstance;
 			TerrainDefinitionCount = 0;
-			LoadTerrainDefinitionsAsync ();
+			//LoadTerrainDefinitionsAsync ();
 		}
 
 		#region Terrain
 
-		private async Task LoadTerrainDefinitionsAsync ()
+		public async Task LoadTerrainDefinitionsAsync ()
 		{
+			// startet prüfen
 			await _network.LoadTerrainTypesAsync (ClientConstants.TERRAIN_TYPES_SERVER_PATH);
 			var json = _network.JsonTerrainTypeString;
 			var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>> (json);
@@ -34,7 +35,6 @@ namespace client.Common.controller
 				TerrainManager.AddTerrainDefinition (terrain);
 				TerrainDefinitionCount++;
 			}
-
 		}
 
 		public CCTileGidAndFlags TerrainDefToTileGid (TerrainDefinition terraindefinition)

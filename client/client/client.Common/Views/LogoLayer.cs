@@ -17,7 +17,7 @@ namespace client.Common.Views
 
 			m_Logo = new CCSprite ("Logo");
 			m_Loading = new CCSprite ("monkey");
-			m_IsLoaded = false;
+
 
 			this.AddChild (m_Logo);
 			this.AddChild (m_Loading); 
@@ -26,6 +26,14 @@ namespace client.Common.Views
 			this.Opacity = 255;
 
 			this.Schedule (Loading);
+
+			var touchListener = new CCEventListenerTouchAllAtOnce ();
+			touchListener.OnTouchesEnded = (touches, ccevent) => {
+				if (GameAppDelegate.m_Loading >= GameAppDelegate.Loading.Done)
+					Window.DefaultDirector.ReplaceScene (new GameScene (Window));
+			};
+
+			this.AddEventListener (touchListener);
 				
 		}
 
@@ -52,15 +60,8 @@ namespace client.Common.Views
 
 		void Loading (float FrameTimesInSecond)
 		{
-			if (m_RegContr.GetRegion (Geolocation.GetInstance.CurrentRegionPosition).Exist && !m_IsLoaded) {
+			if (GameAppDelegate.m_Loading >= GameAppDelegate.Loading.Done) {
 				m_Loading.Visible = false;
-				m_IsLoaded = true;
-				var touchListener = new CCEventListenerTouchAllAtOnce ();
-				touchListener.OnTouchesEnded = (touches, ccevent) => {
-					Window.DefaultDirector.ReplaceScene (new GameScene (Window));
-				};
-
-				this.AddEventListener (touchListener);
 
 			}
 
@@ -73,7 +74,6 @@ namespace client.Common.Views
 		RegionController m_RegContr;
 		CCSprite m_Logo;
 		CCSprite m_Loading;
-		bool m_IsLoaded;
 
 		#endregion
 	}
