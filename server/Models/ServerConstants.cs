@@ -10,7 +10,7 @@ namespace server.model
         public static readonly string TERRAIN_FILE = Path.Combine("data", "terrain.json");
 
 		// path to the terrain file
-        public static readonly string REGION_FILE = Path.Combine("data", "world", "$MajorRegionX", "$MajorRegionY", "germany-$MinorRegionX-$MinorRegionY.json");
+		public static readonly string REGION_FILE = Path.Combine("data", Path.Combine("ascendancy-world", "world", "$MajorRegionX", "$MajorRegionY", "germany-$MinorRegionX-$MinorRegionY.json");
 
         // path to the DB
         public static readonly string DB_PATH = Path.Combine(Environment.CurrentDirectory, "DB_Ascendancy");
