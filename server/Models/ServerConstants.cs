@@ -10,7 +10,6 @@ namespace server.model
         public static readonly string TERRAIN_FILE = Path.Combine("data", "terrain.json");
 
 		// path to the terrain file
-<<<<<<< HEAD
         public static readonly string REGION_FILE = Path.Combine("data", "world", "$MajorRegionX", "$MajorRegionY", "germany-$MinorRegionX-$MinorRegionY.json");
 
         // path to the DB
@@ -21,8 +20,6 @@ namespace server.model
 
         // cicle to compute the hash value
         public static readonly int HASH_CICLE = 32;
-=======
-		public static readonly string REGION_FILE = Path.Combine("data", Path.Combine("ascendancy-world", "world", "$MajorRegionX", "$MajorRegionY", "germany-$MinorRegionX-$MinorRegionY.json"));
 
 		// time when all game datas should cleaned in milliseconds
 		public static readonly int CLEANING_INTERVALL = 30 * 60 * 1000; // minutes * seconds * milliseconds
