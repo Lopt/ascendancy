@@ -3,6 +3,7 @@ using System.IO;
 
 namespace server.model
 {
+	
 	public class ServerConstants
 	{
 		// Warning: Paths may be with an backshlash (\) instead of an slash (/) on windows
