@@ -159,7 +159,7 @@
     <AndroidAsset Include="Assets\Content\fonts\arial-22.xnb" />
     <AndroidAsset Include="Assets\Content\tiles\Spritesheet_with_space.png" />
     <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%28320x80%29.xnb" />
-    <AndroidAsset Include="Assets\Content\images\logo.png" />
+    <AndroidAsset Include="Assets\Content\images\logo_neu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\MonoAndroid\SQLitePCL.raw_basic.targets" Condition="Exists('..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\MonoAndroid\SQLitePCL.raw_basic.targets')" />

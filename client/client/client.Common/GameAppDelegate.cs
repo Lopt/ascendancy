@@ -59,11 +59,12 @@ namespace client.Common
                 application.ContentSearchPaths.Add (ClientConstants.IMAGES_LD);
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
+            InitLoading ();
 
             StartScene startScene = new StartScene (mainWindow);
             mainWindow.RunWithScene (startScene);
 
-            InitLoading ();
+
         }
 
         public override void ApplicationDidEnterBackground (CCApplication application)

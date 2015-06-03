@@ -28,9 +28,10 @@ namespace client.Common.Models
             m_tokensource = new CancellationTokenSource ();
             m_scheduler = TaskScheduler.FromCurrentSynchronizationContext ();
 
-            CurrentPosition = new Position ();
-            CurrentPosition.Latitude = 50.98520741; // standartPosition
-            CurrentPosition.Longitude = 11.04233265; // standartPosition
+            Position position = new Position ();
+            position.Latitude = 50.98520741; // standartPosition
+            position.Longitude = 11.04233265; // standartPosition
+            CurrentPosition = position;
             LastPosition = new Position ();
 
             IsBusy = false;
