@@ -21,9 +21,10 @@ namespace @base.model.definitions
             Invalid = 12
         }
       
-        public TerrainDefinition(Guid guid, DefinitionType type,
-            TerrainDefinitionType terrainType, int[] ressources)
-            : base(guid, type)
+        public TerrainDefinition(int id,
+            TerrainDefinitionType terrainType,
+            int[] ressources)
+            : base(id, Definition.DefinitionType.Terrain)
         {
             m_terrainType = terrainType;
             m_ressources = ressources;

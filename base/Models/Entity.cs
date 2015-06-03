@@ -21,9 +21,9 @@ namespace @base.model
             get { return m_id; }
         }
 
-        public Guid DefinitionID
+        public int DefinitionID
         {
-            get { return m_definition.GUID; }   
+            get { return m_definition.ID; }   
         }
 
 

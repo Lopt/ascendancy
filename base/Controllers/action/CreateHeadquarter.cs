@@ -66,7 +66,7 @@ namespace @base.control.action
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
             var entity = new @base.model.Entity(model.IdGenerator.GetId(), 
-                new UnitDefinition(Guid.NewGuid(),
+                new UnitDefinition(model.IdGenerator.GetId(),
                     UnitDefinition.UnitDefinitionType.Headquarter,
                     new Action[0], 
                     0, 0, 0, 0),

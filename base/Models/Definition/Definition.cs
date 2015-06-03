@@ -11,15 +11,14 @@ namespace @base.model
             Building
         }
 
-        public Definition(Guid guid, DefinitionType type)
+        public Definition(int id, DefinitionType type)
         {
-            m_guid = guid;
             m_type = type;
         }
 
-        public Guid GUID
+        public int ID
         {
-            get { return this.m_guid; }
+            get { return this.m_id; }
         }
 
         public DefinitionType Type
@@ -28,7 +27,7 @@ namespace @base.model
         }
 
      
-        private Guid m_guid;
+        private int m_id;
         private DefinitionType m_type;
     }
 }

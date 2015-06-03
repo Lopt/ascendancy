@@ -22,12 +22,12 @@ namespace @base.model.definitions
             RessourceHarvester
         }
       
-        public UnitDefinition(Guid guid, UnitDefinitionType unitType,
+        public UnitDefinition(int id, UnitDefinitionType unitType,
                               control.action.Action[] actions,
                               int attack, int defense,
                               int health, int moves,
                               Ressources ressource = Ressources.Gold) 
-            : base(guid, unitType < UnitDefinitionType.Headquarter ? DefinitionType.Unit : DefinitionType.Building)
+            : base(id, unitType < UnitDefinitionType.Headquarter ? DefinitionType.Unit : DefinitionType.Building)
         {
             m_unitType = unitType;
             m_actions = actions;
