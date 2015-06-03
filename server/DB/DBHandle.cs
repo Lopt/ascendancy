@@ -1,17 +1,4 @@
 ﻿using @base.model;
-<<<<<<< HEAD
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace server.DB
-{
-    class DBHandle
-    {
-       private static DBHandle instance;
-=======
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -24,56 +11,16 @@ namespace server.DB
     public class DBHandle
     {
        private static DBHandle instance;
-       private static SQLiteConnection con;
->>>>>>> d741c7fafad5bbf531fdb127801a8575f7c0add4
 
        private DBHandle() { }
 
        public static DBHandle Instance
        {
-<<<<<<< HEAD
-          get 
-          {
-             if (instance == null)
-             {
-                 instance = new DBHandle();
-             }
-             return instance;
-          }
-       }
-
-       public void InsertIntoAccount(Account account, string password)
-       {
-           DBLogin dbLog = new DBLogin();
-           dbLog.TableAccount(account, password);
-       }
-
-       public void InsertIntoyUnit()
-       {
-           DBUnits dbunit = new DBUnits();
-           dbunit.TableUnits();
-       }
-
-       public void InsertIntoBuilding()
-       {
-
-       }
-
-       public void InsertIntoResource()
-       {
-       }
-
-       public void SearchEntry();
-       public void DeleteAllEntrys();
-
-
-=======
            get
            {
                if (instance == null)
                {
-                   instance = new DBHandle();
-                   con = new SQLiteConnection(ServerConstants.DB_PATH);
+                   instance = new DBHandle();                                   
                }
                return instance;
            }
@@ -81,24 +28,28 @@ namespace server.DB
 
        public void CreateNewDBAccount(Account account, string password)
        {
-           DBAccount dbacc = new DBAccount(con);
-           DBUnits dbunit = new DBUnits(con);
-           DBBuildings dbbuild = new DBBuildings(con);
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH);  
 
-           dbacc.CreateAccount(account, password);           
+           DBAccount dbacc = new DBAccount(con);
+          // DBUnits dbunit = new DBUnits(con);
+          // DBBuildings dbbuild = new DBBuildings(con);
+
+           dbacc.CreateAccount(account, password);
        }
 
        public TableData GetAccountData(Account account, string password)
        {
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH);  
+
            DBAccount dbacc = new DBAccount(con);
            TableData tb = new TableData();
 
            if (dbacc.Login(account.UserName, password))
            {
-               var id = con.Query<TableAccount>("SELECT Id FROM Items WHERE = ?",account.UserName);
-               tb.m_units.Add(con.Query<TableUnit>("SELECT * FROM Items WHERE  = ?", id));
-               tb.m_buildings.Add(con.Query<TableBuilding>("SELECT * FROM Items WHERE  = ?", id));
-               tb.m_ressources.Add(con.Query<TableRessource>("SELECT * FROM Items WHERE  = ?", id));               
+               var id = con.Query<TableAccount>("SELECT Id FROM Account WHERE UserName = ? LIMIT 1", account.UserName);   
+               tb.m_units = con.Query<TableUnit>("SELECT * FROM Unit WHERE Id = ?", id[0].Id);
+               tb.m_buildings = con.Query<TableBuilding>("SELECT * FROM Building WHERE Id = ?", id[0].Id);
+               tb.m_ressources = con.Query<TableRessource>("SELECT * FROM Ressources WHERE Id = ?", id[0].Id);               
            }
            
            return tb;
@@ -106,39 +57,44 @@ namespace server.DB
 
        public void InsertIntoUnit(int id, Entity unitEntity)
        {
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
+
            DBUnits dbu = new DBUnits(con);
-           dbu.NewUnit(unitEntity, id);
-           con.Insert(dbu);           
+           dbu.NewUnit(unitEntity, id);  
        }
 
        public void InsertIntoBuilding(int id, Entity buildingEntity)
        {
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
+
            DBBuildings dbb = new DBBuildings(con);
            dbb.NewBuildings(buildingEntity, id);
-           con.Insert(dbb);
        }
 
        public void InsertIntoResource(int ressourceFire, int ressourceEarth, int ressourceWater, int ressourceAir, int ressourceMagic, int ressourceGold, int id)
        {
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
+
            DBRessource dbr = new DBRessource(con);
-           dbr.TableRessource(ressourceFire, ressourceEarth, ressourceWater, ressourceAir, ressourceMagic, ressourceGold, id);
-           con.Insert(dbr);
+           dbr.TableRessource(ressourceFire, ressourceEarth, ressourceWater, ressourceAir, ressourceMagic, ressourceGold, id);  
        }
 
        public void UpdateUnit(Entity unitEntity, int id)
        {
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
+
            TableUnit tu = new TableUnit();
-           tu.ID = id;
+           tu.Id = id;
            tu.PositionX = unitEntity.Position.X;
            tu.PositionY = unitEntity.Position.Y;
 
            con.InsertOrReplace(tu);
-          // con.Update(tu);
-           
        }
 
        public void UpdateBuilding(Entity buildingEntity, int id)
        {
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
+
            TableBuilding tb = new TableBuilding();
            tb.Id = id;
            tb.PositionX = buildingEntity.Position.X;
@@ -167,8 +123,10 @@ namespace server.DB
 
        public void UpdateRessource(int ressourceFire, int ressourceEarth, int ressourceWater, int ressourceAir, int ressourceMagic, int ressourceGold, int id)
        {
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
+
            TableRessource tr = new TableRessource();
-           tr.ID = id;
+           tr.Id = id;
            tr.Fire = ressourceFire;
            tr.Earth = ressourceEarth;
            tr.Water = ressourceWater;
@@ -177,25 +135,31 @@ namespace server.DB
            tr.Gold = ressourceGold;
 
            con.InsertOrReplace(tr);
+
        }
 
        public void DeleteUnit(int id)
        {
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
+
            con.Delete<TableUnit>(id);
        }
 
        public void DeleteBuilding(int id)
        {
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
+
            con.Delete<TableBuilding>(id);
        }
 
        public void DeleteAccountFromAllTables(int id)
        {
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
+
            con.Delete<TableAccount>(id);
            con.Delete<TableBuilding>(id);
            con.Delete<TableRessource>(id);
            con.Delete<TableUnit>(id);
        }
->>>>>>> d741c7fafad5bbf531fdb127801a8575f7c0add4
     }
 }

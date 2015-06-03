@@ -7,7 +7,7 @@ namespace server.DB.Model
     class TableRessource
     {
         [PrimaryKey, Column("Id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public int Fire { get; set; }
         public int Earth { get; set; }

@@ -7,9 +7,9 @@ namespace server.DB.Model
     class TableAccount
     {
         [PrimaryKey, AutoIncrement, Column("Id")]
-        public int ID{ get; set;}
+        public int Id{ get; set;}
 
-        [MaxLength(20)]
+        [MaxLength(20), Unique]
         public string UserName{ get; set; }
 
         [MaxLength(50)]
