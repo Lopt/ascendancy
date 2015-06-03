@@ -117,7 +117,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Controllers\RegionManagerController.cs" />
-    <Compile Include="Controllers\TerrainManagerController.cs" />
     <Compile Include="Models\ServerConstants.cs" />
     <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Models\User.cs" />
@@ -128,6 +127,7 @@
     <Compile Include="Controllers\HTTPController.cs" />
     <Compile Include="Controllers\AccountManagerController.cs" />
     <Compile Include="Controllers\CleaningController.cs" />
+    <Compile Include="Controllers\DefinitionManagerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

@@ -30,11 +30,11 @@ namespace @base.model
                 {
                     return DefinitionType.Terrain;
                 }
-                if (m_id < 200)
+                if (m_id < 300)
                 {
                     return DefinitionType.Unit;
                 }
-                if (m_id < 300)
+                if (m_id < 500)
                 {
                     return DefinitionType.Building;
                 }
