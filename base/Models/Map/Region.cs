@@ -69,8 +69,8 @@ namespace @base.model
             // standardvalue
             if (value == null)
             {
-                return World.Instance.TerrainManager.GetTerrainDefinition(
-                    TerrainDefinition.TerrainDefinitionType.Forbidden);
+                return (TerrainDefinition) World.Instance.DefinitionManager.GetDefinition(
+                    (int) TerrainDefinition.TerrainDefinitionType.Forbidden);
             }
             return value;
         }

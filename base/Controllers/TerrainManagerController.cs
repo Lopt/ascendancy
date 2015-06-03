@@ -6,19 +6,19 @@ using @base.model.definitions;
 
 namespace @base.control
 {
-    public class TerrainManagerController 
+    public class DefinitionManagerController 
     {
-        public TerrainManagerController()
+        public DefinitionManagerController()
         {
-            m_terrainManager = World.Instance.TerrainManager;
+            m_definitionManager = World.Instance.DefinitionManager;
         }
 
-        public TerrainManager TerrainManager
+        public DefinitionManager DefinitionManager
         {
-            get { return m_terrainManager; }
+            get { return m_definitionManager; }
         }
 
-        TerrainManager m_terrainManager;
+        DefinitionManager m_definitionManager;
     }
 
 

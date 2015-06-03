@@ -26,7 +26,7 @@ namespace @base.control
 		}
 
         public RegionStatesController RegionStatesController;
-        public TerrainManagerController TerrainManagerController;
+        public DefinitionManagerController DefinitionManagerController;
         public AccountManagerController AccountManagerController;
 	}
 }

@@ -42,7 +42,7 @@ namespace @base.control
         /// <param name="json">JSON loaded from the server</param>
         public  TerrainDefinition[ , ] JsonToTerrain(string json)
         {
-            var terrainManager = World.Instance.TerrainManager;
+            var definitionManager = World.Instance.DefinitionManager;
 
             int[,] terrainsTypes = JsonConvert.DeserializeObject<int[,]>(json);
             var terrains = new TerrainDefinition[Constants.REGION_SIZE_X, Constants.REGION_SIZE_Y];
@@ -51,9 +51,8 @@ namespace @base.control
             {
                 for (int cellY = 0; cellY < Constants.REGION_SIZE_Y; ++cellY)
                 {
-                    var terrainType = terrainsTypes[cellX, cellY];
-                    terrains[cellX, cellY] = terrainManager.GetTerrainDefinition(
-                        (TerrainDefinition.TerrainDefinitionType)terrainType);
+                    var terrainId = terrainsTypes[cellX, cellY];
+                    terrains[cellX, cellY] = (TerrainDefinition) definitionManager.GetDefinition(terrainId);
                 }
             }
             return terrains;

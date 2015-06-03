@@ -5,16 +5,16 @@ using Newtonsoft.Json;
 
 namespace server.control
 {
-	public class TerrainManagerController : @base.control.TerrainManagerController
+	public class DefinitionManagerController : @base.control.DefinitionManagerController
 	{
-		public TerrainManagerController ()
+		public DefinitionManagerController ()
 		{
             string json = System.IO.File.ReadAllText(ServerConstants.TERRAIN_FILE);
             var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>>(json);
 
             foreach (var terrain in terrainDefintions)
             {
-                TerrainManager.AddTerrainDefinition(terrain);
+				DefinitionManager.AddDefinition(terrain);
             }
         }
 

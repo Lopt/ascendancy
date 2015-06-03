@@ -75,7 +75,7 @@ namespace server
 			controller.RegionStatesController = new @base.control.RegionStatesController (regionManagerLastC,
 																						  regionManagerCurrC,
 																						  regionManagerNextC);
-			controller.TerrainManagerController = new server.control.TerrainManagerController ();
+			controller.DefinitionManagerController = new server.control.DefinitionManagerController ();
 			controller.AccountManagerController = new server.control.AccountManagerController ();
 
 			var testAccount = new @base.model.Account (@base.model.IdGenerator.GetId(), "Test");

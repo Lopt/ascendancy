@@ -31,12 +31,12 @@ namespace @base.model
             var next = new RegionManager(curr);
 
             RegionStates = new RegionStates (last, curr, next);
-            TerrainManager = new TerrainManager ();
+            DefinitionManager = new DefinitionManager ();
             Accounts = new ConcurrentDictionary<int, Account> ();
         }
 
         public RegionStates RegionStates;
-        public TerrainManager TerrainManager;
+        public DefinitionManager DefinitionManager;
         public ConcurrentDictionary<int, Account> Accounts;
 
 	}
