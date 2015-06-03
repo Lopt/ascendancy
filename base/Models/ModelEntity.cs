@@ -10,21 +10,9 @@ namespace @base.model
         }
 
         [JsonIgnore]
-        virtual public view.ViewEntity View
-        {
-            get { return m_viewEntity; }
-            set { m_viewEntity = value; }
-        }
-
+        public view.ViewEntity View;
         [JsonIgnore]
-        virtual public control.ControlEntity Control
-        {
-            get { return m_controlEntity; }
-            set { m_controlEntity = value; }
-        }
-
-        view.ViewEntity m_viewEntity;
-        control.ControlEntity m_controlEntity;
+        public control.ControlEntity Control;
     }
 }
 
