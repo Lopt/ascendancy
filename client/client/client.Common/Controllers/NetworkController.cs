@@ -12,68 +12,81 @@ using @base.model;
 
 namespace client.Common.Controllers
 {
-	public sealed class NetworkController
-	{
-		#region Singelton
+    public sealed class NetworkController
+    {
+        #region Singelton
 
-		private static readonly NetworkController m_instance = new NetworkController ();
+        private static readonly NetworkController m_instance = new NetworkController ();
 
-		private NetworkController ()
-		{
-			ExceptionMessage = "";
-			JsonTerrainsString = "";
-			m_client = new HttpClient (new NativeMessageHandler ());
-		}
+        private NetworkController ()
+        {
+            ExceptionMessage = "";
+            JsonTerrainsString = "";
+            m_client = new HttpClient (new NativeMessageHandler ());
+        }
 
-		public static NetworkController GetInstance{ get { return m_instance; } }
+        public static NetworkController GetInstance {
+            get {
+                return m_instance; 
+            }
+        }
 
-		#endregion
+        #endregion
 
-		#region Networking
+        #region Networking
 
-		public string ExceptionMessage { get; private set; }
+        public string ExceptionMessage {
+            get;
+            private set; 
+        }
 
-		public string JsonTerrainsString{ get; private set; }
+        public string JsonTerrainsString {
+            get; 
+            private set;
+        }
 
-		public string JsonTerrainTypeString{ get; private set; }
+        public string JsonTerrainTypeString {
+            get; 
+            private set;
+        }
 
-		public async Task LoadTerrainsAsync (string jsonRegionServerPath)
-		{
-			try {
-				HttpResponseMessage response = await m_client.GetAsync (new Uri (jsonRegionServerPath));
-				if (response != null) {
-					response.EnsureSuccessStatusCode ();
-					JsonTerrainsString = await response.Content.ReadAsStringAsync ();
-				}
-			} catch (Exception ex) {
-				ExceptionMessage = ex.Message;
-				throw ex;
-			}
+        public async Task LoadTerrainsAsync (string jsonRegionServerPath)
+        {
+            try {
+                HttpResponseMessage response = await m_client.GetAsync (new Uri (jsonRegionServerPath));
+                if (response != null) {
+                    response.EnsureSuccessStatusCode ();
+                    JsonTerrainsString = await response.Content.ReadAsStringAsync ();
+                }
+            } catch (Exception ex) {
+                ExceptionMessage = ex.Message;
+                throw ex;
+            }
 		
-		}
+        }
 
-		public async Task LoadTerrainTypesAsync (string jsonTerrainTypeServerPath)
-		{
-			try {
-				HttpResponseMessage response = await m_client.GetAsync (new Uri (jsonTerrainTypeServerPath));
-				if (response != null) {
-					response.EnsureSuccessStatusCode ();
-					JsonTerrainTypeString = await response.Content.ReadAsStringAsync ();
-				}
-			} catch (Exception ex) {
-				ExceptionMessage = ex.Message;
-				throw ex;
-			}
+        public async Task LoadTerrainTypesAsync (string jsonTerrainTypeServerPath)
+        {
+            try {
+                HttpResponseMessage response = await m_client.GetAsync (new Uri (jsonTerrainTypeServerPath));
+                if (response != null) {
+                    response.EnsureSuccessStatusCode ();
+                    JsonTerrainTypeString = await response.Content.ReadAsStringAsync ();
+                }
+            } catch (Exception ex) {
+                ExceptionMessage = ex.Message;
+                throw ex;
+            }
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		#region private Fields
+        #region private Fields
 
-		private HttpClient m_client;
+        private HttpClient m_client;
 
-		#endregion
-	}
+        #endregion
+    }
 }
 

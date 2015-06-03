@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace client.Common.model
+namespace client.Common.Models
 {
     // This Code is from https://github.com/zumero/Xamarin.Forms-demo/blob/master/demo.Shared/Models/BaseModel.cs
     public class viewBaseModel : INotifyPropertyChanged
@@ -16,12 +16,12 @@ namespace client.Common.model
 
         #endregion
 
-        public void OnPropertyChanging(string propertyName)
+        public void OnPropertyChanging (string propertyName)
         {
             if (NotifyIfPropertiesChange == false || PropertyChanging == null)
                 return;
 
-            PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+            PropertyChanging (this, new PropertyChangingEventArgs (propertyName));
         }
 
 
@@ -31,15 +31,15 @@ namespace client.Common.model
 
         #endregion
 
-        public void OnPropertyChanged(string propertyName)
+        public void OnPropertyChanged (string propertyName)
         {
             if (NotifyIfPropertiesChange == false || PropertyChanged == null)
                 return;
 
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged (this, new PropertyChangedEventArgs (propertyName));
         }
 
-        protected void SetProperty<U>(
+        protected void SetProperty<U> (
             ref U backingStore, U value,
             string propertyName,
             Action onChanged = null,
@@ -47,23 +47,23 @@ namespace client.Common.model
         {
 
 
-            if (EqualityComparer<U>.Default.Equals(backingStore, value))
+            if (EqualityComparer<U>.Default.Equals (backingStore, value))
                 return;
 
             if (onChanging != null)
-                onChanging(value);
+                onChanging (value);
 
-            OnPropertyChanging(propertyName);
+            OnPropertyChanging (propertyName);
 
             backingStore = value;
 
             if (onChanged != null)
-                onChanged();
+                onChanged ();
 
-            OnPropertyChanged(propertyName);
+            OnPropertyChanged (propertyName);
         }
 
-        protected void SetProperty<U>(
+        protected void SetProperty<U> (
             U backingStore, U value,
             Action<U> performChange,
             string propertyName,
@@ -72,21 +72,21 @@ namespace client.Common.model
         {
 
 
-            if (EqualityComparer<U>.Default.Equals(backingStore, value))
+            if (EqualityComparer<U>.Default.Equals (backingStore, value))
                 return;
 
             if (onChanging != null)
-                onChanging(value);
+                onChanging (value);
 
-            OnPropertyChanging(propertyName);
+            OnPropertyChanging (propertyName);
 
             if (performChange != null)
-                performChange(value);
+                performChange (value);
 
             if (onChanged != null)
-                onChanged();
+                onChanged ();
 
-            OnPropertyChanged(propertyName);
+            OnPropertyChanged (propertyName);
         }
     }
 }

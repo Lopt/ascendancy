@@ -313,6 +313,14 @@ Global
 		$29.NamingStyle = PascalCase
 		$29.IncludeInstanceMembers = True
 		$29.IncludeStaticEntities = True
+		$0.TextStylePolicy = $31
+		$31.inheritsSet = VisualStudio
+		$31.inheritsScope = text/plain
+		$31.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $32
+		$32.inheritsSet = Mono
+		$32.inheritsScope = text/x-csharp
+		$32.scope = text/x-csharp
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
