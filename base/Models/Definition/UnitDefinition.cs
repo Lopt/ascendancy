@@ -6,22 +6,37 @@ namespace @base.model.definitions
     {
         public enum UnitDefinitionType
         {
-            Fighter,
+            Warrior, 
             Mage,
-            Hero
+            Hero,
+            Unknown1,
+            Unknown2,
+            Unknown3,
+
+            Headquarter,
+            Outposts,
+            Houses,
+            Wall,
+            Barracks,
+            RessourceHarvester
         }
       
         public UnitDefinition(Guid guid, DefinitionType type, 
-            UnitDefinitionType unitType, control.action.Action[] actions, int attack, int defense, int health, int moves) 
+            UnitDefinitionType unitType, control.action.Action[] actions, int attack, int defense, int health, int moves, Ressources ressource = Ressources.Gold) 
             : base(guid, type)
         {
-
             m_unitType = unitType;
             m_actions = actions;
             m_attack = attack;
             m_defense = defense;
             m_health = health;
             m_moves = moves;
+            m_ressource = ressource;
+        }
+
+        public Ressources Ressource
+        {
+            get { return m_ressource; }
         }
 
         public @base.control.action.Action[] Actions
@@ -60,6 +75,7 @@ namespace @base.model.definitions
         private int m_defense;
         private int m_health;
         private int m_moves;
+        private Ressources m_ressource;
 
     }
 }

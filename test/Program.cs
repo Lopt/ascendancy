@@ -7,8 +7,22 @@ namespace test
 {
     class MainClass
     {
+		enum test
+		{
+			a,
+			b,
+			c = 5,
+			d,
+			e,
+				
+		}
+		
         public static void Main(string[] args)
-        {
+		{
+			Console.WriteLine (a);
+			Console.WriteLine (d);
+
+
 			var latlon = new LatLon(50.9849, 11.0442);
 			var position = new Position(latlon);
 			var combinedPos = new CombinedPosition(position);

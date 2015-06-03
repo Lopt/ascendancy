@@ -21,6 +21,12 @@ namespace @base.model
             get { return m_id; }
         }
 
+        public Guid DefinitionID
+        {
+            get { return m_definition.GUID; }   
+        }
+
+
         [JsonIgnore]
         public Definition Definition
         {

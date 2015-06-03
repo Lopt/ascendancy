@@ -68,7 +68,7 @@ namespace @base.control.action
             var entity = new @base.model.Entity(model.IdGenerator.GetId(), 
                 new UnitDefinition(Guid.NewGuid(),
                     model.definitions.UnitDefinition.DefinitionType.building,
-                    UnitDefinition.UnitDefinitionType.Hero,
+                    UnitDefinition.UnitDefinitionType.Headquarter,
                     new Action[0], 
                     0, 0, 0, 0),
                 positionI);
