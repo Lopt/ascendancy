@@ -11,53 +11,16 @@ namespace @base.model
 	{
         public class DatedActions
         {
-            public DateTime DateTime
-            {
-                get { return m_dateTime; }
-                set { m_dateTime = value; }
-            }
-
-            public ObservableCollection<model.Action> Actions
-            {
-                get { return m_actions; }
-                set { m_actions = value; }
-            }
-
-            public RegionPosition RegionPosition
-            {
-                get { return m_regionPosition; }
-                set { m_regionPosition = value; }
-            }
-
-            RegionPosition m_regionPosition;
-            DateTime m_dateTime;
-            ObservableCollection<model.Action> m_actions;
+            public DateTime DateTime;
+            public ObservableCollection<model.Action> Actions;
+            public RegionPosition RegionPosition;
         }
 
         public class DatedEntities
         {
-            public DateTime DateTime
-            {
-                get { return m_dateTime; }
-                set { m_dateTime = value; }
-            }
-
-            public ObservableCollection<Entity> Entities
-            {
-                get { return m_entities; }
-                set { m_entities = value; }
-            }
-
-            public RegionPosition RegionPosition
-            {
-                get { return m_regionPosition; }
-                set { m_regionPosition = value; }
-            }
-
-
-            RegionPosition m_regionPosition;
-            DateTime m_dateTime;
-            ObservableCollection<Entity> m_entities;
+            public DateTime DateTime;
+            public ObservableCollection<Entity> Entities;
+            public RegionPosition RegionPosition;
         }
 
         public Region(Region region)
