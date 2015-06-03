@@ -48,7 +48,6 @@
     <Compile Include="Models\Position\CombinedPosition.cs" />
     <Compile Include="Controllers\RegionManagerController.cs" />
     <Compile Include="Controllers\Controller.cs" />
-    <Compile Include="Controllers\TerrainManagerController.cs" />
     <Compile Include="Controllers\AccountManagerController.cs" />
     <Compile Include="Models\ModelEntity.cs" />
     <Compile Include="Controllers\ControlEntity.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="Controllers\RegionStatesController.cs" />
     <Compile Include="Models\Manager\DefinitionManager.cs" />
     <Compile Include="Models\Definition\TerrainDefinition.cs" />
+    <Compile Include="Controllers\DefinitionManagerController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

@@ -12,7 +12,7 @@ namespace client.Common.Views
             : base ()
         {
 
-            m_RegionC = Controller.Instance.RegionManagerController as RegionController;
+            m_RegionC = Controller.Instance.RegionStatesController.Curr as RegionController;
 
             m_Logo = new CCSprite ("logo_neu");
             m_LoadedSprite = new CCSprite ("monkey");

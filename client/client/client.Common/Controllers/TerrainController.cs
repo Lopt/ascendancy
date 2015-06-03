@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 namespace client.Common.Controllers
 {
-    public class TerrainController : TerrainManagerController
+    public class TerrainController : DefinitionManagerController
     {
 
         public TerrainController ()
@@ -20,7 +20,6 @@ namespace client.Common.Controllers
             m_Network = NetworkController.GetInstance;
             InitTerrainDefToTileGid ();
 
-            TerrainDefinitionCount = 0;
         }
 
         #region Terrain
@@ -33,8 +32,8 @@ namespace client.Common.Controllers
             var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>> (json);
 
             foreach (var terrain in terrainDefintions) {
-                TerrainManager.AddTerrainDefinition (terrain);
-                TerrainDefinitionCount++;
+                DefinitionManager.AddDefinition (terrain);
+
             }
         }
 
@@ -69,14 +68,6 @@ namespace client.Common.Controllers
 
         #endregion
 
-        #region public Properties
-
-        public int TerrainDefinitionCount {
-            get; 
-            private set; 
-        }
-
-        #endregion
 
         #region private Fields
 

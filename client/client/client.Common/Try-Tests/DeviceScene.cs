@@ -23,7 +23,7 @@ namespace client.Common.TryTests
         public DeviceScene (CCWindow _MainWindow)
             : base (_MainWindow)
         {
-            regionController = Controller.Instance.RegionManagerController as RegionController;
+            regionController = Controller.Instance.RegionStatesController.Curr as RegionController;
             region = regionController.GetRegion (new @base.model.RegionPosition (166148, 104835));
 
             //mLayer = new DeviceLayer ();
@@ -242,7 +242,7 @@ namespace client.Common.TryTests
             if (Antwort != null)
                 LabelTestClient.Text = TestClient + " = " + network.antwort;
             try {
-                def = World.Instance.TerrainManager.GetTerrainDefinition (new Guid ("d76bb197-59ca-437f-89e7-69d772b62ea6")).TerrainType.ToString ();
+/*/                def = World.Instance.DefinitionManager.GetDefinition(new Guid ("d76bb197-59ca-437f-89e7-69d772b62ea6")).*/
             } catch (Exception e) {
             }
             LabelTestGuid.Text = def;

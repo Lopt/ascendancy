@@ -18,7 +18,7 @@ namespace client.Common.Views
         public WorldLayer (RegionPosition regionPosition)
             : base ()
         {
-            m_RegionC = Controller.Instance.RegionManagerController as RegionController;
+            m_RegionC = Controller.Instance.RegionStatesController.Curr as RegionController;
 
             m_WorldTileMap = new CCTileMap (ClientConstants.TILEMAP_FILE);
             m_Geolocation = Geolocation.GetInstance;

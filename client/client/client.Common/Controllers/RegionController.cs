@@ -13,11 +13,12 @@ namespace client.Common.Controllers
 {
     public class RegionController : RegionManagerController
     {
-        public RegionController ()
+        public RegionController (RegionManager regionManager)
+            : base (null, regionManager)
         {
             m_networkController = NetworkController.GetInstance;
             m_geolocation = Geolocation.GetInstance;
-            m_terrainController = Controller.Instance.TerrainManagerController as TerrainController;
+            m_terrainController = Controller.Instance.DefinitionManagerController as TerrainController;
 
         }
 
