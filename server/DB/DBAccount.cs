@@ -27,15 +27,23 @@ namespace server.DB
             newData.UserName = account.UserName;
             newData.Password = DBPassword;
             newData.Salt = salt;
+
+            m_db.InsertOrReplace(newData);
         }
         
         public bool Login(string username, string password)
         {
-            var DBsalt = m_db.Query<TableAccount>("SELECT Salt FROM Items WHERE = ?", "username").ToString();
+            var result = m_db.Query<TableAccount>("SELECT Id, UserName, Salt, Password FROM Account WHERE UserName = ? LIMIT 1", username);
+            if (result.Count == 0)
+            {
+                return false;
+            }
 
+            var DBsalt = result[0].Salt;
+            
             var CalcSalt = GenerateSaltedHash(password, DBsalt);
 
-            if (CalcSalt == m_db.Query<TableAccount>("SELECT Password FROM Items WHERE = ?", "username").ToString())
+            if (CalcSalt == result[0].Password)
             {
                 return true;
             }

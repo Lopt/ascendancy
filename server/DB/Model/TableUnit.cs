@@ -7,7 +7,7 @@ namespace server.DB.Model
     class TableUnit
     {
         [PrimaryKey, Column("Id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public int PositionX { get; set; }
         public int PositionY { get; set; }

@@ -17,14 +17,12 @@ namespace server.DB
 
         public void NewUnit(Entity unitEntity, int id)
         {
-            if (m_db.Table<TableUnit>().Count() == 0)
-            {
                 var newData = new TableUnit();
-                newData.ID = id;
+                newData.Id = id;
                 newData.PositionX = unitEntity.Position.X;
-                newData.PositionY = unitEntity.Position.Y;               
-            }
+                newData.PositionY = unitEntity.Position.Y;
 
+                m_db.InsertOrReplace(newData);
         }
 
         private SQLiteConnection m_db;
