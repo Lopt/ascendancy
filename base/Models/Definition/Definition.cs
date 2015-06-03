@@ -6,30 +6,43 @@ namespace @base.model
     {
         public enum DefinitionType 
         {
-            terrain,
-            unit,
-            building
+            Invalid = -1,
+            Terrain,
+            Unit,
+            Building
         }
 
-        public Definition(Guid guid, DefinitionType type)
+        public Definition(int id)
         {
-            m_guid = guid;
-            m_type = type;
+            m_id = id;
         }
 
-        public Guid GUID
+        public int ID
         {
-            get { return this.m_guid; }
+            get { return this.m_id; }
         }
 
         public DefinitionType Type
         {
-            get { return this.m_type; }
+            get
+            {
+                if (m_id < 100)
+                {
+                    return DefinitionType.Terrain;
+                }
+                if (m_id < 300)
+                {
+                    return DefinitionType.Unit;
+                }
+                if (m_id < 500)
+                {
+                    return DefinitionType.Building;
+                }
+                return DefinitionType.Invalid;
+            }
         }
-
-     
-        private Guid m_guid;
-        private DefinitionType m_type;
+                 
+        private int m_id;
     }
 }
 

@@ -36,35 +36,6 @@ namespace @base.model
                     break;   
             }
         }
-        /// <summary>
-        /// Returns if the action is even possible.
-        /// </summary>
-        public bool Possible()
-        {
-            return ((control.action.Action)Control).Possible();
-        }
-
-        public ConcurrentBag<model.Region> GetAffectedRegions()
-        {
-            return ((control.action.Action)Control).GetAffectedRegions();
-        }
-
-        /// <summary>
-        /// Apply action-related changes to the world.
-        /// Returns True if everything worked, otherwise False
-        /// </summary>
-        public ConcurrentBag<model.Region> Do()
-        {
-            return ((control.action.Action)Control).Do();
-        }
-
-        /// <summary>
-        /// In case of errors, revert the world data to a valid state.
-        /// </summary>
-        public bool Catch()
-        {
-            return ((control.action.Action)Control).Catch();
-        }
 
         public ConcurrentDictionary<string, object> Parameters
         {

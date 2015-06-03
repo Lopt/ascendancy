@@ -28,6 +28,9 @@ namespace @base.model
         // if there are more than entries in a list/array, the API will dismiss the request
         // for safety reasons
         public const int MAX_ENTRIES_PER_CONNECTION = 25;
+
+
+        public const int REGION_LOCK_WAIT_TIME = 0;
     }
 }
 

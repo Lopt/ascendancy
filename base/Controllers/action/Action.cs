@@ -11,7 +11,7 @@ namespace @base.control.action
         {
         }
 
-        virtual public ConcurrentBag<model.Region> GetAffectedRegions()
+        virtual public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
             throw new NotImplementedException();
         }
@@ -19,16 +19,16 @@ namespace @base.control.action
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
-        virtual public bool Possible()
+        virtual public bool Possible(RegionManagerController regionManagerC)
         {
             throw new NotImplementedException();
         }
 
         /// <summary>
         /// Apply action-related changes to the world.
-        /// Returns True if everything worked, otherwise False
+        /// Returns set of changed Regions if everything worked, otherwise null
         /// </summary>
-        virtual public ConcurrentBag<model.Region> Do()
+        virtual public ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {
             throw new NotImplementedException();
         }
@@ -36,11 +36,10 @@ namespace @base.control.action
         /// <summary>
         /// In case of errors, revert the world data to a valid state.
         /// </summary>
-        virtual public bool Catch()
+        virtual public bool Catch(RegionManagerController regionManagerC)
         {
             throw new NotImplementedException();
         }
-
     }
 }
 

@@ -22,21 +22,19 @@ namespace @base.control.action
         /// <param name="actionType">Action type.</param>
         /// <param name="regions">Affected Regions of this action.</param>
         /// <param name="parameters">Parameters.</param>
-        override public ConcurrentBag<model.Region> GetAffectedRegions()
+        override public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
             var action = (model.Action)Model;
             var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
-            return new ConcurrentBag<model.Region>() { Controller.Instance.RegionManagerController.GetRegion(positionI.RegionPosition) }; 
+            return new ConcurrentBag<model.Region>() { regionManagerC.GetRegion(positionI.RegionPosition) }; 
         }
 
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
-        public override bool Possible()
+        public override bool Possible(RegionManagerController regionManagerC)
         {   
             var action = (model.Action)Model;
-            
-            var regionManagerC = Controller.Instance.RegionManagerController;
             return true;
 
             if (action.Account.Headquarters.Count == 0)
@@ -61,18 +59,14 @@ namespace @base.control.action
         /// Apply action-related changes to the world.
         /// Returns false if something went terrible wrong
         /// </summary>
-        public override ConcurrentBag<model.Region> Do()
+        public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {   
             var action = (model.Action)Model;
-
-            var regionManagerC = Controller.Instance.RegionManagerController;
             var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
             var entity = new @base.model.Entity(model.IdGenerator.GetId(), 
-                new UnitDefinition(Guid.NewGuid(),
-                    model.definitions.UnitDefinition.DefinitionType.building,
-                    UnitDefinition.UnitDefinitionType.Hero,
+                new UnitDefinition(UnitDefinition.UnitDefinitionType.Headquarter,
                     new Action[0], 
                     0, 0, 0, 0),
                 positionI);
@@ -86,7 +80,7 @@ namespace @base.control.action
         /// <summary>
         /// In case of errors, revert the world data to a valid state.
         /// </summary>        public bool Catch()
-        public override bool Catch()
+        public override bool Catch(RegionManagerController regionManagerC)
         {
             throw new NotImplementedException();
         }

@@ -1,28 +1,30 @@
 ﻿using System;
+using SQLite;
 using System.Collections.ObjectModel;
 
 namespace @base.model
 {
 	public class Account : ModelEntity
 	{
-        public Account (Guid guid)
+       
+        public Account (int id)
             : base()
         {
-            m_guid = guid;
+            m_id = id;
             m_username = "???";
             m_headquarters = new ObservableCollection<PositionI>();
         }
 
-        public Account (Guid guid, string userName)
+        public Account (int id, string userName)
         {
-            m_guid = guid;
+            m_id = id;
             m_username = userName;
             m_headquarters = new ObservableCollection<PositionI>();
         }
 
-		public Guid GUID
+		public int ID
 		{
-			get { return this.m_guid; }
+			get { return this.m_id; }
 		}
 
 		public string UserName
@@ -36,7 +38,7 @@ namespace @base.model
             get { return m_headquarters; }
         }
 
-		private Guid m_guid;
+		private int m_id;
 		private string m_username;
         private ObservableCollection<PositionI> m_headquarters;
 

@@ -6,22 +6,48 @@ namespace @base.model.definitions
     {
         public enum UnitDefinitionType
         {
-            Fighter,
-            Mage,
-            Hero
+            // ID modulo 6 = 0 -> Gold
+            // ID modulo 6 = 1 -> Fire
+            // ID modulo 6 = 2 -> Water
+            // ID modulo 6 = 3 -> Earth
+            // ID modulo 6 = 4 -> Air
+            // ID modulo 6 = 5 -> Magic 
+            // example: Hero ID 60 is Gold, 61 is Hero-Fire,
+            // 62 is Hero-Water...
+
+            // Unit Range 60-275
+            Hero = 60,
+            Mage = 66,
+            Warrior = 72, 
+            Unknown1 = 78,
+            Unknown2 = 84,
+            Unknown3 = 90,
+           
+            // Buildings Range 276-491
+            Headquarter = 276,
+            Outposts = 282,
+            Houses = 288,
+            Wall = 294,
+            Barracks = 300,
+            RessourceHarvester = 306
         }
       
-        public UnitDefinition(Guid guid, DefinitionType type, 
-            UnitDefinitionType unitType, control.action.Action[] actions, int attack, int defense, int health, int moves) 
-            : base(guid, type)
+        public UnitDefinition(UnitDefinitionType unitType,
+                              control.action.Action[] actions,
+                              int attack, int defense,
+                              int health, int moves) 
+            : base((int) unitType)
         {
-
-            m_unitType = unitType;
             m_actions = actions;
             m_attack = attack;
             m_defense = defense;
             m_health = health;
             m_moves = moves;
+        }
+
+        public Ressources Ressource
+        {
+            get { return (Ressources) (ID % 6); }
         }
 
         public @base.control.action.Action[] Actions
@@ -51,10 +77,9 @@ namespace @base.model.definitions
 
         public UnitDefinitionType UnitType
         {
-            get { return m_unitType; }
+            get { return (UnitDefinitionType) ID; }
         }
 
-        private UnitDefinitionType m_unitType;
         private control.action.Action[] m_actions;
         private int m_attack;
         private int m_defense;

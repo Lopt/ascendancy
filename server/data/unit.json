@@ -1,0 +1,33 @@
+[
+    {
+        "UnitType": 101,
+        "Actions": ["Move"],
+        "Attack": 50,
+        "Defense": 25,
+        "Health": 100,
+        "Moves": 10
+     },
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     {
+        "UnitType": 276,
+        "Actions": ["CreateUnit"],
+        "Attack": 0,
+        "Defense": 0,
+        "Health": 100,
+        "Moves": 0
+     }
+     
+     
+
+]

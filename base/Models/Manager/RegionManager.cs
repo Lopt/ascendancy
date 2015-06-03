@@ -3,18 +3,18 @@ using System.Collections.Concurrent;
 
 namespace @base.model
 {
-	public class RegionManager
+    public class RegionManager
 	{
-        public RegionManager ()
+        public RegionManager (RegionManager parent = null)
         {
-            m_regions = new ConcurrentDictionary<RegionPosition, Region> ();
+            Regions = new ConcurrentDictionary<RegionPosition, Region> ();
         }
 
         public Region GetRegion (RegionPosition regionPosition)
         {
-            if (m_regions.ContainsKey(regionPosition))
+            if (Regions.ContainsKey(regionPosition))
             {
-                return m_regions[regionPosition];
+                return Regions[regionPosition];
             }
             var region =  new Region(regionPosition);
 
@@ -23,15 +23,10 @@ namespace @base.model
             
         public void AddRegion (Region region)
         {
-            m_regions[region.RegionPosition] = region;
+            Regions[region.RegionPosition] = region;
         }
 
-        public ConcurrentDictionary<RegionPosition, Region> Regions
-        {
-            get { return m_regions; }
-        }
-
-        private ConcurrentDictionary<RegionPosition, Region> m_regions;
+        public ConcurrentDictionary<RegionPosition, Region> Regions;
 	}
 }
 

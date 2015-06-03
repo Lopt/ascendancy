@@ -11,53 +11,27 @@ namespace @base.model
 	{
         public class DatedActions
         {
-            public DateTime DateTime
-            {
-                get { return m_dateTime; }
-                set { m_dateTime = value; }
-            }
-
-            public ObservableCollection<model.Action> Actions
-            {
-                get { return m_actions; }
-                set { m_actions = value; }
-            }
-
-            public RegionPosition RegionPosition
-            {
-                get { return m_regionPosition; }
-                set { m_regionPosition = value; }
-            }
-
-            RegionPosition m_regionPosition;
-            DateTime m_dateTime;
-            ObservableCollection<model.Action> m_actions;
+            public DateTime DateTime;
+            public ObservableCollection<model.Action> Actions;
+            public RegionPosition RegionPosition;
         }
 
         public class DatedEntities
         {
-            public DateTime DateTime
-            {
-                get { return m_dateTime; }
-                set { m_dateTime = value; }
-            }
+            public DateTime DateTime;
+            public ObservableCollection<Entity> Entities;
+            public RegionPosition RegionPosition;
+        }
 
-            public ObservableCollection<Entity> Entities
-            {
-                get { return m_entities; }
-                set { m_entities = value; }
-            }
-
-            public RegionPosition RegionPosition
-            {
-                get { return m_regionPosition; }
-                set { m_regionPosition = value; }
-            }
-
-
-            RegionPosition m_regionPosition;
-            DateTime m_dateTime;
-            ObservableCollection<Entity> m_entities;
+        public Region(Region region)
+        {
+            m_regionPosition = region.m_regionPosition;
+            m_terrains  = region.m_terrains;
+            m_entities  = region.m_entities;
+            m_actions   = new DatedActions();
+            m_actions.Actions = new ObservableCollection<model.Action>();
+            m_exist     = region.m_exist;
+            m_mutex     = region.m_mutex;
         }
 
         public Region (RegionPosition regionPosition)
@@ -95,8 +69,8 @@ namespace @base.model
             // standardvalue
             if (value == null)
             {
-                return World.Instance.TerrainManager.GetTerrainDefinition(
-                    TerrainDefinition.TerrainDefinitionType.Forbidden);
+                return (TerrainDefinition) World.Instance.DefinitionManager.GetDefinition(
+                    (int) TerrainDefinition.TerrainDefinitionType.Forbidden);
             }
             return value;
         }
@@ -157,57 +131,30 @@ namespace @base.model
         */
         public DatedEntities GetEntities()
         {
-            try
-            {
-                LockRegion();
-                return m_entities;
-            }
-            catch
-            {
-
-            }
-            finally
-            {
-                Release();
-            }
-
-            return null;
+            return m_entities;
         }
 
         public DatedActions GetCompletedActions(DateTime startTime)
         {
-            try
-            {
-                LockRegion();
-                var returnActions = new DatedActions();
-                var currentActions = m_actions;
+            var returnActions = new DatedActions();
+            var currentActions = m_actions;
 
-                var actionsCollection = new ObservableCollection<model.Action>();
-                foreach (var action in currentActions.Actions)
+            var actionsCollection = new ObservableCollection<model.Action>();
+            foreach (var action in currentActions.Actions)
+            {
+                if (action.ActionTime <= startTime)
                 {
-                    if (action.ActionTime <= startTime)
-                    {
-                        break;
-                    }
-                    actionsCollection.Add(action);
+                    break;
                 }
-
-                returnActions.Actions = actionsCollection;
-                returnActions.DateTime = currentActions.DateTime;
-                returnActions.RegionPosition = RegionPosition;
-
-                return returnActions;
-            }
-            catch
-            {
-                
-            }
-            finally
-            {
-                Release();
+                actionsCollection.Add(action);
             }
 
-            return null;
+            returnActions.Actions = actionsCollection;
+            returnActions.DateTime = currentActions.DateTime;
+            returnActions.RegionPosition = RegionPosition;
+
+            return returnActions;
+
         }
 
         /// <summary>
@@ -228,13 +175,9 @@ namespace @base.model
 
         public bool TryLockRegion()
         {
-            return m_mutex.WaitOne(0);
+            return m_mutex.WaitOne(Constants.REGION_LOCK_WAIT_TIME);
         }
-
-        public bool LockRegion()
-        {
-            return m_mutex.WaitOne(-1);
-        }
+           
 
         public void Release()
         {

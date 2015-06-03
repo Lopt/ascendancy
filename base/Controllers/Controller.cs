@@ -25,27 +25,9 @@ namespace @base.control
 		{
 		}
 
-		public RegionManagerController RegionManagerController
-		{
-			get { return m_regionManagerController; }
-            set { m_regionManagerController = value; }
-		}
-
-        public TerrainManagerController TerrainManagerController
-        {
-            get { return m_terrainManagerController; }
-            set { m_terrainManagerController = value; }
-        }
-
-        public AccountManagerController AccountManagerController
-        {
-            get { return m_accountManagerController; }
-            set { m_accountManagerController = value; }
-        }
-
-        RegionManagerController m_regionManagerController;
-        TerrainManagerController m_terrainManagerController;
-        AccountManagerController m_accountManagerController;
+        public RegionStatesController RegionStatesController;
+        public DefinitionManagerController DefinitionManagerController;
+        public AccountManagerController AccountManagerController;
 	}
 }
 

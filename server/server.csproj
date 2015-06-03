@@ -101,15 +101,22 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="scripts\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\DBLogin.cs" />
+    <Compile Include="DB\DBBuildings.cs" />
+    <Compile Include="DB\DBHandle.cs" />
+    <Compile Include="DB\DBAccount.cs" />
+    <Compile Include="DB\DBRessource.cs" />
+    <Compile Include="DB\DBUnits.cs" />
+    <Compile Include="DB\Model\TableAccount.cs" />
+    <Compile Include="DB\Model\TableBuilding.cs" />
+    <Compile Include="DB\Model\TableData.cs" />
+    <Compile Include="DB\Model\TableRessource.cs" />
+    <Compile Include="DB\Model\TableUnit.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Controllers\RegionManagerController.cs" />
-    <Compile Include="Controllers\TerrainManagerController.cs" />
     <Compile Include="Models\ServerConstants.cs" />
     <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Models\User.cs" />
@@ -119,6 +126,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HTTPController.cs" />
     <Compile Include="Controllers\AccountManagerController.cs" />
+    <Compile Include="Controllers\CleaningController.cs" />
+    <Compile Include="Controllers\DefinitionManagerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
