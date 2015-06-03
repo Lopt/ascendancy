@@ -12,6 +12,7 @@ namespace @base.model.definitions
             Unknown1,
             Unknown2,
             Unknown3,
+           
 
             Headquarter,
             Outposts,
@@ -21,9 +22,12 @@ namespace @base.model.definitions
             RessourceHarvester
         }
       
-        public UnitDefinition(Guid guid, DefinitionType type, 
-            UnitDefinitionType unitType, control.action.Action[] actions, int attack, int defense, int health, int moves, Ressources ressource = Ressources.Gold) 
-            : base(guid, type)
+        public UnitDefinition(Guid guid, UnitDefinitionType unitType,
+                              control.action.Action[] actions,
+                              int attack, int defense,
+                              int health, int moves,
+                              Ressources ressource = Ressources.Gold) 
+            : base(guid, unitType < UnitDefinitionType.Headquarter ? DefinitionType.Unit : DefinitionType.Building)
         {
             m_unitType = unitType;
             m_actions = actions;

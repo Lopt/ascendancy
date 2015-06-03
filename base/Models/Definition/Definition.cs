@@ -6,9 +6,9 @@ namespace @base.model
     {
         public enum DefinitionType 
         {
-            terrain,
-            unit,
-            building
+            Terrain,
+            Unit,
+            Building
         }
 
         public Definition(Guid guid, DefinitionType type)
