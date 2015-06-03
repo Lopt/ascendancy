@@ -12,16 +12,16 @@ namespace @base.control
         {
         }
 
-        public Account GetAccount(Guid guid)
+        public Account GetAccount(int id)
         {
-            return World.Instance.Accounts[guid];
+            return World.Instance.Accounts[id];
         }
 
         public bool Registrate(Account account)
         {
-            if (!World.Instance.Accounts.ContainsKey(account.GUID))
+            if (!World.Instance.Accounts.ContainsKey(account.ID))
             {
-                World.Instance.Accounts[account.GUID] = account;
+                World.Instance.Accounts[account.ID] = account;
                 return true;
             }
             return false;

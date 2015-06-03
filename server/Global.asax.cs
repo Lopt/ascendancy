@@ -78,7 +78,7 @@ namespace server
 			controller.TerrainManagerController = new server.control.TerrainManagerController ();
 			controller.AccountManagerController = new server.control.AccountManagerController ();
 
-			var testAccount = new @base.model.Account (Guid.NewGuid(), "Test");
+			var testAccount = new @base.model.Account (@base.model.IdGenerator.GetId(), "Test");
 			var testAccountC = new server.control.AccountController (testAccount, "Test");
 
 

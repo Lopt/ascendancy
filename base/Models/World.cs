@@ -32,12 +32,12 @@ namespace @base.model
 
             RegionStates = new RegionStates (last, curr, next);
             TerrainManager = new TerrainManager ();
-            Accounts = new ConcurrentDictionary<Guid, Account> ();
+            Accounts = new ConcurrentDictionary<int, Account> ();
         }
 
         public RegionStates RegionStates;
         public TerrainManager TerrainManager;
-        public ConcurrentDictionary<Guid, Account> Accounts;
+        public ConcurrentDictionary<int, Account> Accounts;
 
 	}
 }

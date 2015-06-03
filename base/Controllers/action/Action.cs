@@ -26,7 +26,7 @@ namespace @base.control.action
 
         /// <summary>
         /// Apply action-related changes to the world.
-        /// Returns True if everything worked, otherwise False
+        /// Returns set of changed Regions if everything worked, otherwise null
         /// </summary>
         virtual public ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {
