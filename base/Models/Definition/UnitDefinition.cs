@@ -6,28 +6,29 @@ namespace @base.model.definitions
     {
         public enum UnitDefinitionType
         {
-            Warrior, 
-            Mage,
-            Hero,
-            Unknown1,
-            Unknown2,
-            Unknown3,
+            // Unit Range 100-199
+            Mage = 101,
+            Hero = 102,
+            Warrior = 103, 
+            Unknown1 = 104,
+            Unknown2 = 105,
+            Unknown3 = 106,
            
-
-            Headquarter,
-            Outposts,
-            Houses,
-            Wall,
-            Barracks,
-            RessourceHarvester
+            // Buildings Range 100-199
+            Headquarter = 201,
+            Outposts = 202,
+            Houses = 203,
+            Wall = 204,
+            Barracks = 205,
+            RessourceHarvester = 206
         }
       
-        public UnitDefinition(int id, UnitDefinitionType unitType,
+        public UnitDefinition(UnitDefinitionType unitType,
                               control.action.Action[] actions,
                               int attack, int defense,
                               int health, int moves,
                               Ressources ressource = Ressources.Gold) 
-            : base(id, unitType < UnitDefinitionType.Headquarter ? DefinitionType.Unit : DefinitionType.Building)
+            : base((int) unitType)
         {
             m_unitType = unitType;
             m_actions = actions;
@@ -70,7 +71,7 @@ namespace @base.model.definitions
 
         public UnitDefinitionType UnitType
         {
-            get { return m_unitType; }
+            get { return (UnitDefinitionType) ID; }
         }
 
         private UnitDefinitionType m_unitType;

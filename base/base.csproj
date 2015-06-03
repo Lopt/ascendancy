@@ -68,6 +68,7 @@
     <Compile Include="Models\IdGenerator.cs" />
     <Compile Include="Models\Map\RegionStates.cs" />
     <Compile Include="Controllers\RegionStatesController.cs" />
+    <Compile Include="Models\Manager\DefinitionManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

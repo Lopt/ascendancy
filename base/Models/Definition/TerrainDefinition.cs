@@ -6,6 +6,7 @@ namespace @base.model.definitions
     {
         public enum TerrainDefinitionType
         {
+            // Terrain Range 0-99
             Water = 0,
             Buildings = 1,
             Woods = 2,
@@ -21,12 +22,10 @@ namespace @base.model.definitions
             Invalid = 12
         }
       
-        public TerrainDefinition(int id,
-            TerrainDefinitionType terrainType,
+        public TerrainDefinition(TerrainDefinitionType terrainType,
             int[] ressources)
-            : base(id, Definition.DefinitionType.Terrain)
+            : base((int) terrainType)
         {
-            m_terrainType = terrainType;
             m_ressources = ressources;
         }
 
@@ -37,10 +36,9 @@ namespace @base.model.definitions
 
         public TerrainDefinitionType TerrainType
         {
-            get { return m_terrainType; }
+            get { return (TerrainDefinitionType) ID; }
         }
 
-        private TerrainDefinitionType m_terrainType;
         private int[] m_ressources;
     }
 }

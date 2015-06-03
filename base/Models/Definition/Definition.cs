@@ -6,14 +6,15 @@ namespace @base.model
     {
         public enum DefinitionType 
         {
+            Invalid = -1,
             Terrain,
             Unit,
             Building
         }
 
-        public Definition(int id, DefinitionType type)
+        public Definition(int id)
         {
-            m_type = type;
+            m_id = id;
         }
 
         public int ID
@@ -23,12 +24,25 @@ namespace @base.model
 
         public DefinitionType Type
         {
-            get { return this.m_type; }
+            get
+            {
+                if (m_id < 100)
+                {
+                    return DefinitionType.Terrain;
+                }
+                if (m_id < 200)
+                {
+                    return DefinitionType.Unit;
+                }
+                if (m_id < 300)
+                {
+                    return DefinitionType.Building;
+                }
+                return DefinitionType.Invalid;
+            }
         }
-
-     
+                 
         private int m_id;
-        private DefinitionType m_type;
     }
 }
 
