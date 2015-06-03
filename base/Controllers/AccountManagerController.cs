@@ -12,9 +12,18 @@ namespace @base.control
         {
         }
 
+       /// <summary>
+        /// Returns the account
+       /// </summary>
+       /// <returns>The account or none (is there is none</returns>
+       /// <param name="id">Identifier.</param>
         public Account GetAccount(int id)
         {
-            return World.Instance.Accounts[id];
+            if (!World.Instance.Accounts.ContainsKey(id))
+            {
+                return World.Instance.Accounts[id];
+            }
+            return null;
         }
 
         public bool Registrate(Account account)
