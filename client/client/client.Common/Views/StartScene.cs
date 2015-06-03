@@ -1,17 +1,15 @@
 ﻿using System;
 using CocosSharp;
-using client.Common.Views;
 
-namespace client.Common.view
+namespace client.Common.Views
 {
 	public class StartScene : CCScene
 	{
-		public StartScene (CCWindow _MainWindow)
-			: base (_MainWindow)
+		public StartScene (CCWindow mainWindow)
+			: base (mainWindow)
 		{
 			m_LogoLayer = new LogoLayer ();
 			this.AddChild (m_LogoLayer);
-
 		}
 
 		#region Properties

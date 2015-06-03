@@ -1,26 +1,26 @@
 ﻿using System;
 using CocosSharp;
-using client.Common.Views;
 using System.Collections.Generic;
+using client.Common.Models;
 
-namespace client.Common.view
+namespace client.Common.Views
 {
-	public class GameScene : CCScene
-	{
-		public GameScene (CCWindow _MainWindow)
-			: base (_MainWindow)
-		{
-			m_region = new WorldLayer (Geolocation.GetInstance.CurrentRegionPosition);
-			this.AddChild (m_region);
+    public class GameScene : CCScene
+    {
+        public GameScene (CCWindow mainWindow)
+            : base (mainWindow)
+        {
+            m_region = new WorldLayer (Geolocation.GetInstance.CurrentRegionPosition);
+            this.AddChild (m_region);
 
-		}
+        }
 
 
-		#region Properties
+        #region Properties
 
-		WorldLayer m_region;
+        WorldLayer m_region;
 
-		#endregion
-	}
+        #endregion
+    }
 }
 

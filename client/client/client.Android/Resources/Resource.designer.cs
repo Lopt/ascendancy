@@ -28,6 +28,10 @@ namespace client.Droid
 		{
 			global::PCLStorage.Resource.String.ApplicationName = global::client.Droid.Resource.String.ApplicationName;
 			global::PCLStorage.Resource.String.Hello = global::client.Droid.Resource.String.Hello;
+			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::client.Droid.Resource.String.ApplicationName;
+			global::Xamarin.Forms.Platform.Resource.String.Hello = global::client.Droid.Resource.String.Hello;
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::client.Droid.Resource.String.ApplicationName;
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::client.Droid.Resource.String.Hello;
 			global::XLabs.Platform.Resource.String.ApplicationName = global::client.Droid.Resource.String.ApplicationName;
 			global::XLabs.Platform.Resource.String.Hello = global::client.Droid.Resource.String.Hello;
 			global::XLabs.Forms.Resource.Color.calendar_active_month_bg = global::client.Droid.Resource.Color.calendar_active_month_bg;
@@ -70,11 +74,7 @@ namespace client.Droid
 			global::XLabs.Forms.Resource.Style.CalendarCell_CalendarDate = global::client.Droid.Resource.Style.CalendarCell_CalendarDate;
 			global::XLabs.Forms.Resource.Style.CalendarCell_DayHeader = global::client.Droid.Resource.Style.CalendarCell_DayHeader;
 			global::XLabs.Forms.Resource.Style.CalendarTitle = global::client.Droid.Resource.Style.CalendarTitle;
-			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::client.Droid.Resource.String.ApplicationName;
-			global::Xamarin.Forms.Platform.Resource.String.Hello = global::client.Droid.Resource.String.Hello;
 			global::ModernHttpClient.Resource.String.library_name = global::client.Droid.Resource.String.library_name;
-			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::client.Droid.Resource.String.ApplicationName;
-			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::client.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -248,29 +248,29 @@ namespace client.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040002
-			public const int ApplicationName = 2130968578;
-			
-			// aapt resource value: 0x7f040001
-			public const int Hello = 2130968577;
-			
-			// aapt resource value: 0x7f040000
-			public const int app_name = 2130968576;
-			
-			// aapt resource value: 0x7f040004
-			public const int day_name_format = 2130968580;
-			
-			// aapt resource value: 0x7f040007
-			public const int full_date_format = 2130968583;
+			// aapt resource value: 0x7f040006
+			public const int ApplicationName = 2130968582;
 			
 			// aapt resource value: 0x7f040005
-			public const int invalid_date = 2130968581;
+			public const int Hello = 2130968581;
+			
+			// aapt resource value: 0x7f040007
+			public const int app_name = 2130968583;
+			
+			// aapt resource value: 0x7f040001
+			public const int day_name_format = 2130968577;
+			
+			// aapt resource value: 0x7f040004
+			public const int full_date_format = 2130968580;
+			
+			// aapt resource value: 0x7f040002
+			public const int invalid_date = 2130968578;
+			
+			// aapt resource value: 0x7f040000
+			public const int library_name = 2130968576;
 			
 			// aapt resource value: 0x7f040003
-			public const int library_name = 2130968579;
-			
-			// aapt resource value: 0x7f040006
-			public const int month_name_format = 2130968582;
+			public const int month_name_format = 2130968579;
 			
 			static String()
 			{
