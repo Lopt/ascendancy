@@ -54,9 +54,6 @@
     <Reference Include="SQLite-net">
       <HintPath>..\..\..\packages\sqlite-net-pcl.1.0.11\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
     </Reference>
-    <Reference Include="ExifLib">
-      <HintPath>..\..\..\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Android.Export" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
@@ -79,27 +76,6 @@
     <Reference Include="Xamarin.Android.Support.v4">
       <HintPath>..\..\..\packages\Xamarin.Android.Support.v4.22.1.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
-    <Reference Include="XLabs.Ioc">
-      <HintPath>..\..\..\packages\XLabs.IoC.2.0.5603\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Core">
-      <HintPath>..\..\..\packages\XLabs.Core.2.0.5603\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Platform.Droid">
-      <HintPath>..\..\..\packages\XLabs.Platform.2.0.5603\lib\MonoAndroid\XLabs.Platform.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Platform">
-      <HintPath>..\..\..\packages\XLabs.Platform.2.0.5603\lib\MonoAndroid\XLabs.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Serialization">
-      <HintPath>..\..\..\packages\XLabs.Serialization.2.0.5603\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Forms.Droid">
-      <HintPath>..\..\..\packages\XLabs.Forms.2.0.5603\lib\MonoAndroid\XLabs.Forms.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="XLabs.Forms">
-      <HintPath>..\..\..\packages\XLabs.Forms.2.0.5603\lib\MonoAndroid\XLabs.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Platform.Android">
       <HintPath>..\..\..\packages\Xamarin.Forms.1.4.2.6359\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
     </Reference>
@@ -115,17 +91,41 @@
     <Reference Include="Xamarin.Forms.Platform">
       <HintPath>..\..\..\packages\Xamarin.Forms.1.4.2.6359\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="ModernHttpClient">
-      <HintPath>..\..\..\packages\modernhttpclient.2.4.0\lib\MonoAndroid\ModernHttpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="OkHttp">
-      <HintPath>..\..\..\packages\modernhttpclient.2.4.0\lib\MonoAndroid\OkHttp.dll</HintPath>
-    </Reference>
     <Reference Include="SQLite.Net">
       <HintPath>..\..\..\packages\SQLite.Net-PCL.3.0.5\lib\MonoAndroid\SQLite.Net.dll</HintPath>
     </Reference>
     <Reference Include="SQLite.Net.Platform.XamarinAndroid">
       <HintPath>..\..\..\packages\SQLite.Net-PCL.3.0.5\lib\MonoAndroid\SQLite.Net.Platform.XamarinAndroid.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Ioc">
+      <HintPath>..\..\..\packages\XLabs.IoC.2.0.5610.2\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
+    </Reference>
+    <Reference Include="ExifLib">
+      <HintPath>..\..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Core">
+      <HintPath>..\..\..\packages\XLabs.Core.2.0.5610.2\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform.Droid">
+      <HintPath>..\..\..\packages\XLabs.Platform.2.0.5610.2\lib\MonoAndroid\XLabs.Platform.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Platform">
+      <HintPath>..\..\..\packages\XLabs.Platform.2.0.5610.2\lib\MonoAndroid\XLabs.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Serialization">
+      <HintPath>..\..\..\packages\XLabs.Serialization.2.0.5610.2\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Forms.Droid">
+      <HintPath>..\..\..\packages\XLabs.Forms.2.0.5610.2\lib\MonoAndroid\XLabs.Forms.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="XLabs.Forms">
+      <HintPath>..\..\..\packages\XLabs.Forms.2.0.5610.2\lib\MonoAndroid\XLabs.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\..\..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\ModernHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="OkHttp">
+      <HintPath>..\..\..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\OkHttp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -158,9 +158,8 @@
     <AndroidAsset Include="Assets\Content\images\hd\monkey.xnb" />
     <AndroidAsset Include="Assets\Content\fonts\arial-22.xnb" />
     <AndroidAsset Include="Assets\Content\tiles\Spritesheet_with_space.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-32x32%2864x16%29.xnb" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-96x96%28192x48%29.xnb" />
     <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%28320x80%29.xnb" />
+    <AndroidAsset Include="Assets\Content\images\logo_neu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\MonoAndroid\SQLitePCL.raw_basic.targets" Condition="Exists('..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\MonoAndroid\SQLitePCL.raw_basic.targets')" />

@@ -9,8 +9,8 @@ namespace server.DB.Model
 {
     public class TableData
     {
-        public ArrayList m_buildings = new ArrayList();
-        public ArrayList m_units = new ArrayList();
-        public ArrayList m_ressources = new ArrayList(); 
+        public IList m_buildings = new List<TableBuilding>();
+        public IList m_units = new List<TableUnit>();
+        public IList m_ressources = new List<TableRessource>(); 
     }
 }

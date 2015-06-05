@@ -1,5 +1,6 @@
 ﻿using System;
 using @base.model;
+using @server.DB;
 using Newtonsoft.Json;
 using System.Collections.Concurrent;
 
@@ -19,41 +20,57 @@ namespace test
 		
         public static void Main(string[] args)
 		{
-			Console.WriteLine (a);
-			Console.WriteLine (d);
+
+            Entity en = new Entity(0,new Definition(1),new PositionI(12,15));
+            Account acc = new Account(0, "Test");
+            DBHandle.Instance.CreateNewDBAccount(new Account(0, "Test"), "bla");
+            DBHandle.Instance.InsertIntoResource(1, 2, 3, 4, 5, 6, 0);
+
+            DBHandle.Instance.InsertIntoUnit(0, en);
+            DBHandle.Instance.InsertIntoBuilding(0, en);
+            DBHandle.Instance.InsertIntoBuilding(1, en);
+
+            var data = DBHandle.Instance.GetAccountData(acc, "bla");
+
+            DBHandle.Instance.DeleteAccountFromAllTables(0);
+
+          
+
+//            Console.WriteLine (a);
+//            Console.WriteLine (d);
 
 
-			var latlon = new LatLon(50.9849, 11.0442);
-			var position = new Position(latlon);
-			var combinedPos = new CombinedPosition(position);
-			//var affectedRegion = controller.RegionManagerController.GetRegion (combinedPos.RegionPosition);
+//            var latlon = new LatLon(50.9849, 11.0442);
+//            var position = new Position(latlon);
+//            var combinedPos = new CombinedPosition(position);
+//            //var affectedRegion = controller.RegionManagerController.GetRegion (combinedPos.RegionPosition);
 
 
-			var request = new @base.connection.LoginRequest (new Position (0, 0), "Test", "Test");
-			Console.WriteLine(JsonConvert.SerializeObject (request));
+//            var request = new @base.connection.LoginRequest (new Position (0, 0), "Test", "Test");
+//            Console.WriteLine(JsonConvert.SerializeObject (request));
 
-			RegionPosition[] regionPositions = {combinedPos.RegionPosition };
+//            RegionPosition[] regionPositions = {combinedPos.RegionPosition };
 
-			var request2 = new @base.connection.LoadRegionsRequest (Guid.NewGuid(), position, regionPositions);
-			Console.WriteLine(JsonConvert.SerializeObject (request2));
+//            var request2 = new @base.connection.LoadRegionsRequest (Guid.NewGuid(), position, regionPositions);
+//            Console.WriteLine(JsonConvert.SerializeObject (request2));
 
-			var testAccount = new Account (Guid.NewGuid(), "Test");
-			var testAccountC = new server.control.AccountController (testAccount, "Test");
-
-
-			var parameters = new ConcurrentDictionary<string, object> ();
-			parameters [@base.control.action.CreateHeadquarter.CREATE_POSITION] = combinedPos;
-			var action = new @base.model.Action (testAccount, @base.model.Action.ActionType.CreateHeadquarter, parameters);
-
-			@base.model.Action[] actions = { action, };
-
-			var request3 = new @base.connection.DoActionsRequest (Guid.NewGuid(), position, actions);
+//            var testAccount = new Account (Guid.NewGuid(), "Test");
+//            var testAccountC = new server.control.AccountController (testAccount, "Test");
 
 
-			//			var response = new @base.connection.Response();
-//			var requestdoubled = JsonConvert.DeserializeObject<@base.connection.Response>(JsonConvert.SerializeObject(response));
+//            var parameters = new ConcurrentDictionary<string, object> ();
+//            parameters [@base.control.action.CreateHeadquarter.CREATE_POSITION] = combinedPos;
+//            var action = new @base.model.Action (testAccount, @base.model.Action.ActionType.CreateHeadquarter, parameters);
 
-			Console.WriteLine(JsonConvert.SerializeObject (request3));
+//            @base.model.Action[] actions = { action, };
+
+//            var request3 = new @base.connection.DoActionsRequest (Guid.NewGuid(), position, actions);
+
+
+//            //			var response = new @base.connection.Response();
+////			var requestdoubled = JsonConvert.DeserializeObject<@base.connection.Response>(JsonConvert.SerializeObject(response));
+
+//            Console.WriteLine(JsonConvert.SerializeObject (request3));
 
 
 

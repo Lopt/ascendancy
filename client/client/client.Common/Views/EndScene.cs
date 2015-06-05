@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace client.Common.view
+namespace client.Common.Views
 {
-    public class EndScene
-    {
-        public EndScene()
-        {
-        }
-    }
+	public class EndScene
+	{
+		public EndScene ()
+		{
+		}
+	}
 }
 

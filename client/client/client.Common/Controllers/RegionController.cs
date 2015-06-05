@@ -1,9 +1,9 @@
 ﻿using System;
 using @base.model;
 using @base.control;
-using client.Common.helper;
+using client.Common.Helper;
 using System.Threading.Tasks;
-using client.Common.controller;
+using client.Common.Controllers;
 using CocosSharp;
 using @base.model.definitions;
 using client.Common.Helper;
@@ -11,185 +11,183 @@ using client.Common.Models;
 
 namespace client.Common.Controllers
 {
-	public class RegionController : RegionManagerController
-	{
-		public RegionController ()
-		{
-			m_networkController = NetworkController.GetInstance;
-			m_geolocation = Geolocation.GetInstance;
-			m_terrainController = Controller.Instance.TerrainManagerController as TerrainController;
+    public class RegionController : RegionManagerController
+    {
+        public RegionController (RegionManager regionManager)
+            : base (null, regionManager)
+        {
+            m_networkController = NetworkController.GetInstance;
+            m_geolocation = Geolocation.GetInstance;
+            m_terrainController = Controller.Instance.DefinitionManagerController as TerrainController;
 
-		}
+        }
 
 
-		#region Regions
+        #region Regions
 
-		public Region GetRegionByGeolocator ()
-		{
-			var geolocationPosition = m_geolocation.CurrentGamePosition;
-			return GetRegionByGamePosition (geolocationPosition);
-		}
+        public Region GetRegionByGeolocator ()
+        {
+            var geolocationPosition = m_geolocation.CurrentGamePosition;
+            return GetRegionByGamePosition (geolocationPosition);
+        }
 
-		public Region GetRegionByGamePosition (Position gameWorldPosition)
-		{
-			RegionPosition regionPosition	= new RegionPosition (gameWorldPosition);
-			return GetRegion (regionPosition);
-		}
+        public Region GetRegionByGamePosition (Position gameWorldPosition)
+        {
+            RegionPosition regionPosition = new RegionPosition (gameWorldPosition);
+            return GetRegion (regionPosition);
+        }
 
-		public override Region GetRegion (RegionPosition regionPosition)
-		{
-			var region = RegionManager.GetRegion (regionPosition);
-			if (!region.Exist) {
-				LoadRegionAsync (region);
-			}
+        public override Region GetRegion (RegionPosition regionPosition)
+        {
+            var region = RegionManager.GetRegion (regionPosition);
+
+            if (!region.Exist) {
+                LoadRegionAsync (region);
+            }
 				
-			return region;
-		}
+            return region;
+        }
 
 
-		private async Task LoadRegionAsync (Region region)
-		{
-			string path = ReplacePath (ClientConstants.REGION_SERVER_PATH, region.RegionPosition);
-			TerrainDefinition[,] terrain = null;
+        private async Task LoadRegionAsync (Region region)
+        {
+            string path = ReplacePath (ClientConstants.REGION_SERVER_PATH, region.RegionPosition);
+            TerrainDefinition[,] terrain = null;
 
-			await m_networkController.LoadTerrainsAsync (path);
+            await m_networkController.LoadTerrainsAsync (path);
 
-			if (GameAppDelegate.m_Loading >= GameAppDelegate.Loading.TerrainTypeLoaded)
-				terrain = JsonToTerrain (m_networkController.JsonTerrainsString);
+            if (GameAppDelegate.LoadingState >= GameAppDelegate.Loading.TerrainTypeLoaded)
+                terrain = JsonToTerrain (m_networkController.JsonTerrainsString);
 
-			if (terrain != null)
-				region.AddTerrain (terrain);
-			RegionManager.AddRegion (region);
-		}
+            if (terrain != null)
+                region.AddTerrain (terrain);
+            
+            RegionManager.AddRegion (region);
+        }
 
-		public async Task LoadRegionsAsync ()
-		{
-			await LoadRegionsAsync (m_geolocation.CurrentRegionPosition);
-		}
+        public async Task LoadRegionsAsync ()
+        {
+            await LoadRegionsAsync (m_geolocation.CurrentRegionPosition);
+        }
 
-		public async Task LoadRegionsAsync (RegionPosition regionPosition)
-		{
-			var WorldRegions = GetWorldNearRegionPositions (regionPosition);
+        public async Task LoadRegionsAsync (RegionPosition regionPosition)
+        {
+            var WorldRegions = GetWorldNearRegionPositions (regionPosition);
 
-			foreach (var RegionPosition in WorldRegions) {
-				var region = RegionManager.GetRegion (RegionPosition);
-				if (!region.Exist) {
-					await LoadRegionAsync (region);
-				}
-			}
-		}
+            foreach (var RegionPosition in WorldRegions) {
+                var region = RegionManager.GetRegion (RegionPosition);
 
-		#endregion
+                if (!region.Exist) {
+                    await LoadRegionAsync (region);
+                }
+            }
+        }
 
-		#region TileMap
+        #endregion
 
-		public void SetTilesINMap160 (CCTileMapLayer mapLayer, Region region)
-		{
-			var WorldRegionPositions = GetWorldNearRegionPositions (region.RegionPosition);
-			int OffsetX = 0;
-			int OffsetY = 0;
+        #region TileMap
 
-			for (int y = 0; y < 5; y++) {
-				for (int x = 0; x < 5; x++) {
-					var Region = GetRegion (WorldRegionPositions [x, y]);
-					SetTilesInMap32 (mapLayer, new CCTileMapCoordinates (OffsetX, OffsetY), Region);
-					OffsetX += 32;
-				}
-				OffsetY += 32;
-				OffsetX = 0;
-			}
-		}
+        public void SetTilesINMap160 (CCTileMapLayer mapLayer, Region region)
+        {
+            var worldRegionPositions = GetWorldNearRegionPositions (region.RegionPosition);
 
-		public void SetTilesInMap32 (CCTileMapLayer mapLayer, CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
-		{
-			for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
-				for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
-					var NewCellPosition = new CellPosition (x, y);
-					var MapCellPosition = new MapCellPosition ((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y));
-					SetTileInMap (mapLayer, NewCellPosition, MapCellPosition.GetTileMapCoordinates (), region);		
-				}
-			}
-		}
+            for (int y = 0; y < 5; y++) {
+                for (int x = 0; x < 5; x++) {
+                    var Region = GetRegion (worldRegionPositions [x, y]);
+                    SetTilesInMap32 (mapLayer, new CCTileMapCoordinates (x * Constants.REGION_SIZE_X, y * Constants.REGION_SIZE_Y), Region);
+                }
+            }
+        }
 
-		public void SetTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
-		{
-			var gid = m_terrainController.TerrainDefToTileGid (region.GetTerrain (cellPosition));
-			mapLayer.SetTileGID (gid, mapCoordinat);
-		}
+        public void SetTilesInMap32 (CCTileMapLayer mapLayer, CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
+        {
+            for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
+                for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
+                    var newCellPosition = new CellPosition (x, y);
+                    var mapCellPosition = new MapCellPosition ((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y));
+                    SetTileInMap (mapLayer, newCellPosition, mapCellPosition.GetTileMapCoordinates (), region);		
+                }
+            }
+        }
 
-		public void SetEntitysInMap (CCTileMapLayer mapLayer, CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
-		{
-			//TODO set function
-			throw new NotImplementedException ();
-		}
+        public void SetTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
+        {
+            var gid = m_terrainController.TerrainDefToTileGid (region.GetTerrain (cellPosition));
+            mapLayer.SetTileGID (gid, mapCoordinat);
+        }
 
-		public void SetEntityInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
-		{
-			// TODO build EntityController and EntityDefToEntityGid
-			//var gid = m_terrainController.TerrainDefToTileGid (region.GetEntity (cellPosition));
-			//mapLayer.SetTileGID (gid, mapCoordinat);
+        public void SetEntitysInMap (CCTileMapLayer mapLayer, CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
+        {
+            //TODO set function
+            throw new NotImplementedException ();
+        }
 
-			throw new NotImplementedException ();
-		}
+        public void SetEntityInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
+        {
+            // TODO build EntityController and EntityDefToEntityGid
+            //var gid = m_terrainController.TerrainDefToTileGid (region.GetEntity (cellPosition));
+            //mapLayer.SetTileGID (gid, mapCoordinat);
 
-		public CCTileMapCoordinates GetCurrentTileInMap (Position position)
-		{
-			var RegionPos = new RegionPosition (position);
-			var CellPos = new CellPosition (position);
-			var WorldRegions = GetWorldNearRegionPositions (RegionPos);
-			int OffsetX = 0;
-			int OffsetY = 0;
-			int MapCellX = -1;
-			int MapCellY = -1;
-			for (int x = 0; x < 5; x++) {
-				for (int y = 0; y < 5; y++) {
-					if (RegionPos.Equals (WorldRegions [x, y])) {
-						MapCellX = CellPos.CellX + OffsetX;
-						MapCellY = CellPos.CellY + OffsetY;
-					}
-					OffsetY += 32;
-				}
-				OffsetX += 32;
-				OffsetY = 0;
-			}
+            throw new NotImplementedException ();
+        }
 
-			var MapCellPosition = new MapCellPosition (MapCellX, MapCellY);
-			return MapCellPosition.GetTileMapCoordinates ();
-		}
+        public CCTileMapCoordinates GetCurrentTileInMap (Position position)
+        {
+            var regionPos = new RegionPosition (position);
+            var cellPos = new CellPosition (position);
+            var worldRegions = GetWorldNearRegionPositions (regionPos);
 
-		#endregion
+            int mapCellX = -1;
+            int mapCellY = -1;
+
+            for (int x = 0; x < 5; x++) {
+                for (int y = 0; y < 5; y++) {
+                    if (regionPos.Equals (worldRegions [x, y])) {
+                        mapCellX = cellPos.CellX + (x * Constants.REGION_SIZE_X);
+                        mapCellY = cellPos.CellY + (y * Constants.REGION_SIZE_Y);
+                    }
+
+                }
+
+            }
+
+            var MapCellPosition = new MapCellPosition (mapCellX, mapCellY);
+            return MapCellPosition.GetTileMapCoordinates ();
+        }
+
+        #endregion
 
 
-		#region RegionPositions
+        #region RegionPositions
 
-		public RegionPosition[,] GetWorldNearRegionPositions (RegionPosition regionPosition)
-		{
-			int OffsetX = -2;
-			int OffsetY = -2;
+        public RegionPosition[,] GetWorldNearRegionPositions (RegionPosition regionPosition)
+        {
+            int offsetX = -2;
+            int offsetY = -2;
 
-			RegionPosition[,] WorldRegions = new RegionPosition[5, 5];
-			for (int x = 0; x < 5; x++) {
-				for (int y = 0; y < 5; y++) {
-					WorldRegions [x, y] = new RegionPosition (regionPosition.RegionX + OffsetX, regionPosition.RegionY + OffsetY);
-					OffsetY += 1;
-				}
+            RegionPosition[,] worldRegion = new RegionPosition[5, 5];
+            for (int x = 0; x < 5; x++) {
+                for (int y = 0; y < 5; y++) {
+                    worldRegion [x, y] = new RegionPosition (regionPosition.RegionX + offsetX, regionPosition.RegionY + offsetY);
+                    offsetY += 1;
+                }
 									 
-				OffsetX += 1;
-				OffsetY = -2;
-			}
+                offsetX += 1;
+                offsetY = -2;
+            }
 
-			return WorldRegions;
-		}
+            return worldRegion;
+        }
 
-		#endregion
+        #endregion
 
-		#region private Fields
+        #region private Fields
 
-		private NetworkController m_networkController;
-		private Geolocation m_geolocation;
-		private TerrainController m_terrainController;
+        private NetworkController m_networkController;
+        private Geolocation m_geolocation;
+        private TerrainController m_terrainController;
 
-		#endregion
-	}
+        #endregion
+    }
 }
 

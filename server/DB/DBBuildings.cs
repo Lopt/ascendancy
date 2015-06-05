@@ -16,14 +16,13 @@ namespace server.DB
 
         public void NewBuildings(Entity buildingEntity, int id)
         {
-
-            if (m_db.Table<TableBuilding>().Count() == 0)
-            {
                 var newData = new TableBuilding();
                 newData.Id = id;
                 newData.PositionX = buildingEntity.Position.X;
-                newData.PositionY = buildingEntity.Position.Y;               
-            }
+                newData.PositionY = buildingEntity.Position.Y;
+
+                m_db.InsertOrReplace(newData);
+           
         }
 
         private SQLiteConnection m_db;   
