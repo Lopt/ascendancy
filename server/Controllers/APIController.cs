@@ -43,7 +43,8 @@ namespace server.control
 		{			
 			var controller = @base.control.Controller.Instance;
 			var accountManagerC = (control.AccountManagerController)controller.AccountManagerController;
-			return accountManagerC.Login (username, password);
+			return accountManagerC.Registrate (username, password);
+			//return accountManagerC.Login (username, password);
 		}
 
 		public void DoAction(@base.model.Account account, 

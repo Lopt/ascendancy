@@ -26,15 +26,6 @@ namespace @base.control
             return null;
         }
 
-        public bool Registrate(Account account)
-        {
-            if (!World.Instance.Accounts.ContainsKey(account.ID))
-            {
-                World.Instance.Accounts[account.ID] = account;
-                return true;
-            }
-            return false;
-        }
     }
 
 

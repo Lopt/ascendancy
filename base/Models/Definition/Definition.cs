@@ -26,15 +26,15 @@ namespace @base.model
         {
             get
             {
-                if (m_id < 100)
+                if (m_id < 60)
                 {
                     return DefinitionType.Terrain;
                 }
-                if (m_id < 300)
+                if (m_id < 276)
                 {
                     return DefinitionType.Unit;
                 }
-                if (m_id < 500)
+                if (m_id < 1000)
                 {
                     return DefinitionType.Building;
                 }

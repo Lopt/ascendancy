@@ -34,7 +34,6 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\Entity.cs" />
-    <Compile Include="Models\World.cs" />
     <Compile Include="Models\Ressources.cs" />
     <Compile Include="Models\Definition\UnitDefinition.cs" />
     <Compile Include="Models\Definition\Definition.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="Controllers\RegionStatesController.cs" />
     <Compile Include="Models\Manager\DefinitionManager.cs" />
     <Compile Include="Models\Definition\TerrainDefinition.cs" />
+    <Compile Include="Models\World.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
