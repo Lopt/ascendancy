@@ -19,14 +19,14 @@ namespace server.control
 				}
 			}
 
-			{/*
+			{
 				string json = System.IO.File.ReadAllText (ServerConstants.UNIT_FILE);
 				var unitDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.UnitDefinition>>(json);
 
 				foreach (var unit in unitDefintions)
 				{
 					DefinitionManager.AddDefinition(unit);
-				}*/
+				}
 			}
 		
 
