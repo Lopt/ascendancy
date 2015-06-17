@@ -46,10 +46,11 @@ namespace server.DB
 
            if (dbacc.Login(account.UserName, password))
            {
-               tb.Id = con.Query<TableAccount>("SELECT Id FROM Account WHERE UserName = ? LIMIT 1", account.UserName);
-               tb.m_units = con.Query<TableUnit>("SELECT * FROM Unit WHERE Id = ?", tb.Id.Id);
-               tb.m_buildings = con.Query<TableBuilding>("SELECT * FROM Building WHERE Id = ?", tb.Id.Id);
-               tb.m_ressources = con.Query<TableRessource>("SELECT * FROM Ressources WHERE Id = ?", tb.Id.Id);               
+               var data = con.Query<TableAccount>("SELECT Id FROM Account WHERE UserName = ? LIMIT 1", account.UserName);
+               tb.Id = data[0].Id;
+               tb.m_units = con.Query<TableUnit>("SELECT * FROM Unit WHERE Id = ?", tb.Id);
+               tb.m_buildings = con.Query<TableBuilding>("SELECT * FROM Building WHERE Id = ?", tb.Id);
+               tb.m_ressources = con.Query<TableRessource>("SELECT * FROM Ressources WHERE Id = ?", tb.Id);               
            }
            
            return tb;
@@ -61,9 +62,9 @@ namespace server.DB
                       
            TableData tb = new TableData();
            
-           tb.m_units = con.Query<TableUnit>("SELECT * FROM Unit WHERE Id = ?", Id.Id);
-           tb.m_buildings = con.Query<TableBuilding>("SELECT * FROM Building WHERE Id = ?", Id.Id);
-           tb.m_ressources = con.Query<TableRessource>("SELECT * FROM Ressources WHERE Id = ?", Id.Id);          
+           tb.m_units = con.Query<TableUnit>("SELECT * FROM Unit WHERE Id = ?", Id);
+           tb.m_buildings = con.Query<TableBuilding>("SELECT * FROM Building WHERE Id = ?", Id);
+           tb.m_ressources = con.Query<TableRessource>("SELECT * FROM Ressources WHERE Id = ?", Id);          
 
            return tb;
        }
