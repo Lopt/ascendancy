@@ -9,6 +9,7 @@ namespace server.DB.Model
 {
     public class TableData
     {
+        public int Id;
         public IList m_buildings = new List<TableBuilding>();
         public IList m_units = new List<TableUnit>();
         public IList m_ressources = new List<TableRessource>(); 

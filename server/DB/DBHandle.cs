@@ -37,7 +37,7 @@ namespace server.DB
            dbacc.CreateAccount(account, password);
        }
 
-       public TableData GetAccountData(Account account, string password)
+       public TableData GetAccountDataViaDBLogin(Account account, string password)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH);  
 
@@ -46,12 +46,26 @@ namespace server.DB
 
            if (dbacc.Login(account.UserName, password))
            {
-               var id = con.Query<TableAccount>("SELECT Id FROM Account WHERE UserName = ? LIMIT 1", account.UserName);   
-               tb.m_units = con.Query<TableUnit>("SELECT * FROM Unit WHERE Id = ?", id[0].Id);
-               tb.m_buildings = con.Query<TableBuilding>("SELECT * FROM Building WHERE Id = ?", id[0].Id);
-               tb.m_ressources = con.Query<TableRessource>("SELECT * FROM Ressources WHERE Id = ?", id[0].Id);               
+               var data = con.Query<TableAccount>("SELECT Id FROM Account WHERE UserName = ? LIMIT 1", account.UserName);
+               tb.Id = data[0].Id;
+               tb.m_units = con.Query<TableUnit>("SELECT * FROM Unit WHERE Id = ?", tb.Id);
+               tb.m_buildings = con.Query<TableBuilding>("SELECT * FROM Building WHERE Id = ?", tb.Id);
+               tb.m_ressources = con.Query<TableRessource>("SELECT * FROM Ressources WHERE Id = ?", tb.Id);               
            }
            
+           return tb;
+       }
+
+       public TableData GetAccountDataViaID(int Id)
+       {
+           SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH);
+                      
+           TableData tb = new TableData();
+           
+           tb.m_units = con.Query<TableUnit>("SELECT * FROM Unit WHERE Id = ?", Id);
+           tb.m_buildings = con.Query<TableBuilding>("SELECT * FROM Building WHERE Id = ?", Id);
+           tb.m_ressources = con.Query<TableRessource>("SELECT * FROM Ressources WHERE Id = ?", Id);          
+
            return tb;
        }
 
