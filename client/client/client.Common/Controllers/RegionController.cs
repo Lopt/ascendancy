@@ -155,6 +155,32 @@ namespace client.Common.Controllers
             return MapCellPosition.GetTileMapCoordinates ();
         }
 
+        public Position GetCurrentGamePosition (MapCellPosition mapCellPosition, RegionPosition currentCenterRegion)
+        {
+            var worldRegions = GetWorldNearRegionPositions (currentCenterRegion);
+
+            var cellX = mapCellPosition.CellX % Constants.REGION_SIZE_X;
+            var cellY = mapCellPosition.CellY % Constants.REGION_SIZE_Y;
+            CellPosition cellPosition = new CellPosition (cellX, cellY);
+
+            var x = mapCellPosition.CellX / Constants.REGION_SIZE_X;
+            var y = mapCellPosition.CellY / Constants.REGION_SIZE_Y;
+            var regionPosition = worldRegions [x, y];
+
+            return new Position (regionPosition, cellPosition);
+  
+        }
+
+        public bool IsCellInOutsideRegion (MapCellPosition mapCellPosition)
+        {
+            if (mapCellPosition.CellX < Constants.REGION_SIZE_X || mapCellPosition.CellX > Constants.REGION_SIZE_X * 4)
+                return true;
+            if (mapCellPosition.CellY < Constants.REGION_SIZE_Y || mapCellPosition.CellY > Constants.REGION_SIZE_Y * 4)
+                return true;
+
+            return false;
+        }
+
         #endregion
 
 

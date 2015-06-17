@@ -32,7 +32,6 @@ namespace client.Common.Views
 
             this.Schedule (CheckGeolocation);
 
-
             var TouchListener = new CCEventListenerTouchAllAtOnce ();
             TouchListener.OnTouchesMoved = onTouchesMoved;
             TouchListener.OnTouchesBegan = onTouchesBegan;
@@ -47,10 +46,10 @@ namespace client.Common.Views
         {
             base.AddedToScene ();
 
-            SetMapAnchor (m_Geolocation.CurrentGamePosition);
-            m_WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
-            m_WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
-            m_WorldTileMap.TileLayersContainer.Scale = 0.5f;
+            //SetMapAnchor (m_Geolocation.CurrentGamePosition);
+            //m_WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MinX;
+            //m_WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MinY;
+            m_WorldTileMap.TileLayersContainer.Scale = m_Scale;
 
         }
 
@@ -73,7 +72,10 @@ namespace client.Common.Views
 
         void onTouchesEnded (List<CCTouch> touches, CCEvent touchEvent)
         {
-
+            var touch = touches [0];
+            var touchfirst = touch.StartLocation;
+            var diff = touch.Delta;
+            CheckCenterRegion (touch.Location);
         }
 
 
@@ -115,16 +117,48 @@ namespace client.Common.Views
             await m_RegionC.LoadRegionsAsync ();
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoaded;
             m_RegionC.SetTilesINMap160 (m_TerrainLayer, m_RegionC.GetRegionByGamePosition (gamePosition));
-            SetMapAnchor (gamePosition);
+            // SetMapAnchor (gamePosition);
             SetCurrentPositionOnce (gamePosition);
+            m_CenterRegionPosition = new RegionPosition (gamePosition);
+
+        }
+
+        void CheckCenterRegion (CCPoint location)
+        {            
+            var mapCell = GetMapCell (m_WorldTileMap.LayerNamed ("Layer 0"), location);
+
+//            if (m_RegionC.IsCellInOutsideRegion (mapCell)) {
+//                var position = m_RegionC.GetCurrentGamePosition (mapCell, m_CenterRegionPosition);
+//                DrawRegions (position);
+//            }
+
         }
 
         void SetMapAnchor (Position currentPosition)
         {
             var tileCoordinate = m_RegionC.GetCurrentTileInMap (currentPosition);
             var mapCellPosition = new MapCellPosition (tileCoordinate);
-            m_WorldTileMap.TileLayersContainer.AnchorPoint = mapCellPosition.GetAnchor ();
+            SetMapAnchor (mapCellPosition.GetAnchor ());
         }
+
+        void SetMapAnchor (CCPoint anchorPoint)
+        {
+            m_WorldTileMap.TileLayersContainer.AnchorPoint = anchorPoint;
+        }
+
+        MapCellPosition GetMapCell (CCTileMapLayer layer, CCPoint location)
+        {
+  
+            var anchor = this.Parent.AnchorPoint;
+             
+            var position = new CCPoint (anchor.X * m_WorldTileMap.TileLayersContainer.ContentSize.Width - VisibleBoundsWorldspace.MidX + location.X * m_Scale, 
+                               (anchor.Y * m_WorldTileMap.TileLayersContainer.ContentSize.Height - VisibleBoundsWorldspace.MidY + location.Y * m_Scale));
+
+            var tileMapCooardinate = layer.ClosestTileCoordAtNodePosition (position);
+            var erg = new MapCellPosition (tileMapCooardinate);
+            return erg;
+        }
+
 
         #endregion
 
@@ -134,11 +168,12 @@ namespace client.Common.Views
         CCTileMapLayer m_TerrainLayer;
 
         RegionController m_RegionC;
+        RegionPosition m_CenterRegionPosition;
 
         DrawNode m_CurrentPositionNode;
         Geolocation m_Geolocation;
 
-        float m_Scale = 1.0f;
+        float m_Scale = 0.10f;
         int counter = 0;
 
         #endregion
