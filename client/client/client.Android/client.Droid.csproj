@@ -154,17 +154,21 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\images\ld\monkey.xnb" />
-    <AndroidAsset Include="Assets\Content\images\hd\monkey.xnb" />
     <AndroidAsset Include="Assets\Content\fonts\arial-22.xnb" />
     <AndroidAsset Include="Assets\Content\tiles\Spritesheet_with_space.png" />
     <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%28320x80%29.xnb" />
     <AndroidAsset Include="Assets\Content\images\logo_neu.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\Ladebalken.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\logo.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\Ladebalken.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\MonoAndroid\SQLitePCL.raw_basic.targets" Condition="Exists('..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\MonoAndroid\SQLitePCL.raw_basic.targets')" />
   <Import Project="..\..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />
+    <Folder Include="Assets\Content\images\hd\" />
+    <Folder Include="Assets\Content\images\ld\" />
   </ItemGroup>
 </Project>

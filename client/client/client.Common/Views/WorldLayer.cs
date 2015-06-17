@@ -72,17 +72,16 @@ namespace client.Common.Views
                 CCPoint diff = touch.Delta;
                 m_WorldTileMap.TileLayersContainer.Position += diff;
             }
-            if (touches.Count > 2) {
+            if (touches.Count >= 2) {
                 //do zoom stuff
-                /*
+
                 //get StartPositons
                 CCPoint StartPoint0 = touches[0].StartLocation;
                 CCPoint StartPoint1 = touches[1].StartLocation;
 
                 //calculate Start distance
-
-                float xDist = (StartPoint1.x - StartPoint0.x);
-                float yDist = (StartPoint1.y - StartPoint0.y);
+                float xDist = (StartPoint1.X - StartPoint0.X);
+                float yDist = (StartPoint1.Y - StartPoint0.Y);
                 float StartDistance = (xDist * xDist) + (yDist * yDist);
 
 
@@ -92,22 +91,28 @@ namespace client.Common.Views
                 CCPoint CurrentPoint1 = touches[1].Location;
 
                 //calculate distance 
-                xDist = (CurrentPoint1.x - CurrentPoint0.x);
-                yDist = (CurrentPoint1.y - CurrentPoint0.y);
-                float CurrentDistance = sqrt((xDist * xDist) + (yDist * yDist));
+                xDist = (CurrentPoint1.X - CurrentPoint0.X);
+                yDist = (CurrentPoint1.Y - CurrentPoint0.Y);
+                float CurrentDistance = (xDist * xDist) + (yDist * yDist);
 
-                */
-                /*
-
+               
                 if ( StartDistance > CurrentDistance)
                 {
                     //zoom--
+                    m_Scale -= 0.05f;
+                    m_WorldTileMap.TileLayersContainer.Scale = m_Scale;
+
                 }
                 if (StartDistance < CurrentDistance)
                 {
                     //Zoom++
+                    m_Scale += 0.05f;
+                    m_WorldTileMap.TileLayersContainer.Scale = m_Scale;
+
                 }
-                */
+
+
+
             }
 
 
@@ -121,6 +126,8 @@ namespace client.Common.Views
 
         void onTouchesEnded (List<CCTouch> touches, CCEvent touchEvent)
         {
+            
+
             m_Timer.Stop ();
             if (m_Timer.ElapsedMilliseconds > 2000) {
                 //get Touch
@@ -128,7 +135,7 @@ namespace client.Common.Views
                 //get selected Tile
                 //var location = m_TerrainLayer.WorldToParentspace (touch.Location);
                 //var tileCoordinate = m_TerrainLayer.ClosestTileCoordAtNodePosition (location);
-
+                 
                 /*
                 if(unit selected/unit move command){
                     //layer auf NULL checken
@@ -254,7 +261,7 @@ namespace client.Common.Views
         DrawNode m_CurrentPositionNode;
         Geolocation m_Geolocation;
 
-        float m_Scale = 1.0f;
+        float m_Scale = 0.5f;
         int counter = 0;
 
         Stopwatch m_Timer;
