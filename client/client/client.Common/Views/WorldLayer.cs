@@ -127,8 +127,8 @@ namespace client.Common.Views
                 var newScale = m_Scale + relation;
                 if (0.3f < newScale && newScale < 2.0f)
                 {
-                    m_Scale += relation;
-                    m_WorldTileMap.TileLayersContainer.Scale = newScale;
+                    m_newScale = newScale;
+                    m_WorldTileMap.TileLayersContainer.Scale = m_newScale;
                 }
 
                 /*
@@ -163,7 +163,7 @@ namespace client.Common.Views
 
         void onTouchesEnded (List<CCTouch> touches, CCEvent touchEvent)
         {
-            
+            m_Scale = m_newScale;
 
             m_Timer.Stop ();
             if (m_Timer.ElapsedMilliseconds > 2000) {
@@ -299,6 +299,7 @@ namespace client.Common.Views
         DrawNode m_CurrentPositionNode;
         Geolocation m_Geolocation;
 
+        float m_newScale = 0.5f;
         float m_Scale = 0.5f;
         int counter = 0;
 
