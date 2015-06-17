@@ -76,16 +76,13 @@ namespace client.Common.Views
                 //do zoom stuff
 
                 //get StartPositons
+                /*
                 CCPoint StartPoint0 = touches[0].StartLocation;
                 CCPoint StartPoint1 = touches[1].StartLocation;
-
-                //calculate Start distance
                 float xDist = (StartPoint1.X - StartPoint0.X);
                 float yDist = (StartPoint1.Y - StartPoint0.Y);
                 float StartDistance = (xDist * xDist) + (yDist * yDist);
 
-
-                //Get Current Position
 
                 CCPoint CurrentPoint0 = touches[0].Location;
                 CCPoint CurrentPoint1 = touches[1].Location;
@@ -95,21 +92,61 @@ namespace client.Common.Views
                 yDist = (CurrentPoint1.Y - CurrentPoint0.Y);
                 float CurrentDistance = (xDist * xDist) + (yDist * yDist);
 
-               
-                if ( StartDistance > CurrentDistance)
+
+                */
+
+
+                CCPoint ScreenStart0 = touches[0].StartLocationOnScreen;
+                CCPoint ScreenStart1 = touches[1].StartLocationOnScreen;
+
+                float xDist = (ScreenStart1.X - ScreenStart0.X);
+                float yDist = (ScreenStart1.Y - ScreenStart0.Y);
+                float StartDistance = (xDist * xDist) + (yDist * yDist);
+
+                //calculate Start distance
+
+
+
+                //Get Current Position
+
+                CCPoint CurrentPoint0 = touches[0].LocationOnScreen;
+                CCPoint CurrentPoint1 = touches[1].LocationOnScreen;
+
+                //calculate distance 
+                xDist = (CurrentPoint1.X - CurrentPoint0.X);
+                yDist = (CurrentPoint1.Y - CurrentPoint0.Y);
+                float CurrentDistance = (xDist * xDist) + (yDist * yDist);
+
+                xDist = VisibleBoundsWorldspace.MaxX;
+                yDist = VisibleBoundsWorldspace.MaxY;
+
+                float ScreenDistance = (xDist * xDist) + (yDist * yDist);
+
+                float relation = (CurrentDistance - StartDistance)/ ScreenDistance;
+
+                var newScale = m_Scale + relation;
+                if (0.3f < newScale && newScale < 2.0f)
+                {
+                    m_Scale += relation;
+                    m_WorldTileMap.TileLayersContainer.Scale = newScale;
+                }
+
+                /*
+                if ( StartDistance > CurrentDistance && m_Scale > 0.3f)
                 {
                     //zoom--
-                    m_Scale -= 0.05f;
+                    m_Scale += relation;
                     m_WorldTileMap.TileLayersContainer.Scale = m_Scale;
 
                 }
-                if (StartDistance < CurrentDistance)
+                if (StartDistance < CurrentDistance && m_Scale < 2.0f)
                 {
                     //Zoom++
-                    m_Scale += 0.05f;
+                    m_Scale += relation;
                     m_WorldTileMap.TileLayersContainer.Scale = m_Scale;
 
                 }
+                */
 
 
 
@@ -181,7 +218,8 @@ namespace client.Common.Views
                 {
 
                     //UnitMenu
-                
+                    DrawMenu();
+
                 }
                 */
 
