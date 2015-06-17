@@ -33,7 +33,7 @@ namespace @base.model.definitions
         }
       
         public UnitDefinition(UnitDefinitionType unitType,
-                              control.action.Action[] actions,
+                              string[] actions,
                               int attack, int defense,
                               int health, int moves) 
             : base((int) unitType)
@@ -50,7 +50,7 @@ namespace @base.model.definitions
             get { return (Ressources) (ID % 6); }
         }
 
-        public @base.control.action.Action[] Actions
+        public string[] Actions
         {
             get { return m_actions; }
         }
@@ -80,7 +80,7 @@ namespace @base.model.definitions
             get { return (UnitDefinitionType) ID; }
         }
 
-        private control.action.Action[] m_actions;
+        private string[] m_actions;
         private int m_attack;
         private int m_defense;
         private int m_health;

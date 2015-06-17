@@ -61,13 +61,15 @@ namespace @base.control.action
         /// </summary>
         public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {   
+            string[] actionParameter = {"CreateUnits"};
+            
             var action = (model.Action)Model;
             var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
             var entity = new @base.model.Entity(model.IdGenerator.GetId(), 
                 new UnitDefinition(UnitDefinition.UnitDefinitionType.Headquarter,
-                    new Action[0], 
+                    actionParameter, 
                     0, 0, 0, 0),
                 positionI);
 

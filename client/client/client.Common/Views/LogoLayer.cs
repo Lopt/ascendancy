@@ -15,7 +15,7 @@ namespace client.Common.Views
             m_RegionC = Controller.Instance.RegionStatesController.Curr as RegionController;
 
             m_Logo = new CCSprite ("logo_neu");
-            m_LoadedSprite = new CCSprite ("monkey");
+            m_LoadedSprite = new CCSprite ("Ladebalken");
 
             this.AddChild (m_Logo);
             this.AddChild (m_LoadedSprite); 

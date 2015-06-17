@@ -1,6 +1,6 @@
 [
     {
-        "UnitType": 101,
+        "UnitType": 60,
         "Actions": ["Move"],
         "Attack": 50,
         "Defense": 25,

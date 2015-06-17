@@ -43,7 +43,8 @@ namespace server.control
 		{			
 			var controller = @base.control.Controller.Instance;
 			var accountManagerC = (control.AccountManagerController)controller.AccountManagerController;
-			return accountManagerC.Login (username, password);
+			return accountManagerC.Registrate (username, password);
+			//return accountManagerC.Login (username, password);
 		}
 
 		public void DoAction(@base.model.Account account, 
@@ -82,6 +83,13 @@ namespace server.control
 					if (status == null)
                     { 
 						var entities = region.GetEntities();
+						// TODO: remove entity creation
+						var position = new @base.model.PositionI(region.RegionPosition.RegionX * @base.model.Constants.REGION_SIZE_X, region.RegionPosition.RegionX * @base.model.Constants.REGION_SIZE_Y);
+						entities.Entities.Add(new @base.model.Entity(@base.model.IdGenerator.GetId(),
+											 @base.model.World.Instance.DefinitionManager.GetDefinition(60),
+							position));
+
+
 						entityDict.Add(entities.Entities);
 						newStatus = entities.DateTime;
 						status = new System.DateTime();

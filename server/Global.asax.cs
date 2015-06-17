@@ -78,17 +78,12 @@ namespace server
 			controller.DefinitionManagerController = new server.control.DefinitionManagerController ();
 			controller.AccountManagerController = new server.control.AccountManagerController ();
 
-			var testAccount = new @base.model.Account (@base.model.IdGenerator.GetId(), "Test");
-			var testAccountC = new server.control.AccountController (testAccount, "Test");
-
 
 			for (int Index = 0; Index < model.ServerConstants.ACTION_THREADS; ++Index)
 			{
 				ThreadPool.QueueUserWorkItem (new WaitCallback (server.control.APIController.Instance.Worker));
 			}
-
-			controller.AccountManagerController.Registrate (testAccount);
-
+				
 			var cleanC = new @server.control.CleaningController ();
 			ThreadPool.QueueUserWorkItem (new WaitCallback (cleanC.Run));
 

@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using Newtonsoft.Json;
 using @base.model;
 using server.model;
+using server.DB;
 
 namespace server.control
 {
@@ -30,6 +31,23 @@ namespace server.control
 			}
 			return null;
 		}
+
+		public Account Registrate(string username, string password)
+		{
+			foreach (var accountPair in @base.model.World.Instance.Accounts)
+			{
+				if (accountPair.Value.UserName.ToLower() == username.ToLower())
+				{
+					return Login(username, password);
+				}				
+			}
+			var account = new Account (IdGenerator.GetId (), username);
+			var accountC = new AccountController(account, password);
+
+			World.Instance.Accounts[account.ID] = account;
+			return Login (username, password);
+		}
+
 
 		public Account GetAccountBySession(Guid sessionID)
 		{
