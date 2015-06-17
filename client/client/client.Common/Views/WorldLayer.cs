@@ -38,11 +38,8 @@ namespace client.Common.Views
 
             this.Schedule (CheckGeolocation);
 
-<<<<<<< HEAD
-=======
             m_Timer = new Stopwatch ();
 
->>>>>>> 0aa42513dd35aee9252f301cb8a3d145712e8a5e
             var TouchListener = new CCEventListenerTouchAllAtOnce ();
             TouchListener.OnTouchesMoved = onTouchesMoved;
             TouchListener.OnTouchesBegan = onTouchesBegan;
@@ -99,8 +96,8 @@ namespace client.Common.Views
                 */
 
 
-                CCPoint ScreenStart0 = touches[0].StartLocationOnScreen;
-                CCPoint ScreenStart1 = touches[1].StartLocationOnScreen;
+                CCPoint ScreenStart0 = touches [0].StartLocationOnScreen;
+                CCPoint ScreenStart1 = touches [1].StartLocationOnScreen;
 
                 float xDist = (ScreenStart1.X - ScreenStart0.X);
                 float yDist = (ScreenStart1.Y - ScreenStart0.Y);
@@ -112,8 +109,8 @@ namespace client.Common.Views
 
                 //Get Current Position
 
-                CCPoint CurrentPoint0 = touches[0].LocationOnScreen;
-                CCPoint CurrentPoint1 = touches[1].LocationOnScreen;
+                CCPoint CurrentPoint0 = touches [0].LocationOnScreen;
+                CCPoint CurrentPoint1 = touches [1].LocationOnScreen;
 
                 //calculate distance 
                 xDist = (CurrentPoint1.X - CurrentPoint0.X);
@@ -125,11 +122,10 @@ namespace client.Common.Views
 
                 float ScreenDistance = (xDist * xDist) + (yDist * yDist);
 
-                float relation = (CurrentDistance - StartDistance)/ ScreenDistance;
+                float relation = (CurrentDistance - StartDistance) / ScreenDistance;
 
                 var newScale = m_Scale + relation;
-                if (0.3f < newScale && newScale < 2.0f)
-                {
+                if (0.3f < newScale && newScale < 2.0f) {
                     m_newScale = newScale;
                     m_WorldTileMap.TileLayersContainer.Scale = m_newScale;
                 }
@@ -166,12 +162,12 @@ namespace client.Common.Views
 
         void onTouchesEnded (List<CCTouch> touches, CCEvent touchEvent)
         {
-<<<<<<< HEAD
-            var touch = touches [0];
-            var touchfirst = touch.StartLocation;
-            var diff = touch.Delta;
-            CheckCenterRegion (touch.Location);
-=======
+
+            var touch1 = touches [0];
+            var touchfirst = touch1.StartLocation;
+            var diff = touch1.Delta;
+            CheckCenterRegion (touch1.Location);
+
             m_Scale = m_newScale;
 
             m_Timer.Stop ();
@@ -241,7 +237,6 @@ namespace client.Common.Views
                 */
             }
 
->>>>>>> 0aa42513dd35aee9252f301cb8a3d145712e8a5e
         }
 
 
@@ -342,12 +337,8 @@ namespace client.Common.Views
         DrawNode m_CurrentPositionNode;
         Geolocation m_Geolocation;
 
-<<<<<<< HEAD
-        float m_Scale = 0.10f;
-=======
         float m_newScale = 0.5f;
         float m_Scale = 0.5f;
->>>>>>> 0aa42513dd35aee9252f301cb8a3d145712e8a5e
         int counter = 0;
 
         Stopwatch m_Timer;
