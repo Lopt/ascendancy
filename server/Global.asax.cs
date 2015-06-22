@@ -40,11 +40,17 @@ namespace server
 				new { controller = "HTTP", action = "LoadRegions" }  
 			);
 
-			routes.MapRoute (
-				"DoActions",                                           
-				"DoActions",
-				new { controller = "HTTP", action = "DoActions" }  
-			);
+            routes.MapRoute (
+                "DoActions",                                           
+                "DoActions",
+                new { controller = "HTTP", action = "DoActions" }  
+            );
+
+            routes.MapRoute (
+                "Wait",                                           
+                "Wait",
+                new { controller = "HTTP", action = "Wait" }  
+            );
 
 
 			routes.MapRoute (
@@ -81,7 +87,10 @@ namespace server
 
 			for (int Index = 0; Index < model.ServerConstants.ACTION_THREADS; ++Index)
 			{
-				ThreadPool.QueueUserWorkItem (new WaitCallback (server.control.APIController.Instance.Worker));
+                var API = server.control.APIController.Instance;
+//                ThreadPool.QueueUserWorkItem (new WaitCallback (server.control.APIController.Instance.Worker));
+                var Thread = new Thread(API.Worker);
+                Thread.Start ();
 			}
 				
 			var cleanC = new @server.control.CleaningController ();

@@ -190,12 +190,6 @@
     <BundleResource Include="Content\images\logo_neu.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\animations\" />
-    <Folder Include="Content\fonts\" />
-    <Folder Include="Content\sounds\" />
-    <Folder Include="Content\tiles\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />

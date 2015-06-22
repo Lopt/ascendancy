@@ -25,14 +25,7 @@ namespace @base.control.action
         override public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
             var action = (model.Action)Model;
-            var regions = new ConcurrentBag<model.Region>();
-            var jsonRegions = (Newtonsoft.Json.Linq.JArray)action.Parameters[REGIONS];
-            foreach (var region in jsonRegions)
-            {
-                regions.Add(regionManagerC.GetRegion(new @base.model.RegionPosition((Newtonsoft.Json.Linq.JContainer) region)));
-            }
-
-            return regions;
+            return (ConcurrentBag<model.Region>) action.Parameters[REGIONS];
         }
 
         /// <summary>
@@ -50,14 +43,7 @@ namespace @base.control.action
         public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {   
             var action = (model.Action)Model;
-            var regions = new ConcurrentBag<model.Region>();
-            var jsonRegions = (Newtonsoft.Json.Linq.JArray)action.Parameters[REGIONS];
-            foreach (var region in jsonRegions)
-            {
-                regions.Add(regionManagerC.GetRegion(new @base.model.RegionPosition((Newtonsoft.Json.Linq.JContainer) region)));
-            }
-
-            return regions;
+            return (ConcurrentBag<model.Region>) action.Parameters[REGIONS];
         }
 
         /// <summary>

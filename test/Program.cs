@@ -3,24 +3,92 @@ using @base.model;
 using @server.DB;
 using Newtonsoft.Json;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Collections;
+using System.Threading;
 
 namespace test
 {
     class MainClass
     {
-		enum test
-		{
-			a,
-			b,
-			c = 5,
-			d,
-			e,
-				
-		}
+
+        public static void Shuffle<T>(IList<T> list)  
+        {  
+            Random rng = new Random();  
+            int n = list.Count;  
+            while (n > 1) {  
+                n--;  
+                int k = rng.Next(n + 1);  
+                T value = list[k];  
+                list[k] = list[n];  
+                list[n] = value;  
+            }  
+        }
 		
         public static void Main(string[] args)
-		{
+        {
 
+            var world = @base.model.World.Instance;
+            var controller = @base.control.Controller.Instance;
+
+            var regionManagerLastC = new server.control.RegionManagerController (null, world.RegionStates.Last);
+            var regionManagerCurrC = new server.control.RegionManagerController (regionManagerLastC, world.RegionStates.Curr);
+            var regionManagerNextC = new server.control.RegionManagerController (regionManagerCurrC, world.RegionStates.Next);
+
+            controller.RegionStatesController = new @base.control.RegionStatesController (regionManagerLastC,
+                regionManagerCurrC,
+                regionManagerNextC);
+            controller.DefinitionManagerController = new server.control.DefinitionManagerController ();
+            controller.AccountManagerController = new server.control.AccountManagerController ();
+
+            var API = server.control.APIController.Instance;
+
+
+
+            var account = new Account (0);
+
+            var regionsComplete = new List<Region> { };
+            for (var x = 0; x < 100; ++x)
+            {   for (var y = 0; y < 100; ++y)
+                {
+                    regionsComplete.Add (controller.RegionStatesController.Next.GetRegion (new RegionPosition (166148 + x, 104835 + y)));
+                }
+            }
+
+
+
+            for (var i = 0; i < 20000; ++i)
+            {
+
+                var regions = new ConcurrentBag<Region> ();
+                Shuffle<Region> (regionsComplete);
+
+                for (var j = 0; j < 1; ++j)
+                {
+                    regions.Add (regionsComplete[j]);
+                }
+
+
+                var paras = new ConcurrentDictionary<string, object>();
+                paras["Regions"] = regions;
+                var action = new @base.model.Action(account, @base.model.Action.ActionType.TestAction, paras);
+                var actions = new @base.model.Action[] {action};
+                API.DoAction(account, actions);
+            }
+
+
+            ThreadPool.QueueUserWorkItem (new WaitCallback (server.control.APIController.Instance.Worker));
+            //ThreadPool.QueueUserWorkItem (new WaitCallback (server.control.APIController.Instance.Worker));
+           
+            while (!API.m_Actions.IsEmpty)
+            {
+                Thread.Sleep (server.model.ServerConstants.ACTION_THREAD_SLEEP);
+
+            }
+//            server.MvcApplication.Phase = server.MvcApplication.Phases.Exit;
+
+
+            /*
             Entity en = new Entity(0,new Definition(1),new PositionI(12,15));
             Account acc = new Account(0, "Test");
             DBHandle.Instance.CreateNewDBAccount(new Account(0, "Test"), "bla");

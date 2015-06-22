@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="client/client/client.Android/client.Droid.csproj">
+﻿<Properties StartupItem="test/test.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPad2.8.3" />
   <MonoDevelop.Ide.Workbench ActiveDocument="client/client/client.Common/Controllers/RegionController.cs">
     <Files>

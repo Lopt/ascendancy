@@ -30,6 +30,8 @@ namespace server.control
 		{
 			m_Actions = new ConcurrentQueue<@base.model.Action> ();
 			m_hasNewAction = false;
+
+            m_bla = 0;
 		}
 			
 
@@ -111,26 +113,35 @@ namespace server.control
 
 		public bool WorkAction(@base.model.Action action)
 		{
+            var succeed = false;
 			if (action != null)
 			{
 				var regionStatesController = @base.control.Controller.Instance.RegionStatesController;
 
 				var actionC = (action.Control as @base.control.action.Action);
-				var gotLocked = new HashSet<@base.model.Region> ();
+                var gotLocked = new HashSet<@base.model.Region> () {};
 
 				try
 				{
 					var affectedRegions = actionC.GetAffectedRegions(regionStatesController.Next);
 					foreach (var region in affectedRegions)
 					{
-						if (region.TryLockRegion())
-						{
-							gotLocked.Add(region);
-						}
-						else
-						{
-							break;
-						}
+                        if (region.Exist)
+                        {
+    						if (region.TryLockRegion())
+    						{
+    							gotLocked.Add(region);
+                                m_bla += 1;
+    						}
+    						else
+    						{
+    							break;
+    						}
+                        }
+                        else
+                        {
+                            break;
+                        }
 					}
 
 
@@ -146,29 +157,31 @@ namespace server.control
 									var regionCurr = regionStatesController.Curr.GetRegion(region.RegionPosition);
 									regionCurr.AddCompletedAction(action);
 								}
-								return true;
+                                succeed = true;
 							}
 							else
 							{
 								actionC.Catch (regionStatesController.Next);
-								return false;
 							}
 						}
 					}
-				}
+                }
 				catch
 				{
-					return false;
 				}
 				finally
 				{
-					foreach (var region in gotLocked)
-					{
-						region.Release ();
-					}
 				}
-			}
-			return false;
+			
+                foreach (var region in gotLocked)
+                {
+                    region.Release ();
+                    m_bla -= 1;
+                }
+
+            }
+
+            return succeed;
 		}
 
 
@@ -197,7 +210,8 @@ namespace server.control
 		}
 
 		bool m_hasNewAction;
-		ConcurrentQueue<@base.model.Action> m_Actions;
+		public ConcurrentQueue<@base.model.Action> m_Actions;
+        int m_bla;
 
     }
 }

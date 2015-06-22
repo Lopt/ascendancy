@@ -68,6 +68,7 @@
     <Compile Include="Models\World.cs" />
     <Compile Include="Controllers\DefinitionManagerController.cs" />
     <Compile Include="Models\Definition\TerrainDefinition.cs" />
+    <Compile Include="Controllers\action\TestAction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

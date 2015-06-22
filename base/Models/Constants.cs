@@ -30,7 +30,7 @@ namespace @base.model
         public const int MAX_ENTRIES_PER_CONNECTION = 25;
 
 
-        public const int REGION_LOCK_WAIT_TIME = 0;
+        public const int REGION_LOCK_WAIT_TIME = 1;
     }
 }
 

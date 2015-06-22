@@ -10,6 +10,7 @@ namespace @base.model
     {
         public enum ActionType 
         {
+            TestAction,
             CreateHeadquarter,
             Move,
         }
@@ -33,6 +34,9 @@ namespace @base.model
             {
                 case(ActionType.CreateHeadquarter):
                     Control = new control.action.CreateHeadquarter(this);
+                    break;   
+                case(ActionType.TestAction):
+                    Control = new control.action.TestAction(this);
                     break;   
             }
         }
