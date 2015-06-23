@@ -13,6 +13,7 @@ namespace @base.model
             m_id = id;
             m_username = "???";
             m_headquarters = new ObservableCollection<PositionI>();
+            m_units = new ObservableCollection<PositionI>();
         }
 
         public Account (int id, string userName)
@@ -20,6 +21,7 @@ namespace @base.model
             m_id = id;
             m_username = userName;
             m_headquarters = new ObservableCollection<PositionI>();
+            m_units = new ObservableCollection<PositionI>();
         }
 
 		public int ID
@@ -38,9 +40,15 @@ namespace @base.model
             get { return m_headquarters; }
         }
 
+        public ObservableCollection<PositionI> Units
+        {
+            get { return m_headquarters; }
+        }
+
 		private int m_id;
 		private string m_username;
         private ObservableCollection<PositionI> m_headquarters;
+        private ObservableCollection<PositionI> m_units;
 
 	}
 }

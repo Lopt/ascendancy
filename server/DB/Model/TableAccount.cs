@@ -6,7 +6,7 @@ namespace server.DB.Model
     [Table("Account")]
     class TableAccount
     {
-        [PrimaryKey, AutoIncrement, Column("Id")]
+        [PrimaryKey, Column("Id")]
         public int Id{ get; set;}
 
         [MaxLength(20), Unique]
