@@ -54,9 +54,9 @@ namespace client.Common.Views
         {
             base.AddedToScene ();
 
-            //SetMapAnchor (m_Geolocation.CurrentGamePosition);
-            //m_WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MinX;
-            //m_WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MinY;
+            SetMapAnchor (m_Geolocation.CurrentGamePosition);
+            m_WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
+            m_WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
             m_WorldTileMap.TileLayersContainer.Scale = m_Scale;
 
         }
@@ -163,10 +163,8 @@ namespace client.Common.Views
         void onTouchesEnded (List<CCTouch> touches, CCEvent touchEvent)
         {
 
-            var touch1 = touches [0];
-            var touchfirst = touch1.StartLocation;
-            var diff = touch1.Delta;
-            CheckCenterRegion (touch1.Location);
+            var touchEnd = touches [0];
+            CheckCenterRegion (touchEnd.Location);
 
             m_Scale = m_newScale;
 
@@ -278,8 +276,8 @@ namespace client.Common.Views
             await m_RegionC.LoadRegionsAsync ();
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoaded;
             m_RegionC.SetTilesINMap160 (m_TerrainLayer, m_RegionC.GetRegionByGamePosition (gamePosition));
-            // SetMapAnchor (gamePosition);
             SetCurrentPositionOnce (gamePosition);
+            SetMapAnchor (gamePosition);
             m_CenterRegionPosition = new RegionPosition (gamePosition);
 
         }
@@ -288,36 +286,26 @@ namespace client.Common.Views
         {            
             var mapCell = GetMapCell (m_WorldTileMap.LayerNamed ("Layer 0"), location);
 
-//            if (m_RegionC.IsCellInOutsideRegion (mapCell)) {
-//                var position = m_RegionC.GetCurrentGamePosition (mapCell, m_CenterRegionPosition);
-//                DrawRegions (position);
-//            }
+            if (m_RegionC.IsCellInOutsideRegion (mapCell)) {
+                var position = m_RegionC.GetCurrentGamePosition (mapCell, m_CenterRegionPosition);
+                DrawRegions (position);
+            }
 
         }
 
-        void SetMapAnchor (Position currentPosition)
-        {
-            var tileCoordinate = m_RegionC.GetCurrentTileInMap (currentPosition);
-            var mapCellPosition = new MapCellPosition (tileCoordinate);
-            SetMapAnchor (mapCellPosition.GetAnchor ());
-        }
 
-        void SetMapAnchor (CCPoint anchorPoint)
+        void SetMapAnchor (Position anchorPosition)
         {
-            m_WorldTileMap.TileLayersContainer.AnchorPoint = anchorPoint;
+            var mapCellPosition = new MapCellPosition (m_RegionC.GetCurrentTileInMap (anchorPosition));
+            var anchor = mapCellPosition.GetAnchor ();
+            m_WorldTileMap.TileLayersContainer.AnchorPoint = anchor;
         }
 
         MapCellPosition GetMapCell (CCTileMapLayer layer, CCPoint location)
         {
-  
-            var anchor = this.Parent.AnchorPoint;
-             
-            var position = new CCPoint (anchor.X * m_WorldTileMap.TileLayersContainer.ContentSize.Width - VisibleBoundsWorldspace.MidX + location.X * m_Scale, 
-                               (anchor.Y * m_WorldTileMap.TileLayersContainer.ContentSize.Height - VisibleBoundsWorldspace.MidY + location.Y * m_Scale));
-
-            var tileMapCooardinate = layer.ClosestTileCoordAtNodePosition (position);
-            var erg = new MapCellPosition (tileMapCooardinate);
-            return erg;
+            var point = layer.WorldToParentspace (location);
+            var tileMapCooardinate = layer.ClosestTileCoordAtNodePosition (point);
+            return new MapCellPosition (tileMapCooardinate);
         }
 
 

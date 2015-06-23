@@ -15,8 +15,8 @@ namespace client.Common.Models
         public MapCellPosition (CCTileMapCoordinates tileMapCoordinates)
         {
             var x = tileMapCoordinates.Column;
-            var y = 320 - tileMapCoordinates.Row;
-
+            var y = tileMapCoordinates.Row;
+        
             m_CellX = (x * 2) + (y % 2);
             m_CellY = (y / 2);
         }
@@ -44,7 +44,7 @@ namespace client.Common.Models
             float x = (m_CellX) / 159.0f;
             float y = (m_CellY) / 159.0f;
 
-            return new CCPoint (x, y / 2);
+            return new CCPoint (x, (1 - y) / 2);
         }
 
         private readonly int m_CellX;
