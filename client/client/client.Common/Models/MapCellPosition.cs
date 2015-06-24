@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using CocosSharp;
+using client.Common.Helper;
 
 namespace client.Common.Models
 {
@@ -41,8 +42,8 @@ namespace client.Common.Models
         public CCPoint GetAnchor ()
         {
 
-            float x = (m_CellX) / 159.0f;
-            float y = (m_CellY) / 159.0f;
+            float x = (m_CellX) / (ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
+            float y = (m_CellY) / (ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
 
             return new CCPoint (x, (1 - y) / 2);
         }

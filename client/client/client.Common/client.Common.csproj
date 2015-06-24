@@ -31,8 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameAppDelegate.cs" />
-    <Compile Include="Controllers\RegionController.cs" />
-    <Compile Include="Controllers\TerrainController.cs" />
     <Compile Include="Controllers\NetworkController.cs" />
     <Compile Include="Helper\ClientConstants.cs" />
     <Compile Include="Models\viewBaseModel.cs" />
@@ -53,6 +51,10 @@
     <Compile Include="Helper\Modify.cs" />
     <Compile Include="Views\WorldLayer.cs" />
     <Compile Include="Models\MapCellPosition.cs" />
+    <Compile Include="Manager\RegionManagerController.cs" />
+    <Compile Include="Views\RegionView.cs" />
+    <Compile Include="Views\ViewDefinitions.cs" />
+    <Compile Include="Manager\EntityManagerController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -118,6 +120,7 @@
     <Folder Include="Models\" />
     <Folder Include="Try-Tests\" />
     <Folder Include="Views\" />
+    <Folder Include="Manager\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\base\base.csproj">
