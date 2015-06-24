@@ -62,7 +62,6 @@ namespace @base.model
             m_exist = true;
         }
 
-
         public TerrainDefinition GetTerrain(CellPosition cellPosition)
         {
             var value = m_terrains[cellPosition.CellX, cellPosition.CellY];
@@ -172,7 +171,7 @@ namespace @base.model
         {
             get { return m_regionPosition; }
         }
-
+        
         public bool TryLockRegion()
         {
             return m_mutex.WaitOne(Constants.REGION_LOCK_WAIT_TIME);

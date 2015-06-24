@@ -11,7 +11,8 @@ namespace @base.model
         public enum ActionType 
         {
             CreateHeadquarter,
-            Move,
+            CreateUnit,
+            MoveUnit,
         }
 
         /// <summary>
@@ -34,6 +35,9 @@ namespace @base.model
                 case(ActionType.CreateHeadquarter):
                     Control = new control.action.CreateHeadquarter(this);
                     break;   
+                case(ActionType.CreateUnit):
+                    Control = new control.action.CreateUnit(this);
+                    break;
             }
         }
 
