@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Concurrent;
 
 using @base.model;
+using @base.Models;
 
 namespace @base.Models.Definition
 {
@@ -22,6 +23,27 @@ namespace @base.Models.Definition
                 list.Add(new PositionI(0, 1));
                 list.Add(new PositionI(-1, -1));
                 list.Add(new PositionI(-1, 0));
+
+                return list;
+            }
+        }
+
+        public static ConcurrentBag<RegionPosition> SurroundRegions
+        {
+
+            get
+            {
+                ConcurrentBag<RegionPosition> list = new ConcurrentBag<RegionPosition>();
+                      
+                // Surrounded Regions from topleft clockwise
+                list.Add(new RegionPosition(-1, -1));
+                list.Add(new RegionPosition(-1,  0));
+                list.Add(new RegionPosition(-1, +1));
+                list.Add(new RegionPosition( 0, +1));
+                list.Add(new RegionPosition(+1, +1));
+                list.Add(new RegionPosition(+1,  0));
+                list.Add(new RegionPosition(+1, -1));
+                list.Add(new RegionPosition( 0, -1));
 
                 return list;
             }

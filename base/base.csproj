@@ -30,10 +30,13 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controllers\action\AStar\Dict.cs" />
     <Compile Include="Controllers\action\AStar\Node.cs" />
+    <Compile Include="Controllers\action\AStar\NodeState.cs" />
+    <Compile Include="Controllers\action\AStar\PathFinder.cs" />
+    <Compile Include="Controllers\action\AStar\SearchParameters.cs" />
     <Compile Include="Controllers\action\CreateUnit.cs" />
     <Compile Include="Models\Definition\LogicRules.cs" />
-    <Compile Include="Models\GameRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Constants.cs" />

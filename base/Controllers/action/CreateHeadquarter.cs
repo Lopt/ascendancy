@@ -36,14 +36,13 @@ namespace @base.control.action
         /// </summary>
         public override bool Possible(RegionManagerController regionManagerC)
         {   
-            var action = (model.Action)Model;
-           // return true;   
+            var action = (model.Action)Model;  
                         
             if (action.Account.Headquarters.Count == 0)
             {
                 var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
                 var td = regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition).TerrainType;              
-                // Entity prüfen und terrain 
+                // entity and terrain check 
 
                 if (td != TerrainDefinition.TerrainDefinitionType.Forbidden && td != TerrainDefinition.TerrainDefinitionType.Water )
                 {

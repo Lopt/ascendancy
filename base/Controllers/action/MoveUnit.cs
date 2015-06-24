@@ -5,6 +5,10 @@ using System.Collections.ObjectModel;
 using @base.control;
 using @base.model.definitions;
 using @base.model;
+using @base.Models;
+using @base.Models.Definition;
+using System.Collections;
+using AStar;
 
 namespace @base.control.action
 { 
@@ -15,56 +19,62 @@ namespace @base.control.action
         {
         }
 
-        public const string CREATE_POSITION = "EntityPosition";
-        public const string CREATE_UNIT_TYPE = "NewPosition";
+        public const string START_POSITION = "EntityPosition";
+        public const string END_POSITION = "NewPosition";
+        public const string UNIT_TYPE = "UnitType";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="regionManagerC"></param>
+        /// <returns></returns>
         public override ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
             ConcurrentBag<model.Region> Bag = new ConcurrentBag<model.Region>();
 
             var action = (model.Action)Model;
-            var startPosition = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[CREATE_POSITION]);
+            var startPosition = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[START_POSITION]);
+            var endPosition = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[END_POSITION]);
             
-            Bag.Add( regionManagerC.GetRegion(startPosition.RegionPosition) );
-            
+            Bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
+            var adjacentRegions = GetAdjacentRegions(regionManagerC, regionManagerC.GetRegion(startPosition.RegionPosition).RegionPosition);
 
-            //            var newPosition = new model.CombinedPosition((Newtonsoft.Json.Linq.JContainer) action.Parameters[NEW_POSITION]);
-            return Bag;
-        }
-
-        public ObservableCollection<PositionI> FindWay(PositionI start, PositionI end, UnitDefinition type, RegionManagerController regionManagerC)
-        {
-            
-            var xDiff = start.X - end.X;
-            var yDiff = start.Y - end.Y;
-
-            for (int xAdd = 1; xAdd < xDiff; ++xAdd)
+            foreach (var adjRegions in adjacentRegions)
             {
-                var position = (new Position(start.X + xAdd, start.Y + yDiff));
+                Bag.Add(regionManagerC.GetRegion(adjRegions));
             }
 
-            return null; 
+            return Bag;
         }
 
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
-        //public override bool Possible (RegionManagerController regionManagerC)
-        //{   
-        //    var action = (model.Action)Model;
-                            
-        //        if (Parameters.ContainsKey(CREATE_POSITION))
-        //        {
-        //            var positionC = (CombinedPosition) Parameters[CREATE_POSITION];
-        //            var region = regionManagerC.GetRegion(positionC.RegionPosition);
-        //            if (region.Exist && this.Regions.Length == 1 && this.Regions[0] == region &&
-        //                region.GetEntity(positionC.CellPosition) != null)
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //        return true;
-        //}
+        public override bool Possible (RegionManagerController regionManagerC)
+        {   
+            var action = (model.Action)Model;
+
+                //if (Parameters.ContainsKey(CREATE_POSITION))
+                //{
+                //    var positionC = (CombinedPosition) Parameters[CREATE_POSITION];
+                //    var region = regionManagerC.GetRegion(positionC.RegionPosition);
+                //    if (region.Exist && this.Regions.Length == 1 && this.Regions[0] == region &&
+                //        region.GetEntity(positionC.CellPosition) != null)
+                //    {
+                //        return true;
+                //    }
+                //}
+
+            var startPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[START_POSITION]);
+            var endPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[END_POSITION]);
+            var unittype = (UnitDefinition)action.Parameters[UNIT_TYPE];           
+            
+            var pathfinder = new PathFinder(new SearchParameters(startPosI, endPosI));
+
+            m_path = pathfinder.FindPath(unittype.Moves);
+
+            return true;
+        }
 
         ///// <summary>
         ///// Apply action-related changes to the world.
@@ -99,6 +109,73 @@ namespace @base.control.action
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// Check all possible regions around the startregion of a unit and add them to a ConcurrentBag.
+        /// </summary>
+        /// <param name="regionManagerC"></param>
+        /// <param name="position"></param>
+        /// <returns> Get all regions around the startregion</returns>
+        private ConcurrentBag<RegionPosition> GetAdjacentRegions(RegionManagerController regionManagerC, RegionPosition position)
+        {
+            var list = new ConcurrentBag<RegionPosition>();
+            var surlist = LogicRules.SurroundRegions.ToArray();
+
+
+            if (position.RegionX <= Constants.REGION_SIZE_X / 2 && position.RegionY <= Constants.REGION_SIZE_Y / 2)
+            {
+                var tempReg = position + surlist[LogicRules.SurroundRegions.Count];
+                if (regionManagerC.GetRegion(tempReg).Exist)
+                {
+                    list.Add(tempReg);
+                }
+
+                for (int index = 0; index < 2; ++index)
+                {
+                    tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+            }
+            else if (position.RegionX > Constants.REGION_SIZE_X / 2 && position.RegionY <= Constants.REGION_SIZE_Y / 2)
+            {
+                for (int index = 1; index < 4; ++index)
+                {
+                    var tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+            }
+            else if (position.RegionX > Constants.REGION_SIZE_X / 2 && position.RegionY > Constants.REGION_SIZE_Y / 2)
+            {
+                for (int index = 3; index < 7; ++index)
+                {
+                    var tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+            }
+            else
+            {
+                for (int index = 5; index < 8; ++index)
+                {
+                    var tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+            }
+            return list;
+        }
+
+        private IList m_path; 
     }
 }
 

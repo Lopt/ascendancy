@@ -16,6 +16,7 @@ namespace @base.control.action
         }
 
         public const string CREATE_POSITION = "CreatePosition";
+        public const string CREATION_TYPE = "CreateUnit";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="base.control.action.Action"/> class.
@@ -37,8 +38,10 @@ namespace @base.control.action
         public override bool Possible(RegionManagerController regionManagerC)
         {   
             var action = (model.Action)Model;
-            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[CREATE_POSITION]);         
-             
+            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[CREATE_POSITION]);
+
+            var type = (int) action.Parameters[CREATION_TYPE]; 
+
             if (CheckSurroundedArea(positionI, regionManagerC))
             {
                 return true;              
@@ -50,7 +53,7 @@ namespace @base.control.action
         /// Apply action-related changes to the world.
         /// Returns false if something went terrible wrong
         /// </summary>
-        public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC, UnitDefinition.UnitDefinitionType type)
+        public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {   
             string[] actionParameter = {"CreateUnits"};
 
@@ -58,14 +61,16 @@ namespace @base.control.action
             var action = (model.Action)Model;
             var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
+            var type = (int)action.Parameters[CREATION_TYPE]; 
 
             positionI += temp[m_index];
-
+            
+            var dt = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((int)type);
+            
             // create the new entity and link to the correct account
-            var entity = new @base.model.Entity(action.Account.ID, 
-                new UnitDefinition(type,
-                    actionParameter, 
-                    0, 0, 0, 0),
+            var entity = new @base.model.Entity(action.Account.ID,
+                
+                dt,  
                 positionI);
 
             entity.Position = positionI;
@@ -96,11 +101,11 @@ namespace @base.control.action
                 var surpos = temp[index] + position;
 
                 var td = regionManagerC.GetRegion(surpos.RegionPosition).GetTerrain(surpos.CellPosition).TerrainType;
-                var ed = regionManagerC.GetRegion(surpos.RegionPosition).GetEntity(surpos.CellPosition);                            
+                var ed = regionManagerC.GetRegion(surpos.RegionPosition).GetEntity(surpos.CellPosition);
 
                 if (td != TerrainDefinition.TerrainDefinitionType.Forbidden &&
                     td != TerrainDefinition.TerrainDefinitionType.Water &&
-                    ed.Definition.ID >= 60 && ed.Definition.ID <= 275)
+                    ed.Definition.Type < UnitDefinition.DefinitionType.Unit)
                 {
                     m_index = index;
                     return true;
