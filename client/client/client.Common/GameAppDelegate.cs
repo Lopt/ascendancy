@@ -93,7 +93,7 @@ namespace client.Common
                 
                 LoadingState = Loading.Loggedin;
                 LoadingState = Loading.TerrainTypeLoading;
-                var entityManagerController = EntityManagerController.GetInstance;
+                var entityManagerController = Controller.Instance.DefinitionManagerController as client.Common.Manager.EntityManagerController;
                 await entityManagerController.LoadTerrainDefinitionsAsync ();
                 LoadingState = Loading.TerrainTypeLoaded;
 
@@ -114,9 +114,8 @@ namespace client.Common
         {
             var world = World.Instance;
             var controller = Controller.Instance;
-            controller.DefinitionManagerController = new @base.control.DefinitionManagerController ();
-            controller.RegionStatesController = new RegionStatesController (null, new @base.control.RegionManagerController (null, World.Instance.RegionStates.Curr), null);
-           
+            controller.RegionStatesController = new RegionStatesController (null, new client.Common.Manager.RegionManagerController (World.Instance.RegionStates.Curr), null);      
+            controller.DefinitionManagerController = new EntityManagerController ();
         }
 
         private async Task LogInAsync ()

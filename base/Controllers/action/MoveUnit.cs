@@ -11,7 +11,7 @@ using System.Collections;
 using AStar;
 
 namespace @base.control.action
-{ 
+{
     public class MoveEntity : Action
     {
         public MoveEntity(model.ModelEntity model)
@@ -50,20 +50,20 @@ namespace @base.control.action
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
-        public override bool Possible (RegionManagerController regionManagerC)
+        public override bool Possible(RegionManagerController regionManagerC)
         {   
             var action = (model.Action)Model;
 
-                //if (Parameters.ContainsKey(CREATE_POSITION))
-                //{
-                //    var positionC = (CombinedPosition) Parameters[CREATE_POSITION];
-                //    var region = regionManagerC.GetRegion(positionC.RegionPosition);
-                //    if (region.Exist && this.Regions.Length == 1 && this.Regions[0] == region &&
-                //        region.GetEntity(positionC.CellPosition) != null)
-                //    {
-                //        return true;
-                //    }
-                //}
+            //if (Parameters.ContainsKey(CREATE_POSITION))
+            //{
+            //    var positionC = (CombinedPosition) Parameters[CREATE_POSITION];
+            //    var region = regionManagerC.GetRegion(positionC.RegionPosition);
+            //    if (region.Exist && this.Regions.Length == 1 && this.Regions[0] == region &&
+            //        region.GetEntity(positionC.CellPosition) != null)
+            //    {
+            //        return true;
+            //    }
+            //}
 
             var startPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[START_POSITION]);
             var endPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[END_POSITION]);
@@ -105,10 +105,10 @@ namespace @base.control.action
         /// <summary>
         /// In case of errors, revert the world data to a valid state.
         /// </summary>        public bool Catch()
-        public override bool Catch()
-        {
-            throw new NotImplementedException();
-        }
+        //        public override bool Catch()
+        //        {
+        //            throw new NotImplementedException();
+        //        }
 
         /// <summary>
         /// Check all possible regions around the startregion of a unit and add them to a ConcurrentBag.
@@ -175,7 +175,7 @@ namespace @base.control.action
             return list;
         }
 
-        private IList m_path; 
+        private IList m_path;
     }
 }
 

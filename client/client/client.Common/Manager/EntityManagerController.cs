@@ -10,27 +10,15 @@ using System;
 
 namespace client.Common.Manager
 {
-    public class EntityManagerController
+    public class EntityManagerController : DefinitionManagerController
     {
 
-        #region Singelton
-
-        private static readonly EntityManagerController m_instance = new EntityManagerController ();
-
-        private EntityManagerController ()
+        public EntityManagerController ()
         {
             m_Network = NetworkController.GetInstance;
-            m_RegionManagerController = Controller.Instance.RegionStatesController.Curr as RegionManagerController;
-            m_DefinitionManagerController = Controller.Instance.DefinitionManagerController as DefinitionManagerController;
+            m_RegionManagerController = Controller.Instance.RegionStatesController.Curr as client.Common.Manager.RegionManagerController;
         }
 
-        public static EntityManagerController GetInstance {
-            get {
-                return m_instance; 
-            }
-        }
-
-        #endregion
 
         public async Task LoadTerrainDefinitionsAsync ()
         {
@@ -40,7 +28,7 @@ namespace client.Common.Manager
             var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>> (json);
 
             foreach (var terrain in terrainDefintions) {
-                m_DefinitionManagerController.DefinitionManager.AddDefinition (terrain);
+                DefinitionManager.AddDefinition (terrain);
 
             }
         }
@@ -71,7 +59,7 @@ namespace client.Common.Manager
             if (entities != null) {
                 foreach (var regionEntities in entities) {
                     foreach (var entity in regionEntities) {
-                        var region = Controller.Instance.RegionStatesController.Curr.GetRegion (entity.Position.RegionPosition);
+                        var region = m_RegionManagerController.GetRegion (entity.Position.RegionPosition);
                         region.AddEntity (DateTime.Now, entity);
                     }
                 }
@@ -85,7 +73,6 @@ namespace client.Common.Manager
 
         private NetworkController m_Network;
         private RegionManagerController m_RegionManagerController;
-        private DefinitionManagerController m_DefinitionManagerController;
 
         #endregion
     }

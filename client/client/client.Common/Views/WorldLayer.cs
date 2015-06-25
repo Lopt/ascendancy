@@ -23,7 +23,7 @@ namespace client.Common.Views
         {
             m_RegionView = new RegionView ();
             m_RegionManagerController = Controller.Instance.RegionStatesController.Curr as client.Common.Manager.RegionManagerController;
-            m_EntitieManagerController = EntityManagerController.GetInstance;
+            m_EntityManagerController = Controller.Instance.DefinitionManagerController as client.Common.Manager.EntityManagerController;
 
             m_WorldTileMap = new CCTileMap (ClientConstants.TILEMAP_FILE);
             m_Geolocation = Geolocation.GetInstance;
@@ -290,7 +290,7 @@ namespace client.Common.Views
         async Task DrawEntitiesAsync (Position gamePosition)
         {
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.EntitiesLoading;
-            await m_EntitieManagerController.LoadEntitiesAsync (gamePosition, m_CenterRegionPosition);
+            await m_EntityManagerController.LoadEntitiesAsync (gamePosition, m_CenterRegionPosition);
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.EntitiesLoaded;
             m_RegionView.SetTilesInMap160 (m_UnitLayer, m_RegionManagerController.GetRegion (m_CenterRegionPosition));
             m_RegionView.SetTilesInMap160 (m_BuildingLayer, m_RegionManagerController.GetRegion (m_CenterRegionPosition));
@@ -336,7 +336,7 @@ namespace client.Common.Views
         RegionView m_RegionView;
         RegionPosition m_CenterRegionPosition;
         client.Common.Manager.RegionManagerController m_RegionManagerController;
-        client.Common.Manager.EntityManagerController m_EntitieManagerController;
+        client.Common.Manager.EntityManagerController m_EntityManagerController;
 
         DrawNode m_CurrentPositionNode;
         Geolocation m_Geolocation;
