@@ -33,6 +33,11 @@ namespace @base.model
             m_y = regionPosition.RegionY * Constants.REGION_SIZE_Y + cellPosition.CellY;
         }
 
+        public static PositionI operator +(PositionI first, PositionI second)
+        {
+            return new PositionI(first.X + second.X, first.Y + second.Y);
+        }
+
         [JsonIgnore]
         public RegionPosition RegionPosition
         {

@@ -15,7 +15,7 @@ namespace @base.model.definitions
             // example: Hero ID 60 is Gold, 61 is Hero-Fire,
             // 62 is Hero-Water...
 
-            // Unit Range 60-275
+            // Unit Range 60-275 Id's
             Hero = 60,
             Mage = 66,
             Warrior = 72, 
@@ -23,7 +23,7 @@ namespace @base.model.definitions
             Unknown2 = 84,
             Unknown3 = 90,
            
-            // Buildings Range 276-491
+            // Buildings Range 276-491 Id's
             Headquarter = 276,
             Outposts = 282,
             Houses = 288,

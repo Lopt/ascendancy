@@ -186,19 +186,15 @@
     <BundleResource Include="Content\tiles\Worldmap-160x160%28320x80%29.xnb" />
     <BundleResource Include="Content\tiles\Spritesheet_with_space.png" />
     <BundleResource Include="Content\images\logo_neu.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\images\hd\" />
-    <Folder Include="Content\images\ld\" />
+    <BundleResource Include="Content\images\hd\Ladebalken.png" />
+    <BundleResource Include="Content\images\hd\logo.png" />
+    <BundleResource Include="Content\images\ld\Ladebalken.png" />
+    <BundleResource Include="Content\images\ld\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
-    <None Include="Content\images\ld\Ladebalken.png" />
-    <None Include="Content\images\ld\logo.png" />
-    <None Include="Content\images\hd\Ladebalken.png" />
-    <None Include="Content\images\hd\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />

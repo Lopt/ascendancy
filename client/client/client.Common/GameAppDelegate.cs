@@ -9,6 +9,8 @@ using @base.control;
 using client.Common.Views;
 using System.Threading.Tasks;
 using client.Common.Models;
+using client.Common.Manager;
+
 
 
 
@@ -20,6 +22,8 @@ namespace client.Common
         public enum Loading
         {
             Started,
+            Login,
+            Loggedin,
             TerrainTypeLoading,
             TerrainTypeLoaded,
             RegionLoading,
@@ -59,12 +63,13 @@ namespace client.Common
                 application.ContentSearchPaths.Add (ClientConstants.IMAGES_LD);
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
+           
             InitLoading ();
 
             StartScene startScene = new StartScene (mainWindow);
             mainWindow.RunWithScene (startScene);
-
-
+         
+           
         }
 
         public override void ApplicationDidEnterBackground (CCApplication application)
@@ -81,26 +86,49 @@ namespace client.Common
 
         private async Task InitLoading ()
         {
-            LoadingState = Loading.TerrainTypeLoading;
-            var terrainController = Controller.Instance.DefinitionManagerController as TerrainController;
-            await terrainController.LoadTerrainDefinitionsAsync ();
-            LoadingState = Loading.TerrainTypeLoaded;
+            LoadingState = Loading.Login;
+            await LogInAsync ();
 
-            LoadingState = Loading.RegionLoading;
-            var regionController = Controller.Instance.RegionStatesController.Curr as RegionController;
-            await regionController.LoadRegionsAsync ();
-            LoadingState = Loading.RegionLoaded;
-            // do something in the future
-            LoadingState = Loading.Done;
+            if (NetworkController.GetInstance.IsLogedin) {
+                
+                LoadingState = Loading.Loggedin;
+                LoadingState = Loading.TerrainTypeLoading;
+                var entityManagerController = Controller.Instance.DefinitionManagerController as client.Common.Manager.EntityManagerController;
+                await entityManagerController.LoadTerrainDefinitionsAsync ();
+                LoadingState = Loading.TerrainTypeLoaded;
+
+                LoadingState = Loading.RegionLoading;
+                var regionManagerController = Controller.Instance.RegionStatesController.Curr as client.Common.Manager.RegionManagerController;
+                await regionManagerController.LoadRegionsAsync ();
+                LoadingState = Loading.RegionLoaded;
+                // do something in the future
+                LoadingState = Loading.Done;
+
+            } else {
+                throw new NotImplementedException ("Login failure");
+            }
+
         }
 
         private void InitWorld ()
         {
             var world = World.Instance;
             var controller = Controller.Instance;
-            controller.DefinitionManagerController = new TerrainController ();
-            controller.RegionStatesController = new RegionStatesController (null, new RegionController (World.Instance.RegionStates.Curr), null);
-           
+            controller.RegionStatesController = new RegionStatesController (null, new client.Common.Manager.RegionManagerController (World.Instance.RegionStates.Curr), null);      
+            controller.DefinitionManagerController = new EntityManagerController ();
+        }
+
+        private async Task LogInAsync ()
+        {
+            var currentGamePosition = Geolocation.GetInstance.CurrentGamePosition;
+
+            LoadingState = Loading.Login;
+            await NetworkController.GetInstance.LoginAsync (currentGamePosition);
+
+            if (NetworkController.GetInstance.IsLogedin) {
+                LoadingState = Loading.Loggedin;
+            }
+                
         }
 
         private void SetContentPaths (CCApplication application)

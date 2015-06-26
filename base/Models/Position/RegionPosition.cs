@@ -33,6 +33,11 @@ namespace @base.model
             m_regionY = (int) obj.SelectToken("RegionY");
         }
 
+        public static RegionPosition operator +(RegionPosition first, RegionPosition second)
+        {
+            return new RegionPosition(first.RegionX + second.RegionX, first.RegionY + second.RegionY);
+        }
+
         public int RegionX
         {
             get { return m_regionX; }
