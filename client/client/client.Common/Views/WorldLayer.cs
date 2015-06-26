@@ -25,14 +25,12 @@ namespace client.Common.Views
             m_Geolocation = Geolocation.GetInstance;
 
             m_CurrentPositionNode = new DrawNode ();
-            //m_PointedPositionNode = new DrawNode ();
             m_WorldTileMap.TileLayersContainer.AddChild (m_CurrentPositionNode);
-            //m_WorldTileMap.TileLayersContainer.AddChild (m_PointedPositionNode);
 
             m_TerrainLayer = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_TERRAIN);
-            //m_BuildingLayer   = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_BUILDING);
-            //m_UnitLayer       = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_UNIT);
-            //m_MenuLayer       = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_MENU);
+            m_BuildingLayer   = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_BUILDING);
+            m_UnitLayer       = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_UNIT);
+            m_MenuLayer       = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_MENU);
 
             this.AddChild (m_WorldTileMap);
 
@@ -73,29 +71,8 @@ namespace client.Common.Views
                 m_WorldTileMap.TileLayersContainer.Position += diff;
             }
             if (touches.Count >= 2) {
-                //do zoom stuff
-
-                //get StartPositons
-                /*
-                CCPoint StartPoint0 = touches[0].StartLocation;
-                CCPoint StartPoint1 = touches[1].StartLocation;
-                float xDist = (StartPoint1.X - StartPoint0.X);
-                float yDist = (StartPoint1.Y - StartPoint0.Y);
-                float StartDistance = (xDist * xDist) + (yDist * yDist);
-
-
-                CCPoint CurrentPoint0 = touches[0].Location;
-                CCPoint CurrentPoint1 = touches[1].Location;
-
-                //calculate distance 
-                xDist = (CurrentPoint1.X - CurrentPoint0.X);
-                yDist = (CurrentPoint1.Y - CurrentPoint0.Y);
-                float CurrentDistance = (xDist * xDist) + (yDist * yDist);
-
-
-                */
-
-
+              
+                //calculate Start distance
                 CCPoint ScreenStart0 = touches[0].StartLocationOnScreen;
                 CCPoint ScreenStart1 = touches[1].StartLocationOnScreen;
 
@@ -103,56 +80,29 @@ namespace client.Common.Views
                 float yDist = (ScreenStart1.Y - ScreenStart0.Y);
                 float StartDistance = (xDist * xDist) + (yDist * yDist);
 
-                //calculate Start distance
-
-
-
-                //Get Current Position
-
+                //calculate Current Position
                 CCPoint CurrentPoint0 = touches[0].LocationOnScreen;
                 CCPoint CurrentPoint1 = touches[1].LocationOnScreen;
 
-                //calculate distance 
                 xDist = (CurrentPoint1.X - CurrentPoint0.X);
                 yDist = (CurrentPoint1.Y - CurrentPoint0.Y);
                 float CurrentDistance = (xDist * xDist) + (yDist * yDist);
 
+                //calculate screen relation 
                 xDist = VisibleBoundsWorldspace.MaxX;
                 yDist = VisibleBoundsWorldspace.MaxY;
 
                 float ScreenDistance = (xDist * xDist) + (yDist * yDist);
-
                 float relation = (CurrentDistance - StartDistance)/ ScreenDistance;
 
+                //scale
                 var newScale = m_Scale + relation;
                 if (0.3f < newScale && newScale < 2.0f)
                 {
                     m_newScale = newScale;
                     m_WorldTileMap.TileLayersContainer.Scale = m_newScale;
                 }
-
-                /*
-                if ( StartDistance > CurrentDistance && m_Scale > 0.3f)
-                {
-                    //zoom--
-                    m_Scale += relation;
-                    m_WorldTileMap.TileLayersContainer.Scale = m_Scale;
-
-                }
-                if (StartDistance < CurrentDistance && m_Scale < 2.0f)
-                {
-                    //Zoom++
-                    m_Scale += relation;
-                    m_WorldTileMap.TileLayersContainer.Scale = m_Scale;
-
-                }
-                */
-
-
-
             }
-
-
         }
 
         void onTouchesBegan (List<CCTouch> touches, CCEvent touchEvent)
@@ -163,58 +113,82 @@ namespace client.Common.Views
 
         void onTouchesEnded (List<CCTouch> touches, CCEvent touchEvent)
         {
+            //Set Current Scale
             m_Scale = m_newScale;
 
+            //Stop Timer for Longtap
             m_Timer.Stop ();
-            if (m_Timer.ElapsedMilliseconds > 2000) {
-                //get Touch
-                var touch = touches [0];
-                //get selected Tile
-                //var location = m_TerrainLayer.WorldToParentspace (touch.Location);
-                //var tileCoordinate = m_TerrainLayer.ClosestTileCoordAtNodePosition (location);
-                 
-                /*
-                if(unit selected/unit move command){
-                    //layer auf NULL checken
-                    if( m_BuildingLayer == m_UnitLayer == NULL){
-                        //move
-                    }
-                    
-                    if( m_UnitLayer == TRUE ){
-                        //Check if your own Unit
-                        if(Unit.ownerid != userid){
-                            //combat Menu
-                        }else{
-                            //move invalid
-                        }
-                    }
-                    
-                    if ( m_BuildingLayer == TRUE){
-                        //check Building owner
-                        if ( building.ownerid != userid ){
-                            //Conquest Menu
-                        }
-                    }
+            //get Touch location and Corresponding TilePosition
+            var touch = touches [0];
+
+            var location = m_TerrainLayer.WorldToParentspace(touch.Location);
+            var tileCoordinate = m_TerrainLayer.ClosestTileCoordAtNodePosition (location);
+
+            //Menu Handling
+            /*
+            if(m_MenuLayer.TileGIDandFlags(tileCoordinate) != 0)
+            {
+                Command = GetMenuCommandfromDefinition(Position);
+                SendCommandToServer(Command);
+                break ???
+            }
+            */
+
+            //Movement Handling 
+            /*
+            if(MoveUI == true)
+            {
+                //do Movementstuff
+                if (GetTileState(Position) == true)
+                {
+                    SendMoveToServer(UnitID,Position)
                 }
-                */
+            }
+            */
 
-                /*
-                if (m_MenuLayer != NULL){
-
-                    switch(MenuItems){
-                    case unit_action1:
-                        //do Stuff
-                    break;
-                    case building_action2:
-                        //do Stuff
-                    break;
-                    }
+            //LongTap Handling 
+            if (m_Timer.ElapsedMilliseconds > 400 && m_Timer.ElapsedMilliseconds < 2000) {
                 
+                //Draw the taped ISO Tile
+                //m_CurrentPositionNode.DrawISOForIsoStagMap(131, m_UnitLayer,tileCoordinate, new CCColor4F (CCColor3B.Blue), 255, 3.0f);
+                if (MenuDrawn == true) 
+                {
+                    DrawMenu (LastCoord, 0);
+                }
+                DrawMenu(tileCoordinate, 1);
+                //TODO find a way to update the menu layer
+                //m_MenuLayer.Update (0.0f);
+
+                //Check if something exists @ this position for Unit or Building
+                /*
+                if(m_UnitLayer.TileGIDandFlags(tileCoordinate) != 0)
+                {
+                    
+                    UnitID = GetUnitID(Position);
+                    if(isBuilder(UnitID) == true)
+                    {
+                        DrawMenu(Position, /Builder/);
+                    }
+                    else
+                    {
+                        AvailableMovement = GetUnitMovement(UnitID);
+                        Move(AvailableMovement, UnitID);
+                        MoveUI = TRUE;
+                    }
+                }
+                else if(m_BuildingLayer.TileGIDandFlags(tileCoordinate) != 0)
+                {
+                    BuildingID = GetBuildingID(Position);
+                    if(isFactory(BuildingID) == true)
+                    {
+                        DrawMenu(Position, /Factory/);
+                    }
                 }
                 */
+                 
 
                 /*
-                if (m_UnitLayer != NULL)
+                if (m_UnitLayer.TileGIDandFlags(tileCoordinate) != NULL)
                 {
 
                     //UnitMenu
@@ -224,7 +198,7 @@ namespace client.Common.Views
                 */
 
                 /*
-                if (m_BuildingLayer != NULL){
+                if (m_BuildingLayer.TileGIDandFlags(tileCoordinate) != 0){
 
                     //BuildingMenu
                 
@@ -277,6 +251,72 @@ namespace client.Common.Views
             SetCurrentPositionOnce (gamePosition);
         }
 
+        //clears a Layer
+        void ClearLayer (CCTileMapLayer _Layer)
+        {
+            GIDHelper1.Gid = 0;
+            for (int i = 0; i < ClientConstants.TILEMAP_WIDTH; i++) 
+            {
+                CoordHelper1.Column = i;
+                for (int j = 0; j < ClientConstants.TILEMAP_HIGH; j++) 
+                {
+                    CoordHelper1.Row = j;
+                    _Layer.SetTileGID (GIDHelper1, CoordHelper1);
+                }
+            }
+        }
+
+        void DrawMenu(CCTileMapCoordinates _location, int _menutype)
+        {
+            CoordHelper1.Column = _location.Column + (_location.Row) % 2;
+            CoordHelper1.Row    = _location.Row - 1;
+
+            CoordHelper2.Column = _location.Column + (_location.Row) % 2;
+            CoordHelper2.Row    = _location.Row + 1;        
+
+            CoordHelper3.Column = _location.Column;
+            CoordHelper3.Row    = _location.Row + 2;
+
+            CoordHelper4.Column = _location.Column - (_location.Row+1) % 2;
+            CoordHelper4.Row    = _location.Row + 1;
+
+            CoordHelper5.Column = _location.Column - (_location.Row+1) % 2;
+            CoordHelper5.Row    = _location.Row - 1;
+
+            CoordHelper6.Column = _location.Column;
+            CoordHelper6.Row    = _location.Row - 2;
+
+            GIDHelper1.Gid = 52;
+            GIDHelper2.Gid = 53;
+            GIDHelper3.Gid = 54;
+            GIDHelper4.Gid = 55;
+            GIDHelper5.Gid = 56;
+            GIDHelper6.Gid = 57;
+            switch (_menutype) 
+            {
+            //clears the Menu at around a given Position
+            case 0:
+                GIDHelper1.Gid = 0;
+                m_MenuLayer.SetTileGID (GIDHelper1, CoordHelper1);
+                m_MenuLayer.SetTileGID (GIDHelper1, CoordHelper2);
+                m_MenuLayer.SetTileGID (GIDHelper1, CoordHelper3);
+                m_MenuLayer.SetTileGID (GIDHelper1, CoordHelper4);
+                m_MenuLayer.SetTileGID (GIDHelper1, CoordHelper5);
+                m_MenuLayer.SetTileGID (GIDHelper1, CoordHelper6);
+                break;
+            default:
+                m_MenuLayer.SetTileGID (GIDHelper1, CoordHelper1);
+                m_MenuLayer.SetTileGID (GIDHelper2, CoordHelper2);
+                m_MenuLayer.SetTileGID (GIDHelper3, CoordHelper3);
+                m_MenuLayer.SetTileGID (GIDHelper4, CoordHelper4);
+                m_MenuLayer.SetTileGID (GIDHelper5, CoordHelper5);
+                m_MenuLayer.SetTileGID (GIDHelper6, CoordHelper6);
+                LastCoord = _location;
+                MenuDrawn = true;
+                break;
+            }
+        }
+
         void SetMapAnchor (Position currentPosition)
         {
             var tileCoordinate = m_RegionC.GetCurrentTileInMap (currentPosition);
@@ -290,9 +330,9 @@ namespace client.Common.Views
 
         CCTileMap m_WorldTileMap;
         CCTileMapLayer m_TerrainLayer;
-        //CCTileMapLayer m_BuildingLayer;
-        //CCTileMapLayer m_UnitLayer;
-        //CCTileMapLayer m_MenuLayer;
+        CCTileMapLayer m_BuildingLayer;
+        CCTileMapLayer m_UnitLayer;
+        CCTileMapLayer m_MenuLayer;
 
         RegionController m_RegionC;
 
@@ -302,6 +342,12 @@ namespace client.Common.Views
         float m_newScale = 0.5f;
         float m_Scale = 0.5f;
         int counter = 0;
+        bool UnitMove = false;
+        bool MenuDrawn = false;
+
+
+        CCTileGidAndFlags GIDHelper1, GIDHelper2, GIDHelper3, GIDHelper4, GIDHelper5, GIDHelper6;
+        CCTileMapCoordinates CoordHelper1, CoordHelper2, CoordHelper3, CoordHelper4, CoordHelper5, CoordHelper6, LastCoord;
 
         Stopwatch m_Timer;
 

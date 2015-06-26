@@ -23,11 +23,11 @@ namespace client.Common.Helper
 
         #region TileMap
 
-        public const string TILEMAP_FILE = "Worldmap-160x160(320x80)";
+        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)";
         public const string LAYER_TERRAIN       = "Layer 0";
-        //public const string LAYER_BUILDING    = "Layer 1";
-        //public const string LAYER_UNIT        = "Layer 2";
-        //public const string LAYER_MENU        = "Layer 3";
+        public const string LAYER_BUILDING      = "Layer 1";
+        public const string LAYER_UNIT          = "Layer 2";
+        public const string LAYER_MENU          = "Layer 3";
 
 
         public const float TILE_IMAGE_WIDTH = 83.0f;
@@ -53,6 +53,18 @@ namespace client.Common.Helper
         public const short BEACH_GID = 2;
         public const short PARK_GID = 11;
         public const short INVALID_GID = 1;
+
+        #endregion
+
+        #region MenuGid
+
+        // became Numbers from client/data/tiles/Tile_zuordnung.ods
+        public const short MENU_1 = 52; 
+        public const short MENU_2 = 53;
+        public const short MENU_3 = 54;
+        public const short MENU_4 = 55;
+        public const short MENU_5 = 56;
+        public const short MENU_6 = 57;
 
         #endregion
     }

@@ -155,13 +155,13 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\fonts\arial-22.xnb" />
-    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_with_space.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%28320x80%29.xnb" />
     <AndroidAsset Include="Assets\Content\images\logo_neu.png" />
     <AndroidAsset Include="Assets\Content\images\hd\Ladebalken.png" />
     <AndroidAsset Include="Assets\Content\images\hd\logo.png" />
     <AndroidAsset Include="Assets\Content\images\ld\Ladebalken.png" />
     <AndroidAsset Include="Assets\Content\images\ld\logo.png" />
+    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_with_space.png" />
+    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29.xnb" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\MonoAndroid\SQLitePCL.raw_basic.targets" Condition="Exists('..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\MonoAndroid\SQLitePCL.raw_basic.targets')" />
