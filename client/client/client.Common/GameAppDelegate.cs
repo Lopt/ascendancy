@@ -106,7 +106,7 @@ namespace client.Common
 
             } else {
                 throw new NotImplementedException ("Login failure");
-            }
+              }
 
         }
 
