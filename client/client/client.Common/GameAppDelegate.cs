@@ -26,6 +26,8 @@ namespace client.Common
             Loggedin,
             TerrainTypeLoading,
             TerrainTypeLoaded,
+            EntityTypeLoading,
+            EntityTypeLoaded,
             RegionLoading,
             RegionLoaded,
             EntitiesLoading,
@@ -96,6 +98,10 @@ namespace client.Common
                 var entityManagerController = Controller.Instance.DefinitionManagerController as client.Common.Manager.EntityManagerController;
                 await entityManagerController.LoadTerrainDefinitionsAsync ();
                 LoadingState = Loading.TerrainTypeLoaded;
+
+                LoadingState = Loading.EntitiesLoading;
+                await entityManagerController.LoadEntityDefinitionsAsync ();
+                LoadingState = Loading.EntitiesLoaded;
 
                 LoadingState = Loading.RegionLoading;
                 var regionManagerController = Controller.Instance.RegionStatesController.Curr as client.Common.Manager.RegionManagerController;

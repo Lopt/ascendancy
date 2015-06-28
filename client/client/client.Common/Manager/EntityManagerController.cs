@@ -33,6 +33,20 @@ namespace client.Common.Manager
             }
         }
 
+        public async Task LoadEntityDefinitionsAsync ()
+        {
+            await m_Network.LoadTerrainTypesAsync (ClientConstants.ENTITY_TYPES_SERVER_PATH);
+
+            var json = m_Network.JsonTerrainTypeString;
+            var unitDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.UnitDefinition>> (json);
+
+            foreach (var unitType in unitDefintions ) {
+                DefinitionManager.AddDefinition (unitType);
+
+            }
+        }
+
+
         #region Entities
 
         public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition centerRegionPosition)

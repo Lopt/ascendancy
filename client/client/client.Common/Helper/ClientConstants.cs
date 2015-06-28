@@ -19,6 +19,9 @@ namespace client.Common.Helper
         public const string IMAGES_LD = "images/ld";
 			   
         public const string REGION_SERVER_PATH = "http://derfalke.no-ip.biz/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
+
+
+        public const string ENTITY_TYPES_SERVER_PATH = "http://derfalke.no-ip.biz/unit.json";
         public const string TERRAIN_TYPES_SERVER_PATH = "http://derfalke.no-ip.biz/terrain.json";
         public const string LOGIC_SERVER = "http://derfalke.no-ip.biz:9000";
         public const string LOGIN_PATH = "/Login?json=$JSON";
