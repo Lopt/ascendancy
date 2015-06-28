@@ -15,7 +15,11 @@ namespace client.Common.Views
             m_RegionC = Controller.Instance.RegionStatesController.Curr as RegionManagerController;
 
             m_Logo = new CCSprite ("logo_neu");
+
             m_LoadedSprite = new CCSprite ("Ladebalken");
+            m_LoadedSprite.Visible = false;
+
+
 
             this.AddChild (m_Logo);
             this.AddChild (m_LoadedSprite); 
@@ -24,15 +28,6 @@ namespace client.Common.Views
             this.Opacity = 255;
 
             this.Schedule (LoadingProgress);
-
-            var touchListener = new CCEventListenerTouchAllAtOnce ();
-            touchListener.OnTouchesEnded = (touches, ccevent) => {
-                if (GameAppDelegate.LoadingState >= GameAppDelegate.Loading.Done)
-                    Window.DefaultDirector.ReplaceScene (new GameScene (Window));
-            };
-
-            this.AddEventListener (touchListener);
-				
         }
 
         #region overide
@@ -58,10 +53,15 @@ namespace client.Common.Views
 
         void LoadingProgress (float frameTimesInSecond)
         {
-            if (GameAppDelegate.LoadingState >= GameAppDelegate.Loading.RegionLoaded) {
-                m_LoadedSprite.Visible = false;
+            if (GameAppDelegate.LoadingState >= GameAppDelegate.Loading.TerrainTypeLoaded)
+            {
+                m_LoadedSprite.Visible = true;
             }
 
+            if (GameAppDelegate.LoadingState >= GameAppDelegate.Loading.Done)
+            {
+                Window.DefaultDirector.ReplaceScene (new GameScene (Window));
+            }
         }
 
         #endregion
