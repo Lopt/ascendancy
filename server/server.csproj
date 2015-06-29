@@ -127,7 +127,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HTTPController.cs" />
     <Compile Include="Controllers\AccountManagerController.cs" />
-    <Compile Include="Controllers\CleaningController.cs" />
     <Compile Include="Controllers\DefinitionManagerController.cs" />
   </ItemGroup>
   <ItemGroup>

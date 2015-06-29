@@ -122,12 +122,12 @@ namespace @base.control.action
         private ConcurrentBag<RegionPosition> GetAdjacentRegions(RegionManagerController regionManagerC, RegionPosition position)
         {
             var list = new ConcurrentBag<RegionPosition>();
-            var surlist = LogicRules.SurroundRegions.ToArray();
+            var surlist = LogicRules.SurroundRegions;
 
 
             if (position.RegionX <= Constants.REGION_SIZE_X / 2 && position.RegionY <= Constants.REGION_SIZE_Y / 2)
             {
-                var tempReg = position + surlist[LogicRules.SurroundRegions.Count];
+                var tempReg = position + surlist[LogicRules.SurroundRegions.Length];
                 if (regionManagerC.GetRegion(tempReg).Exist)
                 {
                     list.Add(tempReg);

@@ -38,8 +38,7 @@ namespace @base.control.action
             var action = (model.Action) Model;
             var positionI = (PositionI) action.Parameters[CREATE_POSITION];
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
-
-            return new ConcurrentBag<model.Region>() {  region }; 
+            return new ConcurrentBag<model.Region>() {  region };
         }
 
         /// <summary>
@@ -64,16 +63,15 @@ namespace @base.control.action
         /// </summary>
         public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {   
-            var temp = LogicRules.SurroundTiles.ToArray();
+            var temp = LogicRules.SurroundTiles;
             var action = (model.Action)Model;
             var positionI = (PositionI) action.Parameters[CREATE_POSITION];
-            var region = regionManagerC.GetRegion(positionI.RegionPosition);
             var type = (long) action.Parameters[CREATION_TYPE];
 
-            positionI += temp[m_index];
-            
+            positionI = positionI + temp[m_index];
+            var region = regionManagerC.GetRegion(positionI.RegionPosition);
+
             var dt = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((int)type);
-            
             // create the new entity and link to the correct account
             var entity = new @base.model.Entity(action.Account.ID,
                 dt,  
@@ -100,9 +98,9 @@ namespace @base.control.action
         /// </summary>       
         private bool CheckSurroundedArea(PositionI position, RegionManagerController regionManagerC)
         {      
-           var temp = LogicRules.SurroundTiles.ToArray();
+            var temp = LogicRules.SurroundTiles;
 
-           for (int index = 0; index < LogicRules.SurroundTiles.Count; ++index)
+            for (int index = 0; index < LogicRules.SurroundTiles.Length; ++index)
             {                   
                 var surpos = temp[index] + position;
 

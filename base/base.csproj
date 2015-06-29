@@ -69,8 +69,6 @@
     <Compile Include="Controllers\action\MoveUnit.cs" />
     <Compile Include="Models\Position\PositionI.cs" />
     <Compile Include="Models\IdGenerator.cs" />
-    <Compile Include="Models\Map\RegionStates.cs" />
-    <Compile Include="Controllers\RegionStatesController.cs" />
     <Compile Include="Models\Manager\DefinitionManager.cs" />
     <Compile Include="Models\World.cs" />
     <Compile Include="Controllers\DefinitionManagerController.cs" />

@@ -70,19 +70,12 @@ namespace server
 
 			var api = server.control.APIController.Instance;
 
-			var regionManagerLastC = new control.RegionManagerController (null, world.RegionStates.Last);
-			var regionManagerCurrC = new control.RegionManagerController (regionManagerLastC, world.RegionStates.Curr);
-			var regionManagerNextC = new control.RegionManagerController (regionManagerCurrC, world.RegionStates.Next);
-
-			controller.RegionStatesController = new @base.control.RegionStatesController (regionManagerLastC,
-																						  regionManagerCurrC,
-																						  regionManagerNextC);
 			controller.DefinitionManagerController = new server.control.DefinitionManagerController ();
 			controller.AccountManagerController = new server.control.AccountManagerController ();
+            controller.RegionManagerController = new server.control.RegionManagerController ();
 
 
 				
-			var cleanC = new @server.control.CleaningController ();
             for (int threadNr = 0; threadNr < server.model.ServerConstants.ACTION_THREADS; ++ threadNr)
             {
                 Thread t = new Thread (new ParameterizedThreadStart(server.control.APIController.Instance.Worker));

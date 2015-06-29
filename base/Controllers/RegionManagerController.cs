@@ -8,10 +8,8 @@ namespace @base.control
 {
     public class RegionManagerController
     {
-        public RegionManagerController(RegionManagerController parent, RegionManager regionManager)
+        public RegionManagerController()
         {
-            Parent = parent;
-            RegionManager = regionManager;
         }
 
         virtual public Region GetRegion(RegionPosition regionPosition)
@@ -69,10 +67,6 @@ namespace @base.control
             var terrains = JsonToTerrain(json);
             return new Region(regionPosition, terrains);
         }
-
-
-        public model.RegionManager RegionManager;
-        public RegionManagerController Parent;
     }
 }
 

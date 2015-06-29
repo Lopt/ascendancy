@@ -122,7 +122,7 @@ namespace server.control
 		{
 			// List<@base.model.Region>, List<@base.control.action.Action> 
 			var controller = @base.control.Controller.Instance;
-			var regionManagerC = controller.RegionStatesController.Curr; // TODO Curr
+            var regionManagerC = controller.RegionManagerController;
 
 			var accountC = (@server.control.AccountController) account.Control;
 
@@ -137,10 +137,7 @@ namespace server.control
                     var region = regionManagerC.GetRegion (regionPosition);
                     if (region.Exist)
                     {
-
-                        System.Console.WriteLine("E1");
                         region.LockReader ();
-                        System.Console.WriteLine("E1+");
                         lockedRegions.AddLast(region);
                     }
                 }
@@ -194,14 +191,14 @@ namespace server.control
             var succeed = false;
 			if (action != null)
 			{
-				var regionStatesController = @base.control.Controller.Instance.RegionStatesController;
+                var regionManager = @base.control.Controller.Instance.RegionManagerController;
 
 				var actionC = (action.Control as @base.control.action.Action);
                 var gotLocked = new LinkedList<@base.model.Region> () {};
 
 				try
 				{
-					var affectedRegions = actionC.GetAffectedRegions(regionStatesController.Next);
+                    var affectedRegions = actionC.GetAffectedRegions(regionManager);
 					foreach (var region in affectedRegions)
 					{
                         if (region.Exist)
@@ -229,14 +226,14 @@ namespace server.control
 
 					if (gotLocked.Count == affectedRegions.Count)
 					{
-						if (actionC.Possible(regionStatesController.Next))
+                        if (actionC.Possible(regionManager))
 						{
-							var changedRegions = actionC.Do(regionStatesController.Next);
+                            var changedRegions = actionC.Do(regionManager);
 							if (changedRegions.Count != 0)
 							{
 								foreach (var region in changedRegions)
 								{
-									var regionCurr = regionStatesController.Curr.GetRegion(region.RegionPosition);
+                                    var regionCurr = regionManager.GetRegion(region.RegionPosition);
 									regionCurr.AddCompletedAction(action);
 								}
 
