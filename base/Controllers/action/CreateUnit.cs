@@ -73,7 +73,7 @@ namespace @base.control.action
 
             var dt = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((int)type);
             // create the new entity and link to the correct account
-            var entity = new @base.model.Entity(action.Account.ID,
+            var entity = new @base.model.Entity(IdGenerator.GetId(),
                 dt,  
                 positionI);
 

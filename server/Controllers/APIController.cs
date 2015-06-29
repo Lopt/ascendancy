@@ -160,30 +160,28 @@ namespace server.control
     			foreach (var regionPosition in regionPositions)
     			{
     				var region = regionManagerC.GetRegion (regionPosition);
-    				if (region.Exist)
+    				if (!region.Exist)
     				{
-    					var status = accountC.GetRegionStatus (regionPosition);
-                        var newStatus = new DateTime ();
-                        // account has already loaded the region - now just load changes (actions)
-    					if (status == null)
-                        {  
-    						var entities = region.GetEntities();
-    						// TODO: remove entity creation
-    						//var position = new @base.model.PositionI(region.RegionPosition.RegionX * @base.model.Constants.REGION_SIZE_X, region.RegionPosition.RegionY * @base.model.Constants.REGION_SIZE_Y);
-                            //entities.Entities.AddLast(new @base.model.Entity(@base.model.IdGenerator.GetId(),
-                            //					 @base.model.World.Instance.DefinitionManager.GetDefinition(60),
-                            //	position));
-                           //entityDict.AddFirst(entities.Entities);
-                            //newStatus = entities.DateTime;
-    						status = new System.DateTime();
-                        }
+                        continue;
+                    }
+
+                    var status = accountC.GetRegionStatus (regionPosition);
+                    var newStatus = new DateTime ();
+                    // account has already loaded the region - now just load changes (actions)
+					if (status == null)
+                    {  
+						var entities = region.GetEntities();
+                        entityDict.AddFirst(entities.Entities);
+                        newStatus = entities.DateTime;
+                    }
+                    else
+                    {
                         // account hasn't loaded the region
     					var actions = region.GetCompletedActions (status.Value);
     					actionDict.AddFirst(actions.Actions);
     					newStatus = actions.DateTime;
-
-    					accountC.RegionRefreshed (regionPosition, newStatus);
-    				}
+                    }
+                    accountC.RegionRefreshed (regionPosition, newStatus);
     			}
             }
             finally
@@ -276,7 +274,6 @@ namespace server.control
 			@base.model.Action action;
            
 			while (MvcApplication.Phase != MvcApplication.Phases.Exit)
-//            while (m_Running)
 			{
                 while (threadInfo.Count == 0 || MvcApplication.Phase == MvcApplication.Phases.Pause)
 				{
