@@ -33,6 +33,7 @@ namespace server.control
                 Count = 0;
                 Average = new @base.model.Position(0, 0);
                 Lock = new Mutex();
+
                 Queue = new Queue<@base.model.Action> ();
             }
 
@@ -96,21 +97,22 @@ namespace server.control
                     }
                 }
 
+                var bestThread = m_threadingInfos[bestQueue];
                 try
                 {
-                    var bestThread = m_threadingInfos [bestQueue];
-                    m_threadingInfos [bestQueue].Lock.WaitOne ();
+
+                    bestThread.Lock.WaitOne ();
 
                     var newAverageX = bestThread.Average.X * bestThread.Count + actionPosition.X; 
                     var newAverageY = bestThread.Average.Y * bestThread.Count + actionPosition.Y;                            
                     bestThread.Count += 1;
                     bestThread.Average = new @base.model.Position (newAverageX / bestThread.Count, newAverageY / bestThread.Count);
 
-                    bestThread.Queue.Enqueue(action);                   
+                    bestThread.Queue.Enqueue(action);  
                 }
                 finally
                 {
-                    m_threadingInfos [bestQueue].Lock.ReleaseMutex ();
+                    bestThread.Lock.ReleaseMutex ();
                 }
             }
 		}
@@ -135,7 +137,10 @@ namespace server.control
                     var region = regionManagerC.GetRegion (regionPosition);
                     if (region.Exist)
                     {
+
+                        System.Console.WriteLine("E1");
                         region.LockReader ();
+                        System.Console.WriteLine("E1+");
                         lockedRegions.AddLast(region);
                     }
                 }
@@ -201,14 +206,19 @@ namespace server.control
 					{
                         if (region.Exist)
                         {
+                            //System.Console.WriteLine("A1");
+
                             if (region.LockWriter())
     						{
     							gotLocked.AddLast(region);
+                                //    System.Console.WriteLine("A1+");
     						}
     						else
     						{
-    							break;
+                                //System.Console.WriteLine("A1-");
+                                break;
     						}
+
                         }
                         else
                         {
@@ -245,25 +255,24 @@ namespace server.control
 				{
 				}
 				finally
-				{
+                {
+                    foreach (var region in gotLocked)
+                    {
+                        region.ReleaseWriter ();
+                    }
 				}
 			
-                foreach (var region in gotLocked)
-                {
-                    region.ReleaseWriter ();
-                }
             }
 
 
             return succeed;
 		}
 
-
 		public void Worker(object state)
 		{
             var threadInfo = m_threadingInfos[(int)state];
 			@base.model.Action action;
-
+           
 			while (MvcApplication.Phase != MvcApplication.Phases.Exit)
 //            while (m_Running)
 			{
@@ -284,17 +293,16 @@ namespace server.control
                     var newAverageY = threadInfo.Average.Y * threadInfo.Count - actionPosition.Y;                            
                     threadInfo.Count -= 1;
                     threadInfo.Average = new @base.model.Position (newAverageX / threadInfo.Count, newAverageY / threadInfo.Count);
-
-                    if (!WorkAction (action))
-                    {
-                        APIController.Instance.DoAction (action.Account, new @base.model.Action[]{action, });
-    				}
-                }
+                    }
                 finally
                 {
                     threadInfo.Lock.ReleaseMutex ();
                 }
 
+                if (!WorkAction (action))
+                {   
+                    APIController.Instance.DoAction (action.Account, new @base.model.Action[]{action, });
+                }
 			}
 		}
 

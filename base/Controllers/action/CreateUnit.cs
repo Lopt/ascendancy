@@ -37,7 +37,9 @@ namespace @base.control.action
         {
             var action = (model.Action) Model;
             var positionI = (PositionI) action.Parameters[CREATE_POSITION];
-            return new ConcurrentBag<model.Region>() { regionManagerC.GetRegion(positionI.RegionPosition) }; 
+            var region = regionManagerC.GetRegion(positionI.RegionPosition);
+
+            return new ConcurrentBag<model.Region>() {  region }; 
         }
 
         /// <summary>
