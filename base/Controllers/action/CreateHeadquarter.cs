@@ -9,13 +9,21 @@ namespace @base.control.action
 {
     public class CreateHeadquarter : Action
     {
+        public const string CREATE_POSITION = "CreatePosition";
+
         public CreateHeadquarter(model.ModelEntity model)
             : base(model)
         {
+            var action = (model.Action)Model;               
+            var param = action.Parameters;
+
+            if (param[CREATE_POSITION].GetType() != typeof(PositionI))
+            {
+                param[CREATE_POSITION] = new model.PositionI((Newtonsoft.Json.Linq.JContainer) param[CREATE_POSITION]);
+            }
         }
 
 
-        public const string CREATE_POSITION = "CreatePosition";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="base.control.action.Action"/> class.
@@ -25,8 +33,8 @@ namespace @base.control.action
         /// <param name="parameters">Parameters.</param>
         override public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
-            var action = (model.Action)Model;               
-            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
+            var action = (model.Action)Model;
+            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
 
             return new ConcurrentBag<model.Region>() { regionManagerC.GetRegion(positionI.RegionPosition) }; 
         }
@@ -40,14 +48,11 @@ namespace @base.control.action
                         
             if (action.Account.Headquarters.Count == 0)
             {
-                var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
-                var td = regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition).TerrainType;              
+                var positionI = (PositionI) action.Parameters[CREATE_POSITION];
+                var td = (TerrainDefinition) regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition);              
                 // entity and terrain check 
 
-                if (td != TerrainDefinition.TerrainDefinitionType.Forbidden && td != TerrainDefinition.TerrainDefinitionType.Water )
-                {
-                    return true;
-                }
+                return td.Buildable;
             }
             return false;
         }
@@ -61,7 +66,7 @@ namespace @base.control.action
             string[] actionParameter = {"CreateUnits"};
             
             var action = (model.Action)Model;
-            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
+            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
             // create the new entity and link to the correct account
@@ -85,6 +90,14 @@ namespace @base.control.action
         {
             throw new NotImplementedException();
         }
+
+        override public @base.model.RegionPosition GetRegionPosition()
+        {
+            var action = (model.Action)Model;
+            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
+            return positionI.RegionPosition;
+        }
+
     }
 }
 

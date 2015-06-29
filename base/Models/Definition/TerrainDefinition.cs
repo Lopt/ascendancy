@@ -23,25 +23,38 @@ namespace @base.model.definitions
         }
       
         public TerrainDefinition(TerrainDefinitionType terrainType,
-            int[] ressources, bool buildable = true)
+            int[] ressources, bool buildable = true, bool walkable = true)
             : base((int) terrainType)
         {
-            m_ressources = ressources;
-            m_buildable = buildable;
+            Ressources = ressources;
+            Buildable = buildable;
+            Walkable = walkable;
         }
         
         public int[] Ressources
         {
-            get { return m_ressources; }
+            get;
+            private set;
         }
 
         public TerrainDefinitionType TerrainType
         {
-            get { return (TerrainDefinitionType) ID; }
+            get;
+            private set;
         }
 
-        private int[] m_ressources;
-        private bool m_buildable;
+        public bool Buildable
+        {
+            get;
+            private set;
+        }
+
+        public bool Walkable
+        {
+            get;
+            private set;
+        }
+
     }
 }
 

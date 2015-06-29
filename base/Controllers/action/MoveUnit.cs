@@ -47,11 +47,7 @@ namespace @base.control.action
             return Bag;
         }
 
-        override public @base.model.RegionPosition GetRegionPosition()
-        {
-            var action = (model.Action)Model;
-            return new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[START_POSITION]).RegionPosition;
-        }
+
 
         /// <summary>
         /// Returns if the action is even possible.
@@ -181,7 +177,14 @@ namespace @base.control.action
             }
             return list;
         }
-        
+
+        override public @base.model.RegionPosition GetRegionPosition()
+        {
+            var action = (model.Action)Model;
+            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[START_POSITION]);
+            return positionI.RegionPosition;
+        }
+
         private IList m_path; 
     }
 }

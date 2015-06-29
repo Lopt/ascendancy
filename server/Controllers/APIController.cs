@@ -82,7 +82,7 @@ namespace server.control
 				action.Account = account;
 				action.ActionTime = DateTime.Now;
 
-                for (int queueNr = 0; queueNr < 2; ++queueNr)
+                for (int queueNr = 0; queueNr < model.ServerConstants.ACTION_THREADS; ++queueNr)
                 {
                     if (m_threadingInfos[queueNr].Count == 0)
                     {   
@@ -127,56 +127,55 @@ namespace server.control
             var entityDict = new LinkedList<LinkedList<@base.model.Entity>> ();
             var actionDict = new LinkedList<LinkedList<@base.model.Action>> ();
 
-            foreach (var regionPosition in regionPositions)
+            var lockedRegions = new LinkedList<@base.model.Region> ();
+            try
             {
-                var region = regionManagerC.GetRegion (regionPosition);
-                if (region.Exist)
-                {
-                    region.LockReader ();
-                }
-            }
-
-			foreach (var regionPosition in regionPositions)
-			{
-				var region = regionManagerC.GetRegion (regionPosition);
-				if (region.Exist)
-				{
-					var status = accountC.GetRegionStatus (regionPosition);
-                    var newStatus = new DateTime ();
-                    // account has already loaded the region - now just load changes (actions)
-					if (status == null)
-                    {  
-						var entities = region.GetEntities();
-						// TODO: remove entity creation
-						var position = new @base.model.PositionI(region.RegionPosition.RegionX * @base.model.Constants.REGION_SIZE_X, region.RegionPosition.RegionY * @base.model.Constants.REGION_SIZE_Y);
-						entities.Entities.AddLast(new @base.model.Entity(@base.model.IdGenerator.GetId(),
-											 @base.model.World.Instance.DefinitionManager.GetDefinition(60),
-							position));
-                       
-
-
-                        entityDict.AddFirst(entities.Entities);
-						newStatus = entities.DateTime;
-						status = new System.DateTime();
+                foreach (var regionPosition in regionPositions)
+                {                    
+                    var region = regionManagerC.GetRegion (regionPosition);
+                    if (region.Exist)
+                    {
+                        region.LockReader ();
+                        lockedRegions.AddLast(region);
                     }
-                    // account hasn't loaded the region
-					var actions = region.GetCompletedActions (status.Value);
-					actionDict.AddFirst(actions.Actions);
-					newStatus = actions.DateTime;
+                }
 
-					accountC.RegionRefreshed (regionPosition, newStatus);
-				}
-			}
+    			foreach (var regionPosition in regionPositions)
+    			{
+    				var region = regionManagerC.GetRegion (regionPosition);
+    				if (region.Exist)
+    				{
+    					var status = accountC.GetRegionStatus (regionPosition);
+                        var newStatus = new DateTime ();
+                        // account has already loaded the region - now just load changes (actions)
+    					if (status == null)
+                        {  
+    						var entities = region.GetEntities();
+    						// TODO: remove entity creation
+    						//var position = new @base.model.PositionI(region.RegionPosition.RegionX * @base.model.Constants.REGION_SIZE_X, region.RegionPosition.RegionY * @base.model.Constants.REGION_SIZE_Y);
+                            //entities.Entities.AddLast(new @base.model.Entity(@base.model.IdGenerator.GetId(),
+                            //					 @base.model.World.Instance.DefinitionManager.GetDefinition(60),
+                            //	position));
+                           //entityDict.AddFirst(entities.Entities);
+                            //newStatus = entities.DateTime;
+    						status = new System.DateTime();
+                        }
+                        // account hasn't loaded the region
+    					var actions = region.GetCompletedActions (status.Value);
+    					actionDict.AddFirst(actions.Actions);
+    					newStatus = actions.DateTime;
 
-            foreach (var regionPosition in regionPositions)
+    					accountC.RegionRefreshed (regionPosition, newStatus);
+    				}
+    			}
+            }
+            finally
             {
-                var region = regionManagerC.GetRegion (regionPosition);
-                if (region.Exist)
+                foreach (var region in lockedRegions)
                 {
                     region.ReleaseReader ();
                 }
             }
-
 
             var regionData = new RegionData ();
             regionData.ActionDict = actionDict;
@@ -193,7 +192,7 @@ namespace server.control
 				var regionStatesController = @base.control.Controller.Instance.RegionStatesController;
 
 				var actionC = (action.Control as @base.control.action.Action);
-                var gotLocked = new HashSet<@base.model.Region> () {};
+                var gotLocked = new LinkedList<@base.model.Region> () {};
 
 				try
 				{
@@ -204,7 +203,7 @@ namespace server.control
                         {
                             if (region.LockWriter())
     						{
-    							gotLocked.Add(region);
+    							gotLocked.AddLast(region);
     						}
     						else
     						{
@@ -253,17 +252,6 @@ namespace server.control
                 {
                     region.ReleaseWriter ();
                 }
-
-                var changedRegions2 = actionC.GetAffectedRegions(regionStatesController.Curr);
-                var positions = new List<@base.model.RegionPosition> ();
-                foreach (var region in changedRegions2)
-                {
-                    positions.Add(region.RegionPosition);
-                }
-                if (succeed)
-                    APIController.Instance.LoadRegions(action.Account, positions.ToArray());
-                
-
             }
 
 

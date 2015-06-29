@@ -10,13 +10,22 @@ namespace @base.control.action
 {
     public class CreateUnit : Action
     {
+        public const string CREATE_POSITION = "CreatePosition";
+        public const string CREATION_TYPE = "CreateUnit";
+
         public CreateUnit(model.ModelEntity model)
             : base(model)
         {
+            var action = (model.Action)Model;               
+            var param = action.Parameters;
+
+            if (param[CREATE_POSITION].GetType() != typeof(PositionI))
+            {
+                param[CREATE_POSITION] = new PositionI((Newtonsoft.Json.Linq.JContainer) param[CREATE_POSITION]);
+            }
         }
 
-        public const string CREATE_POSITION = "CreatePosition";
-        public const string CREATION_TYPE = "CreateUnit";
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="base.control.action.Action"/> class.
@@ -26,9 +35,8 @@ namespace @base.control.action
         /// <param name="parameters">Parameters.</param>
         override public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
-            var action = (model.Action)Model;               
-            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
-
+            var action = (model.Action) Model;
+            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
             return new ConcurrentBag<model.Region>() { regionManagerC.GetRegion(positionI.RegionPosition) }; 
         }
 
@@ -38,9 +46,8 @@ namespace @base.control.action
         public override bool Possible(RegionManagerController regionManagerC)
         {   
             var action = (model.Action)Model;
-            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[CREATE_POSITION]);
-
-            var type = (int) action.Parameters[CREATION_TYPE]; 
+            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
+            var type = (long) action.Parameters[CREATION_TYPE];
 
             if (CheckSurroundedArea(positionI, regionManagerC))
             {
@@ -55,13 +62,11 @@ namespace @base.control.action
         /// </summary>
         public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {   
-            string[] actionParameter = {"CreateUnits"};
-
             var temp = LogicRules.SurroundTiles.ToArray();
             var action = (model.Action)Model;
-            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
+            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
-            var type = (int)action.Parameters[CREATION_TYPE]; 
+            var type = (long) action.Parameters[CREATION_TYPE];
 
             positionI += temp[m_index];
             
@@ -69,7 +74,6 @@ namespace @base.control.action
             
             // create the new entity and link to the correct account
             var entity = new @base.model.Entity(action.Account.ID,
-                
                 dt,  
                 positionI);
 
@@ -100,12 +104,12 @@ namespace @base.control.action
             {                   
                 var surpos = temp[index] + position;
 
-                var td = regionManagerC.GetRegion(surpos.RegionPosition).GetTerrain(surpos.CellPosition).TerrainType;
+                var td = regionManagerC.GetRegion(surpos.RegionPosition).GetTerrain(surpos.CellPosition);
                 var ed = regionManagerC.GetRegion(surpos.RegionPosition).GetEntity(surpos.CellPosition);
 
-                if (td != TerrainDefinition.TerrainDefinitionType.Forbidden &&
-                    td != TerrainDefinition.TerrainDefinitionType.Water &&
-                    ed.Definition.Type < UnitDefinition.DefinitionType.Unit)
+                if (td.Walkable && ed == null)
+//                    td != TerrainDefinition.TerrainDefinitionType.Water &&
+//                    ed.Definition.Type < UnitDefinition.DefinitionType.Unit)
                 {
                     m_index = index;
                     return true;
@@ -116,6 +120,16 @@ namespace @base.control.action
             return false;
         }
 
+        override public @base.model.RegionPosition GetRegionPosition()
+        {
+            var action = (model.Action)Model;
+            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+            return positionI.RegionPosition;
+        }
+
+
+
         private int m_index;
     }
+
 }
