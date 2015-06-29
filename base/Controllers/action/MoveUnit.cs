@@ -47,6 +47,12 @@ namespace @base.control.action
             return Bag;
         }
 
+        override public @base.model.RegionPosition GetRegionPosition()
+        {
+            var action = (model.Action)Model;
+            return new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[START_POSITION]).RegionPosition;
+        }
+
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
@@ -106,7 +112,7 @@ namespace @base.control.action
         /// <summary>
         /// In case of errors, revert the world data to a valid state.
         /// </summary>        public bool Catch()
-        public override bool Catch()
+        virtual public bool Catch(RegionManagerController regionManagerC)
         {
             throw new NotImplementedException();
         }

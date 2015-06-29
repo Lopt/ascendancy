@@ -149,7 +149,7 @@ namespace server.control
 						var entities = region.GetEntities();
 						// TODO: remove entity creation
 						var position = new @base.model.PositionI(region.RegionPosition.RegionX * @base.model.Constants.REGION_SIZE_X, region.RegionPosition.RegionY * @base.model.Constants.REGION_SIZE_Y);
-						entities.Entities.Add(new @base.model.Entity(@base.model.IdGenerator.GetId(),
+						entities.Entities.AddLast(new @base.model.Entity(@base.model.IdGenerator.GetId(),
 											 @base.model.World.Instance.DefinitionManager.GetDefinition(60),
 							position));
                        

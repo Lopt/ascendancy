@@ -3,13 +3,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-//using System.Web.Mvc;
-//using System.Web.Routing;
+using System.Web.Mvc;
+using System.Web.Routing;
 using System.Threading;
 
 namespace server
 {
-	public class MvcApplication //: System.Web.HttpApplication
+	public class MvcApplication : System.Web.HttpApplication
 	{
 		public enum Phases
 		{
@@ -22,7 +22,7 @@ namespace server
 
 		public static Phases Phase = Phases.Started; 
 
-        /*
+
 		public static void RegisterRoutes (RouteCollection routes)
 		{
 			routes.IgnoreRoute ("{resource}.axd/{*pathInfo}");
@@ -47,11 +47,6 @@ namespace server
                 new { controller = "HTTP", action = "DoActions" }  
             );
 
-            routes.MapRoute (
-                "Wait",                                           
-                "Wait",
-                new { controller = "HTTP", action = "Wait" }  
-            );
 
 
 			routes.MapRoute (
@@ -65,9 +60,9 @@ namespace server
 		public static void RegisterGlobalFilters (GlobalFilterCollection filters)
 		{
 			filters.Add (new HandleErrorAttribute ());
-		}*/
+		}
 
-		public void Application_Start ()
+		protected void Application_Start ()
 		{
 			Phase = Phases.Init;
 			var world = @base.model.World.Instance;
@@ -88,22 +83,19 @@ namespace server
 
 				
 			var cleanC = new @server.control.CleaningController ();
-			//ThreadPool.QueueUserWorkItem (new WaitCallback (cleanC.Run));
             for (int threadNr = 0; threadNr < server.model.ServerConstants.ACTION_THREADS; ++ threadNr)
             {
                 Thread t = new Thread (new ParameterizedThreadStart(server.control.APIController.Instance.Worker));
                 t.Start (threadNr);
-                //new Thread (server.control.APIController.Instance.Worker2).Start ();
-                //ThreadPool.QueueUserWorkItem (new WaitCallback (server.control.APIController.Instance.Worker), threadNr);
             }
 
 			Phase = Phases.Running;
 
-            /*
+
 			AreaRegistration.RegisterAllAreas ();
 			RegisterGlobalFilters (GlobalFilters.Filters);
 			RegisterRoutes (RouteTable.Routes);
-            */
+
 		}
 	}
 }

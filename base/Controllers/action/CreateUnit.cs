@@ -75,7 +75,7 @@ namespace @base.control.action
 
             entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);
-            action.Account.Units.Add(entity.Position);
+            action.Account.Units.AddLast(entity.Position);
 
             return new ConcurrentBag<model.Region>() { region };
         }
