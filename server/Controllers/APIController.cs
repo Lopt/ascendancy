@@ -26,6 +26,19 @@ namespace server.control
 			}
 		}
 
+
+
+
+		private APIController()
+		{
+            m_threadingInfos = new AveragePositionQueue[model.ServerConstants.ACTION_THREADS];
+            for (int nr = 0; nr < model.ServerConstants.ACTION_THREADS; ++nr)
+            {
+                m_threadingInfos [nr] = new AveragePositionQueue ();
+            }
+        }
+			
+
         public class AveragePositionQueue
         {
             public AveragePositionQueue()
@@ -43,15 +56,17 @@ namespace server.control
             public Queue<@base.model.Action> Queue;
         }
 
-		private APIController()
-		{
-            m_threadingInfos = new AveragePositionQueue[model.ServerConstants.ACTION_THREADS];
-            for (int nr = 0; nr < model.ServerConstants.ACTION_THREADS; ++nr)
-            {
-                m_threadingInfos [nr] = new AveragePositionQueue ();
-            }
+        private enum ActionReturn
+        {
+            Done,
+            NotPossible,
+            RessourceBlocked,
+            InternalError,
+            Exception,
+            Unknown,
+            RegionDontExist
+
         }
-			
 
         public class RegionData
         {
@@ -186,9 +201,9 @@ namespace server.control
 			//return regionList;
 		}
 
-		public bool WorkAction(@base.model.Action action)
+        private ActionReturn WorkAction(@base.model.Action action)
 		{
-            var succeed = false;
+            var result = ActionReturn.Exception;
 			if (action != null)
 			{
                 var regionManager = @base.control.Controller.Instance.RegionManagerController;
@@ -201,55 +216,47 @@ namespace server.control
                     var affectedRegions = actionC.GetAffectedRegions(regionManager);
 					foreach (var region in affectedRegions)
 					{
-                        if (region.Exist)
+                        if (!region.Exist)
                         {
-                            //System.Console.WriteLine("A1");
-
-                            if (region.LockWriter())
-    						{
-    							gotLocked.AddLast(region);
-                                //    System.Console.WriteLine("A1+");
-    						}
-    						else
-    						{
-                                //System.Console.WriteLine("A1-");
-                                break;
-    						}
-
+                            return ActionReturn.RegionDontExist;
                         }
-                        else
-                        {
-                            break;
-                        }
-					}
 
-
-					if (gotLocked.Count == affectedRegions.Count)
-					{
-                        if (actionC.Possible(regionManager))
+                        if (region.LockWriter())
 						{
-                            var changedRegions = actionC.Do(regionManager);
-							if (changedRegions.Count != 0)
-							{
-								foreach (var region in changedRegions)
-								{
-                                    var regionCurr = regionManager.GetRegion(region.RegionPosition);
-									regionCurr.AddCompletedAction(action);
-								}
-
-
-                                succeed = true;
-							}
-							else
-							{
-								//actionC.Catch (regionStatesController.Next);
-                                succeed = true;
-							}
+							gotLocked.AddLast(region);
+						}
+						else
+						{
+                            break;
 						}
 					}
+
+
+					if (gotLocked.Count != affectedRegions.Count)
+					{
+                        return ActionReturn.RessourceBlocked;
+                    }
+                    if (!actionC.Possible(regionManager))
+                    {
+                        return ActionReturn.NotPossible;
+                    }
+
+                    var changedRegions = actionC.Do(regionManager);
+					if (changedRegions.Count == 0)
+                    {
+                        //actionC.Catch (regionStatesController.Next);
+                        return ActionReturn.InternalError;
+                    }
+					foreach (var region in changedRegions)
+					{
+                        var regionCurr = regionManager.GetRegion(region.RegionPosition);
+						regionCurr.AddCompletedAction(action);
+					}
+                    return ActionReturn.Done;
                 }
 				catch
 				{
+                    return ActionReturn.Exception;
 				}
 				finally
                 {
@@ -258,11 +265,9 @@ namespace server.control
                         region.ReleaseWriter ();
                     }
 				}
-			
-            }
+			}
 
-
-            return succeed;
+            return ActionReturn.Unknown;
 		}
 
 		public void Worker(object state)
@@ -296,7 +301,7 @@ namespace server.control
                     threadInfo.Lock.ReleaseMutex ();
                 }
 
-                if (!WorkAction (action))
+                if (WorkAction (action) == ActionReturn.RessourceBlocked)
                 {   
                     APIController.Instance.DoAction (action.Account, new @base.model.Action[]{action, });
                 }
