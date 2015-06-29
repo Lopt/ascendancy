@@ -1,9 +1,11 @@
 ﻿using System;
 using @base.model.definitions;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Threading;
+
+using System.Collections.Generic;
 
 namespace @base.model
 {
@@ -12,14 +14,14 @@ namespace @base.model
         public class DatedActions
         {
             public DateTime DateTime;
-            public ObservableCollection<model.Action> Actions;
+            public LinkedList<model.Action> Actions;
             public RegionPosition RegionPosition;
         }
 
         public class DatedEntities
         {
             public DateTime DateTime;
-            public ObservableCollection<Entity> Entities;
+            public LinkedList<Entity> Entities;
             public RegionPosition RegionPosition;
         }
 
@@ -29,7 +31,7 @@ namespace @base.model
             m_terrains  = region.m_terrains;
             m_entities  = region.m_entities;
             m_actions   = new DatedActions();
-            m_actions.Actions = new ObservableCollection<model.Action>();
+            m_actions.Actions = new LinkedList<model.Action>();
             m_exist     = region.m_exist;
             m_mutex     = region.m_mutex;
         }
@@ -39,11 +41,11 @@ namespace @base.model
             m_regionPosition = regionPosition;
             m_terrains  = new TerrainDefinition[Constants.REGION_SIZE_X, Constants.REGION_SIZE_Y];
             m_entities  = new DatedEntities();
-            m_entities.Entities = new ObservableCollection<Entity>();
+            m_entities.Entities = new LinkedList<Entity>();
             m_actions   = new DatedActions();
-            m_actions.Actions = new ObservableCollection<model.Action>();
+            m_actions.Actions = new LinkedList<model.Action>();
             m_exist     = false;
-            m_mutex     = new Mutex();
+            m_mutex     = new ReaderWriterLockSlim();
         }
 
         public Region (RegionPosition regionPosition, TerrainDefinition[ , ] terrains)
@@ -53,7 +55,7 @@ namespace @base.model
             m_entities  = new DatedEntities();
             m_actions   = new DatedActions();
             m_exist     = true;
-            m_mutex     = new Mutex();
+            m_mutex     = new ReaderWriterLockSlim();
         }
 
         public void AddTerrain(TerrainDefinition[ , ] terrains)
@@ -89,20 +91,18 @@ namespace @base.model
 
         public void AddEntity(DateTime dateTime, Entity entity)
         {
-            var newDatedEntities = new DatedEntities();
-            var newEntities = new ObservableCollection<Entity>(m_entities.Entities);
-            newEntities.Add(entity);
+//            var newDatedEntities = new DatedEntities();
+//            var newEntities = new LinkedList<Entity>(m_entities.Entities);
+            m_entities.DateTime = dateTime;
+            m_entities.Entities.AddFirst(entity);
 
-            newDatedEntities.DateTime = dateTime;
-            newDatedEntities.Entities = newEntities;
-
-            m_entities = newDatedEntities;
+//            m_entities = m_E;
         }
 
         public void RemoveEntity(DateTime dateTime, Entity entity)
         {
             var newDatedEntities = new DatedEntities();
-            var newEntities = new ObservableCollection<Entity>(m_entities.Entities);
+            var newEntities = new LinkedList<Entity>(m_entities.Entities);
             newEntities.Remove(entity);
 
             newDatedEntities.DateTime = dateTime;
@@ -117,7 +117,7 @@ namespace @base.model
         {
             var action = m_inQueue[0];
             var newDatedActions = new DatedActions();
-            var newActions = new ObservableCollection<model.Action>(m_actions.Actions);
+            var newActions = new LinkedList<model.Action>(m_actions.Actions);
             newActions.Insert(0, action);
 
             newDatedActions.DateTime = action.ActionTime;
@@ -136,22 +136,24 @@ namespace @base.model
 
         public DatedActions GetCompletedActions(DateTime startTime)
         {
+            
             var returnActions = new DatedActions();
             var currentActions = m_actions;
 
-            var actionsCollection = new ObservableCollection<model.Action>();
+            var actionsCollection = new LinkedList<model.Action>();
             foreach (var action in currentActions.Actions)
             {
                 if (action.ActionTime <= startTime)
                 {
                     break;
                 }
-                actionsCollection.Add(action);
+                actionsCollection.AddFirst(action);
             }
 
             returnActions.Actions = actionsCollection;
             returnActions.DateTime = currentActions.DateTime;
             returnActions.RegionPosition = RegionPosition;
+
 
             return returnActions;
 
@@ -173,28 +175,33 @@ namespace @base.model
             get { return m_regionPosition; }
         }
 
-        public bool TryLockRegion()
+        public bool LockWriter()
         {
-            return m_mutex.WaitOne(Constants.REGION_LOCK_WAIT_TIME);
-
+            return m_mutex.TryEnterWriteLock(Constants.REGION_LOCK_WAIT_TIME);
         }
-           
 
-        public void Release()
+        public void ReleaseWriter()
         {
-            m_mutex.ReleaseMutex();
+            m_mutex.ExitWriteLock();
         }
+
+        public bool LockReader()
+        {
+            return m_mutex.TryEnterReadLock(-1);
+        }
+
+        public void ReleaseReader()
+        {
+            m_mutex.ExitReadLock();
+        }
+
+
+
 
         public void AddCompletedAction(model.Action action)
         {
-            var newDatedActions = new DatedActions();
-            var newActions = new ObservableCollection<Action>(m_actions.Actions);
-            newActions.Insert(0, action);
-
-            newDatedActions.DateTime = action.ActionTime;
-            newDatedActions.Actions = newActions;
-
-            m_actions = newDatedActions;
+            m_actions.DateTime = action.ActionTime;
+            m_actions.Actions.AddFirst(action);
         }
 
         bool m_exist;
@@ -204,7 +211,7 @@ namespace @base.model
         DatedEntities m_entities;
         DatedActions m_actions;
 
-        Mutex m_mutex;
+        ReaderWriterLockSlim m_mutex;
 	} 
 }
 

@@ -24,9 +24,25 @@ namespace @base.control.action
         /// <param name="parameters">Parameters.</param>
         override public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
+            /*
+            var action = (model.Action)Model;
+            var regions = new ConcurrentBag<model.Region> ();
+            foreach (Newtonsoft.Json.Linq.JObject regionPosition in (Newtonsoft.Json.Linq.JContainer) action.Parameters[REGIONS])
+            {
+                regions.Add(regionManagerC.GetRegion(new @base.model.RegionPosition(regionPosition)));
+            }
+            return regions;*/
             var action = (model.Action)Model;
             return (ConcurrentBag<model.Region>) action.Parameters[REGIONS];
+
         }
+
+        override public @base.model.RegionPosition GetRegionPosition()
+        {
+            var action = (model.Action)Model;
+            return ((ConcurrentBag<model.Region>) action.Parameters[REGIONS]).ToArray()[0].RegionPosition;
+        }
+
 
         /// <summary>
         /// Returns if the action is even possible.
@@ -44,6 +60,15 @@ namespace @base.control.action
         {   
             var action = (model.Action)Model;
             return (ConcurrentBag<model.Region>) action.Parameters[REGIONS];
+            /*
+            var action = (model.Action)Model;
+            var regions = new ConcurrentBag<model.Region> ();
+            foreach (Newtonsoft.Json.Linq.JObject regionPosition in (Newtonsoft.Json.Linq.JContainer) action.Parameters[REGIONS])
+            {
+                regions.Add(regionManagerC.GetRegion(new @base.model.RegionPosition(regionPosition)));
+            }
+            return regions;
+            */
         }
 
         /// <summary>

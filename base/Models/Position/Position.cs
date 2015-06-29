@@ -20,6 +20,12 @@ namespace @base.model
                 1.0 / Math.Cos(latLon.Lat * Math.PI / 180.0)) / Math.PI) / 2.0 * zoom);
         }
 
+        public Position(RegionPosition regionPosition)
+        {
+            m_x = regionPosition.RegionX * Constants.REGION_SIZE_X;
+            m_y = regionPosition.RegionY * Constants.REGION_SIZE_Y;
+        }
+
         public Position(RegionPosition regionPosition, CellPosition cellPosition)
         {
             m_x = regionPosition.RegionX * Constants.REGION_SIZE_X + cellPosition.CellX;
@@ -35,6 +41,21 @@ namespace @base.model
 		{
 			get { return this.m_y; }
 		}
+
+        public double Distance(Position position)
+        {
+            var xDistance = (position.X - m_x);
+            var yDistance = (position.Y - m_y);
+            return xDistance * xDistance + yDistance * yDistance;
+        }
+
+        public double Distance(PositionI position)
+        {
+            var xDistance = (position.X - m_x);
+            var yDistance = (position.Y - m_y);
+            return xDistance * xDistance + yDistance * yDistance;
+        }
+
 
         private readonly double m_x;
         private readonly double m_y;

@@ -25,10 +25,10 @@ namespace server.model
         public static readonly int HASH_CICLE = 32;
 
 		// time when all game datas should cleaned in milliseconds
-		public static readonly int CLEANING_INTERVALL = 1 * 60 * 1000; // minutes * seconds * milliseconds
+		public static readonly int CLEANING_INTERVALL = 30 * 60 * 1000; // minutes * seconds * milliseconds
 
 		// threads which execute actions
-		public static readonly int ACTION_THREADS = 3;
+		public static readonly int ACTION_THREADS = 4;
 
 		// 
 		public static readonly int ACTION_THREAD_SLEEP = 1;

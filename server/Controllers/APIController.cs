@@ -26,19 +26,36 @@ namespace server.control
 			}
 		}
 
+        public class AveragePositionQueue
+        {
+            public AveragePositionQueue()
+            {
+                Count = 0;
+                Average = new @base.model.Position(0, 0);
+                Lock = new Mutex();
+                Queue = new Queue<@base.model.Action> ();
+            }
+
+            public int Count = 0;
+            public @base.model.Position Average;
+            public Mutex Lock;
+            public Queue<@base.model.Action> Queue;
+        }
+
 		private APIController()
 		{
-			m_Actions = new ConcurrentQueue<@base.model.Action> ();
-			m_hasNewAction = false;
-
-            m_bla = 0;
-		}
+            m_threadingInfos = new AveragePositionQueue[model.ServerConstants.ACTION_THREADS];
+            for (int nr = 0; nr < model.ServerConstants.ACTION_THREADS; ++nr)
+            {
+                m_threadingInfos [nr] = new AveragePositionQueue ();
+            }
+        }
 			
 
         public class RegionData
         {
-			public ObservableCollection<ObservableCollection<@base.model.Entity>> EntityDict;
-			public ObservableCollection<ObservableCollection<@base.model.Action>> ActionDict;
+            public LinkedList<LinkedList<@base.model.Entity>> EntityDict;
+            public LinkedList<LinkedList<@base.model.Action>> ActionDict;
         }
 
 		public @base.model.Account Login(string username, string password)
@@ -54,12 +71,44 @@ namespace server.control
 		{
 			foreach (var action in actions)
 			{
+                var bestQueue = 0;
+                var actionC = (@base.control.action.Action)action.Control;
+                var actionPosition = new @base.model.Position (actionC.GetRegionPosition ());
+
 				action.Account = account;
 				action.ActionTime = DateTime.Now;
 
-				m_Actions.Enqueue(action);
-			}
-			m_hasNewAction = true;
+                for (int queueNr = 0; queueNr < 2; ++queueNr)
+                {
+                    if (m_threadingInfos[queueNr].Count == 0)
+                    {   
+                        bestQueue = queueNr;
+                        break;
+                    }
+
+                    if (m_threadingInfos[queueNr].Average.Distance(actionPosition) < m_threadingInfos[bestQueue].Average.Distance(actionPosition))
+                    {
+                        bestQueue = queueNr;  
+                    }
+                }
+
+                try
+                {
+                    var bestThread = m_threadingInfos [bestQueue];
+                    m_threadingInfos [bestQueue].Lock.WaitOne ();
+
+                    var newAverageX = bestThread.Average.X * bestThread.Count + actionPosition.X; 
+                    var newAverageY = bestThread.Average.Y * bestThread.Count + actionPosition.Y;                            
+                    bestThread.Count += 1;
+                    bestThread.Average = new @base.model.Position (newAverageX / bestThread.Count, newAverageY / bestThread.Count);
+
+                    bestThread.Queue.Enqueue(action);                   
+                }
+                finally
+                {
+                    m_threadingInfos [bestQueue].Lock.ReleaseMutex ();
+                }
+            }
 		}
 
         public RegionData LoadRegions(@base.model.Account account,
@@ -67,12 +116,21 @@ namespace server.control
 		{
 			// List<@base.model.Region>, List<@base.control.action.Action> 
 			var controller = @base.control.Controller.Instance;
-			var regionManagerC = controller.RegionStatesController.Curr;
+			var regionManagerC = controller.RegionStatesController.Curr; // TODO Curr
 
 			var accountC = (@server.control.AccountController) account.Control;
 
-			var entityDict = new ObservableCollection<ObservableCollection<@base.model.Entity>> ();
-			var actionDict = new ObservableCollection<ObservableCollection<@base.model.Action>> ();
+            var entityDict = new LinkedList<LinkedList<@base.model.Entity>> ();
+            var actionDict = new LinkedList<LinkedList<@base.model.Action>> ();
+
+            foreach (var regionPosition in regionPositions)
+            {
+                var region = regionManagerC.GetRegion (regionPosition);
+                if (region.Exist)
+                {
+                    region.LockReader ();
+                }
+            }
 
 			foreach (var regionPosition in regionPositions)
 			{
@@ -87,23 +145,36 @@ namespace server.control
 						var entities = region.GetEntities();
 						// TODO: remove entity creation
 						var position = new @base.model.PositionI(region.RegionPosition.RegionX * @base.model.Constants.REGION_SIZE_X, region.RegionPosition.RegionX * @base.model.Constants.REGION_SIZE_Y);
-						entities.Entities.Add(new @base.model.Entity(@base.model.IdGenerator.GetId(),
+
+                        entities.Entities.AddFirst(new @base.model.Entity(@base.model.IdGenerator.GetId(),
 											 @base.model.World.Instance.DefinitionManager.GetDefinition(60),
 							position));
 
 
-						entityDict.Add(entities.Entities);
+
+                        entityDict.AddFirst(entities.Entities);
 						newStatus = entities.DateTime;
 						status = new System.DateTime();
                     }
                     // account hasn't loaded the region
 					var actions = region.GetCompletedActions (status.Value);
-					actionDict.Add(actions.Actions);
+					actionDict.AddFirst(actions.Actions);
 					newStatus = actions.DateTime;
 
 					accountC.RegionRefreshed (regionPosition, newStatus);
 				}
 			}
+
+            foreach (var regionPosition in regionPositions)
+            {
+                var region = regionManagerC.GetRegion (regionPosition);
+                if (region.Exist)
+                {
+                    region.ReleaseReader ();
+                }
+            }
+
+
             var regionData = new RegionData ();
             regionData.ActionDict = actionDict;
             regionData.EntityDict = entityDict;
@@ -128,10 +199,9 @@ namespace server.control
 					{
                         if (region.Exist)
                         {
-    						if (region.TryLockRegion())
+                            if (region.LockWriter())
     						{
     							gotLocked.Add(region);
-                                m_bla += 1;
     						}
     						else
     						{
@@ -157,11 +227,14 @@ namespace server.control
 									var regionCurr = regionStatesController.Curr.GetRegion(region.RegionPosition);
 									regionCurr.AddCompletedAction(action);
 								}
+
+
                                 succeed = true;
 							}
 							else
 							{
-								actionC.Catch (regionStatesController.Next);
+								//actionC.Catch (regionStatesController.Next);
+                                succeed = true;
 							}
 						}
 					}
@@ -175,11 +248,21 @@ namespace server.control
 			
                 foreach (var region in gotLocked)
                 {
-                    region.Release ();
-                    m_bla -= 1;
+                    region.ReleaseWriter ();
                 }
 
+                var changedRegions2 = actionC.GetAffectedRegions(regionStatesController.Curr);
+                var positions = new List<@base.model.RegionPosition> ();
+                foreach (var region in changedRegions2)
+                {
+                    positions.Add(region.RegionPosition);
+                }
+                if (succeed)
+                    APIController.Instance.LoadRegions(action.Account, positions.ToArray());
+                
+
             }
+
 
             return succeed;
 		}
@@ -187,31 +270,43 @@ namespace server.control
 
 		public void Worker(object state)
 		{
+            var threadInfo = m_threadingInfos[(int)state];
 			@base.model.Action action;
 
 			while (MvcApplication.Phase != MvcApplication.Phases.Exit)
+//            while (m_Running)
 			{
-				while (!m_hasNewAction)
+                while (threadInfo.Count == 0 || MvcApplication.Phase == MvcApplication.Phases.Pause)
 				{
 					Thread.Sleep (model.ServerConstants.ACTION_THREAD_SLEEP);
 				}
 
-				if (m_Actions.TryDequeue (out action))
-				{
-					action.ActionTime = DateTime.Now;
-					if (!WorkAction (action))
-					{
-						m_Actions.Enqueue (action);
-					}
-				}
+                try
+                {
+                    threadInfo.Lock.WaitOne ();
+                    action = threadInfo.Queue.Dequeue();
 
-				m_hasNewAction = !m_Actions.IsEmpty;
+                    action.ActionTime = DateTime.Now;
+                    var actionC = (@base.control.action.Action)action.Control;
+                    var actionPosition = new @base.model.Position (actionC.GetRegionPosition ());
+                    var newAverageX = threadInfo.Average.X * threadInfo.Count - actionPosition.X; 
+                    var newAverageY = threadInfo.Average.Y * threadInfo.Count - actionPosition.Y;                            
+                    threadInfo.Count -= 1;
+                    threadInfo.Average = new @base.model.Position (newAverageX / threadInfo.Count, newAverageY / threadInfo.Count);
+
+                    if (!WorkAction (action))
+                    {
+                        APIController.Instance.DoAction (action.Account, new @base.model.Action[]{action, });
+    				}
+                }
+                finally
+                {
+                    threadInfo.Lock.ReleaseMutex ();
+                }
+
 			}
 		}
 
-		bool m_hasNewAction;
-		public ConcurrentQueue<@base.model.Action> m_Actions;
-        int m_bla;
-
+        public AveragePositionQueue[] m_threadingInfos;
     }
 }

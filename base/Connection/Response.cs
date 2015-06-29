@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace @base.connection
 {
@@ -15,13 +15,13 @@ namespace @base.connection
         public Response()
         {
             Status = ReponseStatus.INTERNAL_ERROR;
-            Entities = new ObservableCollection<ObservableCollection<model.Entity>>();
-            Actions = new ObservableCollection<ObservableCollection<model.Action>>();
+            Entities = new LinkedList<LinkedList<model.Entity>>();
+            Actions = new LinkedList<LinkedList<model.Action>>();
         }
 
         public ReponseStatus Status;
-        public ObservableCollection<ObservableCollection<model.Action>> Actions;
-        public ObservableCollection<ObservableCollection<model.Entity>> Entities;
+        public LinkedList<LinkedList<model.Action>> Actions;
+        public LinkedList<LinkedList<model.Entity>> Entities;
 
     }
 }

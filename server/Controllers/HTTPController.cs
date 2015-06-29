@@ -88,18 +88,7 @@ namespace server.Controllers
 
 			return JsonConvert.SerializeObject (response);
 		}
-
-        public string Wait()
-        {
-            var api = server.control.APIController.Instance;
-            while (!api.m_Actions.IsEmpty)
-            {
-                Thread.Sleep (model.ServerConstants.ACTION_THREAD_SLEEP);
-
-            }
-            return "";
-        }
-
+           
 
 		public string Error(string json)
 		{
