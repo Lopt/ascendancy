@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 
 using @base.control;
 using @base.model.definitions;
+using @base.model;
 
 namespace @base.control.action
 {
@@ -24,8 +25,9 @@ namespace @base.control.action
         /// <param name="parameters">Parameters.</param>
         override public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
-            var action = (model.Action)Model;
+            var action = (model.Action)Model;               
             var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
+
             return new ConcurrentBag<model.Region>() { regionManagerC.GetRegion(positionI.RegionPosition) }; 
         }
 
@@ -34,23 +36,18 @@ namespace @base.control.action
         /// </summary>
         public override bool Possible(RegionManagerController regionManagerC)
         {   
-            var action = (model.Action)Model;
-            return true;
-
+            var action = (model.Action)Model;  
+                        
             if (action.Account.Headquarters.Count == 0)
             {
-                /*
-                if (Parameters.ContainsKey(CREATE_POSITION))
+                var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
+                var td = regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition).TerrainType;              
+                // entity and terrain check 
+
+                if (td != TerrainDefinition.TerrainDefinitionType.Forbidden && td != TerrainDefinition.TerrainDefinitionType.Water )
                 {
-                    var positionC = (CombinedPosition) Parameters[CREATE_POSITION];
-                    var region = regionManagerC.GetRegion(positionC.RegionPosition);
-                    if (region.Exist && this.Regions.Length == 1 && this.Regions[0] == region &&
-                        region.GetEntity(positionC.CellPosition) != null)
-                    {
-                        return true;
-                    }
-                }*/
-                return true;
+                    return true;
+                }
             }
             return false;
         }
@@ -67,7 +64,8 @@ namespace @base.control.action
             var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[CREATE_POSITION]);
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
-            var entity = new @base.model.Entity(model.IdGenerator.GetId(), 
+            // create the new entity and link to the correct account
+            var entity = new @base.model.Entity(action.Account.ID, 
                 new UnitDefinition(UnitDefinition.UnitDefinitionType.Headquarter,
                     actionParameter, 
                     0, 0, 0, 0),
@@ -75,6 +73,7 @@ namespace @base.control.action
 
             entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);
+            action.Account.Headquarters.Add(entity.Position);
 
             return new ConcurrentBag<model.Region>() { region };
         }

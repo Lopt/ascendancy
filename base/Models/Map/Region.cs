@@ -64,7 +64,6 @@ namespace @base.model
             m_exist = true;
         }
 
-
         public TerrainDefinition GetTerrain(CellPosition cellPosition)
         {
             var value = m_terrains[cellPosition.CellX, cellPosition.CellY];

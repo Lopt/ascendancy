@@ -12,7 +12,8 @@ namespace @base.model
         {
             TestAction,
             CreateHeadquarter,
-            Move,
+            CreateUnit,
+            MoveUnit,
         }
 
         /// <summary>
@@ -38,6 +39,9 @@ namespace @base.model
                 case(ActionType.TestAction):
                     Control = new control.action.TestAction(this);
                     break;   
+                case(ActionType.CreateUnit):
+                    Control = new control.action.CreateUnit(this);
+                    break;
             }
         }
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -30,6 +30,13 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controllers\action\AStar\Dict.cs" />
+    <Compile Include="Controllers\action\AStar\Node.cs" />
+    <Compile Include="Controllers\action\AStar\NodeState.cs" />
+    <Compile Include="Controllers\action\AStar\PathFinder.cs" />
+    <Compile Include="Controllers\action\AStar\SearchParameters.cs" />
+    <Compile Include="Controllers\action\CreateUnit.cs" />
+    <Compile Include="Models\Definition\LogicRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Constants.cs" />
@@ -59,7 +66,7 @@
     <Compile Include="Connection\DoActionsRequest.cs" />
     <Compile Include="Models\Action.cs" />
     <Compile Include="Controllers\action\Action.cs" />
-    <Compile Include="Controllers\action\MoveEntity.cs" />
+    <Compile Include="Controllers\action\MoveUnit.cs" />
     <Compile Include="Models\Position\PositionI.cs" />
     <Compile Include="Models\IdGenerator.cs" />
     <Compile Include="Models\Map\RegionStates.cs" />
@@ -91,17 +98,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Controllers\action\" />
-    <Folder Include="Models\" />
-    <Folder Include="Models\Definition\" />
-    <Folder Include="Models\Manager\" />
-    <Folder Include="Models\Map\" />
-    <Folder Include="Models\Position\" />
-    <Folder Include="Views\" />
-    <Folder Include="Connection\" />
-  </ItemGroup>
+  <ItemGroup />
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>

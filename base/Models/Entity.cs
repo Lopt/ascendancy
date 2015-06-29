@@ -23,7 +23,8 @@ namespace @base.model
 
         public int DefinitionID
         {
-            get { return m_definition.ID; }   
+            get { return m_definition.ID; }  
+            set { m_definition = World.Instance.DefinitionManager.GetDefinition(value); }
         }
 
 

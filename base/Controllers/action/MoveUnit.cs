@@ -11,7 +11,7 @@ using System.Collections;
 using AStar;
 
 namespace @base.control.action
-{ 
+{
     public class MoveEntity : Action
     {
         public MoveEntity(model.ModelEntity model)
@@ -50,6 +50,7 @@ namespace @base.control.action
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
+    /// 
         public override bool Possible (RegionManagerController regionManagerC)
         {   
             var action = (model.Action)Model;
@@ -174,7 +175,7 @@ namespace @base.control.action
             }
             return list;
         }
-
+        
         private IList m_path; 
     }
 }

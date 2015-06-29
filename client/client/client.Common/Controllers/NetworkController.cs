@@ -7,6 +7,8 @@ using XLabs.Platform.Services.Geolocation;
 
 using @base.model.definitions;
 using @base.model;
+using client.Common.Helper;
+using System.Collections.ObjectModel;
 
 
 
@@ -23,6 +25,7 @@ namespace client.Common.Controllers
             ExceptionMessage = "";
             JsonTerrainsString = "";
             m_client = new HttpClient (new NativeMessageHandler ());
+            m_sessionID = Guid.Empty;
         }
 
         public static NetworkController GetInstance {
@@ -48,6 +51,16 @@ namespace client.Common.Controllers
         public string JsonTerrainTypeString {
             get; 
             private set;
+        }
+
+
+        public bool IsLogedin {
+            get {
+                if (m_sessionID != Guid.Empty) {
+                    return true;
+                }
+                return false;
+            }
         }
 
         public async Task LoadTerrainsAsync (string jsonRegionServerPath)
@@ -80,11 +93,72 @@ namespace client.Common.Controllers
 
         }
 
+        public async Task LoginAsync (@base.model.Position currentGamePosition)
+        {
+            try {
+                var request = new @base.connection.LoginRequest (currentGamePosition, "User", "Password");
+                var json = JsonConvert.SerializeObject (request);
+
+                var path = ClientConstants.LOGIN_PATH;
+                path = path.Replace (ClientConstants.LOGIC_SERVER_JSON, json);
+
+                HttpResponseMessage response = await m_client.GetAsync (new Uri (ClientConstants.LOGIC_SERVER + path));
+                if (response != null) {
+                    response.EnsureSuccessStatusCode ();
+                    var jsonFromServer = await response.Content.ReadAsStringAsync ();
+
+                    var loginResponse = JsonConvert.DeserializeObject<@base.connection.LoginResponse> (jsonFromServer);
+                    if (loginResponse.Status == @base.connection.LoginResponse.ReponseStatus.OK) {
+                        m_sessionID = loginResponse.SessionID;
+
+                    } else {
+                        ExceptionMessage = "Login failure";
+                    }
+
+                }
+            } catch (Exception ex) {
+                ExceptionMessage = ex.Message;
+                throw ex;
+            }
+        }
+
+        public async Task<ObservableCollection<ObservableCollection<Entity>>> LoadEntitiesAsync (@base.model.Position currentGamePosition, RegionPosition[] regionPositions)
+        {
+            try {
+                var request = new @base.connection.LoadRegionsRequest (m_sessionID, currentGamePosition, regionPositions);
+                var json = JsonConvert.SerializeObject (request);
+
+                var path = ClientConstants.LOAD_REGIONS_PATH;
+                path = path.Replace (ClientConstants.LOGIC_SERVER_JSON, json);
+
+                HttpResponseMessage response = await m_client.GetAsync (new Uri (ClientConstants.LOGIC_SERVER + path));
+                if (response != null) {
+                    response.EnsureSuccessStatusCode ();
+                    var jsonFromServer = await response.Content.ReadAsStringAsync ();
+
+                    var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response> (jsonFromServer);
+                    if (entitiesResponse.Status == @base.connection.Response.ReponseStatus.OK) {
+                        return entitiesResponse.Entities;
+                    }
+
+                }
+                return null;
+
+            } catch (Exception ex) {
+                ExceptionMessage = ex.Message;
+                throw ex;
+            }
+        }
+
+
+
+
         #endregion
 
         #region private Fields
 
         private HttpClient m_client;
+        private Guid m_sessionID;
 
         #endregion
     }

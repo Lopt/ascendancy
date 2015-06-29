@@ -1,37 +1,59 @@
-﻿using System;
-using CocosSharp;
-using client.Common.Controllers;
-using @base.control;
-using System.Collections.Generic;
-using client.Common.Models;
+﻿using @base.control;
 using @base.model;
 using client.Common.Helper;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.Xna.Framework;
+using client.Common.Models;
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using CocosSharp;
+using Microsoft.Xna.Framework;
+using client.Common.Manager;
+
+
 
 
 namespace client.Common.Views
 {
     public class WorldLayer : CCLayerColor
     {
+        public enum TouchGesture
+        {
+            None,
+            Start,
+            Menu,
+            Move,
+            Walk,
+            Zoom
+        }
+
         public WorldLayer (RegionPosition regionPosition)
             : base ()
         {
-            m_RegionC = Controller.Instance.RegionStatesController.Curr as RegionController;
+            m_regionView = new RegionView ();
+            m_regionManagerController = Controller.Instance.RegionStatesController.Curr as client.Common.Manager.RegionManagerController;
+            m_entityManagerController = Controller.Instance.DefinitionManagerController as client.Common.Manager.EntityManagerController;
 
-            m_WorldTileMap = new CCTileMap (ClientConstants.TILEMAP_FILE);
-            m_Geolocation = Geolocation.GetInstance;
+            m_worldTileMap = new CCTileMap (ClientConstants.TILEMAP_FILE);
+            m_geolocation = Geolocation.GetInstance;
 
-            m_CurrentPositionNode = new DrawNode ();
-            m_WorldTileMap.TileLayersContainer.AddChild (m_CurrentPositionNode);
+            m_currentPositionNode = new DrawNode ();
+            m_worldTileMap.TileLayersContainer.AddChild (m_currentPositionNode);
 
-            m_TerrainLayer = m_WorldTileMap.LayerNamed (ClientConstants.LAYER_TERRAIN);
+            m_terrainLayer = m_worldTileMap.LayerNamed (ClientConstants.LAYER_TERRAIN);
+            m_buildingLayer   = m_worldTileMap.LayerNamed (ClientConstants.LAYER_BUILDING);
+            m_unitLayer       = m_worldTileMap.LayerNamed (ClientConstants.LAYER_UNIT);
+            m_menuLayer       = m_worldTileMap.LayerNamed (ClientConstants.LAYER_MENU);
 
-            this.AddChild (m_WorldTileMap);
+            m_touchGesture = TouchGesture.None;
+
+            this.AddChild (m_worldTileMap);
 
             this.Schedule (CheckGeolocation);
 
+
+            m_timer = new Stopwatch ();
 
             var TouchListener = new CCEventListenerTouchAllAtOnce ();
             TouchListener.OnTouchesMoved = onTouchesMoved;
@@ -39,6 +61,7 @@ namespace client.Common.Views
             TouchListener.OnTouchesEnded = onTouchesEnded;
 
             this.AddEventListener (TouchListener);
+
         }
 
         #region overide
@@ -47,32 +70,193 @@ namespace client.Common.Views
         {
             base.AddedToScene ();
 
-            SetMapAnchor (m_Geolocation.CurrentGamePosition);
-            m_WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
-            m_WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
-            m_WorldTileMap.TileLayersContainer.Scale = 0.5f;
+            SetMapAnchor (m_geolocation.CurrentGamePosition);
+            m_worldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
+            m_worldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
+            m_worldTileMap.TileLayersContainer.Scale = m_scale;
 
         }
 
         #endregion
 
         #region Listener
+       
 
         void onTouchesMoved (List<CCTouch> touches, CCEvent touchEvent)
         {
-            var touch = touches [0];
-            CCPoint diff = touch.Delta;
-            m_WorldTileMap.TileLayersContainer.Position += diff;
+            if (touches.Count == 1 && 
+                (m_touchGesture == TouchGesture.Start ||
+                m_touchGesture == TouchGesture.Move))
+            {
+                    m_touchGesture = TouchGesture.Move;
+                    var touch = touches [0];
+                    CCPoint diff = touch.Delta;
+                    m_worldTileMap.TileLayersContainer.Position += diff;
+            }
 
+            if (touches.Count >= 2 &&
+                (m_touchGesture == TouchGesture.Start ||
+                m_touchGesture == TouchGesture.Zoom))
+            {
+                m_touchGesture = TouchGesture.Zoom;
+
+                CCPoint ScreenStart0 = touches [0].StartLocationOnScreen;
+                CCPoint ScreenStart1 = touches [1].StartLocationOnScreen;
+
+
+                float xDist = (ScreenStart1.X - ScreenStart0.X);
+                float yDist = (ScreenStart1.Y - ScreenStart0.Y);
+                float StartDistance = (xDist * xDist) + (yDist * yDist);
+
+                //calculate Current Position
+                CCPoint CurrentPoint0 = touches[0].LocationOnScreen;
+                CCPoint CurrentPoint1 = touches[1].LocationOnScreen;
+
+                xDist = (CurrentPoint1.X - CurrentPoint0.X);
+                yDist = (CurrentPoint1.Y - CurrentPoint0.Y);
+                float CurrentDistance = (xDist * xDist) + (yDist * yDist);
+
+                //calculate screen relation 
+                xDist = VisibleBoundsWorldspace.MaxX;
+                yDist = VisibleBoundsWorldspace.MaxY;
+
+                float ScreenDistance = (xDist * xDist) + (yDist * yDist);
+
+                float relation = (CurrentDistance - StartDistance) / ScreenDistance;
+
+                //scale
+                var newScale = m_scale + relation;
+                if (0.3f < newScale && newScale < 2.0f) {
+                    m_newScale = newScale;
+                    m_worldTileMap.TileLayersContainer.Scale = m_newScale;
+                }
+            }
         }
 
         void onTouchesBegan (List<CCTouch> touches, CCEvent touchEvent)
         {
+            switch(m_touchGesture)
+            {
+            case (TouchGesture.Menu):
+                ShowMenu (m_startCoord, 0);
+                break;
+            }
 
+            m_touchGesture = TouchGesture.Start;
+            m_timer.Reset ();
+            m_timer.Start ();
+
+            //get Touch location and Corresponding TilePosition
+            var location = m_terrainLayer.WorldToParentspace(touches [0].Location);
+            m_startCoord = m_terrainLayer.ClosestTileCoordAtNodePosition (location);
         }
+
 
         void onTouchesEnded (List<CCTouch> touches, CCEvent touchEvent)
         {
+            m_timer.Stop ();
+
+            switch (m_touchGesture)
+            {
+
+            case(TouchGesture.Zoom):
+                //Set Current Scale
+                m_scale = m_newScale;
+                m_touchGesture = TouchGesture.None;
+                break;
+
+            case(TouchGesture.Move):
+                CheckCenterRegion (touches [0].Location);
+                m_touchGesture = TouchGesture.None;
+                break;
+
+            case(TouchGesture.Start):
+                m_touchGesture = TouchGesture.Menu;
+                //Draw the taped ISO Tile
+                //m_CurrentPositionNode.DrawISOForIsoStagMap(131, m_UnitLayer,tileCoordinate, new CCColor4F (CCColor3B.Blue), 255, 3.0f);
+                ShowMenu(m_startCoord, 1);
+                break;
+            }
+
+
+            //Menu Handling
+            /*
+            if(m_MenuLayer.TileGIDandFlags(tileCoordinate) != 0)
+            {
+                Command = GetMenuCommandfromDefinition(Position);
+                SendCommandToServer(Command);
+                break ???
+            }
+            */
+
+            //Movement Handling 
+            /*
+            if(MoveUI == true)
+            {
+                //do Movementstuff
+                if (GetTileState(Position) == true)
+                {
+                    SendMoveToServer(UnitID,Position)
+                }
+            }
+            */
+
+        }
+
+        public void ShowMenu(CCTileMapCoordinates location, int menutype) 
+        {
+            CCTileMapCoordinates coordHelper1, coordHelper2, coordHelper3, coordHelper4, coordHelper5, coordHelper6; 
+            CCTileGidAndFlags gidHelper1, gidHelper2, gidHelper3, gidHelper4, gidHelper5, gidHelper6;
+
+            coordHelper1.Column = location.Column + (location.Row) % 2;
+            coordHelper1.Row    = location.Row - 1;
+
+            coordHelper2.Column = location.Column + (location.Row) % 2;
+            coordHelper2.Row    = location.Row + 1;        
+
+            coordHelper3.Column = location.Column;
+            coordHelper3.Row    = location.Row + 2;
+
+            coordHelper4.Column = location.Column - (location.Row+1) % 2;
+            coordHelper4.Row    = location.Row + 1;
+
+            coordHelper5.Column = location.Column - (location.Row+1) % 2;
+            coordHelper5.Row    = location.Row - 1;
+
+            coordHelper6.Column = location.Column;
+            coordHelper6.Row    = location.Row - 2;
+
+            switch (menutype) 
+            {
+            //clears the Menu at around a given Position
+            case 0:
+                gidHelper1.Gid = 0;
+                m_menuLayer.SetTileGID (gidHelper1, coordHelper1);
+                m_menuLayer.SetTileGID (gidHelper1, coordHelper2);
+                m_menuLayer.SetTileGID (gidHelper1, coordHelper3);
+                m_menuLayer.SetTileGID (gidHelper1, coordHelper4);
+                m_menuLayer.SetTileGID (gidHelper1, coordHelper5);
+                m_menuLayer.SetTileGID (gidHelper1, coordHelper6);
+                break;
+            default:
+                gidHelper1.Gid = 52;
+                gidHelper2.Gid = 53;
+                gidHelper3.Gid = 54;
+                gidHelper4.Gid = 55;
+                gidHelper5.Gid = 56;
+                gidHelper6.Gid = 57;
+
+                m_menuLayer.SetTileGID (gidHelper1, coordHelper1);
+                m_menuLayer.SetTileGID (gidHelper2, coordHelper2);
+                m_menuLayer.SetTileGID (gidHelper3, coordHelper3);
+                m_menuLayer.SetTileGID (gidHelper4, coordHelper4);
+                m_menuLayer.SetTileGID (gidHelper5, coordHelper5);
+                m_menuLayer.SetTileGID (gidHelper6, coordHelper6);
+                break;
+            }
+
+            //TODO: find better solution
+            m_worldTileMap.TileLayersContainer.Position += new CCPoint(0.0001f, 0.0001f);
 
         }
 
@@ -90,9 +274,10 @@ namespace client.Common.Views
 
         void CheckGeolocation (float frameTimesInSecond)
         {
-            if (m_Geolocation.IsPositionChanged) {
-                DrawRegions (m_Geolocation.CurrentGamePosition);
-                m_Geolocation.IsPositionChanged = false;
+            if (m_geolocation.IsPositionChanged) {
+                DrawRegionsAsync (m_geolocation.CurrentGamePosition);
+                DrawEntitiesAsync (m_geolocation.CurrentGamePosition);
+                m_geolocation.IsPositionChanged = false;
             }
 
         }
@@ -104,42 +289,109 @@ namespace client.Common.Views
 
         void SetCurrentPositionOnce (Position position)
         {
-            var tileCoordinate = m_RegionC.GetCurrentTileInMap (position);
-            m_CurrentPositionNode.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_WIDTH, m_TerrainLayer,
+            var tileCoordinate = m_regionView.GetCurrentTileInMap (position);
+            m_currentPositionNode.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_WIDTH, m_terrainLayer,
                 tileCoordinate, new CCColor4F (CCColor3B.Red), 255, 3.0f);
         }
 
-        async Task DrawRegions (Position gamePosition)
+        async Task DrawRegionsAsync (Position gamePosition)
         {
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoading;
-            await m_RegionC.LoadRegionsAsync ();
+            await m_regionManagerController.LoadRegionsAsync ();
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoaded;
-            m_RegionC.SetTilesINMap160 (m_TerrainLayer, m_RegionC.GetRegionByGamePosition (gamePosition));
-            SetMapAnchor (gamePosition);
+            m_regionView.SetTilesInMap160 (m_terrainLayer, m_regionManagerController.GetRegionByGamePosition (gamePosition));
             SetCurrentPositionOnce (gamePosition);
+            SetMapAnchor (gamePosition);
+            m_centerRegionPosition = new RegionPosition (gamePosition);
+
+        }
+            
+
+        //clears a Layer
+        void ClearLayer (CCTileMapLayer _Layer)
+        {
+            CCTileGidAndFlags gidHelper1;
+            CCTileMapCoordinates coordHelper1;
+
+            gidHelper1.Gid = 0;
+            for (int i = 0; i < ClientConstants.TILEMAP_WIDTH; i++) 
+            {
+                coordHelper1.Column = i;
+                for (int j = 0; j < ClientConstants.TILEMAP_HIGH; j++) 
+                {
+                    coordHelper1.Row = j;
+                    _Layer.SetTileGID (gidHelper1, coordHelper1);
+                }
+            }
         }
 
-        void SetMapAnchor (Position currentPosition)
+            
+        async Task DrawEntitiesAsync (Position gamePosition)
         {
-            var tileCoordinate = m_RegionC.GetCurrentTileInMap (currentPosition);
-            var mapCellPosition = new MapCellPosition (tileCoordinate);
-            m_WorldTileMap.TileLayersContainer.AnchorPoint = mapCellPosition.GetAnchor ();
+            GameAppDelegate.LoadingState = GameAppDelegate.Loading.EntitiesLoading;
+            await m_entityManagerController.LoadEntitiesAsync (gamePosition, m_centerRegionPosition);
+            GameAppDelegate.LoadingState = GameAppDelegate.Loading.EntitiesLoaded;
+            m_regionView.SetTilesInMap160 (m_unitLayer, m_regionManagerController.GetRegion (m_centerRegionPosition));
+            m_regionView.SetTilesInMap160 (m_buildingLayer, m_regionManagerController.GetRegion (m_centerRegionPosition));
         }
+
+        void CheckCenterRegion (CCPoint location)
+        {            
+            var mapCell = GetMapCell (m_worldTileMap.LayerNamed ("Layer 0"), location);
+
+//            if (m_RegionC.IsCellInOutsideRegion (mapCell)) {
+//                var position = m_RegionC.GetCurrentGamePosition (mapCell, m_CenterRegionPosition);
+//                DrawRegions (position);
+//            }
+
+        }
+
+
+        void SetMapAnchor (Position anchorPosition)
+        {
+            var mapCellPosition = new MapCellPosition (m_regionView.GetCurrentTileInMap (anchorPosition));
+            var anchor = mapCellPosition.GetAnchor ();
+            m_worldTileMap.TileLayersContainer.AnchorPoint = anchor;
+        }
+
+        MapCellPosition GetMapCell (CCTileMapLayer layer, CCPoint location)
+        {
+            var point = layer.WorldToParentspace (location);
+            var tileMapCooardinate = layer.ClosestTileCoordAtNodePosition (point);
+            return new MapCellPosition (tileMapCooardinate);
+        }
+
 
         #endregion
 
         #region Properties
 
-        CCTileMap m_WorldTileMap;
-        CCTileMapLayer m_TerrainLayer;
+        CCTileMap m_worldTileMap;
+        CCTileMapLayer m_terrainLayer;
+        CCTileMapLayer m_buildingLayer;
+        CCTileMapLayer m_unitLayer;
+        CCTileMapLayer m_menuLayer;
 
-        RegionController m_RegionC;
+        RegionView m_regionView;
+        RegionPosition m_centerRegionPosition;
+        client.Common.Manager.RegionManagerController m_regionManagerController;
+        client.Common.Manager.EntityManagerController m_entityManagerController;
 
-        DrawNode m_CurrentPositionNode;
-        Geolocation m_Geolocation;
+        DrawNode m_currentPositionNode;
+        Geolocation m_geolocation;
 
-        float m_Scale = 1.0f;
+
+
+        float m_newScale = 0.5f;
+        float m_scale = 0.5f;
         int counter = 0;
+        bool UnitMove = false;
+        bool MenuDrawn = false;
+
+
+        CCTileMapCoordinates m_startCoord;
+        Stopwatch m_timer;
+        TouchGesture m_touchGesture;
 
         #endregion
     }

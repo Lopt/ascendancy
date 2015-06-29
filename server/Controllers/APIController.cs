@@ -59,11 +59,15 @@ namespace server.control
         }
 
 		public @base.model.Account Login(string username, string password)
-		{			
-			var controller = @base.control.Controller.Instance;
-			var accountManagerC = (control.AccountManagerController)controller.AccountManagerController;
-			return accountManagerC.Registrate (username, password);
-			//return accountManagerC.Login (username, password);
+		{	
+            if (username != null && password != null)
+            {
+                var controller = @base.control.Controller.Instance;
+                var accountManagerC = (control.AccountManagerController)controller.AccountManagerController;
+                return accountManagerC.Registrate (username, password);
+            }
+            return null;
+    			//return accountManagerC.Login (username, password);
 		}
 
 		public void DoAction(@base.model.Account account, 
@@ -141,15 +145,14 @@ namespace server.control
                     var newStatus = new DateTime ();
                     // account has already loaded the region - now just load changes (actions)
 					if (status == null)
-                    { 
+                    {  
 						var entities = region.GetEntities();
 						// TODO: remove entity creation
-						var position = new @base.model.PositionI(region.RegionPosition.RegionX * @base.model.Constants.REGION_SIZE_X, region.RegionPosition.RegionX * @base.model.Constants.REGION_SIZE_Y);
-
-                        entities.Entities.AddFirst(new @base.model.Entity(@base.model.IdGenerator.GetId(),
+						var position = new @base.model.PositionI(region.RegionPosition.RegionX * @base.model.Constants.REGION_SIZE_X, region.RegionPosition.RegionY * @base.model.Constants.REGION_SIZE_Y);
+						entities.Entities.Add(new @base.model.Entity(@base.model.IdGenerator.GetId(),
 											 @base.model.World.Instance.DefinitionManager.GetDefinition(60),
 							position));
-
+                       
 
 
                         entityDict.AddFirst(entities.Entities);

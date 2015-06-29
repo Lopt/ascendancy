@@ -112,6 +112,47 @@ namespace client.Common.Models
             }, 6, CCColor4B.Transparent, 3, borderColor);
 
         }
+
+        public void DrawISOForIsoStagMap (float pngWidth, CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
+        {
+            // Calculate our width and height of the tile
+            CCSize texelToContentScaling = CCTileMapLayer.DefaultTexelToContentSizeRatios;
+            float tilewidth = layer.TileTexelSize.Width * texelToContentScaling.Width;
+            float tileheight = layer.TileTexelSize.Height * texelToContentScaling.Height;
+
+            // Convert the tile coordinates position to world coordinates for
+            // our outline drawing
+            var worldPos = layer.TilePosition (tileCoordinates);
+            var X = worldPos.X + (tilewidth / 2);
+            var Y = worldPos.Y + (tileheight / 2);
+
+            this.Clear ();
+
+            this.Opacity = opacity;
+
+            var center = new CCPoint (X, Y);
+
+            var right = center;
+            right.X += pngWidth / 2;
+
+            var top = center;
+            top.Y += tileheight / 2;
+
+            var bottom = center;
+            bottom.Y -= tileheight / 2;
+
+            var left = center;
+            left.X -= pngWidth / 2;
+
+            DrawPolygon (new CCPoint[] {
+                right,
+                top,
+                left,
+                bottom
+            }, 4, CCColor4B.Transparent, 3, borderColor);
+
+        }
+
     }
 }
 

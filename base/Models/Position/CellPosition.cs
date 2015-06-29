@@ -46,6 +46,16 @@ namespace @base.model
             return (cellPosition.m_cellX == m_cellX && cellPosition.m_cellY == m_cellY);
         }
 
+        public static bool operator ==(CellPosition obj, CellPosition obj2)
+        {
+            return obj.CellX == obj2.CellX && obj.CellY == obj2.CellY;        
+        }
+
+        public static bool operator !=(CellPosition obj, CellPosition obj2)
+        {
+            return obj.CellX != obj2.CellX || obj.CellY != obj2.CellY;        
+        }
+
         public override int GetHashCode()
         {
             return m_cellX * Constants.REGION_SIZE_Y + m_cellY;
