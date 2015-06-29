@@ -12,7 +12,7 @@ namespace client.Common.Views
     {
         public RegionView ()
         {
-            m_RegionManagerController = @base.control.Controller.Instance.RegionStatesController.Curr as client.Common.Manager.RegionManagerController;
+            m_RegionManagerController = @base.control.Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
             m_ViewDefinition = new ViewDefinitions ();
         }
 

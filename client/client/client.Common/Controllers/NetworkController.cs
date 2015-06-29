@@ -8,7 +8,7 @@ using XLabs.Platform.Services.Geolocation;
 using @base.model.definitions;
 using @base.model;
 using client.Common.Helper;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 
 
@@ -122,7 +122,7 @@ namespace client.Common.Controllers
             }
         }
 
-        public async Task<ObservableCollection<ObservableCollection<Entity>>> LoadEntitiesAsync (@base.model.Position currentGamePosition, RegionPosition[] regionPositions)
+        public async Task<LinkedList<LinkedList<Entity>>> LoadEntitiesAsync (@base.model.Position currentGamePosition, RegionPosition[] regionPositions)
         {
             try {
                 var request = new @base.connection.LoadRegionsRequest (m_sessionID, currentGamePosition, regionPositions);

@@ -16,7 +16,7 @@ namespace client.Common.Manager
         public EntityManagerController ()
         {
             m_Network = NetworkController.GetInstance;
-            m_RegionManagerController = Controller.Instance.RegionStatesController.Curr as client.Common.Manager.RegionManagerController;
+            m_RegionManagerController = Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
         }
 
 

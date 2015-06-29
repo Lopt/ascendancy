@@ -32,7 +32,7 @@ namespace client.Common.Views
             : base ()
         {
             m_regionView = new RegionView ();
-            m_regionManagerController = Controller.Instance.RegionStatesController.Curr as client.Common.Manager.RegionManagerController;
+            m_regionManagerController = Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
             m_entityManagerController = Controller.Instance.DefinitionManagerController as client.Common.Manager.EntityManagerController;
 
             m_worldTileMap = new CCTileMap (ClientConstants.TILEMAP_FILE);

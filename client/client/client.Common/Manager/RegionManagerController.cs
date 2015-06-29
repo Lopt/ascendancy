@@ -10,8 +10,7 @@ namespace client.Common.Manager
 {
     public class RegionManagerController : @base.control.RegionManagerController
     {
-        public RegionManagerController (RegionManager regionManager)
-            : base (null, regionManager)
+        public RegionManagerController ()
         {
             m_NetworkController = NetworkController.GetInstance;
             m_Geolocation = Geolocation.GetInstance;
@@ -33,7 +32,7 @@ namespace client.Common.Manager
 
         public override Region GetRegion (RegionPosition regionPosition)
         {
-            var region = RegionManager.GetRegion (regionPosition);
+            var region = World.Instance.RegionManager.GetRegion (regionPosition);
 
             if (!region.Exist) {
                 LoadRegionAsync (region);
@@ -55,7 +54,7 @@ namespace client.Common.Manager
             if (terrain != null)
                 region.AddTerrain (terrain);
 
-            RegionManager.AddRegion (region);
+            World.Instance.RegionManager.AddRegion (region);
         }
 
         public async Task LoadRegionsAsync ()
@@ -68,7 +67,7 @@ namespace client.Common.Manager
             var WorldRegions = GetWorldNearRegionPositions (regionPosition);
 
             foreach (var RegionPosition in WorldRegions) {
-                var region = RegionManager.GetRegion (RegionPosition);
+                var region = World.Instance.RegionManager.GetRegion (RegionPosition);
 
                 if (!region.Exist) {
                     await LoadRegionAsync (region);

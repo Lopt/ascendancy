@@ -104,7 +104,7 @@ namespace client.Common
                 LoadingState = Loading.EntitiesLoaded;
 
                 LoadingState = Loading.RegionLoading;
-                var regionManagerController = Controller.Instance.RegionStatesController.Curr as client.Common.Manager.RegionManagerController;
+                var regionManagerController = Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
                 await regionManagerController.LoadRegionsAsync ();
                 LoadingState = Loading.RegionLoaded;
                 // do something in the future
@@ -120,7 +120,7 @@ namespace client.Common
         {
             var world = World.Instance;
             var controller = Controller.Instance;
-            controller.RegionStatesController = new RegionStatesController (null, new client.Common.Manager.RegionManagerController (World.Instance.RegionStates.Curr), null);      
+            controller.RegionManagerController = new client.Common.Manager.RegionManagerController ();      
             controller.DefinitionManagerController = new EntityManagerController ();
         }
 

@@ -29,6 +29,7 @@ namespace @base.model.definitions
             Ressources = ressources;
             Buildable = buildable;
             Walkable = walkable;
+            TerrainType = terrainType;
         }
         
         public int[] Ressources
