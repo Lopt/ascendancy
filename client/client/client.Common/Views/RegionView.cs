@@ -42,7 +42,7 @@ namespace client.Common.Views
                         SetUnitTileInMap (mapLayer, newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
                         break;
                     case ClientConstants.LAYER_BUILDING:
-                        SetBuildingTileInMap (mapLayer, newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
+                        SetUnitTileInMap (mapLayer, newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
                         break;
                     }
 
@@ -59,16 +59,14 @@ namespace client.Common.Views
 
         public void SetUnitTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {
-            var gid = m_ViewDefinition.DefinitionToTileGid (region.GetEntity (cellPosition).Definition);
-            mapLayer.SetTileGID (gid, mapCoordinat);
+            var entity = region.GetEntity (cellPosition);
+            if (entity != null) {
+                var gid = new CCTileGidAndFlags (60); //m_ViewDefinition.DefinitionToTileGid (entity.Definition);
+                mapLayer.SetTileGID (gid, mapCoordinat);
+            } else {
+                //mapLayer.RemoveTile (mapCoordinat);
+            }
         }
-
-        public void SetBuildingTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
-        {
-            var gid = m_ViewDefinition.DefinitionToTileGid (region.GetEntity (cellPosition).Definition);
-            mapLayer.SetTileGID (gid, mapCoordinat);
-        }
-
 
         public CCTileMapCoordinates GetCurrentTileInMap (Position position)
         {

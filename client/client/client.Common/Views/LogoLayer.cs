@@ -12,7 +12,7 @@ namespace client.Common.Views
             : base ()
         {
 
-            m_RegionC = Controller.Instance.RegionStatesController.Curr as RegionManagerController;
+            m_RegionManagerController = Controller.Instance.RegionStatesController.Curr as RegionManagerController;
 
             m_Logo = new CCSprite ("logo_neu");
             m_LoadedSprite = new CCSprite ("Ladebalken");
@@ -58,7 +58,7 @@ namespace client.Common.Views
 
         void LoadingProgress (float frameTimesInSecond)
         {
-            if (GameAppDelegate.LoadingState >= GameAppDelegate.Loading.RegionLoaded) {
+            if (GameAppDelegate.LoadingState >= GameAppDelegate.Loading.Done) {
                 m_LoadedSprite.Visible = false;
             }
 
@@ -68,7 +68,7 @@ namespace client.Common.Views
 
         #region Properties
 
-        RegionManagerController m_RegionC;
+        RegionManagerController m_RegionManagerController;
         CCSprite m_Logo;
         CCSprite m_LoadedSprite;
 

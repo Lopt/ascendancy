@@ -7,15 +7,15 @@ using Newtonsoft.Json;
 namespace @base.model
 {
     public class Entity : ModelEntity
-	{
-        public Entity (int id, Definition defintion, PositionI position)
+    {
+        public Entity(int id, Definition defintion, PositionI position)
             : base()
-		{
+        {
             m_id = id; 
             m_definition = defintion;
             m_position = position;
-		}
-            
+        }
+
         public int ID
         {
             get { return m_id; }
@@ -42,6 +42,6 @@ namespace @base.model
         private int m_id;
         private PositionI m_position;
         private Definition m_definition;
-	}
+    }
 }
 
