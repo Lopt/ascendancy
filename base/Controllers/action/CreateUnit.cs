@@ -35,10 +35,21 @@ namespace @base.control.action
         /// <param name="parameters">Parameters.</param>
         override public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
+            ConcurrentBag<model.Region> Bag = new ConcurrentBag<model.Region>();
             var action = (model.Action) Model;
             var positionI = (PositionI) action.Parameters[CREATE_POSITION];
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
-            return new ConcurrentBag<model.Region>() {  region };
+
+            Bag.Add(region);
+
+            var adjacentRegions = GetAdjacentRegions(regionManagerC, region.RegionPosition, positionI);
+
+            foreach (var adjRegions in adjacentRegions)
+            {
+                Bag.Add(regionManagerC.GetRegion(adjRegions));
+            }
+
+            return Bag;
         }
 
         /// <summary>
@@ -108,8 +119,6 @@ namespace @base.control.action
                 var ed = regionManagerC.GetRegion(surpos.RegionPosition).GetEntity(surpos.CellPosition);
 
                 if (td.Walkable && ed == null)
-//                    td != TerrainDefinition.TerrainDefinitionType.Water &&
-//                    ed.Definition.Type < UnitDefinition.DefinitionType.Unit)
                 {
                     m_index = index;
                     return true;
@@ -120,14 +129,83 @@ namespace @base.control.action
             return false;
         }
 
+        private ConcurrentBag<RegionPosition> GetAdjacentRegions(RegionManagerController regionManagerC, RegionPosition position, PositionI buildpoint)
+        {
+            var list = new ConcurrentBag<RegionPosition>();
+            var surlist = LogicRules.SurroundRegions;
+            var regionSizeX = Constants.REGION_SIZE_X;
+            var regionSizeY = Constants.REGION_SIZE_Y;
+
+            if (buildpoint.CellPosition.CellX == 0)
+            {
+                var tempReg = position + surlist[LogicRules.SurroundRegions.Length];
+                if (regionManagerC.GetRegion(tempReg).Exist)
+                {
+                    list.Add(tempReg);
+                }
+
+                for (int index = 0; index < 4; ++index)
+                {
+                    tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+            }
+            else if (buildpoint.CellPosition.CellY == 0)
+            {
+                for (int index = 5; index <= LogicRules.SurroundRegions.Length; ++index)
+                {
+                    var tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+
+                var reg = position + surlist[0];
+                if (regionManagerC.GetRegion(reg).Exist)
+                {
+                    list.Add(reg);
+                }
+                reg = position + surlist[1];
+                if (regionManagerC.GetRegion(reg).Exist)
+                {
+                    list.Add(reg);
+                }
+            }
+            else if (buildpoint.CellPosition.CellX == regionSizeX)
+            {
+                for (int index = 1; index < 6; ++index)
+                {
+                    var tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+            }
+            else if (buildpoint.CellPosition.CellY == regionSizeY)
+            {
+                for (int index = 3; index <= LogicRules.SurroundRegions.Length; ++index)
+                {
+                    var tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+            }
+            return list;
+        }
+
         override public @base.model.RegionPosition GetRegionPosition()
         {
             var action = (model.Action)Model;
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             return positionI.RegionPosition;
         }
-
-
 
         private int m_index;
     }

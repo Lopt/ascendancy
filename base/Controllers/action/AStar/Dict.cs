@@ -12,7 +12,7 @@ namespace @base.Controllers.action.AStar
     {
         Dictionary<PositionI, Node> FieldNode = new Dictionary<PositionI, Node>();
 
-        public Dictionary<PositionI,Node> GetDictionary()
+        public Dictionary<PositionI, Node> GetDictionary()
         {
             return FieldNode;
         }
