@@ -16,7 +16,7 @@ namespace client.Common.Manager
         public EntityManagerController ()
         {
             m_Network = NetworkController.GetInstance;
-            m_RegionManagerController = Controller.Instance.RegionStatesController.Curr as client.Common.Manager.RegionManagerController;
+            m_RegionManagerController = Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
         }
 
 
@@ -32,6 +32,20 @@ namespace client.Common.Manager
 
             }
         }
+
+        public async Task LoadEntityDefinitionsAsync ()
+        {
+            await m_Network.LoadTerrainTypesAsync (ClientConstants.ENTITY_TYPES_SERVER_PATH);
+
+            var json = m_Network.JsonTerrainTypeString;
+            var unitDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.UnitDefinition>> (json);
+
+            foreach (var unitType in unitDefintions ) {
+                DefinitionManager.AddDefinition (unitType);
+
+            }
+        }
+
 
         #region Entities
 

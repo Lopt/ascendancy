@@ -26,16 +26,12 @@ namespace @base.model
 
         private World()
         {
-            var last = new RegionManager();
-            var curr = new RegionManager(last);
-            var next = new RegionManager(curr);
-
-            RegionStates = new RegionStates (last, curr, next);
+            RegionManager = new RegionManager();
             DefinitionManager = new DefinitionManager ();
             Accounts = new ConcurrentDictionary<int, Account> ();
         }
 
-        public RegionStates RegionStates;
+        public RegionManager RegionManager;
         public DefinitionManager DefinitionManager;
         public ConcurrentDictionary<int, Account> Accounts;
 

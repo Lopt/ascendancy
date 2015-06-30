@@ -47,23 +47,26 @@ namespace @base.control.action
             return Bag;
         }
 
+
+
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
-        public override bool Possible(RegionManagerController regionManagerC)
+    /// 
+        public override bool Possible (RegionManagerController regionManagerC)
         {   
             var action = (model.Action)Model;
 
-            //if (Parameters.ContainsKey(CREATE_POSITION))
-            //{
-            //    var positionC = (CombinedPosition) Parameters[CREATE_POSITION];
-            //    var region = regionManagerC.GetRegion(positionC.RegionPosition);
-            //    if (region.Exist && this.Regions.Length == 1 && this.Regions[0] == region &&
-            //        region.GetEntity(positionC.CellPosition) != null)
-            //    {
-            //        return true;
-            //    }
-            //}
+                //if (Parameters.ContainsKey(CREATE_POSITION))
+                //{
+                //    var positionC = (CombinedPosition) Parameters[CREATE_POSITION];
+                //    var region = regionManagerC.GetRegion(positionC.RegionPosition);
+                //    if (region.Exist && this.Regions.Length == 1 && this.Regions[0] == region &&
+                //        region.GetEntity(positionC.CellPosition) != null)
+                //    {
+                //        return true;
+                //    }
+                //}
 
             var startPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[START_POSITION]);
             var endPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[END_POSITION]);
@@ -105,10 +108,10 @@ namespace @base.control.action
         /// <summary>
         /// In case of errors, revert the world data to a valid state.
         /// </summary>        public bool Catch()
-        //        public override bool Catch()
-        //        {
-        //            throw new NotImplementedException();
-        //        }
+        virtual public bool Catch(RegionManagerController regionManagerC)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Check all possible regions around the startregion of a unit and add them to a ConcurrentBag.
@@ -119,12 +122,12 @@ namespace @base.control.action
         private ConcurrentBag<RegionPosition> GetAdjacentRegions(RegionManagerController regionManagerC, RegionPosition position)
         {
             var list = new ConcurrentBag<RegionPosition>();
-            var surlist = LogicRules.SurroundRegions.ToArray();
+            var surlist = LogicRules.SurroundRegions;
 
 
             if (position.RegionX <= Constants.REGION_SIZE_X / 2 && position.RegionY <= Constants.REGION_SIZE_Y / 2)
             {
-                var tempReg = position + surlist[LogicRules.SurroundRegions.Count];
+                var tempReg = position + surlist[LogicRules.SurroundRegions.Length];
                 if (regionManagerC.GetRegion(tempReg).Exist)
                 {
                     list.Add(tempReg);
@@ -175,7 +178,14 @@ namespace @base.control.action
             return list;
         }
 
-        private IList m_path;
+        override public @base.model.RegionPosition GetRegionPosition()
+        {
+            var action = (model.Action)Model;
+            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[START_POSITION]);
+            return positionI.RegionPosition;
+        }
+
+        private IList m_path; 
     }
 }
 

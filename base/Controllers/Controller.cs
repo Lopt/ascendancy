@@ -25,7 +25,7 @@ namespace @base.control
 		{
 		}
 
-        public RegionStatesController RegionStatesController;
+        public RegionManagerController RegionManagerController;
         public DefinitionManagerController DefinitionManagerController;
         public AccountManagerController AccountManagerController;
 	}

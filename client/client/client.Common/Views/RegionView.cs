@@ -12,7 +12,7 @@ namespace client.Common.Views
     {
         public RegionView ()
         {
-            m_RegionManagerController = @base.control.Controller.Instance.RegionStatesController.Curr as client.Common.Manager.RegionManagerController;
+            m_RegionManagerController = @base.control.Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
             m_ViewDefinition = new ViewDefinitions ();
         }
 
@@ -58,6 +58,7 @@ namespace client.Common.Views
 
 
         public void SetUnitTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
+<<<<<<< HEAD
         {
             var entity = region.GetEntity (cellPosition);
             if (entity != null) {
@@ -66,6 +67,25 @@ namespace client.Common.Views
             } else {
                 //mapLayer.RemoveTile (mapCoordinat);
             }
+=======
+        {   
+            var entity = region.GetEntity (cellPosition);
+            if (entity != null)
+            {
+                var gid = m_ViewDefinition.DefinitionToTileGid (entity.Definition);
+                mapLayer.SetTileGID (gid, mapCoordinat);
+            }
+            else
+            {
+                mapLayer.RemoveTile (mapCoordinat);
+            }
+        }
+
+        public void SetBuildingTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
+        {
+            var gid = m_ViewDefinition.DefinitionToTileGid (region.GetEntity (cellPosition).Definition);
+            mapLayer.SetTileGID (gid, mapCoordinat);
+>>>>>>> 2b9eafa28a170fa958ad2a5e077c47e763cb76f1
         }
 
         public CCTileMapCoordinates GetCurrentTileInMap (Position position)

@@ -7,15 +7,15 @@
     <ProjectGuid>{8E2EAACD-7971-4F63-8254-01DF89447F99}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>client.Droid</RootNamespace>
-    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
-    <AndroidResgenClass>Resource</AndroidResgenClass>
-    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <AssemblyName>client.Android</AssemblyName>
     <TargetFrameworkVersion>v4.2</TargetFrameworkVersion>
-    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
@@ -28,8 +28,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -155,20 +155,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\fonts\arial-22.xnb" />
-    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_with_space.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%28320x80%29.xnb" />
     <AndroidAsset Include="Assets\Content\images\logo_neu.png" />
     <AndroidAsset Include="Assets\Content\images\hd\Ladebalken.png" />
     <AndroidAsset Include="Assets\Content\images\hd\logo.png" />
     <AndroidAsset Include="Assets\Content\images\ld\Ladebalken.png" />
     <AndroidAsset Include="Assets\Content\images\ld\logo.png" />
+    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_with_space.png" />
+    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29.xnb" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
-  <Import Project="..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\MonoAndroid\SQLitePCL.raw_basic.targets" Condition="Exists('..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\MonoAndroid\SQLitePCL.raw_basic.targets')" />
-  <Import Project="..\..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />
     <Folder Include="Assets\Content\images\hd\" />
     <Folder Include="Assets\Content\images\ld\" />
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
 </Project>

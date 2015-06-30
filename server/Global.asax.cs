@@ -15,7 +15,8 @@ namespace server
 		{
 			Started,
 			Init,
-			Running,
+            Running,
+            Pause,
 			Exit,
 		}
 
@@ -40,11 +41,12 @@ namespace server
 				new { controller = "HTTP", action = "LoadRegions" }  
 			);
 
-			routes.MapRoute (
-				"DoActions",                                           
-				"DoActions",
-				new { controller = "HTTP", action = "DoActions" }  
-			);
+            routes.MapRoute (
+                "DoActions",                                           
+                "DoActions",
+                new { controller = "HTTP", action = "DoActions" }  
+            );
+
 
 
 			routes.MapRoute (
@@ -68,26 +70,20 @@ namespace server
 
 			var api = server.control.APIController.Instance;
 
-			var regionManagerLastC = new control.RegionManagerController (null, world.RegionStates.Last);
-			var regionManagerCurrC = new control.RegionManagerController (regionManagerLastC, world.RegionStates.Curr);
-			var regionManagerNextC = new control.RegionManagerController (regionManagerCurrC, world.RegionStates.Next);
-
-			controller.RegionStatesController = new @base.control.RegionStatesController (regionManagerLastC,
-																						  regionManagerCurrC,
-																						  regionManagerNextC);
 			controller.DefinitionManagerController = new server.control.DefinitionManagerController ();
 			controller.AccountManagerController = new server.control.AccountManagerController ();
+            controller.RegionManagerController = new server.control.RegionManagerController ();
 
 
-			for (int Index = 0; Index < model.ServerConstants.ACTION_THREADS; ++Index)
-			{
-				ThreadPool.QueueUserWorkItem (new WaitCallback (server.control.APIController.Instance.Worker));
-			}
 				
-			var cleanC = new @server.control.CleaningController ();
-			ThreadPool.QueueUserWorkItem (new WaitCallback (cleanC.Run));
+            for (int threadNr = 0; threadNr < server.model.ServerConstants.ACTION_THREADS; ++ threadNr)
+            {
+                Thread t = new Thread (new ParameterizedThreadStart(server.control.APIController.Instance.Worker));
+                t.Start (threadNr);
+            }
 
 			Phase = Phases.Running;
+
 
 			AreaRegistration.RegisterAllAreas ();
 			RegisterGlobalFilters (GlobalFilters.Filters);

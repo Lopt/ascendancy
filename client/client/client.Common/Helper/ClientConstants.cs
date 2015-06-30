@@ -19,6 +19,9 @@ namespace client.Common.Helper
         public const string IMAGES_LD = "images/ld";
 			   
         public const string REGION_SERVER_PATH = "http://derfalke.no-ip.biz/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
+
+
+        public const string ENTITY_TYPES_SERVER_PATH = "http://derfalke.no-ip.biz/unit.json";
         public const string TERRAIN_TYPES_SERVER_PATH = "http://derfalke.no-ip.biz/terrain.json";
         public const string LOGIC_SERVER = "http://derfalke.no-ip.biz:9000";
         public const string LOGIN_PATH = "/Login?json=$JSON";
@@ -28,14 +31,14 @@ namespace client.Common.Helper
 
         #region TileMap
 
+
         public const int CELLMAP_160x160_SIZE = 160;
 
-        public const string TILEMAP_FILE = "Worldmap-160x160(320x80)";
-        public const string LAYER_TERRAIN = "Layer 0";
-        public const string LAYER_BUILDING = "Layer 1";
-        public const string LAYER_UNIT = "Layer 2";
-        public const string LAYER_MENU = "Layer 3";
-
+        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)";
+        public const string LAYER_TERRAIN       = "Layer 0";
+        public const string LAYER_BUILDING      = "Layer 1";
+        public const string LAYER_UNIT          = "Layer 2";
+        public const string LAYER_MENU          = "Layer 3";
 
         public const float TILE_IMAGE_WIDTH = 83.0f;
 

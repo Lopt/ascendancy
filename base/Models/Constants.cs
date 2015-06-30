@@ -25,7 +25,7 @@ namespace @base.model
         public const int START_Y = 26184;
         public const int END_Y = 26191;
 
-        // if there are more than entries in a list/array, the API will dismiss the request
+        // if there are more than entries in a LinkedList/array, the API will dismiss the request
         // for safety reasons
         public const int MAX_ENTRIES_PER_CONNECTION = 25;
 

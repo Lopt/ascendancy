@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using server.model;
 using Newtonsoft.Json;
 
@@ -11,7 +11,7 @@ namespace server.control
 		{
 			{
 				string json = System.IO.File.ReadAllText (ServerConstants.TERRAIN_FILE);
-				var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>> (json);
+				var terrainDefintions = JsonConvert.DeserializeObject<List<@base.model.definitions.TerrainDefinition>> (json);
 
 				foreach (var terrain in terrainDefintions)
 				{
@@ -21,7 +21,7 @@ namespace server.control
 
 			{
 				string json = System.IO.File.ReadAllText (ServerConstants.UNIT_FILE);
-				var unitDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.UnitDefinition>>(json);
+				var unitDefintions = JsonConvert.DeserializeObject<List<@base.model.definitions.UnitDefinition>>(json);
 
 				foreach (var unit in unitDefintions)
 				{

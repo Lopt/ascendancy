@@ -27,7 +27,7 @@ namespace @base.control.action
             return Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition); 
         }
 
-        public ObservableCollection<model.CombinedPosition> FindWay(model.Position start, model.Position end)
+        public LinkedList<model.CombinedPosition> FindWay(model.Position start, model.Position end)
         {
             var xDiff = start.X - end.X;
             var yDiff = start.Y - end.Y;

@@ -10,6 +10,7 @@ namespace @base.model
     {
         public enum ActionType 
         {
+            TestAction,
             CreateHeadquarter,
             CreateUnit,
             MoveUnit,
@@ -21,19 +22,22 @@ namespace @base.model
         /// <param name="actionType">Action type.</param>
         /// <param name="regions">Affected Regions of this action.</param>
         /// <param name="parameters">Parameters.</param>
-        public Action(Account account, ActionType actionType,
+        public Action(Account account, ActionType type,
             ConcurrentDictionary<string, object> parameters)
             : base()
         {
             m_account = account;
             m_parameters = parameters;
-            m_actionType = actionType;
+            m_actionType = type;
             m_actionTime = DateTime.Now;
 
-            switch (actionType)
+            switch (type)
             {
                 case(ActionType.CreateHeadquarter):
                     Control = new control.action.CreateHeadquarter(this);
+                    break;   
+                case(ActionType.TestAction):
+                    Control = new control.action.TestAction(this);
                     break;   
                 case(ActionType.CreateUnit):
                     Control = new control.action.CreateUnit(this);

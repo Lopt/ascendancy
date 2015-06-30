@@ -16,6 +16,13 @@ namespace @base.control.action
             throw new NotImplementedException();
         }
 
+        virtual public @base.model.RegionPosition GetRegionPosition()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
