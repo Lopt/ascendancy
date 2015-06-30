@@ -58,25 +58,12 @@ namespace client.Common.Views
 
 
         public void SetUnitTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
-<<<<<<< HEAD
-        {
-            var entity = region.GetEntity (cellPosition);
-            if (entity != null) {
-                var gid = new CCTileGidAndFlags (60); //m_ViewDefinition.DefinitionToTileGid (entity.Definition);
-                mapLayer.SetTileGID (gid, mapCoordinat);
-            } else {
-                //mapLayer.RemoveTile (mapCoordinat);
-            }
-=======
         {   
             var entity = region.GetEntity (cellPosition);
-            if (entity != null)
-            {
+            if (entity != null) {
                 var gid = m_ViewDefinition.DefinitionToTileGid (entity.Definition);
                 mapLayer.SetTileGID (gid, mapCoordinat);
-            }
-            else
-            {
+            } else {
                 mapLayer.RemoveTile (mapCoordinat);
             }
         }
@@ -85,7 +72,6 @@ namespace client.Common.Views
         {
             var gid = m_ViewDefinition.DefinitionToTileGid (region.GetEntity (cellPosition).Definition);
             mapLayer.SetTileGID (gid, mapCoordinat);
->>>>>>> 2b9eafa28a170fa958ad2a5e077c47e763cb76f1
         }
 
         public CCTileMapCoordinates GetCurrentTileInMap (Position position)

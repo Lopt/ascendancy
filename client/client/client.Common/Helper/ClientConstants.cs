@@ -35,15 +35,18 @@ namespace client.Common.Helper
         public const int CELLMAP_160x160_SIZE = 160;
 
         public const string TILEMAP_FILE = "Worldmap-160x160(80x320)";
-        public const string LAYER_TERRAIN       = "Layer 0";
-        public const string LAYER_BUILDING      = "Layer 1";
-        public const string LAYER_UNIT          = "Layer 2";
-        public const string LAYER_MENU          = "Layer 3";
+        public const string LAYER_TERRAIN = "Layer 0";
+        public const string LAYER_BUILDING = "Layer 1";
+        public const string LAYER_UNIT = "Layer 2";
+        public const string LAYER_MENU = "Layer 3";
 
         public const float TILE_IMAGE_WIDTH = 83.0f;
 
         public const int TILEMAP_WIDTH = 80;
         public const int TILEMAP_HIGH = 320;
+
+        public const float TILEMAP_MIN_SCALE = 0.3f;
+        public const float TILEMAP_MAX_SCALE = 3.0f;
 
         #endregion
 
