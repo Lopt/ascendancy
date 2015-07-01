@@ -295,8 +295,10 @@ namespace client.Common.Views
         void SetCurrentPositionOnce (Position position)
         {
             var tileCoordinate = m_regionView.GetCurrentTileInMap (position);
-            m_currentPositionNode.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_WIDTH, m_terrainLayer,
-                tileCoordinate, new CCColor4F (CCColor3B.Red), 255, 3.0f);
+            if (tileCoordinate.Column > -1) {
+                m_currentPositionNode.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_WIDTH, m_terrainLayer,
+                    tileCoordinate, new CCColor4F (CCColor3B.Red), 255, 3.0f);
+            }
         }
 
         async Task DrawRegionsAsync (Position gamePosition)
@@ -305,7 +307,7 @@ namespace client.Common.Views
             await m_regionManagerController.LoadRegionsAsync ();
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoaded;
             m_regionView.SetTilesInMap160 (m_terrainLayer, m_regionManagerController.GetRegionByGamePosition (gamePosition));
-            SetCurrentPositionOnce (gamePosition);
+            SetCurrentPositionOnce (m_geolocation.CurrentGamePosition);
             SetMapAnchor (gamePosition);
             m_centerRegionPosition = new RegionPosition (gamePosition);
 
@@ -340,12 +342,13 @@ namespace client.Common.Views
 
         void CheckCenterRegion (CCPoint location)
         {            
-            var mapCell = GetMapCell (m_worldTileMap.LayerNamed ("Layer 0"), location);
+            var mapCell = GetMapCell (m_terrainLayer, location);
 
-//            if (m_RegionC.IsCellInOutsideRegion (mapCell)) {
-//                var position = m_RegionC.GetCurrentGamePosition (mapCell, m_CenterRegionPosition);
-//                DrawRegions (position);
-//            }
+            if (m_regionView.IsCellInOutsideRegion (mapCell)) {
+                var position = m_regionView.GetCurrentGamePosition (mapCell, m_centerRegionPosition);
+                DrawRegionsAsync (position);
+                DrawEntitiesAsync (position);
+            }
 
         }
 
