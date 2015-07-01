@@ -1,4 +1,5 @@
-﻿using @base.model;
+﻿using @base.Controllers.action.AStar;
+using @base.model;
 using @base.Models.Definition;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace AStar
         private Node startNode;
         private Node endNode;
         private SearchParameters searchParameters;
+        private Dict m_map;
 
         /// <summary>
         /// Create a new instance of PathFinder
@@ -31,6 +33,7 @@ namespace AStar
             startNode = nodes[searchParameters.StartLocation.X, searchParameters.StartLocation.Y];
             startNode.State = NodeState.Open;
             endNode = nodes[searchParameters.EndLocation.X, searchParameters.EndLocation.Y];
+            m_map = searchParameters.Map;
         }
 
         /// <summary>
@@ -39,11 +42,9 @@ namespace AStar
         /// <returns>A List of Points representing the path. If no path was found, the returned list is empty.</returns>
         public List<PositionI> FindPath(int moves)
         {
-            var maxpossiblemoves = moves;
-
             // The start node is the first entry in the 'open' list
             List<PositionI> path = new List<PositionI>();
-            bool success = Search(startNode, maxpossiblemoves);
+            bool success = Search(startNode, moves);
             if (success)
             {
                 // If a path was found, follow the parents from the end node to build a list of locations
@@ -94,6 +95,7 @@ namespace AStar
             nextNodes.Sort((node1, node2) => node1.F.CompareTo(node2.F));
             if (moves != 0)
             {
+                --moves;
                 foreach (var nextNode in nextNodes)
                 {
                     // Check whether the end node has been reached
@@ -105,8 +107,7 @@ namespace AStar
                     {
                         // If not, check the next set of nodes
                         if (Search(nextNode, moves)) // Note: Recurses back into Search(Node)
-                        {
-                            --moves;
+                        {                            
                             return true;
                         }
                     
@@ -125,7 +126,9 @@ namespace AStar
         private List<Node> GetAdjacentWalkableNodes(Node fromNode)
         {
             List<Node> walkableNodes = new List<Node>();
-            IEnumerable<PositionI> nextLocations = GetAdjacentLocations(fromNode.Location);
+            Node newNode;
+            m_map.GetDictionary().TryGetValue(fromNode.Location, out newNode);
+            IEnumerable<PositionI> nextLocations = GetAdjacentLocations(newNode.Location);
 
             foreach (var location in nextLocations)
             {
@@ -134,7 +137,8 @@ namespace AStar
 
                 // TODO: Dict nutzen !
 
-                Node node = this.nodes[x, y];
+                Node node = this.nodes[x, y];                
+
                 // Ignore non-walkable nodes
                 if (!node.IsWalkable)
                     continue;
