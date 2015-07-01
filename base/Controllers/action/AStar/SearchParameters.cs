@@ -17,13 +17,13 @@ namespace AStar
 
         public PositionI EndLocation { get; set; }
 
-        public Dict Map;
+        //public Dict Map;
 
-        public SearchParameters(PositionI startLocation, PositionI endLocation, Dict map)
+        public SearchParameters(PositionI startLocation, PositionI endLocation)
         {
             this.StartLocation = startLocation;
             this.EndLocation = endLocation;
-            this.Map = map;
+          //  this.Map = map;
         }
     }
 }
