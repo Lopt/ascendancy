@@ -8,12 +8,13 @@ namespace @base.model
 {
     public class Entity : ModelEntity
     {
-        public Entity(int id, Definition defintion, PositionI position)
+        public Entity(int id, Definition defintion, Account account, PositionI position)
             : base()
         {
             m_id = id; 
             m_definition = defintion;
             m_position = position;
+            m_account = account;
         }
 
         public int ID
@@ -40,9 +41,15 @@ namespace @base.model
             set { m_position = value; }
         }
 
+        public Account Account
+        {
+            get { return m_account; }
+        }
+        
         private int m_id;
         private PositionI m_position;
         private Definition m_definition;
+        private Account m_account;
     }
 }
 

@@ -6,10 +6,6 @@
     public enum NodeState
     {
         /// <summary>
-        /// The node has not yet been considered in any possible paths
-        /// </summary>
-        Untested,
-        /// <summary>
         /// The node has been identified as a possible step in a path
         /// </summary>
         Open,
