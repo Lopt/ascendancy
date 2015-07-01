@@ -9,12 +9,13 @@ using @base.Models;
 using @base.Models.Definition;
 using System.Collections;
 using AStar;
+using @base.Controllers.action.AStar;
 
 namespace @base.control.action
 {
-    public class MoveEntity : Action
+    public class MoveUnit : Action
     {
-        public MoveEntity(model.ModelEntity model)
+        public MoveUnit(model.ModelEntity model)
             : base(model)
         {
         }
@@ -44,6 +45,15 @@ namespace @base.control.action
                 Bag.Add(regionManagerC.GetRegion(adjRegions));
             }
 
+            Region bla;
+
+            Bag.TryPeek(out bla); 
+
+            foreach (var item in Bag)
+            {
+               // m_affectedRegions.GetDictionary().Add(item.RegionPosition, new Node(1, 1, true, endPosition));
+            }
+
             return Bag;
         }
 
@@ -57,22 +67,11 @@ namespace @base.control.action
         {   
             var action = (model.Action)Model;
 
-                //if (Parameters.ContainsKey(CREATE_POSITION))
-                //{
-                //    var positionC = (CombinedPosition) Parameters[CREATE_POSITION];
-                //    var region = regionManagerC.GetRegion(positionC.RegionPosition);
-                //    if (region.Exist && this.Regions.Length == 1 && this.Regions[0] == region &&
-                //        region.GetEntity(positionC.CellPosition) != null)
-                //    {
-                //        return true;
-                //    }
-                //}
-
             var startPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[START_POSITION]);
             var endPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[END_POSITION]);
             var unittype = (UnitDefinition)action.Parameters[UNIT_TYPE];           
-            
-            var pathfinder = new PathFinder(new SearchParameters(startPosI, endPosI));
+                    
+            var pathfinder = new PathFinder(new SearchParameters(startPosI, endPosI, m_affectedRegions));
 
             m_path = pathfinder.FindPath(unittype.Moves);
 
@@ -123,9 +122,10 @@ namespace @base.control.action
         {
             var list = new ConcurrentBag<RegionPosition>();
             var surlist = LogicRules.SurroundRegions;
+            var regionSizeX = Constants.REGION_SIZE_X / 2;
+            var regionSizeY = Constants.REGION_SIZE_Y / 2;
 
-
-            if (position.RegionX <= Constants.REGION_SIZE_X / 2 && position.RegionY <= Constants.REGION_SIZE_Y / 2)
+            if (position.RegionX <= regionSizeX  && position.RegionY <= regionSizeY)
             {
                 var tempReg = position + surlist[LogicRules.SurroundRegions.Length];
                 if (regionManagerC.GetRegion(tempReg).Exist)
@@ -142,7 +142,7 @@ namespace @base.control.action
                     }
                 }
             }
-            else if (position.RegionX > Constants.REGION_SIZE_X / 2 && position.RegionY <= Constants.REGION_SIZE_Y / 2)
+            else if (position.RegionX > regionSizeX  && position.RegionY <= regionSizeY)
             {
                 for (int index = 1; index < 4; ++index)
                 {
@@ -153,7 +153,7 @@ namespace @base.control.action
                     }
                 }
             }
-            else if (position.RegionX > Constants.REGION_SIZE_X / 2 && position.RegionY > Constants.REGION_SIZE_Y / 2)
+            else if (position.RegionX > regionSizeX  && position.RegionY > regionSizeY)
             {
                 for (int index = 3; index < 7; ++index)
                 {
@@ -185,7 +185,8 @@ namespace @base.control.action
             return positionI.RegionPosition;
         }
 
-        private IList m_path; 
+        private IList m_path;
+        private Dict m_affectedRegions;
     }
 }
 

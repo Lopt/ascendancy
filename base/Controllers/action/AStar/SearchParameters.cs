@@ -1,4 +1,5 @@
-﻿using @base.model;
+﻿using @base.Controllers.action.AStar;
+using @base.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,13 @@ namespace AStar
 
         public PositionI EndLocation { get; set; }
 
-        public SearchParameters(PositionI startLocation, PositionI endLocation)
+        public Dict Map;
+
+        public SearchParameters(PositionI startLocation, PositionI endLocation, Dict map)
         {
             this.StartLocation = startLocation;
-            this.EndLocation = endLocation;     
+            this.EndLocation = endLocation;
+            this.Map = map;
         }
     }
 }

@@ -70,7 +70,7 @@ namespace @base.control.action
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
             // create the new entity and link to the correct account
-            var entity = new @base.model.Entity(action.Account.ID, 
+            var entity = new @base.model.Entity(IdGenerator.GetId(), 
                 new UnitDefinition(UnitDefinition.UnitDefinitionType.Headquarter,
                     actionParameter, 
                     0, 0, 0, 0),
