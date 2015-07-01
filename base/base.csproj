@@ -64,7 +64,6 @@
     <Compile Include="Models\World.cs" />
     <Compile Include="Controllers\DefinitionManagerController.cs" />
     <Compile Include="Models\Definition\TerrainDefinition.cs" />
-    <Compile Include="Controllers\Action\AStar\Dict.cs" />
     <Compile Include="Controllers\Action\AStar\Node.cs" />
     <Compile Include="Controllers\Action\AStar\NodeState.cs" />
     <Compile Include="Controllers\Action\AStar\PathFinder.cs" />

@@ -42,6 +42,9 @@ namespace @base.model
                 case(ActionType.CreateUnit):
                     Control = new control.action.CreateUnit(this);
                     break;
+                case(ActionType.MoveUnit):
+                    Control = new control.action.MoveUnit(this);
+                    break;
             }
         }
 

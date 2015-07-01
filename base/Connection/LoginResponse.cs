@@ -15,6 +15,7 @@ namespace @base.connection
         {
             m_status = ReponseStatus.ERROR;
             m_sessionId = Guid.Empty;
+            m_accountId = 0;
         }
 
         public ReponseStatus Status
@@ -29,8 +30,15 @@ namespace @base.connection
             set { m_sessionId = value; }
         }
 
+        public int AccountId
+        {
+            get { return m_accountId; }
+            set { m_accountId = value; }
+        }
+
         Guid m_sessionId;
         ReponseStatus m_status;
+        int m_accountId;
 
     }
 }

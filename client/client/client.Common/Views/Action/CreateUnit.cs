@@ -12,9 +12,6 @@ namespace client.Common.Views.Action
 
         override public void BeforeDo()
         {
-            var action = (@base.model.Action)Model;
-            var position = (@base.model.PositionI)action.Parameters [@base.control.action.CreateUnit.CREATE_POSITION];
-            Entity = @base.control.Controller.Instance.RegionManagerController.GetRegion (position.RegionPosition).GetEntity (position.CellPosition);
         }
 
 
@@ -23,16 +20,12 @@ namespace client.Common.Views.Action
             var action = (@base.model.Action)Model;
             var actionC = (@base.control.action.CreateUnit)Model.Control;
 
-            var mapCoordinat = WorldLayer.PositionToTileMapCoordinates (Entity.Position);
-            WorldLayer.RegionView.SetUnit (mapCoordinat, null);//positionI.Get, CCTileMapCoordinates mapCoordinat, position.RegionPosition);
+            var position = (@base.model.PositionI)action.Parameters [@base.control.action.CreateUnit.CREATE_POSITION];
+            var mapCoordinat = WorldLayer.PositionToTileMapCoordinates (position);
+            var entity = @base.control.Controller.Instance.RegionManagerController.GetRegion (position.RegionPosition).GetEntity (position.CellPosition);
+            WorldLayer.RegionView.SetUnit (mapCoordinat, entity);//positionI.Get, CCTileMapCoordinates mapCoordinat, position.RegionPosition);
 
             return true;
-        }
-
-        public @base.model.Entity Entity
-        {
-            private set;
-            get;
         }
 
         public WorldLayer WorldLayer

@@ -9,6 +9,7 @@ using client.Common.Views;
 using System.Threading.Tasks;
 using client.Common.Models;
 using client.Common.Manager;
+using Xamarin.Forms.Xaml;
 
 
 
@@ -35,6 +36,15 @@ namespace client.Common
         }
 
         public static Loading LoadingState = Loading.Started;
+
+        public static Account Account {
+            get;
+            private set;
+        }
+
+
+        private string m_user = "User";
+
 
         public override void ApplicationDidFinishLaunching (CCApplication application, CCWindow mainWindow)
         {
@@ -113,7 +123,7 @@ namespace client.Common
 
             } else {
                 throw new NotImplementedException ("Login failure");
-              }
+            }
 
         }
 
@@ -130,9 +140,9 @@ namespace client.Common
             var currentGamePosition = Geolocation.GetInstance.CurrentGamePosition;
 
             LoadingState = Loading.Login;
-            await NetworkController.GetInstance.LoginAsync (currentGamePosition);
-
+            var id = await NetworkController.GetInstance.LoginAsync (currentGamePosition, m_user, "Password");
             if (NetworkController.GetInstance.IsLogedin) {
+                Account = new Account (id, m_user);
                 LoadingState = Loading.Loggedin;
             }
                 

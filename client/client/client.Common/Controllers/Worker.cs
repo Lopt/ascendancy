@@ -9,6 +9,15 @@ namespace client.Common.Controllers
         {
             WorldLayer = worldLayer;
             Queue = new ConcurrentQueue<@base.model.Action> ();
+
+            /*
+            var param = new ConcurrentDictionary<string, object> ();
+            param [@base.control.action.CreateUnit.CREATE_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 5), (int) (WorldLayer.CenterPosition.Y + 5));
+            param [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
+
+            var action = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, param);
+
+            Queue.Enqueue (action);*/
         }
 
         public void Schedule(float frameTimesInSecond)
