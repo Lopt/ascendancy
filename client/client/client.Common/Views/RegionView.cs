@@ -117,9 +117,9 @@ namespace client.Common.Views
 
         public bool IsCellInOutsideRegion (MapCellPosition mapCellPosition)
         {
-            if (mapCellPosition.CellX < Constants.REGION_SIZE_X || mapCellPosition.CellX > Constants.REGION_SIZE_X * 4)
+            if (mapCellPosition.CellX < (Constants.REGION_SIZE_X * 1.5f) || mapCellPosition.CellX > (Constants.REGION_SIZE_X * 3.5f))
                 return true;
-            if (mapCellPosition.CellY < Constants.REGION_SIZE_Y || mapCellPosition.CellY > Constants.REGION_SIZE_Y * 4)
+            if (mapCellPosition.CellY < (Constants.REGION_SIZE_Y * 1.5f) || mapCellPosition.CellY > (Constants.REGION_SIZE_Y * 3.5f))
                 return true;
 
             return false;

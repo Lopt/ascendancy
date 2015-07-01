@@ -37,6 +37,7 @@ namespace client.Common.Views
 
             m_worldTileMap = new CCTileMap (ClientConstants.TILEMAP_FILE);
             m_geolocation = Geolocation.GetInstance;
+            m_centerRegionPosition = m_geolocation.CurrentRegionPosition;
 
             m_currentPositionNode = new DrawNode ();
             m_worldTileMap.TileLayersContainer.AddChild (m_currentPositionNode);
@@ -172,7 +173,7 @@ namespace client.Common.Views
                 break;
 
             case(TouchGesture.Move):
-                CheckCenterRegion (touches [0].Location);
+                CheckCenterRegion ();
                 m_touchGesture = TouchGesture.None;
                 break;
 
@@ -186,26 +187,62 @@ namespace client.Common.Views
 
 
             //Menu Handling
-            /*
-            if(m_MenuLayer.TileGIDandFlags(tileCoordinate) != 0)
-            {
-                Command = GetMenuCommandfromDefinition(Position);
-                SendCommandToServer(Command);
-                break ???
-            }
-            */
+            if (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid != 0) {
+                
+                //Action = new @base.control.action ();
+                //@base.control.action.CreateUnit newAction;
 
-            //Movement Handling 
-            /*
-            if(MoveUI == true)
-            {
-                //do Movementstuff
-                if (GetTileState(Position) == true)
+                //newAction.Model.
+
+
+                /*
+                switch(m_menuLayer.TileGIDAndFlags(m_startCoord).Gid)
                 {
-                    SendMoveToServer(UnitID,Position)
-                }
+                case 58:
+                   //set action to create headquater
+                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateHeadquarter, System);
+                break;
+                case 59:
+                    //set action to create unit legolas
+                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateUnit, System);
+                break;
+                case 60:
+                    //set action to create unit warrior
+                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateUnit, System);
+                break;
+                case 61:
+                    //set action to create unit mage
+                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateUnit, System);
+                break;
+                case 62:
+                    //set action to create unit scout
+                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateUnit, System);
+
+                break;
+                }*/
+                //if(newAction.== true)
+                //{
+                //  action.do();
+                //}
+                return;
             }
-            */
+
+            if (m_unitLayer.TileGIDAndFlags (m_startCoord).Gid != 0) {
+                m_oldunitCoord = m_startCoord;
+                m_unitmove = true;
+                return;
+            }
+               
+            //Movement Handling 
+            if (m_unitmove == true) {
+                //
+                //if (Action.possible (move(m_oldunitCoord, m_startCoord)) == true) 
+                //{
+                //    Action.do(move(m_oldunitCoord, m_startCoord));
+                //}
+                m_unitmove = false;
+                return;
+            }
 
         }
 
@@ -242,6 +279,19 @@ namespace client.Common.Views
                 m_menuLayer.SetTileGID (gidHelper1, coordHelper4);
                 m_menuLayer.SetTileGID (gidHelper1, coordHelper5);
                 m_menuLayer.SetTileGID (gidHelper1, coordHelper6);
+                break;
+            case 1: //UnitMenu
+                gidHelper1.Gid = ClientConstants.MenueBogenschütze;
+                gidHelper2.Gid = ClientConstants.MenueKrieger;
+                gidHelper3.Gid = ClientConstants.MenueMagier;
+                gidHelper4.Gid = ClientConstants.MenueSpäher;
+                m_menuLayer.SetTileGID (gidHelper1, coordHelper1);
+                m_menuLayer.SetTileGID (gidHelper2, coordHelper2);
+                m_menuLayer.SetTileGID (gidHelper3, coordHelper3);
+                m_menuLayer.SetTileGID (gidHelper4, coordHelper4);
+                break;
+            case 2: //BuildingMenu
+                   
                 break;
             default:
                 gidHelper1.Gid = ClientConstants.MenueErde;
@@ -292,22 +342,32 @@ namespace client.Common.Views
         #region
 
 
-        void SetCurrentPositionOnce (Position position)
+        void SetCurrentPositionOnce ()
         {
-            var tileCoordinate = m_regionView.GetCurrentTileInMap (position);
-            m_currentPositionNode.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_WIDTH, m_terrainLayer,
-                tileCoordinate, new CCColor4F (CCColor3B.Red), 255, 3.0f);
+            var tileCoordinate = m_regionView.GetCurrentTileInMap (m_geolocation.CurrentGamePosition);
+
+            bool isInWorld = false;
+            m_currentPositionNode.Visible = false;
+
+            if (m_centerRegionPosition.Equals (m_geolocation.CurrentRegionPosition))
+                isInWorld = true;
+
+            if (tileCoordinate.Column > -1 && isInWorld) {
+                m_currentPositionNode.Visible = true;
+                m_currentPositionNode.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_WIDTH, m_terrainLayer,
+                    tileCoordinate, new CCColor4F (CCColor3B.Red), 255, 3.0f);
+            } 
         }
 
         async Task DrawRegionsAsync (Position gamePosition)
         {
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoading;
-            await m_regionManagerController.LoadRegionsAsync ();
+            await m_regionManagerController.LoadRegionsAsync (new RegionPosition (gamePosition));
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoaded;
             m_regionView.SetTilesInMap160 (m_terrainLayer, m_regionManagerController.GetRegionByGamePosition (gamePosition));
-            SetCurrentPositionOnce (gamePosition);
-            SetMapAnchor (gamePosition);
             m_centerRegionPosition = new RegionPosition (gamePosition);
+            SetMapAnchor (gamePosition);
+            SetCurrentPositionOnce ();
 
         }
             
@@ -338,14 +398,15 @@ namespace client.Common.Views
             m_regionView.SetTilesInMap160 (m_buildingLayer, m_regionManagerController.GetRegion (m_centerRegionPosition));
         }
 
-        void CheckCenterRegion (CCPoint location)
-        {            
-            var mapCell = GetMapCell (m_worldTileMap.LayerNamed ("Layer 0"), location);
+        void CheckCenterRegion ()
+        {  
+            var mapCell = GetMapCell (m_terrainLayer, new CCPoint (VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
 
-//            if (m_RegionC.IsCellInOutsideRegion (mapCell)) {
-//                var position = m_RegionC.GetCurrentGamePosition (mapCell, m_CenterRegionPosition);
-//                DrawRegions (position);
-//            }
+            if (m_regionView.IsCellInOutsideRegion (mapCell)) {
+                var position = m_regionView.GetCurrentGamePosition (mapCell, m_centerRegionPosition);
+                DrawRegionsAsync (position);
+                DrawEntitiesAsync (position);
+            }
 
         }
 
@@ -384,14 +445,14 @@ namespace client.Common.Views
         Geolocation m_geolocation;
 
 
-        float m_newScale = 0.5f;
-        float m_scale = 0.5f;
+        float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
+        float m_scale = ClientConstants.TILEMAP_NORM_SCALE;
         int counter = 0;
-        bool UnitMove = false;
+        bool m_unitmove = false;
         bool MenuDrawn = false;
 
 
-        CCTileMapCoordinates m_startCoord;
+        CCTileMapCoordinates m_startCoord, m_oldunitCoord;
         Stopwatch m_timer;
         TouchGesture m_touchGesture;
 
