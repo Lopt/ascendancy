@@ -71,7 +71,7 @@ namespace @base.control.action
             var endPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[END_POSITION]);
             var unittype = (UnitDefinition)action.Parameters[UNIT_TYPE];           
                     
-            var pathfinder = new PathFinder(new SearchParameters(startPosI, endPosI, m_affectedRegions));
+            var pathfinder = new PathFinder(new SearchParameters(startPosI, endPosI));
 
             m_path = pathfinder.FindPath(unittype.Moves);
 
