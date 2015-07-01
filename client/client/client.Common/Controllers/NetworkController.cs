@@ -93,10 +93,11 @@ namespace client.Common.Controllers
 
         }
 
-        public async Task LoginAsync (@base.model.Position currentGamePosition)
+        public async Task<int> LoginAsync (@base.model.Position currentGamePosition, string user, string password)
         {
             try {
-                var request = new @base.connection.LoginRequest (currentGamePosition, "User", "Password");
+                int id = -1;
+                var request = new @base.connection.LoginRequest (currentGamePosition, user, password);
                 var json = JsonConvert.SerializeObject (request);
 
                 var path = ClientConstants.LOGIN_PATH;
@@ -110,12 +111,13 @@ namespace client.Common.Controllers
                     var loginResponse = JsonConvert.DeserializeObject<@base.connection.LoginResponse> (jsonFromServer);
                     if (loginResponse.Status == @base.connection.LoginResponse.ReponseStatus.OK) {
                         m_sessionID = loginResponse.SessionID;
-
+                        id = loginResponse.AccountId;
                     } else {
                         ExceptionMessage = "Login failure";
                     }
 
                 }
+                return id;
             } catch (Exception ex) {
                 ExceptionMessage = ex.Message;
                 throw ex;
