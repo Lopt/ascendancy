@@ -5,6 +5,7 @@ using client.Common.Manager;
 using client.Common.Models;
 using client.Common.Helper;
 using System.Linq.Expressions;
+using System.Threading;
 
 namespace client.Common.Views
 {
@@ -16,66 +17,67 @@ namespace client.Common.Views
             m_ViewDefinition = new ViewDefinitions ();
         }
 
-        public void SetTilesInMap160 (CCTileMapLayer mapLayer, @base.model.Region region)
+        public void SetTilesInMap160 (@base.model.Region region)
         {
+
             var worldRegionPositions = m_RegionManagerController.GetWorldNearRegionPositions (region.RegionPosition);
 
             for (int y = 0; y < 5; y++) {
                 for (int x = 0; x < 5; x++) {
                     var Region = m_RegionManagerController.GetRegion (worldRegionPositions [x, y]);
-                    SetTilesInMap32 (mapLayer, new CCTileMapCoordinates (x * Constants.REGION_SIZE_X, y * Constants.REGION_SIZE_Y), Region);
+                    SetTilesInMap32 (new CCTileMapCoordinates (x * Constants.REGION_SIZE_X, y * Constants.REGION_SIZE_Y), Region);
                 }
             }
         }
 
-        public void SetTilesInMap32 (CCTileMapLayer mapLayer, CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
+        public void SetTilesInMap32 (CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
         {
-            for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
-                for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
+            for (int y = 0; y < Constants.REGION_SIZE_Y; y++)
+            {
+                for (int x = 0; x < Constants.REGION_SIZE_X; x++)
+                {
                     var newCellPosition = new CellPosition (x, y);
                     var mapCellPosition = new MapCellPosition ((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y));
-                    switch (mapLayer.LayerName) {
-                    case ClientConstants.LAYER_TERRAIN:
-                        SetTerrainTileInMap (mapLayer, newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
-                        break;
-                    case ClientConstants.LAYER_UNIT:
-                        SetUnitTileInMap (mapLayer, newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
-                        break;
-                    case ClientConstants.LAYER_BUILDING:
-                        SetBuildingTileInMap (mapLayer, newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
-                        break;
-                    }
 
+                    SetTerrainTileInMap (newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
+                    SetUnitTileInMap (newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
+                    //SetBuildingTileInMap (mapLayer, newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
+                
                 }
             }
         }
 
-        public void SetTerrainTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
+        public void SetTerrainTileInMap (CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {
             var gid = m_ViewDefinition.DefinitionToTileGid (region.GetTerrain (cellPosition));
-            mapLayer.SetTileGID (gid, mapCoordinat);
+            TerrainLayer.SetTileGID (gid, mapCoordinat);
         }
 
-
-        public void SetUnitTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
-        {   
-            var entity = region.GetEntity (cellPosition);
-            if (entity != null)
+        public void SetUnit(CCTileMapCoordinates mapCoordinat, Entity unit)
+        {
+            if (unit == null)
             {
-                var gid = m_ViewDefinition.DefinitionToTileGid (entity.Definition);
-                mapLayer.SetTileGID (gid, mapCoordinat);
+                UnitLayer.RemoveTile (mapCoordinat);
             }
             else
             {
-                mapLayer.RemoveTile (mapCoordinat);
+                var gid = m_ViewDefinition.DefinitionToTileGid (unit.Definition);
+                UnitLayer.SetTileGID (gid, mapCoordinat);
             }
         }
 
-        public void SetBuildingTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
-        {
-            var gid = m_ViewDefinition.DefinitionToTileGid (region.GetEntity (cellPosition).Definition);
-            mapLayer.SetTileGID (gid, mapCoordinat);
+        public void SetUnitTileInMap (CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
+        {   
+            var entity = region.GetEntity (cellPosition);
+            SetUnit (mapCoordinat, entity);
         }
+
+        public void SetBuildingTileInMap (CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
+        {
+            //var gid = m_ViewDefinition.DefinitionToTileGid (region.GetEntity (cellPosition).Definition);
+            //m_buildingLayer.SetTileGID (gid, mapCoordinat);
+        }
+
 
 
         public CCTileMapCoordinates GetCurrentTileInMap (Position position)
@@ -129,10 +131,48 @@ namespace client.Common.Views
             return false;
         }
 
+        /*
+        public CCTileMapCoordinates PositionIToMapCoordinates(PositionI position)
+        {
+            //var new new PositionI (currentRegionPositon, new CellPosition (0, 0));
+        }
+
+        public void SetUnit(PositionI position, Entity unit = null)
+        {
+            var mapCoordinat = PositionIToMapCoordinates (position);
+            SetUnit(position, unit);
+        }
+
+        public void SetUnit(PositionI position, CCTileMapCoordinates mapCoordinat, Entity entity = null)
+        {
+            if (unit == null)
+            {
+                m_unitLayer.RemoveTile (mapCoordinat);
+            }
+            else
+            {
+                var gid = m_ViewDefinition.DefinitionToTileGid (entity.Definition);
+                m_unitLayer.SetTileGID (gid, mapCoordinat);
+            }
+        }
+*/
         #region Fields
 
         client.Common.Manager.RegionManagerController m_RegionManagerController;
         ViewDefinitions m_ViewDefinition;
+
+        public CCTileMapLayer TerrainLayer;
+        public CCTileMapLayer BuildingLayer;
+        public CCTileMapLayer UnitLayer;
+        public CCTileMapLayer MenuLayer;
+
+
+        public WorldLayer WorldLayer
+        {
+            private set;
+            get;
+        }
+
 
         #endregion
     }

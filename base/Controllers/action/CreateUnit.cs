@@ -50,11 +50,8 @@ namespace @base.control.action
             var positionI = (PositionI) action.Parameters[CREATE_POSITION];
             var type = (long) action.Parameters[CREATION_TYPE];
 
-            if (CheckSurroundedArea(positionI, regionManagerC))
-            {
-                return true;              
-            }
-            return false;
+            RealCreatePosition = GetFreeField(positionI, regionManagerC);
+            return RealCreatePosition == null;
         }
 
         /// <summary>
@@ -68,7 +65,7 @@ namespace @base.control.action
             var positionI = (PositionI) action.Parameters[CREATE_POSITION];
             var type = (long) action.Parameters[CREATION_TYPE];
 
-            positionI = positionI + temp[m_index];
+            positionI = RealCreatePosition;
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
             var dt = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((int)type);
@@ -96,7 +93,7 @@ namespace @base.control.action
         /// <summary>
         /// Check all possible spawn locations around a building.        /// 
         /// </summary>       
-        private bool CheckSurroundedArea(PositionI position, RegionManagerController regionManagerC)
+        private PositionI GetFreeField(PositionI position, RegionManagerController regionManagerC)
         {      
             var temp = LogicRules.SurroundTiles;
 
@@ -111,13 +108,12 @@ namespace @base.control.action
 //                    td != TerrainDefinition.TerrainDefinitionType.Water &&
 //                    ed.Definition.Type < UnitDefinition.DefinitionType.Unit)
                 {
-                    m_index = index;
-                    return true;
+                    return surpos;
                 }
 
             }
 
-            return false;
+            return null;
         }
 
         override public @base.model.RegionPosition GetRegionPosition()
@@ -129,7 +125,7 @@ namespace @base.control.action
 
 
 
-        private int m_index;
+        public PositionI RealCreatePosition;
     }
 
 }

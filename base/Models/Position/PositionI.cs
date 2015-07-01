@@ -38,6 +38,11 @@ namespace @base.model
             return new PositionI(first.X + second.X, first.Y + second.Y);
         }
 
+        public static PositionI operator -(PositionI first, PositionI second)
+        {
+            return new PositionI(first.X - second.X, first.Y - second.Y);
+        }
+
         [JsonIgnore]
         public RegionPosition RegionPosition
         {

@@ -5,7 +5,6 @@ using CocosDenshion;
 using client.Common.Helper;
 using client.Common.Controllers;
 using @base.model;
-using @base.control;
 using client.Common.Views;
 using System.Threading.Tasks;
 using client.Common.Models;
@@ -92,10 +91,12 @@ namespace client.Common
             await LogInAsync ();
 
             if (NetworkController.GetInstance.IsLogedin) {
-                
+
+                var controller = @base.control.Controller.Instance;
+
                 LoadingState = Loading.Loggedin;
                 LoadingState = Loading.TerrainTypeLoading;
-                var entityManagerController = Controller.Instance.DefinitionManagerController as client.Common.Manager.EntityManagerController;
+                var entityManagerController = controller.DefinitionManagerController as client.Common.Manager.DefinitionManagerController;
                 await entityManagerController.LoadTerrainDefinitionsAsync ();
                 LoadingState = Loading.TerrainTypeLoaded;
 
@@ -104,7 +105,7 @@ namespace client.Common
                 LoadingState = Loading.EntitiesLoaded;
 
                 LoadingState = Loading.RegionLoading;
-                var regionManagerController = Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
+                var regionManagerController = controller.RegionManagerController as client.Common.Manager.RegionManagerController;
                 await regionManagerController.LoadRegionsAsync ();
                 LoadingState = Loading.RegionLoaded;
                 // do something in the future
@@ -119,9 +120,9 @@ namespace client.Common
         private void InitWorld ()
         {
             var world = World.Instance;
-            var controller = Controller.Instance;
+            var controller = @base.control.Controller.Instance;
             controller.RegionManagerController = new client.Common.Manager.RegionManagerController ();      
-            controller.DefinitionManagerController = new EntityManagerController ();
+            controller.DefinitionManagerController = new DefinitionManagerController ();
         }
 
         private async Task LogInAsync ()

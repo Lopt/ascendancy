@@ -22,7 +22,7 @@ namespace @base.view
             }
         }
 
-        model.ModelEntity Model
+        public model.ModelEntity Model
         {
             get { return m_model; }
         }

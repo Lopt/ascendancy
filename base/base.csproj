@@ -30,12 +30,6 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Controllers\action\AStar\Dict.cs" />
-    <Compile Include="Controllers\action\AStar\Node.cs" />
-    <Compile Include="Controllers\action\AStar\NodeState.cs" />
-    <Compile Include="Controllers\action\AStar\PathFinder.cs" />
-    <Compile Include="Controllers\action\AStar\SearchParameters.cs" />
-    <Compile Include="Controllers\action\CreateUnit.cs" />
     <Compile Include="Models\Definition\LogicRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Account.cs" />
@@ -50,7 +44,6 @@
     <Compile Include="Models\Position\Position.cs" />
     <Compile Include="Models\Position\RegionPosition.cs" />
     <Compile Include="Models\Position\CellPosition.cs" />
-    <Compile Include="Controllers\action\CreateHeadquarter.cs" />
     <Compile Include="Models\Position\CombinedPosition.cs" />
     <Compile Include="Controllers\RegionManagerController.cs" />
     <Compile Include="Controllers\Controller.cs" />
@@ -65,15 +58,22 @@
     <Compile Include="Connection\LoadRegionsRequest.cs" />
     <Compile Include="Connection\DoActionsRequest.cs" />
     <Compile Include="Models\Action.cs" />
-    <Compile Include="Controllers\action\Action.cs" />
-    <Compile Include="Controllers\action\MoveUnit.cs" />
     <Compile Include="Models\Position\PositionI.cs" />
     <Compile Include="Models\IdGenerator.cs" />
     <Compile Include="Models\Manager\DefinitionManager.cs" />
     <Compile Include="Models\World.cs" />
     <Compile Include="Controllers\DefinitionManagerController.cs" />
     <Compile Include="Models\Definition\TerrainDefinition.cs" />
-    <Compile Include="Controllers\action\TestAction.cs" />
+    <Compile Include="Controllers\Action\AStar\Dict.cs" />
+    <Compile Include="Controllers\Action\AStar\Node.cs" />
+    <Compile Include="Controllers\Action\AStar\NodeState.cs" />
+    <Compile Include="Controllers\Action\AStar\PathFinder.cs" />
+    <Compile Include="Controllers\Action\AStar\SearchParameters.cs" />
+    <Compile Include="Controllers\Action\CreateUnit.cs" />
+    <Compile Include="Controllers\Action\CreateHeadquarter.cs" />
+    <Compile Include="Controllers\Action\Action.cs" />
+    <Compile Include="Controllers\Action\MoveUnit.cs" />
+    <Compile Include="Controllers\Action\TestAction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

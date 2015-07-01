@@ -5,7 +5,7 @@ namespace @base.model
 {
     public class RegionManager
 	{
-        public RegionManager (RegionManager parent = null)
+        public RegionManager ()
         {
             Regions = new ConcurrentDictionary<RegionPosition, Region> ();
         }
