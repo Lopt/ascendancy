@@ -186,7 +186,7 @@ namespace client.Common.Views
 
 
             //Menu Handling
-            if(m_menuLayer.TileGIDAndFlags(m_startCoord) != 0)
+            if(m_menuLayer.TileGIDAndFlags(m_startCoord).Gid != 0)
             {
                 
                 //Action = new @base.control.action ();
@@ -195,8 +195,8 @@ namespace client.Common.Views
                 //newAction.Model.
 
 
-
-                switch(m_menuLayer.TileGIDAndFlags(m_startCoord))
+                /*
+                switch(m_menuLayer.TileGIDAndFlags(m_startCoord).Gid)
                 {
                 case 58:
                    //set action to create headquater
@@ -219,7 +219,7 @@ namespace client.Common.Views
                     //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateUnit, System);
 
                 break;
-                }
+                }*/
                 //if(newAction.== true)
                 //{
                 //  action.do();
@@ -227,7 +227,7 @@ namespace client.Common.Views
                 return;
             }
 
-            if (m_unitLayer.TileGIDAndFlags (m_startCoord) != 0) 
+            if (m_unitLayer.TileGIDAndFlags (m_startCoord).Gid != 0) 
             {
                 m_oldunitCoord = m_startCoord;
                 m_unitmove = true;

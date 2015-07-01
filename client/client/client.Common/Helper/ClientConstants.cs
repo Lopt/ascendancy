@@ -34,7 +34,7 @@ namespace client.Common.Helper
 
         public const int CELLMAP_160x160_SIZE = 160;
 
-        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)";
+        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20150601";
         public const string LAYER_TERRAIN = "Layer 0";
         public const string LAYER_BUILDING = "Layer 1";
         public const string LAYER_UNIT = "Layer 2";
