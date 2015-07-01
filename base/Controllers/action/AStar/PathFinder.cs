@@ -33,7 +33,7 @@ namespace AStar
             startNode = nodes[searchParameters.StartLocation.X, searchParameters.StartLocation.Y];
             startNode.State = NodeState.Open;
             endNode = nodes[searchParameters.EndLocation.X, searchParameters.EndLocation.Y];
-            m_map = searchParameters.Map;
+           // m_map = searchParameters.Map;
         }
 
         /// <summary>
