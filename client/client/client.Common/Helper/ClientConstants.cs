@@ -46,6 +46,7 @@ namespace client.Common.Helper
         public const int TILEMAP_HIGH = 320;
 
         public const float TILEMAP_MIN_SCALE = 0.3f;
+        public const float TILEMAP_NORM_SCALE = 0.5f;
         public const float TILEMAP_MAX_SCALE = 3.0f;
 
         #endregion
@@ -71,11 +72,11 @@ namespace client.Common.Helper
 
         #region UnitsGid
 
-        public const short Bogenschütze  = 46;
-        public const short Held          = 47;
-        public const short Krieger       = 48;
-        public const short Magier        = 49;
-        public const short Späher        = 50;
+        public const short Bogenschütze = 46;
+        public const short Held = 47;
+        public const short Krieger = 48;
+        public const short Magier = 49;
+        public const short Späher = 50;
         public const short unbekanteUnit = 51;
 
         #endregion

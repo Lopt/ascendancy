@@ -37,6 +37,7 @@ namespace client.Common.Views
 
             m_worldTileMap = new CCTileMap (ClientConstants.TILEMAP_FILE);
             m_geolocation = Geolocation.GetInstance;
+            m_centerRegionPosition = m_geolocation.CurrentRegionPosition;
 
             m_currentPositionNode = new DrawNode ();
             m_worldTileMap.TileLayersContainer.AddChild (m_currentPositionNode);
@@ -172,7 +173,7 @@ namespace client.Common.Views
                 break;
 
             case(TouchGesture.Move):
-                CheckCenterRegion (touches [0].Location);
+                CheckCenterRegion ();
                 m_touchGesture = TouchGesture.None;
                 break;
 
@@ -186,8 +187,7 @@ namespace client.Common.Views
 
 
             //Menu Handling
-            if(m_menuLayer.TileGIDAndFlags(m_startCoord).Gid != 0)
-            {
+            if (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid != 0) {
                 
                 //Action = new @base.control.action ();
                 //@base.control.action.CreateUnit newAction;
@@ -227,16 +227,14 @@ namespace client.Common.Views
                 return;
             }
 
-            if (m_unitLayer.TileGIDAndFlags (m_startCoord).Gid != 0) 
-            {
+            if (m_unitLayer.TileGIDAndFlags (m_startCoord).Gid != 0) {
                 m_oldunitCoord = m_startCoord;
                 m_unitmove = true;
                 return;
             }
                
             //Movement Handling 
-            if(m_unitmove == true)
-            {
+            if (m_unitmove == true) {
                 //
                 //if (Action.possible (move(m_oldunitCoord, m_startCoord)) == true) 
                 //{
@@ -344,24 +342,32 @@ namespace client.Common.Views
         #region
 
 
-        void SetCurrentPositionOnce (Position position)
+        void SetCurrentPositionOnce ()
         {
-            var tileCoordinate = m_regionView.GetCurrentTileInMap (position);
-            if (tileCoordinate.Column > -1) {
+            var tileCoordinate = m_regionView.GetCurrentTileInMap (m_geolocation.CurrentGamePosition);
+
+            bool isInWorld = false;
+            m_currentPositionNode.Visible = false;
+
+            if (m_centerRegionPosition.Equals (m_geolocation.CurrentRegionPosition))
+                isInWorld = true;
+
+            if (tileCoordinate.Column > -1 && isInWorld) {
+                m_currentPositionNode.Visible = true;
                 m_currentPositionNode.DrawHexagonForIsoStagMap (ClientConstants.TILE_IMAGE_WIDTH, m_terrainLayer,
                     tileCoordinate, new CCColor4F (CCColor3B.Red), 255, 3.0f);
-            }
+            } 
         }
 
         async Task DrawRegionsAsync (Position gamePosition)
         {
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoading;
-            await m_regionManagerController.LoadRegionsAsync ();
+            await m_regionManagerController.LoadRegionsAsync (new RegionPosition (gamePosition));
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoaded;
             m_regionView.SetTilesInMap160 (m_terrainLayer, m_regionManagerController.GetRegionByGamePosition (gamePosition));
-            SetCurrentPositionOnce (m_geolocation.CurrentGamePosition);
-            SetMapAnchor (gamePosition);
             m_centerRegionPosition = new RegionPosition (gamePosition);
+            SetMapAnchor (gamePosition);
+            SetCurrentPositionOnce ();
 
         }
             
@@ -392,15 +398,15 @@ namespace client.Common.Views
             m_regionView.SetTilesInMap160 (m_buildingLayer, m_regionManagerController.GetRegion (m_centerRegionPosition));
         }
 
-        void CheckCenterRegion (CCPoint location)
-        {            
-            var mapCell = GetMapCell (m_terrainLayer, location);
+        void CheckCenterRegion ()
+        {  
+            var mapCell = GetMapCell (m_terrainLayer, new CCPoint (VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
 
-//            if (m_regionView.IsCellInOutsideRegion (mapCell)) {
-//                var position = m_regionView.GetCurrentGamePosition (mapCell, m_centerRegionPosition);
-//                DrawRegionsAsync (position);
-//                DrawEntitiesAsync (position);
-//            }
+            if (m_regionView.IsCellInOutsideRegion (mapCell)) {
+                var position = m_regionView.GetCurrentGamePosition (mapCell, m_centerRegionPosition);
+                DrawRegionsAsync (position);
+                DrawEntitiesAsync (position);
+            }
 
         }
 
@@ -439,8 +445,8 @@ namespace client.Common.Views
         Geolocation m_geolocation;
 
 
-        float m_newScale = 0.5f;
-        float m_scale = 0.5f;
+        float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
+        float m_scale = ClientConstants.TILEMAP_NORM_SCALE;
         int counter = 0;
         bool m_unitmove = false;
         bool MenuDrawn = false;
