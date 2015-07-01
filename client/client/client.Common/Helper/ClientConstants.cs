@@ -71,11 +71,12 @@ namespace client.Common.Helper
 
         #region UnitsGid
 
-        public const short Bogenschütze = 46;
-        public const short Krieger = 47;
-        public const short Magier = 48;
-        public const short Späher = 49;
-        public const short unbekanteUnit = 50;
+        public const short Bogenschütze  = 46;
+        public const short Held          = 47;
+        public const short Krieger       = 48;
+        public const short Magier        = 49;
+        public const short Späher        = 50;
+        public const short unbekanteUnit = 51;
 
         #endregion
 
@@ -125,7 +126,6 @@ namespace client.Common.Helper
 
         #region MenueBuildingsGid
 
-        public const short AuswahlRahmen = 51;
         public const short MenueErde = 52;
         public const short MenueFeuer = 53;
         public const short MenueGold = 54;
