@@ -344,11 +344,11 @@ namespace client.Common.Views
         {            
             var mapCell = GetMapCell (m_terrainLayer, location);
 
-            if (m_regionView.IsCellInOutsideRegion (mapCell)) {
-                var position = m_regionView.GetCurrentGamePosition (mapCell, m_centerRegionPosition);
-                DrawRegionsAsync (position);
-                DrawEntitiesAsync (position);
-            }
+//            if (m_regionView.IsCellInOutsideRegion (mapCell)) {
+//                var position = m_regionView.GetCurrentGamePosition (mapCell, m_centerRegionPosition);
+//                DrawRegionsAsync (position);
+//                DrawEntitiesAsync (position);
+//            }
 
         }
 
