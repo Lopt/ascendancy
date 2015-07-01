@@ -30,7 +30,6 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Controllers\action\AStar\Dict.cs" />
     <Compile Include="Controllers\action\AStar\Node.cs" />
     <Compile Include="Controllers\action\AStar\NodeState.cs" />
     <Compile Include="Controllers\action\AStar\PathFinder.cs" />
