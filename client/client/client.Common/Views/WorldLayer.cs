@@ -58,7 +58,7 @@ namespace client.Common.Views
 
 
             m_touchGesture = TouchGesture.None;
-
+                
             this.AddChild (m_worldTileMap);
 
 
@@ -76,7 +76,8 @@ namespace client.Common.Views
             AddEventListener (TouchListener);
 
             m_worker = new Controllers.Worker (this);
-            //Schedule (m_worker.Schedule); TODO: decomment and schedule actions
+
+            Schedule (m_worker.Schedule); //TODO: decomment and schedule actions
 
 
         }
@@ -211,42 +212,55 @@ namespace client.Common.Views
                 Position tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
                 PositionI tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
                 dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
-                @base.model.Action newAction;
-                switch(m_menuLayer.TileGIDAndFlags(m_startCoord).Gid)
-                {
+                @base.model.Action newAction = null;
+                switch (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid) {
                 case ClientConstants.CROSS_GID:
                     ShowMenu (m_startCoord, 0);
                     break;
                 case ClientConstants.MENUEEARTH_GID:
                     //set action to create headquater
                     //dictParam[@base.control.action.CreateHeadquarter.] = (long) 60;
-                    newAction = new @base.model.Action(new Account(0), @base.model.Action.ActionType.CreateHeadquarter, dictParam);
+                    newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateHeadquarter, dictParam);
                     //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateHeadquarter, System);
                     break;
                 case ClientConstants.MENUEBOWMAN_GID:
                     //set action to create unit legolas
-                    dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long) 60;
-                    newAction = new @base.model.Action (new Account(0), @base.model.Action.ActionType.CreateUnit, dictParam);
+                    dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
+                    newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
                     break;
                 case ClientConstants.MENUEWARRIOR_GID:
                     //set action to create unit warrior
-                    dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long) 60;
-                    newAction = new @base.model.Action (new Account(0), @base.model.Action.ActionType.CreateUnit, dictParam);
+                    dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
+                    newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
                     break;
                 case ClientConstants.MENUEMAGE_GID:
                     //set action to create unit mage
-                    dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long) 60;
-                    newAction = new @base.model.Action (new Account(0), @base.model.Action.ActionType.CreateUnit, dictParam);
+                    dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
+                    newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
                     break;
                 case ClientConstants.MENUESCOUT_GID:
                     //set action to create unit scout
-                    dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long) 60;
-                    newAction = new @base.model.Action (new Account(0), @base.model.Action.ActionType.CreateUnit, dictParam);
+                    dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
+                    newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
                     break;
                 }
-                //var actionC = (@base.control.action.Action)newAction.Control;
-                //var possible = actionC.Possible (m_regionManagerController);
-            break;
+
+                /*
+                 * //uncomment for create unit action
+                if (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid != ClientConstants.CROSS_GID)
+                {
+                    var actionC = (@base.control.action.Action)newAction.Control;
+                    var possible = actionC.Possible (m_regionManagerController);
+                    if (possible)
+                    {
+                        m_worker.Queue.Enqueue (newAction);
+                    }
+                }
+                */
+
+
+
+                break;
 
             }
 

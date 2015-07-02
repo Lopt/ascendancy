@@ -21,16 +21,8 @@ namespace client.Common.Views.Action
             var endPosition = (@base.model.PositionI)action.Parameters [@base.control.action.MoveUnit.END_POSITION];
 
             m_entity = @base.control.Controller.Instance.RegionManagerController.GetRegion (startPosition.RegionPosition).GetEntity (startPosition.CellPosition);
-            m_path = new List<@base.model.PositionI> ();//actionC.Path;
+            m_path = actionC.Path;
             m_currentPosition = startPosition;
-            for (int i = 0; i < 60; ++i)
-            {
-                m_path.Add(new @base.model.PositionI(startPosition.X, startPosition.Y + i));
-            }
-            for (int i = 1; i < 60; ++i)
-            {
-                m_path.Add(new @base.model.PositionI(startPosition.X - i, startPosition.Y + 60));
-            }
         }
 
 

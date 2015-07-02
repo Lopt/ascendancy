@@ -10,6 +10,8 @@ namespace client.Common.Controllers
             WorldLayer = worldLayer;
             Queue = new ConcurrentQueue<@base.model.Action> ();
 
+
+            /*
             var param = new ConcurrentDictionary<string, object> ();
             param [@base.control.action.CreateUnit.CREATE_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 5), (int) (WorldLayer.CenterPosition.Y - 36));
             param [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
@@ -25,7 +27,7 @@ namespace client.Common.Controllers
 
             Queue.Enqueue (action2);
 
-        
+               */
         }
 
         public void Schedule(float frameTimesInSecond)
@@ -49,10 +51,9 @@ namespace client.Common.Controllers
                 actionV.BeforeDo ();
                 actionC.Do (regionC);
             }
-
         }
 
-        static Views.Action.Action CreateActionView(@base.model.Action action)
+        Views.Action.Action CreateActionView(@base.model.Action action)
         {
             switch(action.Type)
             {
@@ -69,9 +70,9 @@ namespace client.Common.Controllers
             return new Views.Action.Action(action);
         }
 
-        static public ConcurrentQueue<@base.model.Action> Queue;
-        static public @base.model.Action Action = null;
-        static public Views.WorldLayer WorldLayer;
+        public ConcurrentQueue<@base.model.Action> Queue;
+        public @base.model.Action Action = null;
+        public Views.WorldLayer WorldLayer;
 
     }
 }
