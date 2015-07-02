@@ -38,6 +38,18 @@ namespace @base.model
             return new PositionI(first.X + second.X, first.Y + second.Y);
         }
 
+        public static PositionI operator -(PositionI first, PositionI second)
+        {
+            return new PositionI(first.X - second.X, first.Y - second.Y);
+        }
+
+        public double Distance(PositionI position)
+        {
+            var xDistance = (position.X - m_x);
+            var yDistance = (position.Y - m_y);
+            return xDistance * xDistance + yDistance * yDistance;
+        }
+
         [JsonIgnore]
         public RegionPosition RegionPosition
         {

@@ -42,6 +42,19 @@ namespace @base.model
 			get { return this.m_y; }
 		}
 
+        [JsonIgnore]
+        public RegionPosition RegionPosition
+        {
+            get { return new RegionPosition(this); }
+        }
+
+        [JsonIgnore]
+        public CellPosition CellPosition
+        {
+            get { return new CellPosition(this); }
+        }
+
+
         public double Distance(Position position)
         {
             var xDistance = (position.X - m_x);

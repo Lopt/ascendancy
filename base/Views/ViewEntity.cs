@@ -7,9 +7,9 @@ namespace @base.view
         public ViewEntity (model.ModelEntity model)
 		{   
             m_model = model;
-            if (m_model.View == null)
+            if (m_model.View != null)
             {
-                throw new Exception("ModelEntity.Control already has an ControlEntity.");
+                throw new Exception("ModelEntity.Control already has an ViewEntity.");
             }
             m_model.View = this;
 		}
@@ -22,7 +22,7 @@ namespace @base.view
             }
         }
 
-        model.ModelEntity Model
+        public model.ModelEntity Model
         {
             get { return m_model; }
         }

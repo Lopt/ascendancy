@@ -5,11 +5,11 @@ using CocosDenshion;
 using client.Common.Helper;
 using client.Common.Controllers;
 using @base.model;
-using @base.control;
 using client.Common.Views;
 using System.Threading.Tasks;
 using client.Common.Models;
 using client.Common.Manager;
+using Xamarin.Forms.Xaml;
 
 
 
@@ -36,6 +36,15 @@ namespace client.Common
         }
 
         public static Loading LoadingState = Loading.Started;
+
+        public static Account Account {
+            get;
+            private set;
+        }
+
+
+        private string m_user = "User";
+
 
         public override void ApplicationDidFinishLaunching (CCApplication application, CCWindow mainWindow)
         {
@@ -92,10 +101,12 @@ namespace client.Common
             await LogInAsync ();
 
             if (NetworkController.GetInstance.IsLogedin) {
-                
+
+                var controller = @base.control.Controller.Instance;
+
                 LoadingState = Loading.Loggedin;
                 LoadingState = Loading.TerrainTypeLoading;
-                var entityManagerController = Controller.Instance.DefinitionManagerController as client.Common.Manager.EntityManagerController;
+                var entityManagerController = controller.DefinitionManagerController as client.Common.Manager.DefinitionManagerController;
                 await entityManagerController.LoadTerrainDefinitionsAsync ();
                 LoadingState = Loading.TerrainTypeLoaded;
 
@@ -104,7 +115,7 @@ namespace client.Common
                 LoadingState = Loading.EntitiesLoaded;
 
                 LoadingState = Loading.RegionLoading;
-                var regionManagerController = Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
+                var regionManagerController = controller.RegionManagerController as client.Common.Manager.RegionManagerController;
                 await regionManagerController.LoadRegionsAsync ();
                 LoadingState = Loading.RegionLoaded;
                 // do something in the future
@@ -112,16 +123,16 @@ namespace client.Common
 
             } else {
                 throw new NotImplementedException ("Login failure");
-              }
+            }
 
         }
 
         private void InitWorld ()
         {
             var world = World.Instance;
-            var controller = Controller.Instance;
+            var controller = @base.control.Controller.Instance;
             controller.RegionManagerController = new client.Common.Manager.RegionManagerController ();      
-            controller.DefinitionManagerController = new EntityManagerController ();
+            controller.DefinitionManagerController = new DefinitionManagerController ();
         }
 
         private async Task LogInAsync ()
@@ -129,9 +140,9 @@ namespace client.Common
             var currentGamePosition = Geolocation.GetInstance.CurrentGamePosition;
 
             LoadingState = Loading.Login;
-            await NetworkController.GetInstance.LoginAsync (currentGamePosition);
-
+            var id = await NetworkController.GetInstance.LoginAsync (currentGamePosition, m_user, "Password");
             if (NetworkController.GetInstance.IsLogedin) {
+                Account = new Account (id, m_user);
                 LoadingState = Loading.Loggedin;
             }
                 

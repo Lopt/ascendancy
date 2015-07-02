@@ -46,6 +46,7 @@ namespace client.Common.Helper
         public const int TILEMAP_HIGH = 320;
 
         public const float TILEMAP_MIN_SCALE = 0.3f;
+        public const float TILEMAP_NORM_SCALE = 0.5f;
         public const float TILEMAP_MAX_SCALE = 3.0f;
 
         #endregion
@@ -109,18 +110,18 @@ namespace client.Common.Helper
         public const short WALL4_GID = 25;
         public const short WALL5_GID = 26;
         public const short WALL6_GID = 27;
-        public const short KaserneErde = 34;
-        public const short KaserneFeuer = 35;
-        public const short KaserneGold = 36;
-        public const short KaserneLuft = 37;
-        public const short KaserneMagie = 38;
-        public const short KaserneWasser = 39;
-        public const short MineErde = 40;
-        public const short MineFeuer = 41;
-        public const short MineGold = 42;
-        public const short MineLuft = 43;
-        public const short MineMana = 44;
-        public const short MineWasser = 45;
+        public const short BARRACKSEARTH_GID = 34;
+        public const short BARRACKSFIRE_GID = 35;
+        public const short BARRACKSGOLD_GID = 36;
+        public const short BARRACKSAIR_GID = 37;
+        public const short BARRACKSMAGIC_GID = 38;
+        public const short BARRACKSWATER_GID = 39;
+        public const short MINEEARTH_GID = 40;
+        public const short MINEFIRE_GID = 41;
+        public const short MINEGOLD_GID = 42;
+        public const short MINEAIR_GID = 43;
+        public const short MINEMANA_GID = 44;
+        public const short MINEWATER_GID = 45;
 
         #endregion
 

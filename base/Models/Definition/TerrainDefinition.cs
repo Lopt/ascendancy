@@ -23,13 +23,14 @@ namespace @base.model.definitions
         }
       
         public TerrainDefinition(TerrainDefinitionType terrainType,
-            int[] ressources, bool buildable = true, bool walkable = true)
+            int[] ressources, bool buildable = true, bool walkable = true, int travelCost = 1)
             : base((int) terrainType)
         {
             Ressources = ressources;
             Buildable = buildable;
             Walkable = walkable;
             TerrainType = terrainType;
+            TravelCost = travelCost;
         }
         
         public int[] Ressources
@@ -56,6 +57,11 @@ namespace @base.model.definitions
             private set;
         }
 
+        public int TravelCost
+        {
+            get;
+            private set;
+        }
     }
 }
 

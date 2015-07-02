@@ -2,7 +2,7 @@
 using @base.model;
 using client.Common.Controllers;
 using client.Common.Helper;
-using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System;
@@ -10,40 +10,31 @@ using System;
 
 namespace client.Common.Manager
 {
-    public class EntityManagerController : DefinitionManagerController
+    public class EntityManagerController
     {
 
-        public EntityManagerController ()
+        // TODO: find better singleton implementation
+        // http://csharpindepth.com/articles/general/singleton.aspx
+        // NOT lazy-singletons: throws useless exceptions when initialisation failed
+        private static EntityManagerController instance=null;
+
+        public static EntityManagerController Instance
         {
-            m_Network = NetworkController.GetInstance;
-            m_RegionManagerController = Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
-        }
-
-
-        public async Task LoadTerrainDefinitionsAsync ()
-        {
-            await m_Network.LoadTerrainTypesAsync (ClientConstants.TERRAIN_TYPES_SERVER_PATH);
-
-            var json = m_Network.JsonTerrainTypeString;
-            var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>> (json);
-
-            foreach (var terrain in terrainDefintions) {
-                DefinitionManager.AddDefinition (terrain);
-
+            get
+            {
+                if (instance==null)
+                {
+                    instance = new EntityManagerController();
+                }
+                return instance;
             }
         }
 
-        public async Task LoadEntityDefinitionsAsync ()
+
+
+        private EntityManagerController ()
         {
-            await m_Network.LoadTerrainTypesAsync (ClientConstants.ENTITY_TYPES_SERVER_PATH);
-
-            var json = m_Network.JsonTerrainTypeString;
-            var unitDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.UnitDefinition>> (json);
-
-            foreach (var unitType in unitDefintions ) {
-                DefinitionManager.AddDefinition (unitType);
-
-            }
+            Entities = new Dictionary<int, Entity> ();
         }
 
 
@@ -51,7 +42,9 @@ namespace client.Common.Manager
 
         public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition centerRegionPosition)
         {
-            var worldRegions = m_RegionManagerController.GetWorldNearRegionPositions (centerRegionPosition);
+            var regionManagerC = (Manager.RegionManagerController) Controller.Instance.RegionManagerController;
+
+            var worldRegions = regionManagerC.GetWorldNearRegionPositions (centerRegionPosition);
             var listRegions = new RegionPosition[25];
             int index = 0;
             foreach (var regionPosition in worldRegions) {
@@ -63,18 +56,21 @@ namespace client.Common.Manager
 
         }
 
-       
-            
+
+
         public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition[] listRegions)
         {
 
-            var entities = await m_Network.LoadEntitiesAsync (currentGamePosition, listRegions);
+            var entities = await NetworkController.GetInstance.LoadEntitiesAsync (currentGamePosition, listRegions);
 
             if (entities != null) {
                 foreach (var regionEntities in entities) {
                     foreach (var entity in regionEntities) {
-                        var region = m_RegionManagerController.GetRegion (entity.Position.RegionPosition);
+                        var region = Controller.Instance.RegionManagerController.GetRegion (entity.Position.RegionPosition);
                         region.AddEntity (DateTime.Now, entity);
+                        Add (entity);
+
+
                     }
                 }
             }
@@ -82,13 +78,27 @@ namespace client.Common.Manager
 
         #endregion
 
+        Entity GetEntity(int Id)
+        {
+            Entity entity = null;
+            Entities.TryGetValue (Id, out entity);
+            return entity;
+        }
 
-        #region private Fields
+        void Remove(Entity entity)
+        {
+            if (Entities.ContainsKey(entity.ID))
+            {
+                Entities.Remove (entity.ID);
+            }
+        }
 
-        private NetworkController m_Network;
-        private RegionManagerController m_RegionManagerController;
+        void Add(Entity entity)
+        {
+            Entities [entity.ID] = entity;
+        }
 
-        #endregion
+        public static Dictionary<int, Entity> Entities;
     }
 }
 
