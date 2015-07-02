@@ -57,7 +57,7 @@ namespace client.Common.Views
         {
             if (unit == null)
             {
-                UnitLayer.RemoveTile (mapCoordinat);
+                UnitLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);
             }
             else
             {

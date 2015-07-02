@@ -24,7 +24,7 @@ namespace client.Common.Views.Action
             var mapCoordinat = WorldLayer.PositionToTileMapCoordinates (position);
             var entity = @base.control.Controller.Instance.RegionManagerController.GetRegion (position.RegionPosition).GetEntity (position.CellPosition);
             WorldLayer.RegionView.SetUnit (mapCoordinat, entity);//positionI.Get, CCTileMapCoordinates mapCoordinat, position.RegionPosition);
-
+            WorldLayer.UglyDraw();
             return true;
         }
 

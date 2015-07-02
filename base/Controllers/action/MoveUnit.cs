@@ -19,6 +19,18 @@ namespace @base.control.action
             : base(model)
         {
             var action = (model.Action)Model;
+            var param = action.Parameters;
+
+
+            if (param[START_POSITION].GetType() != typeof(PositionI))
+            {
+                param[START_POSITION] = new model.PositionI((Newtonsoft.Json.Linq.JContainer)param[START_POSITION]);
+            }
+
+            if (param[END_POSITION].GetType() != typeof(PositionI))
+            {
+                param[END_POSITION] = new model.PositionI((Newtonsoft.Json.Linq.JContainer)param[END_POSITION]);
+            }
         }
 
         public const string START_POSITION = "EntityPosition";
@@ -34,8 +46,8 @@ namespace @base.control.action
             m_Bag = new ConcurrentBag<model.Region>();
 
             var action = (model.Action)Model;
-            var startPosition = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[START_POSITION]);
-            var endPosition = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[END_POSITION]);
+            var startPosition = (PositionI)action.Parameters[START_POSITION];
+            var endPosition = (PositionI)action.Parameters[END_POSITION];
 
             m_Bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
             var adjacentRegions = GetAdjacentRegions(regionManagerC, regionManagerC.GetRegion(startPosition.RegionPosition).RegionPosition);
@@ -57,15 +69,15 @@ namespace @base.control.action
         {
             var action = (model.Action)Model;
 
-            var startPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[START_POSITION]);
-            var endPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[END_POSITION]);
-            var unit = Controller.Instance.RegionManagerController.GetRegion(startPosI.RegionPosition).GetEntity(startPosI.CellPosition);
+            var startPosition = (PositionI)action.Parameters[START_POSITION];
+            var endPosition = (PositionI)action.Parameters[END_POSITION];
+            var unit = Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
         
-            if (action.Account.ID == unit.Account.ID)
+            if (unit != null && action.Account.ID == unit.Account.ID)
             {
-                var pathfinder = new PathFinder(new SearchParameters(startPosI, endPosI));             
-                Path = pathfinder.FindPath( ((UnitDefinition) unit.Definition).Moves);
-                return Path.Count != 0;                
+                //var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition));             
+                //Path = pathfinder.FindPath( ((UnitDefinition) unit.Definition).Moves);
+                //return Path.Count != 0;                
             }
 
             return false;           
@@ -80,10 +92,9 @@ namespace @base.control.action
         {
             var action = (model.Action)Model;
 
-            var startPosition = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[START_POSITION]);
-            var endPosI = new model.PositionI((Newtonsoft.Json.Linq.JContainer)action.Parameters[END_POSITION]);
-
-            startPosition = endPosI;
+            var startPosition = (PositionI)action.Parameters[START_POSITION];
+            var endPosition = (PositionI)action.Parameters[END_POSITION];
+            startPosition = endPosition;
 
             return m_Bag;
         }

@@ -72,7 +72,7 @@ namespace client.Common.Views
             AddEventListener (TouchListener);
 
             m_worker = new Controllers.Worker (this);
-            Schedule (m_worker.Schedule);
+            //Schedule (m_worker.Schedule);
 
 
         }
@@ -320,10 +320,9 @@ namespace client.Common.Views
                 m_menuLayer.SetTileGID (gidHelper5, coordHelper5);
                 m_menuLayer.SetTileGID (gidHelper6, coordHelper6);
                 break;
+
             }
-           
-            //TODO: find better solution
-            m_worldTileMap.TileLayersContainer.Position += new CCPoint (0.0001f, 0.0001f);
+            UglyDraw ();
 
         }
 
@@ -331,13 +330,11 @@ namespace client.Common.Views
         #endregion
 
         #region Scheduling
-
-        void SetEntitys (float frameTimesInSecond)
+        public void UglyDraw()
         {
-            //TODO 
-            throw new NotImplementedException ();
+            //TODO: find better solution
+            m_worldTileMap.TileLayersContainer.Position += new CCPoint (0.0001f, 0.0001f);
         }
-
 
         void CheckGeolocation (float frameTimesInSecond)
         {
@@ -467,10 +464,7 @@ namespace client.Common.Views
 
         float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
         float m_scale = ClientConstants.TILEMAP_NORM_SCALE;
-        int counter = 0;
         bool m_unitmove = false;
-        bool MenuDrawn = false;
-
 
         CCTileMapCoordinates m_startCoord, m_oldunitCoord;
         Stopwatch m_timer;
