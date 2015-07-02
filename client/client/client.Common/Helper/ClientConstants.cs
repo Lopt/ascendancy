@@ -71,44 +71,44 @@ namespace client.Common.Helper
 
         #region UnitsGid
 
-        public const short Bogenschütze  = 46;
-        public const short Held          = 47;
-        public const short Krieger       = 48;
-        public const short Magier        = 49;
-        public const short Späher        = 50;
-        public const short unbekanteUnit = 51;
+        public const short BOWMAN_GID  = 46;
+        public const short HERO_GID          = 47;
+        public const short WARRIOR_GID       = 48;
+        public const short MAGE_GID        = 49;
+        public const short SCOUT_GID        = 50;
+        public const short UNKNOWN_GID = 51;
 
         #endregion
 
         #region MenueUnitsGid
 
-        public const short MenueBogenschütze = 59;
-        public const short MenueKrieger = 60;
-        public const short MenueMagier = 61;
-        public const short MenueSpäher = 62;
-        public const short MenueEinheitenPlatzhalter = 63;
+        public const short MENUEBOWMAN_GID = 59;
+        public const short MENUEWARRIOR_GID = 60;
+        public const short MENUEMAGE_GID = 61;
+        public const short MENUESCOUT_GID = 62;
+        public const short MENUEUNKNOWN_GID = 63;
 
 
         #endregion
 
         #region BuildingsGid
 
-        public const short Farm = 12;
-        public const short Garnision = 13;
-        public const short Hauptgebäude = 14;
-        public const short Haus = 15;
-        public const short Turm1 = 16;
-        public const short Turm2 = 17;
-        public const short Turm3 = 18;
-        public const short Turm4 = 19;
-        public const short Turm5 = 20;
-        public const short Turm6 = 21;
-        public const short Mauer1 = 22;
-        public const short Mauer2 = 23;
-        public const short Mauer3 = 24;
-        public const short Mauer4 = 25;
-        public const short Mauer5 = 26;
-        public const short Mauer6 = 27;
+        public const short FARM_GID = 12;
+        public const short GARNISION_GID = 13;
+        public const short HEADQUARTER_GID = 14;
+        public const short HOUSE_GID = 15;
+        public const short TOWER1_GID = 16;
+        public const short TOWER2_GID = 17;
+        public const short TOWER3_GID = 18;
+        public const short TOWER4_GID = 19;
+        public const short TOWER5_GID = 20;
+        public const short TOWER6_GID = 21;
+        public const short WALL1_GID = 22;
+        public const short WALL2_GID = 23;
+        public const short WALL3_GID = 24;
+        public const short WALL4_GID = 25;
+        public const short WALL5_GID = 26;
+        public const short WALL6_GID = 27;
         public const short KaserneErde = 34;
         public const short KaserneFeuer = 35;
         public const short KaserneGold = 36;
@@ -126,13 +126,20 @@ namespace client.Common.Helper
 
         #region MenueBuildingsGid
 
-        public const short MenueErde = 52;
-        public const short MenueFeuer = 53;
-        public const short MenueGold = 54;
-        public const short MenueLuft = 55;
-        public const short MenueMana = 56;
-        public const short MenueWasser = 57;
-        public const short MenueGebäudePlatzhalter = 58;
+        public const short MENUEEARTH_GID = 52;
+        public const short MENUEFIRE_GID = 53;
+        public const short MENUEGOLD_GID = 54;
+        public const short MENUEAIR_GID = 55;
+        public const short MENUEMANA_GID = 56;
+        public const short MENUEWATER_GID = 57;
+        public const short MENUEBUILDINGPLACEHOLDER_GID = 58;
+
+        #endregion
+
+        #region HelperGid
+
+        public const short DOT_GID = 64;
+        public const short CROSS_GID = 65;
 
         #endregion
 

@@ -41,18 +41,18 @@ namespace client.Common.Views
         {
             m_UnitDefToTileGid = new Dictionary<UnitDefinition.UnitDefinitionType, CCTileGidAndFlags> ();
 
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Hero, new CCTileGidAndFlags (ClientConstants.Bogenschütze));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Warrior, new CCTileGidAndFlags (ClientConstants.Krieger));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Mage, new CCTileGidAndFlags (ClientConstants.Magier));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Unknown1, new CCTileGidAndFlags (ClientConstants.Späher));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Unknown2, new CCTileGidAndFlags (ClientConstants.unbekanteUnit));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Unknown3, new CCTileGidAndFlags (ClientConstants.unbekanteUnit));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Headquarter, new CCTileGidAndFlags (ClientConstants.Hauptgebäude));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Outposts, new CCTileGidAndFlags (ClientConstants.Hauptgebäude));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Houses, new CCTileGidAndFlags (ClientConstants.Haus));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Wall, new CCTileGidAndFlags (ClientConstants.Mauer1));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Barracks, new CCTileGidAndFlags (ClientConstants.Garnision));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.RessourceHarvester, new CCTileGidAndFlags (ClientConstants.Farm));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Hero, new CCTileGidAndFlags (ClientConstants.BOWMAN_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Warrior, new CCTileGidAndFlags (ClientConstants.WARRIOR_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Mage, new CCTileGidAndFlags (ClientConstants.MAGE_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Unknown1, new CCTileGidAndFlags (ClientConstants.SCOUT_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Unknown2, new CCTileGidAndFlags (ClientConstants.UNKNOWN_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Unknown3, new CCTileGidAndFlags (ClientConstants.UNKNOWN_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Headquarter, new CCTileGidAndFlags (ClientConstants.HEADQUARTER_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Outposts, new CCTileGidAndFlags (ClientConstants.HEADQUARTER_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Houses, new CCTileGidAndFlags (ClientConstants.HOUSE_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Wall, new CCTileGidAndFlags (ClientConstants.WALL1_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Barracks, new CCTileGidAndFlags (ClientConstants.GARNISION_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.RessourceHarvester, new CCTileGidAndFlags (ClientConstants.FARM_GID));
 
         }
 

@@ -46,6 +46,8 @@ namespace client.Common.Views
             m_unitLayer = m_worldTileMap.LayerNamed (ClientConstants.LAYER_UNIT);
             m_menuLayer = m_worldTileMap.LayerNamed (ClientConstants.LAYER_MENU);
 
+            clearLayers ();
+
             m_touchGesture = TouchGesture.None;
 
             this.AddChild (m_worldTileMap);
@@ -145,7 +147,7 @@ namespace client.Common.Views
         {
             switch (m_touchGesture) {
             case (TouchGesture.Menu):
-                ShowMenu (m_startCoord, 0);
+                //ShowMenu (m_startCoord, 0);
                 break;
             }
 
@@ -155,6 +157,7 @@ namespace client.Common.Views
 
             //get Touch location and Corresponding TilePosition
             var location = m_terrainLayer.WorldToParentspace (touches [0].Location);
+            m_startLocation = location;
             m_startCoord = m_terrainLayer.ClosestTileCoordAtNodePosition (location);
         }
 
@@ -180,49 +183,80 @@ namespace client.Common.Views
                 m_touchGesture = TouchGesture.Menu;
                 //Draw the taped ISO Tile
                 //m_CurrentPositionNode.DrawISOForIsoStagMap(131, m_UnitLayer,tileCoordinate, new CCColor4F (CCColor3B.Blue), 255, 3.0f);
-                ShowMenu (m_startCoord, 1);
+                if (m_buildingLayer.TileGIDAndFlags (m_startCoord).Gid != 0) {
+                    ShowMenu (m_startCoord, 1);
+                } else {
+                    ShowMenu (m_startCoord, 2);
+                }
+                    
                 break;
+            case(TouchGesture.Menu):
+                var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+                MapCellPosition tapMapCellPosition = new MapCellPosition (m_startCoord);//GetMapCell(m_menuLayer, m_startLocation);
+                Position tapPosition = m_regionView.GetCurrentGamePosition (tapMapCellPosition, m_centerRegionPosition);
+                PositionI tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
+                dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
+                @base.model.Action newAction;
+                switch(m_menuLayer.TileGIDAndFlags(m_startCoord).Gid)
+                {
+                case ClientConstants.CROSS_GID:
+                    ShowMenu (m_startCoord, 0);
+                    break;
+                case ClientConstants.MENUEEARTH_GID:
+                    //set action to create headquater
+                    //dictParam[@base.control.action.CreateHeadquarter.] = (long) 60;
+                    newAction = new @base.model.Action(new Account(0), @base.model.Action.ActionType.CreateHeadquarter, dictParam);
+                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateHeadquarter, System);
+                    break;
+                case ClientConstants.MENUEBOWMAN_GID:
+                    //set action to create unit legolas
+                    dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long) 60;
+                    newAction = new @base.model.Action (new Account(0), @base.model.Action.ActionType.CreateUnit, dictParam);
+                    break;
+                case ClientConstants.MENUEWARRIOR_GID:
+                    //set action to create unit warrior
+                    dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long) 60;
+                    newAction = new @base.model.Action (new Account(0), @base.model.Action.ActionType.CreateUnit, dictParam);
+                    break;
+                case ClientConstants.MENUEMAGE_GID:
+                    //set action to create unit mage
+                    dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long) 60;
+                    newAction = new @base.model.Action (new Account(0), @base.model.Action.ActionType.CreateUnit, dictParam);
+                    break;
+                case ClientConstants.MENUESCOUT_GID:
+                    //set action to create unit scout
+                    dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long) 60;
+                    newAction = new @base.model.Action (new Account(0), @base.model.Action.ActionType.CreateUnit, dictParam);
+                    break;
+                }
+                //var actionC = (@base.control.action.Action)newAction.Control;
+                //var possible = actionC.Possible (m_regionManagerController);
+            break;
+
             }
 
 
             //Menu Handling
             if(m_menuLayer.TileGIDAndFlags(m_startCoord).Gid != 0)
             {
-                
+
+                //var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+                //MapCellPosition tapMapCellPosition = new MapCellPosition (m_startCoord);//GetMapCell(m_menuLayer, m_startLocation);
+                //Position tapPosition = m_regionView.GetCurrentGamePosition(tapMapCellPosition, m_centerRegionPosition);
+                //PositionI tapPositionI = new PositionI((int)tapPosition.X, (int)tapPosition.Y);
+                //dictParam[@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; // benötigt positionI
+                //dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long) 60;
+                //var newAction = new @base.model.Action (new Account(0), @base.model.Action.ActionType.CreateUnit, dictParam);
+                //var actionC = (@base.control.action.Action)newAction.Control;
+                //var possible = actionC.Possible (m_regionManagerController);
                 //Action = new @base.control.action ();
                 //@base.control.action.CreateUnit newAction;
 
                 //newAction.Model.
-
-
-                /*
-                switch(m_menuLayer.TileGIDAndFlags(m_startCoord).Gid)
-                {
-                case 58:
-                   //set action to create headquater
-                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateHeadquarter, System);
-                break;
-                case 59:
-                    //set action to create unit legolas
-                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateUnit, System);
-                break;
-                case 60:
-                    //set action to create unit warrior
-                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateUnit, System);
-                break;
-                case 61:
-                    //set action to create unit mage
-                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateUnit, System);
-                break;
-                case 62:
-                    //set action to create unit scout
-                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateUnit, System);
-
-                break;
-                }*/
-                //if(newAction.== true)
+                //if (possible) 
                 //{
-                //  action.do();
+                //    actionC.Do (m_regionManagerController);
+                //    DrawEntitiesAsync (m_geolocation.CurrentGamePosition);
                 //}
                 return;
             }
@@ -251,7 +285,7 @@ namespace client.Common.Views
         public void ShowMenu (CCTileMapCoordinates location, int menutype)
         {
             CCTileMapCoordinates coordHelper1, coordHelper2, coordHelper3, coordHelper4, coordHelper5, coordHelper6; 
-            CCTileGidAndFlags gidHelper1, gidHelper2, gidHelper3, gidHelper4, gidHelper5, gidHelper6;
+            CCTileGidAndFlags gidHelper1, gidHelper2, gidHelper3, gidHelper4, gidHelper5, gidHelper6, gidHelpercenter;
 
             coordHelper1.Column = location.Column + (location.Row) % 2;
             coordHelper1.Row = location.Row - 1;
@@ -275,34 +309,54 @@ namespace client.Common.Views
             //clears the Menu at around a given Position
             case 0:
                 gidHelper1.Gid = 0;
-                m_menuLayer.SetTileGID (gidHelper1, coordHelper1);
-                m_menuLayer.SetTileGID (gidHelper1, coordHelper2);
-                m_menuLayer.SetTileGID (gidHelper1, coordHelper3);
-                m_menuLayer.SetTileGID (gidHelper1, coordHelper4);
-                m_menuLayer.SetTileGID (gidHelper1, coordHelper5);
-                m_menuLayer.SetTileGID (gidHelper1, coordHelper6);
+                m_menuLayer.RemoveTile (location);
+                m_menuLayer.RemoveTile (coordHelper1);
+                m_menuLayer.RemoveTile (coordHelper2);
+                m_menuLayer.RemoveTile (coordHelper3);
+                m_menuLayer.RemoveTile (coordHelper4);
+                m_menuLayer.RemoveTile (coordHelper5);
+                m_menuLayer.RemoveTile (coordHelper6);
                 break;
             case 1: //UnitMenu
-                gidHelper1.Gid = ClientConstants.MenueBogenschütze;
-                gidHelper2.Gid = ClientConstants.MenueKrieger;
-                gidHelper3.Gid = ClientConstants.MenueMagier;
-                gidHelper4.Gid = ClientConstants.MenueSpäher;
+                gidHelpercenter.Gid = ClientConstants.CROSS_GID;
+                gidHelper1.Gid = ClientConstants.MENUEBOWMAN_GID;
+                gidHelper2.Gid = ClientConstants.MENUEWARRIOR_GID;
+                gidHelper3.Gid = ClientConstants.MENUEMAGE_GID;
+                gidHelper4.Gid = ClientConstants.MENUESCOUT_GID;
+                gidHelper5.Gid = ClientConstants.MENUEUNKNOWN_GID;
+                m_menuLayer.SetTileGID (gidHelpercenter, location);
                 m_menuLayer.SetTileGID (gidHelper1, coordHelper1);
                 m_menuLayer.SetTileGID (gidHelper2, coordHelper2);
                 m_menuLayer.SetTileGID (gidHelper3, coordHelper3);
                 m_menuLayer.SetTileGID (gidHelper4, coordHelper4);
+                m_menuLayer.SetTileGID (gidHelper5, coordHelper5);
+                m_menuLayer.SetTileGID (gidHelper5, coordHelper6);
                 break;
             case 2: //BuildingMenu
-                   
+                gidHelpercenter.Gid = ClientConstants.CROSS_GID;
+                gidHelper1.Gid = ClientConstants.MENUEEARTH_GID;
+                gidHelper2.Gid = ClientConstants.MENUEFIRE_GID;
+                gidHelper3.Gid = ClientConstants.MENUEGOLD_GID;
+                gidHelper4.Gid = ClientConstants.MENUEAIR_GID;
+                gidHelper5.Gid = ClientConstants.MENUEMANA_GID;
+                gidHelper6.Gid = ClientConstants.MENUEWATER_GID;
+                m_menuLayer.SetTileGID (gidHelpercenter, location);
+                m_menuLayer.SetTileGID (gidHelper1, coordHelper1);
+                m_menuLayer.SetTileGID (gidHelper2, coordHelper2);
+                m_menuLayer.SetTileGID (gidHelper3, coordHelper3);
+                m_menuLayer.SetTileGID (gidHelper4, coordHelper4);
+                m_menuLayer.SetTileGID (gidHelper5, coordHelper5);
+                m_menuLayer.SetTileGID (gidHelper6, coordHelper6);
                 break;
             default:
-                gidHelper1.Gid = ClientConstants.MenueErde;
-                gidHelper2.Gid = ClientConstants.MenueFeuer;
-                gidHelper3.Gid = ClientConstants.MenueGold;
-                gidHelper4.Gid = ClientConstants.MenueLuft;
-                gidHelper5.Gid = ClientConstants.MenueMana;
-                gidHelper6.Gid = ClientConstants.MenueWasser;
-
+                gidHelpercenter.Gid = ClientConstants.CROSS_GID;
+                gidHelper1.Gid = ClientConstants.MENUEEARTH_GID;
+                gidHelper2.Gid = ClientConstants.MENUEFIRE_GID;
+                gidHelper3.Gid = ClientConstants.MENUEGOLD_GID;
+                gidHelper4.Gid = ClientConstants.MENUEAIR_GID;
+                gidHelper5.Gid = ClientConstants.MENUEMANA_GID;
+                gidHelper6.Gid = ClientConstants.MENUEWATER_GID;
+                m_menuLayer.SetTileGID (gidHelpercenter, location);
                 m_menuLayer.SetTileGID (gidHelper1, coordHelper1);
                 m_menuLayer.SetTileGID (gidHelper2, coordHelper2);
                 m_menuLayer.SetTileGID (gidHelper3, coordHelper3);
@@ -367,19 +421,14 @@ namespace client.Common.Views
             
 
         //clears a Layer
-        void ClearLayer (CCTileMapLayer _Layer)
+        void clearLayers ()
         {
-            CCTileGidAndFlags gidHelper1;
-            CCTileMapCoordinates coordHelper1;
-
-            gidHelper1.Gid = 0;
-            for (int i = 0; i < ClientConstants.TILEMAP_WIDTH; i++) {
-                coordHelper1.Column = i;
-                for (int j = 0; j < ClientConstants.TILEMAP_HIGH; j++) {
-                    coordHelper1.Row = j;
-                    _Layer.SetTileGID (gidHelper1, coordHelper1);
-                }
-            }
+            CCTileMapCoordinates coordHelper;
+            coordHelper.Column = 0;
+            coordHelper.Row = 0;
+            m_buildingLayer.RemoveTile (coordHelper);
+            m_unitLayer.RemoveTile (coordHelper);
+            m_menuLayer.RemoveTile (coordHelper);
         }
 
             
@@ -389,7 +438,7 @@ namespace client.Common.Views
             await m_entityManagerController.LoadEntitiesAsync (gamePosition, m_centerRegionPosition);
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.EntitiesLoaded;
             m_regionView.SetTilesInMap160 (m_unitLayer, m_regionManagerController.GetRegion (m_centerRegionPosition));
-            m_regionView.SetTilesInMap160 (m_buildingLayer, m_regionManagerController.GetRegion (m_centerRegionPosition));
+            //m_regionView.SetTilesInMap160 (m_buildingLayer, m_regionManagerController.GetRegion (m_centerRegionPosition));
         }
 
         void CheckCenterRegion (CCPoint location)
@@ -447,6 +496,7 @@ namespace client.Common.Views
 
 
         CCTileMapCoordinates m_startCoord, m_oldunitCoord;
+        CCPoint m_startLocation;
         Stopwatch m_timer;
         TouchGesture m_touchGesture;
 
