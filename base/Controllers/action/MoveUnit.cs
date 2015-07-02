@@ -75,9 +75,9 @@ namespace @base.control.action
         
             if (unit != null && action.Account.ID == unit.Account.ID)
             {
-                //var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition));             
-                //Path = pathfinder.FindPath( ((UnitDefinition) unit.Definition).Moves);
-                //return Path.Count != 0;                
+                var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition));             
+                Path = pathfinder.FindPath( ((UnitDefinition) unit.Definition).Moves);
+                return Path.Count != 0;                
             }
 
             return false;           

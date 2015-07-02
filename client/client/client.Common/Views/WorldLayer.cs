@@ -72,7 +72,7 @@ namespace client.Common.Views
             AddEventListener (TouchListener);
 
             m_worker = new Controllers.Worker (this);
-            //Schedule (m_worker.Schedule);
+            //Schedule (m_worker.Schedule); TODO: decomment and schedule actions
 
 
         }
