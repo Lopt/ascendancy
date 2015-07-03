@@ -10,7 +10,7 @@ namespace client.Common.Controllers
             WorldLayer = worldLayer;
             Queue = new ConcurrentQueue<@base.model.Action> ();
 
-
+            /*
             var param = new ConcurrentDictionary<string, object> ();
             param [@base.control.action.CreateUnit.CREATE_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X), (int) (WorldLayer.CenterPosition.Y - 1));
             param [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
@@ -25,7 +25,7 @@ namespace client.Common.Controllers
             var action2 = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.MoveUnit, param2);
 
             Queue.Enqueue (action2);
-
+            */
                
         }
 

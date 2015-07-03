@@ -165,9 +165,11 @@ namespace client.Common.Views
             case (TouchGesture.Menu):
                 //ShowMenu (m_startCoord, 0);
                 break;
+            case (TouchGesture.None):
+                m_touchGesture = TouchGesture.Start;
+                break;
             }
 
-            m_touchGesture = TouchGesture.Start;
             m_timer.Reset ();
             m_timer.Start ();
 
@@ -175,6 +177,10 @@ namespace client.Common.Views
             var location = m_terrainLayer.WorldToParentspace (touches [0].Location);
             m_startLocation = location;
             m_startCoord = m_terrainLayer.ClosestTileCoordAtNodePosition (location);
+            if (RegionView.UnitLayer.TileGIDAndFlags (m_startCoord).Gid != 0) 
+            {
+                m_touchGesture = TouchGesture.Walk;
+            }
         }
 
 
@@ -196,55 +202,82 @@ namespace client.Common.Views
                 break;
 
             case(TouchGesture.Start):
-                m_touchGesture = TouchGesture.Menu;
-                //Draw the taped ISO Tile
-                //m_CurrentPositionNode.DrawISOForIsoStagMap(131, m_UnitLayer,tileCoordinate, new CCColor4F (CCColor3B.Blue), 255, 3.0f);
-                if (m_buildingLayer.TileGIDAndFlags (m_startCoord).Gid != 0) {
-                    ShowMenu (m_startCoord, 1);
-                } else {
-                    ShowMenu (m_startCoord, 2);
+                if (!m_menueDrawn){ 
+                    if (m_buildingLayer.TileGIDAndFlags (m_startCoord).Gid != 0) 
+                    {
+                        ShowMenu (m_startCoord, 1);
+                        m_touchGesture = TouchGesture.Menu;
+                    } 
+                    else 
+                    {
+                        ShowMenu (m_startCoord, 2);
+                        m_touchGesture = TouchGesture.Menu;
+                    }
+                 
                 }
-                    
                 break;
             case(TouchGesture.Menu):
+                
                 var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
                 MapCellPosition tapMapCellPosition = new MapCellPosition (m_startCoord);//GetMapCell(m_menuLayer, m_startLocation);
                 Position tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
                 PositionI tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
                 dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
                 @base.model.Action newAction = null;
-                switch (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid) {
+                switch (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid) 
+                {
                 case ClientConstants.CROSS_GID:
-                    ShowMenu (m_startCoord, 0);
+                    ShowMenu (m_coordHelper, 0);
                     break;
                 case ClientConstants.MENUEEARTH_GID:
+                case ClientConstants.MENUEAIR_GID:
+                case ClientConstants.MENUEWATER_GID:
+                case ClientConstants.MENUEGOLD_GID:
+                case ClientConstants.MENUEMANA_GID:
+                case ClientConstants.MENUEFIRE_GID:    
                     //set action to create headquater
-                    //dictParam[@base.control.action.CreateHeadquarter.] = (long) 60;
-                    newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateHeadquarter, dictParam);
-                    //newAction = new @base.model.Action(account, @base.model.Action.ActionType.CreateHeadquarter, System);
+                    createBuilding(m_coordHelper, 0);
+                    //clears the menu after taped
+                    ShowMenu (m_coordHelper, 0);
                     break;
                 case ClientConstants.MENUEBOWMAN_GID:
                     //set action to create unit legolas
-                    dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
-                    newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
+                    CreateUnit(m_coordHelper, 60);
+                    //clears the menu after taped
+                    ShowMenu (m_coordHelper, 0);
                     break;
                 case ClientConstants.MENUEWARRIOR_GID:
                     //set action to create unit warrior
-                    dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
-                    newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
+                    CreateUnit(m_coordHelper, 72);
+                    //clears the menu after taped
+                    ShowMenu (m_coordHelper, 0);
                     break;
                 case ClientConstants.MENUEMAGE_GID:
                     //set action to create unit mage
-                    dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
-                    newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
+                    CreateUnit(m_coordHelper, 66);
+                    //clears the menu after taped
+                    ShowMenu (m_coordHelper, 0);
                     break;
                 case ClientConstants.MENUESCOUT_GID:
-                    //set action to create unit scout
-                    dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
-                    newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
+                    //set action to create unit scout (unknown1 at the moment)
+                    CreateUnit(m_coordHelper, 78);
+                    //clears the menu after taped
+                    ShowMenu (m_coordHelper, 0);
+                    break;
+                case ClientConstants.MENUEHERO_GID:
+                    CreateUnit(m_coordHelper, 64);
+                    //clears the menu after taped
+                    ShowMenu (m_coordHelper, 0);
+                    break;
+                case ClientConstants.MENUEUNKNOWN_GID:
+                    CreateUnit(m_coordHelper, 90);
+                    //clears the menu after taped
+                    ShowMenu (m_coordHelper, 0);
+                    break;
+                case 0:
+                    ShowMenu(m_coordHelper, 0);
                     break;
                 }
-
                 /*
                  * //uncomment to see create unit action
                 if (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid != ClientConstants.CROSS_GID)
@@ -262,12 +295,32 @@ namespace client.Common.Views
 
                 break;
 
+
+
+            case TouchGesture.Walk:
+                dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+
+                var startMapCellPosition = new MapCellPosition (m_coordHelper);
+                var startPosition = RegionView.GetCurrentGamePosition (startMapCellPosition, CenterPosition.RegionPosition);
+                var startPositionI = new PositionI ((int)startPosition.X, (int)startPosition.Y);
+
+                var endMapCellPosition = new MapCellPosition (m_startCoord);
+                var endPosition = RegionView.GetCurrentGamePosition (endMapCellPosition, CenterPosition.RegionPosition);
+                var endPositionI = new PositionI ((int)endPosition.X, (int)endPosition.Y);
+
+                dictParam [@base.control.action.MoveUnit.START_POSITION] = startPositionI;
+                dictParam [@base.control.action.MoveUnit.END_POSITION] = endPositionI;
+                var action = new @base.model.Action (new Account (0), @base.model.Action.ActionType.MoveUnit, dictParam);
+                var actionC = (@base.control.action.Action)action.Control;
+                var possible = actionC.Possible (m_regionManagerController);
+                if (possible) {
+                    actionC.Do (m_regionManagerController);
+                }
+                m_touchGesture = TouchGesture.None;
+                    return;
             }
+                
 
-
-            //Menu Handling
-            if(m_menuLayer.TileGIDAndFlags(m_startCoord).Gid != 0)
-            {
 
                 //var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
                 //MapCellPosition tapMapCellPosition = new MapCellPosition (m_startCoord);//GetMapCell(m_menuLayer, m_startLocation);
@@ -282,38 +335,53 @@ namespace client.Common.Views
                 //Action = new @base.control.action ();
                 //@base.control.action.CreateUnit newAction;
 
-                //newAction.Model.
-                //if (possible) 
-                //{
-                //    actionC.Do (m_regionManagerController);
-                //    DrawEntitiesAsync (m_geolocation.CurrentGamePosition);
-                //}
-                return;
-            }
+        }
 
-            if (m_unitLayer.TileGIDAndFlags (m_startCoord).Gid != 0) {
-                m_oldunitCoord = m_startCoord;
-                m_unitmove = true;
-                return;
+        public void CreateUnit(CCTileMapCoordinates location, int type)
+        {
+            var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+            var tapMapCellPosition = new MapCellPosition (location);
+            var tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
+            var tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
+            dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
+            dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long) type;
+            var newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
+            var actionC = (@base.control.action.Action)newAction.Control;
+            var possible = actionC.Possible (m_regionManagerController);
+            possible = actionC.Possible (m_regionManagerController);
+            if (possible) 
+            {
+                actionC.Do (m_regionManagerController);
+                //DrawEntitiesAsync (m_geolocation.CurrentGamePosition);
             }
-               
-            //Movement Handling 
-            if (m_unitmove == true) {
-                //
-                //if (Action.possible (move(m_oldunitCoord, m_startCoord)) == true) 
-                //{
-                //    Action.do(move(m_oldunitCoord, m_startCoord));
-                //}
-                m_unitmove = false;
-                return;
-            }
+        }
 
+        public void createBuilding (CCTileMapCoordinates location, int type)
+        {
+            var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+            var tapMapCellPosition = new MapCellPosition (location);
+            var tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
+            var tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
+            dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
+            //dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long) type;
+            var newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateHeadquarter, dictParam);
+            var actionC = (@base.control.action.Action)newAction.Control;
+            var possible = actionC.Possible (m_regionManagerController);
+            possible = actionC.Possible (m_regionManagerController);
+            if (possible) 
+            {
+                actionC.Do (m_regionManagerController);
+
+                //DrawEntitiesAsync (m_geolocation.CurrentGamePosition);
+            }
         }
 
         public void ShowMenu (CCTileMapCoordinates location, int menutype)
         {
             CCTileMapCoordinates coordHelper1, coordHelper2, coordHelper3, coordHelper4, coordHelper5, coordHelper6; 
             CCTileGidAndFlags gidHelper1, gidHelper2, gidHelper3, gidHelper4, gidHelper5, gidHelper6, gidHelpercenter;
+
+            m_coordHelper = location;
 
             coordHelper1.Column = location.Column + (location.Row) % 2;
             coordHelper1.Row = location.Row - 1;
@@ -336,7 +404,6 @@ namespace client.Common.Views
             switch (menutype) {
             //clears the Menu at around a given Position
             case 0:
-                gidHelper1.Gid = 0;
                 m_menuLayer.RemoveTile (location);
                 m_menuLayer.RemoveTile (coordHelper1);
                 m_menuLayer.RemoveTile (coordHelper2);
@@ -344,21 +411,25 @@ namespace client.Common.Views
                 m_menuLayer.RemoveTile (coordHelper4);
                 m_menuLayer.RemoveTile (coordHelper5);
                 m_menuLayer.RemoveTile (coordHelper6);
+                m_menueDrawn = false;
+                m_touchGesture = TouchGesture.None;
                 break;
             case 1: //UnitMenu
                 gidHelpercenter.Gid = ClientConstants.CROSS_GID;
                 gidHelper1.Gid = ClientConstants.MENUEBOWMAN_GID;
-                gidHelper2.Gid = ClientConstants.MENUEWARRIOR_GID;
-                gidHelper3.Gid = ClientConstants.MENUEMAGE_GID;
-                gidHelper4.Gid = ClientConstants.MENUESCOUT_GID;
-                gidHelper5.Gid = ClientConstants.MENUEUNKNOWN_GID;
+                gidHelper2.Gid = ClientConstants.MENUEHERO_GID;
+                gidHelper3.Gid = ClientConstants.MENUEWARRIOR_GID;
+                gidHelper4.Gid = ClientConstants.MENUEMAGE_GID;
+                gidHelper5.Gid = ClientConstants.MENUESCOUT_GID;
+                gidHelper6.Gid = ClientConstants.MENUEUNKNOWN_GID;
                 m_menuLayer.SetTileGID (gidHelpercenter, location);
                 m_menuLayer.SetTileGID (gidHelper1, coordHelper1);
                 m_menuLayer.SetTileGID (gidHelper2, coordHelper2);
                 m_menuLayer.SetTileGID (gidHelper3, coordHelper3);
                 m_menuLayer.SetTileGID (gidHelper4, coordHelper4);
                 m_menuLayer.SetTileGID (gidHelper5, coordHelper5);
-                m_menuLayer.SetTileGID (gidHelper5, coordHelper6);
+                m_menuLayer.SetTileGID (gidHelper6, coordHelper6);
+                m_menueDrawn = true;
                 break;
             case 2: //BuildingMenu
                 gidHelpercenter.Gid = ClientConstants.CROSS_GID;
@@ -375,6 +446,7 @@ namespace client.Common.Views
                 m_menuLayer.SetTileGID (gidHelper4, coordHelper4);
                 m_menuLayer.SetTileGID (gidHelper5, coordHelper5);
                 m_menuLayer.SetTileGID (gidHelper6, coordHelper6);
+                m_menueDrawn = true;
                 break;
             default:
                 gidHelpercenter.Gid = ClientConstants.CROSS_GID;
@@ -391,6 +463,7 @@ namespace client.Common.Views
                 m_menuLayer.SetTileGID (gidHelper4, coordHelper4);
                 m_menuLayer.SetTileGID (gidHelper5, coordHelper5);
                 m_menuLayer.SetTileGID (gidHelper6, coordHelper6);
+                m_menueDrawn = true;
                 break;
 
             }
@@ -532,8 +605,9 @@ namespace client.Common.Views
         float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
         float m_scale = ClientConstants.TILEMAP_NORM_SCALE;
         bool m_unitmove = false;
+        bool m_menueDrawn = false;
 
-        CCTileMapCoordinates m_startCoord, m_oldunitCoord;
+        CCTileMapCoordinates m_startCoord, m_coordHelper;
         CCPoint m_startLocation;
         Stopwatch m_timer;
         TouchGesture m_touchGesture;
