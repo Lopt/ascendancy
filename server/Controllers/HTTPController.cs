@@ -31,7 +31,8 @@ namespace server.Controllers
 			{
 				var accountC = (@server.control.AccountController)account.Control;
 				response.SessionID = accountC.SessionID;
-				response.Status = @base.connection.LoginResponse.ReponseStatus.OK;
+                response.AccountId = account.ID;
+                response.Status = @base.connection.LoginResponse.ReponseStatus.OK;
 			}
 			else
 			{
