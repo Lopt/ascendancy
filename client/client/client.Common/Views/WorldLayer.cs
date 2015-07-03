@@ -238,7 +238,7 @@ namespace client.Common.Views
                 case ClientConstants.MENUEMANA_GID:
                 case ClientConstants.MENUEFIRE_GID:    
                     //set action to create headquater
-                    createBuilding(m_coordHelper, 0);
+                    createBuilding(m_coordHelper, 276);
                     //clears the menu after taped
                     ShowMenu (m_coordHelper, 0);
                     break;
@@ -342,30 +342,29 @@ namespace client.Common.Views
             var newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible (m_regionManagerController);
-            possible = actionC.Possible (m_regionManagerController);
             if (possible) 
             {
                 actionC.Do (m_regionManagerController);
+                m_worker.Queue.Enqueue (newAction);
                 //DrawEntitiesAsync (m_geolocation.CurrentGamePosition);
             }
         }
 
-        public void createBuilding (CCTileMapCoordinates location, int type)
+        public void createBuilding (CCTileMapCoordinates location, long type)
         {
             var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
             var tapMapCellPosition = new MapCellPosition (location);
             var tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
             var tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
             dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
-            //dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long) type;
-            var newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateHeadquarter, dictParam);
+            dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long) type;
+            var newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateBuilding, dictParam);
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible (m_regionManagerController);
-            possible = actionC.Possible (m_regionManagerController);
             if (possible) 
             {
                 actionC.Do (m_regionManagerController);
-
+                m_worker.Queue.Enqueue (newAction);
                 //DrawEntitiesAsync (m_geolocation.CurrentGamePosition);
             }
         }
