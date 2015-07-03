@@ -28,11 +28,7 @@ namespace client.Common.Controllers
                 var actionC = (@base.control.action.Action) Action.Control;
                 var actionV = CreateActionView(Action);
                 var affectedRegions = actionC.GetAffectedRegions (regionC);
-
-                for (int i = 0; i < 1; ++i)
-                {
-                    actionC.Possible (regionC);
-                }
+                actionC.Possible (regionC);
                 actionV.BeforeDo ();
                 actionC.Do (regionC);
             }
@@ -50,7 +46,12 @@ namespace client.Common.Controllers
 
             case(@base.model.Action.ActionType.CreateHeadquarter):
                 throw new NotImplementedException ();
+
+            case(@base.model.Action.ActionType.CreateBuilding):
+                return new Views.Action.CreateBuilding (action, WorldLayer);
+
             }
+
 
             return new Views.Action.Action(action);
         }

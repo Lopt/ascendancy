@@ -76,6 +76,7 @@ namespace client.Common.Views
             AddEventListener (TouchListener);
 
             m_worker = new Controllers.Worker (this);
+            EntityManagerController.Worker = m_worker;
 
             Schedule (m_worker.Schedule); //TODO: decomment and schedule actions
 
@@ -298,7 +299,7 @@ namespace client.Common.Views
                     m_coordHelper = m_startCoord;
                     m_unitmove = true;
                 } else {   
-                    var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+                    var dictParam = new System.Collections.Generic.Dictionary<string,object> ();
 
                     var startMapCellPosition = new MapCellPosition (m_coordHelper);
                     var startPosition = RegionView.GetCurrentGamePosition (startMapCellPosition, CenterPosition.RegionPosition);
@@ -325,7 +326,7 @@ namespace client.Common.Views
 
         public void CreateUnit (CCTileMapCoordinates location, int type)
         {
-            var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+            var dictParam = new System.Collections.Generic.Dictionary<string,object> ();
             var tapMapCellPosition = new MapCellPosition (location);
             var tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
             var tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
@@ -344,7 +345,7 @@ namespace client.Common.Views
 
         public void createBuilding (CCTileMapCoordinates location, long type)
         {
-            var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+            var dictParam = new System.Collections.Generic.Dictionary<string,object> ();
             var tapMapCellPosition = new MapCellPosition (location);
             var tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
             var tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
@@ -508,14 +509,9 @@ namespace client.Common.Views
             await m_regionManagerController.LoadRegionsAsync (new RegionPosition (gamePosition));
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoaded;
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.EntitiesLoading;
-            var actionsList = await EntityManagerController.Instance.LoadEntitiesAsync (gamePosition, CenterPosition.RegionPosition);
+            await EntityManagerController.Instance.LoadEntitiesAsync (gamePosition, CenterPosition.RegionPosition);
             GameAppDelegate.LoadingState = GameAppDelegate.Loading.EntitiesLoaded;
 
-            foreach (var actions in actionsList) {
-                foreach (var action in actions) {
-                    m_worker.Queue.Enqueue (action);
-                }   
-            }
 
             RegionView.SetTilesInMap160 (m_regionManagerController.GetRegionByGamePosition (gamePosition));
             SetCurrentPositionOnce (gamePosition);
@@ -574,7 +570,7 @@ namespace client.Common.Views
 
         public CCTileMapCoordinates PositionToTileMapCoordinates (PositionI position)
         {
-            var leftTop = new PositionI ((int)CenterPosition.X, (int)CenterPosition.Y) - new PositionI ((int)(Constants.REGION_SIZE_X * 2.5), (int)(Constants.REGION_SIZE_Y * 2.5));
+            var leftTop = new PositionI ((int)CenterPosition.X, (int)CenterPosition.Y) - new PositionI ((int)(Constants.REGION_SIZE_X * 2.5) + 4, (int)(Constants.REGION_SIZE_Y * 2.5) - 8);
             var cellPosition = position - leftTop;
             var MapPosition = new MapCellPosition (cellPosition.X, cellPosition.Y);
 

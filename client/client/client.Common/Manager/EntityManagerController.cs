@@ -38,7 +38,7 @@ namespace client.Common.Manager
 
         #region Entities
 
-        public async Task<LinkedList<LinkedList<@base.model.Action>>> LoadEntitiesAsync (Position currentGamePosition, RegionPosition centerRegionPosition)
+        public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition centerRegionPosition)
         {
             var regionManagerC = (Manager.RegionManagerController)Controller.Instance.RegionManagerController;
 
@@ -50,13 +50,12 @@ namespace client.Common.Manager
                 ++index;
             }
 
-            var actions = await LoadEntitiesAsync (currentGamePosition, listRegions);
-            return actions;
+            await LoadEntitiesAsync (currentGamePosition, listRegions);
         }
 
 
 
-        public async Task<LinkedList<LinkedList<@base.model.Action>>> LoadEntitiesAsync (Position currentGamePosition, RegionPosition[] listRegions)
+        public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition[] listRegions)
         {
 
             var response = await NetworkController.GetInstance.LoadEntitiesAsync (currentGamePosition, listRegions);
@@ -72,8 +71,16 @@ namespace client.Common.Manager
                 }
             }
 
-            return response.Actions;
-
+            if (response.Actions != null)
+            {
+                foreach (var actions in response.Actions)
+                {
+                    foreach (var action in actions)
+                    {
+                        Worker.Queue.Enqueue (action);
+                    }   
+                }
+            }
         }
 
         #endregion
@@ -98,6 +105,7 @@ namespace client.Common.Manager
         }
 
         public static Dictionary<int, Entity> Entities;
+        public static Worker Worker;
     }
 }
 

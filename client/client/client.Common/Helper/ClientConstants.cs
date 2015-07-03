@@ -148,6 +148,8 @@ namespace client.Common.Helper
 
         #region Action-Animations
         public const float MOVE_SPEED_PER_FIELD = 1f;
+        public const float CREATE_UNIT_SPEED = 1f;
+        public const float CREATE_BUILDING_SPEED = 1f;
 
         #endregion
 

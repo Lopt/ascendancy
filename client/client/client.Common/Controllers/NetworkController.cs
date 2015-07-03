@@ -139,6 +139,7 @@ namespace client.Common.Controllers
                     var jsonFromServer = await response.Content.ReadAsStringAsync ();
 
                     var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response> (jsonFromServer);
+
                     if (entitiesResponse.Status == @base.connection.Response.ReponseStatus.OK) {
                         return entitiesResponse;
                     }

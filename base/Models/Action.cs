@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Concurrent;
+using System.Collections.Generic;
 using @base.model;
 using @base.model.definitions;
 using Newtonsoft.Json;
@@ -24,7 +24,7 @@ namespace @base.model
         /// <param name="regions">Affected Regions of this action.</param>
         /// <param name="parameters">Parameters.</param>
         public Action(Account account, ActionType type,
-            ConcurrentDictionary<string, object> parameters)
+            Dictionary<string, object> parameters)
             : base()
         {
             m_account = account;
@@ -52,7 +52,7 @@ namespace @base.model
             }
         }
 
-        public ConcurrentDictionary<string, object> Parameters
+        public Dictionary<string, object> Parameters
         {
             get { return m_parameters; }
         }
@@ -76,7 +76,7 @@ namespace @base.model
             set { m_account = value; }
         }
 
-        private ConcurrentDictionary<string, object> m_parameters;
+        private Dictionary<string, object> m_parameters;
         private ActionType m_actionType;
         private DateTime m_actionTime; 
         private Account m_account;

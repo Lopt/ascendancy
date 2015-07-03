@@ -95,7 +95,12 @@ namespace @base.control.action
 
             entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);
-            action.Account.Units.AddLast(entity.Position);
+
+            if (action.Account != null)
+            {
+                action.Account.Units.AddLast(entity.Position);
+            }
+
 
             return new ConcurrentBag<model.Region>() { region };
         }

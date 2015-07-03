@@ -12,6 +12,9 @@ namespace test
 {
     class MainClass
     {	
+
+
+        /*
         static int REGION_POS_X = 166148;
         static int REGION_POS_Y = 104835;
         static int RUNS = 10;
@@ -162,21 +165,25 @@ namespace test
         {
             
         }
+        */
 
         public static void Main(string[] args)
         {
+            var json = "{\"Status\":0,\"Actions\":[[],[],[],[],[],[],[],[],[],[],[],[],[{\"Parameters\":{\"CreatePosition\":{\"X\":5316345,\"Y\":3354734},\"CreateBuilding\":276},\"Type\":2}],[],[],[],[],[],[],[],[],[],[],[],[]],\"Entities\":[]}";
+            var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response> (json);
+            throw new Exception ();
             //var app = new server.MvcApplication ();
             //app.Application_Start ();
 
             //server.MvcApplication.Phase = server.MvcApplication.Phases.Pause;
 
 
-            PreloadRegions ();
+            //PreloadRegions ();
 
-            TestWriter ();
+            //TestWriter ();
 
 
-            TestReader ();
+            //TestReader ();
 
             //server.MvcApplication.Phase = server.MvcApplication.Phases.Exit;
         }

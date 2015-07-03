@@ -17,6 +17,8 @@ namespace client.Common.Views.Action
 
         override public bool Schedule(float frameTimesInSecond)
         {
+            m_runTime += frameTimesInSecond;
+
             var action = (@base.model.Action)Model;
             var actionC = (@base.control.action.CreateUnit)Model.Control;
 
@@ -25,7 +27,9 @@ namespace client.Common.Views.Action
             var entity = @base.control.Controller.Instance.RegionManagerController.GetRegion (position.RegionPosition).GetEntity (position.CellPosition);
             WorldLayer.RegionView.SetUnit (mapCoordinat, entity);//positionI.Get, CCTileMapCoordinates mapCoordinat, position.RegionPosition);
             WorldLayer.UglyDraw();
-            return true;
+
+
+            return m_runTime >= Helper.ClientConstants.CREATE_UNIT_SPEED;
         }
 
         public WorldLayer WorldLayer
@@ -33,6 +37,9 @@ namespace client.Common.Views.Action
             private set;
             get;
         }
+
+        float m_runTime;
+
     }
 }
 
