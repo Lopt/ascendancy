@@ -526,7 +526,9 @@ namespace client.Common.Views
         {
             m_actions.Add (action);
             m_regionManagerController.DoActionAsync (m_geolocation.CurrentGamePosition, m_actions.ToArray ());
-            CheckCenterRegion ();
+            var mapCell = GetMapCell (m_terrainLayer, new CCPoint (VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
+            var position = RegionView.GetCurrentGamePosition (mapCell, CenterPosition.RegionPosition);
+            DrawRegionsAsync (position);
         }
 
         //clears a Layer
