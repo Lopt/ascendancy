@@ -41,11 +41,19 @@ namespace @base.model
             set { m_position = value; }
         }
 
+        [JsonIgnore]
         public Account Account
         {
             get { return m_account; }
         }
-        
+
+        public int AccountID
+        {
+            get { return m_account.ID; }
+            set { m_account = @base.control.Controller.Instance.AccountManagerController.GetAccountOrEmpty(value); }
+        }
+
+
         private int m_id;
         private PositionI m_position;
         private Definition m_definition;

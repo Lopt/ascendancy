@@ -15,11 +15,8 @@ namespace AStar
     /// </summary>
     public class PathFinder
     {
-        private int width;
-        private int height;
         private Dictionary<PositionI, Node> m_nodes;
         private Node startNode;
-        private Node endNode;
         private SearchParameters searchParameters;
 
         /// <summary>
@@ -58,7 +55,7 @@ namespace AStar
                 // Reverse the list so it's in the correct order when returned
                 path.Reverse();
             }
-
+            path.Insert(0, searchParameters.StartLocation);
             return path;
         }
 
