@@ -45,6 +45,17 @@ namespace @base.model
 
         public static bool operator ==(PositionI first, PositionI second)
         {
+            if (System.Object.ReferenceEquals(first, second))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)first == null) || ((object)second == null))
+            {
+                return false;
+            }
+
             return (first.X == second.X && first.Y == second.Y);
         }
 
