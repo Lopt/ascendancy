@@ -97,7 +97,10 @@ namespace @base.control.action
 
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
-            startPosition = endPosition;
+            
+            var entity = regionManagerC.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
+            regionManagerC.GetRegion(startPosition.RegionPosition).RemoveEntity(action.ActionTime, entity);
+            regionManagerC.GetRegion(endPosition.RegionPosition).AddEntity(action.ActionTime, entity);   
 
             Bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
 
