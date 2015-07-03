@@ -49,7 +49,7 @@ namespace client.Common.Views
             m_menuLayer = m_worldTileMap.LayerNamed (ClientConstants.LAYER_MENU);
 
 
-            clearLayers ();
+            ClearLayers ();
 
             RegionView.TerrainLayer = m_terrainLayer;
             RegionView.BuildingLayer = m_buildingLayer;
@@ -530,11 +530,9 @@ namespace client.Common.Views
         }
 
         //clears a Layer
-        void clearLayers ()
+        void ClearLayers ()
         {
-            CCTileMapCoordinates coordHelper;
-            coordHelper.Column = 0;
-            coordHelper.Row = 0;
+            var coordHelper = new CCTileMapCoordinates(0, 0);
             m_buildingLayer.RemoveTile (coordHelper);
             m_unitLayer.RemoveTile (coordHelper);
             m_menuLayer.RemoveTile (coordHelper);
@@ -547,8 +545,8 @@ namespace client.Common.Views
             var mapCell = GetMapCell (m_terrainLayer, new CCPoint (VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
 
             if (RegionView.IsCellInOutsideRegion (mapCell)) {
-                var position = RegionView.GetCurrentGamePosition (mapCell, CenterPosition.RegionPosition);
-                DrawRegionsAsync (position);
+                CenterPosition = RegionView.GetCurrentGamePosition (mapCell, CenterPosition.RegionPosition);
+                DrawRegionsAsync (CenterPosition);
             }
 
         }
@@ -576,6 +574,8 @@ namespace client.Common.Views
 
             return MapPosition.GetTileMapCoordinates ();
         }
+
+
 
         #endregion
 

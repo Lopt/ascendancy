@@ -68,7 +68,7 @@ namespace @base.control.action
             var type = (long) action.Parameters[CREATION_TYPE];
 
             RealCreatePosition = GetFreeField(positionI, regionManagerC);
-            return RealCreatePosition == null;
+            return RealCreatePosition != null;
         }
 
         /// <summary>

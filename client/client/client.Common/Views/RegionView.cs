@@ -64,6 +64,7 @@ namespace client.Common.Views
         {
             if (building == null) {
                 UnitLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);
+               
             } else {
                 var gid = m_ViewDefinition.DefinitionToTileGid (building.Definition);
                 BuildingLayer.SetTileGID (gid, mapCoordinat);
@@ -86,13 +87,7 @@ namespace client.Common.Views
           
 
         }
-
-        public void SetBuildingTileInMap (CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
-        {
-            //var gid = m_ViewDefinition.DefinitionToTileGid (region.GetEntity (cellPosition).Definition);
-            //m_buildingLayer.SetTileGID (gid, mapCoordinat);
-        }
-
+            
 
 
         public CCTileMapCoordinates GetCurrentTileInMap (Position position)
@@ -109,7 +104,7 @@ namespace client.Common.Views
                     if (regionPos.Equals (worldRegions [x, y])) {
                         mapCellX = cellPos.CellX + (x * Constants.REGION_SIZE_X);
                         mapCellY = cellPos.CellY + (y * Constants.REGION_SIZE_Y);
-                    }
+                    } 
 
                 }
 
@@ -146,31 +141,6 @@ namespace client.Common.Views
             return false;
         }
 
-        /*
-        public CCTileMapCoordinates PositionIToMapCoordinates(PositionI position)
-        {
-            //var new new PositionI (currentRegionPositon, new CellPosition (0, 0));
-        }
-
-        public void SetUnit(PositionI position, Entity unit = null)
-        {
-            var mapCoordinat = PositionIToMapCoordinates (position);
-            SetUnit(position, unit);
-        }
-
-        public void SetUnit(PositionI position, CCTileMapCoordinates mapCoordinat, Entity entity = null)
-        {
-            if (unit == null)
-            {
-                m_unitLayer.RemoveTile (mapCoordinat);
-            }
-            else
-            {
-                var gid = m_ViewDefinition.DefinitionToTileGid (entity.Definition);
-                m_unitLayer.SetTileGID (gid, mapCoordinat);
-            }
-        }
-*/
 
         #region Fields
 
