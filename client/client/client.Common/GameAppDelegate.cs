@@ -43,9 +43,6 @@ namespace client.Common
         }
 
 
-        private string m_user = "User";
-
-
         public override void ApplicationDidFinishLaunching (CCApplication application, CCWindow mainWindow)
         {
             application.PreferMultiSampling = false;
@@ -133,16 +130,20 @@ namespace client.Common
             var controller = @base.control.Controller.Instance;
             controller.RegionManagerController = new client.Common.Manager.RegionManagerController ();      
             controller.DefinitionManagerController = new DefinitionManagerController ();
+            controller.AccountManagerController = new @base.control.AccountManagerController ();
+
         }
 
         private async Task LogInAsync ()
         {
             var currentGamePosition = Geolocation.GetInstance.CurrentGamePosition;
-
+            var device = client.Common.Models.Device.GetInstance;
+            var user = device.DeviceId;
+            user += device.DeviceName;
             LoadingState = Loading.Login;
-            var id = await NetworkController.GetInstance.LoginAsync (currentGamePosition, m_user, "Password");
+            var id = await NetworkController.GetInstance.LoginAsync (currentGamePosition, user, "Password");
             if (NetworkController.GetInstance.IsLogedin) {
-                Account = new Account (id, m_user);
+                Account = new Account (id, user);
                 LoadingState = Loading.Loggedin;
             }
                 

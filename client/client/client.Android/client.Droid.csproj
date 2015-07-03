@@ -160,9 +160,8 @@
     <AndroidAsset Include="Assets\Content\images\hd\logo.png" />
     <AndroidAsset Include="Assets\Content\images\ld\Ladebalken.png" />
     <AndroidAsset Include="Assets\Content\images\ld\logo.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29.xnb" />
-    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_x2.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20150601.xnb" />
+    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20150702.png" />
+    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20150702.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />

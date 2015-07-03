@@ -43,21 +43,21 @@ namespace @base.control.action
         /// <returns></returns>
         public override ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
-            m_Bag = new ConcurrentBag<model.Region>();
+            var Bag = new ConcurrentBag<model.Region>();
 
             var action = (model.Action)Model;
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
 
-            m_Bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
+            Bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
             var adjacentRegions = GetAdjacentRegions(regionManagerC, regionManagerC.GetRegion(startPosition.RegionPosition).RegionPosition);
 
             foreach (var adjRegions in adjacentRegions)
             {
-                m_Bag.Add(regionManagerC.GetRegion(adjRegions));
+                Bag.Add(regionManagerC.GetRegion(adjRegions));
             }
 
-            return m_Bag;
+            return Bag;
         }
 
         /// <summary>
@@ -77,6 +77,7 @@ namespace @base.control.action
             {
                 var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition));             
                 Path = pathfinder.FindPath( ((UnitDefinition) unit.Definition).Moves);
+
                 return Path.Count != 0;                
             }
 
@@ -90,13 +91,26 @@ namespace @base.control.action
         /// <returns> </returns>
         public override ConcurrentBag<model.Region> Do (RegionManagerController regionManagerC)
         {
+            var Bag = new ConcurrentBag<model.Region>();
+
             var action = (model.Action)Model;
 
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
-            startPosition = endPosition;
+            
+            var entity = regionManagerC.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
+            regionManagerC.GetRegion(startPosition.RegionPosition).RemoveEntity(action.ActionTime, entity);
+            regionManagerC.GetRegion(endPosition.RegionPosition).AddEntity(action.ActionTime, entity);   
+            entity.Position = endPosition;
 
-            return m_Bag;
+            Bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
+
+            if (startPosition.RegionPosition != endPosition.RegionPosition)
+            {
+                Bag.Add(regionManagerC.GetRegion(endPosition.RegionPosition));
+            }
+
+            return Bag;
         }
 
         /// <summary>
@@ -181,7 +195,6 @@ namespace @base.control.action
         }
 
         public IList Path;
-        private ConcurrentBag<model.Region> m_Bag;
     }
 }
 

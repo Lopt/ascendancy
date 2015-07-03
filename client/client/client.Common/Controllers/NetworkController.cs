@@ -124,7 +124,7 @@ namespace client.Common.Controllers
             }
         }
 
-        public async Task<LinkedList<LinkedList<Entity>>> LoadEntitiesAsync (@base.model.Position currentGamePosition, RegionPosition[] regionPositions)
+        public async Task<@base.connection.Response> LoadEntitiesAsync (@base.model.Position currentGamePosition, RegionPosition[] regionPositions)
         {
             try {
                 var request = new @base.connection.LoadRegionsRequest (m_sessionID, currentGamePosition, regionPositions);
@@ -140,11 +140,39 @@ namespace client.Common.Controllers
 
                     var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response> (jsonFromServer);
                     if (entitiesResponse.Status == @base.connection.Response.ReponseStatus.OK) {
-                        return entitiesResponse.Entities;
+                        return entitiesResponse;
                     }
 
                 }
-                return null;
+                return new @base.connection.Response ();
+
+            } catch (Exception ex) {
+                ExceptionMessage = ex.Message;
+                throw ex;
+            }
+        }
+
+        public async Task<bool> DoActionsAsync (@base.model.Position currentGamePosition, @base.model.Action[] actions)
+        {
+            try {
+                var request = new @base.connection.DoActionsRequest (m_sessionID, currentGamePosition, actions);
+                var json = JsonConvert.SerializeObject (request);
+
+                var path = ClientConstants.DO_ACTIONS_PATH;
+                path = path.Replace (ClientConstants.LOGIC_SERVER_JSON, json);
+
+                HttpResponseMessage response = await m_client.GetAsync (new Uri (ClientConstants.LOGIC_SERVER + path));
+                if (response != null) {
+                    response.EnsureSuccessStatusCode ();
+                    var jsonFromServer = await response.Content.ReadAsStringAsync ();
+
+                    var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response> (jsonFromServer);
+                    if (entitiesResponse.Status == @base.connection.Response.ReponseStatus.OK) {
+                        return true;
+                    }
+
+                }
+                return false;
 
             } catch (Exception ex) {
                 ExceptionMessage = ex.Message;

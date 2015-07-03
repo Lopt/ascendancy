@@ -12,6 +12,7 @@ namespace @base.model
         {
             TestAction,
             CreateHeadquarter,
+            CreateBuilding,
             CreateUnit,
             MoveUnit,
         }
@@ -44,6 +45,9 @@ namespace @base.model
                     break;
                 case(ActionType.MoveUnit):
                     Control = new control.action.MoveUnit(this);
+                    break;
+                case (ActionType.CreateBuilding):
+                    Control = new control.action.CreatBuilding(this);
                     break;
             }
         }

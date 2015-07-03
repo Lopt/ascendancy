@@ -32,16 +32,13 @@ namespace client.Common.Views
 
         public void SetTilesInMap32 (CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
         {
-            for (int y = 0; y < Constants.REGION_SIZE_Y; y++)
-            {
-                for (int x = 0; x < Constants.REGION_SIZE_X; x++)
-                {
+            for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
+                for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
                     var newCellPosition = new CellPosition (x, y);
                     var mapCellPosition = new MapCellPosition ((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y));
 
                     SetTerrainTileInMap (newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
-                    SetUnitTileInMap (newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
-                    //SetBuildingTileInMap (mapLayer, newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
+                    SetEntityTileInMap (newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
                 
                 }
             }
@@ -53,36 +50,41 @@ namespace client.Common.Views
             TerrainLayer.SetTileGID (gid, mapCoordinat);
         }
 
-        public void SetUnit(CCTileMapCoordinates mapCoordinat, Entity unit)
+        public void SetUnit (CCTileMapCoordinates mapCoordinat, Entity unit)
         {
-            if (unit == null)
-            {
-                UnitLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);
-            }
-            else
-            {
+            if (unit == null) {
+                UnitLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);
+            } else {
                 var gid = m_ViewDefinition.DefinitionToTileGid (unit.Definition);
                 UnitLayer.SetTileGID (gid, mapCoordinat);
             }
         }
 
-        public void SetUnitTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
-        {   
-            var entity = region.GetEntity (cellPosition);
-            if (entity != null) {
-                var gid = m_ViewDefinition.DefinitionToTileGid (entity.Definition);
-                mapLayer.SetTileGID (gid, mapCoordinat);
-            }
-            else
-            {
-                mapLayer.RemoveTile (mapCoordinat);
+        public void SetBuilding (CCTileMapCoordinates mapCoordinat, Entity building)
+        {
+            if (building == null) {
+                UnitLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);
+            } else {
+                var gid = m_ViewDefinition.DefinitionToTileGid (building.Definition);
+                BuildingLayer.SetTileGID (gid, mapCoordinat);
             }
         }
 
-        public void SetUnitTileInMap (CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
+
+        public void SetEntityTileInMap (CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {   
+            
             var entity = region.GetEntity (cellPosition);
-            SetUnit (mapCoordinat, entity);
+            if (entity != null) {
+                if (entity.Definition.Type == Definition.DefinitionType.Unit) {
+                    SetUnit (mapCoordinat, entity);
+                }
+                if (entity.Definition.Type == Definition.DefinitionType.Building) {
+                    SetBuilding (mapCoordinat, entity);
+                }
+            }
+          
+
         }
 
         public void SetBuildingTileInMap (CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
@@ -169,6 +171,7 @@ namespace client.Common.Views
             }
         }
 */
+
         #region Fields
 
         client.Common.Manager.RegionManagerController m_RegionManagerController;
@@ -180,8 +183,7 @@ namespace client.Common.Views
         public CCTileMapLayer MenuLayer;
 
 
-        public WorldLayer WorldLayer
-        {
+        public WorldLayer WorldLayer {
             private set;
             get;
         }

@@ -15,11 +15,8 @@ namespace AStar
     /// </summary>
     public class PathFinder
     {
-        private int width;
-        private int height;
         private Dictionary<PositionI, Node> m_nodes;
         private Node startNode;
-        private Node endNode;
         private SearchParameters searchParameters;
 
         /// <summary>
@@ -28,10 +25,11 @@ namespace AStar
         /// <param name="searchParameters"></param>
         public PathFinder(SearchParameters searchParameters)
         {
-            var StartNode = new Node(searchParameters.StartLocation, searchParameters.EndLocation);
-            this.searchParameters.StartLocation = searchParameters.StartLocation;
-            this.searchParameters.EndLocation = searchParameters.EndLocation;
-            m_nodes[searchParameters.StartLocation] = StartNode;
+            m_nodes = new Dictionary<PositionI, Node>();
+            this.searchParameters = searchParameters;
+            startNode = new Node(searchParameters.StartLocation, searchParameters.EndLocation);
+            //endNode = new Node(searchParameters.EndLocation, searchParameters.EndLocation);
+            m_nodes[searchParameters.StartLocation] = startNode;
         }
 
         /// <summary>
@@ -47,7 +45,7 @@ namespace AStar
             if (success)
             {
                 // If a path was found, follow the parents from the end node to build a list of locations
-                Node node = this.endNode;
+                Node node = m_nodes[searchParameters.EndLocation];
                 while (node.ParentNode != null)
                 {
                     path.Add(node.Location);
@@ -57,7 +55,7 @@ namespace AStar
                 // Reverse the list so it's in the correct order when returned
                 path.Reverse();
             }
-
+            path.Insert(0, searchParameters.StartLocation);
             return path;
         }
 
@@ -82,7 +80,7 @@ namespace AStar
                 foreach (var nextNode in nextNodes)
                 {
                     // Check whether the end node has been reached
-                    if (nextNode.Location == this.endNode.Location)
+                    if (nextNode.Location == searchParameters.EndLocation)
                     {
                         return true;
                     }
@@ -122,9 +120,9 @@ namespace AStar
                 {
                     var unit = region.GetEntity(newPosition.CellPosition);
 
-                    if (unit != null)
+                    if (unit == null)
                     {
-                        if (!m_nodes.ContainsKey(newPosition))
+                        if (m_nodes.ContainsKey(newPosition))
                         {
                             // use the dictionary and get the Node at the positonI
                             var node = m_nodes[newPosition];

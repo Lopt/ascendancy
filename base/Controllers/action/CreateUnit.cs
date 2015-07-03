@@ -28,8 +28,7 @@ namespace @base.control.action
                 param[CREATE_POSITION] = new PositionI((Newtonsoft.Json.Linq.JContainer) param[CREATE_POSITION]);
             }
         }
-
-
+        
 
         /// <summary>
         /// /// <summary>

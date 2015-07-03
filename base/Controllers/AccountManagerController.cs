@@ -6,20 +6,30 @@ using @base.model.definitions;
 
 namespace @base.control
 {
-    public class AccountManagerController 
+    public class AccountManagerController
     {
         public AccountManagerController()
         {
         }
 
-       /// <summary>
+        public Account GetAccountOrEmpty(int id)
+        {
+            var account = GetAccount(id);
+            if (account == null)
+            {
+                account = new Account(id);
+            }
+            return account;
+        }
+
+        /// <summary>
         /// Returns the account
-       /// </summary>
-       /// <returns>The account or none (is there is none</returns>
-       /// <param name="id">Identifier.</param>
+        /// </summary>
+        /// <returns>The account or none (is there is none</returns>
+        /// <param name="id">Identifier.</param>
         public Account GetAccount(int id)
         {
-            if (!World.Instance.Accounts.ContainsKey(id))
+            if (World.Instance.Accounts.ContainsKey(id))
             {
                 return World.Instance.Accounts[id];
             }
