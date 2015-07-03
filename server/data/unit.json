@@ -47,7 +47,7 @@
      
      {
         "UnitType": 276,
-        "Actions": ["CreateUnit"],
+        "Actions": ["CreateBuilding"],
         "Attack": 0,
         "Defense": 0,
         "Health": 100,

@@ -75,6 +75,11 @@ namespace client.Common.Manager
             }
         }
 
+        public async Task<bool> DoActionAsync (@base.model.Position currentGamePosition, @base.model.Action[] actions)
+        {
+            return await m_NetworkController.DoActionsAsync (currentGamePosition, actions);
+        }
+
 
         #endregion
 

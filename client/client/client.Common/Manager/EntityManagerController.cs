@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace client.Common.Manager
@@ -16,15 +17,12 @@ namespace client.Common.Manager
         // TODO: find better singleton implementation
         // http://csharpindepth.com/articles/general/singleton.aspx
         // NOT lazy-singletons: throws useless exceptions when initialisation failed
-        private static EntityManagerController instance=null;
+        private static EntityManagerController instance = null;
 
-        public static EntityManagerController Instance
-        {
-            get
-            {
-                if (instance==null)
-                {
-                    instance = new EntityManagerController();
+        public static EntityManagerController Instance {
+            get {
+                if (instance == null) {
+                    instance = new EntityManagerController ();
                 }
                 return instance;
             }
@@ -40,9 +38,9 @@ namespace client.Common.Manager
 
         #region Entities
 
-        public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition centerRegionPosition)
+        public async Task<LinkedList<LinkedList<@base.model.Action>>> LoadEntitiesAsync (Position currentGamePosition, RegionPosition centerRegionPosition)
         {
-            var regionManagerC = (Manager.RegionManagerController) Controller.Instance.RegionManagerController;
+            var regionManagerC = (Manager.RegionManagerController)Controller.Instance.RegionManagerController;
 
             var worldRegions = regionManagerC.GetWorldNearRegionPositions (centerRegionPosition);
             var listRegions = new RegionPosition[25];
@@ -52,17 +50,17 @@ namespace client.Common.Manager
                 ++index;
             }
 
-            await LoadEntitiesAsync (currentGamePosition, listRegions);
-
+            var actions = await LoadEntitiesAsync (currentGamePosition, listRegions);
+            return actions;
         }
 
 
 
-        public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition[] listRegions)
+        public async Task<LinkedList<LinkedList<@base.model.Action>>> LoadEntitiesAsync (Position currentGamePosition, RegionPosition[] listRegions)
         {
 
-            var entities = await NetworkController.GetInstance.LoadEntitiesAsync (currentGamePosition, listRegions);
-
+            var response = await NetworkController.GetInstance.LoadEntitiesAsync (currentGamePosition, listRegions);
+            var entities = response.Entities;
             if (entities != null) {
                 foreach (var regionEntities in entities) {
                     foreach (var entity in regionEntities) {
@@ -70,30 +68,31 @@ namespace client.Common.Manager
                         region.AddEntity (DateTime.Now, entity);
                         Add (entity);
 
-
                     }
                 }
             }
+
+            return response.Actions;
+
         }
 
         #endregion
 
-        Entity GetEntity(int Id)
+        Entity GetEntity (int Id)
         {
             Entity entity = null;
             Entities.TryGetValue (Id, out entity);
             return entity;
         }
 
-        void Remove(Entity entity)
+        void Remove (Entity entity)
         {
-            if (Entities.ContainsKey(entity.ID))
-            {
+            if (Entities.ContainsKey (entity.ID)) {
                 Entities.Remove (entity.ID);
             }
         }
 
-        void Add(Entity entity)
+        void Add (Entity entity)
         {
             Entities [entity.ID] = entity;
         }

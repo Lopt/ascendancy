@@ -188,8 +188,8 @@
     <BundleResource Include="Content\images\hd\logo.png" />
     <BundleResource Include="Content\images\ld\Ladebalken.png" />
     <BundleResource Include="Content\images\ld\logo.png" />
-    <BundleResource Include="Content\tiles\Spritesheet_x2.png" />
-    <BundleResource Include="Content\tiles\Worldmap-160x160%2880x320%29_20150601.xnb" />
+    <BundleResource Include="Content\tiles\Spritesheet_20150702.png" />
+    <BundleResource Include="Content\tiles\Worldmap-160x160%2880x320%29_20150702.xnb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />

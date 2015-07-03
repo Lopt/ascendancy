@@ -12,6 +12,16 @@ namespace @base.control
         {
         }
 
+        public Account GetAccountOrEmpty(int id)
+        {
+            var account = GetAccount(id);
+            if (account == null)
+            {
+                account = new Account(id);
+            }
+            return account;
+        }
+
        /// <summary>
         /// Returns the account
        /// </summary>
