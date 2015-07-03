@@ -246,7 +246,7 @@ namespace client.Common.Views
                 }
 
                 /*
-                 * //uncomment for create unit action
+                 * //uncomment to see create unit action
                 if (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid != ClientConstants.CROSS_GID)
                 {
                     var actionC = (@base.control.action.Action)newAction.Control;

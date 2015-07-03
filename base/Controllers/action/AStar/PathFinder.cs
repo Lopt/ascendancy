@@ -28,10 +28,10 @@ namespace AStar
         /// <param name="searchParameters"></param>
         public PathFinder(SearchParameters searchParameters)
         {
-            var StartNode = new Node(searchParameters.StartLocation, searchParameters.EndLocation);
-            this.searchParameters.StartLocation = searchParameters.StartLocation;
-            this.searchParameters.EndLocation = searchParameters.EndLocation;
-            m_nodes[searchParameters.StartLocation] = StartNode;
+            m_nodes = new Dictionary<PositionI, Node>();
+            startNode = new Node(searchParameters.StartLocation, searchParameters.EndLocation);
+            this.searchParameters = searchParameters;
+            m_nodes[searchParameters.StartLocation] = startNode;
         }
 
         /// <summary>

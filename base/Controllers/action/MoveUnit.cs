@@ -77,6 +77,7 @@ namespace @base.control.action
             {
                 var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition));             
                 Path = pathfinder.FindPath( ((UnitDefinition) unit.Definition).Moves);
+
                 return Path.Count != 0;                
             }
 
