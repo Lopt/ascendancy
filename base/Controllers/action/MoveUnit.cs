@@ -101,6 +101,7 @@ namespace @base.control.action
             var entity = regionManagerC.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
             regionManagerC.GetRegion(startPosition.RegionPosition).RemoveEntity(action.ActionTime, entity);
             regionManagerC.GetRegion(endPosition.RegionPosition).AddEntity(action.ActionTime, entity);   
+            entity.Position = endPosition;
 
             Bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
 
