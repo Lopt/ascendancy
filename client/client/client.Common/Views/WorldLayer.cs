@@ -232,7 +232,7 @@ namespace client.Common.Views
                 case ClientConstants.MENUEMANA_GID:
                 case ClientConstants.MENUEFIRE_GID:    
                     //set action to create headquater
-                    createBuilding(m_coordHelper, 276);
+                    createBuilding (m_coordHelper, 276);
                     //clears the menu after taped
                     ShowMenu (m_coordHelper, 0);
                     break;
@@ -335,8 +335,7 @@ namespace client.Common.Views
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible (m_regionManagerController);
 
-            if (possible) 
-            {
+            if (possible) {
                 //actionC.Do (m_regionManagerController);
                 //m_worker.Queue.Enqueue (newAction);
                 DoAction (newAction);
@@ -349,14 +348,13 @@ namespace client.Common.Views
             var tapMapCellPosition = new MapCellPosition (location);
             var tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
             var tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
-            dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
-            dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long) type;
+            dictParam [@base.control.action.CreatBuilding.CREATE_POSITION] = tapPositionI; 
+            dictParam [@base.control.action.CreatBuilding.CREATION_TYPE] = (long)type;
             var newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateBuilding, dictParam);
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible (m_regionManagerController);
 
-            if (possible) 
-            {
+            if (possible) {
                 //actionC.Do (m_regionManagerController);
                 //m_worker.Queue.Enqueue (newAction);      
                 DoAction (newAction);
