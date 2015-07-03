@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -41,6 +41,7 @@
     <Compile Include="Try-Tests\GeolocationScene.cs" />
     <Compile Include="Try-Tests\Network.cs" />
     <Compile Include="Try-Tests\TouchTestScene.cs" />
+    <Compile Include="Views\Action\CreateBuilding.cs" />
     <Compile Include="Views\StartScene.cs" />
     <Compile Include="Views\GameScene.cs" />
     <Compile Include="Views\EndScene.cs" />
@@ -119,15 +120,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Helper\" />
-    <Folder Include="Models\" />
-    <Folder Include="Try-Tests\" />
-    <Folder Include="Views\" />
-    <Folder Include="Manager\" />
-    <Folder Include="Views\Action\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\..\base\base.csproj">
       <Project>{163A206B-36D1-46D5-AA19-B515F7350C6E}</Project>

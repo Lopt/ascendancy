@@ -43,6 +43,17 @@ namespace @base.model
             return new PositionI(first.X - second.X, first.Y - second.Y);
         }
 
+        public static bool operator ==(PositionI first, PositionI second)
+        {
+            return (first.X == second.X && first.Y == second.Y);
+        }
+
+        public static bool operator !=(PositionI first, PositionI second)
+        {
+            return (first.X != second.X || first.Y != second.Y);
+        }
+
+
         public double Distance(PositionI position)
         {
             var xDistance = (position.X - m_x);
@@ -71,6 +82,20 @@ namespace @base.model
 		{
 			get { return this.m_y; }
 		}
+
+
+        public override bool Equals(Object obj)
+        {
+            var pos = (PositionI)obj;
+            return this == pos;
+        }
+
+
+        public override int GetHashCode()
+        {
+            return X * 1000000 + Y;
+        }
+
 
         private readonly int m_x;
         private readonly int m_y;

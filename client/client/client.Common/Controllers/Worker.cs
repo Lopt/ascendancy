@@ -12,7 +12,7 @@ namespace client.Common.Controllers
 
             /*
             var param = new ConcurrentDictionary<string, object> ();
-            param [@base.control.action.CreateUnit.CREATE_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 5), (int) (WorldLayer.CenterPosition.Y - 36));
+            param [@base.control.action.CreateUnit.CREATE_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X), (int) (WorldLayer.CenterPosition.Y - 1));
             param [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
 
             var action = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, param);
@@ -20,8 +20,8 @@ namespace client.Common.Controllers
             Queue.Enqueue (action);
 
             var param2 = new ConcurrentDictionary<string, object> ();
-            param2 [@base.control.action.MoveUnit.START_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 5), (int) (WorldLayer.CenterPosition.Y - 5));
-            param2 [@base.control.action.MoveUnit.END_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 5), (int) (WorldLayer.CenterPosition.Y + 5));
+            param2 [@base.control.action.MoveUnit.START_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X), (int) (WorldLayer.CenterPosition.Y ));
+            param2 [@base.control.action.MoveUnit.END_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 8), (int) (WorldLayer.CenterPosition.Y ));
             var action2 = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.MoveUnit, param2);
 
             Queue.Enqueue (action2);
@@ -46,7 +46,17 @@ namespace client.Common.Controllers
                 var actionC = (@base.control.action.Action) Action.Control;
                 var actionV = CreateActionView(Action);
                 var affectedRegions = actionC.GetAffectedRegions (regionC);
-                actionC.Possible (regionC);
+
+                for (int i = 0; i < 1; ++i)
+                {
+                    try
+                    {
+                        actionC.Possible (regionC);
+                    }
+                    catch
+                    {
+                    }
+                }
                 actionV.BeforeDo ();
                 actionC.Do (regionC);
             }

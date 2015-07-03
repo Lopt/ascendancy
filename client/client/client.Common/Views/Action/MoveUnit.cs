@@ -28,7 +28,7 @@ namespace client.Common.Views.Action
 
         override public bool Schedule(float frameTimesInSecond)
         {
-            frameTimesInSecond *= Helper.ClientConstants.WALK_TIME_PER_FIELD;
+            frameTimesInSecond /= Helper.ClientConstants.MOVE_SPEED_PER_FIELD;
 
             var action = (@base.model.Action)Model;
             var actionC = (@base.control.action.MoveUnit)Model.Control;
