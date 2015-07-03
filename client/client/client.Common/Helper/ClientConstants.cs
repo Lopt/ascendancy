@@ -145,5 +145,11 @@ namespace client.Common.Helper
 
         #endregion
 
+
+        #region Action-Animations
+        public const float WALK_TIME_PER_FIELD = 0.3f;
+
+        #endregion
+
     }
 }

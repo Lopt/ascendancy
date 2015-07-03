@@ -58,7 +58,7 @@ namespace client.Common.Views
 
 
             m_touchGesture = TouchGesture.None;
-
+                
             this.AddChild (m_worldTileMap);
 
 
@@ -76,7 +76,8 @@ namespace client.Common.Views
             AddEventListener (TouchListener);
 
             m_worker = new Controllers.Worker (this);
-            //Schedule (m_worker.Schedule); TODO: decomment and schedule actions
+
+            Schedule (m_worker.Schedule); //TODO: decomment and schedule actions
 
 
         }
@@ -217,7 +218,14 @@ namespace client.Common.Views
                 break;
             case(TouchGesture.Menu):
                 
-                switch (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid) {
+                var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+                MapCellPosition tapMapCellPosition = new MapCellPosition (m_startCoord);//GetMapCell(m_menuLayer, m_startLocation);
+                Position tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
+                PositionI tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
+                dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
+                @base.model.Action newAction = null;
+                switch (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid) 
+                {
                 case ClientConstants.CROSS_GID:
                     ShowMenu (m_coordHelper, 0);
                     break;
@@ -270,12 +278,27 @@ namespace client.Common.Views
                     ShowMenu(m_coordHelper, 0);
                     break;
                 }
+                /*
+                 * //uncomment to see create unit action
+                if (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid != ClientConstants.CROSS_GID)
+                {
+                    var actionC = (@base.control.action.Action)newAction.Control;
+                    var possible = actionC.Possible (m_regionManagerController);
+                    if (possible)
+                    {
+                        m_worker.Queue.Enqueue (newAction);
+                    }
+                }
+                */
+
 
 
                 break;
 
+
+
             case TouchGesture.Walk:
-                var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+                dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
 
                 var startMapCellPosition = new MapCellPosition (m_coordHelper);
                 var startPosition = RegionView.GetCurrentGamePosition (startMapCellPosition, CenterPosition.RegionPosition);
@@ -322,7 +345,7 @@ namespace client.Common.Views
             var tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
             dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
             dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long) type;
-            var newAction = new @base.model.Action (new Account (0), @base.model.Action.ActionType.CreateUnit, dictParam);
+            var newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible (m_regionManagerController);
             possible = actionC.Possible (m_regionManagerController);
@@ -341,7 +364,7 @@ namespace client.Common.Views
             var tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
             dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
             //dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long) type;
-            var newAction = new @base.model.Action (new Account (0), @base.model.Action.ActionType.CreateHeadquarter, dictParam);
+            var newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateHeadquarter, dictParam);
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible (m_regionManagerController);
             possible = actionC.Possible (m_regionManagerController);
