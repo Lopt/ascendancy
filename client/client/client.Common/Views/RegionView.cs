@@ -66,6 +66,19 @@ namespace client.Common.Views
             }
         }
 
+        public void SetBuilding(CCTileMapCoordinates mapCoordinat, Entity building)
+        {
+            if (building == null)
+            {
+                UnitLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);
+            }
+            else
+            {
+                var gid = m_ViewDefinition.DefinitionToTileGid(building.Definition);
+                BuildingLayer.SetTileGID(gid, mapCoordinat);
+            }
+        }
+
         public void SetUnitTileInMap (CCTileMapLayer mapLayer, CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {   
             var entity = region.GetEntity (cellPosition);
