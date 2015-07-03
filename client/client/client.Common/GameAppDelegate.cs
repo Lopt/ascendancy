@@ -130,6 +130,8 @@ namespace client.Common
             var controller = @base.control.Controller.Instance;
             controller.RegionManagerController = new client.Common.Manager.RegionManagerController ();      
             controller.DefinitionManagerController = new DefinitionManagerController ();
+            controller.AccountManagerController = new @base.control.AccountManagerController ();
+
         }
 
         private async Task LogInAsync ()
