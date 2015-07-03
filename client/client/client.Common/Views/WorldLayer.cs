@@ -177,12 +177,7 @@ namespace client.Common.Views
             var location = m_terrainLayer.WorldToParentspace (touches [0].Location);
             m_startLocation = location;
             m_startCoord = m_terrainLayer.ClosestTileCoordAtNodePosition (location);
-<<<<<<< HEAD
             if (RegionView.UnitLayer.TileGIDAndFlags (m_startCoord).Gid != 0) {
-=======
-            if (RegionView.UnitLayer.TileGIDAndFlags (m_startCoord).Gid != 0 && m_touchGesture == TouchGesture.Start) 
-            {
->>>>>>> 1f2648b47adea5263027795dc04f83d68a834215
                 m_touchGesture = TouchGesture.Walk;
             }
         }
@@ -218,21 +213,14 @@ namespace client.Common.Views
                 }
                 break;
             case(TouchGesture.Menu):
-
-                /*
+                
                 var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
                 MapCellPosition tapMapCellPosition = new MapCellPosition (m_startCoord);//GetMapCell(m_menuLayer, m_startLocation);
                 Position tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
                 PositionI tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
                 dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
                 @base.model.Action newAction = null;
-<<<<<<< HEAD
                 switch (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid) {
-=======
-                */
-                switch (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid) 
-                {
->>>>>>> 1f2648b47adea5263027795dc04f83d68a834215
                 case ClientConstants.CROSS_GID:
                     ShowMenu (m_coordHelper, 0);
                     break;
@@ -305,32 +293,24 @@ namespace client.Common.Views
 
 
             case TouchGesture.Walk:
-                if (!m_unitmove) {
-                    m_coordHelper = m_startCoord;
-                    m_unitmove = true;
-                } else {   
-                    var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+                dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
 
-                    var startMapCellPosition = new MapCellPosition (m_coordHelper);
-                    var startPosition = RegionView.GetCurrentGamePosition (startMapCellPosition, CenterPosition.RegionPosition);
-                    var startPositionI = new PositionI ((int)startPosition.X, (int)startPosition.Y);
-                    dictParam [@base.control.action.MoveUnit.START_POSITION] = startPositionI;
+                var startMapCellPosition = new MapCellPosition (m_coordHelper);
+                var startPosition = RegionView.GetCurrentGamePosition (startMapCellPosition, CenterPosition.RegionPosition);
+                var startPositionI = new PositionI ((int)startPosition.X, (int)startPosition.Y);
 
-                    var endMapCellPosition = new MapCellPosition (m_startCoord);
-                    var endPosition = RegionView.GetCurrentGamePosition (endMapCellPosition, CenterPosition.RegionPosition);
-                    var endPositionI = new PositionI ((int)endPosition.X, (int)endPosition.Y);
-                    dictParam [@base.control.action.MoveUnit.END_POSITION] = endPositionI;
+                var endMapCellPosition = new MapCellPosition (m_startCoord);
+                var endPosition = RegionView.GetCurrentGamePosition (endMapCellPosition, CenterPosition.RegionPosition);
+                var endPositionI = new PositionI ((int)endPosition.X, (int)endPosition.Y);
 
-                    var action = new @base.model.Action (new Account (0), @base.model.Action.ActionType.MoveUnit, dictParam);
-                    var actionC = (@base.control.action.Action)action.Control;
-                    var possible = actionC.Possible (m_regionManagerController);
-                    if (possible) {
-                        actionC.Do (m_regionManagerController);
-                    }
-                    m_unitmove = false;
-                    m_touchGesture = TouchGesture.None;
+                dictParam [@base.control.action.MoveUnit.START_POSITION] = startPositionI;
+                dictParam [@base.control.action.MoveUnit.END_POSITION] = endPositionI;
+                var action = new @base.model.Action (new Account (0), @base.model.Action.ActionType.MoveUnit, dictParam);
+                var actionC = (@base.control.action.Action)action.Control;
+                var possible = actionC.Possible (m_regionManagerController);
+                if (possible) {
+                    actionC.Do (m_regionManagerController);
                 }
-<<<<<<< HEAD
                 m_touchGesture = TouchGesture.None;
                 return;
             }
@@ -349,12 +329,7 @@ namespace client.Common.Views
 
             //Action = new @base.control.action ();
             //@base.control.action.CreateUnit newAction;
-=======
 
-                break;
->>>>>>> 1f2648b47adea5263027795dc04f83d68a834215
-
-            }
         }
 
         public void CreateUnit (CCTileMapCoordinates location, int type)
@@ -370,7 +345,6 @@ namespace client.Common.Views
             var possible = actionC.Possible (m_regionManagerController);
            
             if (possible) {
-               
                 DoAction (newAction);
             }
         }
@@ -547,6 +521,7 @@ namespace client.Common.Views
                     m_worker.Queue.Enqueue (action);
                 }   
             }
+
             RegionView.SetTilesInMap160 (m_regionManagerController.GetRegionByGamePosition (gamePosition));
             SetCurrentPositionOnce (gamePosition);
             SetMapAnchor (gamePosition);
