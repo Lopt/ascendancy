@@ -10,7 +10,7 @@ namespace client.Common.Controllers
             WorldLayer = worldLayer;
             Queue = new ConcurrentQueue<@base.model.Action> ();
 
-            /*
+
             var param = new ConcurrentDictionary<string, object> ();
             param [@base.control.action.CreateUnit.CREATE_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X), (int) (WorldLayer.CenterPosition.Y - 1));
             param [@base.control.action.CreateUnit.CREATION_TYPE] = (long)60;
@@ -21,12 +21,28 @@ namespace client.Common.Controllers
 
             var param2 = new ConcurrentDictionary<string, object> ();
             param2 [@base.control.action.MoveUnit.START_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X), (int) (WorldLayer.CenterPosition.Y ));
-            param2 [@base.control.action.MoveUnit.END_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 8), (int) (WorldLayer.CenterPosition.Y ));
+            param2 [@base.control.action.MoveUnit.END_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 9), (int) (WorldLayer.CenterPosition.Y ));
             var action2 = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.MoveUnit, param2);
-
             Queue.Enqueue (action2);
-            */
-               
+
+            var param3 = new ConcurrentDictionary<string, object> ();
+            param3 [@base.control.action.MoveUnit.START_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 9), (int) (WorldLayer.CenterPosition.Y ));
+            param3 [@base.control.action.MoveUnit.END_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 9), (int) (WorldLayer.CenterPosition.Y + 4));
+            var action3 = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.MoveUnit, param2);
+            Queue.Enqueue (action3);
+
+            var param4 = new ConcurrentDictionary<string, object> ();
+            param4 [@base.control.action.MoveUnit.START_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 9), (int) (WorldLayer.CenterPosition.Y + 4));
+            param4 [@base.control.action.MoveUnit.END_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 9), (int) (WorldLayer.CenterPosition.Y ));
+            var action4 = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.MoveUnit, param2);
+            Queue.Enqueue (action4);
+
+            var param5 = new ConcurrentDictionary<string, object> ();
+            param5 [@base.control.action.MoveUnit.START_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X + 9), (int) (WorldLayer.CenterPosition.Y ));
+            param5 [@base.control.action.MoveUnit.END_POSITION] = new @base.model.PositionI ((int) (WorldLayer.CenterPosition.X), (int) (WorldLayer.CenterPosition.Y ));
+            var action5 = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.MoveUnit, param2);
+            Queue.Enqueue (action5);
+
         }
 
         public void Schedule(float frameTimesInSecond)
@@ -49,13 +65,7 @@ namespace client.Common.Controllers
 
                 for (int i = 0; i < 1; ++i)
                 {
-                    try
-                    {
-                        actionC.Possible (regionC);
-                    }
-                    catch
-                    {
-                    }
+                    actionC.Possible (regionC);
                 }
                 actionV.BeforeDo ();
                 actionC.Do (regionC);
