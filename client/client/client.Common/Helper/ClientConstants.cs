@@ -34,7 +34,7 @@ namespace client.Common.Helper
 
         public const int CELLMAP_160x160_SIZE = 160;
 
-        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20150601";
+        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20150702";
         public const string LAYER_TERRAIN = "Layer 0";
         public const string LAYER_BUILDING = "Layer 1";
         public const string LAYER_UNIT = "Layer 2";
@@ -73,10 +73,10 @@ namespace client.Common.Helper
         #region UnitsGid
 
         public const short BOWMAN_GID  = 46;
-        public const short HERO_GID          = 47;
-        public const short WARRIOR_GID       = 48;
-        public const short MAGE_GID        = 49;
-        public const short SCOUT_GID        = 50;
+        public const short HERO_GID    = 47;
+        public const short WARRIOR_GID = 48;
+        public const short MAGE_GID    = 49;
+        public const short SCOUT_GID   = 50;
         public const short UNKNOWN_GID = 51;
 
         #endregion
@@ -84,10 +84,11 @@ namespace client.Common.Helper
         #region MenueUnitsGid
 
         public const short MENUEBOWMAN_GID = 59;
-        public const short MENUEWARRIOR_GID = 60;
-        public const short MENUEMAGE_GID = 61;
-        public const short MENUESCOUT_GID = 62;
-        public const short MENUEUNKNOWN_GID = 63;
+        public const short MENUEHERO_GID = 60;
+        public const short MENUEWARRIOR_GID = 61;
+        public const short MENUEMAGE_GID = 62;
+        public const short MENUESCOUT_GID = 63;
+        public const short MENUEUNKNOWN_GID = 64;
 
 
         #endregion
@@ -139,8 +140,8 @@ namespace client.Common.Helper
 
         #region HelperGid
 
-        public const short DOT_GID = 64;
-        public const short CROSS_GID = 65;
+        public const short DOT_GID = 65;
+        public const short CROSS_GID = 66;
 
         #endregion
 
