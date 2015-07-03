@@ -177,7 +177,7 @@ namespace client.Common.Views
             var location = m_terrainLayer.WorldToParentspace (touches [0].Location);
             m_startLocation = location;
             m_startCoord = m_terrainLayer.ClosestTileCoordAtNodePosition (location);
-            if (RegionView.UnitLayer.TileGIDAndFlags (m_startCoord).Gid != 0) {
+            if (RegionView.UnitLayer.TileGIDAndFlags (m_startCoord).Gid != 0 && m_touchGesture == TouchGesture.Start) {
                 m_touchGesture = TouchGesture.Walk;
             }
         }
@@ -213,13 +213,14 @@ namespace client.Common.Views
                 }
                 break;
             case(TouchGesture.Menu):
-                
+                /*
                 var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
                 MapCellPosition tapMapCellPosition = new MapCellPosition (m_startCoord);//GetMapCell(m_menuLayer, m_startLocation);
                 Position tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
                 PositionI tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
                 dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
                 @base.model.Action newAction = null;
+                */
                 switch (m_menuLayer.TileGIDAndFlags (m_startCoord).Gid) {
                 case ClientConstants.CROSS_GID:
                     ShowMenu (m_coordHelper, 0);
@@ -231,7 +232,7 @@ namespace client.Common.Views
                 case ClientConstants.MENUEMANA_GID:
                 case ClientConstants.MENUEFIRE_GID:    
                     //set action to create headquater
-                    createBuilding (m_coordHelper, 0);
+                    createBuilding(m_coordHelper, 276);
                     //clears the menu after taped
                     ShowMenu (m_coordHelper, 0);
                     break;
@@ -293,43 +294,33 @@ namespace client.Common.Views
 
 
             case TouchGesture.Walk:
-                dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
+                if (!m_unitmove) {
+                    m_coordHelper = m_startCoord;
+                    m_unitmove = true;
+                } else {   
+                    var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
 
-                var startMapCellPosition = new MapCellPosition (m_coordHelper);
-                var startPosition = RegionView.GetCurrentGamePosition (startMapCellPosition, CenterPosition.RegionPosition);
-                var startPositionI = new PositionI ((int)startPosition.X, (int)startPosition.Y);
+                    var startMapCellPosition = new MapCellPosition (m_coordHelper);
+                    var startPosition = RegionView.GetCurrentGamePosition (startMapCellPosition, CenterPosition.RegionPosition);
+                    var startPositionI = new PositionI ((int)startPosition.X, (int)startPosition.Y);
+                    dictParam [@base.control.action.MoveUnit.START_POSITION] = startPositionI;
 
-                var endMapCellPosition = new MapCellPosition (m_startCoord);
-                var endPosition = RegionView.GetCurrentGamePosition (endMapCellPosition, CenterPosition.RegionPosition);
-                var endPositionI = new PositionI ((int)endPosition.X, (int)endPosition.Y);
+                    var endMapCellPosition = new MapCellPosition (m_startCoord);
+                    var endPosition = RegionView.GetCurrentGamePosition (endMapCellPosition, CenterPosition.RegionPosition);
+                    var endPositionI = new PositionI ((int)endPosition.X, (int)endPosition.Y);
+                    dictParam [@base.control.action.MoveUnit.END_POSITION] = endPositionI;
 
-                dictParam [@base.control.action.MoveUnit.START_POSITION] = startPositionI;
-                dictParam [@base.control.action.MoveUnit.END_POSITION] = endPositionI;
-                var action = new @base.model.Action (new Account (0), @base.model.Action.ActionType.MoveUnit, dictParam);
-                var actionC = (@base.control.action.Action)action.Control;
-                var possible = actionC.Possible (m_regionManagerController);
-                if (possible) {
-                    actionC.Do (m_regionManagerController);
+                    var action = new @base.model.Action (new Account (0), @base.model.Action.ActionType.MoveUnit, dictParam);
+                    var actionC = (@base.control.action.Action)action.Control;
+                    var possible = actionC.Possible (m_regionManagerController);
+                    if (possible) {
+                        actionC.Do (m_regionManagerController);
+                    }
+                    m_unitmove = false;
+                    m_touchGesture = TouchGesture.None;
                 }
-                m_touchGesture = TouchGesture.None;
-                return;
+                break;
             }
-                
-
-
-            //var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
-            //MapCellPosition tapMapCellPosition = new MapCellPosition (m_startCoord);//GetMapCell(m_menuLayer, m_startLocation);
-            //Position tapPosition = m_regionView.GetCurrentGamePosition(tapMapCellPosition, m_centerRegionPosition);
-            //PositionI tapPositionI = new PositionI((int)tapPosition.X, (int)tapPosition.Y);
-            //dictParam[@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; // benötigt positionI
-            //dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long) 60;
-            //var newAction = new @base.model.Action (new Account(0), @base.model.Action.ActionType.CreateUnit, dictParam);
-            //var actionC = (@base.control.action.Action)newAction.Control;
-            //var possible = actionC.Possible (m_regionManagerController);
-
-            //Action = new @base.control.action ();
-            //@base.control.action.CreateUnit newAction;
-
         }
 
         public void CreateUnit (CCTileMapCoordinates location, int type)
@@ -343,25 +334,31 @@ namespace client.Common.Views
             var newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible (m_regionManagerController);
-           
-            if (possible) {
+
+            if (possible) 
+            {
+                //actionC.Do (m_regionManagerController);
+                //m_worker.Queue.Enqueue (newAction);
                 DoAction (newAction);
             }
         }
 
-        public void createBuilding (CCTileMapCoordinates location, int type)
+        public void createBuilding (CCTileMapCoordinates location, long type)
         {
             var dictParam = new System.Collections.Concurrent.ConcurrentDictionary<string,object> ();
             var tapMapCellPosition = new MapCellPosition (location);
             var tapPosition = RegionView.GetCurrentGamePosition (tapMapCellPosition, CenterPosition.RegionPosition);
             var tapPositionI = new PositionI ((int)tapPosition.X, (int)tapPosition.Y);
             dictParam [@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
-            //dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long) type;
-            var newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateHeadquarter, dictParam);
+            dictParam [@base.control.action.CreateUnit.CREATION_TYPE] = (long) type;
+            var newAction = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.CreateBuilding, dictParam);
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible (m_regionManagerController);
-          
-            if (possible) {
+
+            if (possible) 
+            {
+                //actionC.Do (m_regionManagerController);
+                //m_worker.Queue.Enqueue (newAction);      
                 DoAction (newAction);
             }
         }
