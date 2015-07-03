@@ -13,6 +13,7 @@ namespace @base.model
             m_id = id;
             m_username = "???";
             m_headquarters = new LinkedList<PositionI>();
+            m_buildings = new LinkedList<PositionI>();
             m_units = new LinkedList<PositionI>();
         }
 
@@ -22,6 +23,7 @@ namespace @base.model
             m_username = userName;
             m_headquarters = new LinkedList<PositionI>();
             m_units = new LinkedList<PositionI>();
+            m_buildings = new LinkedList<PositionI>();
         }
 
 		public int ID
@@ -45,10 +47,16 @@ namespace @base.model
             get { return m_headquarters; }
         }
 
+        public LinkedList<PositionI> Buildings
+        {
+            get { return m_buildings; }
+        }
+
 		private int m_id;
 		private string m_username;
         private LinkedList<PositionI> m_headquarters;
         private LinkedList<PositionI> m_units;
+        private LinkedList<PositionI> m_buildings;
 	}
 }
 

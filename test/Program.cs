@@ -59,7 +59,7 @@ namespace test
 
         public static void PreloadRegions()
         {
-            var regionManagerC = @base.control.Controller.Instance.RegionStatesController.Curr;
+            var regionManagerC = @base.control.Controller.Instance.RegionManagerController;
 
             for (var x = 0; x < REGIONS_X; ++x)
             {   for (var y = 0; y < REGIONS_Y; ++y)
@@ -74,7 +74,7 @@ namespace test
         {
             var api = server.control.APIController.Instance;
             var rng = new Random();  
-            var regionManagerC = @base.control.Controller.Instance.RegionStatesController.Next;
+            var regionManagerC = @base.control.Controller.Instance.RegionManagerController;
 
             var maxRequests = REQUESTS_PER_REGION * REGIONS_X * REGIONS_Y;
             for (var requestNr = 0; requestNr <  maxRequests; ++requestNr)
@@ -126,7 +126,7 @@ namespace test
 
         public static void TestWriter()
         {
-            var regionManagerC = @base.control.Controller.Instance.RegionStatesController.Next;
+            var regionManagerC = @base.control.Controller.Instance.RegionManagerController;
             var account = new Account (0);
             var accountC = new server.control.AccountController(account, "passwd");
             var rng = new Random();  
@@ -141,9 +141,9 @@ namespace test
                 Stopwatch runWatch = new Stopwatch();
                 runWatch.Start();
 
-                server.MvcApplication.Phase = server.MvcApplication.Phases.Running;
+                //server.MvcApplication.Phase = server.MvcApplication.Phases.Running;
                 WaitUntilFinished ();
-                server.MvcApplication.Phase = server.MvcApplication.Phases.Pause;
+                //server.MvcApplication.Phase = server.MvcApplication.Phases.Pause;
 
                 runWatch.Stop();
                 TimeSpan ts = runWatch.Elapsed;
@@ -165,10 +165,10 @@ namespace test
 
         public static void Main(string[] args)
         {
-            var app = new server.MvcApplication ();
-            app.Application_Start ();
+            //var app = new server.MvcApplication ();
+            //app.Application_Start ();
 
-            server.MvcApplication.Phase = server.MvcApplication.Phases.Pause;
+            //server.MvcApplication.Phase = server.MvcApplication.Phases.Pause;
 
 
             PreloadRegions ();
@@ -178,7 +178,7 @@ namespace test
 
             TestReader ();
 
-            server.MvcApplication.Phase = server.MvcApplication.Phases.Exit;
+            //server.MvcApplication.Phase = server.MvcApplication.Phases.Exit;
         }
     }
 }
