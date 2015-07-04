@@ -12,6 +12,11 @@ namespace @base.control
         {
         }
 
+        public void AddAccount(Account account)
+        {
+            World.Instance.Accounts.TryAdd(account.ID, account);
+        }
+
         public Account GetAccountOrEmpty(int id)
         {
             var account = GetAccount(id);

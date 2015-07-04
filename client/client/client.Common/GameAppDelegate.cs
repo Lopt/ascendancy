@@ -100,6 +100,7 @@ namespace client.Common
             if (NetworkController.GetInstance.IsLogedin) {
 
                 var controller = @base.control.Controller.Instance;
+                controller.AccountManagerController.AddAccount (Account);
 
                 LoadingState = Loading.Loggedin;
                 LoadingState = Loading.TerrainTypeLoading;

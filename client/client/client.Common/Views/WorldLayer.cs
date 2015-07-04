@@ -306,16 +306,19 @@ namespace client.Common.Views
                     var startPositionI = new PositionI ((int)startPosition.X, (int)startPosition.Y);
                     dictParam [@base.control.action.MoveUnit.START_POSITION] = startPositionI;
 
-                    var endMapCellPosition = new MapCellPosition (m_startCoord);
+                    var location = m_terrainLayer.WorldToParentspace (touches [0].Location);
+                    var endCoord = m_terrainLayer.ClosestTileCoordAtNodePosition (location);
+
+                    var endMapCellPosition = new MapCellPosition (endCoord);
                     var endPosition = RegionView.GetCurrentGamePosition (endMapCellPosition, CenterPosition.RegionPosition);
                     var endPositionI = new PositionI ((int)endPosition.X, (int)endPosition.Y);
                     dictParam [@base.control.action.MoveUnit.END_POSITION] = endPositionI;
 
-                    var action = new @base.model.Action (new Account (0), @base.model.Action.ActionType.MoveUnit, dictParam);
+                    var action = new @base.model.Action (GameAppDelegate.Account, @base.model.Action.ActionType.MoveUnit, dictParam);
                     var actionC = (@base.control.action.Action)action.Control;
                     var possible = actionC.Possible (m_regionManagerController);
                     if (possible) {
-                        actionC.Do (m_regionManagerController);
+                        DoAction (action);
                     }
                     m_unitmove = false;
                     m_touchGesture = TouchGesture.None;
@@ -524,8 +527,9 @@ namespace client.Common.Views
 
         void DoAction (@base.model.Action action)
         {
-            m_actions.Add (action);
-            m_regionManagerController.DoActionAsync (m_geolocation.CurrentGamePosition, m_actions.ToArray ());
+            var actions = new List<@base.model.Action> ();
+            actions.Add (action);
+            m_regionManagerController.DoActionAsync (m_geolocation.CurrentGamePosition, actions.ToArray ());
             var mapCell = GetMapCell (m_terrainLayer, new CCPoint (VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
             var position = RegionView.GetCurrentGamePosition (mapCell, CenterPosition.RegionPosition);
             DrawRegionsAsync (position);
@@ -570,7 +574,8 @@ namespace client.Common.Views
 
         public CCTileMapCoordinates PositionToTileMapCoordinates (PositionI position)
         {
-            var leftTop = new PositionI ((int)CenterPosition.X, (int)CenterPosition.Y) - new PositionI ((int)(Constants.REGION_SIZE_X * 2.5) + 4, (int)(Constants.REGION_SIZE_Y * 2.5) - 8);
+            var cellPos = CenterPosition.CellPosition;
+            var leftTop = new PositionI ((int)CenterPosition.X, (int)CenterPosition.Y) - new PositionI ((int)(Constants.REGION_SIZE_X * 2)  + cellPos.CellX, (int)(Constants.REGION_SIZE_Y * 2 + cellPos.CellY));
             var cellPosition = position - leftTop;
             var MapPosition = new MapCellPosition (cellPosition.X, cellPosition.Y);
 
@@ -607,7 +612,6 @@ namespace client.Common.Views
         Stopwatch m_timer;
         TouchGesture m_touchGesture;
 
-        List<@base.model.Action> m_actions = new List<@base.model.Action> ();
 
         public RegionView RegionView {
             private set;
