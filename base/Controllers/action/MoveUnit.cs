@@ -72,13 +72,13 @@ namespace @base.control.action
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
             var unit = Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
-        
-            if (unit != null && action.Account.ID == unit.Account.ID)
-            {
-                var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition));             
-                Path = pathfinder.FindPath( ((UnitDefinition) unit.Definition).Moves);
 
-                return Path.Count != 0;                
+            var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition));             
+            Path = pathfinder.FindPath( ((UnitDefinition) unit.Definition).Moves);
+
+            if (unit != null && action.Account != null && action.Account.ID == unit.Account.ID)
+            {
+                    return Path.Count != 0;                
             }
 
             return false;           

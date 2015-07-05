@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using @base.model;
 using @base.model.definitions;
 using Newtonsoft.Json;
+using System.Collections;
 
 namespace @base.model
 {
@@ -61,7 +62,7 @@ namespace @base.model
         {
             get { return m_actionType; }
         }
-
+            
         [JsonIgnore]
         public DateTime ActionTime
         {
@@ -75,6 +76,26 @@ namespace @base.model
             get { return m_account; }
             set { m_account = value; }
         }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj.GetType() == typeof(Action))
+            {
+                var other = (Action)obj;
+
+                return other.Account == Account && other.Type == Type;
+                // other.ActionTime == ActionTime && 
+                //obj.Parameters == Parameters
+            }
+            return false;
+        }
+
+
+        public override int GetHashCode()
+        {
+            return 1;//unchecked((int)ActionTime.ToBinary());
+        }
+
 
         private Dictionary<string, object> m_parameters;
         private ActionType m_actionType;

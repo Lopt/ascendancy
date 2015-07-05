@@ -73,12 +73,18 @@ namespace client.Common.Manager
 
             if (response.Actions != null)
             {
-                foreach (var actions in response.Actions)
+                var sortedActions = new HashSet<@base.model.Action> ();
+                foreach (var regions in response.Actions)
                 {
-                    foreach (var action in actions)
+                    foreach (var action in regions)
                     {
-                        Worker.Queue.Enqueue (action);
+                        sortedActions.Add (action);
                     }   
+                }
+
+                foreach (var action in sortedActions)
+                {
+                    Worker.Queue.Enqueue (action);
                 }
             }
         }
