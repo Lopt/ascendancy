@@ -24,14 +24,20 @@ namespace AStar
         public PositionI EndLocation { get; set; }
 
         /// <summary>
+        /// Set the account id of the walking unit
+        /// </summary>
+        public int AccountID { get; set; }
+
+        /// <summary>
         /// Set start and enp point for the Astar algorithm.
         /// </summary>
         /// <param name="startLocation"></param>
         /// <param name="endLocation"></param>
-        public SearchParameters(PositionI startLocation, PositionI endLocation)
+        public SearchParameters(PositionI startLocation, PositionI endLocation, int accountID)
         {
             this.StartLocation = startLocation;
             this.EndLocation = endLocation;
+            this.AccountID = accountID;
         }
     }
 }

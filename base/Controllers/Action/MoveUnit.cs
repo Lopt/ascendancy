@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using @base.control;
@@ -72,13 +73,25 @@ namespace @base.control.action
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
             var unit = Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
-        
+                   
+
             if (unit != null && action.Account.ID == unit.Account.ID)
             {
-                var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition));             
-                Path = pathfinder.FindPath( ((UnitDefinition) unit.Definition).Moves);
+                var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition, action.Account.ID));
+                Path = pathfinder.FindPath(((UnitDefinition)unit.Definition).Moves);
+                
+                if (Path.Count != 0)
+                {
+                    var destpoint = Controller.Instance.RegionManagerController.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
 
-                return Path.Count != 0;                
+                    if (destpoint != null && action.Account.ID != unit.AccountID)
+                    {
+                        m_fightPos = (PositionI)Path[Path.Count - 1];
+                        Path.RemoveAt(Path.Count - 1);
+                        m_fight = true;
+                    }
+                    return true;   
+                }                            
             }
 
             return false;           
@@ -100,8 +113,18 @@ namespace @base.control.action
             
             var entity = regionManagerC.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
             regionManagerC.GetRegion(startPosition.RegionPosition).RemoveEntity(action.ActionTime, entity);
-            regionManagerC.GetRegion(endPosition.RegionPosition).AddEntity(action.ActionTime, entity);   
-            entity.Position = endPosition;
+
+            if (m_fight)
+            {
+                if (LogicRules.FightSystem())
+                {
+                    var defeatetentity = regionManagerC.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
+                    regionManagerC.GetRegion(m_fightPos.RegionPosition).AddEntity(action.ActionTime, entity);
+                    regionManagerC.GetRegion(endPosition.RegionPosition).RemoveEntity(action.ActionTime, defeatetentity);
+                    entity.Position = m_fightPos;
+                }
+
+            }    
 
             Bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
 
@@ -196,6 +219,8 @@ namespace @base.control.action
         }
 
         public IList Path;
+        private bool m_fight;
+        private PositionI m_fightPos;
     }
 }
 

@@ -27,8 +27,7 @@ namespace AStar
         {
             m_nodes = new Dictionary<PositionI, Node>();
             this.searchParameters = searchParameters;
-            startNode = new Node(searchParameters.StartLocation, searchParameters.EndLocation);
-            //endNode = new Node(searchParameters.EndLocation, searchParameters.EndLocation);
+            startNode = new Node(searchParameters.StartLocation, searchParameters.EndLocation);            
             m_nodes[searchParameters.StartLocation] = startNode;
         }
 
@@ -115,36 +114,38 @@ namespace AStar
                 var newPosition = fromNode.Location + addPosition;
                 var region = World.Instance.RegionManager.GetRegion(newPosition.RegionPosition);
                 var terrainDefinition = region.GetTerrain(newPosition.CellPosition);
+                var unit = region.GetEntity(newPosition.CellPosition);
                 // check terrai for walkable and other units in the path
-                if (terrainDefinition.Walkable)
+                if (newPosition == searchParameters.EndLocation && unit.AccountID != searchParameters.AccountID)
                 {
-                    var unit = region.GetEntity(newPosition.CellPosition);
-
-                    if (unit == null)
+                    if (terrainDefinition.Walkable)
                     {
-                        if (m_nodes.ContainsKey(newPosition))
+                        if (unit == null)
                         {
-                            // use the dictionary and get the Node at the positonI
-                            var node = m_nodes[newPosition];
-                            if (node.State == NodeState.Open)
+                            if (m_nodes.ContainsKey(newPosition))
                             {
-                                // calculate the travel cost to the next tile
-                                double traversalCost = terrainDefinition.TravelCost;
-                                double gTemp = node.G + traversalCost;
-                                if (gTemp < node.G)
+                                // use the dictionary and get the Node at the positonI
+                                var node = m_nodes[newPosition];
+                                if (node.State == NodeState.Open)
                                 {
-                                    node.ParentNode = fromNode;
-                                    walkableNodes.Add(node);
+                                    // calculate the travel cost to the next tile
+                                    double traversalCost = terrainDefinition.TravelCost;
+                                    double gTemp = node.G + traversalCost;
+                                    if (gTemp < node.G)
+                                    {
+                                        node.ParentNode = fromNode;
+                                        walkableNodes.Add(node);
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            // if the Node was not open insert a new one in the dictionary
-                            var newNode = new Node(newPosition, searchParameters.EndLocation);
-                            newNode.ParentNode = fromNode;
-                            walkableNodes.Add(newNode);
-                            m_nodes[newPosition] = newNode;
+                            else
+                            {
+                                // if the Node was not open insert a new one in the dictionary
+                                var newNode = new Node(newPosition, searchParameters.EndLocation);
+                                newNode.ParentNode = fromNode;
+                                walkableNodes.Add(newNode);
+                                m_nodes[newPosition] = newNode;
+                            }
                         }
                     }
                 }
