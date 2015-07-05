@@ -32,5 +32,19 @@ namespace @base.Models.Definition
                 new RegionPosition(+1, -1),
                 new RegionPosition( 0, -1)
         };
+
+        public static bool FightSystem()
+        {
+            var result = new Random().Next(1,10);
+            
+            if (result > 5)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }        
 }
