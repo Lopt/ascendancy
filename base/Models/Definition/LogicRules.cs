@@ -12,12 +12,12 @@ namespace @base.Models.Definition
         // From North to NorthEast in clockwise
         public static readonly PositionI[] SurroundTiles = 
         {
-                    new PositionI( 0, 1),
-                    new PositionI( 1, 0),
-                    new PositionI( 1, 1),
-                    new PositionI( 0,-1),
-                    new PositionI(-1,-1),
-                    new PositionI(-1, 0)
+                    new PositionI(  0, -1),
+                    new PositionI(  1,  0),
+                    new PositionI(  1,  1),
+                    new PositionI(  0,  1),
+                    new PositionI( -1,  1),
+                    new PositionI( -1,  0)
         };
 
         // Surrounded Regions from topleft clockwise
