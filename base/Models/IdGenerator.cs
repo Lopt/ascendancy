@@ -10,6 +10,8 @@ namespace @base.model
         {
             return Interlocked.Increment(ref m_currentId);
         }
+
+
     }
 }
 
