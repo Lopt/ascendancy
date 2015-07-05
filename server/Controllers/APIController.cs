@@ -239,12 +239,15 @@ namespace server.control
                         return ActionReturn.NotPossible;
                     }
 
+                    action.ID = @base.model.IdGenerator.GetId();
                     var changedRegions = actionC.Do(regionManager);
 					if (changedRegions.Count == 0)
                     {
                         //actionC.Catch (regionStatesController.Next);
                         return ActionReturn.InternalError;
                     }
+
+
 					foreach (var region in changedRegions)
 					{
                         var regionCurr = regionManager.GetRegion(region.RegionPosition);

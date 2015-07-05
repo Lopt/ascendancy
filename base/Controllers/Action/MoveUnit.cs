@@ -190,8 +190,9 @@ namespace @base.control.action
         override public @base.model.RegionPosition GetRegionPosition()
         {
             var action = (model.Action)Model;
-            var positionI = new model.PositionI((Newtonsoft.Json.Linq.JContainer) action.Parameters[START_POSITION]);
-            return positionI.RegionPosition;
+
+            var startPosition = (PositionI)action.Parameters[START_POSITION];
+            return startPosition.RegionPosition;
         }
 
         public IList Path;

@@ -62,7 +62,13 @@ namespace @base.model
         {
             get { return m_actionType; }
         }
-            
+
+        public int ID
+        {
+            get;
+            set;
+        }
+
         [JsonIgnore]
         public DateTime ActionTime
         {
