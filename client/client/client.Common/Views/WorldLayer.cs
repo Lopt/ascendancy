@@ -532,7 +532,7 @@ namespace client.Common.Views
             m_regionManagerController.DoActionAsync (m_geolocation.CurrentGamePosition, actions.ToArray ());
             var mapCell = GetMapCell (m_terrainLayer, new CCPoint (VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
             var position = RegionView.GetCurrentGamePosition (mapCell, CenterPosition.RegionPosition);
-            DrawRegionsAsync (position);
+            //DrawRegionsAsync (position);
         }
 
         //clears a Layer
