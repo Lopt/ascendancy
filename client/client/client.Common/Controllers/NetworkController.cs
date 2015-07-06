@@ -165,6 +165,7 @@ namespace client.Common.Controllers
                 HttpResponseMessage response = await m_client.GetAsync (new Uri (ClientConstants.LOGIC_SERVER + path));
                 if (response != null) {
                     response.EnsureSuccessStatusCode ();
+
                     var jsonFromServer = await response.Content.ReadAsStringAsync ();
 
                     var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response> (jsonFromServer);
