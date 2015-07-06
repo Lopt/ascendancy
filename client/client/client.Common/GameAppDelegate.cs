@@ -100,7 +100,7 @@ namespace client.Common
             if (NetworkController.GetInstance.IsLogedin) {
 
                 var controller = @base.control.Controller.Instance;
-                controller.AccountManagerController.AddAccount (Account);
+                World.Instance.AccountManager.AddAccount (Account);
 
                 LoadingState = Loading.Loggedin;
                 LoadingState = Loading.TerrainTypeLoading;
@@ -131,8 +131,6 @@ namespace client.Common
             var controller = @base.control.Controller.Instance;
             controller.RegionManagerController = new client.Common.Manager.RegionManagerController ();      
             controller.DefinitionManagerController = new DefinitionManagerController ();
-            controller.AccountManagerController = new @base.control.AccountManagerController ();
-
         }
 
         private async Task LogInAsync ()

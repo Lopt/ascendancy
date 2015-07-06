@@ -96,7 +96,7 @@ namespace @base.model
         public int AccountID
         {
             get { return m_account.ID; }
-            set { m_account = @base.control.Controller.Instance.AccountManagerController.GetAccountOrEmpty(value); }
+            set { m_account = World.Instance.AccountManager.GetAccountOrEmpty(value); }
         }
 
         public override bool Equals(Object obj)

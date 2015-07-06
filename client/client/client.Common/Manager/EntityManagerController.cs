@@ -113,7 +113,7 @@ namespace client.Common.Manager
         }
 
         public static Dictionary<int, Entity> Entities;
-        public static Worker Worker;
+        public static Views.Worker Worker;
     }
 }
 
