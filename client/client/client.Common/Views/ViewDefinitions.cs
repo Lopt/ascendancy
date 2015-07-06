@@ -41,11 +41,11 @@ namespace client.Common.Views
         {
             m_UnitDefToTileGid = new Dictionary<UnitDefinition.UnitDefinitionType, CCTileGidAndFlags> ();
 
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Hero, new CCTileGidAndFlags (ClientConstants.BOWMAN_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Hero, new CCTileGidAndFlags (ClientConstants.HERO_GID));
             m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Warrior, new CCTileGidAndFlags (ClientConstants.WARRIOR_GID));
             m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Mage, new CCTileGidAndFlags (ClientConstants.MAGE_GID));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Unknown1, new CCTileGidAndFlags (ClientConstants.SCOUT_GID));
-            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Unknown2, new CCTileGidAndFlags (ClientConstants.UNKNOWN_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Scout, new CCTileGidAndFlags (ClientConstants.SCOUT_GID));
+            m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Archer, new CCTileGidAndFlags (ClientConstants.BOWMAN_GID));
             m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Unknown3, new CCTileGidAndFlags (ClientConstants.UNKNOWN_GID));
             m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Headquarter, new CCTileGidAndFlags (ClientConstants.HEADQUARTER_GID));
             m_UnitDefToTileGid.Add (UnitDefinition.UnitDefinitionType.Outposts, new CCTileGidAndFlags (ClientConstants.HEADQUARTER_GID));
