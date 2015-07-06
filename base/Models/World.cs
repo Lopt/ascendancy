@@ -18,7 +18,7 @@ namespace @base.model
             {
                 if (instance==null)
                 {
-                    instance = new World();
+                    instance = new World ();
                 }
                 return instance;
             }
@@ -26,14 +26,14 @@ namespace @base.model
 
         private World()
         {
-            RegionManager = new RegionManager();
+            RegionManager = new RegionManager ();
             DefinitionManager = new DefinitionManager ();
-            Accounts = new ConcurrentDictionary<int, Account> ();
+            AccountManager = new AccountManager ();
         }
 
         public RegionManager RegionManager;
         public DefinitionManager DefinitionManager;
-        public ConcurrentDictionary<int, Account> Accounts;
+        public AccountManager AccountManager;
 
 	}
 }

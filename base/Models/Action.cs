@@ -93,15 +93,19 @@ namespace @base.model
             set { m_account = value; }
         }
 
+        public int AccountID
+        {
+            get { return m_account.ID; }
+            set { m_account = World.Instance.AccountManager.GetAccountOrEmpty(value); }
+        }
+
         public override bool Equals(Object obj)
         {
             if (obj.GetType() == typeof(Action))
             {
                 var other = (Action)obj;
 
-                return other.Account == Account && other.Type == Type;
-                // other.ActionTime == ActionTime && 
-                //obj.Parameters == Parameters
+                return other.ID == ID;
             }
             return false;
         }
@@ -109,7 +113,7 @@ namespace @base.model
 
         public override int GetHashCode()
         {
-            return 1;//unchecked((int)ActionTime.ToBinary());
+            return ID;
         }
 
 

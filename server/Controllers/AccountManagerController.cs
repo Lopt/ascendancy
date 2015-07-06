@@ -7,7 +7,7 @@ using server.DB;
 
 namespace server.control
 {
-	public class AccountManagerController : @base.control.AccountManagerController
+	public class AccountManagerController : @base.control.AccountManager
 	{
 		public AccountManagerController()
 			: base()
