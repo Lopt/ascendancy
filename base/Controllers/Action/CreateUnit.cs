@@ -78,7 +78,6 @@ namespace @base.control.action
         /// <returns> Returns <see cref="System.Collections.Concurrent.ConcurrentBag<t>"/> class with the affected region.</returns>
         public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {   
-            var temp = LogicRules.SurroundTiles;
             var action = (model.Action)Model;
             var positionI = (PositionI) action.Parameters[CREATE_POSITION];
             var type = (long) action.Parameters[CREATION_TYPE];
@@ -122,12 +121,9 @@ namespace @base.control.action
        /// <returns> Position which is free or null if nothing is free </returns>   
         private PositionI GetFreeField(PositionI position, RegionManagerController regionManagerC)
         {      
-            var temp = LogicRules.SurroundTiles;
 
-            for (int index = 0; index < LogicRules.SurroundTiles.Length; ++index)
+            foreach (var surpos in LogicRules.GetSurroundedFields(position))
             {                   
-                var surpos = temp[index] + position;
-
                 var td = regionManagerC.GetRegion(surpos.RegionPosition).GetTerrain(surpos.CellPosition);
                 var ed = regionManagerC.GetRegion(surpos.RegionPosition).GetEntity(surpos.CellPosition);
 
