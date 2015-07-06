@@ -522,7 +522,7 @@ namespace client.Common.Views
 
             CenterPosition = gamePosition;
             //SetMapAnchor (gamePosition);
-
+            UglyDraw ();
         }
 
         void DoAction (@base.model.Action action)
@@ -538,7 +538,7 @@ namespace client.Common.Views
         //clears a Layer
         void ClearLayers ()
         {
-            var coordHelper = new CCTileMapCoordinates(0, 0);
+            var coordHelper = new CCTileMapCoordinates (0, 0);
             m_buildingLayer.RemoveTile (coordHelper);
             m_unitLayer.RemoveTile (coordHelper);
             m_menuLayer.RemoveTile (coordHelper);
@@ -575,7 +575,7 @@ namespace client.Common.Views
         public CCTileMapCoordinates PositionToTileMapCoordinates (PositionI position)
         {
             var cellPos = CenterPosition.CellPosition;
-            var leftTop = new PositionI ((int)CenterPosition.X, (int)CenterPosition.Y) - new PositionI ((int)(Constants.REGION_SIZE_X * 2)  + cellPos.CellX, (int)(Constants.REGION_SIZE_Y * 2 + cellPos.CellY));
+            var leftTop = new PositionI ((int)CenterPosition.X, (int)CenterPosition.Y) - new PositionI ((int)(Constants.REGION_SIZE_X * 2) + cellPos.CellX, (int)(Constants.REGION_SIZE_Y * 2 + cellPos.CellY));
             var cellPosition = position - leftTop;
             var MapPosition = new MapCellPosition (cellPosition.X, cellPosition.Y);
 
