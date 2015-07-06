@@ -239,7 +239,7 @@ namespace client.Common.Views
                     break;
                 case ClientConstants.MENUEBOWMAN_GID:
                     //set action to create unit legolas
-                    CreateUnit (m_coordHelper, 60);
+                    CreateUnit (m_coordHelper, 78);
                     //clears the menu after taped
                     ShowMenu (m_coordHelper, 0);
                     break;
@@ -257,12 +257,12 @@ namespace client.Common.Views
                     break;
                 case ClientConstants.MENUESCOUT_GID:
                     //set action to create unit scout (unknown1 at the moment)
-                    CreateUnit (m_coordHelper, 78);
+                    CreateUnit (m_coordHelper, 84);
                     //clears the menu after taped
                     ShowMenu (m_coordHelper, 0);
                     break;
                 case ClientConstants.MENUEHERO_GID:
-                    CreateUnit (m_coordHelper, 64);
+                    CreateUnit (m_coordHelper, 60);
                     //clears the menu after taped
                     ShowMenu (m_coordHelper, 0);
                     break;
