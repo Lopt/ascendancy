@@ -9,6 +9,16 @@ namespace @base.model
 {
     public class Action : ModelEntity
     {
+        public class ActionComparer : Comparer<Action> 
+        {
+            // Compares by Length, Height, and Width.
+            public override int Compare(Action first, Action second)
+            {
+                return first.ID - second.ID;
+            }
+
+        }
+
         public enum ActionType 
         {
             TestAction,
