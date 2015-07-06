@@ -105,7 +105,7 @@ namespace @base.model
             {
                 var other = (Action)obj;
 
-                return other.ID == ID
+                return other.ID == ID;
             }
             return false;
         }
