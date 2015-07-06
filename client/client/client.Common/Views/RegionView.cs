@@ -84,6 +84,11 @@ namespace client.Common.Views
                     SetBuilding (mapCoordinat, entity);
                 }
             }
+            else
+            {
+                UnitLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);
+                BuildingLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);
+            }
           
 
         }

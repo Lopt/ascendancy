@@ -108,11 +108,11 @@ namespace AStar
         {
             List<Node> walkableNodes = new List<Node>();                           
 
+
             // check surrounded tiles of the current position
-            foreach (var addPosition in LogicRules.SurroundTiles)
+            foreach (var newPosition in LogicRules.GetSurroundedFields(fromNode.Location))
             {  
                 // gather environment information
-                var newPosition = fromNode.Location + addPosition;
                 var region = World.Instance.RegionManager.GetRegion(newPosition.RegionPosition);
                 var terrainDefinition = region.GetTerrain(newPosition.CellPosition);
                 // check terrai for walkable and other units in the path
