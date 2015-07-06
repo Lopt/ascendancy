@@ -19,7 +19,7 @@ using Android.Net.Rtp;
 
 namespace client.Droid
 {
-    [Activity(
+    [Activity (
         Label = "Ascendancy",
         AlwaysRetainTaskState = true,
         Icon = "@drawable/icon",
@@ -31,41 +31,37 @@ namespace client.Droid
     ]
     public class MainActivity : AndroidGameActivity
     {
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate (Bundle bundle)
         {
-            base.OnCreate(bundle);
+            base.OnCreate (bundle);
 
-            if (!Resolver.IsSet)
-            {
-                this.SetIoc();
+            if (!Resolver.IsSet) {
+                this.SetIoc ();
             }
            
-
             // aktivating Xamarin.Forms
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.Forms.Forms.Init (this, bundle);
 
             // Register XLabs Services
             //DependencyService.Register<TextToSpeechService>();
-            DependencyService.Register<Geolocator>();
+            DependencyService.Register<Geolocator> ();
 
-            var application = new CCApplication();
-            application.ApplicationDelegate = new GameAppDelegate();
-            SetContentView(application.AndroidContentView);
-            application.StartGame();
+            var application = new CCApplication ();
+            application.ApplicationDelegate = new GameAppDelegate ();
+            SetContentView (application.AndroidContentView);
+            application.StartGame ();
         }
 
 
-        private void SetIoc()
+        private void SetIoc ()
         {
-            var resolverContainer = new SimpleContainer();
+            var resolverContainer = new SimpleContainer ();
 
-            resolverContainer.Register<IDevice>(t => AndroidDevice.CurrentDevice)
-                .Register<IAccelerometer>(t => t.Resolve<IDevice>().Accelerometer)
-//                .Register<ITextToSpeechService, TextToSpeechService>()
-                .Register<IDependencyContainer>(resolverContainer);
+            resolverContainer.Register<IDevice> (t => AndroidDevice.CurrentDevice)
+                .Register<IAccelerometer> (t => t.Resolve<IDevice> ().Accelerometer)
+                .Register<IDependencyContainer> (resolverContainer);
             
-
-            Resolver.SetResolver(resolverContainer.GetResolver());
+            Resolver.SetResolver (resolverContainer.GetResolver ());
         }
             
     }
