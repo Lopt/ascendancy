@@ -19,8 +19,8 @@ namespace @base.model.definitions
             Hero = 60,
             Mage = 66,
             Warrior = 72, 
-            Unknown1 = 78,
-            Unknown2 = 84,
+            Archer = 78,
+            Scout = 84,
             Unknown3 = 90,
            
             // Buildings Range 276-491 Id's
