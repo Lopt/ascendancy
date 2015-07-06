@@ -42,7 +42,7 @@ namespace @base.model
             return null;
         }
 
-        private ConcurrentDictionary<int, Account> Accounts;
+        public ConcurrentDictionary<int, Account> Accounts;
     }
 
 }

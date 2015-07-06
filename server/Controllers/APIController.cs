@@ -79,7 +79,7 @@ namespace server.control
             if (username != null && password != null)
             {
                 var controller = @base.control.Controller.Instance;
-                var accountManagerC = (control.AccountManagerController)controller.AccountManagerController;
+                var accountManagerC = (control.AccountManagerController)@base.model.World.Instance.AccountManager;
                 return accountManagerC.Registrate (username, password);
             }
             return null;

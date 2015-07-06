@@ -52,7 +52,7 @@ namespace server.Controllers
 			var api = server.control.APIController.Instance;
 			var controller = @base.control.Controller.Instance;
 
-			var accountManagerC = (control.AccountManagerController)controller.AccountManagerController;
+            var accountManagerC = (control.AccountManagerController)@base.model.World.Instance.AccountManager;
 			var account = accountManagerC.GetAccountBySession (loadRegionRequest.SessionID);
 
 
@@ -77,7 +77,7 @@ namespace server.Controllers
 			var api = server.control.APIController.Instance;
 			var controller = @base.control.Controller.Instance;
 
-			var accountManagerC = (control.AccountManagerController)controller.AccountManagerController;
+            var accountManagerC = (control.AccountManagerController)@base.model.World.Instance.AccountManager;
 			var account = accountManagerC.GetAccountBySession (doActionRequest.SessionID);
 
 			if (account != null &&

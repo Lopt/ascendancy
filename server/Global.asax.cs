@@ -71,7 +71,7 @@ namespace server
 			var api = server.control.APIController.Instance;
 
 			controller.DefinitionManagerController = new server.control.DefinitionManagerController ();
-			controller.AccountManagerController = new server.control.AccountManagerController ();
+            world.AccountManager = new server.control.AccountManagerController ();
             controller.RegionManagerController = new server.control.RegionManagerController ();
 
 
