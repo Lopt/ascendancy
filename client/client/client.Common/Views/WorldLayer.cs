@@ -178,7 +178,7 @@ namespace client.Common.Views
             var location = m_terrainLayer.WorldToParentspace (touches [0].Location);
             m_startLocation = location;
             m_startCoord = m_terrainLayer.ClosestTileCoordAtNodePosition (location);
-            if (RegionView.UnitLayer.TileGIDAndFlags (m_startCoord).Gid != 0 && m_touchGesture == TouchGesture.Start) {
+            if (RegionView.UnitLayer.TileGIDAndFlags (m_startCoord).Gid != 0 && m_touchGesture == TouchGesture.Start && RegionView.BuildingLayer.TileGIDAndFlags (m_startCoord).Gid == 0) {
                 m_touchGesture = TouchGesture.Walk;
             }
         }
