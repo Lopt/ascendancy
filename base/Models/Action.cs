@@ -105,9 +105,7 @@ namespace @base.model
             {
                 var other = (Action)obj;
 
-                return other.Account == Account && other.Type == Type;
-                // other.ActionTime == ActionTime && 
-                //obj.Parameters == Parameters
+                return other.ID == ID
             }
             return false;
         }
@@ -115,7 +113,7 @@ namespace @base.model
 
         public override int GetHashCode()
         {
-            return 1;//unchecked((int)ActionTime.ToBinary());
+            return ID;
         }
 
 
