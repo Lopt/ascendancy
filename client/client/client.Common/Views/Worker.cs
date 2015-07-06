@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
-namespace client.Common.Controllers
+namespace client.Common.Views
 {
     public class Worker
     {

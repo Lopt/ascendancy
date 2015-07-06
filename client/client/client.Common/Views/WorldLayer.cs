@@ -75,10 +75,10 @@ namespace client.Common.Views
 
             AddEventListener (TouchListener);
 
-            m_worker = new Controllers.Worker (this);
+            m_worker = new Views.Worker (this);
             EntityManagerController.Worker = m_worker;
 
-            Schedule (m_worker.Schedule); //TODO: decomment and schedule actions
+            Schedule (m_worker.Schedule);
 
 
         }
@@ -600,7 +600,7 @@ namespace client.Common.Views
         DrawNode m_currentPositionNode;
         Geolocation m_geolocation;
 
-        Controllers.Worker m_worker;
+        Worker m_worker;
 
         float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
         float m_scale = ClientConstants.TILEMAP_NORM_SCALE;

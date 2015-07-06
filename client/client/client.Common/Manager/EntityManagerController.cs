@@ -73,14 +73,16 @@ namespace client.Common.Manager
 
             if (response.Actions != null)
             {
-                var sortedActions = new HashSet<@base.model.Action> ();
+                var actions = new HashSet<@base.model.Action> ();
                 foreach (var regions in response.Actions)
                 {
                     foreach (var action in regions)
                     {
-                        sortedActions.Add (action);
+                        actions.Add (action);
                     }   
                 }
+
+                var sortedActions = new SortedSet<@base.model.Action> (actions, new @base.model.Action.ActionComparer());
 
                 foreach (var action in sortedActions)
                 {
@@ -111,7 +113,7 @@ namespace client.Common.Manager
         }
 
         public static Dictionary<int, Entity> Entities;
-        public static Worker Worker;
+        public static Views.Worker Worker;
     }
 }
 
