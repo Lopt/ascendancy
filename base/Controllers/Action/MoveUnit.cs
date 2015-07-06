@@ -76,10 +76,10 @@ namespace @base.control.action
             if (startPosition != endPosition)
             {
                 var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition));             
-                Path = pathfinder.FindPath(((UnitDefinition)unit.Definition).Moves);
-             
+
                 if (unit != null && action.Account != null && action.Account.ID == unit.Account.ID)
                 {
+                    Path = pathfinder.FindPath(((UnitDefinition)unit.Definition).Moves);
                     return Path.Count != 0;                
                 }     
             }
