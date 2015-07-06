@@ -78,7 +78,7 @@ namespace @base.control.action
 
             if (unit != null && action.Account != null && action.Account.ID == unit.Account.ID)
             {
-                    return Path.Count != 0;                
+                return Path.Count != 0;                
             }
 
             return false;           
