@@ -157,11 +157,11 @@ namespace client.Common.Helper
         #endregion
 
         #region Action-Animations
-        public const float MOVE_SPEED_PER_FIELD = 1f;
-        public const float CREATE_UNIT_SPEED = 1f;
-        public const float CREATE_BUILDING_SPEED = 1f;
-
+        public const float MOVE_SPEED_PER_FIELD = 0.7f;
         #endregion
 
+        #region Friend-Enemy Sprites
+        public const short FRIEND_ENEMY_DIFFERENCE = 22;
+        #endregion
     }
 }
