@@ -17,12 +17,10 @@ namespace client.Common.Views.Action
 
         override public bool Schedule(float frameTimesInSecond)
         {
-            m_runTime += frameTimesInSecond;
-
             var action = (@base.model.Action)Model;
             var actionC = (@base.control.action.CreateUnit)Model.Control;
 
-            var position = (@base.model.PositionI)action.Parameters [@base.control.action.CreateUnit.CREATE_POSITION];
+            var position = actionC.RealCreatePosition;//(@base.model.PositionI)action.Parameters [@base.control.action.CreateUnit.CREATE_POSITION];
             //var mapCoordinat = WorldLayer.RegionView.GetCurrentTileInMap(new @base.model.Position(position.X, position.Y));
             var mapCoordinat = WorldLayer.PositionToTileMapCoordinates(position);
             var entity = @base.control.Controller.Instance.RegionManagerController.GetRegion (position.RegionPosition).GetEntity (position.CellPosition);
@@ -30,7 +28,7 @@ namespace client.Common.Views.Action
             WorldLayer.UglyDraw();
 
 
-            return m_runTime >= Helper.ClientConstants.CREATE_UNIT_SPEED;
+            return true;
         }
 
         public WorldLayer WorldLayer
@@ -38,8 +36,6 @@ namespace client.Common.Views.Action
             private set;
             get;
         }
-
-        float m_runTime;
 
     }
 }
