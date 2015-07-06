@@ -93,6 +93,12 @@ namespace @base.model
             set { m_account = value; }
         }
 
+        public int AccountID
+        {
+            get { return m_account.ID; }
+            set { m_account = @base.control.Controller.Instance.AccountManagerController.GetAccountOrEmpty(value); }
+        }
+
         public override bool Equals(Object obj)
         {
             if (obj.GetType() == typeof(Action))
