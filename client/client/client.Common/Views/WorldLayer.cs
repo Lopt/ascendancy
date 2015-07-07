@@ -75,10 +75,10 @@ namespace client.Common.Views
 
             AddEventListener (TouchListener);
 
-            m_worker = new Controllers.Worker (this);
+            m_worker = new Views.Worker (this);
             EntityManagerController.Worker = m_worker;
 
-            Schedule (m_worker.Schedule); //TODO: decomment and schedule actions
+            Schedule (m_worker.Schedule);
 
 
         }
@@ -178,7 +178,7 @@ namespace client.Common.Views
             var location = m_terrainLayer.WorldToParentspace (touches [0].Location);
             m_startLocation = location;
             m_startCoord = m_terrainLayer.ClosestTileCoordAtNodePosition (location);
-            if (RegionView.UnitLayer.TileGIDAndFlags (m_startCoord).Gid != 0 && m_touchGesture == TouchGesture.Start) {
+            if (RegionView.UnitLayer.TileGIDAndFlags (m_startCoord).Gid != 0 && m_touchGesture == TouchGesture.Start && RegionView.BuildingLayer.TileGIDAndFlags (m_startCoord).Gid == 0) {
                 m_touchGesture = TouchGesture.Walk;
             }
         }
@@ -239,7 +239,7 @@ namespace client.Common.Views
                     break;
                 case ClientConstants.MENUEBOWMAN_GID:
                     //set action to create unit legolas
-                    CreateUnit (m_coordHelper, 60);
+                    CreateUnit (m_coordHelper, 78);
                     //clears the menu after taped
                     ShowMenu (m_coordHelper, 0);
                     break;
@@ -257,12 +257,12 @@ namespace client.Common.Views
                     break;
                 case ClientConstants.MENUESCOUT_GID:
                     //set action to create unit scout (unknown1 at the moment)
-                    CreateUnit (m_coordHelper, 78);
+                    CreateUnit (m_coordHelper, 84);
                     //clears the menu after taped
                     ShowMenu (m_coordHelper, 0);
                     break;
                 case ClientConstants.MENUEHERO_GID:
-                    CreateUnit (m_coordHelper, 64);
+                    CreateUnit (m_coordHelper, 60);
                     //clears the menu after taped
                     ShowMenu (m_coordHelper, 0);
                     break;
@@ -522,7 +522,7 @@ namespace client.Common.Views
 
             CenterPosition = gamePosition;
             //SetMapAnchor (gamePosition);
-
+            UglyDraw ();
         }
 
         void DoAction (@base.model.Action action)
@@ -532,13 +532,13 @@ namespace client.Common.Views
             m_regionManagerController.DoActionAsync (m_geolocation.CurrentGamePosition, actions.ToArray ());
             var mapCell = GetMapCell (m_terrainLayer, new CCPoint (VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
             var position = RegionView.GetCurrentGamePosition (mapCell, CenterPosition.RegionPosition);
-            DrawRegionsAsync (position);
+            //DrawRegionsAsync (position);
         }
 
         //clears a Layer
         void ClearLayers ()
         {
-            var coordHelper = new CCTileMapCoordinates(0, 0);
+            var coordHelper = new CCTileMapCoordinates (0, 0);
             m_buildingLayer.RemoveTile (coordHelper);
             m_unitLayer.RemoveTile (coordHelper);
             m_menuLayer.RemoveTile (coordHelper);
@@ -575,7 +575,7 @@ namespace client.Common.Views
         public CCTileMapCoordinates PositionToTileMapCoordinates (PositionI position)
         {
             var cellPos = CenterPosition.CellPosition;
-            var leftTop = new PositionI ((int)CenterPosition.X, (int)CenterPosition.Y) - new PositionI ((int)(Constants.REGION_SIZE_X * 2)  + cellPos.CellX, (int)(Constants.REGION_SIZE_Y * 2 + cellPos.CellY));
+            var leftTop = new PositionI ((int)CenterPosition.X, (int)CenterPosition.Y) - new PositionI ((int)(Constants.REGION_SIZE_X * 2) + cellPos.CellX, (int)(Constants.REGION_SIZE_Y * 2 + cellPos.CellY));
             var cellPosition = position - leftTop;
             var MapPosition = new MapCellPosition (cellPosition.X, cellPosition.Y);
 
@@ -600,7 +600,7 @@ namespace client.Common.Views
         DrawNode m_currentPositionNode;
         Geolocation m_geolocation;
 
-        Controllers.Worker m_worker;
+        Worker m_worker;
 
         float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
         float m_scale = ClientConstants.TILEMAP_NORM_SCALE;

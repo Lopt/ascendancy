@@ -7,7 +7,7 @@ using server.DB;
 
 namespace server.control
 {
-	public class AccountManagerController : @base.control.AccountManagerController
+    public class AccountManagerController : @base.model.AccountManager
 	{
 		public AccountManagerController()
 			: base()
@@ -17,7 +17,7 @@ namespace server.control
 
 		public Account Login(string username, string password)
 		{
-			foreach (var accountPair in World.Instance.Accounts)
+            foreach (var accountPair in World.Instance.AccountManager.Accounts)
 			{
 				if (accountPair.Value.UserName == username)
 				{
@@ -34,7 +34,7 @@ namespace server.control
 
 		public Account Registrate(string username, string password)
 		{
-			foreach (var accountPair in @base.model.World.Instance.Accounts)
+            foreach (var accountPair in @base.model.World.Instance.AccountManager.Accounts)
 			{
 				if (accountPair.Value.UserName.ToLower() == username.ToLower())
 				{
@@ -44,7 +44,7 @@ namespace server.control
 			var account = new Account (IdGenerator.GetId (), username);
 			var accountC = new AccountController(account, password);
 
-			World.Instance.Accounts[account.ID] = account;
+            @base.model.World.Instance.AccountManager.AddAccount (account);
 			return Login (username, password);
 		}
 

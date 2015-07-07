@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using @base.model;
 using @base.model.definitions;
 using Newtonsoft.Json;
+using System.Collections;
 
 namespace @base.model
 {
     public class Action : ModelEntity
     {
+        public class ActionComparer : Comparer<Action> 
+        {
+            // Compares by Length, Height, and Width.
+            public override int Compare(Action first, Action second)
+            {
+                return first.ID - second.ID;
+            }
+
+        }
+
         public enum ActionType 
         {
             TestAction,
@@ -81,6 +92,30 @@ namespace @base.model
             get { return m_account; }
             set { m_account = value; }
         }
+
+        public int AccountID
+        {
+            get { return m_account.ID; }
+            set { m_account = World.Instance.AccountManager.GetAccountOrEmpty(value); }
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj.GetType() == typeof(Action))
+            {
+                var other = (Action)obj;
+
+                return other.ID == ID;
+            }
+            return false;
+        }
+
+
+        public override int GetHashCode()
+        {
+            return ID;
+        }
+
 
         private Dictionary<string, object> m_parameters;
         private ActionType m_actionType;

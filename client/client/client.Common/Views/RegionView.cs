@@ -56,6 +56,9 @@ namespace client.Common.Views
                 UnitLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);
             } else {
                 var gid = m_ViewDefinition.DefinitionToTileGid (unit.Definition);
+                if (GameAppDelegate.Account != unit.Account) {
+                    gid.Gid += 22;
+                }
                 UnitLayer.SetTileGID (gid, mapCoordinat);
             }
         }
@@ -63,10 +66,12 @@ namespace client.Common.Views
         public void SetBuilding (CCTileMapCoordinates mapCoordinat, Entity building)
         {
             if (building == null) {
-                UnitLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);
-               
+                BuildingLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);               
             } else {
                 var gid = m_ViewDefinition.DefinitionToTileGid (building.Definition);
+                if (GameAppDelegate.Account != building.Account) {
+                    gid.Gid += 59;
+                }
                 BuildingLayer.SetTileGID (gid, mapCoordinat);
             }
         }
@@ -83,6 +88,11 @@ namespace client.Common.Views
                 if (entity.Definition.Type == Definition.DefinitionType.Building) {
                     SetBuilding (mapCoordinat, entity);
                 }
+            }
+            else
+            {
+                UnitLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);
+                BuildingLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);
             }
           
 

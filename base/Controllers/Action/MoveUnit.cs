@@ -66,16 +66,22 @@ namespace @base.control.action
         /// </summary>
         /// <param name="regionManagerC"></param>
         /// <returns></returns>
-        public override bool Possible (RegionManagerController regionManagerC)
+        public override bool Possible(RegionManagerController regionManagerC)
         {
             var action = (model.Action)Model;
 
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
             var unit = Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
+
                    
 
-            if (unit != null && action.Account.ID == unit.Account.ID)
+            if (startPosition == endPosition)
+            {
+                return false;
+            }
+
+            if (unit != null && action.Account != null && action.Account.ID == unit.Account.ID)
             {
                 var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition, action.Account.ID));
                 Path = pathfinder.FindPath(((UnitDefinition)unit.Definition).Moves);
@@ -91,9 +97,8 @@ namespace @base.control.action
                         m_fight = true;
                     }
                     return true;   
-                }                            
+                }     
             }
-
             return false;           
         }
 

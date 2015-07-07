@@ -34,7 +34,7 @@ namespace client.Common.Helper
 
         public const int CELLMAP_160x160_SIZE = 160;
 
-        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20150702";
+        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20150704";
         public const string LAYER_TERRAIN = "Layer 0";
         public const string LAYER_BUILDING = "Layer 1";
         public const string LAYER_UNIT = "Layer 2";
@@ -83,12 +83,12 @@ namespace client.Common.Helper
 
         #region MenueUnitsGid
 
-        public const short MENUEBOWMAN_GID = 59;
-        public const short MENUEHERO_GID = 60;
-        public const short MENUEWARRIOR_GID = 61;
-        public const short MENUEMAGE_GID = 62;
-        public const short MENUESCOUT_GID = 63;
-        public const short MENUEUNKNOWN_GID = 64;
+        public const short MENUEBOWMAN_GID = 60;
+        public const short MENUEHERO_GID = 61;
+        public const short MENUEWARRIOR_GID = 62;
+        public const short MENUEMAGE_GID = 63;
+        public const short MENUESCOUT_GID = 64;
+        public const short MENUEUNKNOWN_GID = 65;
 
 
         #endregion
@@ -128,6 +128,7 @@ namespace client.Common.Helper
 
         #region MenueBuildingsGid
 
+
         public const short MENUEEARTH_GID = 52;
         public const short MENUEFIRE_GID = 53;
         public const short MENUEGOLD_GID = 54;
@@ -140,18 +141,28 @@ namespace client.Common.Helper
 
         #region HelperGid
 
-        public const short DOT_GID = 65;
-        public const short CROSS_GID = 66;
+        public const short DOT_GID = 66;
+        public const short CROSS_GID = 67;
 
         #endregion
 
+        #region EnemyGid
+
+        public const short ENEMYBOWMAN_GID = 68;
+        public const short ENEMYHERO_GID = 69;
+        public const short ENEMYWARRIOR_GID = 70;
+        public const short ENEMYMAGE_GID = 71;
+        public const short ENEMYSCOUT_GID = 72;
+        public const short ENEMYHEADQUARTER_GID = 73;
+
+        #endregion
 
         #region Action-Animations
-        public const float MOVE_SPEED_PER_FIELD = 1f;
-        public const float CREATE_UNIT_SPEED = 1f;
-        public const float CREATE_BUILDING_SPEED = 1f;
-
+        public const float MOVE_SPEED_PER_FIELD = 0.7f;
         #endregion
 
+        #region Friend-Enemy Sprites
+        public const short FRIEND_ENEMY_DIFFERENCE = 22;
+        #endregion
     }
 }
