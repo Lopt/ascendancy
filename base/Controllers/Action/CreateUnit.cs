@@ -213,13 +213,16 @@ namespace @base.control.action
             return list;
         }
 
+        /// <summary>
+        /// Gets the region position.
+        /// </summary>
+        /// <returns>The region position.</returns>
         override public @base.model.RegionPosition GetRegionPosition()
         {
             var action = (model.Action)Model;
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             return positionI.RegionPosition;
         }
-
 
         public PositionI RealCreatePosition;
     }

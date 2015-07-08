@@ -123,9 +123,9 @@ namespace @base.control.action
         }
 
         /// <summary>
-        /// Ovveride <see cref="base.model.RegionPosition"/> class and return the positionI of the region.
+        /// Overide <see cref="base.model.RegionPosition"/> class and return the positionI of the region.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The region position.</returns>
         override public @base.model.RegionPosition GetRegionPosition()
         {
             var action = (model.Action)Model;
