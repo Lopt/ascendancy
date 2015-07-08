@@ -162,6 +162,7 @@
     <AndroidAsset Include="Assets\Content\images\ld\logo.png" />
     <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20150704.png" />
     <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20150704.xnb" />
+    <AndroidAsset Include="Assets\Content\images\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />

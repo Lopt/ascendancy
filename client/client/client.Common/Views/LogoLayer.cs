@@ -15,7 +15,7 @@ namespace client.Common.Views
             m_RegionC = Controller.Instance.RegionManagerController as RegionManagerController;
 
 
-            m_Logo = new CCSprite ("logo_neu");
+            m_Logo = new CCSprite ("logo");
 
             m_LoadedSprite = new CCSprite ("Ladebalken");
             m_LoadedSprite.Visible = false;
