@@ -28,6 +28,10 @@ namespace client.Common.Controllers
             m_sessionID = Guid.Empty;
         }
 
+        /// <summary>
+        /// get a singelton instance of <see cref="client.Common.Controllers.NetworkController"/> class.
+        /// </summary>
+        /// <returns> Returns <see cref="client.Common.Controllers.NetworkController"/></returns>
         public static NetworkController GetInstance {
             get {
                 return m_instance; 
@@ -53,7 +57,10 @@ namespace client.Common.Controllers
             private set;
         }
 
-
+        /// <summary>
+        /// Gets a value indicating whether this instance is logedin.
+        /// </summary>
+        /// <value><c>true</c> if this instance is logedin; otherwise, <c>false</c>.</value>
         public bool IsLogedin {
             get {
                 if (m_sessionID != Guid.Empty) {
@@ -63,6 +70,10 @@ namespace client.Common.Controllers
             }
         }
 
+        /// <summary>
+        /// Loads the terrains async and write it in property JsonTerrainString.
+        /// </summary>
+        /// <param name="jsonRegionServerPath">Json region server path.</param>
         public async Task LoadTerrainsAsync (string jsonRegionServerPath)
         {
             try {
@@ -78,6 +89,10 @@ namespace client.Common.Controllers
 		
         }
 
+        /// <summary>
+        /// Loads the terrain types async and write it in property JsonTerrainTypString
+        /// </summary>
+        /// <param name="jsonTerrainTypeServerPath">Json terrain type server path.</param>
         public async Task LoadTerrainTypesAsync (string jsonTerrainTypeServerPath)
         {
             try {
@@ -93,6 +108,13 @@ namespace client.Common.Controllers
 
         }
 
+        /// <summary>
+        /// Login async to the server and save the sessionID.
+        /// </summary>
+        /// <returns>The AccoountId.</returns>
+        /// <param name="currentGamePosition">Current game position.</param>
+        /// <param name="user">User.</param>
+        /// <param name="password">Password.</param>
         public async Task<int> LoginAsync (@base.model.Position currentGamePosition, string user, string password)
         {
             try {
@@ -124,6 +146,12 @@ namespace client.Common.Controllers
             }
         }
 
+        /// <summary>
+        /// Loads the entities async.
+        /// </summary>
+        /// <returns>The entities async.</returns>
+        /// <param name="currentGamePosition">Current game position.</param>
+        /// <param name="regionPositions">Region positions.</param>
         public async Task<@base.connection.Response> LoadEntitiesAsync (@base.model.Position currentGamePosition, RegionPosition[] regionPositions)
         {
             try {
