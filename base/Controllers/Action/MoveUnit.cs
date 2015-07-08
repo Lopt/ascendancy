@@ -15,6 +15,10 @@ namespace @base.control.action
 {
     public class MoveUnit : Action
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="base.control.action.MoveUnit"/> class.
+        /// </summary>
+        /// <param name="model">Model.</param>
         public MoveUnit(model.ModelEntity model)
             : base(model)
         {
@@ -37,10 +41,10 @@ namespace @base.control.action
         public const string END_POSITION = "NewPosition";
 
         /// <summary>
-        /// 
+        /// Gets the affected regions.
         /// </summary>
-        /// <param name="regionManagerC"></param>
-        /// <returns></returns>
+        /// <returns>The affected regions.</returns>
+        /// <param name="regionManagerC">Region manager c.</param>
         public override ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
             var Bag = new ConcurrentBag<model.Region>();
@@ -61,10 +65,9 @@ namespace @base.control.action
         }
 
         /// <summary>
-        ///  Returns if the action is even possible.
+        /// Returns true if the action is even possible.
         /// </summary>
-        /// <param name="regionManagerC"></param>
-        /// <returns></returns>
+        /// <param name="regionManagerC">Region manager c.</param>
         public override bool Possible (RegionManagerController regionManagerC)
         {
             var action = (model.Action)Model;
@@ -72,9 +75,10 @@ namespace @base.control.action
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
             var unit = Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
-
+            // check the unit position
             if (startPosition != endPosition)
             {
+                // start f the AStar pathfinder algorithm
                 var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition));             
 
                 if (unit != null && action.Account != null && action.Account.ID == unit.Account.ID)
@@ -88,9 +92,9 @@ namespace @base.control.action
 
         /// <summary>
         /// Apply action-related changes to the world.
+        /// Returns set of changed Regions if everything worked, otherwise null
         /// </summary>
-        /// <param name="regionManagerC"></param>
-        /// <returns> </returns>
+        /// <param name="regionManagerC">Region manager c.</param>
         public override ConcurrentBag<model.Region> Do (RegionManagerController regionManagerC)
         {
             var Bag = new ConcurrentBag<model.Region>();
@@ -189,6 +193,10 @@ namespace @base.control.action
             return list;
         }
 
+        /// <summary>
+        /// Gets the region position.
+        /// </summary>
+        /// <returns>The region position.</returns>
         override public @base.model.RegionPosition GetRegionPosition()
         {
             var action = (model.Action)Model;

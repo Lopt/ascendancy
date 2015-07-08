@@ -42,6 +42,7 @@ namespace AStar
         /// <summary>
         /// Gets or sets the parent node. The start node's parent is always null.
         /// </summary>
+        /// <value>The parent node.</value>
         public Node ParentNode
         {
             get { return parentNode; }
