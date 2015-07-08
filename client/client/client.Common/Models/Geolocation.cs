@@ -13,7 +13,7 @@ using XLabs.Platform.Device;
 namespace client.Common.Models
 {
     [Table ("Geolocation")]
-    public sealed class Geolocation : viewBaseModel
+    public sealed class Geolocation : ViewBaseModel
     {
         #region Singelton
 

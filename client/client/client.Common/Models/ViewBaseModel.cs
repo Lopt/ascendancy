@@ -6,7 +6,7 @@ using Xamarin.Forms;
 namespace client.Common.Models
 {
     // This Code is from https://github.com/zumero/Xamarin.Forms-demo/blob/master/demo.Shared/Models/BaseModel.cs
-    public class viewBaseModel : INotifyPropertyChanged
+    public class ViewBaseModel : INotifyPropertyChanged
     {
         public bool NotifyIfPropertiesChange = true;
 

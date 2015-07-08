@@ -186,7 +186,6 @@ namespace server.control
 
         private ActionReturn WorkAction(@base.model.Action action)
 		{
-            var result = ActionReturn.Exception;
 			if (action != null)
 			{
                 var regionManager = @base.control.Controller.Instance.RegionManagerController;

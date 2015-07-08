@@ -42,7 +42,7 @@ namespace server.control
 				}				
 			}
 			var account = new Account (IdGenerator.GetId (), username);
-			var accountC = new AccountController(account, password);
+			new AccountController(account, password);
 
             @base.model.World.Instance.AccountManager.AddAccount (account);
 			return Login (username, password);
