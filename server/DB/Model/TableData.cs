@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace server.DB.Model
 {
+    /// <summary>
+    /// Collection of all databank entrys. s
+    /// </summary>
     public class TableData
     {
         public int Id;
