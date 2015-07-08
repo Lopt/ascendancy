@@ -118,7 +118,7 @@ namespace @base.control.action
         /// <summary>
         /// In case of errors, revert the world data to a valid state.
         /// </summary> 
-        virtual public bool Catch(RegionManagerController regionManagerC)
+        public override bool Catch(RegionManagerController regionManagerC)
         {
             throw new NotImplementedException();
         }
