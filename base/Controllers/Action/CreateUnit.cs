@@ -222,7 +222,6 @@ namespace @base.control.action
 
 
         public PositionI RealCreatePosition;
-        private int m_index;
     }
 
 }
