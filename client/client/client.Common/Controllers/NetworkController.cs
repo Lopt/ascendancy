@@ -16,13 +16,23 @@ namespace client.Common.Controllers
 {
     public sealed class NetworkController
     {
-        #region Singelton
+        #region Singleton
 
+        /// <summary>
+        /// The lazy singleton.
+        /// </summary>
         private static readonly Lazy<NetworkController> lazy =
-            new Lazy<NetworkController>(() => new NetworkController());
+            new Lazy<NetworkController> (() => new NetworkController ());
 
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>The instance.</value>
         public static NetworkController Instance { get { return lazy.Value; } }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="client.Common.Controllers.NetworkController"/> class.
+        /// </summary>
         private NetworkController ()
         {
             ExceptionMessage = "";
