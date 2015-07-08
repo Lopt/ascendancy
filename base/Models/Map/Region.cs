@@ -5,8 +5,6 @@ using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Threading;
 
-using System.Collections.Generic;
-
 namespace @base.model
 {
     public class Region

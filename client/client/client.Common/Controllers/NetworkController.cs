@@ -16,18 +16,28 @@ namespace client.Common.Controllers
 {
     public sealed class NetworkController
     {
-        #region Singelton
+        #region Singleton
 
+        /// <summary>
+        /// The lazy singleton.
+        /// </summary>
         private static readonly Lazy<NetworkController> lazy =
             new Lazy<NetworkController>(() => new NetworkController());
 
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>The instance.</value>
         public static NetworkController Instance { get { return lazy.Value; } }
 
-        private NetworkController ()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="client.Common.Controllers.NetworkController"/> class.
+        /// </summary>
+        private NetworkController()
         {
             ExceptionMessage = "";
             JsonTerrainsString = "";
-            m_client = new HttpClient (new NativeMessageHandler ());
+            m_client = new HttpClient(new NativeMessageHandler());
             m_sessionID = Guid.Empty;
         }
 
@@ -35,17 +45,32 @@ namespace client.Common.Controllers
 
         #region Networking
 
-        public string ExceptionMessage {
+        /// <summary>
+        /// Gets the exception message.
+        /// </summary>
+        /// <value>The exception message.</value>
+        public string ExceptionMessage
+        {
             get;
             private set; 
         }
 
-        public string JsonTerrainsString {
+        /// <summary>
+        /// Gets the json terrains string.
+        /// </summary>
+        /// <value>The json terrains string.</value>
+        public string JsonTerrainsString
+        {
             get; 
             private set;
         }
 
-        public string JsonTerrainTypeString {
+        /// <summary>
+        /// Gets the json terrain type string.
+        /// </summary>
+        /// <value>The json terrain type string.</value>
+        public string JsonTerrainTypeString
+        {
             get; 
             private set;
         }
@@ -54,9 +79,12 @@ namespace client.Common.Controllers
         /// Gets a value indicating whether this instance is logedin.
         /// </summary>
         /// <value><c>true</c> if this instance is logedin; otherwise, <c>false</c>.</value>
-        public bool IsLogedin {
-            get {
-                if (m_sessionID != Guid.Empty) {
+        public bool IsLogedin
+        {
+            get
+            {
+                if (m_sessionID != Guid.Empty)
+                {
                     return true;
                 }
                 return false;
@@ -67,15 +95,19 @@ namespace client.Common.Controllers
         /// Loads the terrains async and write it in property JsonTerrainString.
         /// </summary>
         /// <param name="jsonRegionServerPath">Json region server path.</param>
-        public async Task LoadTerrainsAsync (string jsonRegionServerPath)
+        public async Task LoadTerrainsAsync(string jsonRegionServerPath)
         {
-            try {
-                HttpResponseMessage response = await m_client.GetAsync (new Uri (jsonRegionServerPath));
-                if (response != null) {
-                    response.EnsureSuccessStatusCode ();
-                    JsonTerrainsString = await response.Content.ReadAsStringAsync ();
+            try
+            {
+                HttpResponseMessage response = await m_client.GetAsync(new Uri(jsonRegionServerPath));
+                if (response != null)
+                {
+                    response.EnsureSuccessStatusCode();
+                    JsonTerrainsString = await response.Content.ReadAsStringAsync();
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ExceptionMessage = ex.Message;
                 throw ex;
             }
@@ -86,15 +118,19 @@ namespace client.Common.Controllers
         /// Loads the terrain types async and write it in property JsonTerrainTypString
         /// </summary>
         /// <param name="jsonTerrainTypeServerPath">Json terrain type server path.</param>
-        public async Task LoadTerrainTypesAsync (string jsonTerrainTypeServerPath)
+        public async Task LoadTerrainTypesAsync(string jsonTerrainTypeServerPath)
         {
-            try {
-                HttpResponseMessage response = await m_client.GetAsync (new Uri (jsonTerrainTypeServerPath));
-                if (response != null) {
-                    response.EnsureSuccessStatusCode ();
-                    JsonTerrainTypeString = await response.Content.ReadAsStringAsync ();
+            try
+            {
+                HttpResponseMessage response = await m_client.GetAsync(new Uri(jsonTerrainTypeServerPath));
+                if (response != null)
+                {
+                    response.EnsureSuccessStatusCode();
+                    JsonTerrainTypeString = await response.Content.ReadAsStringAsync();
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ExceptionMessage = ex.Message;
                 throw ex;
             }
@@ -108,32 +144,39 @@ namespace client.Common.Controllers
         /// <param name="currentGamePosition">Current game position.</param>
         /// <param name="user">User.</param>
         /// <param name="password">Password.</param>
-        public async Task<int> LoginAsync (@base.model.Position currentGamePosition, string user, string password)
+        public async Task<int> LoginAsync(@base.model.Position currentGamePosition, string user, string password)
         {
-            try {
+            try
+            {
                 int id = -1;
-                var request = new @base.connection.LoginRequest (currentGamePosition, user, password);
-                var json = JsonConvert.SerializeObject (request);
+                var request = new @base.connection.LoginRequest(currentGamePosition, user, password);
+                var json = JsonConvert.SerializeObject(request);
 
                 var path = ClientConstants.LOGIN_PATH;
-                path = path.Replace (ClientConstants.LOGIC_SERVER_JSON, json);
+                path = path.Replace(ClientConstants.LOGIC_SERVER_JSON, json);
 
-                HttpResponseMessage response = await m_client.GetAsync (new Uri (ClientConstants.LOGIC_SERVER + path));
-                if (response != null) {
-                    response.EnsureSuccessStatusCode ();
-                    var jsonFromServer = await response.Content.ReadAsStringAsync ();
+                HttpResponseMessage response = await m_client.GetAsync(new Uri(ClientConstants.LOGIC_SERVER + path));
+                if (response != null)
+                {
+                    response.EnsureSuccessStatusCode();
+                    var jsonFromServer = await response.Content.ReadAsStringAsync();
 
-                    var loginResponse = JsonConvert.DeserializeObject<@base.connection.LoginResponse> (jsonFromServer);
-                    if (loginResponse.Status == @base.connection.LoginResponse.ReponseStatus.OK) {
+                    var loginResponse = JsonConvert.DeserializeObject<@base.connection.LoginResponse>(jsonFromServer);
+                    if (loginResponse.Status == @base.connection.LoginResponse.ReponseStatus.OK)
+                    {
                         m_sessionID = loginResponse.SessionID;
                         id = loginResponse.AccountId;
-                    } else {
+                    }
+                    else
+                    {
                         ExceptionMessage = "Login failure";
                     }
 
                 }
                 return id;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ExceptionMessage = ex.Message;
                 throw ex;
             }
@@ -145,59 +188,69 @@ namespace client.Common.Controllers
         /// <returns>The entities async.</returns>
         /// <param name="currentGamePosition">Current game position.</param>
         /// <param name="regionPositions">Region positions.</param>
-        public async Task<@base.connection.Response> LoadEntitiesAsync (@base.model.Position currentGamePosition, RegionPosition[] regionPositions)
+        public async Task<@base.connection.Response> LoadEntitiesAsync(@base.model.Position currentGamePosition, RegionPosition[] regionPositions)
         {
-            try {
-                var request = new @base.connection.LoadRegionsRequest (m_sessionID, currentGamePosition, regionPositions);
-                var json = JsonConvert.SerializeObject (request);
+            try
+            {
+                var request = new @base.connection.LoadRegionsRequest(m_sessionID, currentGamePosition, regionPositions);
+                var json = JsonConvert.SerializeObject(request);
 
                 var path = ClientConstants.LOAD_REGIONS_PATH;
-                path = path.Replace (ClientConstants.LOGIC_SERVER_JSON, json);
+                path = path.Replace(ClientConstants.LOGIC_SERVER_JSON, json);
 
-                HttpResponseMessage response = await m_client.GetAsync (new Uri (ClientConstants.LOGIC_SERVER + path));
-                if (response != null) {
-                    response.EnsureSuccessStatusCode ();
-                    var jsonFromServer = await response.Content.ReadAsStringAsync ();
+                HttpResponseMessage response = await m_client.GetAsync(new Uri(ClientConstants.LOGIC_SERVER + path));
+                if (response != null)
+                {
+                    response.EnsureSuccessStatusCode();
+                    var jsonFromServer = await response.Content.ReadAsStringAsync();
 
-                    var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response> (jsonFromServer);
+                    var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response>(jsonFromServer);
 
-                    if (entitiesResponse.Status == @base.connection.Response.ReponseStatus.OK) {
+                    if (entitiesResponse.Status == @base.connection.Response.ReponseStatus.OK)
+                    {
                         return entitiesResponse;
                     }
 
                 }
-                return new @base.connection.Response ();
+                return new @base.connection.Response();
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ExceptionMessage = ex.Message;
                 throw ex;
             }
         }
 
-        public async Task<bool> DoActionsAsync (@base.model.Position currentGamePosition, @base.model.Action[] actions)
+        public async Task<bool> DoActionsAsync(@base.model.Position currentGamePosition, @base.model.Action[] actions)
         {
-            try {
-                var request = new @base.connection.DoActionsRequest (m_sessionID, currentGamePosition, actions);
-                var json = JsonConvert.SerializeObject (request);
+            try
+            {
+                var request = new @base.connection.DoActionsRequest(m_sessionID, currentGamePosition, actions);
+                var json = JsonConvert.SerializeObject(request);
 
                 var path = ClientConstants.DO_ACTIONS_PATH;
-                path = path.Replace (ClientConstants.LOGIC_SERVER_JSON, json);
+                path = path.Replace(ClientConstants.LOGIC_SERVER_JSON, json);
 
-                HttpResponseMessage response = await m_client.GetAsync (new Uri (ClientConstants.LOGIC_SERVER + path));
-                if (response != null) {
-                    response.EnsureSuccessStatusCode ();
+                HttpResponseMessage response = await m_client.GetAsync(new Uri(ClientConstants.LOGIC_SERVER + path));
+                if (response != null)
+                {
+                    response.EnsureSuccessStatusCode();
 
-                    var jsonFromServer = await response.Content.ReadAsStringAsync ();
+                    var jsonFromServer = await response.Content.ReadAsStringAsync();
 
-                    var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response> (jsonFromServer);
-                    if (entitiesResponse.Status == @base.connection.Response.ReponseStatus.OK) {
+                    var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response>(jsonFromServer);
+                    if (entitiesResponse.Status == @base.connection.Response.ReponseStatus.OK)
+                    {
                         return true;
                     }
 
                 }
                 return false;
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ExceptionMessage = ex.Message;
                 throw ex;
             }

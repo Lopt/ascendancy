@@ -55,7 +55,7 @@ namespace AStar
                 // Reverse the list so it's in the correct order when returned
                 path.Reverse();
             }
-            path.Insert(0, searchParameters.StartLocation);
+           
             return path;
         }
 
