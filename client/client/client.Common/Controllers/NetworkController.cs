@@ -18,7 +18,10 @@ namespace client.Common.Controllers
     {
         #region Singelton
 
-        private static readonly NetworkController m_instance = new NetworkController ();
+        private static readonly Lazy<NetworkController> lazy =
+            new Lazy<NetworkController>(() => new NetworkController());
+
+        public static NetworkController Instance { get { return lazy.Value; } }
 
         private NetworkController ()
         {
@@ -26,12 +29,6 @@ namespace client.Common.Controllers
             JsonTerrainsString = "";
             m_client = new HttpClient (new NativeMessageHandler ());
             m_sessionID = Guid.Empty;
-        }
-
-        public static NetworkController GetInstance {
-            get {
-                return m_instance; 
-            }
         }
 
         #endregion

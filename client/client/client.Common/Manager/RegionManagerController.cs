@@ -12,8 +12,8 @@ namespace client.Common.Manager
     {
         public RegionManagerController ()
         {
-            m_NetworkController = NetworkController.GetInstance;
-            m_Geolocation = Geolocation.GetInstance;
+            m_NetworkController = NetworkController.Instance;
+            m_Geolocation = Geolocation.Instance;
         }
 
         #region Regions

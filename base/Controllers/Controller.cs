@@ -2,24 +2,12 @@
 
 namespace @base.control
 {
-	public class Controller
+    public sealed class Controller
 	{
-		// TODO: find better singleton implementation
-		// http://csharpindepth.com/articles/general/singleton.aspx
-		// NOT lazy-singletons: throws useless exceptions when initialisation failed
-		private static Controller instance=null;
+        private static readonly Lazy<Controller> lazy =
+            new Lazy<Controller>(() => new Controller());
 
-		public static Controller Instance
-		{
-			get
-			{
-				if (instance==null)
-				{
-					instance = new Controller();
-				}
-				return instance;
-			}
-		}
+        public static Controller Instance { get { return lazy.Value; } }
 
 		private Controller()
 		{

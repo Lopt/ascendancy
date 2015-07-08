@@ -15,7 +15,7 @@ namespace client.Common.Manager
 
         public DefinitionManagerController ()
         {
-            m_Network = NetworkController.GetInstance;
+            m_Network = NetworkController.Instance;
             m_RegionManagerController = Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
         }
 

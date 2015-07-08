@@ -17,7 +17,10 @@ namespace client.Common.Models
     {
         #region Singelton
 
-        private static readonly Geolocation m_instance = new Geolocation ();
+        private static readonly Lazy<Geolocation> lazy =
+            new Lazy<Geolocation>(() => new Geolocation());
+        
+        public static Geolocation Instance { get { return lazy.Value; } }
 
         private Geolocation ()
         {
@@ -38,11 +41,6 @@ namespace client.Common.Models
             IsPositionChanged = false;
         }
 
-        public static Geolocation GetInstance {
-            get {
-                return m_instance; 
-            }
-        }
 
         #endregion
 

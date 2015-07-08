@@ -10,7 +10,7 @@ namespace client.Common.Views
         public GameScene (CCWindow mainWindow)
             : base (mainWindow)
         {
-            m_region = new WorldLayer (Geolocation.GetInstance.CurrentRegionPosition);
+            m_region = new WorldLayer (Geolocation.Instance.CurrentRegionPosition);
             this.AddChild (m_region);
 
         }

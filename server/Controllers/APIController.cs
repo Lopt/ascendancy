@@ -7,27 +7,12 @@ using System.Threading;
 
 namespace server.control
 {
-    public class APIController
+    public sealed class APIController
     {
-		// TODO: find better singleton implementation
-		// http://csharpindepth.com/articles/general/singleton.aspx
-		// NOT lazy-singletons: throws useless exceptions when initialisation failed
-		private static APIController instance=null;
+        private static readonly Lazy<APIController> lazy =
+            new Lazy<APIController>(() => new APIController());
 
-		public static APIController Instance
-		{
-			get
-			{
-				if (instance==null)
-				{
-					instance = new APIController();
-				}
-				return instance;
-			}
-		}
-
-
-
+        public static APIController Instance { get { return lazy.Value; } }
 
 		private APIController()
 		{

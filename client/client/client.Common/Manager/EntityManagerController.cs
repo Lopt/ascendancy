@@ -11,22 +11,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace client.Common.Manager
 {
-    public class EntityManagerController
+    public sealed class EntityManagerController
     {
+        private static readonly Lazy<EntityManagerController> lazy =
+            new Lazy<EntityManagerController>(() => new EntityManagerController());
 
-        // TODO: find better singleton implementation
-        // http://csharpindepth.com/articles/general/singleton.aspx
-        // NOT lazy-singletons: throws useless exceptions when initialisation failed
-        private static EntityManagerController instance = null;
-
-        public static EntityManagerController Instance {
-            get {
-                if (instance == null) {
-                    instance = new EntityManagerController ();
-                }
-                return instance;
-            }
-        }
+        public static EntityManagerController Instance { get { return lazy.Value; } }
 
 
 
@@ -58,7 +48,7 @@ namespace client.Common.Manager
         public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition[] listRegions)
         {
 
-            var response = await NetworkController.GetInstance.LoadEntitiesAsync (currentGamePosition, listRegions);
+            var response = await NetworkController.Instance.LoadEntitiesAsync (currentGamePosition, listRegions);
             var entities = response.Entities;
             if (entities != null) {
                 foreach (var regionEntities in entities) {

@@ -3,26 +3,12 @@ using System.Collections.Concurrent;
 
 namespace @base.model
 {
-	public class World
+	public sealed class World
 	{
+        private static readonly Lazy<World> lazy =
+            new Lazy<World>(() => new World());
 
-
-        // TODO: find better singleton implementation
-        // http://csharpindepth.com/articles/general/singleton.aspx
-        // NOT lazy-singletons: throws useless exceptions when initialisation failed
-        private static World instance=null;
-
-        public static World Instance
-        {
-            get
-            {
-                if (instance==null)
-                {
-                    instance = new World ();
-                }
-                return instance;
-            }
-        }
+        public static World Instance { get { return lazy.Value; } }
 
         private World()
         {

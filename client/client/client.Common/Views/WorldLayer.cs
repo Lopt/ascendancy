@@ -37,7 +37,7 @@ namespace client.Common.Views
             m_entityManagerController = Controller.Instance.DefinitionManagerController as client.Common.Manager.DefinitionManagerController;
 
             m_worldTileMap = new CCTileMap (ClientConstants.TILEMAP_FILE);
-            m_geolocation = Geolocation.GetInstance;
+            m_geolocation = Geolocation.Instance;
             CenterPosition = m_geolocation.CurrentGamePosition;
 
             m_currentPositionNode = new DrawNode ();

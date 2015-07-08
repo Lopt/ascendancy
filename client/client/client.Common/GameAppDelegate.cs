@@ -82,13 +82,13 @@ namespace client.Common
 
         public override void ApplicationDidEnterBackground (CCApplication application)
         {
-            Geolocation.GetInstance.StopListening ();
+            Geolocation.Instance.StopListening ();
             application.Paused = true;
         }
 
         public override void ApplicationWillEnterForeground (CCApplication application)
         {
-            Geolocation.GetInstance.StartListening (1000, 4);
+            Geolocation.Instance.StartListening (1000, 4);
             application.Paused = false;
         }
 
@@ -97,7 +97,7 @@ namespace client.Common
             LoadingState = Loading.Login;
             await LogInAsync ();
 
-            if (NetworkController.GetInstance.IsLogedin) {
+            if (NetworkController.Instance.IsLogedin) {
 
                 var controller = @base.control.Controller.Instance;
                 World.Instance.AccountManager.AddAccount (Account);
@@ -135,13 +135,13 @@ namespace client.Common
 
         private async Task LogInAsync ()
         {
-            var currentGamePosition = Geolocation.GetInstance.CurrentGamePosition;
+            var currentGamePosition = Geolocation.Instance.CurrentGamePosition;
             var device = client.Common.Models.Device.GetInstance;
             var user = device.DeviceId;
             user += device.DeviceName;
             LoadingState = Loading.Login;
-            var id = await NetworkController.GetInstance.LoginAsync (currentGamePosition, user, "Password");
-            if (NetworkController.GetInstance.IsLogedin) {
+            var id = await NetworkController.Instance.LoginAsync (currentGamePosition, user, "Password");
+            if (NetworkController.Instance.IsLogedin) {
                 Account = new Account (id, user);
                 LoadingState = Loading.Loggedin;
             }
