@@ -3,75 +3,79 @@ using Newtonsoft.Json;
 
 namespace @base.model
 {
-	public class Position
-	{
+    public class Position
+    {
         [JsonConstructor]
-        public Position (double x, double y)
-		{
-			m_x = x;
-			m_y = y;
-		}
+        public Position(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
 
         public Position(LatLon latLon)
         {
             var zoom = Constants.EARTH_CIRCUMFERENCE / Constants.CELL_SIZE;
-            m_x = (float)((latLon.Lon + 180.0) / 360.0 * zoom);
-            m_y = (float)((1.0 - Math.Log(Math.Tan(latLon.Lat * Math.PI / 180.0) +
+            X = (float)((latLon.Lon + 180.0) / 360.0 * zoom);
+            Y = (float)((1.0 - Math.Log(Math.Tan(latLon.Lat * Math.PI / 180.0) +
                 1.0 / Math.Cos(latLon.Lat * Math.PI / 180.0)) / Math.PI) / 2.0 * zoom);
         }
 
         public Position(RegionPosition regionPosition)
         {
-            m_x = regionPosition.RegionX * Constants.REGION_SIZE_X;
-            m_y = regionPosition.RegionY * Constants.REGION_SIZE_Y;
+            X = regionPosition.RegionX * Constants.REGION_SIZE_X;
+            Y = regionPosition.RegionY * Constants.REGION_SIZE_Y;
         }
 
         public Position(RegionPosition regionPosition, CellPosition cellPosition)
         {
-            m_x = regionPosition.RegionX * Constants.REGION_SIZE_X + cellPosition.CellX;
-            m_y = regionPosition.RegionY * Constants.REGION_SIZE_Y + cellPosition.CellY;
+            X = regionPosition.RegionX * Constants.REGION_SIZE_X + cellPosition.CellX;
+            Y = regionPosition.RegionY * Constants.REGION_SIZE_Y + cellPosition.CellY;
         }
 
-		public double X
-		{
-			get { return this.m_x; }
-		}
+        public double X
+        {
+            get;
+            private set;
+        }
 
         public double Y
-		{
-			get { return this.m_y; }
-		}
+        {
+            get;
+            private set;
+        }
 
         [JsonIgnore]
         public RegionPosition RegionPosition
         {
-            get { return new RegionPosition(this); }
+            get
+            {
+                return new RegionPosition(this);
+            }
         }
 
         [JsonIgnore]
         public CellPosition CellPosition
         {
-            get { return new CellPosition(this); }
+            get
+            {
+                return new CellPosition(this);
+            }
         }
 
 
         public double Distance(Position position)
         {
-            var xDistance = (position.X - m_x);
-            var yDistance = (position.Y - m_y);
+            var xDistance = (position.X - X);
+            var yDistance = (position.Y - Y);
             return xDistance * xDistance + yDistance * yDistance;
         }
 
         public double Distance(PositionI position)
         {
-            var xDistance = (position.X - m_x);
-            var yDistance = (position.Y - m_y);
+            var xDistance = (position.X - X);
+            var yDistance = (position.Y - Y);
             return xDistance * xDistance + yDistance * yDistance;
         }
-
-
-        private readonly double m_x;
-        private readonly double m_y;
-	}
+    }
 }
 

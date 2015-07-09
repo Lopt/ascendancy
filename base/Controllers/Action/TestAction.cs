@@ -33,14 +33,14 @@ namespace @base.control.action
             }
             return regions;*/
             var action = (model.Action)Model;
-            return (ConcurrentBag<model.Region>) action.Parameters[REGIONS];
+            return (ConcurrentBag<model.Region>)action.Parameters[REGIONS];
 
         }
 
         override public @base.model.RegionPosition GetRegionPosition()
         {
             var action = (model.Action)Model;
-            return ((ConcurrentBag<model.Region>) action.Parameters[REGIONS]).ToArray()[0].RegionPosition;
+            return ((ConcurrentBag<model.Region>)action.Parameters[REGIONS]).ToArray()[0].RegionPosition;
         }
 
 
@@ -59,7 +59,7 @@ namespace @base.control.action
         public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {   
             var action = (model.Action)Model;
-            return (ConcurrentBag<model.Region>) action.Parameters[REGIONS];
+            return (ConcurrentBag<model.Region>)action.Parameters[REGIONS];
             /*
             var action = (model.Action)Model;
             var regions = new ConcurrentBag<model.Region> ();

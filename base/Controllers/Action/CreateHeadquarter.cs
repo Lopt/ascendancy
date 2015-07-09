@@ -23,7 +23,7 @@ namespace @base.control.action
 
             if (param[CREATE_POSITION].GetType() != typeof(PositionI))
             {
-                param[CREATE_POSITION] = new model.PositionI((Newtonsoft.Json.Linq.JContainer) param[CREATE_POSITION]);
+                param[CREATE_POSITION] = new model.PositionI((Newtonsoft.Json.Linq.JContainer)param[CREATE_POSITION]);
             }
         }
 
@@ -37,7 +37,7 @@ namespace @base.control.action
         override public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
             var action = (model.Action)Model;
-            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
+            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
 
             return new ConcurrentBag<model.Region>() { regionManagerC.GetRegion(positionI.RegionPosition) }; 
         }
@@ -53,8 +53,8 @@ namespace @base.control.action
                         
             if (action.Account.Headquarters.Count == 0)
             {
-                var positionI = (PositionI) action.Parameters[CREATE_POSITION];
-                var td = (TerrainDefinition) regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition);       
+                var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+                var td = (TerrainDefinition)regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition);       
        
                 // entity and terrain check 
                 return td.Buildable;
@@ -62,26 +62,26 @@ namespace @base.control.action
             return false;
         }
 
-       /// <summary>
-       /// Apply action-related changes to the world.
-       /// </summary>
-       /// <param name="regionManagerC"></param>
+        /// <summary>
+        /// Apply action-related changes to the world.
+        /// </summary>
+        /// <param name="regionManagerC"></param>
         /// <returns> Returns <see cref="System.Collections.Concurrent.ConcurrentBag<t>"/> class with the affected region./></returns>
         public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {   
-            string[] actionParameter = {"CreateUnits"};
+            string[] actionParameter = { "CreateUnits" };
             
             var action = (model.Action)Model;
-            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
+            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
             // create the new entity and link to the correct account
             var entity = new @base.model.Entity(IdGenerator.GetId(),
-                new UnitDefinition(UnitDefinition.UnitDefinitionType.Headquarter,
-                    actionParameter, 
-                    0, 0, 0, 0),
-                    action.Account,
-                    positionI);
+                             new UnitDefinition(UnitDefinition.UnitDefinitionType.Headquarter,
+                                 actionParameter, 
+                                 0, 0, 0, 0),
+                             action.Account,
+                             positionI);
 
             entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);
@@ -99,6 +99,7 @@ namespace @base.control.action
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
         /// Ovveride <see cref="base.model.RegionPosition"/> class and return the positionI of the region.
         /// </summary>
@@ -106,7 +107,7 @@ namespace @base.control.action
         override public @base.model.RegionPosition GetRegionPosition()
         {
             var action = (model.Action)Model;
-            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
+            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             return positionI.RegionPosition;
         }
 

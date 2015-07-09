@@ -6,7 +6,7 @@ using @base.model.definitions;
 
 namespace @base.control
 {
-    public class DefinitionManagerController 
+    public class DefinitionManagerController
     {
         public DefinitionManagerController()
         {
@@ -15,7 +15,10 @@ namespace @base.control
 
         public DefinitionManager DefinitionManager
         {
-            get { return m_definitionManager; }
+            get
+            {
+                return m_definitionManager;
+            }
         }
 
         DefinitionManager m_definitionManager;

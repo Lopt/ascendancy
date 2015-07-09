@@ -8,7 +8,7 @@ using System.Threading;
 namespace @base.model
 {
     public class Region
-	{
+    {
         public class DatedActions
         {
             public DateTime DateTime;
@@ -26,34 +26,34 @@ namespace @base.model
         public Region(Region region)
         {
             m_regionPosition = region.m_regionPosition;
-            m_terrains  = region.m_terrains;
-            m_entities  = region.m_entities;
-            m_actions   = new DatedActions();
+            m_terrains = region.m_terrains;
+            m_entities = region.m_entities;
+            m_actions = new DatedActions();
             m_actions.Actions = new LinkedList<model.Action>();
-            m_exist     = region.m_exist;
-            m_mutex     = region.m_mutex;
+            m_exist = region.m_exist;
+            m_mutex = region.m_mutex;
         }
 
-        public Region (RegionPosition regionPosition)
+        public Region(RegionPosition regionPosition)
         {
             m_regionPosition = regionPosition;
-            m_terrains  = new TerrainDefinition[Constants.REGION_SIZE_X, Constants.REGION_SIZE_Y];
-            m_entities  = new DatedEntities();
+            m_terrains = new TerrainDefinition[Constants.REGION_SIZE_X, Constants.REGION_SIZE_Y];
+            m_entities = new DatedEntities();
             m_entities.Entities = new LinkedList<Entity>();
-            m_actions   = new DatedActions();
+            m_actions = new DatedActions();
             m_actions.Actions = new LinkedList<model.Action>();
-            m_exist     = false;
-            m_mutex     = new ReaderWriterLockSlim();
+            m_exist = false;
+            m_mutex = new ReaderWriterLockSlim();
         }
 
-        public Region (RegionPosition regionPosition, TerrainDefinition[ , ] terrains)
+        public Region(RegionPosition regionPosition, TerrainDefinition[ , ] terrains)
         {
             m_regionPosition = regionPosition;
-            m_terrains  = terrains;
-            m_entities  = new DatedEntities();
-            m_actions   = new DatedActions();
-            m_exist     = true;
-            m_mutex     = new ReaderWriterLockSlim();
+            m_terrains = terrains;
+            m_entities = new DatedEntities();
+            m_actions = new DatedActions();
+            m_exist = true;
+            m_mutex = new ReaderWriterLockSlim();
         }
 
         public void AddTerrain(TerrainDefinition[ , ] terrains)
@@ -68,8 +68,8 @@ namespace @base.model
             // standardvalue
             if (value == null)
             {
-                return (TerrainDefinition) World.Instance.DefinitionManager.GetDefinition(
-                    (int) TerrainDefinition.TerrainDefinitionType.Forbidden);
+                return (TerrainDefinition)World.Instance.DefinitionManager.GetDefinition(
+                    (int)TerrainDefinition.TerrainDefinitionType.Forbidden);
             }
             return value;
         }
@@ -164,12 +164,18 @@ namespace @base.model
         /// <value><c>true</c> if exist; otherwise, <c>false</c>.</value>
         public bool Exist
         {
-            get { return m_exist; }
+            get
+            {
+                return m_exist;
+            }
         }
 
         public RegionPosition RegionPosition
         {
-            get { return m_regionPosition; }
+            get
+            {
+                return m_regionPosition;
+            }
         }
 
         public bool LockWriter()
@@ -209,6 +215,6 @@ namespace @base.model
         DatedActions m_actions;
 
         ReaderWriterLockSlim m_mutex;
-	} 
+    }
 }
 

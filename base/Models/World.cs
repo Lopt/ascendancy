@@ -3,24 +3,30 @@ using System.Collections.Concurrent;
 
 namespace @base.model
 {
-	public sealed class World
-	{
-        private static readonly Lazy<World> lazy =
+    public sealed class World
+    {
+        private static readonly Lazy<World> m_singleton =
             new Lazy<World>(() => new World());
 
-        public static World Instance { get { return lazy.Value; } }
+        public static World Instance
+        {
+            get
+            {
+                return m_singleton.Value;
+            }
+        }
 
         private World()
         {
-            RegionManager = new RegionManager ();
-            DefinitionManager = new DefinitionManager ();
-            AccountManager = new AccountManager ();
+            RegionManager = new RegionManager();
+            DefinitionManager = new DefinitionManager();
+            AccountManager = new AccountManager();
         }
 
         public RegionManager RegionManager;
         public DefinitionManager DefinitionManager;
         public AccountManager AccountManager;
 
-	}
+    }
 }
 

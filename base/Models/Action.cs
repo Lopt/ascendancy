@@ -9,7 +9,7 @@ namespace @base.model
 {
     public class Action : ModelEntity
     {
-        public class ActionComparer : Comparer<Action> 
+        public class ActionComparer : Comparer<Action>
         {
             // Compares by Length, Height, and Width.
             public override int Compare(Action first, Action second)
@@ -19,7 +19,7 @@ namespace @base.model
 
         }
 
-        public enum ActionType 
+        public enum ActionType
         {
             TestAction,
             CreateHeadquarter,
@@ -35,13 +35,13 @@ namespace @base.model
         /// <param name="regions">Affected Regions of this action.</param>
         /// <param name="parameters">Parameters.</param>
         public Action(Account account, ActionType type,
-            Dictionary<string, object> parameters)
+                      Dictionary<string, object> parameters)
             : base()
         {
-            m_account = account;
-            m_parameters = parameters;
-            m_actionType = type;
-            m_actionTime = DateTime.Now;
+            Account = account;
+            Parameters = parameters;
+            Type = type;
+            ActionTime = DateTime.Now;
 
             switch (type)
             {
@@ -65,38 +65,34 @@ namespace @base.model
 
         public Dictionary<string, object> Parameters
         {
-            get { return m_parameters; }
+            get;
+            private set;
         }
-           
+
         public ActionType Type
         {
-            get { return m_actionType; }
-        }
-
-        public int ID
-        {
             get;
-            set;
+            private set;
         }
 
-        [JsonIgnore]
-        public DateTime ActionTime
-        {
-            get { return m_actionTime; }
-            set { m_actionTime = value; }
-        }
+        public int ID;
 
         [JsonIgnore]
-        public Account Account
-        {
-            get { return m_account; }
-            set { m_account = value; }
-        }
+        public DateTime ActionTime;
+
+        [JsonIgnore]
+        public Account Account;
 
         public int AccountID
         {
-            get { return m_account.ID; }
-            set { m_account = World.Instance.AccountManager.GetAccountOrEmpty(value); }
+            get
+            {
+                return Account.ID;
+            }
+            set
+            {
+                Account = World.Instance.AccountManager.GetAccountOrEmpty(value);
+            }
         }
 
         public override bool Equals(Object obj)
@@ -115,13 +111,6 @@ namespace @base.model
         {
             return ID;
         }
-
-
-        private Dictionary<string, object> m_parameters;
-        private ActionType m_actionType;
-        private DateTime m_actionTime; 
-        private Account m_account;
-
     }
 }
 

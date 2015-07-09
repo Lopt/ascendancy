@@ -14,29 +14,44 @@ namespace AStar
         /// <summary>
         /// The node's location in the grid
         /// </summary>
-        public PositionI Location { get; private set; }
-        
+        public PositionI Location
+        {
+            get;
+            private set;
+        }
+
         /// <summary>
         /// Cost from start to here
         /// </summary>
-        public double G { get; private set; }
+        public double G
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Estimated cost from here to end
         /// </summary>
-        public double H { get; private set; }
+        public double H
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Flags whether the node is open, closed or untested by the PathFinder
         /// </summary>
-        public NodeState State { get; set; }
+        public NodeState State;
 
         /// <summary>
         /// Estimated total cost (F = G + H)
         /// </summary>
         public double F
         {
-            get { return G + H; }
+            get
+            {
+                return G + H;
+            }
         }
 
         /// <summary>
@@ -45,7 +60,10 @@ namespace AStar
         /// <value>The parent node.</value>
         public Node ParentNode
         {
-            get { return parentNode; }
+            get
+            {
+                return parentNode;
+            }
             set
             {
                 // When setting the parent, also calculate the traversal cost from the start node to here (the 'G' value)
@@ -54,19 +72,19 @@ namespace AStar
             }
         }
 
-       /// <summary>
-       /// Constructor from a Node, it set the positionI of the Node, set the nodstate to open and calculate the travel cost to the destination tile.
-       /// </summary>
-       /// <param name="location"> Current postionI of the Node.</param>
-       /// <param name="endLocation"> PositionI of the destination tile.</param>
+        /// <summary>
+        /// Constructor from a Node, it set the positionI of the Node, set the nodstate to open and calculate the travel cost to the destination tile.
+        /// </summary>
+        /// <param name="location"> Current postionI of the Node.</param>
+        /// <param name="endLocation"> PositionI of the destination tile.</param>
         public Node(PositionI location, PositionI endLocation)
         {
-           Location = location;
-           State = NodeState.Open;
-           H = GetTraversalCost(Location, endLocation);
-           G = 0;
+            Location = location;
+            State = NodeState.Open;
+            H = GetTraversalCost(Location, endLocation);
+            G = 0;
         }
-        
+
         /// <summary>
         /// Gets the distance between two points.
         /// </summary>

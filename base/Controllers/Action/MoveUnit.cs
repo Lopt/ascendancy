@@ -68,7 +68,7 @@ namespace @base.control.action
         /// Returns true if the action is even possible.
         /// </summary>
         /// <param name="regionManagerC">Region manager c.</param>
-        public override bool Possible (RegionManagerController regionManagerC)
+        public override bool Possible(RegionManagerController regionManagerC)
         {
             var action = (model.Action)Model;
 
@@ -95,7 +95,7 @@ namespace @base.control.action
         /// Returns set of changed Regions if everything worked, otherwise null
         /// </summary>
         /// <param name="regionManagerC">Region manager c.</param>
-        public override ConcurrentBag<model.Region> Do (RegionManagerController regionManagerC)
+        public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {
             var Bag = new ConcurrentBag<model.Region>();
 
@@ -140,7 +140,7 @@ namespace @base.control.action
             var regionSizeX = Constants.REGION_SIZE_X / 2;
             var regionSizeY = Constants.REGION_SIZE_Y / 2;
 
-            if (position.RegionX <= regionSizeX  && position.RegionY <= regionSizeY)
+            if (position.RegionX <= regionSizeX && position.RegionY <= regionSizeY)
             {
                 var tempReg = position + surlist[LogicRules.SurroundRegions.Length];
                 if (regionManagerC.GetRegion(tempReg).Exist)
@@ -157,7 +157,7 @@ namespace @base.control.action
                     }
                 }
             }
-            else if (position.RegionX > regionSizeX  && position.RegionY <= regionSizeY)
+            else if (position.RegionX > regionSizeX && position.RegionY <= regionSizeY)
             {
                 for (int index = 1; index < 4; ++index)
                 {
@@ -168,7 +168,7 @@ namespace @base.control.action
                     }
                 }
             }
-            else if (position.RegionX > regionSizeX  && position.RegionY > regionSizeY)
+            else if (position.RegionX > regionSizeX && position.RegionY > regionSizeY)
             {
                 for (int index = 3; index < 7; ++index)
                 {

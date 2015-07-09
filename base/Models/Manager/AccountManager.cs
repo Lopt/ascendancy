@@ -10,7 +10,7 @@ namespace @base.model
     {
         public AccountManager()
         {
-            Accounts = new ConcurrentDictionary<int, Account> ();
+            Accounts = new ConcurrentDictionary<int, Account>();
         }
 
         public void AddAccount(Account account)

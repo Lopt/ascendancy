@@ -7,24 +7,12 @@ namespace @base.connection
         public LoginRequest(model.Position position, string username, string password)
             : base(Guid.Empty, position)
         {
-            m_username = username;
-            m_password = password;
-        }
-           
-        public string Username
-        {
-            get { return m_username; }
-            set { m_username = value; }
+            Username = username;
+            Password = password;
         }
 
-        public string Password
-        {
-            get { return m_password; }
-            set { m_password = value; }
-        }
-
-        string m_username;
-        string m_password;
+        public string Username;
+        public string Password;
     }
 }
 

@@ -11,14 +11,14 @@ namespace @base.model.definitions
             // ID modulo 6 = 2 -> Water
             // ID modulo 6 = 3 -> Earth
             // ID modulo 6 = 4 -> Air
-            // ID modulo 6 = 5 -> Magic 
+            // ID modulo 6 = 5 -> Magic
             // example: Hero ID 60 is Gold, 61 is Hero-Fire,
             // 62 is Hero-Water...
 
             // Unit Range 60-275 Id's
             Hero = 60,
             Mage = 66,
-            Warrior = 72, 
+            Warrior = 72,
             Archer = 78,
             Scout = 84,
             Unknown3 = 90,
@@ -31,60 +31,66 @@ namespace @base.model.definitions
             Barracks = 300,
             RessourceHarvester = 306
         }
-      
+
         public UnitDefinition(UnitDefinitionType unitType,
                               string[] actions,
                               int attack, int defense,
-                              int health, int moves) 
-            : base((int) unitType)
+                              int health, int moves)
+            : base((int)unitType)
         {
-            m_actions = actions;
-            m_attack = attack;
-            m_defense = defense;
-            m_health = health;
-            m_moves = moves;
+            Actions = actions;
+            Attack = attack;
+            Defense = defense;
+            Health = health;
+            Moves = moves;
         }
 
         public Ressources Ressource
         {
-            get { return (Ressources) (ID % 6); }
+            get
+            {
+                return (Ressources)(ID % 6);
+            }
         }
 
         public string[] Actions
         {
-            get { return m_actions; }
+            get;
+            private set;
         }
 
         public int Attack
         {
-            get { return m_attack; }
+            get;
+            private set;
+
         }
 
         public int Defense
         {
-            get { return m_defense; }
+            get;
+            private set;
         }
 
         public int Health
         {
-            get { return m_health; }
+            get;
+            private set;
         }
 
         public int Moves
         {
-            get { return m_moves; }
+            get;
+            private set;
         }
 
         public UnitDefinitionType UnitType
         {
-            get { return (UnitDefinitionType) ID; }
+            get
+            {
+                return (UnitDefinitionType)ID;
+            }
         }
-
-        private string[] m_actions;
-        private int m_attack;
-        private int m_defense;
-        private int m_health;
-        private int m_moves;
 
     }
 }

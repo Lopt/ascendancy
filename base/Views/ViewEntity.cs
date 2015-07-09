@@ -2,32 +2,32 @@
 
 namespace @base.view
 {
-	public class ViewEntity
-	{
-        public ViewEntity (model.ModelEntity model)
-		{   
-            m_model = model;
-            if (m_model.View != null)
+    public class ViewEntity
+    {
+        public ViewEntity(model.ModelEntity model)
+        {   
+            Model = model;
+            if (Model.View != null)
             {
                 throw new Exception("ModelEntity.Control already has an ViewEntity.");
             }
-            m_model.View = this;
-		}
+            Model.View = this;
+        }
 
         ~ViewEntity()
         {
-            if (m_model.View == this)
+            if (Model.View == this)
             {
-                m_model.View = null;
+                Model.View = null;
             }
         }
 
         public model.ModelEntity Model
         {
-            get { return m_model; }
+            get;
+            private set;
         }
 
-        private model.ModelEntity m_model;
-	}
+    }
 }
 

@@ -25,10 +25,10 @@ namespace @base.control.action
 
             if (param[CREATE_POSITION].GetType() != typeof(PositionI))
             {
-                param[CREATE_POSITION] = new PositionI((Newtonsoft.Json.Linq.JContainer) param[CREATE_POSITION]);
+                param[CREATE_POSITION] = new PositionI((Newtonsoft.Json.Linq.JContainer)param[CREATE_POSITION]);
             }
         }
-        
+
 
         /// <summary>
         /// /// <summary>
@@ -40,8 +40,8 @@ namespace @base.control.action
         override public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
             ConcurrentBag<model.Region> Bag = new ConcurrentBag<model.Region>();
-            var action = (model.Action) Model;
-            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
+            var action = (model.Action)Model;
+            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
             Bag.Add(region);
@@ -64,8 +64,8 @@ namespace @base.control.action
         public override bool Possible(RegionManagerController regionManagerC)
         {   
             var action = (model.Action)Model;
-            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
-            var type = (long) action.Parameters[CREATION_TYPE];
+            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+            var type = (long)action.Parameters[CREATION_TYPE];
 
             RealCreatePosition = GetFreeField(positionI, regionManagerC);
             return RealCreatePosition != null;
@@ -79,8 +79,8 @@ namespace @base.control.action
         public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
         {   
             var action = (model.Action)Model;
-            var positionI = (PositionI) action.Parameters[CREATE_POSITION];
-            var type = (long) action.Parameters[CREATION_TYPE];
+            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+            var type = (long)action.Parameters[CREATION_TYPE];
 
             positionI = RealCreatePosition;
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
@@ -88,9 +88,9 @@ namespace @base.control.action
 
             // create the new entity and link to the correct account
             var entity = new @base.model.Entity(IdGenerator.GetId(),
-                dt,  
-                action.Account,
-                positionI);
+                             dt,  
+                             action.Account,
+                             positionI);
 
             entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);
@@ -113,12 +113,12 @@ namespace @base.control.action
         }
 
      
-       /// <summary>
+        /// <summary>
         /// Check all possible spawn locations around a building.
-       /// </summary>
-       /// <param name="position"></param>
-       /// <param name="regionManagerC"></param>
-       /// <returns> Position which is free or null if nothing is free </returns>   
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="regionManagerC"></param>
+        /// <returns> Position which is free or null if nothing is free </returns>   
         private PositionI GetFreeField(PositionI position, RegionManagerController regionManagerC)
         {      
 

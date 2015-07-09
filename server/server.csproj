@@ -102,6 +102,8 @@
     <Folder Include="Content\" />
     <Folder Include="Properties\" />
     <Folder Include="scripts\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="Views\HTTP\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\DBBuildings.cs" />
@@ -120,7 +122,6 @@
     <Compile Include="Controllers\RegionManagerController.cs" />
     <Compile Include="Models\ServerConstants.cs" />
     <Compile Include="Controllers\APIController.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -131,13 +132,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
-    <Content Include="Views\HTTP\Login.aspx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

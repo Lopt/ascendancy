@@ -9,11 +9,17 @@ namespace @base.connection
         {
             m_actions = actions;
         }
-            
+
         public model.Action[] Actions
         {
-            get { return m_actions; }
-            set { m_actions = value; }
+            get
+            {
+                return m_actions;
+            }
+            set
+            {
+                m_actions = value;
+            }
         }
 
         model.Action[] m_actions;

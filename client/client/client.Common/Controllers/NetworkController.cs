@@ -111,7 +111,6 @@ namespace client.Common.Controllers
                 ExceptionMessage = ex.Message;
                 throw ex;
             }
-		
         }
 
         /// <summary>

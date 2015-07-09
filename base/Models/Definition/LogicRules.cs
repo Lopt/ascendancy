@@ -10,25 +10,25 @@ namespace @base.Models.Definition
     class LogicRules
     {
         // From North to NorthEast in clockwise
-        public static readonly PositionI[] SurroundTilesEven = 
+        public static readonly PositionI[] SurroundTilesEven =
             {
-                new PositionI(  0, -1),
-                new PositionI(  1,  0),
-                new PositionI(  1,  1),
-                new PositionI(  0,  1),
-                new PositionI( -1,  1),
-                new PositionI( -1,  0)
+                new PositionI(0, -1),
+                new PositionI(1, 0),
+                new PositionI(1, 1),
+                new PositionI(0, 1),
+                new PositionI(-1, 1),
+                new PositionI(-1, 0)
             };
 
         // From North to NorthEast in clockwise
-        public static readonly PositionI[] SurroundTilesOdd = 
+        public static readonly PositionI[] SurroundTilesOdd =
             {
-                new PositionI(  0, -1),
-                new PositionI(  1,  -1),
-                new PositionI(  1,  0),
-                new PositionI(  0,  1),
-                new PositionI( -1,  0),
-                new PositionI( -1,  -1)
+                new PositionI(0, -1),
+                new PositionI(1, -1),
+                new PositionI(1, 0),
+                new PositionI(0, 1),
+                new PositionI(-1, 0),
+                new PositionI(-1, -1)
             };
 
         public static PositionI[] GetSurroundedFields(PositionI pos)
@@ -40,7 +40,7 @@ namespace @base.Models.Definition
             }
 
             var surrounded = new PositionI[6];
-            for (var Index = 0; Index < surroundedFields.Length; ++ Index)
+            for (var Index = 0; Index < surroundedFields.Length; ++Index)
             {
                 surrounded[Index] = pos + surroundedFields[Index];
             }
@@ -51,8 +51,8 @@ namespace @base.Models.Definition
 
 
         // Surrounded Regions from topleft clockwise
-        public static readonly RegionPosition[] SurroundRegions = 
-        {
+        public static readonly RegionPosition[] SurroundRegions =
+            {
                 new RegionPosition(-1, -1),
                 new RegionPosition(-1,  0),
                 new RegionPosition(-1, +1),

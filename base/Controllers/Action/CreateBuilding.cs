@@ -75,9 +75,9 @@ namespace @base.control.action
 
             // create the new entity and link to the correct account
             var entity = new @base.model.Entity(IdGenerator.GetId(),               
-                dt,  
-                action.Account,
-                positionI);
+                             dt,  
+                             action.Account,
+                             positionI);
 
             entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);

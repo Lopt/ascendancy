@@ -16,12 +16,12 @@ namespace AStar
         /// <summary>
         /// Set the start location for the Astar algorithm.
         /// </summary>
-        public PositionI StartLocation { get; set; }
+        public PositionI StartLocation;
 
         /// <summary>
         /// Set the destination location for the Astar algorithm. 
         /// </summary>
-        public PositionI EndLocation { get; set; }
+        public PositionI EndLocation;
 
         /// <summary>
         /// Set start and enp point for the Astar algorithm.

@@ -11,53 +11,64 @@ namespace @base.model
         public Entity(int id, Definition defintion, Account account, PositionI position)
             : base()
         {
-            m_id = id; 
-            m_definition = defintion;
-            m_position = position;
-            m_account = account;
+            ID = id; 
+            Definition = defintion;
+            Position = position;
+            Account = account;
         }
 
         public int ID
         {
-            get { return m_id; }
+            get;
+            private set;
         }
 
         public int DefinitionID
         {
-            get { return m_definition.ID; }  
-            set { m_definition = World.Instance.DefinitionManager.GetDefinition(value); }
+            get
+            {
+                return Definition.ID;
+            }  
+            set
+            {
+                Definition = World.Instance.DefinitionManager.GetDefinition(value);
+            }
         }
 
 
         [JsonIgnore]
         public Definition Definition
         {
-            get { return m_definition; }
+            get;
+            private set;
         }
 
         public PositionI Position
         {
-            get { return m_position; }
-            set { m_position = value; }
+            get;
+            set;
+
         }
 
         [JsonIgnore]
         public Account Account
         {
-            get { return m_account; }
+            get;
+            private set;
         }
 
         public int AccountID
         {
-            get { return m_account.ID; }
-            set { m_account = World.Instance.AccountManager.GetAccountOrEmpty(value); }
+            get
+            {
+                return Account.ID;
+            }
+            set
+            {
+                Account = World.Instance.AccountManager.GetAccountOrEmpty(value);
+            }
         }
 
-
-        private int m_id;
-        private PositionI m_position;
-        private Definition m_definition;
-        private Account m_account;
     }
 }
 

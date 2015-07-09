@@ -11,7 +11,7 @@ using System.Diagnostics;
 namespace test
 {
     class MainClass
-    {	
+    {
 
 
         /*
@@ -170,8 +170,8 @@ namespace test
         public static void Main(string[] args)
         {
             var json = "{\"Status\":0,\"Actions\":[[],[],[],[],[],[],[],[],[],[],[],[],[{\"Parameters\":{\"CreatePosition\":{\"X\":5316345,\"Y\":3354734},\"CreateBuilding\":276},\"Type\":2}],[],[],[],[],[],[],[],[],[],[],[],[]],\"Entities\":[]}";
-            var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response> (json);
-            throw new Exception ();
+            var entitiesResponse = JsonConvert.DeserializeObject<@base.connection.Response>(json);
+            throw new Exception();
             //var app = new server.MvcApplication ();
             //app.Application_Start ();
 

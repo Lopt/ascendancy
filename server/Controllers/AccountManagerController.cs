@@ -8,58 +8,58 @@ using server.DB;
 namespace server.control
 {
     public class AccountManagerController : @base.model.AccountManager
-	{
-		public AccountManagerController()
-			: base()
-		{
-			m_sessions = new ConcurrentDictionary<Guid, Account> ();
-		}
+    {
+        public AccountManagerController()
+            : base()
+        {
+            m_sessions = new ConcurrentDictionary<Guid, Account>();
+        }
 
-		public Account Login(string username, string password)
-		{
+        public Account Login(string username, string password)
+        {
             foreach (var accountPair in World.Instance.AccountManager.Accounts)
-			{
-				if (accountPair.Value.UserName == username)
-				{
-					var accountC = (AccountController)accountPair.Value.Control;
-					if (accountC.Login (username, password))
-					{
-						m_sessions [accountC.SessionID] = accountPair.Value;
-						return accountPair.Value;
-					}
-				}
-			}
-			return null;
-		}
+            {
+                if (accountPair.Value.UserName == username)
+                {
+                    var accountC = (AccountController)accountPair.Value.Control;
+                    if (accountC.Login(username, password))
+                    {
+                        m_sessions[accountC.SessionID] = accountPair.Value;
+                        return accountPair.Value;
+                    }
+                }
+            }
+            return null;
+        }
 
-		public Account Registrate(string username, string password)
-		{
+        public Account Registrate(string username, string password)
+        {
             foreach (var accountPair in @base.model.World.Instance.AccountManager.Accounts)
-			{
-				if (accountPair.Value.UserName.ToLower() == username.ToLower())
-				{
-					return Login(username, password);
-				}				
-			}
-			var account = new Account (IdGenerator.GetId (), username);
-			new AccountController(account, password);
+            {
+                if (accountPair.Value.UserName.ToLower() == username.ToLower())
+                {
+                    return Login(username, password);
+                }				
+            }
+            var account = new Account(IdGenerator.GetId(), username);
+            new AccountController(account, password);
 
-            @base.model.World.Instance.AccountManager.AddAccount (account);
-			return Login (username, password);
-		}
+            @base.model.World.Instance.AccountManager.AddAccount(account);
+            return Login(username, password);
+        }
 
 
-		public Account GetAccountBySession(Guid sessionID)
-		{
-			Account account = null;
-			if (m_sessions.TryGetValue (sessionID, out account))
-			{
-				return account;
-			}
-			return null;
-		}
+        public Account GetAccountBySession(Guid sessionID)
+        {
+            Account account = null;
+            if (m_sessions.TryGetValue(sessionID, out account))
+            {
+                return account;
+            }
+            return null;
+        }
 
-		ConcurrentDictionary<Guid, Account> m_sessions;
+        ConcurrentDictionary<Guid, Account> m_sessions;
     }
 }
 

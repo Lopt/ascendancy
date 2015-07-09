@@ -6,23 +6,23 @@ using @base.model;
 namespace @base.model
 {
     public class CombinedPositionA
-	{
-        public CombinedPositionA (Position position)
+    {
+        public CombinedPositionA(Position position)
         {
             m_regionPosition = new RegionPosition(position);
             m_cellPosition = new CellPosition(position);
         }
 
-        public CombinedPositionA (RegionPosition regionPosition, CellPosition cellPosition)
-		{
+        public CombinedPositionA(RegionPosition regionPosition, CellPosition cellPosition)
+        {
             m_regionPosition = regionPosition;
             m_cellPosition = cellPosition;
-		}
+        }
 
-        public CombinedPositionA (JContainer obj)
+        public CombinedPositionA(JContainer obj)
         {
-            m_regionPosition = new RegionPosition((JContainer) obj.SelectToken("RegionPosition"));
-            m_cellPosition = new CellPosition((JContainer) obj.SelectToken("CellPosition"));
+            m_regionPosition = new RegionPosition((JContainer)obj.SelectToken("RegionPosition"));
+            m_cellPosition = new CellPosition((JContainer)obj.SelectToken("CellPosition"));
         }
 
         public CombinedPositionA Add(int X, int Y)
@@ -36,19 +36,25 @@ namespace @base.model
             return new CombinedPositionA(new RegionPosition(newRegionX, newRegionY),
                 new CellPosition(newCellX, newCellY));
         }
-            
+
         public RegionPosition RegionPosition
-		{
-			get { return this.m_regionPosition; }
-		}
+        {
+            get
+            {
+                return this.m_regionPosition;
+            }
+        }
 
         public CellPosition CellPosition
-		{
-			get { return this.m_cellPosition; }
-		}
+        {
+            get
+            {
+                return this.m_cellPosition;
+            }
+        }
 
         RegionPosition m_regionPosition;
         CellPosition m_cellPosition;
-	}
+    }
 }
 
