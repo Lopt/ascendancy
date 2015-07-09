@@ -11,107 +11,125 @@ namespace client.Common.Views
 {
     public class RegionView
     {
-        public RegionView ()
+        public RegionView()
         {
             m_RegionManagerController = @base.control.Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
-            m_ViewDefinition = new ViewDefinitions ();
+            m_ViewDefinition = new ViewDefinitions();
         }
 
-        public void SetTilesInMap160 (@base.model.Region region)
+        public void SetTilesInMap160(@base.model.Region region)
         {
 
-            var worldRegionPositions = m_RegionManagerController.GetWorldNearRegionPositions (region.RegionPosition);
+            var worldRegionPositions = m_RegionManagerController.GetWorldNearRegionPositions(region.RegionPosition);
 
-            for (int y = 0; y < 5; y++) {
-                for (int x = 0; x < 5; x++) {
-                    var Region = m_RegionManagerController.GetRegion (worldRegionPositions [x, y]);
-                    SetTilesInMap32 (new CCTileMapCoordinates (x * Constants.REGION_SIZE_X, y * Constants.REGION_SIZE_Y), Region);
+            for (int y = 0; y < ClientConstants.DRAW_REGIONS_X; y++)
+            {
+                for (int x = 0; x < ClientConstants.DRAW_REGIONS_Y; x++)
+                {
+                    var Region = m_RegionManagerController.GetRegion(worldRegionPositions[x, y]);
+                    SetTilesInMap32(new CCTileMapCoordinates(x * Constants.REGION_SIZE_X, y * Constants.REGION_SIZE_Y), Region);
                 }
             }
         }
 
-        public void SetTilesInMap32 (CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
+        public void SetTilesInMap32(CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
         {
-            for (int y = 0; y < Constants.REGION_SIZE_Y; y++) {
-                for (int x = 0; x < Constants.REGION_SIZE_X; x++) {
-                    var newCellPosition = new CellPosition (x, y);
-                    var mapCellPosition = new MapCellPosition ((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y));
+            for (int y = 0; y < Constants.REGION_SIZE_Y; y++)
+            {
+                for (int x = 0; x < Constants.REGION_SIZE_X; x++)
+                {
+                    var newCellPosition = new CellPosition(x, y);
+                    var mapCellPosition = new MapCellPosition((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y));
 
-                    SetTerrainTileInMap (newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
-                    SetEntityTileInMap (newCellPosition, mapCellPosition.GetTileMapCoordinates (), region); 
+                    SetTerrainTileInMap(newCellPosition, mapCellPosition.GetTileMapCoordinates(), region); 
+                    SetEntityTileInMap(newCellPosition, mapCellPosition.GetTileMapCoordinates(), region); 
                 
                 }
             }
         }
 
-        public void SetTerrainTileInMap (CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
+        public void SetTerrainTileInMap(CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {
-            var gid = m_ViewDefinition.DefinitionToTileGid (region.GetTerrain (cellPosition));
-            TerrainLayer.SetTileGID (gid, mapCoordinat);
+            var gid = m_ViewDefinition.DefinitionToTileGid(region.GetTerrain(cellPosition));
+            TerrainLayer.SetTileGID(gid, mapCoordinat);
         }
 
-        public void SetUnit (CCTileMapCoordinates mapCoordinat, Entity unit)
+        public void SetUnit(CCTileMapCoordinates mapCoordinat, Entity unit)
         {
-            if (unit == null) {
-                UnitLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);
-            } else {
-                var gid = m_ViewDefinition.DefinitionToTileGid (unit.Definition);
-                if (GameAppDelegate.Account != unit.Account) {
-                    gid.Gid += 22;
+            if (unit == null)
+            {
+                UnitLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);
+            }
+            else
+            {
+                var gid = m_ViewDefinition.DefinitionToTileGid(unit.Definition);
+                if (GameAppDelegate.Account != unit.Account)
+                {
+                    gid.Gid += ClientConstants.FRIEND_ENEMY_DIFFERENCE_UNIT;
                 }
-                UnitLayer.SetTileGID (gid, mapCoordinat);
+                UnitLayer.SetTileGID(gid, mapCoordinat);
             }
         }
 
-        public void SetBuilding (CCTileMapCoordinates mapCoordinat, Entity building)
+        public void SetBuilding(CCTileMapCoordinates mapCoordinat, Entity building)
         {
-            if (building == null) {
-                BuildingLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);               
-            } else {
-                var gid = m_ViewDefinition.DefinitionToTileGid (building.Definition);
-                if (GameAppDelegate.Account != building.Account) {
-                    gid.Gid += 59;
+            if (building == null)
+            {
+                BuildingLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);               
+            }
+            else
+            {
+                var gid = m_ViewDefinition.DefinitionToTileGid(building.Definition);
+                if (GameAppDelegate.Account != building.Account)
+                {
+                    gid.Gid += ClientConstants.FRIEND_ENEMY_DIFFERENCE_BUILDING;
                 }
-                BuildingLayer.SetTileGID (gid, mapCoordinat);
+                BuildingLayer.SetTileGID(gid, mapCoordinat);
             }
         }
 
 
-        public void SetEntityTileInMap (CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
+        public void SetEntityTileInMap(CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {   
             
-            var entity = region.GetEntity (cellPosition);
-            if (entity != null) {
-                if (entity.Definition.Type == Definition.DefinitionType.Unit) {
-                    SetUnit (mapCoordinat, entity);
+            var entity = region.GetEntity(cellPosition);
+            if (entity != null)
+            {
+                if (entity.Definition.Type == Definition.DefinitionType.Unit)
+                {
+                    SetUnit(mapCoordinat, entity);
                 }
-                if (entity.Definition.Type == Definition.DefinitionType.Building) {
-                    SetBuilding (mapCoordinat, entity);
+                if (entity.Definition.Type == Definition.DefinitionType.Building)
+                {
+                    SetBuilding(mapCoordinat, entity);
                 }
             }
             else
             {
-                UnitLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);
-                BuildingLayer.SetTileGID (CCTileGidAndFlags.EmptyTile, mapCoordinat);
+                UnitLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);
+                BuildingLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);
             }
           
 
         }
-            
 
 
-        public CCTileMapCoordinates GetCurrentTileInMap (Position position)
+
+        public CCTileMapCoordinates GetCurrentTileInMap(Position position)
         {
-            var regionPos = new RegionPosition (position);
-            var cellPos = new CellPosition (position);
-            var worldRegions = m_RegionManagerController.GetWorldNearRegionPositions (regionPos);
+            var regionPos = new RegionPosition(position);
+            var cellPos = new CellPosition(position);
+            var worldRegions = m_RegionManagerController.GetWorldNearRegionPositions(regionPos);
 
             int mapCellX = -1;
             int mapCellY = -1;
 
-            for (int x = 0; x < 5; x++) {
-                for (int y = 0; y < 5; y++) {
-                    if (regionPos.Equals (worldRegions [x, y])) {
+            for (int x = 0; x < ClientConstants.DRAW_REGIONS_X; x++)
+            {
+                for (int y = 0; y < ClientConstants.DRAW_REGIONS_Y; y++)
+                {
+                    if (regionPos.Equals(worldRegions[x, y]))
+                    {
                         mapCellX = cellPos.CellX + (x * Constants.REGION_SIZE_X);
                         mapCellY = cellPos.CellY + (y * Constants.REGION_SIZE_Y);
                     } 
@@ -120,32 +138,32 @@ namespace client.Common.Views
 
             }
 
-            var MapCellPosition = new MapCellPosition (mapCellX, mapCellY);
-            return MapCellPosition.GetTileMapCoordinates ();
+            var MapCellPosition = new MapCellPosition(mapCellX, mapCellY);
+            return MapCellPosition.GetTileMapCoordinates();
         }
 
 
-        public Position GetCurrentGamePosition (MapCellPosition mapCellPosition, RegionPosition currentCenterRegion)
+        public Position GetCurrentGamePosition(MapCellPosition mapCellPosition, RegionPosition currentCenterRegion)
         {
-            var worldRegions = m_RegionManagerController.GetWorldNearRegionPositions (currentCenterRegion);
+            var worldRegions = m_RegionManagerController.GetWorldNearRegionPositions(currentCenterRegion);
 
             var cellX = mapCellPosition.CellX % Constants.REGION_SIZE_X;
             var cellY = mapCellPosition.CellY % Constants.REGION_SIZE_Y;
-            CellPosition cellPosition = new CellPosition (cellX, cellY);
+            CellPosition cellPosition = new CellPosition(cellX, cellY);
 
             var x = mapCellPosition.CellX / Constants.REGION_SIZE_X;
             var y = mapCellPosition.CellY / Constants.REGION_SIZE_Y;
-            var regionPosition = worldRegions [x, y];
+            var regionPosition = worldRegions[x, y];
 
-            return new Position (regionPosition, cellPosition);
+            return new Position(regionPosition, cellPosition);
 
         }
 
-        public bool IsCellInOutsideRegion (MapCellPosition mapCellPosition)
+        public bool IsCellInOutsideRegion(MapCellPosition mapCellPosition)
         {
-            if (mapCellPosition.CellX < (Constants.REGION_SIZE_X * 1.5f) || mapCellPosition.CellX > (Constants.REGION_SIZE_X * 3.5f))
+            if (mapCellPosition.CellX < ClientConstants.REDRAW_REGIONS_START_X || mapCellPosition.CellX > ClientConstants.REDRAW_REGIONS_END_X)
                 return true;
-            if (mapCellPosition.CellY < (Constants.REGION_SIZE_Y * 1.5f) || mapCellPosition.CellY > (Constants.REGION_SIZE_Y * 3.5f))
+            if (mapCellPosition.CellY < ClientConstants.REDRAW_REGIONS_START_Y || mapCellPosition.CellY > ClientConstants.REDRAW_REGIONS_END_Y)
                 return true;
 
             return false;
@@ -163,7 +181,8 @@ namespace client.Common.Views
         public CCTileMapLayer MenuLayer;
 
 
-        public WorldLayer WorldLayer {
+        public WorldLayer WorldLayer
+        {
             private set;
             get;
         }

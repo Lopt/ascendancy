@@ -23,8 +23,8 @@ namespace client.Common.Views.Action
             var position = actionC.RealCreatePosition;//(@base.model.PositionI)action.Parameters [@base.control.action.CreateUnit.CREATE_POSITION];
             //var mapCoordinat = WorldLayer.RegionView.GetCurrentTileInMap(new @base.model.Position(position.X, position.Y));
             var mapCoordinat = WorldLayer.PositionToTileMapCoordinates(position);
-            var entity = @base.control.Controller.Instance.RegionManagerController.GetRegion (position.RegionPosition).GetEntity (position.CellPosition);
-            WorldLayer.RegionView.SetUnit (mapCoordinat, entity);//positionI.Get, CCTileMapCoordinates mapCoordinat, position.RegionPosition);
+            var entity = @base.control.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
+            WorldLayer.RegionView.SetUnit(mapCoordinat, entity);//positionI.Get, CCTileMapCoordinates mapCoordinat, position.RegionPosition);
             WorldLayer.UglyDraw();
 
 

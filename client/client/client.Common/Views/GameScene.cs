@@ -7,11 +7,11 @@ namespace client.Common.Views
 {
     public class GameScene : CCScene
     {
-        public GameScene (CCWindow mainWindow)
-            : base (mainWindow)
+        public GameScene(CCWindow mainWindow)
+            : base(mainWindow)
         {
-            m_region = new WorldLayer (Geolocation.Instance.CurrentRegionPosition);
-            this.AddChild (m_region);
+            m_region = new WorldLayer(Geolocation.Instance.CurrentRegionPosition);
+            this.AddChild(m_region);
 
         }
 

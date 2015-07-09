@@ -17,153 +17,153 @@ using Xamarin.Forms.Xaml;
 
 namespace client.Common
 {
-	public class GameAppDelegate : CCApplicationDelegate
-	{
-		public enum Loading
-		{
-			Started,
-			Login,
-			Loggedin,
-			TerrainTypeLoading,
-			TerrainTypeLoaded,
-			EntityTypeLoading,
-			EntityTypeLoaded,
-			RegionLoading,
-			RegionLoaded,
-			EntitiesLoading,
-			EntitiesLoaded,
-			Done,
-		}
+    public class GameAppDelegate : CCApplicationDelegate
+    {
+        public enum Loading
+        {
+            Started,
+            Login,
+            Loggedin,
+            TerrainTypeLoading,
+            TerrainTypeLoaded,
+            EntityTypeLoading,
+            EntityTypeLoaded,
+            RegionLoading,
+            RegionLoaded,
+            EntitiesLoading,
+            EntitiesLoaded,
+            Done,
+        }
 
-		public static Loading LoadingState = Loading.Started;
+        public static Loading LoadingState = Loading.Started;
 
-		public static Account Account
-		{
-			get;
-			private set;
-		}
+        public static Account Account
+        {
+            get;
+            private set;
+        }
 
 
-		public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
-		{
-			application.PreferMultiSampling = false;
+        public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
+        {
+            application.PreferMultiSampling = false;
 
-			SetContentPaths(application);
+            SetContentPaths(application);
 
-			CCSize windowSize = mainWindow.WindowSizeInPixels;
+            CCSize windowSize = mainWindow.WindowSizeInPixels;
 
-			float desiredWidth = 1024.0f;
-			//float desiredHeight = 768.0f;
+            float desiredWidth = 1024.0f;
+            //float desiredHeight = 768.0f;
 
-			// erstellen der Welt und anlegen bzw. verknüpfen mit den Controllern
-			InitWorld();
+            // erstellen der Welt und anlegen bzw. verknüpfen mit den Controllern
+            InitWorld();
 
-			// This will set the world bounds to be (0,0, w, h)
-			// CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
-			CCScene.SetDefaultDesignResolution(windowSize.Width, windowSize.Height, CCSceneResolutionPolicy.ShowAll);
+            // This will set the world bounds to be (0,0, w, h)
+            // CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
+            CCScene.SetDefaultDesignResolution(windowSize.Width, windowSize.Height, CCSceneResolutionPolicy.ShowAll);
             
-			// Determine whether to use the high or low def versions of our images
-			// Make sure the default texel to content size ratio is set correctly
-			// Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
-			if (desiredWidth < windowSize.Width)
-			{
-				application.ContentSearchPaths.Add(ClientConstants.IMAGES_HD);
-				CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
-			}
-			else
-			{
-				application.ContentSearchPaths.Add(ClientConstants.IMAGES_LD);
-				CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
-			}
+            // Determine whether to use the high or low def versions of our images
+            // Make sure the default texel to content size ratio is set correctly
+            // Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
+            if (desiredWidth < windowSize.Width)
+            {
+                application.ContentSearchPaths.Add(ClientConstants.IMAGES_HD);
+                CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
+            }
+            else
+            {
+                application.ContentSearchPaths.Add(ClientConstants.IMAGES_LD);
+                CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
+            }
            
-			InitLoading().RunSynchronously();
+            InitLoading().RunSynchronously();
 
-			StartScene startScene = new StartScene(mainWindow);
-			mainWindow.RunWithScene(startScene);
+            StartScene startScene = new StartScene(mainWindow);
+            mainWindow.RunWithScene(startScene);
          
            
-		}
+        }
 
-		public override void ApplicationDidEnterBackground(CCApplication application)
-		{
-			Geolocation.Instance.StopListening();
-			application.Paused = true;
-		}
+        public override void ApplicationDidEnterBackground(CCApplication application)
+        {
+            Geolocation.Instance.StopListening();
+            application.Paused = true;
+        }
 
-		public override void ApplicationWillEnterForeground(CCApplication application)
-		{
-			Geolocation.Instance.StartListening(1000, 4);
-			application.Paused = false;
-		}
+        public override void ApplicationWillEnterForeground(CCApplication application)
+        {
+            Geolocation.Instance.StartListening(1000, 4);
+            application.Paused = false;
+        }
 
-		private async Task InitLoading()
-		{
-			LoadingState = Loading.Login;
-			await LogInAsync();
+        private async Task InitLoading()
+        {
+            LoadingState = Loading.Login;
+            await LogInAsync();
 
-			if (NetworkController.Instance.IsLogedin)
-			{
+            if (NetworkController.Instance.IsLogedin)
+            {
 
-				var controller = @base.control.Controller.Instance;
-				World.Instance.AccountManager.AddAccount(Account);
+                var controller = @base.control.Controller.Instance;
+                World.Instance.AccountManager.AddAccount(Account);
 
-				LoadingState = Loading.Loggedin;
-				LoadingState = Loading.TerrainTypeLoading;
-				var entityManagerController = controller.DefinitionManagerController as client.Common.Manager.DefinitionManagerController;
-				await entityManagerController.LoadTerrainDefinitionsAsync();
-				LoadingState = Loading.TerrainTypeLoaded;
+                LoadingState = Loading.Loggedin;
+                LoadingState = Loading.TerrainTypeLoading;
+                var entityManagerController = controller.DefinitionManagerController as client.Common.Manager.DefinitionManagerController;
+                await entityManagerController.LoadTerrainDefinitionsAsync();
+                LoadingState = Loading.TerrainTypeLoaded;
 
-				LoadingState = Loading.EntitiesLoading;
-				await entityManagerController.LoadEntityDefinitionsAsync();
-				LoadingState = Loading.EntitiesLoaded;
+                LoadingState = Loading.EntitiesLoading;
+                await entityManagerController.LoadEntityDefinitionsAsync();
+                LoadingState = Loading.EntitiesLoaded;
 
-				LoadingState = Loading.RegionLoading;
-				var regionManagerController = controller.RegionManagerController as client.Common.Manager.RegionManagerController;
-				await regionManagerController.LoadRegionsAsync();
-				LoadingState = Loading.RegionLoaded;
-				// do something in the future
-				LoadingState = Loading.Done;
+                LoadingState = Loading.RegionLoading;
+                var regionManagerController = controller.RegionManagerController as client.Common.Manager.RegionManagerController;
+                await regionManagerController.LoadRegionsAsync();
+                LoadingState = Loading.RegionLoaded;
+                // do something in the future
+                LoadingState = Loading.Done;
 
-			}
-			else
-			{
-				throw new NotImplementedException("Login failure");
-			}
+            }
+            else
+            {
+                throw new NotImplementedException("Login failure");
+            }
 
-		}
+        }
 
-		private void InitWorld()
-		{
-			var world = World.Instance;
-			var controller = @base.control.Controller.Instance;
-			controller.RegionManagerController = new client.Common.Manager.RegionManagerController();      
-			controller.DefinitionManagerController = new DefinitionManagerController();
-		}
+        private void InitWorld()
+        {
+            var world = World.Instance;
+            var controller = @base.control.Controller.Instance;
+            controller.RegionManagerController = new client.Common.Manager.RegionManagerController();      
+            controller.DefinitionManagerController = new DefinitionManagerController();
+        }
 
-		private async Task LogInAsync()
-		{
-			var currentGamePosition = Geolocation.Instance.CurrentGamePosition;
-			var device = client.Common.Models.Device.GetInstance;
-			var user = device.DeviceId;
-			user += device.DeviceName;
-			LoadingState = Loading.Login;
-			var id = await NetworkController.Instance.LoginAsync(currentGamePosition, user, "Password");
-			if (NetworkController.Instance.IsLogedin)
-			{
-				Account = new Account(id, user);
-				LoadingState = Loading.Loggedin;
-			}
+        private async Task LogInAsync()
+        {
+            var currentGamePosition = Geolocation.Instance.CurrentGamePosition;
+            var device = client.Common.Models.Device.GetInstance;
+            var user = device.DeviceId;
+            user += device.DeviceName;
+            LoadingState = Loading.Login;
+            var id = await NetworkController.Instance.LoginAsync(currentGamePosition, user, "Password");
+            if (NetworkController.Instance.IsLogedin)
+            {
+                Account = new Account(id, user);
+                LoadingState = Loading.Loggedin;
+            }
                 
-		}
+        }
 
-		private void SetContentPaths(CCApplication application)
-		{
-			application.ContentRootDirectory = ClientConstants.CONTENT;
-			application.ContentSearchPaths.Add(ClientConstants.ANIMATIONS);
-			application.ContentSearchPaths.Add(ClientConstants.FONTS);
-			application.ContentSearchPaths.Add(ClientConstants.SOUNDS);
-			application.ContentSearchPaths.Add(ClientConstants.TILES);
-			application.ContentSearchPaths.Add(ClientConstants.IMAGES);
-		}
-	}
+        private void SetContentPaths(CCApplication application)
+        {
+            application.ContentRootDirectory = ClientConstants.CONTENT;
+            application.ContentSearchPaths.Add(ClientConstants.ANIMATIONS);
+            application.ContentSearchPaths.Add(ClientConstants.FONTS);
+            application.ContentSearchPaths.Add(ClientConstants.SOUNDS);
+            application.ContentSearchPaths.Add(ClientConstants.TILES);
+            application.ContentSearchPaths.Add(ClientConstants.IMAGES);
+        }
+    }
 }

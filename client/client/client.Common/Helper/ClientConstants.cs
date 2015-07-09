@@ -49,6 +49,15 @@ namespace client.Common.Helper
         public const float TILEMAP_NORM_SCALE = 0.5f;
         public const float TILEMAP_MAX_SCALE = 3.0f;
 
+        public const short DRAW_REGIONS_X = 5;
+        public const short DRAW_REGIONS_Y = 5;
+
+        public const double REDRAW_REGIONS_START_X = 1.5 * @base.model.Constants.MAJOR_REGION_SIZE_X;
+        public const double REDRAW_REGIONS_END_X = 3.5 * @base.model.Constants.MAJOR_REGION_SIZE_X;
+        public const double REDRAW_REGIONS_START_Y = 1.5 * @base.model.Constants.MAJOR_REGION_SIZE_Y;
+        public const double REDRAW_REGIONS_END_Y = 3.5 * @base.model.Constants.MAJOR_REGION_SIZE_Y;
+
+
         #endregion
 
         #region TerainsGid
@@ -161,7 +170,8 @@ namespace client.Common.Helper
         #endregion
 
         #region Friend-Enemy Sprites
-        public const short FRIEND_ENEMY_DIFFERENCE = 22;
+        public const short FRIEND_ENEMY_DIFFERENCE_UNIT = 22;
+        public const short FRIEND_ENEMY_DIFFERENCE_BUILDING = 59;
         #endregion
     }
 }

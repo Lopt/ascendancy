@@ -17,10 +17,10 @@ namespace client.Common.Views.Action
         {
             var action = (@base.model.Action)Model;
             var actionC = (@base.control.action.MoveUnit)Model.Control;
-            var startPosition = (@base.model.PositionI)action.Parameters [@base.control.action.MoveUnit.START_POSITION];
-            var endPosition = (@base.model.PositionI)action.Parameters [@base.control.action.MoveUnit.END_POSITION];
+            var startPosition = (@base.model.PositionI)action.Parameters[@base.control.action.MoveUnit.START_POSITION];
+            var endPosition = (@base.model.PositionI)action.Parameters[@base.control.action.MoveUnit.END_POSITION];
 
-            m_entity = @base.control.Controller.Instance.RegionManagerController.GetRegion (startPosition.RegionPosition).GetEntity (startPosition.CellPosition);
+            m_entity = @base.control.Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
             m_path = actionC.Path;
             m_currentPosition = startPosition;
         }
@@ -37,13 +37,13 @@ namespace client.Common.Views.Action
 
             if (m_runTime < m_path.Count)
             {
-                var nextPosition = (@base.model.PositionI)m_path [(int)m_runTime];
+                var nextPosition = (@base.model.PositionI)m_path[(int)m_runTime];
 
-                var mapCoordinatCurrent = WorldLayer.PositionToTileMapCoordinates (m_currentPosition);
-                WorldLayer.RegionView.SetUnit (mapCoordinatCurrent, null);
+                var mapCoordinatCurrent = WorldLayer.PositionToTileMapCoordinates(m_currentPosition);
+                WorldLayer.RegionView.SetUnit(mapCoordinatCurrent, null);
 
-                var mapCoordinatNext = WorldLayer.PositionToTileMapCoordinates (nextPosition);
-                WorldLayer.RegionView.SetUnit (mapCoordinatNext, m_entity);
+                var mapCoordinatNext = WorldLayer.PositionToTileMapCoordinates(nextPosition);
+                WorldLayer.RegionView.SetUnit(mapCoordinatNext, m_entity);
 
                 m_currentPosition = nextPosition;
             }
