@@ -31,7 +31,6 @@ namespace client.Common.Views.Action
             frameTimesInSecond /= Helper.ClientConstants.MOVE_SPEED_PER_FIELD;
 
             var action = (@base.model.Action)Model;
-            var actionC = (@base.control.action.MoveUnit)Model.Control;
 
             m_runTime += frameTimesInSecond;
 
@@ -39,10 +38,10 @@ namespace client.Common.Views.Action
             {
                 var nextPosition = (@base.model.PositionI)m_path[(int)m_runTime];
 
-                var mapCoordinatCurrent = WorldLayer.PositionToTileMapCoordinates(m_currentPosition);
+                var mapCoordinatCurrent = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, m_currentPosition);
                 WorldLayer.RegionView.SetUnit(mapCoordinatCurrent, null);
 
-                var mapCoordinatNext = WorldLayer.PositionToTileMapCoordinates(nextPosition);
+                var mapCoordinatNext = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, nextPosition);
                 WorldLayer.RegionView.SetUnit(mapCoordinatNext, m_entity);
 
                 m_currentPosition = nextPosition;

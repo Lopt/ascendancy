@@ -45,7 +45,6 @@
     <Compile Include="Models\Position\Position.cs" />
     <Compile Include="Models\Position\RegionPosition.cs" />
     <Compile Include="Models\Position\CellPosition.cs" />
-    <Compile Include="Models\Position\CombinedPosition.cs" />
     <Compile Include="Controllers\RegionManagerController.cs" />
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Models\ModelEntity.cs" />

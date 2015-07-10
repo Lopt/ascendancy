@@ -12,7 +12,7 @@ namespace client.Common.Models
             m_CellX = cellX;
             m_CellY = cellY;
         }
-
+            
         public MapCellPosition (CCTileMapCoordinates tileMapCoordinates)
         {
             var x = tileMapCoordinates.Column;
@@ -33,6 +33,8 @@ namespace client.Common.Models
                 return m_CellY;
             }
         }
+
+
 
         public CCTileMapCoordinates GetTileMapCoordinates ()
         {

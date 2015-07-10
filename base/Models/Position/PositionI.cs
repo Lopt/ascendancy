@@ -18,19 +18,62 @@ namespace @base.model
             X = (int)obj.SelectToken("X");
             Y = (int)obj.SelectToken("Y");
         }
-
-        public PositionI(LatLon latLon)
-        {
-            var zoom = Constants.EARTH_CIRCUMFERENCE / Constants.CELL_SIZE;
-            X = (int)((latLon.Lon + 180.0) / 360.0 * zoom);
-            Y = (int)((1.0 - Math.Log(Math.Tan(latLon.Lat * Math.PI / 180.0) +
-                1.0 / Math.Cos(latLon.Lat * Math.PI / 180.0)) / Math.PI) / 2.0 * zoom);
-        }
-
+            
         public PositionI(RegionPosition regionPosition, CellPosition cellPosition)
         {
             X = regionPosition.RegionX * Constants.REGION_SIZE_X + cellPosition.CellX;
             Y = regionPosition.RegionY * Constants.REGION_SIZE_Y + cellPosition.CellY;
+        }
+
+        public PositionI(Position position)
+        {
+            X = (int) position.X;
+            Y = (int) position.Y;
+        }
+
+        [JsonIgnore]
+        public RegionPosition RegionPosition
+        {
+            get
+            {
+                return new RegionPosition(this);
+            }
+        }
+
+        [JsonIgnore]
+        public CellPosition CellPosition
+        {
+            get
+            {
+                return new CellPosition(this);
+            }
+        }
+
+        public int X
+        {
+            get;
+            private set;
+        }
+
+        public int Y
+        {
+            get;
+            private set;
+        }
+
+
+
+
+        public override int GetHashCode()
+        {
+            return X * 1000000 + Y;
+        }
+
+
+        public override bool Equals(Object obj)
+        {
+            var pos = (PositionI)obj;
+            return this == pos;
         }
 
         public static PositionI operator +(PositionI first, PositionI second)
@@ -84,48 +127,13 @@ namespace @base.model
             return xDistance * xDistance + yDistance * yDistance;
         }
 
-        [JsonIgnore]
-        public RegionPosition RegionPosition
+        public double Distance(Position position)
         {
-            get
-            {
-                return new RegionPosition(this);
-            }
+            var xDistance = (position.X - X);
+            var yDistance = (position.Y - Y);
+            return xDistance * xDistance + yDistance * yDistance;
         }
 
-        [JsonIgnore]
-        public CellPosition CellPosition
-        {
-            get
-            {
-                return new CellPosition(this);
-            }
-        }
-
-        public int X
-        {
-            get;
-            private set;
-        }
-
-        public int Y
-        {
-            get;
-            private set;
-        }
-
-
-        public override bool Equals(Object obj)
-        {
-            var pos = (PositionI)obj;
-            return this == pos;
-        }
-
-
-        public override int GetHashCode()
-        {
-            return X * 1000000 + Y;
-        }
     }
 }
 

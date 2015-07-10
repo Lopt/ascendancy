@@ -488,7 +488,7 @@ namespace client.Common.Views
             //TODO: find better solution
             m_worldTileMap.TileLayersContainer.Position += new CCPoint(0.0001f, 0.0001f);
         }
-
+            
         void CheckGeolocation(float frameTimesInSecond)
         {
             if (m_geolocation.IsPositionChanged)
@@ -506,7 +506,7 @@ namespace client.Common.Views
 
         void SetCurrentPositionOnce(Position position)
         {
-            var tileCoordinate = RegionView.GetCurrentTileInMap(position);
+            var tileCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(CenterPosition, new PositionI(position));
             m_currentPositionNode.DrawHexagonForIsoStagMap(ClientConstants.TILE_IMAGE_WIDTH, m_terrainLayer,
                 tileCoordinate, new CCColor4F(CCColor3B.Red), 255, 3.0f);
 //            var tileCoordinate = m_regionView.GetCurrentTileInMap (m_geolocation.CurrentGamePosition);
@@ -581,7 +581,7 @@ namespace client.Common.Views
 
         void SetMapAnchor(Position anchorPosition)
         {
-            var mapCellPosition = new MapCellPosition(RegionView.GetCurrentTileInMap(anchorPosition));
+            var mapCellPosition = PositionHelper.PositionToMapCellPosition(CenterPosition, new PositionI(anchorPosition));//new MapCellPosition(RegionView.GetCurrentTileInMap(anchorPosition));
             var anchor = mapCellPosition.GetAnchor();
             m_worldTileMap.TileLayersContainer.AnchorPoint = anchor;
         }
@@ -593,15 +593,7 @@ namespace client.Common.Views
             return new MapCellPosition(tileMapCooardinate);
         }
 
-        public CCTileMapCoordinates PositionToTileMapCoordinates(PositionI position)
-        {
-            var cellPos = CenterPosition.CellPosition;
-            var leftTop = new PositionI((int)CenterPosition.X, (int)CenterPosition.Y) - new PositionI((int)(Constants.REGION_SIZE_X * 2) + cellPos.CellX, (int)(Constants.REGION_SIZE_Y * 2 + cellPos.CellY));
-            var cellPosition = position - leftTop;
-            var MapPosition = new MapCellPosition(cellPosition.X, cellPosition.Y);
 
-            return MapPosition.GetTileMapCoordinates();
-        }
 
 
 

@@ -12,6 +12,12 @@ namespace @base.model
             Y = y;
         }
 
+        public Position(PositionI position)
+        {
+            X = position.X;
+            Y = position.Y;
+        }
+
         public Position(LatLon latLon)
         {
             var zoom = Constants.EARTH_CIRCUMFERENCE / Constants.CELL_SIZE;
@@ -61,6 +67,59 @@ namespace @base.model
                 return new CellPosition(this);
             }
         }
+
+
+
+
+        public override bool Equals(Object obj)
+        {
+            var pos = (Position)obj;
+            return this == pos;
+        }
+
+        public static Position operator +(Position first, Position second)
+        {
+            return new Position(first.X + second.X, first.Y + second.Y);
+        }
+
+        public static Position operator -(Position first, Position second)
+        {
+            return new Position(first.X - second.X, first.Y - second.Y);
+        }
+
+        public static bool operator ==(Position first, Position second)
+        {
+            if (System.Object.ReferenceEquals(first, second))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)first == null) || ((object)second == null))
+            {
+                return false;
+            }
+
+            return (first.X == second.X && first.Y == second.Y);
+        }
+
+        public static bool operator !=(Position first, Position second)
+        {
+            if (System.Object.ReferenceEquals(first, second))
+            {
+                return false;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)first == null) || ((object)second == null))
+            {
+                return true;
+            }
+
+
+            return (first.X != second.X || first.Y != second.Y);
+        }
+
 
 
         public double Distance(Position position)
