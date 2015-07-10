@@ -109,14 +109,13 @@ namespace client.Common.Views
 
         public void CreateUnit(CCTileMapCoordinates location, int type)
         {
-            var gameApp = GameAppDelegate.Instance;
             var dictParam = new System.Collections.Generic.Dictionary<string,object>();
             var tapMapCellPosition = new MapCellPosition(location);
             var tapPosition = RegionView.GetCurrentGamePosition(tapMapCellPosition, CenterPosition.RegionPosition);
             var tapPositionI = new PositionI((int)tapPosition.X, (int)tapPosition.Y);
             dictParam[@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
             dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long)type;
-            var newAction = new @base.model.Action(gameApp.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
+            var newAction = new @base.model.Action(GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible(m_regionManagerController);
 
@@ -130,14 +129,13 @@ namespace client.Common.Views
 
         public void CreateBuilding(CCTileMapCoordinates location, long type)
         {
-            var gameApp = GameAppDelegate.Instance;
             var dictParam = new System.Collections.Generic.Dictionary<string,object>();
             var tapMapCellPosition = new MapCellPosition(location);
             var tapPosition = RegionView.GetCurrentGamePosition(tapMapCellPosition, CenterPosition.RegionPosition);
             var tapPositionI = new PositionI((int)tapPosition.X, (int)tapPosition.Y);
             dictParam[@base.control.action.CreatBuilding.CREATE_POSITION] = tapPositionI; 
             dictParam[@base.control.action.CreatBuilding.CREATION_TYPE] = (long)type;
-            var newAction = new @base.model.Action(gameApp.Account, @base.model.Action.ActionType.CreateBuilding, dictParam);
+			var newAction = new @base.model.Action(GameAppDelegate.Account, @base.model.Action.ActionType.CreateBuilding, dictParam);
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible(m_regionManagerController);
 
@@ -304,7 +302,7 @@ namespace client.Common.Views
             UglyDraw();
         }
 
-        public CCPoint WorldToParentspace(CCPoint point)
+        public CCPoint LayerWorldToParentspace(CCPoint point)
         {
             return TerrainLayer.WorldToParentspace(point);
         }
@@ -367,8 +365,8 @@ namespace client.Common.Views
             if (ClientConstants.TILEMAP_MIN_SCALE < newScale &&
                 newScale < ClientConstants.TILEMAP_MAX_SCALE)
             {
-                m_scale = newScale;
-                WorldTileMap.TileLayersContainer.Scale = m_scale;
+				m_scale = newScale;
+				WorldTileMap.TileLayersContainer.Scale = m_scale;
             }
         }
 

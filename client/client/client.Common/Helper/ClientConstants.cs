@@ -166,7 +166,7 @@ namespace client.Common.Helper
         #endregion
 
         #region Action-Animations
-        public const float MOVE_SPEED_PER_FIELD = 0.7f;
+        public const float MOVE_SPEED_PER_FIELD = 0.50f;
         #endregion
 
         #region Friend-Enemy Sprites

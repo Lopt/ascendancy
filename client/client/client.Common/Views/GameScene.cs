@@ -21,7 +21,7 @@ namespace client.Common.Views
             TouchListener.OnTouchesBegan = m_touchHandler.OnTouchesBegan;
             TouchListener.OnTouchesEnded = m_touchHandler.OnTouchesEnded;
 
-            AddEventListener(TouchListener);
+            m_world.AddEventListener(TouchListener);
 
         }
 

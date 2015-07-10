@@ -32,12 +32,10 @@ namespace client.Common.Views
             this.AddChild(m_LogoLayer);
 
             InitWorld();
-            InitLoadingAsync().RunSynchronously();
-
         }
 
 
-        private async Task InitLoadingAsync()
+		public async Task<@base.model.Account> InitLoadingAsync()
         {
             var account = await LogInAsync(); 
             if (account != null)
@@ -61,13 +59,12 @@ namespace client.Common.Views
                 // do something in the future
                 Phase = Phases.Done;
 
-                GameAppDelegate.Instance.SwitchToGame(account);
             }
             else
             {
                 throw new NotImplementedException("Login failure");
             }
-
+			return account;
         }
 
 

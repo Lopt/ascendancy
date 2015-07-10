@@ -19,29 +19,14 @@ namespace client.Common
 {
     public class GameAppDelegate : CCApplicationDelegate
     {
-        private static readonly Lazy<GameAppDelegate> m_singleton =
-            new Lazy<GameAppDelegate>(() => new GameAppDelegate());
-
-        public static GameAppDelegate Instance
-        {
-            get
-            {
-                return m_singleton.Value;
-            }
-        }
 
 
-        public Account Account
+        static public Account Account
         {
             get;
             private set;
         }
 
-        public CCScene CurrentScene
-        {
-            get;
-            private set;
-        }
 
         public enum Phases
         {
@@ -90,18 +75,22 @@ namespace client.Common
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
            
-            CurrentScene = new StartScene(m_window);
-            Phase = Phases.StartScene;
-            m_window.RunWithScene(CurrentScene);
+			SceneStart();
         }
 
-        public void SwitchToGame(Account account)
-        {
-            Account = account;
-            CurrentScene = new GameScene(m_window);
+		private async void SceneStart()
+		{
+			m_currentScene = new StartScene(m_window);
+			Phase = Phases.StartScene;
+			m_window.RunWithScene(m_currentScene);
+
+			Account = await ((StartScene) m_currentScene).InitLoadingAsync();
+
+            m_currentScene = new GameScene(m_window);
             Phase = Phases.GameScene;
-            m_window.DefaultDirector.ReplaceScene(CurrentScene);
+            m_window.DefaultDirector.ReplaceScene(m_currentScene);
         }
+
 
         public override void ApplicationDidEnterBackground(CCApplication application)
         {
@@ -126,5 +115,7 @@ namespace client.Common
         }
 
         private CCWindow m_window;
+		private CCScene m_currentScene;
+
     }
 }
