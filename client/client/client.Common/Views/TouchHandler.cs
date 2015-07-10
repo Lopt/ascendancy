@@ -59,7 +59,6 @@ namespace client.Common.Views
             {
                 m_touchGesture = TouchGesture.Zoom;
 
-
                 CCPoint screenStart0 = touches[0].StartLocationOnScreen;
                 CCPoint screenStart1 = touches[1].StartLocationOnScreen;
 
@@ -73,12 +72,9 @@ namespace client.Common.Views
                 float StartDistance = screenStart0.DistanceSquared(ref screenStart1);
                 float CurrentDistance = currentPoint0.DistanceSquared(ref currentPoint1);
                 float ScreenDistance = screen.LengthSquared;
-                //calculate screen relation 
 
-                
                 float relation = (CurrentDistance - StartDistance) / ScreenDistance;
 
-                //scale
                 m_newScale = m_scale + (relation * m_newScale);
                 m_worldLayer.ScaleWorld(m_newScale);
             }
