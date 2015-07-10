@@ -11,7 +11,6 @@ namespace client.Common.Views
         public LogoLayer(StartScene startScene)
             : base()
         {
-            m_regionC = Controller.Instance.RegionManagerController as RegionManagerController;
             m_startScene = startScene;
 
             m_logo = new CCSprite("logo");
@@ -65,7 +64,6 @@ namespace client.Common.Views
 
         #region Properties
 
-        RegionManagerController m_regionC;
         CCSprite m_logo;
         CCSprite m_loadedSprite;
         StartScene m_startScene;
