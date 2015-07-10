@@ -29,9 +29,38 @@ namespace client.Common.Views
             Zoom
         }
 
-        public WorldLayer(RegionPosition regionPosition)
+        public enum Phases
+        {
+            Start,
+            LoadTerrain,
+            LoadEntities,
+            Idle,
+            Exit
+        }
+
+        public Phases Phase
+        {
+            get;
+            private set;
+        }
+
+        public RegionView RegionView
+        {
+            get;
+            private set;
+        }
+
+        public Position CenterPosition
+        {
+            get;
+            private set;
+        }
+
+        public WorldLayer(GameScene gameScene)
             : base()
         {
+            m_gameScene = gameScene;
+
             RegionView = new RegionView();
             m_regionManagerController = Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
             m_entityManagerController = Controller.Instance.DefinitionManagerController as client.Common.Manager.DefinitionManagerController;
@@ -313,6 +342,7 @@ namespace client.Common.Views
                     }
                     else
                     {   
+                        var gameApp = GameAppDelegate.Instance; 
                         var dictParam = new System.Collections.Generic.Dictionary<string,object>();
 
                         var startMapCellPosition = new MapCellPosition(m_coordHelper);
@@ -328,7 +358,7 @@ namespace client.Common.Views
                         var endPositionI = new PositionI((int)endPosition.X, (int)endPosition.Y);
                         dictParam[@base.control.action.MoveUnit.END_POSITION] = endPositionI;
 
-                        var action = new @base.model.Action(GameAppDelegate.Account, @base.model.Action.ActionType.MoveUnit, dictParam);
+                        var action = new @base.model.Action(gameApp.Account, @base.model.Action.ActionType.MoveUnit, dictParam);
                         var actionC = (@base.control.action.Action)action.Control;
                         var possible = actionC.Possible(m_regionManagerController);
                         if (possible)
@@ -344,13 +374,14 @@ namespace client.Common.Views
 
         public void CreateUnit(CCTileMapCoordinates location, int type)
         {
+            var gameApp = GameAppDelegate.Instance;
             var dictParam = new System.Collections.Generic.Dictionary<string,object>();
             var tapMapCellPosition = new MapCellPosition(location);
             var tapPosition = RegionView.GetCurrentGamePosition(tapMapCellPosition, CenterPosition.RegionPosition);
             var tapPositionI = new PositionI((int)tapPosition.X, (int)tapPosition.Y);
             dictParam[@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
             dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long)type;
-            var newAction = new @base.model.Action(GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
+            var newAction = new @base.model.Action(gameApp.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible(m_regionManagerController);
 
@@ -364,13 +395,14 @@ namespace client.Common.Views
 
         public void CreateBuilding(CCTileMapCoordinates location, long type)
         {
+            var gameApp = GameAppDelegate.Instance;
             var dictParam = new System.Collections.Generic.Dictionary<string,object>();
             var tapMapCellPosition = new MapCellPosition(location);
             var tapPosition = RegionView.GetCurrentGamePosition(tapMapCellPosition, CenterPosition.RegionPosition);
             var tapPositionI = new PositionI((int)tapPosition.X, (int)tapPosition.Y);
             dictParam[@base.control.action.CreatBuilding.CREATE_POSITION] = tapPositionI; 
             dictParam[@base.control.action.CreatBuilding.CREATION_TYPE] = (long)type;
-            var newAction = new @base.model.Action(GameAppDelegate.Account, @base.model.Action.ActionType.CreateBuilding, dictParam);
+            var newAction = new @base.model.Action(gameApp.Account, @base.model.Action.ActionType.CreateBuilding, dictParam);
             var actionC = (@base.control.action.Action)newAction.Control;
             var possible = actionC.Possible(m_regionManagerController);
 
@@ -528,12 +560,11 @@ namespace client.Common.Views
         async Task DrawRegionsAsync(Position gamePosition)
         {
             CenterPosition = gamePosition;
-            GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoading;
+            Phase = Phases.LoadTerrain;
             await m_regionManagerController.LoadRegionsAsync(new RegionPosition(gamePosition));
-            GameAppDelegate.LoadingState = GameAppDelegate.Loading.RegionLoaded;
-            GameAppDelegate.LoadingState = GameAppDelegate.Loading.EntitiesLoading;
+            Phase = Phases.LoadEntities;
             await EntityManagerController.Instance.LoadEntitiesAsync(gamePosition, CenterPosition.RegionPosition);
-            GameAppDelegate.LoadingState = GameAppDelegate.Loading.EntitiesLoaded;
+            Phase = Phases.Idle;
 
 
             RegionView.SetTilesInMap160(m_regionManagerController.GetRegionByGamePosition(gamePosition));
@@ -626,19 +657,8 @@ namespace client.Common.Views
         TouchGesture m_touchGesture;
 
 
-        public RegionView RegionView
-        {
-            private set;
-            get;
-        }
 
-
-        public Position CenterPosition
-        {
-            private set;
-            get;
-        }
-
+        GameScene m_gameScene;
 
         #endregion
     }

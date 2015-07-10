@@ -63,7 +63,7 @@ namespace client.Common.Views
             else
             {
                 var gid = m_ViewDefinition.DefinitionToTileGid(unit.Definition);
-                if (GameAppDelegate.Account != unit.Account)
+                if (GameAppDelegate.Instance.Account != unit.Account)
                 {
                     gid.Gid += ClientConstants.FRIEND_ENEMY_DIFFERENCE_UNIT;
                 }
@@ -80,7 +80,7 @@ namespace client.Common.Views
             else
             {
                 var gid = m_ViewDefinition.DefinitionToTileGid(building.Definition);
-                if (GameAppDelegate.Account != building.Account)
+                if (GameAppDelegate.Instance.Account != building.Account)
                 {
                     gid.Gid += ClientConstants.FRIEND_ENEMY_DIFFERENCE_BUILDING;
                 }

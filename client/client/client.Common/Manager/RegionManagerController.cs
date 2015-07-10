@@ -48,8 +48,7 @@ namespace client.Common.Manager
 
             await m_NetworkController.LoadTerrainsAsync (path);
 
-            if (GameAppDelegate.LoadingState >= GameAppDelegate.Loading.TerrainTypeLoaded)
-                terrain = JsonToTerrain (m_NetworkController.JsonTerrainsString);
+            terrain = JsonToTerrain (m_NetworkController.JsonTerrainsString);
 
             if (terrain != null)
                 region.AddTerrain (terrain);

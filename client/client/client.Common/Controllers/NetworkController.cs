@@ -79,7 +79,7 @@ namespace client.Common.Controllers
         /// Gets a value indicating whether this instance is logedin.
         /// </summary>
         /// <value><c>true</c> if this instance is logedin; otherwise, <c>false</c>.</value>
-        public bool IsLogedin
+        public bool IsLoggedIn
         {
             get
             {
@@ -143,11 +143,11 @@ namespace client.Common.Controllers
         /// <param name="currentGamePosition">Current game position.</param>
         /// <param name="user">User.</param>
         /// <param name="password">Password.</param>
-        public async Task<int> LoginAsync(@base.model.Position currentGamePosition, string user, string password)
+        public async Task<Account> LoginAsync(@base.model.Position currentGamePosition, string user, string password)
         {
             try
             {
-                int id = -1;
+                Account account = null;
                 var request = new @base.connection.LoginRequest(currentGamePosition, user, password);
                 var json = JsonConvert.SerializeObject(request);
 
@@ -164,7 +164,7 @@ namespace client.Common.Controllers
                     if (loginResponse.Status == @base.connection.LoginResponse.ReponseStatus.OK)
                     {
                         m_sessionID = loginResponse.SessionID;
-                        id = loginResponse.AccountId;
+                        account = new Account(loginResponse.AccountId, user);
                     }
                     else
                     {
@@ -172,7 +172,7 @@ namespace client.Common.Controllers
                     }
 
                 }
-                return id;
+                return account;
             }
             catch (Exception ex)
             {
