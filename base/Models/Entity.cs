@@ -31,7 +31,7 @@ namespace Core.Models
             }  
             set
             {
-                Definition = World.Instance.DefinitionManager.GetDefinition(value);
+                Definition = World.Instance.DefinitionManager.GetDefinition((EntityType) value);
             }
         }
 

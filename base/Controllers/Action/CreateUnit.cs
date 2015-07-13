@@ -84,7 +84,7 @@ namespace Core.Controllers.Actions
 
             positionI = RealCreatePosition;
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
-            var dt = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((int)type);
+            var dt = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
 
             // create the new entity and link to the correct account
             var entity = new Core.Models.Entity(IdGenerator.GetId(),

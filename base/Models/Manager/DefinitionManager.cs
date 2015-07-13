@@ -8,20 +8,20 @@ namespace Core.Models
     {
         public DefinitionManager()
         {
-            m_definitions = new ConcurrentDictionary<int, Definition>();
+            m_definitions = new ConcurrentDictionary<EntityType, Definition>();
         }
 
-        public Definition GetDefinition(int id)
+        public Definition GetDefinition(EntityType entityType)
         {
-            return m_definitions[id];
+            return m_definitions[entityType];
         }
 
         public void AddDefinition(Definition definition)
         {
-            m_definitions[definition.ID] = definition;
+            m_definitions[definition.SubType] = definition;
         }
 
-        private ConcurrentDictionary<int, Definition> m_definitions;
+        private ConcurrentDictionary<EntityType, Definition> m_definitions;
 
     }
 }

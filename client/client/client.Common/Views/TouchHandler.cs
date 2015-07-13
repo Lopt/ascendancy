@@ -5,6 +5,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using client.Common.Helper;
+using Core.Models.Definitions;
 
 namespace client.Common.Views
 {
@@ -30,6 +31,7 @@ namespace client.Common.Views
         float m_scale = ClientConstants.TILEMAP_NORM_SCALE;
 
         CCPoint m_startLocation;
+        MenuView m_menuView;
 
 
         public TouchHandler(WorldLayer worldLayer)
@@ -159,7 +161,10 @@ namespace client.Common.Views
                     }
                     m_touchGesture = TouchGesture.None;
 
-                    m_worldLayer.ShowMenu(oldCoord, 0);
+
+                    m_menuView.CloseMenu();
+                    m_menuView = null;
+                    //m_worldLayer.ShowMenu(oldCoord, 0);
                     return;
 
                 case (TouchGesture.None):
@@ -200,12 +205,36 @@ namespace client.Common.Views
                     }
                     else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid != 0)
                     {
-                        m_worldLayer.ShowMenu(coord, 1);
+                        var types = new Core.Models.Definitions.Definition[6];
+                        var defM = Core.Models.World.Instance.DefinitionManager;
+
+                        types[0] = defM.GetDefinition(EntityType.Archer);
+                        types[1] = defM.GetDefinition(EntityType.Hero);
+                        types[2] = defM.GetDefinition(EntityType.Warrior);
+                        types[3] = defM.GetDefinition(EntityType.Mage);
+                        types[4] = defM.GetDefinition(EntityType.Scout);
+                        types[5] = defM.GetDefinition(EntityType.Unknown3);
+
+                        m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
+                        m_menuView.DrawMenu();
                         m_touchGesture = TouchGesture.Menu;
                     }
                     else
                     {
-                        m_worldLayer.ShowMenu(coord, 2);
+                        var types = new Core.Models.Definitions.Definition[6];
+                        var defM = Core.Models.World.Instance.DefinitionManager;
+
+                        types[0] = defM.GetDefinition(EntityType.Headquarter);
+                        types[1] = defM.GetDefinition(EntityType.Headquarter);
+                        types[2] = defM.GetDefinition(EntityType.Headquarter);
+                        types[3] = defM.GetDefinition(EntityType.Headquarter);
+                        types[4] = defM.GetDefinition(EntityType.Headquarter);
+                        types[5] = defM.GetDefinition(EntityType.Headquarter);
+
+                        m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
+                        m_menuView.DrawMenu();
+                        m_worldLayer.UglyDraw();
+
                         m_touchGesture = TouchGesture.Menu;
                     }
 

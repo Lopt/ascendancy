@@ -14,7 +14,6 @@ namespace client.Common.Views
         public RegionView()
         {
             m_RegionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
-            m_ViewDefinition = new ViewDefinitions();
         }
 
         public void SetTilesInMap160(Core.Models.Region region)
@@ -50,7 +49,7 @@ namespace client.Common.Views
 
         public void SetTerrainTileInMap(CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {
-            var gid = m_ViewDefinition.DefinitionToTileGid(region.GetTerrain(cellPosition));
+            var gid = client.Common.Views.ViewDefinitions.Instance.DefinitionToTileGid(region.GetTerrain(cellPosition));
             TerrainLayer.SetTileGID(gid, mapCoordinat);
         }
 
@@ -62,11 +61,12 @@ namespace client.Common.Views
             }
             else
             {
-                var gid = m_ViewDefinition.DefinitionToTileGid(unit.Definition);
+                var sort = ViewDefinitions.Sort.Normal;
                 if (GameAppDelegate.Account != unit.Account)
                 {
-                    gid.Gid += ClientConstants.FRIEND_ENEMY_DIFFERENCE_UNIT;
+                    sort = ViewDefinitions.Sort.Enemy;
                 }
+                var gid = ViewDefinitions.Instance.DefinitionToTileGid(unit.Definition, sort);
                 UnitLayer.SetTileGID(gid, mapCoordinat);
             }
         }
@@ -79,11 +79,12 @@ namespace client.Common.Views
             }
             else
             {
-                var gid = m_ViewDefinition.DefinitionToTileGid(building.Definition);
+                var sort = ViewDefinitions.Sort.Normal;
                 if (GameAppDelegate.Account != building.Account)
                 {
-                    gid.Gid += ClientConstants.FRIEND_ENEMY_DIFFERENCE_BUILDING;
+                    sort = ViewDefinitions.Sort.Enemy;
                 }
+                var gid = ViewDefinitions.Instance.DefinitionToTileGid(building.Definition, sort);
                 BuildingLayer.SetTileGID(gid, mapCoordinat);
             }
         }
@@ -169,11 +170,14 @@ namespace client.Common.Views
             return false;
         }
 
+        public void DrawMenu(CCTileMapCoordinates mapCoordinat, Entity unit)
+        {
+            
+        }
 
         #region Fields
 
         client.Common.Manager.RegionManagerController m_RegionManagerController;
-        ViewDefinitions m_ViewDefinition;
 
         public CCTileMapLayer TerrainLayer;
         public CCTileMapLayer BuildingLayer;

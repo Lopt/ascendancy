@@ -10,68 +10,142 @@ namespace client.Common.Views
 {
     public class ViewDefinitions
     {
-        public ViewDefinitions()
+        public enum Sort
         {
-            InitTerrainDefToTileGid();
-            InitUnitDefToTileGid();
+            Normal,
+            Enemy,
+            Menu,
         }
 
 
-        private void InitTerrainDefToTileGid()
-        {
-            m_TerrainDefToTileGid = new Dictionary<EntityType,  CCTileGidAndFlags>();
+        private static readonly Lazy<ViewDefinitions> m_singleton =
+            new Lazy<ViewDefinitions>(() => new ViewDefinitions());
 
-			m_TerrainDefToTileGid.Add(EntityType.Beach, new CCTileGidAndFlags(ClientConstants.BEACH_GID));
-			m_TerrainDefToTileGid.Add(EntityType.Buildings, new CCTileGidAndFlags(ClientConstants.BUILDINGS_GID));
-			m_TerrainDefToTileGid.Add(EntityType.Fields, new CCTileGidAndFlags(ClientConstants.FIELDS_GID));
-			m_TerrainDefToTileGid.Add(EntityType.Forbidden, new CCTileGidAndFlags(ClientConstants.FORBIDDEN_GID));
-			m_TerrainDefToTileGid.Add(EntityType.Glacier, new CCTileGidAndFlags(ClientConstants.GLACIER_GID));
-			m_TerrainDefToTileGid.Add(EntityType.Grassland, new CCTileGidAndFlags(ClientConstants.GRASSLAND_GID));
-			m_TerrainDefToTileGid.Add(EntityType.Invalid, new CCTileGidAndFlags(ClientConstants.INVALID_GID));
-			m_TerrainDefToTileGid.Add(EntityType.NotDefined, new CCTileGidAndFlags(ClientConstants.NOTDEFINED_GID));
-			m_TerrainDefToTileGid.Add(EntityType.Park, new CCTileGidAndFlags(ClientConstants.PARK_GID));
-			m_TerrainDefToTileGid.Add(EntityType.Streets, new CCTileGidAndFlags(ClientConstants.STREETS_GID));
-			m_TerrainDefToTileGid.Add(EntityType.Town, new CCTileGidAndFlags(ClientConstants.TOWN_GID));
-			m_TerrainDefToTileGid.Add(EntityType.Water, new CCTileGidAndFlags(ClientConstants.WATER_GID));
-			m_TerrainDefToTileGid.Add(EntityType.Woods, new CCTileGidAndFlags(ClientConstants.WOODS_GID));
+        public static ViewDefinitions Instance
+        {
+            get
+            {
+                return m_singleton.Value;
+            }
+        }
+
+        private ViewDefinitions()
+        {
+            InitTerrainsGid();
+            InitEntitiesGid();
+            InitMenuEntitiesGid();
+            InitEnemyEntitiesGid();
         }
 
 
-        private void InitUnitDefToTileGid()
+        private void InitTerrainsGid()
         {
-			m_UnitDefToTileGid = new Dictionary<EntityType, CCTileGidAndFlags>();
+            m_TerrainsGid = new Dictionary<EntityType,  CCTileGidAndFlags>();
 
-			m_UnitDefToTileGid.Add(EntityType.Hero, new CCTileGidAndFlags(ClientConstants.HERO_GID));
-			m_UnitDefToTileGid.Add(EntityType.Warrior, new CCTileGidAndFlags(ClientConstants.WARRIOR_GID));
-			m_UnitDefToTileGid.Add(EntityType.Mage, new CCTileGidAndFlags(ClientConstants.MAGE_GID));
-			m_UnitDefToTileGid.Add(EntityType.Scout, new CCTileGidAndFlags(ClientConstants.SCOUT_GID));
-			m_UnitDefToTileGid.Add(EntityType.Archer, new CCTileGidAndFlags(ClientConstants.BOWMAN_GID));
-			m_UnitDefToTileGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(ClientConstants.UNKNOWN_GID));
-			m_UnitDefToTileGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(ClientConstants.HEADQUARTER_GID));
-			m_UnitDefToTileGid.Add(EntityType.Outposts, new CCTileGidAndFlags(ClientConstants.HEADQUARTER_GID));
-			m_UnitDefToTileGid.Add(EntityType.Houses, new CCTileGidAndFlags(ClientConstants.HOUSE_GID));
-			m_UnitDefToTileGid.Add(EntityType.Wall, new CCTileGidAndFlags(ClientConstants.WALL1_GID));
-			m_UnitDefToTileGid.Add(EntityType.Barracks, new CCTileGidAndFlags(ClientConstants.GARNISION_GID));
-			m_UnitDefToTileGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(ClientConstants.FARM_GID));
+            m_TerrainsGid.Add(EntityType.Beach, new CCTileGidAndFlags(ClientConstants.BEACH_GID));
+            m_TerrainsGid.Add(EntityType.Buildings, new CCTileGidAndFlags(ClientConstants.BUILDINGS_GID));
+            m_TerrainsGid.Add(EntityType.Fields, new CCTileGidAndFlags(ClientConstants.FIELDS_GID));
+            m_TerrainsGid.Add(EntityType.Forbidden, new CCTileGidAndFlags(ClientConstants.FORBIDDEN_GID));
+            m_TerrainsGid.Add(EntityType.Glacier, new CCTileGidAndFlags(ClientConstants.GLACIER_GID));
+            m_TerrainsGid.Add(EntityType.Grassland, new CCTileGidAndFlags(ClientConstants.GRASSLAND_GID));
+            m_TerrainsGid.Add(EntityType.Invalid, new CCTileGidAndFlags(ClientConstants.INVALID_GID));
+            m_TerrainsGid.Add(EntityType.NotDefined, new CCTileGidAndFlags(ClientConstants.NOTDEFINED_GID));
+            m_TerrainsGid.Add(EntityType.Park, new CCTileGidAndFlags(ClientConstants.PARK_GID));
+            m_TerrainsGid.Add(EntityType.Streets, new CCTileGidAndFlags(ClientConstants.STREETS_GID));
+            m_TerrainsGid.Add(EntityType.Town, new CCTileGidAndFlags(ClientConstants.TOWN_GID));
+            m_TerrainsGid.Add(EntityType.Water, new CCTileGidAndFlags(ClientConstants.WATER_GID));
+            m_TerrainsGid.Add(EntityType.Woods, new CCTileGidAndFlags(ClientConstants.WOODS_GID));
+        }
+
+
+        private void InitEntitiesGid()
+        {
+            m_EntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
+
+            m_EntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(ClientConstants.HERO_GID));
+            m_EntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(ClientConstants.WARRIOR_GID));
+            m_EntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(ClientConstants.MAGE_GID));
+            m_EntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(ClientConstants.SCOUT_GID));
+            m_EntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(ClientConstants.BOWMAN_GID));
+            m_EntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(ClientConstants.UNKNOWN_GID));
+            m_EntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(ClientConstants.HEADQUARTER_GID));
+            m_EntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(ClientConstants.HEADQUARTER_GID));
+            m_EntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(ClientConstants.HOUSE_GID));
+            m_EntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(ClientConstants.WALL1_GID));
+            m_EntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(ClientConstants.GARNISION_GID));
+            m_EntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(ClientConstants.FARM_GID));
 
         }
 
-        public CCTileGidAndFlags DefinitionToTileGid(Definition definition)
+
+        private void InitEnemyEntitiesGid()
+        {
+            m_EnemyEntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
+
+            m_EnemyEntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(ClientConstants.ENEMYHERO_GID));
+            m_EnemyEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(ClientConstants.ENEMYWARRIOR_GID));
+            m_EnemyEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(ClientConstants.ENEMYMAGE_GID));
+            m_EnemyEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(ClientConstants.ENEMYSCOUT_GID));
+            m_EnemyEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(ClientConstants.ENEMYBOWMAN_GID));
+            //m_EnemyEntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(ClientConstants.ENEMYUNKNOWN_GID));
+            m_EnemyEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(ClientConstants.ENEMYHEADQUARTER_GID));
+            m_EnemyEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(ClientConstants.ENEMYHEADQUARTER_GID));
+            //            m_EnemyEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(ClientConstants.ENEMYHOUSE_GID));
+            //m_EnemyEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(ClientConstants.ENEMYWALL1_GID));
+            //m_EnemyEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(ClientConstants.ENEMYGARNISION_GID));
+            //m_EnemyEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(ClientConstants.ENEMYFARM_GID));
+        }
+
+
+
+
+        private void InitMenuEntitiesGid()
+        {
+            m_MenuEntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
+
+            m_MenuEntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(ClientConstants.MENUEHERO_GID));
+            m_MenuEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(ClientConstants.MENUEWARRIOR_GID));
+            m_MenuEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(ClientConstants.MENUEMAGE_GID));
+            m_MenuEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(ClientConstants.MENUESCOUT_GID));
+            m_MenuEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(ClientConstants.MENUEBOWMAN_GID));
+            m_MenuEntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(ClientConstants.MENUEUNKNOWN_GID));
+            m_MenuEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(ClientConstants.MENUEGOLD_GID));
+            m_MenuEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(ClientConstants.MENUEFIRE_GID));
+            m_MenuEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(ClientConstants.MENUEGOLD_GID));
+            m_MenuEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(ClientConstants.MENUEAIR_GID));
+            m_MenuEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(ClientConstants.MENUEMANA_GID));
+            m_MenuEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(ClientConstants.MENUEWATER_GID));
+
+        }
+
+
+
+        public CCTileGidAndFlags DefinitionToTileGid(Definition definition, Sort sort=Sort.Normal)
         {
             CCTileGidAndFlags gid;
+            gid = new CCTileGidAndFlags(ClientConstants.INVALID_GID);
 
 			if (definition.Category == Core.Models.Definitions.Category.Terrain)
             {
                 var terrainDefinition = definition as TerrainDefinition;
-                if (!m_TerrainDefToTileGid.TryGetValue(terrainDefinition.SubType, out gid))
-                    gid = new CCTileGidAndFlags(ClientConstants.INVALID_GID);
-
+                m_TerrainsGid.TryGetValue(terrainDefinition.SubType, out gid);
             }
             else
             {
                 var unitDefinition = definition as UnitDefinition;
-                if (!m_UnitDefToTileGid.TryGetValue(unitDefinition.SubType, out gid))
-                    gid = new CCTileGidAndFlags(ClientConstants.INVALID_GID);
+                switch (sort)
+                {
+                    case(Sort.Normal):
+                        m_EntitiesGid.TryGetValue(unitDefinition.SubType, out gid);
+                        break;
+                    case(Sort.Enemy):
+                        m_EnemyEntitiesGid.TryGetValue(unitDefinition.SubType, out gid);
+                        break;
+                    case(Sort.Menu):
+                        m_MenuEntitiesGid.TryGetValue(unitDefinition.SubType, out gid);
+                        break;
+                }
+               
             }
 
             return gid;
@@ -80,9 +154,11 @@ namespace client.Common.Views
 
         #region Fields
 
-		private Dictionary<EntityType, CCTileGidAndFlags> m_UnitDefToTileGid;
+        private Dictionary<EntityType, CCTileGidAndFlags> m_EntitiesGid;
+        private Dictionary<EntityType, CCTileGidAndFlags> m_EnemyEntitiesGid;
+        private Dictionary<EntityType, CCTileGidAndFlags> m_MenuEntitiesGid;
 
-		private Dictionary<EntityType, CCTileGidAndFlags> m_TerrainDefToTileGid;
+        private Dictionary<EntityType, CCTileGidAndFlags> m_TerrainsGid;
 
         #endregion
     }

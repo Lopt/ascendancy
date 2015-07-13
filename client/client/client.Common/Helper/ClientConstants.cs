@@ -169,9 +169,5 @@ namespace client.Common.Helper
         public const float MOVE_SPEED_PER_FIELD = 0.50f;
         #endregion
 
-        #region Friend-Enemy Sprites
-        public const short FRIEND_ENEMY_DIFFERENCE_UNIT = 22;
-        public const short FRIEND_ENEMY_DIFFERENCE_BUILDING = 59;
-        #endregion
     }
 }

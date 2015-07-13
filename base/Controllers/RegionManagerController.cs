@@ -50,7 +50,7 @@ namespace Core.Controllers
                 for (int cellY = 0; cellY < Constants.REGION_SIZE_Y; ++cellY)
                 {
                     var terrainId = terrainsTypes[cellX, cellY];
-                    terrains[cellX, cellY] = (TerrainDefinition)definitionManager.GetDefinition(terrainId);
+                    terrains[cellX, cellY] = (TerrainDefinition) definitionManager.GetDefinition((EntityType) terrainId);
                 }
             }
             return terrains;

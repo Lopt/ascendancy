@@ -68,8 +68,7 @@ namespace Core.Models
             // standardvalue
             if (value == null)
             {
-                return (TerrainDefinition)World.Instance.DefinitionManager.GetDefinition(
-                    (int)EntityType.Forbidden);
+                return (TerrainDefinition) World.Instance.DefinitionManager.GetDefinition(EntityType.Forbidden);
             }
             return value;
         }
