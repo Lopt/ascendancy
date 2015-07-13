@@ -106,7 +106,11 @@ namespace client.Common.Views
 
         #endregion
 
-
+		/// <summary>
+		/// Creates a unit with a given Location and unit type.
+		/// </summary>
+		/// <param name="location">Given Location.</param>
+		/// <param name="type">Unittype.</param>
         public void CreateUnit(CCTileMapCoordinates location, int type)
         {
             var dictParam = new System.Collections.Generic.Dictionary<string,object>();
@@ -127,6 +131,11 @@ namespace client.Common.Views
             }
         }
 
+		/// <summary>
+		/// Creates the building at a given Location and Building Type.
+		/// </summary>
+		/// <param name="location">Given Location.</param>
+		/// <param name="type">Buildingtype.</param>
         public void CreateBuilding(CCTileMapCoordinates location, long type)
         {
             var dictParam = new System.Collections.Generic.Dictionary<string,object>();
@@ -147,6 +156,11 @@ namespace client.Common.Views
             }
         }
 
+		/// <summary>
+		/// Shows the menu at a given Location.
+		/// </summary>
+		/// <param name="location">Touch Location.</param>
+		/// <param name="menutype">Menutype.</param>
         public void ShowMenu(CCTileMapCoordinates location, int menutype)
         {
             CCTileMapCoordinates coordHelper1, coordHelper2, coordHelper3, coordHelper4, coordHelper5, coordHelper6; 
@@ -322,7 +336,9 @@ namespace client.Common.Views
             //DrawRegionsAsync (position);
         }
 
-        //clears a Layer
+        /// <summary>
+		/// Clears the Layers for initialization.
+        /// </summary>
         void ClearLayers()
         {
             var coordHelper = new CCTileMapCoordinates(0, 0);
