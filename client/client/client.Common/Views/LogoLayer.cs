@@ -38,7 +38,7 @@ namespace client.Common.Views
             m_logo.PositionX = this.VisibleBoundsWorldspace.MidX;
             m_logo.PositionY = this.VisibleBoundsWorldspace.MidY;
             m_logo.AnchorPoint = CCPoint.AnchorMiddle;
-            m_logo.Scale = Modify.GetScaleFactor(m_logo.ContentSize, new CCSize(VisibleBoundsWorldspace.MaxX, VisibleBoundsWorldspace.MaxY));
+            //m_logo.Scale = Modify.GetScaleFactor(m_logo.ContentSize, new CCSize(VisibleBoundsWorldspace.MaxX, VisibleBoundsWorldspace.MaxY));
 
             m_loadedSprite.PositionX = this.VisibleBoundsWorldspace.MidX;
             m_loadedSprite.PositionY = this.VisibleBoundsWorldspace.MinY;
