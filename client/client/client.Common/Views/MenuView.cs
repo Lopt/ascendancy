@@ -55,73 +55,31 @@ namespace client.Common.Views
         public void DrawMenu()
         {
             var surroundedCoords = GetSurroundedTiles();
-
             for (var index = 0; index < surroundedCoords.Length; ++index)
             {
                 var coord = surroundedCoords[index];
                 var gid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[index], ViewDefinitions.Sort.Menu);
                 m_menuLayer.SetTileGID(gid, coord);
             }
-            /*
-            {
-            }
-                case 0:
-
-                    //m_touchGesture = TouchGesture.None;   !   
-                    break;
-                case 1: //UnitMenu
-                    gidHelpercenter.Gid = ClientConstants.CROSS_GID;
-                    gidHelper1.Gid = ClientConstants.MENUEBOWMAN_GID;
-                    gidHelper2.Gid = ClientConstants.MENUEHERO_GID;
-                    gidHelper3.Gid = ClientConstants.MENUEWARRIOR_GID;
-                    gidHelper4.Gid = ClientConstants.MENUEMAGE_GID;
-                    gidHelper5.Gid = ClientConstants.MENUESCOUT_GID;
-                    gidHelper6.Gid = ClientConstants.MENUEUNKNOWN_GID;
-                    MenuLayer.SetTileGID(gidHelper1, coordHelper1);
-                    MenuLayer.SetTileGID(gidHelper2, coordHelper2);
-                    MenuLayer.SetTileGID(gidHelper3, coordHelper3);
-                    MenuLayer.SetTileGID(gidHelper4, coordHelper4);
-                    MenuLayer.SetTileGID(gidHelper5, coordHelper5);
-                    MenuLayer.SetTileGID(gidHelper6, coordHelper6);
-                    break;
-                case 2: //BuildingMenu
-                    gidHelpercenter.Gid = ClientConstants.CROSS_GID;
-                    gidHelper1.Gid = ClientConstants.MENUEEARTH_GID;
-                    gidHelper2.Gid = ClientConstants.MENUEFIRE_GID;
-                    gidHelper3.Gid = ClientConstants.MENUEGOLD_GID;
-                    gidHelper4.Gid = ClientConstants.MENUEAIR_GID;
-                    gidHelper5.Gid = ClientConstants.MENUEMANA_GID;
-                    gidHelper6.Gid = ClientConstants.MENUEWATER_GID;
-                    MenuLayer.SetTileGID(gidHelpercenter, location);
-                    MenuLayer.SetTileGID(gidHelper1, coordHelper1);
-                    MenuLayer.SetTileGID(gidHelper2, coordHelper2);
-                    MenuLayer.SetTileGID(gidHelper3, coordHelper3);
-                    MenuLayer.SetTileGID(gidHelper4, coordHelper4);
-                    MenuLayer.SetTileGID(gidHelper5, coordHelper5);
-                    MenuLayer.SetTileGID(gidHelper6, coordHelper6);
-                    break;
-                default:
-                    gidHelpercenter.Gid = ClientConstants.CROSS_GID;
-                    gidHelper1.Gid = ClientConstants.MENUEEARTH_GID;
-                    gidHelper2.Gid = ClientConstants.MENUEFIRE_GID;
-                    gidHelper3.Gid = ClientConstants.MENUEGOLD_GID;
-                    gidHelper4.Gid = ClientConstants.MENUEAIR_GID;
-                    gidHelper5.Gid = ClientConstants.MENUEMANA_GID;
-                    gidHelper6.Gid = ClientConstants.MENUEWATER_GID;
-                    MenuLayer.SetTileGID(gidHelpercenter, location);
-                    MenuLayer.SetTileGID(gidHelper1, coordHelper1);
-                    MenuLayer.SetTileGID(gidHelper2, coordHelper2);
-                    MenuLayer.SetTileGID(gidHelper3, coordHelper3);
-                    MenuLayer.SetTileGID(gidHelper4, coordHelper4);
-                    MenuLayer.SetTileGID(gidHelper5, coordHelper5);
-                    MenuLayer.SetTileGID(gidHelper6, coordHelper6);
-                    break;
-
-            }*/
-            //UglyDraw();
-
         }
 
+        public Core.Models.Definitions.Definition GetSelectedDefinition(CCTileMapCoordinates coord)
+        {
+            var surroundedCoords = GetSurroundedTiles();
+            for (var index = 0; index < surroundedCoords.Length; ++index)
+            {
+                if (coord.Column == surroundedCoords[index].Column &&
+                    coord.Row == surroundedCoords[index].Row)
+                {
+                    return m_types[index];
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Closes the menu.
+        /// </summary>
         public void CloseMenu()
         {
             var surroundedCoords = GetSurroundedTiles();

@@ -89,6 +89,7 @@ namespace client.Common.Views
             var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
             var oldCoord = m_worldLayer.ClosestTileCoordAtNodePosition(oldStart);
 
+
             switch (m_touchGesture)
             {
                 case TouchGesture.MoveUnit:
@@ -119,52 +120,24 @@ namespace client.Common.Views
                     break;
 
                 case (TouchGesture.Menu):
+                    var tapMapCellPosition = new Models.MapCellPosition(oldCoord);
+                    var tapPosition = m_worldLayer.RegionView.GetCurrentGamePosition(tapMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
+                    var tapPositionI = new Core.Models.PositionI((int)tapPosition.X, (int)tapPosition.Y);
 
-
-                    switch (m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid)
+                    var def = m_menuView.GetSelectedDefinition(coord);
+                    if (def != null)
                     {
-                        case ClientConstants.CROSS_GID:
-                            break;
-                        case ClientConstants.MENUEEARTH_GID:
-                        case ClientConstants.MENUEAIR_GID:
-                        case ClientConstants.MENUEWATER_GID:
-                        case ClientConstants.MENUEGOLD_GID:
-                        case ClientConstants.MENUEMANA_GID:
-                        case ClientConstants.MENUEFIRE_GID:    
-							//set action to create headquater
-                            m_worldLayer.CreateBuilding(oldCoord, 276);
-                            break;
-                        case ClientConstants.MENUEBOWMAN_GID:
-							//set action to create unit legolas
-                            m_worldLayer.CreateUnit(oldCoord, 78);
-                            break;
-                        case ClientConstants.MENUEWARRIOR_GID:
-							//set action to create unit warrior
-                            m_worldLayer.CreateUnit(oldCoord, 72);
-                            break;
-                        case ClientConstants.MENUEMAGE_GID:
-							//set action to create unit mage
-                            m_worldLayer.CreateUnit(oldCoord, 66);
-                            break;
-                        case ClientConstants.MENUESCOUT_GID:
-							//set action to create unit scout (unknown1 at the moment)
-                            m_worldLayer.CreateUnit(oldCoord, 84);
-                            break;
-                        case ClientConstants.MENUEHERO_GID:
-                            m_worldLayer.CreateUnit(oldCoord, 60);
-                            break;
-                        case ClientConstants.MENUEUNKNOWN_GID:
-                            m_worldLayer.CreateUnit(oldCoord, 90);
-                            break;
-                        case 0:
-                            break;
+                        var action2 = ActionHelper.CreateEntity(tapPositionI, def);
+                        var actionC2 = (Core.Controllers.Actions.Action) action2.Control;
+                        if (actionC2.Possible(Core.Controllers.Controller.Instance.RegionManagerController))
+                        {
+                            m_worldLayer.DoAction(action2);
+                        }
                     }
-                    m_touchGesture = TouchGesture.None;
-
-
                     m_menuView.CloseMenu();
                     m_menuView = null;
-                    //m_worldLayer.ShowMenu(oldCoord, 0);
+                    m_touchGesture = TouchGesture.None;
+
                     return;
 
                 case (TouchGesture.None):
@@ -212,8 +185,8 @@ namespace client.Common.Views
                         types[1] = defM.GetDefinition(EntityType.Hero);
                         types[2] = defM.GetDefinition(EntityType.Warrior);
                         types[3] = defM.GetDefinition(EntityType.Mage);
-                        types[4] = defM.GetDefinition(EntityType.Scout);
-                        types[5] = defM.GetDefinition(EntityType.Unknown3);
+                        types[4] = defM.GetDefinition(EntityType.Archer);
+                        types[5] = defM.GetDefinition(EntityType.Archer);
 
                         m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
                         m_menuView.DrawMenu();
@@ -233,7 +206,6 @@ namespace client.Common.Views
 
                         m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
                         m_menuView.DrawMenu();
-                        m_worldLayer.UglyDraw();
 
                         m_touchGesture = TouchGesture.Menu;
                     }
@@ -241,6 +213,7 @@ namespace client.Common.Views
                     break;
             }
 
+            m_worldLayer.UglyDraw();
         }
     }
 }
