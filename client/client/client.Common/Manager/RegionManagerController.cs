@@ -1,5 +1,5 @@
-﻿using @base.model;
-using @base.model.definitions;
+﻿using Core.Models;
+using Core.Models.Definitions;
 using client.Common.Helper;
 using client.Common.Controllers;
 using client.Common.Models;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace client.Common.Manager
 {
-    public class RegionManagerController : @base.control.RegionManagerController
+    public class RegionManagerController : Core.Controllers.RegionManagerController
     {
         public RegionManagerController()
         {
@@ -75,7 +75,7 @@ namespace client.Common.Manager
             }
         }
 
-        public async Task<bool> DoActionAsync(@base.model.Position currentGamePosition, @base.model.Action[] actions)
+        public async Task<bool> DoActionAsync(Core.Models.Position currentGamePosition, Core.Models.Action[] actions)
         {
             await NetworkController.Instance.DoActionsAsync(currentGamePosition, actions);
             await EntityManagerController.Instance.LoadEntitiesAsync(currentGamePosition, currentGamePosition.RegionPosition);

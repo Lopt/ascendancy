@@ -4,7 +4,7 @@ namespace client.Common.Views.Action
 {
     public class CreateUnit : @client.Common.Views.Action.Action
     {
-        public CreateUnit(@base.model.ModelEntity model, WorldLayer worldLayer)
+        public CreateUnit(Core.Models.ModelEntity model, WorldLayer worldLayer)
             : base(model)
         {
             WorldLayer = worldLayer;
@@ -17,13 +17,13 @@ namespace client.Common.Views.Action
 
         override public bool Schedule(float frameTimesInSecond)
         {
-            var action = (@base.model.Action)Model;
-            var actionC = (@base.control.action.CreateUnit)Model.Control;
+            var action = (Core.Models.Action)Model;
+            var actionC = (Core.Controllers.Actions.CreateUnit)Model.Control;
 
             var position = actionC.RealCreatePosition;//(@base.model.PositionI)action.Parameters [@base.control.action.CreateUnit.CREATE_POSITION];
             //var mapCoordinat = WorldLayer.RegionView.GetCurrentTileInMap(new @base.model.Position(position.X, position.Y));
             var mapCoordinat = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, position);
-            var entity = @base.control.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
+            var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
             WorldLayer.RegionView.SetUnit(mapCoordinat, entity);//positionI.Get, CCTileMapCoordinates mapCoordinat, position.RegionPosition);
             WorldLayer.UglyDraw();
 

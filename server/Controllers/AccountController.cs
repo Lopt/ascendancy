@@ -4,17 +4,17 @@ using System.Collections.Concurrent;
 
 namespace @server.control
 {
-    public class AccountController : @base.control.ControlEntity
+    public class AccountController : Core.Controllers.ControlEntity
     {
-        public AccountController(@base.model.Account account, string password)
+        public AccountController(Core.Models.Account account, string password)
             : base(account)
         {
-            m_regionStatus = new ConcurrentDictionary<@base.model.RegionPosition, DateTime>(); 
+            m_regionStatus = new ConcurrentDictionary<Core.Models.RegionPosition, DateTime>(); 
             m_password = password;
             SessionID = Guid.Empty;
         }
 
-        public void RegionRefreshed(@base.model.RegionPosition regionPosition, DateTime dateTime)
+        public void RegionRefreshed(Core.Models.RegionPosition regionPosition, DateTime dateTime)
         {
             m_regionStatus[regionPosition] = dateTime;
         }
@@ -24,7 +24,7 @@ namespace @server.control
         /// </summary>
         /// <returns>A DateTime when the last action of a specific region was transfered. <b>null</b> if it wasn't loaded before.</returns>
         /// <param name="region">Region.</param>
-        public DateTime? GetRegionStatus(@base.model.RegionPosition regionPosition)
+        public DateTime? GetRegionStatus(Core.Models.RegionPosition regionPosition)
         {
             DateTime dateTime = new DateTime();
             if (m_regionStatus.TryGetValue(regionPosition, out dateTime))
@@ -36,7 +36,7 @@ namespace @server.control
 
         public bool Login(string username, string password)
         {
-            var account = (@base.model.Account)Model;
+            var account = (Core.Models.Account)Model;
             if (account.UserName == username && password == m_password)
             {
                 SessionID = Guid.NewGuid();
@@ -52,7 +52,7 @@ namespace @server.control
             private set;
         }
 
-        ConcurrentDictionary<@base.model.RegionPosition, DateTime> m_regionStatus;
+        ConcurrentDictionary<Core.Models.RegionPosition, DateTime> m_regionStatus;
         string m_password;
     }
 }

@@ -2,7 +2,7 @@
 using SQLite;
 using System.Collections.Generic;
 
-namespace @base.model
+namespace Core.Models
 {
     public class Account : ModelEntity
     {

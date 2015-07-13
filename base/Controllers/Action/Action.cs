@@ -2,21 +2,21 @@
 using System.Collections.Concurrent;
 using Newtonsoft.Json;
 
-namespace @base.control.action
+namespace Core.Controllers.Actions
 {
-    public class Action : control.ControlEntity
+    public class Action : Core.Controllers.ControlEntity
     {
-        public Action(model.ModelEntity model)
+        public Action(Core.Models.ModelEntity model)
             : base(model)
         {
         }
 
-        virtual public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
+        virtual public ConcurrentBag<Core.Models.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
             throw new NotImplementedException();
         }
 
-        virtual public @base.model.RegionPosition GetRegionPosition()
+        virtual public Core.Models.RegionPosition GetRegionPosition()
         {
             throw new NotImplementedException();
         }
@@ -35,7 +35,7 @@ namespace @base.control.action
         /// Apply action-related changes to the world.
         /// Returns set of changed Regions if everything worked, otherwise null
         /// </summary>
-        virtual public ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
+        virtual public ConcurrentBag<Core.Models.Region> Do(RegionManagerController regionManagerC)
         {
             throw new NotImplementedException();
         }

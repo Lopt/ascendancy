@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using Newtonsoft.Json.Linq;
 
-namespace @base.model
+namespace Core.Models
 {
     public class CellPosition : Object
     {

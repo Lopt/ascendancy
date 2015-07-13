@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using @base.model.definitions;
+using Core.Models.Definitions;
 
-namespace @base.model
+namespace Core.Models
 {
     public class DefinitionManager
     {

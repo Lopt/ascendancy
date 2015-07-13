@@ -4,13 +4,13 @@ namespace @base.connection
 {
     public class Request
     {
-        public Request(Guid sessionID, model.Position position)
+        public Request(Guid sessionID, Core.Models.Position position)
         {
             Position = position;
             SessionID = sessionID;
         }
 
-        public model.Position Position;
+        public Core.Models.Position Position;
         public Guid SessionID;
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using SQLite;
-using @base.model;
+using Core.Models;
 using @server.DB.Model;
 
 namespace server.DB

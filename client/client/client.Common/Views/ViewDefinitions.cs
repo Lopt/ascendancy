@@ -1,9 +1,9 @@
 ﻿using System;
 using CocosSharp;
-using @base.model.definitions;
+using Core.Models.Definitions;
 using System.Collections.Generic;
 using client.Common.Helper;
-using @base.model;
+using Core.Models;
 
 
 namespace client.Common.Views

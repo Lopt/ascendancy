@@ -8,7 +8,7 @@ namespace client.Common.Views
         public Worker(Views.WorldLayer worldLayer)
         {
             WorldLayer = worldLayer;
-            Queue = new ConcurrentQueue<@base.model.Action>();
+            Queue = new ConcurrentQueue<Core.Models.Action>();
         }
 
         public void Schedule(float frameTimesInSecond)
@@ -24,8 +24,8 @@ namespace client.Common.Views
             }
             else if (Queue.TryDequeue(out Action))
             {
-                var regionC = @base.control.Controller.Instance.RegionManagerController;
-                var actionC = (@base.control.action.Action)Action.Control;
+                var regionC = Core.Controllers.Controller.Instance.RegionManagerController;
+                var actionC = (Core.Controllers.Actions.Action)Action.Control;
                 var actionV = CreateActionView(Action);
                 var affectedRegions = actionC.GetAffectedRegions(regionC);
                 actionC.Possible(regionC);
@@ -34,20 +34,20 @@ namespace client.Common.Views
             }
         }
 
-        Views.Action.Action CreateActionView(@base.model.Action action)
+        Views.Action.Action CreateActionView(Core.Models.Action action)
         {
             switch (action.Type)
             {
-                case(@base.model.Action.ActionType.CreateUnit):
+                case(Core.Models.Action.ActionType.CreateUnit):
                     return new Views.Action.CreateUnit(action, WorldLayer);
 
-                case(@base.model.Action.ActionType.MoveUnit):
+                case(Core.Models.Action.ActionType.MoveUnit):
                     return new Views.Action.MoveUnit(action, WorldLayer);
 
-                case(@base.model.Action.ActionType.CreateHeadquarter):
+                case(Core.Models.Action.ActionType.CreateHeadquarter):
                     throw new NotImplementedException();
 
-                case(@base.model.Action.ActionType.CreateBuilding):
+                case(Core.Models.Action.ActionType.CreateBuilding):
                     return new Views.Action.CreateBuilding(action, WorldLayer);
 
             }
@@ -56,8 +56,8 @@ namespace client.Common.Views
             return new Views.Action.Action(action);
         }
 
-        public ConcurrentQueue<@base.model.Action> Queue;
-        public @base.model.Action Action = null;
+        public ConcurrentQueue<Core.Models.Action> Queue;
+        public Core.Models.Action Action = null;
         public Views.WorldLayer WorldLayer;
 
     }

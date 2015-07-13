@@ -2,7 +2,7 @@
 using CocosSharp;
 using client.Common.Helper;
 using client.Common.Controllers;
-using @base.control;
+using Core.Controllers.Actions;
 
 namespace client.Common.Views
 {

@@ -40,23 +40,23 @@ namespace client.Common.Views
 			var initNet = Controllers.NetworkController.Instance;
 			var initGeo = Models.Geolocation.Instance;
 
-			var world = @base.model.World.Instance;
-			var controller = @base.control.Controller.Instance;
+			var world = Core.Models.World.Instance;
+			var controller = Core.Controllers.Controller.Instance;
 			controller.RegionManagerController = new client.Common.Manager.RegionManagerController();      
 			controller.DefinitionManagerController = new client.Common.Manager.DefinitionManagerController();
 		}
 
 
-		public async Task<@base.model.Account> InitLoadingAsync()
+		public async Task<Core.Models.Account> InitLoadingAsync()
         {
             var account = await LogInAsync(); 
             if (account != null)
             {
                 Phase = Phases.LoggedIn;
 
-                var controller = @base.control.Controller.Instance;
+                var controller = Core.Controllers.Controller.Instance;
                 // adds his own account to AccountManager, so it is known
-                @base.model.World.Instance.AccountManager.AddAccount(account);
+                Core.Models.World.Instance.AccountManager.AddAccount(account);
 
                 var entityManagerController = controller.DefinitionManagerController as client.Common.Manager.DefinitionManagerController;
                 await entityManagerController.LoadTerrainDefinitionsAsync();
@@ -82,7 +82,7 @@ namespace client.Common.Views
 
 
 
-        async Task<@base.model.Account> LogInAsync()
+        async Task<Core.Models.Account> LogInAsync()
         {
             var currentGamePosition = client.Common.Models.Geolocation.Instance.CurrentGamePosition;
             var device = client.Common.Models.Device.GetInstance;

@@ -5,13 +5,13 @@ using Newtonsoft.Json;
 
 namespace server.control
 {
-    public class DefinitionManagerController : @base.control.DefinitionManagerController
+    public class DefinitionManagerController : Core.Controllers.DefinitionManagerController
     {
         public DefinitionManagerController()
         {
             {
                 string json = System.IO.File.ReadAllText(ServerConstants.TERRAIN_FILE);
-                var terrainDefintions = JsonConvert.DeserializeObject<List<@base.model.definitions.TerrainDefinition>>(json);
+				var terrainDefintions = JsonConvert.DeserializeObject<List<Core.Models.Definitions.TerrainDefinition>>(json);
 
                 foreach (var terrain in terrainDefintions)
                 {
@@ -21,7 +21,7 @@ namespace server.control
 
             {
                 string json = System.IO.File.ReadAllText(ServerConstants.UNIT_FILE);
-                var unitDefintions = JsonConvert.DeserializeObject<List<@base.model.definitions.UnitDefinition>>(json);
+				var unitDefintions = JsonConvert.DeserializeObject<List<Core.Models.Definitions.UnitDefinition>>(json);
 
                 foreach (var unit in unitDefintions)
                 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace @base.control
+namespace Core.Controllers
 {
     public sealed class Controller
     {

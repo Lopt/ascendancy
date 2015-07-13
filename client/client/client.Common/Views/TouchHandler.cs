@@ -95,20 +95,20 @@ namespace client.Common.Views
 
                     var startMapCellPosition = new client.Common.Models.MapCellPosition(oldCoord);
                     var startPosition = m_worldLayer.RegionView.GetCurrentGamePosition(startMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-                    var startPositionI = new @base.model.PositionI((int)startPosition.X, (int)startPosition.Y);
-                    dictParam[@base.control.action.MoveUnit.START_POSITION] = startPositionI;
+                    var startPositionI = new Core.Models.PositionI((int)startPosition.X, (int)startPosition.Y);
+                    dictParam[Core.Controllers.Actions.MoveUnit.START_POSITION] = startPositionI;
 
                     var location = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
                     var endCoord = m_worldLayer.ClosestTileCoordAtNodePosition(location);
 
                     var endMapCellPosition = new client.Common.Models.MapCellPosition(endCoord);
                     var endPosition = m_worldLayer.RegionView.GetCurrentGamePosition(endMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-                    var endPositionI = new @base.model.PositionI((int)endPosition.X, (int)endPosition.Y);
-                    dictParam[@base.control.action.MoveUnit.END_POSITION] = endPositionI;
+                    var endPositionI = new Core.Models.PositionI((int)endPosition.X, (int)endPosition.Y);
+                    dictParam[Core.Controllers.Actions.MoveUnit.END_POSITION] = endPositionI;
 
-                    var action = new @base.model.Action(GameAppDelegate.Account, @base.model.Action.ActionType.MoveUnit, dictParam);
-                    var actionC = (@base.control.action.Action)action.Control;
-                    var possible = actionC.Possible(@base.control.Controller.Instance.RegionManagerController);
+                    var action = new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.MoveUnit, dictParam);
+                    var actionC = (Core.Controllers.Actions.Action)action.Control;
+                    var possible = actionC.Possible(Core.Controllers.Controller.Instance.RegionManagerController);
                     if (possible)
                     {
                         m_worldLayer.DoAction(action);

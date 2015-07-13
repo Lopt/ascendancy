@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using Newtonsoft.Json;
-using @base.model;
+using Core.Models;
 using server.model;
 using server.DB;
 
 namespace server.control
 {
-    public class AccountManagerController : @base.model.AccountManager
+    public class AccountManagerController : Core.Models.AccountManager
     {
         public AccountManagerController()
             : base()
@@ -34,7 +34,7 @@ namespace server.control
 
         public Account Registrate(string username, string password)
         {
-            foreach (var accountPair in @base.model.World.Instance.AccountManager.Accounts)
+            foreach (var accountPair in Core.Models.World.Instance.AccountManager.Accounts)
             {
                 if (accountPair.Value.UserName.ToLower() == username.ToLower())
                 {
@@ -44,7 +44,7 @@ namespace server.control
             var account = new Account(IdGenerator.GetId(), username);
             new AccountController(account, password);
 
-            @base.model.World.Instance.AccountManager.AddAccount(account);
+            Core.Models.World.Instance.AccountManager.AddAccount(account);
             return Login(username, password);
         }
 

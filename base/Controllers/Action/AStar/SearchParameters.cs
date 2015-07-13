@@ -1,5 +1,5 @@
-﻿using @base.control.action;
-using @base.model;
+﻿using Core.Controllers.Actions;
+using Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

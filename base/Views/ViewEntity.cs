@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace @base.view
+namespace Core.Views
 {
     public class ViewEntity
     {
-        public ViewEntity(model.ModelEntity model)
+        public ViewEntity(Core.Models.ModelEntity model)
         {   
             Model = model;
             if (Model.View != null)
@@ -22,7 +22,7 @@ namespace @base.view
             }
         }
 
-        public model.ModelEntity Model
+        public Core.Models.ModelEntity Model
         {
             get;
             private set;

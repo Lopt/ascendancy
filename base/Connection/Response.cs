@@ -15,13 +15,13 @@ namespace @base.connection
         public Response()
         {
             Status = ReponseStatus.INTERNAL_ERROR;
-            Entities = new LinkedList<LinkedList<model.Entity>>();
-            Actions = new LinkedList<LinkedList<model.Action>>();
+            Entities = new LinkedList<LinkedList<Core.Models.Entity>>();
+            Actions = new LinkedList<LinkedList<Core.Models.Action>>();
         }
 
         public ReponseStatus Status;
-        public LinkedList<LinkedList<model.Action>> Actions;
-        public LinkedList<LinkedList<model.Entity>> Entities;
+        public LinkedList<LinkedList<Core.Models.Action>> Actions;
+        public LinkedList<LinkedList<Core.Models.Entity>> Entities;
 
     }
 }

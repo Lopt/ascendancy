@@ -65,8 +65,8 @@ namespace server
         protected void Application_Start()
         {
             Phase = Phases.Init;
-            var world = @base.model.World.Instance;
-            var controller = @base.control.Controller.Instance;
+            var world = Core.Models.World.Instance;
+            var controller = Core.Controllers.Controller.Instance;
 
             var api = server.control.APIController.Instance;
 

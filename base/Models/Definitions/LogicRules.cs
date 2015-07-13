@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using @base.model;
+using Core.Models;
 using @base.Models;
 
 namespace @base.Models.Definition

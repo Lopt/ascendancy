@@ -5,8 +5,8 @@ using Newtonsoft.Json;
 using ModernHttpClient;
 using XLabs.Platform.Services.Geolocation;
 
-using @base.model.definitions;
-using @base.model;
+using Core.Models.Definitions;
+using Core.Models;
 using client.Common.Helper;
 using System.Collections.Generic;
 
@@ -143,7 +143,7 @@ namespace client.Common.Controllers
         /// <param name="currentGamePosition">Current game position.</param>
         /// <param name="user">User.</param>
         /// <param name="password">Password.</param>
-        public async Task<Account> LoginAsync(@base.model.Position currentGamePosition, string user, string password)
+        public async Task<Account> LoginAsync(Core.Models.Position currentGamePosition, string user, string password)
         {
             try
             {
@@ -187,7 +187,7 @@ namespace client.Common.Controllers
         /// <returns>The entities async.</returns>
         /// <param name="currentGamePosition">Current game position.</param>
         /// <param name="regionPositions">Region positions.</param>
-        public async Task<@base.connection.Response> LoadEntitiesAsync(@base.model.Position currentGamePosition, RegionPosition[] regionPositions)
+        public async Task<@base.connection.Response> LoadEntitiesAsync(Core.Models.Position currentGamePosition, RegionPosition[] regionPositions)
         {
             try
             {
@@ -221,7 +221,7 @@ namespace client.Common.Controllers
             }
         }
 
-        public async Task<bool> DoActionsAsync(@base.model.Position currentGamePosition, @base.model.Action[] actions)
+        public async Task<bool> DoActionsAsync(Core.Models.Position currentGamePosition, Core.Models.Action[] actions)
         {
             try
             {

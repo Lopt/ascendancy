@@ -1,5 +1,5 @@
-﻿using @base.model;
-using @base.model.definitions;
+﻿using Core.Models;
+using Core.Models.Definitions;
 using System;
 
 namespace AStar

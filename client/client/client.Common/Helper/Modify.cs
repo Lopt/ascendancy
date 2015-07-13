@@ -1,6 +1,6 @@
 ﻿using System;
 using CocosSharp;
-using @base.model;
+using Core.Models;
 
 namespace client.Common.Helper
 {

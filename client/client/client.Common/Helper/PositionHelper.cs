@@ -3,7 +3,7 @@
 using CocosSharp;
 using client.Common.Views;
 using client.Common.Models;
-using @base.model;
+using Core.Models;
 
 
 namespace client.Common.Helper

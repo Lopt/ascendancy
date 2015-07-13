@@ -2,9 +2,9 @@
 
 namespace client.Common.Views.Action
 {
-    public class Action : @base.view.ViewEntity
+    public class Action : Core.Views.ViewEntity
     {
-        public Action(@base.model.ModelEntity model)
+        public Action(Core.Models.ModelEntity model)
             : base(model)
         {
         }

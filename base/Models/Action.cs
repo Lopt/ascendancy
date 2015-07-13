@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using @base.model;
-using @base.model.definitions;
+using Core.Models;
+using Core.Models.Definitions;
 using Newtonsoft.Json;
 using System.Collections;
 
-namespace @base.model
+namespace Core.Models
 {
     public class Action : ModelEntity
     {
@@ -46,19 +46,19 @@ namespace @base.model
             switch (type)
             {
                 case(ActionType.CreateHeadquarter):
-                    Control = new control.action.CreateHeadquarter(this);
+                    Control = new Controllers.Actions.CreateHeadquarter(this);
                     break;   
                 case(ActionType.TestAction):
-                    Control = new control.action.TestAction(this);
+                    Control = new Controllers.Actions.TestAction(this);
                     break;   
                 case(ActionType.CreateUnit):
-                    Control = new control.action.CreateUnit(this);
+                    Control = new Controllers.Actions.CreateUnit(this);
                     break;
                 case(ActionType.MoveUnit):
-                    Control = new control.action.MoveUnit(this);
+                    Control = new Controllers.Actions.MoveUnit(this);
                     break;
                 case (ActionType.CreateBuilding):
-                    Control = new control.action.CreatBuilding(this);
+                    Control = new Controllers.Actions.CreatBuilding(this);
                     break;
             }
         }

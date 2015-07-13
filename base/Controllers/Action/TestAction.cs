@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
-using @base.control;
-using @base.model.definitions;
+using Core.Controllers.Actions;
+using Core.Models.Definitions;
 
-namespace @base.control.action
+namespace Core.Controllers.Actions
 {
     public class TestAction : Action
     {
-        public TestAction(model.ModelEntity model)
+        public TestAction(Core.Models.ModelEntity model)
             : base(model)
         {
         }
@@ -22,7 +22,7 @@ namespace @base.control.action
         /// <param name="actionType">Action type.</param>
         /// <param name="regions">Affected Regions of this action.</param>
         /// <param name="parameters">Parameters.</param>
-        override public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
+        override public ConcurrentBag<Core.Models.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
             /*
             var action = (model.Action)Model;
@@ -32,15 +32,15 @@ namespace @base.control.action
                 regions.Add(regionManagerC.GetRegion(new @base.model.RegionPosition(regionPosition)));
             }
             return regions;*/
-            var action = (model.Action)Model;
-            return (ConcurrentBag<model.Region>)action.Parameters[REGIONS];
+            var action = (Core.Models.Action)Model;
+            return (ConcurrentBag<Core.Models.Region>)action.Parameters[REGIONS];
 
         }
 
-        override public @base.model.RegionPosition GetRegionPosition()
+        override public Core.Models.RegionPosition GetRegionPosition()
         {
-            var action = (model.Action)Model;
-            return ((ConcurrentBag<model.Region>)action.Parameters[REGIONS]).ToArray()[0].RegionPosition;
+            var action = (Core.Models.Action)Model;
+            return ((ConcurrentBag<Core.Models.Region>)action.Parameters[REGIONS]).ToArray()[0].RegionPosition;
         }
 
 
@@ -56,10 +56,10 @@ namespace @base.control.action
         /// Apply action-related changes to the world.
         /// Returns false if something went terrible wrong
         /// </summary>
-        public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
+        public override ConcurrentBag<Core.Models.Region> Do(RegionManagerController regionManagerC)
         {   
-            var action = (model.Action)Model;
-            return (ConcurrentBag<model.Region>)action.Parameters[REGIONS];
+            var action = (Core.Models.Action)Model;
+            return (ConcurrentBag<Core.Models.Region>)action.Parameters[REGIONS];
             /*
             var action = (model.Action)Model;
             var regions = new ConcurrentBag<model.Region> ();

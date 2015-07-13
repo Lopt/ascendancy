@@ -5,13 +5,13 @@ namespace @base.connection
 {
     public class LoadRegionsRequest : Request
     {
-        public LoadRegionsRequest(Guid sessionID, model.Position position, model.RegionPosition[] regionPositions)
+        public LoadRegionsRequest(Guid sessionID, Core.Models.Position position, Core.Models.RegionPosition[] regionPositions)
             : base(sessionID, position)
         {
             m_regionPositions = regionPositions;
         }
 
-        public model.RegionPosition[] RegionPositions
+        public Core.Models.RegionPosition[] RegionPositions
         {
             get
             {
@@ -23,7 +23,7 @@ namespace @base.connection
             }
         }
 
-        model.RegionPosition[] m_regionPositions;
+        Core.Models.RegionPosition[] m_regionPositions;
     }
 }
 

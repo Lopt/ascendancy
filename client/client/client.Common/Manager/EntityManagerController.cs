@@ -1,5 +1,5 @@
-﻿using @base.control;
-using @base.model;
+﻿using Core.Controllers.Actions;
+using Core.Models;
 using client.Common.Controllers;
 using client.Common.Helper;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace client.Common.Manager
 
         public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition centerRegionPosition)
         {
-            var regionManagerC = (Manager.RegionManagerController)Controller.Instance.RegionManagerController;
+			var regionManagerC = (Manager.RegionManagerController) Core.Controllers.Controller.Instance.RegionManagerController;
 
             var worldRegions = regionManagerC.GetWorldNearRegionPositions (centerRegionPosition);
             var listRegions = new RegionPosition[25];
@@ -53,7 +53,7 @@ namespace client.Common.Manager
             if (entities != null) {
                 foreach (var regionEntities in entities) {
                     foreach (var entity in regionEntities) {
-                        var region = Controller.Instance.RegionManagerController.GetRegion (entity.Position.RegionPosition);
+						var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion (entity.Position.RegionPosition);
                         region.AddEntity (DateTime.Now, entity);
                         Add (entity);
 
@@ -63,7 +63,7 @@ namespace client.Common.Manager
 
             if (response.Actions != null)
             {
-                var actions = new HashSet<@base.model.Action> ();
+                var actions = new HashSet<Core.Models.Action> ();
                 foreach (var regions in response.Actions)
                 {
                     foreach (var action in regions)
@@ -72,7 +72,7 @@ namespace client.Common.Manager
                     }   
                 }
 
-                var sortedActions = new SortedSet<@base.model.Action> (actions, new @base.model.Action.ActionComparer());
+                var sortedActions = new SortedSet<Core.Models.Action> (actions, new Core.Models.Action.ActionComparer());
 
                 foreach (var action in sortedActions)
                 {

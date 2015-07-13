@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
-namespace @base.model
+namespace Core.Models
 {
     public class RegionManager
     {

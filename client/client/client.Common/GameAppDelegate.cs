@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using CocosDenshion;
 using client.Common.Helper;
 using client.Common.Controllers;
-using @base.model;
+using Core.Models;
 using client.Common.Views;
 using System.Threading.Tasks;
 using client.Common.Models;

@@ -1,18 +1,18 @@
 ﻿using System;
-using @base.model.definitions;
+using Core.Models.Definitions;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Threading;
 
-namespace @base.model
+namespace Core.Models
 {
     public class Region
     {
         public class DatedActions
         {
             public DateTime DateTime;
-            public LinkedList<model.Action> Actions;
+            public LinkedList<Core.Models.Action> Actions;
             public RegionPosition RegionPosition;
         }
 
@@ -29,7 +29,7 @@ namespace @base.model
             m_terrains = region.m_terrains;
             m_entities = region.m_entities;
             m_actions = new DatedActions();
-            m_actions.Actions = new LinkedList<model.Action>();
+            m_actions.Actions = new LinkedList<Core.Models.Action>();
             m_exist = region.m_exist;
             m_mutex = region.m_mutex;
         }
@@ -41,7 +41,7 @@ namespace @base.model
             m_entities = new DatedEntities();
             m_entities.Entities = new LinkedList<Entity>();
             m_actions = new DatedActions();
-            m_actions.Actions = new LinkedList<model.Action>();
+            m_actions.Actions = new LinkedList<Core.Models.Action>();
             m_exist = false;
             m_mutex = new ReaderWriterLockSlim();
         }
@@ -137,7 +137,7 @@ namespace @base.model
             var returnActions = new DatedActions();
             var currentActions = m_actions;
 
-            var actionsCollection = new LinkedList<model.Action>();
+            var actionsCollection = new LinkedList<Core.Models.Action>();
             foreach (var action in currentActions.Actions)
             {
                 if (action.ActionTime <= startTime)
@@ -201,7 +201,7 @@ namespace @base.model
 
 
 
-        public void AddCompletedAction(model.Action action)
+        public void AddCompletedAction(Core.Models.Action action)
         {
             m_actions.DateTime = action.ActionTime;
             m_actions.Actions.AddFirst(action);

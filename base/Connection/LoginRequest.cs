@@ -4,7 +4,7 @@ namespace @base.connection
 {
     public class LoginRequest : Request
     {
-        public LoginRequest(model.Position position, string username, string password)
+        public LoginRequest(Core.Models.Position position, string username, string password)
             : base(Guid.Empty, position)
         {
             Username = username;

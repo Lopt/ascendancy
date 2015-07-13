@@ -35,16 +35,16 @@ namespace server.control
             public AveragePositionQueue()
             {
                 Count = 0;
-                Average = new @base.model.Position(0, 0);
+                Average = new Core.Models.Position(0, 0);
                 Lock = new Mutex();
 
-                Queue = new Queue<@base.model.Action>();
+                Queue = new Queue<Core.Models.Action>();
             }
 
             public int Count = 0;
-            public @base.model.Position Average;
+            public Core.Models.Position Average;
             public Mutex Lock;
-            public Queue<@base.model.Action> Queue;
+            public Queue<Core.Models.Action> Queue;
         }
 
         private enum ActionReturn
@@ -61,30 +61,30 @@ namespace server.control
 
         public class RegionData
         {
-            public LinkedList<LinkedList<@base.model.Entity>> EntityDict;
-            public LinkedList<LinkedList<@base.model.Action>> ActionDict;
+            public LinkedList<LinkedList<Core.Models.Entity>> EntityDict;
+            public LinkedList<LinkedList<Core.Models.Action>> ActionDict;
         }
 
-        public @base.model.Account Login(string username, string password)
+        public Core.Models.Account Login(string username, string password)
         {	
             if (username != null && password != null)
             {
-                var controller = @base.control.Controller.Instance;
-                var accountManagerC = (control.AccountManagerController)@base.model.World.Instance.AccountManager;
+                var controller = Core.Controllers.Controller.Instance;
+                var accountManagerC = (control.AccountManagerController)Core.Models.World.Instance.AccountManager;
                 return accountManagerC.Registrate(username, password);
             }
             return null;
             //return accountManagerC.Login (username, password);
         }
 
-        public void DoAction(@base.model.Account account, 
-                             @base.model.Action[] actions)
+        public void DoAction(Core.Models.Account account, 
+                             Core.Models.Action[] actions)
         {
             foreach (var action in actions)
             {
                 var bestQueue = 0;
-                var actionC = (@base.control.action.Action)action.Control;
-                var actionPosition = new @base.model.Position(actionC.GetRegionPosition());
+				var actionC = (Core.Controllers.Actions.Action)action.Control;
+                var actionPosition = new Core.Models.Position(actionC.GetRegionPosition());
 
                 action.Account = account;
                 action.ActionTime = DateTime.Now;
@@ -112,7 +112,7 @@ namespace server.control
                     var newAverageX = bestThread.Average.X * bestThread.Count + actionPosition.X; 
                     var newAverageY = bestThread.Average.Y * bestThread.Count + actionPosition.Y;                            
                     bestThread.Count += 1;
-                    bestThread.Average = new @base.model.Position(newAverageX / bestThread.Count, newAverageY / bestThread.Count);
+                    bestThread.Average = new Core.Models.Position(newAverageX / bestThread.Count, newAverageY / bestThread.Count);
 
                     bestThread.Queue.Enqueue(action);  
                 }
@@ -123,19 +123,19 @@ namespace server.control
             }
         }
 
-        public RegionData LoadRegions(@base.model.Account account,
-                                      @base.model.RegionPosition[] regionPositions)
+        public RegionData LoadRegions(Core.Models.Account account,
+                                      Core.Models.RegionPosition[] regionPositions)
         {
             // List<@base.model.Region>, List<@base.control.action.Action> 
-            var controller = @base.control.Controller.Instance;
+            var controller = Core.Controllers.Controller.Instance;
             var regionManagerC = controller.RegionManagerController;
 
             var accountC = (@server.control.AccountController)account.Control;
 
-            var entityDict = new LinkedList<LinkedList<@base.model.Entity>>();
-            var actionDict = new LinkedList<LinkedList<@base.model.Action>>();
+            var entityDict = new LinkedList<LinkedList<Core.Models.Entity>>();
+            var actionDict = new LinkedList<LinkedList<Core.Models.Action>>();
 
-            var lockedRegions = new LinkedList<@base.model.Region>();
+            var lockedRegions = new LinkedList<Core.Models.Region>();
             try
             {
                 foreach (var regionPosition in regionPositions)
@@ -190,14 +190,14 @@ namespace server.control
             //return regionList;
         }
 
-        private ActionReturn WorkAction(@base.model.Action action)
+        private ActionReturn WorkAction(Core.Models.Action action)
         {
             if (action != null)
             {
-                var regionManager = @base.control.Controller.Instance.RegionManagerController;
+                var regionManager = Core.Controllers.Controller.Instance.RegionManagerController;
 
-                var actionC = (action.Control as @base.control.action.Action);
-                var gotLocked = new LinkedList<@base.model.Region>() { };
+                var actionC = (action.Control as Core.Controllers.Actions.Action);
+                var gotLocked = new LinkedList<Core.Models.Region>() { };
 
                 try
                 {
@@ -229,7 +229,7 @@ namespace server.control
                         return ActionReturn.NotPossible;
                     }
 
-                    action.ID = @base.model.IdGenerator.GetId();
+                    action.ID = Core.Models.IdGenerator.GetId();
                     var changedRegions = actionC.Do(regionManager);
                     if (changedRegions.Count == 0)
                     {
@@ -264,7 +264,7 @@ namespace server.control
         public void Worker(object state)
         {
             var threadInfo = m_threadingInfos[(int)state];
-            @base.model.Action action;
+            Core.Models.Action action;
            
             while (MvcApplication.Phase != MvcApplication.Phases.Exit)
             {
@@ -279,12 +279,12 @@ namespace server.control
                     action = threadInfo.Queue.Dequeue();
 
                     action.ActionTime = DateTime.Now;
-                    var actionC = (@base.control.action.Action)action.Control;
-                    var actionPosition = new @base.model.Position(actionC.GetRegionPosition());
+                    var actionC = (Core.Controllers.Actions.Action)action.Control;
+                    var actionPosition = new Core.Models.Position(actionC.GetRegionPosition());
                     var newAverageX = threadInfo.Average.X * threadInfo.Count - actionPosition.X; 
                     var newAverageY = threadInfo.Average.Y * threadInfo.Count - actionPosition.Y;                            
                     threadInfo.Count -= 1;
-                    threadInfo.Average = new @base.model.Position(newAverageX / threadInfo.Count, newAverageY / threadInfo.Count);
+                    threadInfo.Average = new Core.Models.Position(newAverageX / threadInfo.Count, newAverageY / threadInfo.Count);
                 }
                 finally
                 {
@@ -293,7 +293,7 @@ namespace server.control
 
                 if (WorkAction(action) == ActionReturn.RessourceBlocked)
                 {   
-                    APIController.Instance.DoAction(action.Account, new @base.model.Action[]{ action, });
+                    APIController.Instance.DoAction(action.Account, new Core.Models.Action[]{ action, });
                 }
             }
         }

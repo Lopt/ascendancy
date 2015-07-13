@@ -4,13 +4,13 @@ namespace @base.connection
 {
     public class DoActionsRequest : Request
     {
-        public DoActionsRequest(Guid sessionID, model.Position position, model.Action[] actions)
+        public DoActionsRequest(Guid sessionID, Core.Models.Position position, Core.Models.Action[] actions)
             : base(sessionID, position)
         {
             m_actions = actions;
         }
 
-        public model.Action[] Actions
+        public Core.Models.Action[] Actions
         {
             get
             {
@@ -22,7 +22,7 @@ namespace @base.connection
             }
         }
 
-        model.Action[] m_actions;
+        Core.Models.Action[] m_actions;
     }
 }
 

@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace @base.control
+namespace Core.Controllers
 {
     public class ControlEntity
     {
-        public ControlEntity(model.ModelEntity model)
+        public ControlEntity(Core.Models.ModelEntity model)
         {   
             Model = model;
             if (Model.Control != null)
@@ -22,7 +22,7 @@ namespace @base.control
             }
         }
 
-        public model.ModelEntity Model
+        public Core.Models.ModelEntity Model
         {
             get;
             private set;

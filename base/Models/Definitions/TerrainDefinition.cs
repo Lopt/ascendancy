@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace @base.model.definitions
+namespace Core.Models.Definitions
 {
     public class TerrainDefinition : Definition
     {

@@ -2,16 +2,15 @@
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 
-using @base.control;
-using @base.model.definitions;
-using @base.model;
+using Core.Controllers.Actions;
+using Core.Models.Definitions;
+using Core.Models;
 using @base.Models;
 using @base.Models.Definition;
 using System.Collections;
 using AStar;
-using @base.control.action;
 
-namespace @base.control.action
+namespace Core.Controllers.Actions
 {
     public class MoveUnit : Action
     {
@@ -19,21 +18,21 @@ namespace @base.control.action
         /// Initializes a new instance of the <see cref="base.control.action.MoveUnit"/> class.
         /// </summary>
         /// <param name="model">Model.</param>
-        public MoveUnit(model.ModelEntity model)
+        public MoveUnit(Core.Models.ModelEntity model)
             : base(model)
         {
-            var action = (model.Action)Model;
+            var action = (Core.Models.Action)Model;
             var param = action.Parameters;
 
 
             if (param[START_POSITION].GetType() != typeof(PositionI))
             {
-                param[START_POSITION] = new model.PositionI((Newtonsoft.Json.Linq.JContainer)param[START_POSITION]);
+                param[START_POSITION] = new Core.Models.PositionI((Newtonsoft.Json.Linq.JContainer)param[START_POSITION]);
             }
 
             if (param[END_POSITION].GetType() != typeof(PositionI))
             {
-                param[END_POSITION] = new model.PositionI((Newtonsoft.Json.Linq.JContainer)param[END_POSITION]);
+                param[END_POSITION] = new Core.Models.PositionI((Newtonsoft.Json.Linq.JContainer)param[END_POSITION]);
             }
         }
 
@@ -45,11 +44,11 @@ namespace @base.control.action
         /// </summary>
         /// <returns>The affected regions.</returns>
         /// <param name="regionManagerC">Region manager c.</param>
-        public override ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
+        public override ConcurrentBag<Core.Models.Region> GetAffectedRegions(RegionManagerController regionManagerC)
         {
-            var Bag = new ConcurrentBag<model.Region>();
+            var Bag = new ConcurrentBag<Core.Models.Region>();
 
-            var action = (model.Action)Model;
+            var action = (Core.Models.Action)Model;
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
 
@@ -70,7 +69,7 @@ namespace @base.control.action
         /// <param name="regionManagerC">Region manager c.</param>
         public override bool Possible(RegionManagerController regionManagerC)
         {
-            var action = (model.Action)Model;
+            var action = (Core.Models.Action)Model;
 
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
@@ -95,11 +94,11 @@ namespace @base.control.action
         /// Returns set of changed Regions if everything worked, otherwise null
         /// </summary>
         /// <param name="regionManagerC">Region manager c.</param>
-        public override ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
+        public override ConcurrentBag<Core.Models.Region> Do(RegionManagerController regionManagerC)
         {
-            var Bag = new ConcurrentBag<model.Region>();
+            var Bag = new ConcurrentBag<Core.Models.Region>();
 
-            var action = (model.Action)Model;
+            var action = (Core.Models.Action)Model;
 
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
@@ -197,9 +196,9 @@ namespace @base.control.action
         /// Gets the region position.
         /// </summary>
         /// <returns>The region position.</returns>
-        override public @base.model.RegionPosition GetRegionPosition()
+        override public Core.Models.RegionPosition GetRegionPosition()
         {
-            var action = (model.Action)Model;
+            var action = (Core.Models.Action)Model;
 
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             return startPosition.RegionPosition;

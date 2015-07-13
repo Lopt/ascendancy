@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using Newtonsoft.Json;
-using @base.model;
+using Core.Models;
 using server.model;
 
 namespace server.control
 {
-    public class RegionManagerController : @base.control.RegionManagerController
+    public class RegionManagerController : Core.Controllers.RegionManagerController
     {
         public RegionManagerController()
         {

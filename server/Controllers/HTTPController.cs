@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 using System.Threading;
 
-using @base.model;
+using Core.Models;
 
 namespace server.Controllers
 {
@@ -49,14 +49,14 @@ namespace server.Controllers
 
             var response = new @base.connection.Response();
             var api = server.control.APIController.Instance;
-            var controller = @base.control.Controller.Instance;
+            var controller = Core.Controllers.Controller.Instance;
 
-            var accountManagerC = (control.AccountManagerController)@base.model.World.Instance.AccountManager;
+            var accountManagerC = (control.AccountManagerController)Core.Models.World.Instance.AccountManager;
             var account = accountManagerC.GetAccountBySession(loadRegionRequest.SessionID);
 
 
             if (account != null &&
-                loadRegionRequest.RegionPositions.Count() <= @base.model.Constants.MAX_ENTRIES_PER_CONNECTION)
+                loadRegionRequest.RegionPositions.Count() <= Core.Models.Constants.MAX_ENTRIES_PER_CONNECTION)
             {
                 var regionActions = api.LoadRegions(account, loadRegionRequest.RegionPositions);
                 response.Entities = regionActions.EntityDict;
@@ -74,13 +74,13 @@ namespace server.Controllers
 
             var response = new @base.connection.Response();
             var api = server.control.APIController.Instance;
-            var controller = @base.control.Controller.Instance;
+            var controller = Core.Controllers.Controller.Instance;
 
-            var accountManagerC = (control.AccountManagerController)@base.model.World.Instance.AccountManager;
+            var accountManagerC = (control.AccountManagerController)Core.Models.World.Instance.AccountManager;
             var account = accountManagerC.GetAccountBySession(doActionRequest.SessionID);
 
             if (account != null &&
-                doActionRequest.Actions.Count() <= @base.model.Constants.MAX_ENTRIES_PER_CONNECTION)
+                doActionRequest.Actions.Count() <= Core.Models.Constants.MAX_ENTRIES_PER_CONNECTION)
             {
                 api.DoAction(account, doActionRequest.Actions);
                 response.Status = @base.connection.Response.ReponseStatus.OK;

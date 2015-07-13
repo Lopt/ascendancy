@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace @base.model
+namespace Core.Models.Definitions
 {
     public class Definition
     {

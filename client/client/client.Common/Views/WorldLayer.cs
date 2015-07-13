@@ -1,5 +1,5 @@
-﻿using @base.control;
-using @base.model;
+﻿using Core.Controllers.Actions;
+using Core.Models;
 using client.Common.Helper;
 using client.Common.Models;
 using System;
@@ -53,7 +53,7 @@ namespace client.Common.Views
             m_gameScene = gameScene;
 
             RegionView = new RegionView();
-            m_regionManagerController = Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
+			m_regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
 
             WorldTileMap = new CCTileMap(ClientConstants.TILEMAP_FILE);
             m_geolocation = Geolocation.Instance;
@@ -117,10 +117,10 @@ namespace client.Common.Views
             var tapMapCellPosition = new MapCellPosition(location);
             var tapPosition = RegionView.GetCurrentGamePosition(tapMapCellPosition, CenterPosition.RegionPosition);
             var tapPositionI = new PositionI((int)tapPosition.X, (int)tapPosition.Y);
-            dictParam[@base.control.action.CreateUnit.CREATE_POSITION] = tapPositionI; 
-            dictParam[@base.control.action.CreateUnit.CREATION_TYPE] = (long)type;
-            var newAction = new @base.model.Action(GameAppDelegate.Account, @base.model.Action.ActionType.CreateUnit, dictParam);
-            var actionC = (@base.control.action.Action)newAction.Control;
+            dictParam[Core.Controllers.Actions.CreateUnit.CREATE_POSITION] = tapPositionI; 
+            dictParam[Core.Controllers.Actions.CreateUnit.CREATION_TYPE] = (long)type;
+            var newAction = new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.CreateUnit, dictParam);
+            var actionC = (Core.Controllers.Actions.Action)newAction.Control;
             var possible = actionC.Possible(m_regionManagerController);
 
             if (possible)
@@ -142,10 +142,10 @@ namespace client.Common.Views
             var tapMapCellPosition = new MapCellPosition(location);
             var tapPosition = RegionView.GetCurrentGamePosition(tapMapCellPosition, CenterPosition.RegionPosition);
             var tapPositionI = new PositionI((int)tapPosition.X, (int)tapPosition.Y);
-            dictParam[@base.control.action.CreatBuilding.CREATE_POSITION] = tapPositionI; 
-            dictParam[@base.control.action.CreatBuilding.CREATION_TYPE] = (long)type;
-			var newAction = new @base.model.Action(GameAppDelegate.Account, @base.model.Action.ActionType.CreateBuilding, dictParam);
-            var actionC = (@base.control.action.Action)newAction.Control;
+            dictParam[Core.Controllers.Actions.CreatBuilding.CREATE_POSITION] = tapPositionI; 
+            dictParam[Core.Controllers.Actions.CreatBuilding.CREATION_TYPE] = (long)type;
+			var newAction = new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.CreateBuilding, dictParam);
+            var actionC = (Core.Controllers.Actions.Action)newAction.Control;
             var possible = actionC.Possible(m_regionManagerController);
 
             if (possible)
@@ -326,9 +326,9 @@ namespace client.Common.Views
             return TerrainLayer.ClosestTileCoordAtNodePosition(point);
         }
 
-        public void DoAction(@base.model.Action action)
+        public void DoAction(Core.Models.Action action)
         {
-            var actions = new List<@base.model.Action>();
+            var actions = new List<Core.Models.Action>();
             actions.Add(action);
             m_regionManagerController.DoActionAsync(m_geolocation.CurrentGamePosition, actions.ToArray());
             //var mapCell = GetMapCell(m_terrainLayer, new CCPoint(VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));

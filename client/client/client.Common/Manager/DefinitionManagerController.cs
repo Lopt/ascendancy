@@ -1,5 +1,5 @@
-﻿using @base.control;
-using @base.model;
+﻿using Core.Controllers.Actions;
+using Core.Models;
 using client.Common.Controllers;
 using client.Common.Helper;
 using Newtonsoft.Json;
@@ -13,7 +13,7 @@ namespace client.Common.Manager
 	/// <summary>
 	/// Definition manager controller laod definitions and fill the definition manager
 	/// </summary>
-	public class DefinitionManagerController : @base.control.DefinitionManagerController
+	public class DefinitionManagerController : Core.Controllers.DefinitionManagerController
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="client.Common.Manager.DefinitionManagerController"/> class.
@@ -32,7 +32,7 @@ namespace client.Common.Manager
 			await m_Network.LoadTerrainTypesAsync(ClientConstants.TERRAIN_TYPES_SERVER_PATH);
 
 			var json = m_Network.JsonTerrainTypeString;
-			var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>>(json);
+			var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<Core.Models.Definitions.TerrainDefinition>>(json);
 
 			foreach (var terrain in terrainDefintions)
 			{
@@ -50,7 +50,7 @@ namespace client.Common.Manager
 			await m_Network.LoadTerrainTypesAsync(ClientConstants.ENTITY_TYPES_SERVER_PATH);
 
 			var json = m_Network.JsonTerrainTypeString;
-			var unitDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.UnitDefinition>>(json);
+			var unitDefintions = JsonConvert.DeserializeObject<ObservableCollection<Core.Models.Definitions.UnitDefinition>>(json);
 
 			foreach (var unitType in unitDefintions)
 			{

@@ -168,9 +168,9 @@
     </VisualStudio>
   </ProjectExtensions>
   <ItemGroup>
-    <ProjectReference Include="..\base\base.csproj">
+    <ProjectReference Include="..\base\core.csproj">
       <Project>{163A206B-36D1-46D5-AA19-B515F7350C6E}</Project>
-      <Name>base</Name>
+      <Name>core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using System;
 using CocosSharp;
-using @base.model;
+using Core.Models;
 using client.Common.Manager;
 using client.Common.Models;
 using client.Common.Helper;
@@ -13,11 +13,11 @@ namespace client.Common.Views
     {
         public RegionView()
         {
-            m_RegionManagerController = @base.control.Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
+            m_RegionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
             m_ViewDefinition = new ViewDefinitions();
         }
 
-        public void SetTilesInMap160(@base.model.Region region)
+        public void SetTilesInMap160(Core.Models.Region region)
         {
 
             var worldRegionPositions = m_RegionManagerController.GetWorldNearRegionPositions(region.RegionPosition);
@@ -95,11 +95,11 @@ namespace client.Common.Views
             var entity = region.GetEntity(cellPosition);
             if (entity != null)
             {
-                if (entity.Definition.Type == Definition.DefinitionType.Unit)
+				if (entity.Definition.Type == Core.Models.Definitions.Definition.DefinitionType.Unit)
                 {
                     SetUnit(mapCoordinat, entity);
                 }
-                if (entity.Definition.Type == Definition.DefinitionType.Building)
+				if (entity.Definition.Type == Core.Models.Definitions.Definition.DefinitionType.Building)
                 {
                     SetBuilding(mapCoordinat, entity);
                 }

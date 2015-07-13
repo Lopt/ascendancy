@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace @base.model
+namespace Core.Models
 {
     public class PositionI
     {
