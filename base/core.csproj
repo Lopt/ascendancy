@@ -69,10 +69,10 @@
     <Compile Include="Controllers\Action\MoveUnit.cs" />
     <Compile Include="Controllers\Action\TestAction.cs" />
     <Compile Include="Models\Manager\AccountManager.cs" />
-    <Compile Include="Models\Definitions\LogicRules.cs" />
     <Compile Include="Models\Definitions\UnitDefinition.cs" />
     <Compile Include="Models\Definitions\Definition.cs" />
     <Compile Include="Models\Definitions\TerrainDefinition.cs" />
+    <Compile Include="Models\LogicRules.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
