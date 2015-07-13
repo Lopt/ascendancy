@@ -22,7 +22,7 @@ namespace client.Droid
     [Activity (
         Label = "Ascendancy",
         AlwaysRetainTaskState = true,
-        Icon = "@drawable/icon",
+        Icon = "@drawable/Icon",
         Theme = "@android:style/Theme.NoTitleBar",
         ScreenOrientation = ScreenOrientation.Portrait | ScreenOrientation.ReversePortrait,
         LaunchMode = LaunchMode.SingleInstance,
