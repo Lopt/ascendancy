@@ -106,55 +106,6 @@ namespace client.Common.Views
 
         #endregion
 
-		/// <summary>
-		/// Creates a unit with a given Location and unit type.
-		/// </summary>
-		/// <param name="location">Given Location.</param>
-		/// <param name="type">Unittype.</param>
-        public void CreateUnit(CCTileMapCoordinates location, int type)
-        {
-            var dictParam = new System.Collections.Generic.Dictionary<string,object>();
-            var tapMapCellPosition = new MapCellPosition(location);
-            var tapPosition = RegionView.GetCurrentGamePosition(tapMapCellPosition, CenterPosition.RegionPosition);
-            var tapPositionI = new PositionI((int)tapPosition.X, (int)tapPosition.Y);
-            dictParam[Core.Controllers.Actions.CreateUnit.CREATE_POSITION] = tapPositionI; 
-            dictParam[Core.Controllers.Actions.CreateUnit.CREATION_TYPE] = (long)type;
-            var newAction = new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.CreateUnit, dictParam);
-            var actionC = (Core.Controllers.Actions.Action)newAction.Control;
-            var possible = actionC.Possible(m_regionManagerController);
-
-            if (possible)
-            {
-                //actionC.Do (m_regionManagerController);
-                //m_worker.Queue.Enqueue (newAction);
-                DoAction(newAction);
-            }
-        }
-
-		/// <summary>
-		/// Creates the building at a given Location and Building Type.
-		/// </summary>
-		/// <param name="location">Given Location.</param>
-		/// <param name="type">Buildingtype.</param>
-        public void CreateBuilding(CCTileMapCoordinates location, long type)
-        {
-            var dictParam = new System.Collections.Generic.Dictionary<string,object>();
-            var tapMapCellPosition = new MapCellPosition(location);
-            var tapPosition = RegionView.GetCurrentGamePosition(tapMapCellPosition, CenterPosition.RegionPosition);
-            var tapPositionI = new PositionI((int)tapPosition.X, (int)tapPosition.Y);
-            dictParam[Core.Controllers.Actions.CreatBuilding.CREATE_POSITION] = tapPositionI; 
-            dictParam[Core.Controllers.Actions.CreatBuilding.CREATION_TYPE] = (long)type;
-			var newAction = new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.CreateBuilding, dictParam);
-            var actionC = (Core.Controllers.Actions.Action)newAction.Control;
-            var possible = actionC.Possible(m_regionManagerController);
-
-            if (possible)
-            {
-                //actionC.Do (m_regionManagerController);
-                //m_worker.Queue.Enqueue (newAction);      
-                DoAction(newAction);
-            }
-        }
 
         #region Scheduling
 
