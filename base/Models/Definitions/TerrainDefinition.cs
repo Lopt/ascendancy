@@ -4,25 +4,8 @@ namespace Core.Models.Definitions
 {
     public class TerrainDefinition : Definition
     {
-        public enum TerrainDefinitionType
-        {
-            // Terrain Range 0-99
-            Water = 0,
-            Buildings = 1,
-            Woods = 2,
-            Grassland = 3,
-            Fields = 4,
-            Streets = 5,
-            NotDefined = 6,
-            Forbidden = 7,
-            Town = 8,
-            Glacier = 9,
-            Beach = 10,
-            Park = 11,
-            Invalid = 12
-        }
 
-        public TerrainDefinition(TerrainDefinitionType terrainType,
+        public TerrainDefinition(EntityType terrainType,
                                  int[] ressources, bool buildable = true,
                                  bool walkable = true, int travelCost = 1)
             : base((int)terrainType)
@@ -30,7 +13,6 @@ namespace Core.Models.Definitions
             Ressources = ressources;
             Buildable = buildable;
             Walkable = walkable;
-            TerrainType = terrainType;
             TravelCost = travelCost;
         }
 
@@ -40,11 +22,6 @@ namespace Core.Models.Definitions
             private set;
         }
 
-        public TerrainDefinitionType TerrainType
-        {
-            get;
-            private set;
-        }
 
         public bool Buildable
         {

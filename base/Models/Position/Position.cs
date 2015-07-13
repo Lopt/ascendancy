@@ -68,9 +68,6 @@ namespace Core.Models
             }
         }
 
-
-
-
         public override bool Equals(Object obj)
         {
             var pos = (Position)obj;

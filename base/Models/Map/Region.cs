@@ -69,7 +69,7 @@ namespace Core.Models
             if (value == null)
             {
                 return (TerrainDefinition)World.Instance.DefinitionManager.GetDefinition(
-                    (int)TerrainDefinition.TerrainDefinitionType.Forbidden);
+                    (int)EntityType.Forbidden);
             }
             return value;
         }

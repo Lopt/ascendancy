@@ -95,11 +95,11 @@ namespace client.Common.Views
             var entity = region.GetEntity(cellPosition);
             if (entity != null)
             {
-				if (entity.Definition.Type == Core.Models.Definitions.Definition.DefinitionType.Unit)
+				if (entity.Definition.Category == Core.Models.Definitions.Category.Unit)
                 {
                     SetUnit(mapCoordinat, entity);
                 }
-				if (entity.Definition.Type == Core.Models.Definitions.Definition.DefinitionType.Building)
+				if (entity.Definition.Category == Core.Models.Definitions.Category.Building)
                 {
                     SetBuilding(mapCoordinat, entity);
                 }

@@ -77,7 +77,7 @@ namespace Core.Controllers.Actions
 
             // create the new entity and link to the correct account
             var entity = new Core.Models.Entity(IdGenerator.GetId(),
-                             new UnitDefinition(UnitDefinition.UnitDefinitionType.Headquarter,
+                new UnitDefinition(EntityType.Headquarter,
                                  actionParameter, 
                                  0, 0, 0, 0),
                              action.Account,
