@@ -15,6 +15,7 @@ namespace client.Common.Views
             RegionLoaded,
             EntitiesLoaded,
             Done,
+			Failure,
         }
 
         public Phases Phase
@@ -33,6 +34,17 @@ namespace client.Common.Views
 
             InitWorld();
         }
+
+		void InitWorld()
+		{
+			var initNet = Controllers.NetworkController.Instance;
+			var initGeo = Models.Geolocation.Instance;
+
+			var world = @base.model.World.Instance;
+			var controller = @base.control.Controller.Instance;
+			controller.RegionManagerController = new client.Common.Manager.RegionManagerController();      
+			controller.DefinitionManagerController = new client.Common.Manager.DefinitionManagerController();
+		}
 
 
 		public async Task<@base.model.Account> InitLoadingAsync()
@@ -61,20 +73,14 @@ namespace client.Common.Views
 
             }
             else
-            {
+			{
+				Phase = Phases.Failure;
                 throw new NotImplementedException("Login failure");
             }
 			return account;
         }
 
 
-        void InitWorld()
-        {
-            var world = @base.model.World.Instance;
-            var controller = @base.control.Controller.Instance;
-            controller.RegionManagerController = new client.Common.Manager.RegionManagerController();      
-            controller.DefinitionManagerController = new client.Common.Manager.DefinitionManagerController();
-        }
 
         async Task<@base.model.Account> LogInAsync()
         {

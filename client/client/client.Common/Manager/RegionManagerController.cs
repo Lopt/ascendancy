@@ -12,15 +12,13 @@ namespace client.Common.Manager
     {
         public RegionManagerController()
         {
-            m_NetworkController = NetworkController.Instance;
-            m_Geolocation = Geolocation.Instance;
         }
 
         #region Regions
 
         public Region GetRegionByGeolocator()
         {
-            var geolocationPosition = m_Geolocation.CurrentGamePosition;
+            var geolocationPosition = Geolocation.Instance.CurrentGamePosition;
             return GetRegionByGamePosition(geolocationPosition);
         }
 
@@ -47,9 +45,9 @@ namespace client.Common.Manager
             string path = ReplacePath(ClientConstants.REGION_SERVER_PATH, region.RegionPosition);
             TerrainDefinition[,] terrain = null;
 
-            await m_NetworkController.LoadTerrainsAsync(path);
+            await NetworkController.Instance.LoadTerrainsAsync(path);
 
-            terrain = JsonToTerrain(m_NetworkController.JsonTerrainsString);
+            terrain = JsonToTerrain(NetworkController.Instance.JsonTerrainsString);
 
             if (terrain != null)
                 region.AddTerrain(terrain);
@@ -59,7 +57,7 @@ namespace client.Common.Manager
 
         public async Task LoadRegionsAsync()
         {
-            await LoadRegionsAsync(m_Geolocation.CurrentRegionPosition);
+            await LoadRegionsAsync(Geolocation.Instance.CurrentRegionPosition);
         }
 
         public async Task LoadRegionsAsync(RegionPosition regionPosition)
@@ -79,7 +77,7 @@ namespace client.Common.Manager
 
         public async Task<bool> DoActionAsync(@base.model.Position currentGamePosition, @base.model.Action[] actions)
         {
-            await m_NetworkController.DoActionsAsync(currentGamePosition, actions);
+            await NetworkController.Instance.DoActionsAsync(currentGamePosition, actions);
             await EntityManagerController.Instance.LoadEntitiesAsync(currentGamePosition, currentGamePosition.RegionPosition);
             return true;
         }
@@ -114,8 +112,6 @@ namespace client.Common.Manager
 
         #region private Fields
 
-        private NetworkController m_NetworkController;
-        private Geolocation m_Geolocation;
 
         #endregion
     }
