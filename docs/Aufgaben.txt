@@ -32,6 +32,8 @@ Einheiten erstellen überschreibt manchmal andere bestehende Einheiten
 #################### 10 ####################
 Beim Einheiten erstellen muss das Gebäude überprüft werdens (Existiert da überhaupt eines, ist es vom eigenen Account)
 
+#################### 11 ####################
+Der Start ohne Internetverbindung lässt App abstürzen
 
 ########################################################################################################################
 ########################################                Done                    ########################################
