@@ -1482,7 +1482,7 @@ namespace SQLite
 						throw SQLiteException.New (r, msg);
 					} 
 				} 
-				fi nally {
+				finally {
 				 	Handle = NullHandle;
 				 	_open = false;
 				}
