@@ -173,7 +173,6 @@
     <Folder Include="Assets\Content\images\hd\" />
     <Folder Include="Assets\Content\images\ld\" />
     <Folder Include="Resources\drawable-hdpi\" />
-    <Folder Include="Resources\Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
 </Project>
