@@ -34,8 +34,10 @@ namespace Core.Controllers.Actions
         /// </summary>
         /// <param name="regionManagerC"> Access to maybe changed Regions.</param>
         /// <returns> Returns <see cref="System.Collections.Concurrent.ConcurrentBag<t>"/> with the affected region. </returns>
-        override public ConcurrentBag<Core.Models.Region> GetAffectedRegions(RegionManagerController regionManagerC)
+        override public ConcurrentBag<Core.Models.Region> GetAffectedRegions()
         {
+            var regionManagerC = Controller.Instance.RegionManagerController;
+
             var action = (Core.Models.Action)Model;
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
 
@@ -47,8 +49,10 @@ namespace Core.Controllers.Actions
         /// </summary>
         /// <param name="regionManagerC"></param>
         /// <returns> True if the Headquarte is buildable at the current position, otherwise false.</returns>
-        public override bool Possible(RegionManagerController regionManagerC)
+        public override bool Possible()
         {   
+            var regionManagerC = Controller.Instance.RegionManagerController;
+
             var action = (Core.Models.Action)Model;  
                         
             if (action.Account.Headquarters.Count == 0)
@@ -67,8 +71,10 @@ namespace Core.Controllers.Actions
         /// </summary>
         /// <param name="regionManagerC"></param>
         /// <returns> Returns <see cref="System.Collections.Concurrent.ConcurrentBag<t>"/> class with the affected region./></returns>
-        public override ConcurrentBag<Core.Models.Region> Do(RegionManagerController regionManagerC)
+        public override ConcurrentBag<Core.Models.Region> Do()
         {   
+            var regionManagerC = Controller.Instance.RegionManagerController;
+
             string[] actionParameter = { "CreateUnits" };
             
             var action = (Core.Models.Action)Model;
@@ -95,7 +101,7 @@ namespace Core.Controllers.Actions
         /// </summary>
         /// <param name="regionManagerC"></param>
         /// <returns></returns>
-        public override bool Catch(RegionManagerController regionManagerC)
+        public override bool Catch()
         {
             throw new NotImplementedException();
         }

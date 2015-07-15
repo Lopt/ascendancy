@@ -44,8 +44,10 @@ namespace Core.Controllers.Actions
         /// </summary>
         /// <returns>The affected regions.</returns>
         /// <param name="regionManagerC">Region manager c.</param>
-        public override ConcurrentBag<Core.Models.Region> GetAffectedRegions(RegionManagerController regionManagerC)
+        public override ConcurrentBag<Core.Models.Region> GetAffectedRegions()
         {
+            var regionManagerC = Controller.Instance.RegionManagerController;
+
             var Bag = new ConcurrentBag<Core.Models.Region>();
 
             var action = (Core.Models.Action)Model;
@@ -67,7 +69,7 @@ namespace Core.Controllers.Actions
         /// Returns true if the action is even possible.
         /// </summary>
         /// <param name="regionManagerC">Region manager c.</param>
-        public override bool Possible(RegionManagerController regionManagerC)
+        public override bool Possible()
         {
             var action = (Core.Models.Action)Model;
 
@@ -94,8 +96,10 @@ namespace Core.Controllers.Actions
         /// Returns set of changed Regions if everything worked, otherwise null
         /// </summary>
         /// <param name="regionManagerC">Region manager c.</param>
-        public override ConcurrentBag<Core.Models.Region> Do(RegionManagerController regionManagerC)
+        public override ConcurrentBag<Core.Models.Region> Do()
         {
+            var regionManagerC = Controller.Instance.RegionManagerController;
+
             var Bag = new ConcurrentBag<Core.Models.Region>();
 
             var action = (Core.Models.Action)Model;
@@ -121,7 +125,7 @@ namespace Core.Controllers.Actions
         /// <summary>
         /// In case of errors, revert the world data to a valid state.
         /// </summary> 
-        public override bool Catch(RegionManagerController regionManagerC)
+        public override bool Catch()
         {
             throw new NotImplementedException();
         }

@@ -22,7 +22,7 @@ namespace Core.Controllers.Actions
         /// <param name="actionType">Action type.</param>
         /// <param name="regions">Affected Regions of this action.</param>
         /// <param name="parameters">Parameters.</param>
-        override public ConcurrentBag<Core.Models.Region> GetAffectedRegions(RegionManagerController regionManagerC)
+        override public ConcurrentBag<Core.Models.Region> GetAffectedRegions()
         {
             /*
             var action = (model.Action)Model;
@@ -47,7 +47,7 @@ namespace Core.Controllers.Actions
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
-        public override bool Possible(RegionManagerController regionManagerC)
+        public override bool Possible()
         {   
             return true;
         }
@@ -56,7 +56,7 @@ namespace Core.Controllers.Actions
         /// Apply action-related changes to the world.
         /// Returns false if something went terrible wrong
         /// </summary>
-        public override ConcurrentBag<Core.Models.Region> Do(RegionManagerController regionManagerC)
+        public override ConcurrentBag<Core.Models.Region> Do()
         {   
             var action = (Core.Models.Action)Model;
             return (ConcurrentBag<Core.Models.Region>)action.Parameters[REGIONS];
@@ -74,7 +74,7 @@ namespace Core.Controllers.Actions
         /// <summary>
         /// In case of errors, revert the world data to a valid state.
         /// </summary>
-        public override bool Catch(RegionManagerController regionManagerC)
+        public override bool Catch()
         {
             throw new NotImplementedException();
         }

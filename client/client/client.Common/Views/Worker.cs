@@ -13,6 +13,7 @@ namespace client.Common.Views
 
         public void Schedule(float frameTimesInSecond)
         {
+            
             if (Action != null)
             {
                 var actionV = (Views.Action.Action)Action.View;
@@ -24,13 +25,14 @@ namespace client.Common.Views
             }
             else if (Queue.TryDequeue(out Action))
             {
+                
                 var regionC = Core.Controllers.Controller.Instance.RegionManagerController;
                 var actionC = (Core.Controllers.Actions.Action)Action.Control;
                 var actionV = CreateActionView(Action);
-                var affectedRegions = actionC.GetAffectedRegions(regionC);
-                actionC.Possible(regionC);
+                var affectedRegions = actionC.GetAffectedRegions();
+                actionC.Possible();
                 actionV.BeforeDo();
-                actionC.Do(regionC);
+                actionC.Do();
             }
         }
 

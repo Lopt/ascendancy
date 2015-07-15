@@ -113,7 +113,7 @@ namespace client.Common.Views
 
                     var action = ActionHelper.MoveUnit(oldPositionI, endPositionI);
                     var actionC = (Core.Controllers.Actions.Action)action.Control;
-                    var possible = actionC.Possible(Core.Controllers.Controller.Instance.RegionManagerController);
+                    var possible = actionC.Possible();
                     if (possible)
                     {
                         m_worldLayer.DoAction(action);
@@ -127,7 +127,7 @@ namespace client.Common.Views
                     {
                         var action2 = ActionHelper.CreateEntity(oldPositionI, def);
                         var actionC2 = (Core.Controllers.Actions.Action) action2.Control;
-                        if (actionC2.Possible(Core.Controllers.Controller.Instance.RegionManagerController))
+                        if (actionC2.Possible())
                         {
                             m_worldLayer.DoAction(action2);
                         }
