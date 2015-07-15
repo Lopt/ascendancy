@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace @base.connection
+namespace Core.Connections
 {
     public class LoadRegionsRequest : Request
     {

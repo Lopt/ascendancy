@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace @base.connection
+namespace Core.Connections
 {
     public class Response
     {

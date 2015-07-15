@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
-namespace @base.connection
+namespace Core.Connections
 {
     public class LoginResponse
     {
