@@ -49,7 +49,13 @@ namespace client.Common.Helper
 
         }
 
-
+        static public Core.Models.Action MoveUnit(PositionI start, PositionI end)
+        {
+            var dictParam = new System.Collections.Generic.Dictionary<string,object>();
+            dictParam[Core.Controllers.Actions.MoveUnit.START_POSITION] = start;
+            dictParam[Core.Controllers.Actions.MoveUnit.END_POSITION] = end;
+            return new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.MoveUnit, dictParam);
+        }
     }
 }
 

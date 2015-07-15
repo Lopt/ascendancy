@@ -85,21 +85,24 @@ namespace client.Common.Views
         public void OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             var oldStart = m_startLocation;
+            var oldCoord = m_worldLayer.ClosestTileCoordAtNodePosition(oldStart);
+
+            var oldMapCell = new Models.MapCellPosition(oldCoord);
+            var oldPosition = m_worldLayer.RegionView.GetCurrentGamePosition(oldMapCell, m_worldLayer.CenterPosition.RegionPosition);
+            var oldPositionI = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
+
+
             m_startLocation = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
             var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
-            var oldCoord = m_worldLayer.ClosestTileCoordAtNodePosition(oldStart);
 
 
             switch (m_touchGesture)
             {
                 case TouchGesture.MoveUnit:
 					
-                    var dictParam = new System.Collections.Generic.Dictionary<string,object>();
-
                     var startMapCellPosition = new client.Common.Models.MapCellPosition(oldCoord);
                     var startPosition = m_worldLayer.RegionView.GetCurrentGamePosition(startMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
                     var startPositionI = new Core.Models.PositionI((int)startPosition.X, (int)startPosition.Y);
-                    dictParam[Core.Controllers.Actions.MoveUnit.START_POSITION] = startPositionI;
 
                     var location = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
                     var endCoord = m_worldLayer.ClosestTileCoordAtNodePosition(location);
@@ -107,9 +110,8 @@ namespace client.Common.Views
                     var endMapCellPosition = new client.Common.Models.MapCellPosition(endCoord);
                     var endPosition = m_worldLayer.RegionView.GetCurrentGamePosition(endMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
                     var endPositionI = new Core.Models.PositionI((int)endPosition.X, (int)endPosition.Y);
-                    dictParam[Core.Controllers.Actions.MoveUnit.END_POSITION] = endPositionI;
 
-                    var action = new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.MoveUnit, dictParam);
+                    var action = ActionHelper.MoveUnit(oldPositionI, endPositionI);
                     var actionC = (Core.Controllers.Actions.Action)action.Control;
                     var possible = actionC.Possible(Core.Controllers.Controller.Instance.RegionManagerController);
                     if (possible)
@@ -120,14 +122,10 @@ namespace client.Common.Views
                     break;
 
                 case (TouchGesture.Menu):
-                    var tapMapCellPosition = new Models.MapCellPosition(oldCoord);
-                    var tapPosition = m_worldLayer.RegionView.GetCurrentGamePosition(tapMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-                    var tapPositionI = new Core.Models.PositionI((int)tapPosition.X, (int)tapPosition.Y);
-
                     var def = m_menuView.GetSelectedDefinition(coord);
                     if (def != null)
                     {
-                        var action2 = ActionHelper.CreateEntity(tapPositionI, def);
+                        var action2 = ActionHelper.CreateEntity(oldPositionI, def);
                         var actionC2 = (Core.Controllers.Actions.Action) action2.Control;
                         if (actionC2.Possible(Core.Controllers.Controller.Instance.RegionManagerController))
                         {
@@ -206,7 +204,6 @@ namespace client.Common.Views
 
                         m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
                         m_menuView.DrawMenu();
-
                         m_touchGesture = TouchGesture.Menu;
                     }
 
