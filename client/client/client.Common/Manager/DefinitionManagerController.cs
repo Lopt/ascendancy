@@ -21,7 +21,6 @@ namespace client.Common.Manager
 		/// </summary>
 		public DefinitionManagerController()
 		{
-			m_Network = NetworkController.Instance;
 		}
 
 		/// <summary>
@@ -30,7 +29,7 @@ namespace client.Common.Manager
 		/// </summary>
 		public async Task LoadTerrainDefinitionsAsync()
 		{
-            var terrainDefintions = await m_Network.LoadTerrainTypesAsync();
+            var terrainDefintions = await NetworkController.Instance.LoadTerrainTypesAsync();
 			foreach (var terrain in terrainDefintions)
 			{
 				DefinitionManager.AddDefinition(terrain);
@@ -43,7 +42,7 @@ namespace client.Common.Manager
 		/// </summary>
 		public async Task LoadUnitDefinitionsAsync()
 		{
-			var unitDefinitions = await m_Network.LoadUnitTypesAsync();
+            var unitDefinitions = await NetworkController.Instance.LoadUnitTypesAsync();
             foreach (var unitType in unitDefinitions)
 			{
 				DefinitionManager.AddDefinition(unitType);
@@ -55,11 +54,6 @@ namespace client.Common.Manager
 
 
 		#region private Fields
-
-		/// <summary>
-		/// The network controller.
-		/// </summary>
-		private NetworkController m_Network;
 
 		#endregion
 	}

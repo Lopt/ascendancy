@@ -1,16 +1,14 @@
 ﻿using System;
 
-using CocosSharp;
 using client.Common.Views;
 using client.Common.Models;
 using Core.Models;
-
 
 namespace client.Common.Helper
 {
     public class PositionHelper
     {
-        static public CCTileMapCoordinates PositionToTileMapCoordinates(Position centerPosition, PositionI position)
+        static public CocosSharp.CCTileMapCoordinates PositionToTileMapCoordinates(Position centerPosition, PositionI position)
         {
             return PositionToMapCellPosition(centerPosition, position).GetTileMapCoordinates();
         }

@@ -67,7 +67,6 @@ namespace client.Common.Views
             UnitLayer = WorldTileMap.LayerNamed(ClientConstants.LAYER_UNIT);
             MenuLayer = WorldTileMap.LayerNamed(ClientConstants.LAYER_MENU);
 
-
             ClearLayers();
 
             RegionView.TerrainLayer = TerrainLayer;
@@ -80,16 +79,26 @@ namespace client.Common.Views
             this.AddChild(WorldTileMap);
 
 
-            this.Schedule(CheckGeolocation);
-
-
             m_worker = new Views.Worker(this);
             EntityManagerController.Worker = m_worker;
 
             Schedule(m_worker.Schedule);
+            Schedule(CheckGeolocation);
 
 
         }
+
+        /// <summary>
+        /// Clears the Layers for initialization.
+        /// </summary>
+        void ClearLayers()
+        {
+            var coordHelper = new CCTileMapCoordinates(0, 0);
+            BuildingLayer.RemoveTile(coordHelper);
+            UnitLayer.RemoveTile(coordHelper);
+            MenuLayer.RemoveTile(coordHelper);
+        }
+
 
         #region overide
 
@@ -107,13 +116,15 @@ namespace client.Common.Views
         #endregion
 
 
-        #region Scheduling
 
         public void UglyDraw()
         {
             //TODO: find better solution
             WorldTileMap.TileLayersContainer.Position += new CCPoint(0.0001f, 0.0001f);
         }
+
+
+        #region Scheduling
 
         void CheckGeolocation(float frameTimesInSecond)
         {
@@ -190,30 +201,9 @@ namespace client.Common.Views
             //DrawRegionsAsync (position);
         }
 
-        /// <summary>
-		/// Clears the Layers for initialization.
-        /// </summary>
-        void ClearLayers()
-        {
-            var coordHelper = new CCTileMapCoordinates(0, 0);
-            BuildingLayer.RemoveTile(coordHelper);
-            UnitLayer.RemoveTile(coordHelper);
-            MenuLayer.RemoveTile(coordHelper);
-        }
 
 
 
-        public void CheckCenterRegion()
-        {  
-            var mapCell = GetMapCell(TerrainLayer, new CCPoint(VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
-
-            if (RegionView.IsCellInOutsideRegion(mapCell))
-            {
-                CenterPosition = RegionView.GetCurrentGamePosition(mapCell, CenterPosition.RegionPosition);
-                DrawRegionsAsync(CenterPosition);
-            }
-
-        }
 
         public void MoveWorld(CCPoint diff)
         {
@@ -241,6 +231,9 @@ namespace client.Common.Views
         }
 
 
+
+
+
         void SetMapAnchor(Position anchorPosition)
         {
             var mapCellPosition = PositionHelper.PositionToMapCellPosition(CenterPosition, new PositionI(anchorPosition));//new MapCellPosition(RegionView.GetCurrentTileInMap(anchorPosition));
@@ -256,6 +249,17 @@ namespace client.Common.Views
         }
 
 
+        public void CheckCenterRegion()
+        {  
+            var mapCell = GetMapCell(TerrainLayer, new CCPoint(VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
+
+            if (RegionView.IsCellInOutsideRegion(mapCell))
+            {
+                CenterPosition = RegionView.GetCurrentGamePosition(mapCell, CenterPosition.RegionPosition);
+                DrawRegionsAsync(CenterPosition);
+            }
+
+        }
 
 
 

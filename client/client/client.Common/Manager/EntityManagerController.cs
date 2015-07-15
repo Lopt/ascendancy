@@ -20,42 +20,46 @@ namespace client.Common.Manager
 
 
 
-        private EntityManagerController ()
+        private EntityManagerController()
         {
-            Entities = new Dictionary<int, Entity> ();
+            Entities = new Dictionary<int, Entity>();
         }
 
 
         #region Entities
 
-        public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition centerRegionPosition)
+        public async Task LoadEntitiesAsync(Position currentGamePosition, RegionPosition centerRegionPosition)
         {
-			var regionManagerC = (Manager.RegionManagerController) Core.Controllers.Controller.Instance.RegionManagerController;
+            var regionManagerC = (Manager.RegionManagerController)Core.Controllers.Controller.Instance.RegionManagerController;
 
-            var worldRegions = regionManagerC.GetWorldNearRegionPositions (centerRegionPosition);
+            var worldRegions = regionManagerC.GetWorldNearRegionPositions(centerRegionPosition);
             var listRegions = new RegionPosition[25];
             int index = 0;
-            foreach (var regionPosition in worldRegions) {
-                listRegions [index] = regionPosition;
+            foreach (var regionPosition in worldRegions)
+            {
+                listRegions[index] = regionPosition;
                 ++index;
             }
 
-            await LoadEntitiesAsync (currentGamePosition, listRegions);
+            await LoadEntitiesAsync(currentGamePosition, listRegions);
         }
 
 
 
-        public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition[] listRegions)
+        public async Task LoadEntitiesAsync(Position currentGamePosition, RegionPosition[] listRegions)
         {
 
-            var response = await NetworkController.Instance.LoadEntitiesAsync (currentGamePosition, listRegions);
+            var response = await NetworkController.Instance.LoadEntitiesAsync(currentGamePosition, listRegions);
             var entities = response.Entities;
-            if (entities != null) {
-                foreach (var regionEntities in entities) {
-                    foreach (var entity in regionEntities) {
-						var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion (entity.Position.RegionPosition);
-                        region.AddEntity (DateTime.Now, entity);
-                        Add (entity);
+            if (entities != null)
+            {
+                foreach (var regionEntities in entities)
+                {
+                    foreach (var entity in regionEntities)
+                    {
+                        var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(entity.Position.RegionPosition);
+                        region.AddEntity(DateTime.Now, entity);
+                        Add(entity);
 
                     }
                 }
@@ -63,43 +67,44 @@ namespace client.Common.Manager
 
             if (response.Actions != null)
             {
-                var actions = new HashSet<Core.Models.Action> ();
+                var actions = new HashSet<Core.Models.Action>();
                 foreach (var regions in response.Actions)
                 {
                     foreach (var action in regions)
                     {
-                        actions.Add (action);
+                        actions.Add(action);
                     }   
                 }
 
-                var sortedActions = new SortedSet<Core.Models.Action> (actions, new Core.Models.Action.ActionComparer());
+                var sortedActions = new SortedSet<Core.Models.Action>(actions, new Core.Models.Action.ActionComparer());
 
                 foreach (var action in sortedActions)
                 {
-                    Worker.Queue.Enqueue (action);
+                    Worker.Queue.Enqueue(action);
                 }
             }
         }
 
         #endregion
 
-        Entity GetEntity (int Id)
+        Entity GetEntity(int Id)
         {
             Entity entity = null;
-            Entities.TryGetValue (Id, out entity);
+            Entities.TryGetValue(Id, out entity);
             return entity;
         }
 
-        void Remove (Entity entity)
+        void Remove(Entity entity)
         {
-            if (Entities.ContainsKey (entity.ID)) {
-                Entities.Remove (entity.ID);
+            if (Entities.ContainsKey(entity.ID))
+            {
+                Entities.Remove(entity.ID);
             }
         }
 
-        void Add (Entity entity)
+        void Add(Entity entity)
         {
-            Entities [entity.ID] = entity;
+            Entities[entity.ID] = entity;
         }
 
         public static Dictionary<int, Entity> Entities;

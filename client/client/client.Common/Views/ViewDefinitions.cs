@@ -157,7 +157,6 @@ namespace client.Common.Views
         private Dictionary<EntityType, CCTileGidAndFlags> m_EntitiesGid;
         private Dictionary<EntityType, CCTileGidAndFlags> m_EnemyEntitiesGid;
         private Dictionary<EntityType, CCTileGidAndFlags> m_MenuEntitiesGid;
-
         private Dictionary<EntityType, CCTileGidAndFlags> m_TerrainsGid;
 
         #endregion

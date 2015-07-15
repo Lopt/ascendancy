@@ -84,20 +84,17 @@ namespace client.Common.Manager
 
         public RegionPosition[,] GetWorldNearRegionPositions(RegionPosition regionPosition)
         {
-            int offsetX = -2;
-            int offsetY = -2;
+            int halfX = ClientConstants.DRAW_REGIONS_X / 2;
+            int halfY = ClientConstants.DRAW_REGIONS_X / 2;
 
             RegionPosition[,] worldRegion = new RegionPosition[5, 5];
-            for (int x = 0; x < 5; x++)
+            for (int x = -halfX; x < halfX; x++)
             {
-                for (int y = 0; y < 5; y++)
+                for (int y = -halfY; y < halfY; y++)
                 {
-                    worldRegion[x, y] = new RegionPosition(regionPosition.RegionX + offsetX, regionPosition.RegionY + offsetY);
-                    offsetY += 1;
+                    worldRegion[x + halfX, y + halfY] = new RegionPosition(regionPosition.RegionX + halfX,
+                           regionPosition.RegionY + halfY);
                 }
-									 
-                offsetX += 1;
-                offsetY = -2;
             }
 
             return worldRegion;

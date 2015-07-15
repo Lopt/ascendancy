@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ModernHttpClient;
-using XLabs.Platform.Services.Geolocation;
 
 using Core.Models.Definitions;
 using Core.Models;
@@ -71,24 +70,25 @@ namespace client.Common.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Tries to call the given url. Throws an exception when the website returns an error message (e.g. 404)
+        /// </summary>
+        /// <returns>json string from server</returns>
+        /// <param name="url">Which URL should be called</param>
         private async Task<string> RequestAsync(string url)
         {
-            string json = null;
             try
             {
                 HttpResponseMessage response = await m_client.GetAsync(new Uri(url));
-                if (response != null)
-                {
-                    response.EnsureSuccessStatusCode();
-                    return await response.Content.ReadAsStringAsync();
-                }
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadAsStringAsync();
             }
             catch (Exception ex)
             {
                 ExceptionMessage = ex.Message;
                 throw ex;
             }
-            return json;
         }
 
         /// <summary>
@@ -132,28 +132,22 @@ namespace client.Common.Controllers
         /// <param name="password">Password.</param>
         public async Task<Account> LoginAsync(Core.Models.Position currentGamePosition, string user, string password)
         {
-            Account account = null;
             var request = new Core.Connections.LoginRequest(currentGamePosition, user, password);
             var json = JsonConvert.SerializeObject(request);
 
             var path = ClientConstants.LOGIN_PATH;
             path = path.Replace(ClientConstants.LOGIC_SERVER_JSON, json);
-
-            var newPath = ClientConstants.LOGIC_SERVER + path;
-            var jsonFromServer = await RequestAsync(newPath);
+            var jsonFromServer = await RequestAsync(path);
 
             var loginResponse = JsonConvert.DeserializeObject<Core.Connections.LoginResponse>(jsonFromServer);
             if (loginResponse.Status == Core.Connections.LoginResponse.ReponseStatus.OK)
             {
                 m_sessionID = loginResponse.SessionID;
-                account = new Account(loginResponse.AccountId, user);
+                return new Account(loginResponse.AccountId, user);
             }
-            else
-            {
-                ExceptionMessage = "Login failure";
-            }
+            ExceptionMessage = "Login failure";
 
-            return account;
+            return null;
         }
 
         /// <summary>
@@ -169,8 +163,6 @@ namespace client.Common.Controllers
 
             var path = ClientConstants.LOAD_REGIONS_PATH;
             path = path.Replace(ClientConstants.LOGIC_SERVER_JSON, json);
-            path = ClientConstants.LOGIC_SERVER + path;
-
             var jsonFromServer = await RequestAsync(path);
             var entitiesResponse = JsonConvert.DeserializeObject<Core.Connections.Response>(jsonFromServer);
 
@@ -188,7 +180,6 @@ namespace client.Common.Controllers
 
             var path = ClientConstants.DO_ACTIONS_PATH;
             path = path.Replace(ClientConstants.LOGIC_SERVER_JSON, json);
-            path = ClientConstants.LOGIC_SERVER + path;  
             var jsonFromServer = await RequestAsync(path);
 
 

@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-namespace client.Common.Views.Action
+namespace client.Common.Views.Actions
 {
-    public class MoveUnit : @client.Common.Views.Action.Action
+    public class MoveUnit : client.Common.Views.Actions.Action
     {
         public MoveUnit(Core.Models.ModelEntity model, WorldLayer worldLayer)
             : base(model)

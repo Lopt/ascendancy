@@ -1,5 +1,4 @@
 ﻿using System;
-using CocosSharp;
 
 namespace client.Common.Helper
 {
@@ -18,15 +17,17 @@ namespace client.Common.Helper
         public const string IMAGES_HD = "images/hd";
         public const string IMAGES_LD = "images/ld";
 			   
-        public const string REGION_SERVER_PATH = "http://derfalke.no-ip.biz/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
-
-
-        public const string UNIT_TYPES_SERVER_PATH = "http://derfalke.no-ip.biz/unit.json";
-        public const string TERRAIN_TYPES_SERVER_PATH = "http://derfalke.no-ip.biz/terrain.json";
         public const string LOGIC_SERVER = "http://derfalke.no-ip.biz:9000";
-        public const string LOGIN_PATH = "/Login?json=$JSON";
-        public const string LOAD_REGIONS_PATH = "/LoadRegions?json=$JSON";
-        public const string DO_ACTIONS_PATH = "/DoActions?json=$JSON";
+        public const string DATA_SERVER = "http://derfalke.no-ip.biz";
+
+        public const string REGION_SERVER_PATH = DATA_SERVER + "/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
+
+
+        public const string UNIT_TYPES_SERVER_PATH = DATA_SERVER + "/unit.json";
+        public const string TERRAIN_TYPES_SERVER_PATH = DATA_SERVER + "/terrain.json";
+        public const string LOGIN_PATH = LOGIC_SERVER + "/Login?json=$JSON";
+        public const string LOAD_REGIONS_PATH = LOGIC_SERVER + "/LoadRegions?json=$JSON";
+        public const string DO_ACTIONS_PATH = LOGIC_SERVER + "/DoActions?json=$JSON";
         public const string LOGIC_SERVER_JSON = "$JSON";
 
         #region TileMap

@@ -16,7 +16,7 @@ namespace client.Common.Views
             
             if (Action != null)
             {
-                var actionV = (Views.Action.Action)Action.View;
+                var actionV = (client.Common.Views.Actions.Action)Action.View;
                 if (actionV.Schedule(frameTimesInSecond))
                 {
                     // action was successfully executed, let the next be executed
@@ -36,26 +36,26 @@ namespace client.Common.Views
             }
         }
 
-        Views.Action.Action CreateActionView(Core.Models.Action action)
+        client.Common.Views.Actions.Action CreateActionView(Core.Models.Action action)
         {
             switch (action.Type)
             {
                 case(Core.Models.Action.ActionType.CreateUnit):
-                    return new Views.Action.CreateUnit(action, WorldLayer);
+                    return new client.Common.Views.Actions.CreateUnit(action, WorldLayer);
 
                 case(Core.Models.Action.ActionType.MoveUnit):
-                    return new Views.Action.MoveUnit(action, WorldLayer);
+                    return new client.Common.Views.Actions.MoveUnit(action, WorldLayer);
 
                 case(Core.Models.Action.ActionType.CreateHeadquarter):
                     throw new NotImplementedException();
 
                 case(Core.Models.Action.ActionType.CreateBuilding):
-                    return new Views.Action.CreateBuilding(action, WorldLayer);
+                    return new client.Common.Views.Actions.CreateBuilding(action, WorldLayer);
 
             }
 
 
-            return new Views.Action.Action(action);
+            return new client.Common.Views.Actions.Action(action);
         }
 
         public ConcurrentQueue<Core.Models.Action> Queue;
