@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace @base.connection
+namespace Core.Connections
 {
     public class DoActionsRequest : Request
     {

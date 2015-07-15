@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System;
+using System.Collections.Generic;
 
 
 namespace client.Common.Manager
@@ -29,30 +30,21 @@ namespace client.Common.Manager
 		/// </summary>
 		public async Task LoadTerrainDefinitionsAsync()
 		{
-			await m_Network.LoadTerrainTypesAsync(ClientConstants.TERRAIN_TYPES_SERVER_PATH);
-
-			var json = m_Network.JsonTerrainTypeString;
-			var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<Core.Models.Definitions.TerrainDefinition>>(json);
-
+            var terrainDefintions = await m_Network.LoadTerrainTypesAsync();
 			foreach (var terrain in terrainDefintions)
 			{
 				DefinitionManager.AddDefinition(terrain);
-
 			}
 		}
 
 		/// <summary>
-		/// Loads the Entity definitions async, serialize the definitions and 
+		/// Loads the Unit definitions async, serialize the definitions and 
 		/// add the definition in to the definition manager.
 		/// </summary>
-		public async Task LoadEntityDefinitionsAsync()
+		public async Task LoadUnitDefinitionsAsync()
 		{
-			await m_Network.LoadTerrainTypesAsync(ClientConstants.ENTITY_TYPES_SERVER_PATH);
-
-			var json = m_Network.JsonTerrainTypeString;
-			var unitDefintions = JsonConvert.DeserializeObject<ObservableCollection<Core.Models.Definitions.UnitDefinition>>(json);
-
-			foreach (var unitType in unitDefintions)
+			var unitDefinitions = await m_Network.LoadUnitTypesAsync();
+            foreach (var unitType in unitDefinitions)
 			{
 				DefinitionManager.AddDefinition(unitType);
 

@@ -18,11 +18,11 @@ namespace server.control
             var region = regionManager.GetRegion(regionPosition);
             if (!region.Exist)
             {
-                var path = ReplacePath(ServerConstants.REGION_FILE, regionPosition);
+                var path = Core.Helper.NetworkHelper.ReplacePath(ServerConstants.REGION_FILE, regionPosition);
                 try
                 {
                     string json = System.IO.File.ReadAllText(path);
-                    region.AddTerrain(JsonToTerrain(json));
+					region.AddTerrain(Core.Helper.NetworkHelper.JsonToTerrain(json));
                     regionManager.AddRegion(region);
                 }
                 catch (System.IO.DirectoryNotFoundException exception)

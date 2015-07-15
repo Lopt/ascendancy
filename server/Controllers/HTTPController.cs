@@ -20,9 +20,9 @@ namespace server.Controllers
         public string Login()
         {
             var json = Request["json"];
-            var loginRequest = JsonConvert.DeserializeObject<@base.connection.LoginRequest>(json);
+            var loginRequest = JsonConvert.DeserializeObject<Core.Connections.LoginRequest>(json);
 
-            var response = new @base.connection.LoginResponse();
+            var response = new Core.Connections.LoginResponse();
             var api = server.control.APIController.Instance;
 
             var account = api.Login(loginRequest.Username, loginRequest.Password);
@@ -31,11 +31,11 @@ namespace server.Controllers
                 var accountC = (@server.control.AccountController)account.Control;
                 response.SessionID = accountC.SessionID;
                 response.AccountId = account.ID;
-                response.Status = @base.connection.LoginResponse.ReponseStatus.OK;
+                response.Status = Core.Connections.LoginResponse.ReponseStatus.OK;
             }
             else
             {
-                response.Status = @base.connection.LoginResponse.ReponseStatus.ERROR;
+                response.Status = Core.Connections.LoginResponse.ReponseStatus.ERROR;
             }
 
             return JsonConvert.SerializeObject(response);
@@ -45,9 +45,9 @@ namespace server.Controllers
         public string LoadRegions()
         {
             var json = Request["json"];
-            var loadRegionRequest = JsonConvert.DeserializeObject<@base.connection.LoadRegionsRequest>(json);
+            var loadRegionRequest = JsonConvert.DeserializeObject<Core.Connections.LoadRegionsRequest>(json);
 
-            var response = new @base.connection.Response();
+            var response = new Core.Connections.Response();
             var api = server.control.APIController.Instance;
             var controller = Core.Controllers.Controller.Instance;
 
@@ -61,7 +61,7 @@ namespace server.Controllers
                 var regionActions = api.LoadRegions(account, loadRegionRequest.RegionPositions);
                 response.Entities = regionActions.EntityDict;
                 response.Actions = regionActions.ActionDict;
-                response.Status = @base.connection.Response.ReponseStatus.OK;
+                response.Status = Core.Connections.Response.ReponseStatus.OK;
             }
 
             return JsonConvert.SerializeObject(response);
@@ -70,9 +70,9 @@ namespace server.Controllers
         public string DoActions()
         {
             var json = Request["json"];
-            var doActionRequest = JsonConvert.DeserializeObject<@base.connection.DoActionsRequest>(json);
+            var doActionRequest = JsonConvert.DeserializeObject<Core.Connections.DoActionsRequest>(json);
 
-            var response = new @base.connection.Response();
+            var response = new Core.Connections.Response();
             var api = server.control.APIController.Instance;
             var controller = Core.Controllers.Controller.Instance;
 
@@ -83,7 +83,7 @@ namespace server.Controllers
                 doActionRequest.Actions.Count() <= Core.Models.Constants.MAX_ENTRIES_PER_CONNECTION)
             {
                 api.DoAction(account, doActionRequest.Actions);
-                response.Status = @base.connection.Response.ReponseStatus.OK;
+                response.Status = Core.Connections.Response.ReponseStatus.OK;
             }
 
             return JsonConvert.SerializeObject(response);

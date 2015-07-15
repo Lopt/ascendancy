@@ -201,7 +201,7 @@ namespace server.control
 
                 try
                 {
-                    var affectedRegions = actionC.GetAffectedRegions(regionManager);
+                    var affectedRegions = actionC.GetAffectedRegions();
                     foreach (var region in affectedRegions)
                     {
                         if (!region.Exist)
@@ -224,13 +224,13 @@ namespace server.control
                     {
                         return ActionReturn.RessourceBlocked;
                     }
-                    if (!actionC.Possible(regionManager))
+                    if (!actionC.Possible())
                     {
                         return ActionReturn.NotPossible;
                     }
 
                     action.ID = Core.Models.IdGenerator.GetId();
-                    var changedRegions = actionC.Do(regionManager);
+                    var changedRegions = actionC.Do();
                     if (changedRegions.Count == 0)
                     {
                         //actionC.Catch (regionStatesController.Next);

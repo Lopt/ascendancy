@@ -42,12 +42,7 @@ namespace client.Common.Manager
 
         private async Task LoadRegionAsync(Region region)
         {
-            string path = ReplacePath(ClientConstants.REGION_SERVER_PATH, region.RegionPosition);
-            TerrainDefinition[,] terrain = null;
-
-            await NetworkController.Instance.LoadTerrainsAsync(path);
-
-            terrain = JsonToTerrain(NetworkController.Instance.JsonTerrainsString);
+            TerrainDefinition[,] terrain = await NetworkController.Instance.LoadTerrainsAsync(region.RegionPosition);
 
             if (terrain != null)
                 region.AddTerrain(terrain);

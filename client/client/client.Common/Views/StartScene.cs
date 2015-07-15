@@ -62,7 +62,7 @@ namespace client.Common.Views
                 await entityManagerController.LoadTerrainDefinitionsAsync();
                 Phase = Phases.TerrainTypeLoaded;
 
-                await entityManagerController.LoadEntityDefinitionsAsync();
+                await entityManagerController.LoadUnitDefinitionsAsync();
                 Phase = Phases.EntitiesLoaded;
 
                 var regionManagerController = controller.RegionManagerController as client.Common.Manager.RegionManagerController;
