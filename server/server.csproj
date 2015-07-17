@@ -102,8 +102,6 @@
     <Folder Include="Content\" />
     <Folder Include="Properties\" />
     <Folder Include="scripts\" />
-    <Folder Include="Views\Shared\" />
-    <Folder Include="Views\HTTP\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB\DBBuildings.cs" />
