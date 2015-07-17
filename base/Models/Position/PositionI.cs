@@ -4,6 +4,10 @@ using Newtonsoft.Json.Linq;
 
 namespace Core.Models
 {
+    /// <summary>
+    /// Position in the Gameworld as Integer (so it is discrete).
+    /// Can be used to identify one field in the World.
+    /// </summary>
     public class PositionI
     {
         [JsonConstructor]

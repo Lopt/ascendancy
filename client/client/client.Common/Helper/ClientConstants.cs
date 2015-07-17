@@ -53,10 +53,10 @@ namespace client.Common.Helper
         public const short DRAW_REGIONS_X = 5;
         public const short DRAW_REGIONS_Y = 5;
 
-        public const double REDRAW_REGIONS_START_X = 1.5 * Core.Models.Constants.MAJOR_REGION_SIZE_X;
-        public const double REDRAW_REGIONS_END_X = 3.5 * Core.Models.Constants.MAJOR_REGION_SIZE_X;
-        public const double REDRAW_REGIONS_START_Y = 1.5 * Core.Models.Constants.MAJOR_REGION_SIZE_Y;
-        public const double REDRAW_REGIONS_END_Y = 3.5 * Core.Models.Constants.MAJOR_REGION_SIZE_Y;
+        public const double REDRAW_REGIONS_START_X = 1.5 * Core.Models.Constants.REGION_SIZE_X;
+        public const double REDRAW_REGIONS_END_X = 3.5 * Core.Models.Constants.REGION_SIZE_X;
+        public const double REDRAW_REGIONS_START_Y = 1.5 * Core.Models.Constants.REGION_SIZE_Y;
+        public const double REDRAW_REGIONS_END_Y = 3.5 * Core.Models.Constants.REGION_SIZE_Y;
 
 
         #endregion

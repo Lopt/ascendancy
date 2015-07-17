@@ -2,6 +2,10 @@
 
 namespace Core.Connections
 {
+    /// <summary>
+    /// Request class which should be used to send actions to the server.
+    /// Should be serialised before sending, will be deserialised after recieving.
+    /// </summary>
     public class DoActionsRequest : Request
     {
         public DoActionsRequest(Guid sessionID, Core.Models.Position position, Core.Models.Action[] actions)

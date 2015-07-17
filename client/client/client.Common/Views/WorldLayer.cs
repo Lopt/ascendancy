@@ -207,10 +207,10 @@ namespace client.Common.Views
         public void MoveWorld(CCPoint diff)
         {
             var anchor = WorldTileMap.TileLayersContainer.AnchorPoint;
-            diff.X = diff.X / WorldTileMap.TileLayersContainer.ContentSize.Width;
-            diff.Y = diff.Y / WorldTileMap.TileLayersContainer.ContentSize.Height;
-            anchor.X -= diff.X * 2;
-            anchor.Y -= diff.Y * 2;
+            diff.X = diff.X / WorldTileMap.TileLayersContainer.ScaledContentSize.Width;
+            diff.Y = diff.Y / WorldTileMap.TileLayersContainer.ScaledContentSize.Height;
+            anchor.X -= diff.X;
+            anchor.Y -= diff.Y;
             WorldTileMap.TileLayersContainer.AnchorPoint = anchor;
         }
 

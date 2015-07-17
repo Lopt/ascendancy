@@ -2,6 +2,9 @@
 
 namespace Core.Models.Definitions
 {
+    /// <summary>
+    /// Unit Definiton which contains informations about a unit type.
+    /// </summary>
     public class UnitDefinition : Definition
     {
 

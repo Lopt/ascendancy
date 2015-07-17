@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 namespace Core.Connections
 {
+    /// <summary>
+    /// Response class which is used at every response (except login response)
+    /// Will be serialised before sending, should be deserialised after recieving.
+    /// </summary>
+
     public class Response
     {
         public enum ReponseStatus

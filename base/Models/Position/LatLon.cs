@@ -2,6 +2,10 @@
 
 namespace Core.Models
 {
+
+    /// <summary>
+    /// Latitude and Longitude of the real world.
+    /// </summary>
     public class LatLon
     {
         /// <summary>

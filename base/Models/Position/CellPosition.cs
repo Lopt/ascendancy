@@ -4,6 +4,9 @@ using Newtonsoft.Json.Linq;
 
 namespace Core.Models
 {
+    /// <summary>
+    /// Represents the cellPosition in a region. Can be only as large as the region.
+    /// </summary>
     public class CellPosition : Object
     {
         public CellPosition(int cellX, int cellY)

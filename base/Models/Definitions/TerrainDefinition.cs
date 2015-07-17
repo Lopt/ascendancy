@@ -2,6 +2,9 @@
 
 namespace Core.Models.Definitions
 {
+    /// <summary>
+    /// Terrain Definiton which contains informations about a terraintype.
+    /// </summary>
     public class TerrainDefinition : Definition
     {
 

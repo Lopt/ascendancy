@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 
 namespace server.control
 {
+	/// <summary>
+	/// Loads the Definitions and contains them.
+	/// </summary>
     public class DefinitionManagerController : Core.Controllers.DefinitionManagerController
     {
         public DefinitionManagerController()

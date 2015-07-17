@@ -98,7 +98,7 @@ namespace server.DB
 
             byte[] hash = algorithm.ComputeHash(saltedHashBytes);
 
-            for (int index = 0; index < ServerConstants.HASH_CICLE -1; ++index)
+            for (int index = 0; index < ServerConstants.HASH_CYCLES -1; ++index)
             {
                 hash = algorithm.ComputeHash(saltedHashBytes);
             }

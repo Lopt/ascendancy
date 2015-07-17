@@ -11,11 +11,19 @@ namespace Core.Controllers.Actions
         {
         }
 
+        /// <summary>
+        /// Returns a bag of all regions which could be affected by this action.
+        /// </summary>
+        /// <returns>The affected regions.</returns>
         virtual public ConcurrentBag<Core.Models.Region> GetAffectedRegions()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Returns the Position where the action should be executed (e.g. first region)
+        /// </summary>
+        /// <returns>Action execution RegionPosition.</returns>
         virtual public Core.Models.RegionPosition GetRegionPosition()
         {
             throw new NotImplementedException();

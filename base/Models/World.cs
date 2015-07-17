@@ -3,6 +3,9 @@ using System.Collections.Concurrent;
 
 namespace Core.Models
 {
+    /// <summary>
+    /// World which contains all datas.
+    /// </summary>
     public sealed class World
     {
         private static readonly Lazy<World> m_singleton =

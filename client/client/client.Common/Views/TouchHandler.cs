@@ -45,6 +45,16 @@ namespace client.Common.Views
 
         public void OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
+            if (touches.Count == 1 && m_touchGesture == TouchGesture.Zoom)
+            {
+                m_touchGesture = TouchGesture.Move;
+            }
+            else if (touches.Count == 2 && m_touchGesture == TouchGesture.Move)
+            {
+                m_touchGesture = TouchGesture.Zoom;
+            }
+                    
+
             if (touches.Count == 1 &&
                 (m_touchGesture == TouchGesture.Start ||
                 m_touchGesture == TouchGesture.Move))
@@ -55,8 +65,7 @@ namespace client.Common.Views
                 CCPoint diff = touch.Delta;
                 m_worldLayer.MoveWorld(diff);
             }
-
-            if (touches.Count >= 2 &&
+            else if (touches.Count >= 2 &&
                 (m_touchGesture == TouchGesture.Start ||
                 m_touchGesture == TouchGesture.Zoom))
             {
@@ -168,7 +177,7 @@ namespace client.Common.Views
                     break;
 
                 case(TouchGesture.Move):
-                    m_worldLayer.CheckCenterRegion();
+                    //m_worldLayer.CheckCenterRegion();
                     m_touchGesture = TouchGesture.None;
                     break;
 

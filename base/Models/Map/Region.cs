@@ -7,6 +7,10 @@ using System.Threading;
 
 namespace Core.Models
 {
+    /// <summary>
+    /// A part of the world. Contains a RegionPosition which determinates where (in the world) the region is.
+    /// Also contains all entities to a specific time and all actions which were executed on the region.
+    /// </summary>
     public class Region
     {
         public class DatedActions
@@ -56,12 +60,21 @@ namespace Core.Models
             m_mutex = new ReaderWriterLockSlim();
         }
 
+        /// <summary>
+        /// Adds the terrain afterward if the region was created without.
+        /// </summary>
+        /// <param name="terrains">2D array of TerrainsType </param>
         public void AddTerrain(TerrainDefinition[ , ] terrains)
         {
             m_terrains = terrains;
             m_exist = true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Returns the TerrainDefintion of the specific given cellPosition.</returns>
+        /// <param name="cellPosition">Cell position.</param>
         public TerrainDefinition GetTerrain(CellPosition cellPosition)
         {
             var value = m_terrains[cellPosition.CellX, cellPosition.CellY];
@@ -73,6 +86,11 @@ namespace Core.Models
             return value;
         }
 
+        /// <summary>
+        /// Returns Buildings or Units at the given position
+        /// </summary>
+        /// <returns>The entity or null when there was no entity.</returns>
+        /// <param name="cellPosition">Cell position.</param>
         public Entity GetEntity(CellPosition cellPosition)
         {
             foreach (var entity in m_entities.Entities)
@@ -85,6 +103,11 @@ namespace Core.Models
             return null;
         }
 
+        /// <summary>
+        /// Adds the entity to a specific time.
+        /// </summary>
+        /// <param name="dateTime">Date time when the action was called.</param>
+        /// <param name="entity">Entity.</param>
         public void AddEntity(DateTime dateTime, Entity entity)
         {
 //            var newDatedEntities = new DatedEntities();
@@ -95,6 +118,11 @@ namespace Core.Models
 //            m_entities = m_E;
         }
 
+        /// <summary>
+        /// Removes the entity to a specific time.
+        /// </summary>
+        /// <param name="dateTime">Date time when the action was called.</param>
+        /// <param name="entity">Entity.</param>
         public void RemoveEntity(DateTime dateTime, Entity entity)
         {
             var newDatedEntities = new DatedEntities();
@@ -108,28 +136,16 @@ namespace Core.Models
             m_entities = newDatedEntities;
         }
 
-        /*
-        public void ActionCompleted()
-        {
-            var action = m_inQueue[0];
-            var newDatedActions = new DatedActions();
-            var newActions = new LinkedList<model.Action>(m_actions.Actions);
-            newActions.Insert(0, action);
 
-            newDatedActions.DateTime = action.ActionTime;
-            newDatedActions.Actions = newActions;
-
-            m_actions = newDatedActions;
-
-            m_inQueue.RemoveAt(0);
-
-        }
-        */
         public DatedEntities GetEntities()
         {
             return m_entities;
         }
 
+        /// <summary>
+        /// Builds a new list with all actions which are lower then the given startTime.
+        /// </summary>
+        /// <param name="startTime">Datetime when region was lasttime loaded.</param>
         public DatedActions GetCompletedActions(DateTime startTime)
         {
             
@@ -199,7 +215,10 @@ namespace Core.Models
 
 
 
-
+        /// <summary>
+        /// An Action was executed and affected this region, then it should be added with AddCompletedAction.
+        /// </summary>
+        /// <param name="action">Action.</param>
         public void AddCompletedAction(Core.Models.Action action)
         {
             m_actions.DateTime = action.ActionTime;

@@ -4,11 +4,14 @@ using Core.Models;
 
 namespace Core.Helper
 {
-	public class NetworkHelper
+    /// <summary>
+    /// Used to load a region.
+    /// </summary>
+	public class LoadHelper
 	{
-			/// <summary>
-		/// Replaces parts of the path with MajorRegion and MinorRegion of the given Region Position
-		/// </summary>
+        /// <summary>
+        /// Replaces parts of the path with MajorRegion and MinorRegion of the given Region Position
+        /// </summary>
 		/// <returns>Path with replaced $MajorRegion and $MinorRegion </returns>
 		/// <param name="path">Template-Path</param>
 		/// <param name="regionPosition">Region Position.</param>

@@ -7,6 +7,13 @@ using System.Threading;
 
 namespace server.control
 {
+	/// <summary>
+	/// API Controller provides functionality to access the game. 
+	/// Every access from outside should use API Controller.
+	/// As example HTTPController uses only API Controller.
+	/// If we later switch to another protocol (or directly sockets) we just need
+	/// to build another HTTP Controller-like which uses the API Controller functionality.
+	/// </summary>
     public sealed class APIController
     {
         private static readonly Lazy<APIController> m_singleton =
@@ -30,6 +37,10 @@ namespace server.control
         }
 
 
+		/// <summary>
+		/// An Class which provides an queue with an position.
+		/// It is used to avoid threading collisions.
+		/// </summary>
         public class AveragePositionQueue
         {
             public AveragePositionQueue()
@@ -47,6 +58,9 @@ namespace server.control
             public Queue<Core.Models.Action> Queue;
         }
 
+		/// <summary>
+		/// Possible return values, what could have been happen
+		/// </summary>
         private enum ActionReturn
         {
             Done,
@@ -65,6 +79,11 @@ namespace server.control
             public LinkedList<LinkedList<Core.Models.Action>> ActionDict;
         }
 
+		/// <summary>
+		/// Login with a username und password, returns Account if everything worked, otherwise <b>null</b>
+		/// </summary>
+		/// <param name="username">Username.</param>
+		/// <param name="password">Password.</param>
         public Core.Models.Account Login(string username, string password)
         {	
             if (username != null && password != null)
@@ -77,6 +96,12 @@ namespace server.control
             //return accountManagerC.Login (username, password);
         }
 
+		/// <summary>
+		/// Send Actions the server so they will be executed.
+		/// (but first, the actions have to wait in a queue)
+		/// </summary>
+		/// <param name="account">Account who wants the actions executed.</param>
+		/// <param name="actions">Array of Actions which should be executed.</param>
         public void DoAction(Core.Models.Account account, 
                              Core.Models.Action[] actions)
         {
@@ -123,6 +148,12 @@ namespace server.control
             }
         }
 
+		/// <summary>
+		/// Loads the regions.
+		/// </summary>
+		/// <returns>The regions.</returns>
+		/// <param name="account">Account who wants the load the regions.</param>
+		/// <param name="regionPositions">Positions of the regions.</param>
         public RegionData LoadRegions(Core.Models.Account account,
                                       Core.Models.RegionPosition[] regionPositions)
         {
@@ -172,7 +203,7 @@ namespace server.control
                         actionDict.AddFirst(actions.Actions);
                         newStatus = actions.DateTime;
                     }
-                    accountC.RegionRefreshed(regionPosition, newStatus);
+                    accountC.RefreshRegion(regionPosition, newStatus);
                 }
             }
             finally
@@ -190,6 +221,11 @@ namespace server.control
             //return regionList;
         }
 
+		/// <summary>
+		/// Executes the action.
+		/// </summary>
+		/// <returns>If it could executed or why not.</returns>
+		/// <param name="action">Action which should be executed.</param>
         private ActionReturn WorkAction(Core.Models.Action action)
         {
             if (action != null)
@@ -261,6 +297,10 @@ namespace server.control
             return ActionReturn.Unknown;
         }
 
+		/// <summary>
+		/// Worker (normally an own thread) which runs until the application finishes.
+		/// </summary>
+		/// <param name="state">Threading Number (for queue association)</param>
         public void Worker(object state)
         {
             var threadInfo = m_threadingInfos[(int)state];

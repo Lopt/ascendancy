@@ -3,6 +3,9 @@ using System.Collections.Concurrent;
 
 namespace Core.Models
 {
+    /// <summary>
+    /// Contains all loaded Regions.
+    /// </summary>
     public class RegionManager
     {
         public RegionManager()

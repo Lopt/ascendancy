@@ -4,6 +4,9 @@ using Core.Models.Definitions;
 
 namespace Core.Models
 {
+    /// <summary>
+    /// Contains all Definitions.
+    /// </summary>
     public class DefinitionManager
     {
         public DefinitionManager()

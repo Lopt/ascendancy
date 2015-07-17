@@ -3,6 +3,9 @@ using System.Threading;
 
 namespace Core.Models
 {
+    /// <summary>
+    /// Generates Thradsafe IDs.
+    /// </summary>
     public class IdGenerator
     {
         static int m_currentId;

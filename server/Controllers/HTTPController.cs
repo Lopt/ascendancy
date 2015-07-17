@@ -15,6 +15,9 @@ using Core.Models;
 
 namespace server.Controllers
 {
+	/// <summary>
+	/// Handles all HTTP Accesses from the client.
+	/// </summary>
     public class HTTPController : Controller
     {
         public string Login()

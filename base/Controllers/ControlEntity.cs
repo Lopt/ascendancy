@@ -2,6 +2,9 @@
 
 namespace Core.Controllers
 {
+    /// <summary>
+    /// MVC Controller.
+    /// </summary>
     public class ControlEntity
     {
         public ControlEntity(Core.Models.ModelEntity model)

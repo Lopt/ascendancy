@@ -6,6 +6,9 @@ using Core.Models.Definitions;
 
 namespace Core.Models
 {
+    /// <summary>
+    /// Contains all Account with id.
+    /// </summary>
     public class AccountManager
     {
         public AccountManager()
@@ -31,7 +34,7 @@ namespace Core.Models
         /// <summary>
         /// Returns the account
         /// </summary>
-        /// <returns>The account or none (is there is none</returns>
+        /// <returns>The account or null (if there is none)</returns>
         /// <param name="id">Identifier.</param>
         public Account GetAccount(int id)
         {

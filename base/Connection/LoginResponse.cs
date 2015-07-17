@@ -3,6 +3,11 @@ using System.Collections.Concurrent;
 
 namespace Core.Connections
 {
+    /// <summary>
+    /// Response class which should be used to login.
+    /// Will be serialised before sending, should be deserialised after recieving.
+    /// </summary>
+
     public class LoginResponse
     {
         public enum ReponseStatus

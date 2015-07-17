@@ -2,6 +2,9 @@
 
 namespace Core.Views
 {
+    /// <summary>
+    /// MVC View.
+    /// </summary>
     public class ViewEntity
     {
         public ViewEntity(Core.Models.ModelEntity model)

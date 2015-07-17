@@ -5,6 +5,9 @@ using Newtonsoft.Json.Linq;
 
 namespace Core.Models
 {
+    /// <summary>
+    /// Represents a position of a region.
+    /// </summary>
     public class RegionPosition : Object
     {
         [JsonConstructor]

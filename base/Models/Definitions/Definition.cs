@@ -2,6 +2,9 @@
 
 namespace Core.Models.Definitions
 {
+    /// <summary>
+    /// Contains which type a entity exactly is.
+    /// </summary>
     public enum EntityType
     {
         // Terrain Range 0-99
@@ -46,6 +49,9 @@ namespace Core.Models.Definitions
         RessourceHarvester = 306
     }
 
+    /// <summary>
+    /// Contains the category of a entity.
+    /// </summary>
     public enum Category
     {
         Invalid = -1,
@@ -55,7 +61,11 @@ namespace Core.Models.Definitions
     }
 
 
-
+    /// <summary>
+    /// Definition contains static informations about entities.
+    /// In which Category they belong and their id.
+    /// Will be used as base-class for other definitions.
+    /// </summary>
     public class Definition
     {
 

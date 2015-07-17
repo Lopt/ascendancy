@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Core.Models
 {
+    /// <summary>
+    /// Position in the GameWorld.
+    /// </summary>
     public class Position
     {
         [JsonConstructor]

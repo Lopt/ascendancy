@@ -21,8 +21,8 @@ namespace server.model
         // size of the salt for password encryption
         public static readonly int SALT_SIZE = 32;
 
-        // cicle to compute the hash value
-        public static readonly int HASH_CICLE = 32;
+        // cycles to compute the hash value
+        public static readonly int HASH_CYCLES = 32;
 
         // time when all game datas should cleaned in milliseconds
         public static readonly int CLEANING_INTERVALL = 30 * 60 * 1000;
@@ -31,7 +31,7 @@ namespace server.model
         // threads which execute actions
         public static readonly int ACTION_THREADS = 2;
 
-        //
+        // sleeping time of each thread when there is nothing to do
         public static readonly int ACTION_THREAD_SLEEP = 1;
 
     }

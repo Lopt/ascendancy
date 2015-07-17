@@ -97,9 +97,9 @@ namespace client.Common.Controllers
         /// <param name="jsonRegionServerPath">Json region server path.</param>
         public async Task<TerrainDefinition[,]> LoadTerrainsAsync(RegionPosition regionPosition)
         {
-            var path = Core.Helper.NetworkHelper.ReplacePath(ClientConstants.REGION_SERVER_PATH, regionPosition);
+            var path = Core.Helper.LoadHelper.ReplacePath(ClientConstants.REGION_SERVER_PATH, regionPosition);
             var json = await RequestAsync(path);
-            return Core.Helper.NetworkHelper.JsonToTerrain(json);
+            return Core.Helper.LoadHelper.JsonToTerrain(json);
         }
 
         /// <summary>
