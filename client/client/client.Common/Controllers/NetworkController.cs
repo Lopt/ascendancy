@@ -99,7 +99,7 @@ namespace client.Common.Controllers
         {
             var path = Core.Helper.NetworkHelper.ReplacePath(ClientConstants.REGION_SERVER_PATH, regionPosition);
             var json = await RequestAsync(path);
-            return JsonConvert.DeserializeObject<TerrainDefinition[,]>(json);
+            return Core.Helper.NetworkHelper.JsonToTerrain(json);
         }
 
         /// <summary>

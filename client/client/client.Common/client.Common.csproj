@@ -51,9 +51,9 @@
     <Compile Include="Manager\RegionManagerController.cs" />
     <Compile Include="Views\RegionView.cs" />
     <Compile Include="Views\ViewDefinitions.cs" />
+    <Compile Include="Views\Worker.cs" />
     <Compile Include="Manager\DefinitionManagerController.cs" />
     <Compile Include="Manager\EntityManagerController.cs" />
-    <Compile Include="Views\Worker.cs" />
     <Compile Include="Models\ViewBaseModel.cs" />
     <Compile Include="Helper\PositionHelper.cs" />
     <Compile Include="Views\TouchHandler.cs" />

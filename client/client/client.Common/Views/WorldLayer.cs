@@ -56,8 +56,7 @@ namespace client.Common.Views
 			m_regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
 
             WorldTileMap = new CCTileMap(ClientConstants.TILEMAP_FILE);
-            m_geolocation = Geolocation.Instance;
-            CenterPosition = m_geolocation.CurrentGamePosition;
+            CenterPosition = Geolocation.Instance.CurrentGamePosition;
 
             m_currentPositionNode = new DrawNode();
             WorldTileMap.TileLayersContainer.AddChild(m_currentPositionNode);
@@ -106,7 +105,7 @@ namespace client.Common.Views
         {
             base.AddedToScene();
 
-            SetMapAnchor(m_geolocation.CurrentGamePosition);
+            SetMapAnchor(Geolocation.Instance.CurrentGamePosition);
             WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
             WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
             ScaleWorld(ClientConstants.TILEMAP_NORM_SCALE);
@@ -128,10 +127,10 @@ namespace client.Common.Views
 
         void CheckGeolocation(float frameTimesInSecond)
         {
-            if (m_geolocation.IsPositionChanged)
+            if (Geolocation.Instance.IsPositionChanged)
             {
-                DrawRegionsAsync(m_geolocation.CurrentGamePosition);
-                m_geolocation.IsPositionChanged = false;
+                DrawRegionsAsync(Geolocation.Instance.CurrentGamePosition);
+                Geolocation.Instance.IsPositionChanged = false;
             }
 
         }
@@ -151,7 +150,7 @@ namespace client.Common.Views
             bool isInWorld = false;
             m_currentPositionNode.Visible = false;
 
-            if (CenterPosition.RegionPosition.Equals(m_geolocation.CurrentRegionPosition))
+            if (CenterPosition.RegionPosition.Equals(Geolocation.Instance.CurrentRegionPosition))
                 isInWorld = true;
 
             if (tileCoordinate.Column > -1 && isInWorld)
@@ -195,7 +194,7 @@ namespace client.Common.Views
         {
             var actions = new List<Core.Models.Action>();
             actions.Add(action);
-            m_regionManagerController.DoActionAsync(m_geolocation.CurrentGamePosition, actions.ToArray());
+            m_regionManagerController.DoActionAsync(Geolocation.Instance.CurrentGamePosition, actions.ToArray());
             //var mapCell = GetMapCell(m_terrainLayer, new CCPoint(VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
             //var position = RegionView.GetCurrentGamePosition(mapCell, CenterPosition.RegionPosition);
             //DrawRegionsAsync (position);
@@ -210,8 +209,8 @@ namespace client.Common.Views
             var anchor = WorldTileMap.TileLayersContainer.AnchorPoint;
             diff.X = diff.X / WorldTileMap.TileLayersContainer.ContentSize.Width;
             diff.Y = diff.Y / WorldTileMap.TileLayersContainer.ContentSize.Height;
-            anchor.X -= diff.X;
-            anchor.Y -= diff.Y;
+            anchor.X -= diff.X * 2;
+            anchor.Y -= diff.Y * 2;
             WorldTileMap.TileLayersContainer.AnchorPoint = anchor;
         }
 
@@ -300,7 +299,6 @@ namespace client.Common.Views
         client.Common.Manager.RegionManagerController m_regionManagerController;
 
         DrawNode m_currentPositionNode;
-        Geolocation m_geolocation;
 
         Worker m_worker;
         float m_scale;

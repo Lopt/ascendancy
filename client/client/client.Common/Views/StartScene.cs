@@ -49,7 +49,7 @@ namespace client.Common.Views
 
 		public async Task<Core.Models.Account> InitLoadingAsync()
         {
-            var account = await LogInAsync(); 
+            var account = await LoginAsync(); 
             if (account != null)
             {
                 Phase = Phases.LoggedIn;
@@ -82,7 +82,7 @@ namespace client.Common.Views
 
 
 
-        async Task<Core.Models.Account> LogInAsync()
+        async Task<Core.Models.Account> LoginAsync()
         {
             var currentGamePosition = client.Common.Models.Geolocation.Instance.CurrentGamePosition;
             var device = client.Common.Models.Device.GetInstance;

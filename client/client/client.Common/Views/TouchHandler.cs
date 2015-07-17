@@ -39,6 +39,7 @@ namespace client.Common.Views
             m_timer = new Stopwatch();
             m_touchGesture = TouchGesture.None;
             m_worldLayer = worldLayer;
+            m_startLocation = new CCPoint(1, 1);
         }
 
 
@@ -89,7 +90,6 @@ namespace client.Common.Views
 
             var oldMapCell = new Models.MapCellPosition(oldCoord);
             var oldPosition = m_worldLayer.RegionView.GetCurrentGamePosition(oldMapCell, m_worldLayer.CenterPosition.RegionPosition);
-            var oldPositionI = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
 
 
             m_startLocation = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
@@ -111,7 +111,9 @@ namespace client.Common.Views
                     var endPosition = m_worldLayer.RegionView.GetCurrentGamePosition(endMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
                     var endPositionI = new Core.Models.PositionI((int)endPosition.X, (int)endPosition.Y);
 
+                    var oldPositionI = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
                     var action = ActionHelper.MoveUnit(oldPositionI, endPositionI);
+
                     var actionC = (Core.Controllers.Actions.Action)action.Control;
                     var possible = actionC.Possible();
                     if (possible)
@@ -125,7 +127,8 @@ namespace client.Common.Views
                     var def = m_menuView.GetSelectedDefinition(coord);
                     if (def != null)
                     {
-                        var action2 = ActionHelper.CreateEntity(oldPositionI, def);
+                        var oldPositionI2 = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
+                        var action2 = ActionHelper.CreateEntity(oldPositionI2, def);
                         var actionC2 = (Core.Controllers.Actions.Action) action2.Control;
                         if (actionC2.Possible())
                         {

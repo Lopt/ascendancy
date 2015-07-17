@@ -27,7 +27,7 @@ namespace Core.Helper
 		/// </summary>
 		/// <returns>A two-dimensional array of TerrainDefinitions</returns>
 		/// <param name="json">JSON loaded from the server</param>
-        static public Core.Models.Definitions.TerrainDefinition[ , ] JsonToTerrain(string json)
+        static public Core.Models.Definitions.TerrainDefinition[,] JsonToTerrain(string json)
 		{
             var definitionManager = Core.Models.World.Instance.DefinitionManager;
 

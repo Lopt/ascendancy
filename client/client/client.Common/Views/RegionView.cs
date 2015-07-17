@@ -154,10 +154,16 @@ namespace client.Common.Views
 
             var x = mapCellPosition.CellX / Constants.REGION_SIZE_X;
             var y = mapCellPosition.CellY / Constants.REGION_SIZE_Y;
-            var regionPosition = worldRegions[x, y];
 
-            return new Position(regionPosition, cellPosition);
+            if (x >= 0 && x < ClientConstants.DRAW_REGIONS_X &&
+                y >= 0 && y < ClientConstants.DRAW_REGIONS_Y)
+            {
+                     
+                var regionPosition = worldRegions[x, y];
 
+                return new Position(regionPosition, cellPosition);
+            }
+            return null;
         }
 
         public bool IsCellInOutsideRegion(MapCellPosition mapCellPosition)

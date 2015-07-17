@@ -47,7 +47,16 @@ namespace client.Common.Manager
             if (terrain != null)
                 region.AddTerrain(terrain);
 
-            World.Instance.RegionManager.AddRegion(region);
+            try
+            {
+                World.Instance.RegionManager.AddRegion(region);
+            }
+            catch 
+            {
+                if (null != null)
+                {
+                }
+            }
         }
 
         public async Task LoadRegionsAsync()
@@ -88,12 +97,12 @@ namespace client.Common.Manager
             int halfY = ClientConstants.DRAW_REGIONS_X / 2;
 
             RegionPosition[,] worldRegion = new RegionPosition[5, 5];
-            for (int x = -halfX; x < halfX; x++)
+            for (int x = -halfX; x <= halfX; x++)
             {
-                for (int y = -halfY; y < halfY; y++)
+                for (int y = -halfY; y <= halfY; y++)
                 {
-                    worldRegion[x + halfX, y + halfY] = new RegionPosition(regionPosition.RegionX + halfX,
-                           regionPosition.RegionY + halfY);
+                    worldRegion[x + halfX, y + halfY] = new RegionPosition(regionPosition.RegionX + x,
+                           regionPosition.RegionY + y);
                 }
             }
 
