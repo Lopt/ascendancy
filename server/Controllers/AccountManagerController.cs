@@ -2,10 +2,10 @@
 using System.Collections.Concurrent;
 using Newtonsoft.Json;
 using Core.Models;
-using server.model;
-using server.DB;
+using Server.Models;
+using Server.DB;
 
-namespace server.control
+namespace Server.Controllers
 {
 	/// <summary>
 	/// The AccountManagerController handles a list of all users and those, which are logged in. It can also log in users and verify a session id.

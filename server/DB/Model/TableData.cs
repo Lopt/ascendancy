@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace server.DB.Model
+namespace Server.DB.Models
 {
     /// <summary>
     /// Collection of all databank entrys. s

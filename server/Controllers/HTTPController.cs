@@ -13,7 +13,7 @@ using System.Threading;
 
 using Core.Models;
 
-namespace server.Controllers
+namespace Server.Controllers
 {
 	/// <summary>
 	/// Handles all HTTP Accesses from the client.
@@ -26,12 +26,12 @@ namespace server.Controllers
             var loginRequest = JsonConvert.DeserializeObject<Core.Connections.LoginRequest>(json);
 
             var response = new Core.Connections.LoginResponse();
-            var api = server.control.APIController.Instance;
+            var api = Controllers.APIController.Instance;
 
             var account = api.Login(loginRequest.Username, loginRequest.Password);
             if (account != null)
             {
-                var accountC = (@server.control.AccountController)account.Control;
+                var accountC = (Server.Controllers.AccountController)account.Control;
                 response.SessionID = accountC.SessionID;
                 response.AccountId = account.ID;
                 response.Status = Core.Connections.LoginResponse.ReponseStatus.OK;
@@ -51,10 +51,10 @@ namespace server.Controllers
             var loadRegionRequest = JsonConvert.DeserializeObject<Core.Connections.LoadRegionsRequest>(json);
 
             var response = new Core.Connections.Response();
-            var api = server.control.APIController.Instance;
+            var api = Controllers.APIController.Instance;
             var controller = Core.Controllers.Controller.Instance;
 
-            var accountManagerC = (control.AccountManagerController)Core.Models.World.Instance.AccountManager;
+            var accountManagerC = (Server.Controllers.AccountManagerController)Core.Models.World.Instance.AccountManager;
             var account = accountManagerC.GetAccountBySession(loadRegionRequest.SessionID);
 
 
@@ -76,10 +76,10 @@ namespace server.Controllers
             var doActionRequest = JsonConvert.DeserializeObject<Core.Connections.DoActionsRequest>(json);
 
             var response = new Core.Connections.Response();
-            var api = server.control.APIController.Instance;
+            var api = Controllers.APIController.Instance;
             var controller = Core.Controllers.Controller.Instance;
 
-            var accountManagerC = (control.AccountManagerController)Core.Models.World.Instance.AccountManager;
+            var accountManagerC = (Server.Controllers.AccountManagerController)Core.Models.World.Instance.AccountManager;
             var account = accountManagerC.GetAccountBySession(doActionRequest.SessionID);
 
             if (account != null &&

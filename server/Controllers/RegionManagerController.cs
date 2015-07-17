@@ -2,9 +2,9 @@
 using System.Collections.Concurrent;
 using Newtonsoft.Json;
 using Core.Models;
-using server.model;
+using Server.Models;
 
-namespace server.control
+namespace Server.Controllers
 {
 	/// <summary>
 	/// Contains all loaded regions and loads regions.

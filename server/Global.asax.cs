@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Threading;
 
-namespace server
+namespace Server
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -68,17 +68,17 @@ namespace server
             var world = Core.Models.World.Instance;
             var controller = Core.Controllers.Controller.Instance;
 
-            var api = server.control.APIController.Instance;
+            var api = Controllers.APIController.Instance;
 
-            controller.DefinitionManagerController = new server.control.DefinitionManagerController();
-            world.AccountManager = new server.control.AccountManagerController();
-            controller.RegionManagerController = new server.control.RegionManagerController();
+            controller.DefinitionManagerController = new Controllers.DefinitionManagerController();
+            world.AccountManager = new Controllers.AccountManagerController();
+            controller.RegionManagerController = new Controllers.RegionManagerController();
 
 
 				
-            for (int threadNr = 0; threadNr < server.model.ServerConstants.ACTION_THREADS; ++threadNr)
+            for (int threadNr = 0; threadNr < Models.ServerConstants.ACTION_THREADS; ++threadNr)
             {
-                Thread t = new Thread(new ParameterizedThreadStart(server.control.APIController.Instance.Worker));
+                Thread t = new Thread(new ParameterizedThreadStart(Controllers.APIController.Instance.Worker));
                 t.Start(threadNr);
             }
 

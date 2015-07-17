@@ -1,12 +1,12 @@
 ﻿using Core.Models;
 using SQLite;
-using @server.model;
+using Server.Models;
 using System.Security.Cryptography;
-using server.DB.Model;
+using Server.DB.Models;
 using System.Text;
 using System;
 
-namespace server.DB
+namespace Server.DB
 {
     /// <summary>
     /// DB account.

@@ -1,8 +1,8 @@
 ﻿using System;
 using SQLite;
-using @server.DB.Model;
+using Server.DB.Models;
 
-namespace server.DB
+namespace Server.DB
 {
 	/// <summary>
 	/// DB ressource.

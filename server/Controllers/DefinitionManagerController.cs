@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using server.model;
+using Server.Models;
 using Newtonsoft.Json;
 
-namespace server.control
+namespace Server.Controllers
 {
 	/// <summary>
 	/// Loads the Definitions and contains them.

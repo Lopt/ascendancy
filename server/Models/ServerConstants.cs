@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace server.model
+namespace Server.Models
 {
 	
     public class ServerConstants

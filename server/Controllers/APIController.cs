@@ -5,7 +5,7 @@ using System.Collections.Concurrent;
 using SQLite;
 using System.Threading;
 
-namespace server.control
+namespace Server.Controllers
 {
 	/// <summary>
 	/// API Controller provides functionality to access the game. 
@@ -29,8 +29,8 @@ namespace server.control
 
         private APIController()
         {
-            m_threadingInfos = new AveragePositionQueue[model.ServerConstants.ACTION_THREADS];
-            for (int nr = 0; nr < model.ServerConstants.ACTION_THREADS; ++nr)
+            m_threadingInfos = new AveragePositionQueue[Models.ServerConstants.ACTION_THREADS];
+			for (int nr = 0; nr < Models.ServerConstants.ACTION_THREADS; ++nr)
             {
                 m_threadingInfos[nr] = new AveragePositionQueue();
             }
@@ -89,7 +89,7 @@ namespace server.control
             if (username != null && password != null)
             {
                 var controller = Core.Controllers.Controller.Instance;
-                var accountManagerC = (control.AccountManagerController)Core.Models.World.Instance.AccountManager;
+                var accountManagerC = (Server.Controllers.AccountManagerController)Core.Models.World.Instance.AccountManager;
                 return accountManagerC.Registrate(username, password);
             }
             return null;
@@ -114,7 +114,7 @@ namespace server.control
                 action.Account = account;
                 action.ActionTime = DateTime.Now;
 
-                for (int queueNr = 0; queueNr < model.ServerConstants.ACTION_THREADS; ++queueNr)
+				for (int queueNr = 0; queueNr < Models.ServerConstants.ACTION_THREADS; ++queueNr)
                 {
                     if (m_threadingInfos[queueNr].Count == 0)
                     {   
@@ -161,7 +161,7 @@ namespace server.control
             var controller = Core.Controllers.Controller.Instance;
             var regionManagerC = controller.RegionManagerController;
 
-            var accountC = (@server.control.AccountController)account.Control;
+            var accountC = (Server.Controllers.AccountController)account.Control;
 
             var entityDict = new LinkedList<LinkedList<Core.Models.Entity>>();
             var actionDict = new LinkedList<LinkedList<Core.Models.Action>>();
@@ -310,7 +310,7 @@ namespace server.control
             {
                 while (threadInfo.Count == 0 || MvcApplication.Phase == MvcApplication.Phases.Pause)
                 {
-                    Thread.Sleep(model.ServerConstants.ACTION_THREAD_SLEEP);
+					Thread.Sleep(Models.ServerConstants.ACTION_THREAD_SLEEP);
                 }
 
                 try

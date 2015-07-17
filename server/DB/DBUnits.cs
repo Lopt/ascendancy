@@ -1,11 +1,11 @@
 ﻿using Core.Models;
 using SQLite;
 using System;
-using @server.model;
-using @server.DB.Model;
+using Server.Models;
+using Server.DB.Models;
 
 
-namespace server.DB
+namespace Server.DB
 {
 	/// <summary>
 	/// DB units.

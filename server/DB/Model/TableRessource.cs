@@ -1,7 +1,7 @@
 ﻿using System;
 using SQLite;
 
-namespace server.DB.Model
+namespace Server.DB.Models
 {
     /// <summary>
     /// Represantation from the databank table Ressource. 

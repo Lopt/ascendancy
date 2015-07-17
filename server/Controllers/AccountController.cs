@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Collections.Concurrent;
 
-namespace @server.control
+namespace Server.Controllers
 {
 	/// <summary>
 	/// Manages an account. Which includes Login, holding password and session and the last time when each region was loaded.
