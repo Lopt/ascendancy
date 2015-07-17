@@ -1,28 +1,31 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using @base.model.definitions;
+using Core.Models.Definitions;
 
-namespace @base.model
+namespace Core.Models
 {
+    /// <summary>
+    /// Contains all Definitions.
+    /// </summary>
     public class DefinitionManager
-	{
+    {
         public DefinitionManager()
         {
-            m_definitions = new ConcurrentDictionary<int, Definition> ();
+            m_definitions = new ConcurrentDictionary<EntityType, Definition>();
         }
-            
-        public Definition GetDefinition(int id)
+
+        public Definition GetDefinition(EntityType entityType)
         {
-            return m_definitions[id];
+            return m_definitions[entityType];
         }
 
         public void AddDefinition(Definition definition)
         {
-            m_definitions[definition.ID] = definition;
+            m_definitions[definition.SubType] = definition;
         }
 
-        private ConcurrentDictionary<int, Definition> m_definitions;
+        private ConcurrentDictionary<EntityType, Definition> m_definitions;
 
-	}
+    }
 }
 

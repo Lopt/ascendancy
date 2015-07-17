@@ -11,7 +11,7 @@ using XLabs.Ioc;
 namespace client.Common.Models
 {
     [Table ("Device")]
-    public sealed class Device : viewBaseModel
+    public sealed class Device : ViewBaseModel
     {
 
         #region Singelton

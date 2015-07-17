@@ -3,34 +3,37 @@ using System.Collections.Concurrent;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace @base.model
+namespace Core.Models
 {
+    /// <summary>
+    /// Represents a position of a region.
+    /// </summary>
     public class RegionPosition : Object
     {
         [JsonConstructor]
         public RegionPosition(int regionX, int regionY)
         {
-            m_regionX = regionX;
-            m_regionY = regionY;
+            RegionX = regionX;
+            RegionY = regionY;
         }
 
         public RegionPosition(Position position)
         {
-            m_regionX = (int)(position.X / Constants.REGION_SIZE_X);
-            m_regionY = (int)(position.Y / Constants.REGION_SIZE_Y);
+            RegionX = (int)(position.X / Constants.REGION_SIZE_X);
+            RegionY = (int)(position.Y / Constants.REGION_SIZE_Y);
         }
 
         public RegionPosition(PositionI position)
         {
-            m_regionX = (int)(position.X / Constants.REGION_SIZE_X);
-            m_regionY = (int)(position.Y / Constants.REGION_SIZE_Y);
+            RegionX = (int)(position.X / Constants.REGION_SIZE_X);
+            RegionY = (int)(position.Y / Constants.REGION_SIZE_Y);
         }
 
 
         public RegionPosition(JContainer obj)
         {
-            m_regionX = (int) obj.SelectToken("RegionX");
-            m_regionY = (int) obj.SelectToken("RegionY");
+            RegionX = (int)obj.SelectToken("RegionX");
+            RegionY = (int)obj.SelectToken("RegionY");
         }
 
         public static RegionPosition operator +(RegionPosition first, RegionPosition second)
@@ -40,39 +43,45 @@ namespace @base.model
 
         public int RegionX
         {
-            get { return m_regionX; }
+            get;
+            private set;
         }
 
         public int RegionY
         {
-            get { return m_regionY; }
+            get;
+            private set;
         }
 
         [JsonIgnore]
         public int MajorX
         {
-            get { return m_regionX / Constants.MAJOR_REGION_SIZE_X; }
+            get
+            {
+                return RegionX / Constants.MAJOR_REGION_SIZE_X;
+            }
         }
 
         [JsonIgnore]
         public int MajorY
         {
-            get { return m_regionY / Constants.MAJOR_REGION_SIZE_Y; }
+            get
+            {
+                return RegionY / Constants.MAJOR_REGION_SIZE_Y;
+            }
         }
 
 
         public override bool Equals(Object obj)
         {
             var regionPosition = (RegionPosition)obj;
-            return (regionPosition.m_regionX == m_regionX && regionPosition.m_regionY == m_regionY);
+            return (regionPosition.RegionX == RegionX && regionPosition.RegionY == RegionY);
         }
 
         public override int GetHashCode()
         {
-            return m_regionX * 1000000 + m_regionY;
+            return RegionX * 1000000 + RegionY;
         }
 
-        private readonly int m_regionX;
-        private readonly int m_regionY;
     }
 }

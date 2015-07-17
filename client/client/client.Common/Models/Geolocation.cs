@@ -13,11 +13,14 @@ using XLabs.Platform.Device;
 namespace client.Common.Models
 {
     [Table ("Geolocation")]
-    public sealed class Geolocation : viewBaseModel
+    public sealed class Geolocation : ViewBaseModel
     {
         #region Singelton
 
-        private static readonly Geolocation m_instance = new Geolocation ();
+        private static readonly Lazy<Geolocation> lazy =
+            new Lazy<Geolocation>(() => new Geolocation());
+        
+        public static Geolocation Instance { get { return lazy.Value; } }
 
         private Geolocation ()
         {
@@ -38,11 +41,6 @@ namespace client.Common.Models
             IsPositionChanged = false;
         }
 
-        public static Geolocation GetInstance {
-            get {
-                return m_instance; 
-            }
-        }
 
         #endregion
 
@@ -146,10 +144,10 @@ namespace client.Common.Models
                 TimeStamp = m_currentPosition.Timestamp.ToString ("G");
                 Heading = m_currentPosition.Heading.ToString ();
                 Accuracy = m_currentPosition.Accuracy.ToString ();
-                CurrentGamePosition = new @base.model.Position (new @base.model.LatLon (m_currentPosition.Latitude, m_currentPosition.Longitude));
+                CurrentGamePosition = new Core.Models.Position (new Core.Models.LatLon (m_currentPosition.Latitude, m_currentPosition.Longitude));
                 StringGamePosition = string.Format ("PosX = {0}, PosY = {1}", CurrentGamePosition.X, CurrentGamePosition.Y);
-                CurrentRegionPosition = new @base.model.RegionPosition (CurrentGamePosition);
-                CurrentCellPosition = new @base.model.CellPosition (CurrentGamePosition);
+                CurrentRegionPosition = new Core.Models.RegionPosition (CurrentGamePosition);
+                CurrentCellPosition = new Core.Models.CellPosition (CurrentGamePosition);
 
             }
         }
@@ -159,7 +157,7 @@ namespace client.Common.Models
 
 
         [Column ("CurrentGamePosition")]
-        public @base.model.Position CurrentGamePosition { 
+        public Core.Models.Position CurrentGamePosition { 
             get {
                 return m_currentGamePosition; 
             }
@@ -172,11 +170,11 @@ namespace client.Common.Models
         }
 
         public static string PropertyNameCurrentGamePosition = "CurrentGamePosition";
-        private @base.model.Position m_currentGamePosition;
+        private Core.Models.Position m_currentGamePosition;
 
 
         [Column ("CurrentRegionPosition")]
-        public @base.model.RegionPosition CurrentRegionPosition { 
+        public Core.Models.RegionPosition CurrentRegionPosition { 
             get {
                 return m_currentRegionPosition; 
             }
@@ -189,11 +187,11 @@ namespace client.Common.Models
         }
 
         public static string PropertyNameCurrentRegionPosition = "CurrentRegionPosition";
-        private @base.model.RegionPosition m_currentRegionPosition;
+        private Core.Models.RegionPosition m_currentRegionPosition;
 
 
         [Column ("CurrentCellPosition")]
-        public @base.model.CellPosition CurrentCellPosition { 
+        public Core.Models.CellPosition CurrentCellPosition { 
             get { 
                 return m_currentCellPosition; 
             }
@@ -206,7 +204,7 @@ namespace client.Common.Models
         }
 
         public static string PropertyNameCurrentCellPosition = "CurrentCellPosition";
-        private @base.model.CellPosition m_currentCellPosition;
+        private Core.Models.CellPosition m_currentCellPosition;
 
 
         [Column ("LastPosition")]
@@ -217,9 +215,9 @@ namespace client.Common.Models
             set {
                 SetProperty (m_lastPosition, value, (val) => {
                     m_lastPosition = val;
-                    LastGamePosition = new @base.model.Position (new @base.model.LatLon (val.Latitude, val.Longitude));
-                    LastRegionPosition = new @base.model.RegionPosition (LastGamePosition);
-                    LastCellPosition = new @base.model.CellPosition (LastGamePosition);
+                    LastGamePosition = new Core.Models.Position (new Core.Models.LatLon (val.Latitude, val.Longitude));
+                    LastRegionPosition = new Core.Models.RegionPosition (LastGamePosition);
+                    LastCellPosition = new Core.Models.CellPosition (LastGamePosition);
 
                 }, PropertyNameLastPosition);
             }
@@ -230,7 +228,7 @@ namespace client.Common.Models
 
 
         [Column ("LastGamePosition")]
-        public @base.model.Position LastGamePosition { 
+        public Core.Models.Position LastGamePosition { 
             get { 
                 return m_lastGamePosition; 
             }
@@ -243,11 +241,11 @@ namespace client.Common.Models
         }
 
         public static string PropertyNameLastGamePosition = "LastGamePosition";
-        private @base.model.Position m_lastGamePosition;
+        private Core.Models.Position m_lastGamePosition;
 
 
         [Column ("LastRegionPosition")]
-        public @base.model.RegionPosition LastRegionPosition { 
+        public Core.Models.RegionPosition LastRegionPosition { 
             get { 
                 return m_lastRegionPosition; 
             }
@@ -260,11 +258,11 @@ namespace client.Common.Models
         }
 
         public static string PropertyNameLastRegionPosition = "LastRegionPosition";
-        private @base.model.RegionPosition m_lastRegionPosition;
+        private Core.Models.RegionPosition m_lastRegionPosition;
 
 
         [Column ("LastCellPosition")]
-        public @base.model.CellPosition LastCellPosition { 
+        public Core.Models.CellPosition LastCellPosition { 
             get { 
                 return m_lastCellPosition;
             }
@@ -277,7 +275,7 @@ namespace client.Common.Models
         }
 
         public static string PropertyNameLastCellPosition = "LastCellPosition";
-        private @base.model.CellPosition m_lastCellPosition;
+        private Core.Models.CellPosition m_lastCellPosition;
 
 
         [Column ("Latitude")]

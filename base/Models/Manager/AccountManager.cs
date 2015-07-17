@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using Newtonsoft.Json;
-using @base.model;
-using @base.model.definitions;
+using Core.Models;
+using Core.Models.Definitions;
 
-namespace @base.model
+namespace Core.Models
 {
+    /// <summary>
+    /// Contains all Account with id.
+    /// </summary>
     public class AccountManager
     {
         public AccountManager()
         {
-            Accounts = new ConcurrentDictionary<int, Account> ();
+            Accounts = new ConcurrentDictionary<int, Account>();
         }
 
         public void AddAccount(Account account)
@@ -31,7 +34,7 @@ namespace @base.model
         /// <summary>
         /// Returns the account
         /// </summary>
-        /// <returns>The account or none (is there is none</returns>
+        /// <returns>The account or null (if there is none)</returns>
         /// <param name="id">Identifier.</param>
         public Account GetAccount(int id)
         {

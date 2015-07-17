@@ -1,8 +1,11 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace @base.model
+namespace Core.Models
 {
+    /// <summary>
+    /// MVC Model.
+    /// </summary>
     public class ModelEntity
     {
         public ModelEntity()
@@ -10,9 +13,9 @@ namespace @base.model
         }
 
         [JsonIgnore]
-        public view.ViewEntity View;
+        public Views.ViewEntity View;
         [JsonIgnore]
-        public control.ControlEntity Control;
+        public Controllers.ControlEntity Control;
     }
 }
 

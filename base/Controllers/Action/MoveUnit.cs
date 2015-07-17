@@ -3,34 +3,37 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using @base.control;
-using @base.model.definitions;
-using @base.model;
+using Core.Controllers.Actions;
+using Core.Models.Definitions;
+using Core.Models;
 using @base.Models;
 using @base.Models.Definition;
 using System.Collections;
 using AStar;
-using @base.control.action;
 
-namespace @base.control.action
+namespace Core.Controllers.Actions
 {
     public class MoveUnit : Action
     {
-        public MoveUnit(model.ModelEntity model)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="base.control.action.MoveUnit"/> class.
+        /// </summary>
+        /// <param name="model">Model.</param>
+        public MoveUnit(Core.Models.ModelEntity model)
             : base(model)
         {
-            var action = (model.Action)Model;
+            var action = (Core.Models.Action)Model;
             var param = action.Parameters;
 
 
             if (param[START_POSITION].GetType() != typeof(PositionI))
             {
-                param[START_POSITION] = new model.PositionI((Newtonsoft.Json.Linq.JContainer)param[START_POSITION]);
+                param[START_POSITION] = new Core.Models.PositionI((Newtonsoft.Json.Linq.JContainer)param[START_POSITION]);
             }
 
             if (param[END_POSITION].GetType() != typeof(PositionI))
             {
-                param[END_POSITION] = new model.PositionI((Newtonsoft.Json.Linq.JContainer)param[END_POSITION]);
+                param[END_POSITION] = new Core.Models.PositionI((Newtonsoft.Json.Linq.JContainer)param[END_POSITION]);
             }
         }
 
@@ -38,15 +41,17 @@ namespace @base.control.action
         public const string END_POSITION = "NewPosition";
 
         /// <summary>
-        /// 
+        /// Gets the affected regions.
         /// </summary>
-        /// <param name="regionManagerC"></param>
-        /// <returns></returns>
-        public override ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
+        /// <returns>The affected regions.</returns>
+        /// <param name="regionManagerC">Region manager c.</param>
+        public override ConcurrentBag<Core.Models.Region> GetAffectedRegions()
         {
-            var Bag = new ConcurrentBag<model.Region>();
+            var regionManagerC = Controller.Instance.RegionManagerController;
 
-            var action = (model.Action)Model;
+            var Bag = new ConcurrentBag<Core.Models.Region>();
+
+            var action = (Core.Models.Action)Model;
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
 
@@ -62,19 +67,17 @@ namespace @base.control.action
         }
 
         /// <summary>
-        ///  Returns if the action is even possible.
+        /// Returns true if the action is even possible.
         /// </summary>
         /// <param name="regionManagerC"></param>
         /// <returns></returns>
-        public override bool Possible(RegionManagerController regionManagerC)
+        public override bool Possible()
         {
-            var action = (model.Action)Model;
+            var action = (Core.Models.Action)Model;
 
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
             var unit = Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
-
-                   
 
             if (startPosition == endPosition)
             {
@@ -104,14 +107,16 @@ namespace @base.control.action
 
         /// <summary>
         /// Apply action-related changes to the world.
+        /// Returns set of changed Regions if everything worked, otherwise null
         /// </summary>
-        /// <param name="regionManagerC"></param>
-        /// <returns> </returns>
-        public override ConcurrentBag<model.Region> Do (RegionManagerController regionManagerC)
+        /// <param name="regionManagerC">Region manager c.</param>
+        public override ConcurrentBag<Core.Models.Region> Do()
         {
-            var Bag = new ConcurrentBag<model.Region>();
+            var regionManagerC = Controller.Instance.RegionManagerController;
 
-            var action = (model.Action)Model;
+            var Bag = new ConcurrentBag<Core.Models.Region>();
+
+            var action = (Core.Models.Action)Model;
 
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
@@ -144,7 +149,7 @@ namespace @base.control.action
         /// <summary>
         /// In case of errors, revert the world data to a valid state.
         /// </summary> 
-        virtual public bool Catch(RegionManagerController regionManagerC)
+        public override bool Catch()
         {
             throw new NotImplementedException();
         }
@@ -162,7 +167,7 @@ namespace @base.control.action
             var regionSizeX = Constants.REGION_SIZE_X / 2;
             var regionSizeY = Constants.REGION_SIZE_Y / 2;
 
-            if (position.RegionX <= regionSizeX  && position.RegionY <= regionSizeY)
+            if (position.RegionX <= regionSizeX && position.RegionY <= regionSizeY)
             {
                 var tempReg = position + surlist[LogicRules.SurroundRegions.Length];
                 if (regionManagerC.GetRegion(tempReg).Exist)
@@ -179,7 +184,7 @@ namespace @base.control.action
                     }
                 }
             }
-            else if (position.RegionX > regionSizeX  && position.RegionY <= regionSizeY)
+            else if (position.RegionX > regionSizeX && position.RegionY <= regionSizeY)
             {
                 for (int index = 1; index < 4; ++index)
                 {
@@ -190,7 +195,7 @@ namespace @base.control.action
                     }
                 }
             }
-            else if (position.RegionX > regionSizeX  && position.RegionY > regionSizeY)
+            else if (position.RegionX > regionSizeX && position.RegionY > regionSizeY)
             {
                 for (int index = 3; index < 7; ++index)
                 {
@@ -215,9 +220,13 @@ namespace @base.control.action
             return list;
         }
 
-        override public @base.model.RegionPosition GetRegionPosition()
+        /// <summary>
+        /// Gets the region position.
+        /// </summary>
+        /// <returns>The region position.</returns>
+        override public Core.Models.RegionPosition GetRegionPosition()
         {
-            var action = (model.Action)Model;
+            var action = (Core.Models.Action)Model;
 
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             return startPosition.RegionPosition;

@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace @base.connection
+namespace Core.Connections
 {
+    /// <summary>
+    /// Response class which is used at every response (except login response)
+    /// Will be serialised before sending, should be deserialised after recieving.
+    /// </summary>
+
     public class Response
     {
         public enum ReponseStatus
@@ -15,13 +20,13 @@ namespace @base.connection
         public Response()
         {
             Status = ReponseStatus.INTERNAL_ERROR;
-            Entities = new LinkedList<LinkedList<model.Entity>>();
-            Actions = new LinkedList<LinkedList<model.Action>>();
+            Entities = new LinkedList<LinkedList<Core.Models.Entity>>();
+            Actions = new LinkedList<LinkedList<Core.Models.Action>>();
         }
 
         public ReponseStatus Status;
-        public LinkedList<LinkedList<model.Action>> Actions;
-        public LinkedList<LinkedList<model.Entity>> Entities;
+        public LinkedList<LinkedList<Core.Models.Action>> Actions;
+        public LinkedList<LinkedList<Core.Models.Entity>> Entities;
 
     }
 }

@@ -1,5 +1,5 @@
-﻿using @base.control;
-using @base.model;
+﻿using Core.Controllers.Actions;
+using Core.Models;
 using client.Common.Controllers;
 using client.Common.Helper;
 using System.Collections.Generic;
@@ -11,61 +11,55 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace client.Common.Manager
 {
-    public class EntityManagerController
+    public sealed class EntityManagerController
     {
+        private static readonly Lazy<EntityManagerController> lazy =
+            new Lazy<EntityManagerController>(() => new EntityManagerController());
 
-        // TODO: find better singleton implementation
-        // http://csharpindepth.com/articles/general/singleton.aspx
-        // NOT lazy-singletons: throws useless exceptions when initialisation failed
-        private static EntityManagerController instance = null;
-
-        public static EntityManagerController Instance {
-            get {
-                if (instance == null) {
-                    instance = new EntityManagerController ();
-                }
-                return instance;
-            }
-        }
+        public static EntityManagerController Instance { get { return lazy.Value; } }
 
 
 
-        private EntityManagerController ()
+        private EntityManagerController()
         {
-            Entities = new Dictionary<int, Entity> ();
+            Entities = new Dictionary<int, Entity>();
         }
 
 
         #region Entities
 
-        public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition centerRegionPosition)
+        public async Task LoadEntitiesAsync(Position currentGamePosition, RegionPosition centerRegionPosition)
         {
-            var regionManagerC = (Manager.RegionManagerController)Controller.Instance.RegionManagerController;
+            var regionManagerC = (Manager.RegionManagerController)Core.Controllers.Controller.Instance.RegionManagerController;
 
-            var worldRegions = regionManagerC.GetWorldNearRegionPositions (centerRegionPosition);
+            var worldRegions = regionManagerC.GetWorldNearRegionPositions(centerRegionPosition);
             var listRegions = new RegionPosition[25];
             int index = 0;
-            foreach (var regionPosition in worldRegions) {
-                listRegions [index] = regionPosition;
+            foreach (var regionPosition in worldRegions)
+            {
+                listRegions[index] = regionPosition;
                 ++index;
             }
 
-            await LoadEntitiesAsync (currentGamePosition, listRegions);
+            await LoadEntitiesAsync(currentGamePosition, listRegions);
         }
 
 
 
-        public async Task LoadEntitiesAsync (Position currentGamePosition, RegionPosition[] listRegions)
+        public async Task LoadEntitiesAsync(Position currentGamePosition, RegionPosition[] listRegions)
         {
 
-            var response = await NetworkController.GetInstance.LoadEntitiesAsync (currentGamePosition, listRegions);
+            var response = await NetworkController.Instance.LoadEntitiesAsync(currentGamePosition, listRegions);
             var entities = response.Entities;
-            if (entities != null) {
-                foreach (var regionEntities in entities) {
-                    foreach (var entity in regionEntities) {
-                        var region = Controller.Instance.RegionManagerController.GetRegion (entity.Position.RegionPosition);
-                        region.AddEntity (DateTime.Now, entity);
-                        Add (entity);
+            if (entities != null)
+            {
+                foreach (var regionEntities in entities)
+                {
+                    foreach (var entity in regionEntities)
+                    {
+                        var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(entity.Position.RegionPosition);
+                        region.AddEntity(DateTime.Now, entity);
+                        Add(entity);
 
                     }
                 }
@@ -73,43 +67,44 @@ namespace client.Common.Manager
 
             if (response.Actions != null)
             {
-                var actions = new HashSet<@base.model.Action> ();
+                var actions = new HashSet<Core.Models.Action>();
                 foreach (var regions in response.Actions)
                 {
                     foreach (var action in regions)
                     {
-                        actions.Add (action);
+                        actions.Add(action);
                     }   
                 }
 
-                var sortedActions = new SortedSet<@base.model.Action> (actions, new @base.model.Action.ActionComparer());
+                var sortedActions = new SortedSet<Core.Models.Action>(actions, new Core.Models.Action.ActionComparer());
 
                 foreach (var action in sortedActions)
                 {
-                    Worker.Queue.Enqueue (action);
+                    Worker.Queue.Enqueue(action);
                 }
             }
         }
 
         #endregion
 
-        Entity GetEntity (int Id)
+        Entity GetEntity(int Id)
         {
             Entity entity = null;
-            Entities.TryGetValue (Id, out entity);
+            Entities.TryGetValue(Id, out entity);
             return entity;
         }
 
-        void Remove (Entity entity)
+        void Remove(Entity entity)
         {
-            if (Entities.ContainsKey (entity.ID)) {
-                Entities.Remove (entity.ID);
+            if (Entities.ContainsKey(entity.ID))
+            {
+                Entities.Remove(entity.ID);
             }
         }
 
-        void Add (Entity entity)
+        void Add(Entity entity)
         {
-            Entities [entity.ID] = entity;
+            Entities[entity.ID] = entity;
         }
 
         public static Dictionary<int, Entity> Entities;

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2009-2012 Krueger Systems, Inc.
+ // Copyright (c) 2009-2012 Krueger Systems, Inc.
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -1480,11 +1480,11 @@ namespace SQLite
 					if (r != SQLite3.Result.OK) {
 						string msg = SQLite3.GetErrmsg (Handle);
 						throw SQLiteException.New (r, msg);
-					}
-				}
+					} 
+				} 
 				finally {
-					Handle = NullHandle;
-					_open = false;
+				 	Handle = NullHandle;
+				 	_open = false;
 				}
 			}
 		}

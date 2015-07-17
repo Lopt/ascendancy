@@ -1,5 +1,5 @@
-﻿using @base.control.action;
-using @base.model;
+﻿using Core.Controllers.Actions;
+using Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +16,12 @@ namespace AStar
         /// <summary>
         /// Set the start location for the Astar algorithm.
         /// </summary>
-        public PositionI StartLocation { get; set; }
+        public PositionI StartLocation;
 
         /// <summary>
         /// Set the destination location for the Astar algorithm. 
         /// </summary>
-        public PositionI EndLocation { get; set; }
+        public PositionI EndLocation;
 
         /// <summary>
         /// Set the account id of the walking unit

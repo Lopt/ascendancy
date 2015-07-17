@@ -2,21 +2,29 @@
 using System.Collections.Concurrent;
 using Newtonsoft.Json;
 
-namespace @base.control.action
+namespace Core.Controllers.Actions
 {
-    public class Action : control.ControlEntity
+    public class Action : Core.Controllers.ControlEntity
     {
-        public Action(model.ModelEntity model)
+        public Action(Core.Models.ModelEntity model)
             : base(model)
         {
         }
 
-        virtual public ConcurrentBag<model.Region> GetAffectedRegions(RegionManagerController regionManagerC)
+        /// <summary>
+        /// Returns a bag of all regions which could be affected by this action.
+        /// </summary>
+        /// <returns>The affected regions.</returns>
+        virtual public ConcurrentBag<Core.Models.Region> GetAffectedRegions()
         {
             throw new NotImplementedException();
         }
 
-        virtual public @base.model.RegionPosition GetRegionPosition()
+        /// <summary>
+        /// Returns the Position where the action should be executed (e.g. first region)
+        /// </summary>
+        /// <returns>Action execution RegionPosition.</returns>
+        virtual public Core.Models.RegionPosition GetRegionPosition()
         {
             throw new NotImplementedException();
         }
@@ -26,7 +34,7 @@ namespace @base.control.action
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
-        virtual public bool Possible(RegionManagerController regionManagerC)
+        virtual public bool Possible()
         {
             throw new NotImplementedException();
         }
@@ -35,7 +43,7 @@ namespace @base.control.action
         /// Apply action-related changes to the world.
         /// Returns set of changed Regions if everything worked, otherwise null
         /// </summary>
-        virtual public ConcurrentBag<model.Region> Do(RegionManagerController regionManagerC)
+        virtual public ConcurrentBag<Core.Models.Region> Do()
         {
             throw new NotImplementedException();
         }
@@ -43,7 +51,7 @@ namespace @base.control.action
         /// <summary>
         /// In case of errors, revert the world data to a valid state.
         /// </summary>
-        virtual public bool Catch(RegionManagerController regionManagerC)
+        virtual public bool Catch()
         {
             throw new NotImplementedException();
         }

@@ -1,33 +1,35 @@
 ﻿using System;
 
-namespace @base.control
+namespace Core.Controllers
 {
+    /// <summary>
+    /// MVC Controller.
+    /// </summary>
     public class ControlEntity
     {
-        public ControlEntity (model.ModelEntity model)
+        public ControlEntity(Core.Models.ModelEntity model)
         {   
-            m_model = model;
-            if (m_model.Control != null)
+            Model = model;
+            if (Model.Control != null)
             {
                 throw new Exception("ModelEntity.Control already has an ControlEntity.");
             }
-            m_model.Control = this;
+            Model.Control = this;
         }
 
         ~ControlEntity()
         {
-            if (m_model.Control == this)
+            if (Model.Control == this)
             {
-                m_model.Control = null;
+                Model.Control = null;
             }
         }
 
-        public model.ModelEntity Model
+        public Core.Models.ModelEntity Model
         {
-            get { return m_model; }
+            get;
+            private set;
         }
-
-        private model.ModelEntity m_model;
     }
 }
 

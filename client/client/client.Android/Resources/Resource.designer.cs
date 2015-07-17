@@ -179,9 +179,6 @@ namespace client.Droid
 			// aapt resource value: 0x7f020002
 			public const int Icon = 2130837506;
 			
-			// aapt resource value: 0x7f020003
-			public const int monoandroidsplash = 2130837507;
-			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -299,9 +296,6 @@ namespace client.Droid
 			
 			// aapt resource value: 0x7f070000
 			public const int CalendarTitle = 2131165184;
-			
-			// aapt resource value: 0x7f070004
-			public const int Mono_Android_Theme_Splash = 2131165188;
 			
 			static Style()
 			{

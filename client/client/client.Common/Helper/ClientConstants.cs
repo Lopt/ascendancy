@@ -1,5 +1,4 @@
 ﻿using System;
-using CocosSharp;
 
 namespace client.Common.Helper
 {
@@ -18,15 +17,17 @@ namespace client.Common.Helper
         public const string IMAGES_HD = "images/hd";
         public const string IMAGES_LD = "images/ld";
 			   
-        public const string REGION_SERVER_PATH = "http://derfalke.no-ip.biz/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
-
-
-        public const string ENTITY_TYPES_SERVER_PATH = "http://derfalke.no-ip.biz/unit.json";
-        public const string TERRAIN_TYPES_SERVER_PATH = "http://derfalke.no-ip.biz/terrain.json";
         public const string LOGIC_SERVER = "http://derfalke.no-ip.biz:9000";
-        public const string LOGIN_PATH = "/Login?json=$JSON";
-        public const string LOAD_REGIONS_PATH = "/LoadRegions?json=$JSON";
-        public const string DO_ACTIONS_PATH = "/DoActions?json=$JSON";
+        public const string DATA_SERVER = "http://derfalke.no-ip.biz";
+
+        public const string REGION_SERVER_PATH = DATA_SERVER + "/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
+
+
+        public const string UNIT_TYPES_SERVER_PATH = DATA_SERVER + "/unit.json";
+        public const string TERRAIN_TYPES_SERVER_PATH = DATA_SERVER + "/terrain.json";
+        public const string LOGIN_PATH = LOGIC_SERVER + "/Login?json=$JSON";
+        public const string LOAD_REGIONS_PATH = LOGIC_SERVER + "/LoadRegions?json=$JSON";
+        public const string DO_ACTIONS_PATH = LOGIC_SERVER + "/DoActions?json=$JSON";
         public const string LOGIC_SERVER_JSON = "$JSON";
 
         #region TileMap
@@ -48,6 +49,15 @@ namespace client.Common.Helper
         public const float TILEMAP_MIN_SCALE = 0.3f;
         public const float TILEMAP_NORM_SCALE = 0.5f;
         public const float TILEMAP_MAX_SCALE = 3.0f;
+
+        public const short DRAW_REGIONS_X = 5;
+        public const short DRAW_REGIONS_Y = 5;
+
+        public const double REDRAW_REGIONS_START_X = 1.5 * Core.Models.Constants.REGION_SIZE_X;
+        public const double REDRAW_REGIONS_END_X = 3.5 * Core.Models.Constants.REGION_SIZE_X;
+        public const double REDRAW_REGIONS_START_Y = 1.5 * Core.Models.Constants.REGION_SIZE_Y;
+        public const double REDRAW_REGIONS_END_Y = 3.5 * Core.Models.Constants.REGION_SIZE_Y;
+
 
         #endregion
 
@@ -158,11 +168,8 @@ namespace client.Common.Helper
         #endregion
 
         #region Action-Animations
-        public const float MOVE_SPEED_PER_FIELD = 0.7f;
+        public const float MOVE_SPEED_PER_FIELD = 0.50f;
         #endregion
 
-        #region Friend-Enemy Sprites
-        public const short FRIEND_ENEMY_DIFFERENCE = 22;
-        #endregion
     }
 }

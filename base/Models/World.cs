@@ -1,40 +1,35 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
-namespace @base.model
+namespace Core.Models
 {
-	public class World
-	{
-
-
-        // TODO: find better singleton implementation
-        // http://csharpindepth.com/articles/general/singleton.aspx
-        // NOT lazy-singletons: throws useless exceptions when initialisation failed
-        private static World instance=null;
+    /// <summary>
+    /// World which contains all datas.
+    /// </summary>
+    public sealed class World
+    {
+        private static readonly Lazy<World> m_singleton =
+            new Lazy<World>(() => new World());
 
         public static World Instance
         {
             get
             {
-                if (instance==null)
-                {
-                    instance = new World ();
-                }
-                return instance;
+                return m_singleton.Value;
             }
         }
 
         private World()
         {
-            RegionManager = new RegionManager ();
-            DefinitionManager = new DefinitionManager ();
-            AccountManager = new AccountManager ();
+            RegionManager = new RegionManager();
+            DefinitionManager = new DefinitionManager();
+            AccountManager = new AccountManager();
         }
 
         public RegionManager RegionManager;
         public DefinitionManager DefinitionManager;
         public AccountManager AccountManager;
 
-	}
+    }
 }
 

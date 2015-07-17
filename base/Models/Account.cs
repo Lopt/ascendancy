@@ -2,61 +2,64 @@
 using SQLite;
 using System.Collections.Generic;
 
-namespace @base.model
+namespace Core.Models
 {
-	public class Account : ModelEntity
-	{
+    public class Account : ModelEntity
+    {
        
-        public Account (int id)
+        public Account(int id)
             : base()
         {
-            m_id = id;
-            m_username = "???";
-            m_headquarters = new LinkedList<PositionI>();
-            m_buildings = new LinkedList<PositionI>();
-            m_units = new LinkedList<PositionI>();
+            ID = id;
+            UserName = "???";
+            Headquarters = new LinkedList<PositionI>();
+            Buildings = new LinkedList<PositionI>();
+            Units = new LinkedList<PositionI>();
         }
 
-        public Account (int id, string userName)
+        public Account(int id, string userName)
         {
-            m_id = id;
-            m_username = userName;
-            m_headquarters = new LinkedList<PositionI>();
-            m_units = new LinkedList<PositionI>();
-            m_buildings = new LinkedList<PositionI>();
+            ID = id;
+            UserName = userName;
+            Headquarters = new LinkedList<PositionI>();
+            Units = new LinkedList<PositionI>();
+            Buildings = new LinkedList<PositionI>();
         }
 
-		public int ID
-		{
-			get { return this.m_id; }
-		}
+        public int ID
+        {
 
-		public string UserName
-		{
-			set { this.m_username = value; }
-			get { return this.m_username; }
+            get;
+            private set;
+        }
+
+        public string UserName
+        {
+
+            get;
+            set;
         }
 
         public LinkedList<PositionI> Headquarters
         {
-            get { return m_headquarters; }
+
+            get;
+            private set;
         }
 
         public LinkedList<PositionI> Units
         {
-            get { return m_headquarters; }
+
+            get;
+            private set;
         }
 
         public LinkedList<PositionI> Buildings
         {
-            get { return m_buildings; }
+            get;
+            private set;
         }
 
-		private int m_id;
-		private string m_username;
-        private LinkedList<PositionI> m_headquarters;
-        private LinkedList<PositionI> m_units;
-        private LinkedList<PositionI> m_buildings;
-	}
+    }
 }
 

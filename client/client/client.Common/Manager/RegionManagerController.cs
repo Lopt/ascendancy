@@ -1,5 +1,5 @@
-﻿using @base.model;
-using @base.model.definitions;
+﻿using Core.Models;
+using Core.Models.Definitions;
 using client.Common.Helper;
 using client.Common.Controllers;
 using client.Common.Models;
@@ -8,77 +8,81 @@ using System.Threading.Tasks;
 
 namespace client.Common.Manager
 {
-    public class RegionManagerController : @base.control.RegionManagerController
+    public class RegionManagerController : Core.Controllers.RegionManagerController
     {
-        public RegionManagerController ()
+        public RegionManagerController()
         {
-            m_NetworkController = NetworkController.GetInstance;
-            m_Geolocation = Geolocation.GetInstance;
         }
 
         #region Regions
 
-        public Region GetRegionByGeolocator ()
+        public Region GetRegionByGeolocator()
         {
-            var geolocationPosition = m_Geolocation.CurrentGamePosition;
-            return GetRegionByGamePosition (geolocationPosition);
+            var geolocationPosition = Geolocation.Instance.CurrentGamePosition;
+            return GetRegionByGamePosition(geolocationPosition);
         }
 
-        public Region GetRegionByGamePosition (Position gameWorldPosition)
+        public Region GetRegionByGamePosition(Position gameWorldPosition)
         {
-            RegionPosition regionPosition = new RegionPosition (gameWorldPosition);
-            return GetRegion (regionPosition);
+            RegionPosition regionPosition = new RegionPosition(gameWorldPosition);
+            return GetRegion(regionPosition);
         }
 
-        public override Region GetRegion (RegionPosition regionPosition)
+        public override Region GetRegion(RegionPosition regionPosition)
         {
-            var region = World.Instance.RegionManager.GetRegion (regionPosition);
+            var region = World.Instance.RegionManager.GetRegion(regionPosition);
 
-            if (!region.Exist) {
-                LoadRegionAsync (region);
+            if (!region.Exist)
+            {
+                LoadRegionAsync(region);
             }
 				
             return region;
         }
 
-        private async Task LoadRegionAsync (Region region)
+        private async Task LoadRegionAsync(Region region)
         {
-            string path = ReplacePath (ClientConstants.REGION_SERVER_PATH, region.RegionPosition);
-            TerrainDefinition[,] terrain = null;
-
-            await m_NetworkController.LoadTerrainsAsync (path);
-
-            if (GameAppDelegate.LoadingState >= GameAppDelegate.Loading.TerrainTypeLoaded)
-                terrain = JsonToTerrain (m_NetworkController.JsonTerrainsString);
+            TerrainDefinition[,] terrain = await NetworkController.Instance.LoadTerrainsAsync(region.RegionPosition);
 
             if (terrain != null)
-                region.AddTerrain (terrain);
+                region.AddTerrain(terrain);
 
-            World.Instance.RegionManager.AddRegion (region);
-        }
-
-        public async Task LoadRegionsAsync ()
-        {
-            await LoadRegionsAsync (m_Geolocation.CurrentRegionPosition);
-        }
-
-        public async Task LoadRegionsAsync (RegionPosition regionPosition)
-        {
-            var WorldRegions = GetWorldNearRegionPositions (regionPosition);
-
-            foreach (var RegionPosition in WorldRegions) {
-                var region = World.Instance.RegionManager.GetRegion (RegionPosition);
-
-                if (!region.Exist) {
-                    await LoadRegionAsync (region);
+            try
+            {
+                World.Instance.RegionManager.AddRegion(region);
+            }
+            catch 
+            {
+                if (null != null)
+                {
                 }
             }
         }
 
-        public async Task<bool> DoActionAsync (@base.model.Position currentGamePosition, @base.model.Action[] actions)
+        public async Task LoadRegionsAsync()
         {
-            await m_NetworkController.DoActionsAsync (currentGamePosition, actions);
-            await EntityManagerController.Instance.LoadEntitiesAsync (currentGamePosition, currentGamePosition.RegionPosition);
+            await LoadRegionsAsync(Geolocation.Instance.CurrentRegionPosition);
+        }
+
+        public async Task LoadRegionsAsync(RegionPosition regionPosition)
+        {
+            var WorldRegions = GetWorldNearRegionPositions(regionPosition);
+
+            foreach (var RegionPosition in WorldRegions)
+            {
+                var region = World.Instance.RegionManager.GetRegion(RegionPosition);
+
+                if (!region.Exist)
+                {
+                    await LoadRegionAsync(region);
+                }
+            }
+        }
+
+        public async Task<bool> DoActionAsync(Core.Models.Position currentGamePosition, Core.Models.Action[] actions)
+        {
+            await NetworkController.Instance.DoActionsAsync(currentGamePosition, actions);
+            await EntityManagerController.Instance.LoadEntitiesAsync(currentGamePosition, currentGamePosition.RegionPosition);
             return true;
         }
 
@@ -87,20 +91,19 @@ namespace client.Common.Manager
 
         #region RegionPositions
 
-        public RegionPosition[,] GetWorldNearRegionPositions (RegionPosition regionPosition)
+        public RegionPosition[,] GetWorldNearRegionPositions(RegionPosition regionPosition)
         {
-            int offsetX = -2;
-            int offsetY = -2;
+            int halfX = ClientConstants.DRAW_REGIONS_X / 2;
+            int halfY = ClientConstants.DRAW_REGIONS_X / 2;
 
             RegionPosition[,] worldRegion = new RegionPosition[5, 5];
-            for (int x = 0; x < 5; x++) {
-                for (int y = 0; y < 5; y++) {
-                    worldRegion [x, y] = new RegionPosition (regionPosition.RegionX + offsetX, regionPosition.RegionY + offsetY);
-                    offsetY += 1;
+            for (int x = -halfX; x <= halfX; x++)
+            {
+                for (int y = -halfY; y <= halfY; y++)
+                {
+                    worldRegion[x + halfX, y + halfY] = new RegionPosition(regionPosition.RegionX + x,
+                           regionPosition.RegionY + y);
                 }
-									 
-                offsetX += 1;
-                offsetY = -2;
             }
 
             return worldRegion;
@@ -110,8 +113,6 @@ namespace client.Common.Manager
 
         #region private Fields
 
-        private NetworkController m_NetworkController;
-        private Geolocation m_Geolocation;
 
         #endregion
     }

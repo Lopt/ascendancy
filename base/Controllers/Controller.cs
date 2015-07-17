@@ -1,32 +1,26 @@
 ﻿using System;
 
-namespace @base.control
+namespace Core.Controllers
 {
-	public class Controller
-	{
-		// TODO: find better singleton implementation
-		// http://csharpindepth.com/articles/general/singleton.aspx
-		// NOT lazy-singletons: throws useless exceptions when initialisation failed
-		private static Controller instance=null;
+    public sealed class Controller
+    {
+        private static readonly Lazy<Controller> m_singleton =
+            new Lazy<Controller>(() => new Controller());
 
-		public static Controller Instance
-		{
-			get
-			{
-				if (instance==null)
-				{
-					instance = new Controller();
-				}
-				return instance;
-			}
-		}
+        public static Controller Instance
+        {
+            get
+            {
+                return m_singleton.Value;
+            }
+        }
 
-		private Controller()
-		{
-		}
+        private Controller()
+        {
+        }
 
         public RegionManagerController RegionManagerController;
         public DefinitionManagerController DefinitionManagerController;
-	}
+    }
 }
 

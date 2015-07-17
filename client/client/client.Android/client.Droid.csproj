@@ -133,10 +133,6 @@
       <Project>{92AF0C3C-1F4F-4070-B925-F587F0C8063F}</Project>
       <Name>client.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\base\base.csproj">
-      <Project>{163A206B-36D1-46D5-AA19-B515F7350C6E}</Project>
-      <Name>base</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -148,6 +144,12 @@
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="packages.config" />
+    <None Include="Resources\drawable-hdpi\Icon.png" />
+    <None Include="Resources\drawable-ldpi\Icon.png" />
+    <None Include="Resources\drawable-mdpi\Icon.png" />
+    <None Include="Resources\drawable-xhpdi\Icon.png" />
+    <None Include="Resources\drawable-xxhpdi\Icon.png" />
+    <None Include="Resources\drawable-xxxhpdi\Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -155,18 +157,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\fonts\arial-22.xnb" />
-    <AndroidAsset Include="Assets\Content\images\logo_neu.png" />
     <AndroidAsset Include="Assets\Content\images\hd\Ladebalken.png" />
-    <AndroidAsset Include="Assets\Content\images\hd\logo.png" />
     <AndroidAsset Include="Assets\Content\images\ld\Ladebalken.png" />
-    <AndroidAsset Include="Assets\Content\images\ld\logo.png" />
     <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20150704.png" />
     <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20150704.xnb" />
+    <AndroidAsset Include="Assets\Content\images\ld\logo.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />
     <Folder Include="Assets\Content\images\hd\" />
     <Folder Include="Assets\Content\images\ld\" />
+    <Folder Include="Resources\drawable-hdpi\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
 </Project>

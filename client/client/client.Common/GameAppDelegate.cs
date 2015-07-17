@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using CocosDenshion;
 using client.Common.Helper;
 using client.Common.Controllers;
-using @base.model;
+using Core.Models;
 using client.Common.Views;
 using System.Threading.Tasks;
 using client.Common.Models;
@@ -19,143 +19,105 @@ namespace client.Common
 {
     public class GameAppDelegate : CCApplicationDelegate
     {
-        public enum Loading
+
+
+        static public Account Account
         {
-            Started,
-            Login,
-            Loggedin,
-            TerrainTypeLoading,
-            TerrainTypeLoaded,
-            EntityTypeLoading,
-            EntityTypeLoaded,
-            RegionLoading,
-            RegionLoaded,
-            EntitiesLoading,
-            EntitiesLoaded,
-            Done,
-        }
-
-        public static Loading LoadingState = Loading.Started;
-
-        public static Account Account {
             get;
             private set;
         }
 
 
-        public override void ApplicationDidFinishLaunching (CCApplication application, CCWindow mainWindow)
+        public enum Phases
         {
+            Start,
+            StartScene,
+            GameScene,
+            Exit,
+        }
+
+        public Phases Phase
+        {
+            get;
+            private set;
+        }
+
+        public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
+        {
+            m_window = mainWindow;
+            Phase = Phases.Start;
+
             application.PreferMultiSampling = false;
 
-            SetContentPaths (application);
+            SetContentPaths(application);
 
             CCSize windowSize = mainWindow.WindowSizeInPixels;
 
             float desiredWidth = 1024.0f;
-            float desiredHeight = 768.0f;
+            //float desiredHeight = 768.0f;
 
-            // erstellen der Welt und anlegen bzw. verknüpfen mit den Controllern
-            InitWorld ();
 
             // This will set the world bounds to be (0,0, w, h)
             // CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
-            CCScene.SetDefaultDesignResolution (windowSize.Width, windowSize.Height, CCSceneResolutionPolicy.ShowAll);
+            CCScene.SetDefaultDesignResolution(windowSize.Width, windowSize.Height, CCSceneResolutionPolicy.ShowAll);
             
             // Determine whether to use the high or low def versions of our images
             // Make sure the default texel to content size ratio is set correctly
             // Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
-            if (desiredWidth < windowSize.Width) {
-                application.ContentSearchPaths.Add (ClientConstants.IMAGES_HD);
+            if (desiredWidth < windowSize.Width)
+            {
+                application.ContentSearchPaths.Add(ClientConstants.IMAGES_HD);
                 CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
-            } else {
-                application.ContentSearchPaths.Add (ClientConstants.IMAGES_LD);
+            }
+            else
+            {
+                application.ContentSearchPaths.Add(ClientConstants.IMAGES_LD);
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
            
-            InitLoading ();
-
-            StartScene startScene = new StartScene (mainWindow);
-            mainWindow.RunWithScene (startScene);
-         
-           
+			SceneStart();//.RunSynchronously();
         }
 
-        public override void ApplicationDidEnterBackground (CCApplication application)
+		private async Task SceneStart()
+		{
+			
+			m_currentScene = new StartScene(m_window);
+			Phase = Phases.StartScene;
+			m_window.RunWithScene(m_currentScene);
+
+
+			Account = await ((StartScene) m_currentScene).InitLoadingAsync();
+
+			m_currentScene = new GameScene(m_window);
+            Phase = Phases.GameScene;
+            m_window.DefaultDirector.ReplaceScene(m_currentScene);
+        }
+
+
+        public override void ApplicationDidEnterBackground(CCApplication application)
         {
-            Geolocation.GetInstance.StopListening ();
+            Geolocation.Instance.StopListening();
             application.Paused = true;
         }
 
-        public override void ApplicationWillEnterForeground (CCApplication application)
+        public override void ApplicationWillEnterForeground(CCApplication application)
         {
-            Geolocation.GetInstance.StartListening (1000, 4);
             application.Paused = false;
+            Geolocation.Instance.StartListening(1000, 4);
         }
 
-        private async Task InitLoading ()
-        {
-            LoadingState = Loading.Login;
-            await LogInAsync ();
-
-            if (NetworkController.GetInstance.IsLogedin) {
-
-                var controller = @base.control.Controller.Instance;
-                World.Instance.AccountManager.AddAccount (Account);
-
-                LoadingState = Loading.Loggedin;
-                LoadingState = Loading.TerrainTypeLoading;
-                var entityManagerController = controller.DefinitionManagerController as client.Common.Manager.DefinitionManagerController;
-                await entityManagerController.LoadTerrainDefinitionsAsync ();
-                LoadingState = Loading.TerrainTypeLoaded;
-
-                LoadingState = Loading.EntitiesLoading;
-                await entityManagerController.LoadEntityDefinitionsAsync ();
-                LoadingState = Loading.EntitiesLoaded;
-
-                LoadingState = Loading.RegionLoading;
-                var regionManagerController = controller.RegionManagerController as client.Common.Manager.RegionManagerController;
-                await regionManagerController.LoadRegionsAsync ();
-                LoadingState = Loading.RegionLoaded;
-                // do something in the future
-                LoadingState = Loading.Done;
-
-            } else {
-                throw new NotImplementedException ("Login failure");
-            }
-
-        }
-
-        private void InitWorld ()
-        {
-            var world = World.Instance;
-            var controller = @base.control.Controller.Instance;
-            controller.RegionManagerController = new client.Common.Manager.RegionManagerController ();      
-            controller.DefinitionManagerController = new DefinitionManagerController ();
-        }
-
-        private async Task LogInAsync ()
-        {
-            var currentGamePosition = Geolocation.GetInstance.CurrentGamePosition;
-            var device = client.Common.Models.Device.GetInstance;
-            var user = device.DeviceId;
-            user += device.DeviceName;
-            LoadingState = Loading.Login;
-            var id = await NetworkController.GetInstance.LoginAsync (currentGamePosition, user, "Password");
-            if (NetworkController.GetInstance.IsLogedin) {
-                Account = new Account (id, user);
-                LoadingState = Loading.Loggedin;
-            }
-                
-        }
-
-        private void SetContentPaths (CCApplication application)
+        private void SetContentPaths(CCApplication application)
         {
             application.ContentRootDirectory = ClientConstants.CONTENT;
-            application.ContentSearchPaths.Add (ClientConstants.ANIMATIONS);
-            application.ContentSearchPaths.Add (ClientConstants.FONTS);
-            application.ContentSearchPaths.Add (ClientConstants.SOUNDS);
-            application.ContentSearchPaths.Add (ClientConstants.TILES);
-            application.ContentSearchPaths.Add (ClientConstants.IMAGES);
+            application.ContentSearchPaths.Add(ClientConstants.ANIMATIONS);
+            application.ContentSearchPaths.Add(ClientConstants.FONTS);
+            application.ContentSearchPaths.Add(ClientConstants.SOUNDS);
+            application.ContentSearchPaths.Add(ClientConstants.TILES);
+            application.ContentSearchPaths.Add(ClientConstants.IMAGES);
         }
+
+        private CCWindow m_window;
+		private CCScene m_currentScene;
+
     }
 }

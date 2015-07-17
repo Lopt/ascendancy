@@ -1,5 +1,5 @@
-﻿using @base.control.action;
-using @base.model;
+﻿using Core.Controllers.Actions;
+using Core.Models;
 using @base.Models.Definition;
 using System;
 using System.Collections.Generic;
@@ -54,7 +54,7 @@ namespace AStar
                 // Reverse the list so it's in the correct order when returned
                 path.Reverse();
             }
-            path.Insert(0, searchParameters.StartLocation);
+           
             return path;
         }
 

@@ -183,13 +183,25 @@
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Content\fonts\arial-22.xnb" />
-    <BundleResource Include="Content\images\logo_neu.png" />
     <BundleResource Include="Content\images\hd\Ladebalken.png" />
     <BundleResource Include="Content\images\hd\logo.png" />
     <BundleResource Include="Content\images\ld\Ladebalken.png" />
     <BundleResource Include="Content\images\ld\logo.png" />
     <BundleResource Include="Content\tiles\Spritesheet_20150704.png" />
     <BundleResource Include="Content\tiles\Worldmap-160x160%2880x320%29_20150704.xnb" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Icon-72.png" />
+    <BundleResource Include="Resources\Icon-72%402x.png" />
+    <BundleResource Include="Resources\Icon-76.png" />
+    <BundleResource Include="Resources\Icon-76%402x.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-50.png" />
+    <BundleResource Include="Resources\Icon-Small-50%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-40.png" />
+    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -202,7 +214,4 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\Xamarin.iOS10\SQLitePCL.raw_basic.targets" Condition="Exists('..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\Xamarin.iOS10\SQLitePCL.raw_basic.targets')" />
   <Import Project="..\..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\packages\Xamarin.Forms.1.4.2.6359\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
-  <ItemGroup>
-    <Folder Include="Content\tiles\" />
-  </ItemGroup>
 </Project>

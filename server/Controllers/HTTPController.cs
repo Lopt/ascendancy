@@ -11,91 +11,93 @@ using Newtonsoft.Json;
 
 using System.Threading;
 
-using @base.model;
-using server.Models;
+using Core.Models;
 
-namespace server.Controllers
+namespace Server.Controllers
 {
-	public class HTTPController : Controller
-	{
-		public string Login()
-		{
-			var json = Request ["json"];
-			var loginRequest = JsonConvert.DeserializeObject<@base.connection.LoginRequest>(json);
+	/// <summary>
+	/// Handles all HTTP Accesses from the client.
+	/// </summary>
+    public class HTTPController : Controller
+    {
+        public string Login()
+        {
+            var json = Request["json"];
+            var loginRequest = JsonConvert.DeserializeObject<Core.Connections.LoginRequest>(json);
 
-			var response = new @base.connection.LoginResponse ();
-			var api = server.control.APIController.Instance;
+            var response = new Core.Connections.LoginResponse();
+            var api = Controllers.APIController.Instance;
 
-			var account = api.Login (loginRequest.Username, loginRequest.Password);
-			if (account != null)
-			{
-				var accountC = (@server.control.AccountController)account.Control;
-				response.SessionID = accountC.SessionID;
+            var account = api.Login(loginRequest.Username, loginRequest.Password);
+            if (account != null)
+            {
+                var accountC = (Server.Controllers.AccountController)account.Control;
+                response.SessionID = accountC.SessionID;
                 response.AccountId = account.ID;
-                response.Status = @base.connection.LoginResponse.ReponseStatus.OK;
-			}
-			else
-			{
-				response.Status = @base.connection.LoginResponse.ReponseStatus.ERROR;
-			}
+                response.Status = Core.Connections.LoginResponse.ReponseStatus.OK;
+            }
+            else
+            {
+                response.Status = Core.Connections.LoginResponse.ReponseStatus.ERROR;
+            }
 
-			return JsonConvert.SerializeObject (response);
+            return JsonConvert.SerializeObject(response);
 
         }
 
-		public string LoadRegions()
-		{
-			var json = Request ["json"];
-			var loadRegionRequest = JsonConvert.DeserializeObject<@base.connection.LoadRegionsRequest>(json);
+        public string LoadRegions()
+        {
+            var json = Request["json"];
+            var loadRegionRequest = JsonConvert.DeserializeObject<Core.Connections.LoadRegionsRequest>(json);
 
-			var response = new @base.connection.Response ();
-			var api = server.control.APIController.Instance;
-			var controller = @base.control.Controller.Instance;
+            var response = new Core.Connections.Response();
+            var api = Controllers.APIController.Instance;
+            var controller = Core.Controllers.Controller.Instance;
 
-            var accountManagerC = (control.AccountManagerController)@base.model.World.Instance.AccountManager;
-			var account = accountManagerC.GetAccountBySession (loadRegionRequest.SessionID);
+            var accountManagerC = (Server.Controllers.AccountManagerController)Core.Models.World.Instance.AccountManager;
+            var account = accountManagerC.GetAccountBySession(loadRegionRequest.SessionID);
 
 
-			if (account != null &&
-				loadRegionRequest.RegionPositions.Count() <= @base.model.Constants.MAX_ENTRIES_PER_CONNECTION)
-			{
-				var regionActions = api.LoadRegions (account, loadRegionRequest.RegionPositions);
-				response.Entities = regionActions.EntityDict;
-				response.Actions = regionActions.ActionDict;
-				response.Status = @base.connection.Response.ReponseStatus.OK;
-			}
+            if (account != null &&
+                loadRegionRequest.RegionPositions.Count() <= Core.Models.Constants.MAX_ENTRIES_PER_CONNECTION)
+            {
+                var regionActions = api.LoadRegions(account, loadRegionRequest.RegionPositions);
+                response.Entities = regionActions.EntityDict;
+                response.Actions = regionActions.ActionDict;
+                response.Status = Core.Connections.Response.ReponseStatus.OK;
+            }
 
-			return JsonConvert.SerializeObject (response);
-		}
+            return JsonConvert.SerializeObject(response);
+        }
 
-		public string DoActions()
-		{
-			var json = Request ["json"];
-			var doActionRequest = JsonConvert.DeserializeObject<@base.connection.DoActionsRequest>(json);
+        public string DoActions()
+        {
+            var json = Request["json"];
+            var doActionRequest = JsonConvert.DeserializeObject<Core.Connections.DoActionsRequest>(json);
 
-			var response = new @base.connection.Response ();
-			var api = server.control.APIController.Instance;
-			var controller = @base.control.Controller.Instance;
+            var response = new Core.Connections.Response();
+            var api = Controllers.APIController.Instance;
+            var controller = Core.Controllers.Controller.Instance;
 
-            var accountManagerC = (control.AccountManagerController)@base.model.World.Instance.AccountManager;
-			var account = accountManagerC.GetAccountBySession (doActionRequest.SessionID);
+            var accountManagerC = (Server.Controllers.AccountManagerController)Core.Models.World.Instance.AccountManager;
+            var account = accountManagerC.GetAccountBySession(doActionRequest.SessionID);
 
-			if (account != null &&
-				doActionRequest.Actions.Count() <= @base.model.Constants.MAX_ENTRIES_PER_CONNECTION)
-			{
-				api.DoAction (account, doActionRequest.Actions);
-				response.Status = @base.connection.Response.ReponseStatus.OK;
-			}
+            if (account != null &&
+                doActionRequest.Actions.Count() <= Core.Models.Constants.MAX_ENTRIES_PER_CONNECTION)
+            {
+                api.DoAction(account, doActionRequest.Actions);
+                response.Status = Core.Connections.Response.ReponseStatus.OK;
+            }
 
-			return JsonConvert.SerializeObject (response);
-		}
-           
+            return JsonConvert.SerializeObject(response);
+        }
 
-		public string Error(string json)
-		{
-			return "404 - Nothing to see here.";
-		}
 
-	}
+        public string Error(string json)
+        {
+            return "404 - Nothing to see here.";
+        }
+
+    }
 }
 

@@ -1,29 +1,17 @@
 ﻿using System;
 
-namespace @base.connection
+namespace Core.Connections
 {
     public class Request
     {
-        public Request(Guid sessionID, model.Position position)
+        public Request(Guid sessionID, Core.Models.Position position)
         {
-            m_position = position;
-            m_sessionID = sessionID;
+            Position = position;
+            SessionID = sessionID;
         }
 
-        public model.Position Position
-        {
-            get { return m_position; }
-            set { m_position = value; }
-        }
-
-        public Guid SessionID
-        {
-            get { return m_sessionID; }
-            set { m_sessionID = value; }
-        }
-
-        model.Position m_position;
-        Guid m_sessionID;
+        public Core.Models.Position Position;
+        public Guid SessionID;
     }
 }
 

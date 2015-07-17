@@ -1,60 +1,61 @@
-﻿using @base.control;
-using @base.model;
+﻿using Core.Controllers.Actions;
+using Core.Models;
 using client.Common.Controllers;
 using client.Common.Helper;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System;
+using System.Collections.Generic;
 
 
 namespace client.Common.Manager
 {
-    public class DefinitionManagerController : @base.control.DefinitionManagerController
-    {
+	/// <summary>
+	/// Definition manager controller laod definitions and fill the definition manager
+	/// </summary>
+	public class DefinitionManagerController : Core.Controllers.DefinitionManagerController
+	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="client.Common.Manager.DefinitionManagerController"/> class.
+		/// </summary>
+		public DefinitionManagerController()
+		{
+		}
 
-        public DefinitionManagerController ()
-        {
-            m_Network = NetworkController.GetInstance;
-            m_RegionManagerController = Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
-        }
+		/// <summary>
+		/// Loads the terrain definitions async, serialize the definitions and 
+		/// add the definition in to the definition manager.
+		/// </summary>
+		public async Task LoadTerrainDefinitionsAsync()
+		{
+            var terrainDefintions = await NetworkController.Instance.LoadTerrainTypesAsync();
+			foreach (var terrain in terrainDefintions)
+			{
+				DefinitionManager.AddDefinition(terrain);
+			}
+		}
 
+		/// <summary>
+		/// Loads the Unit definitions async, serialize the definitions and 
+		/// add the definition in to the definition manager.
+		/// </summary>
+		public async Task LoadUnitDefinitionsAsync()
+		{
+            var unitDefinitions = await NetworkController.Instance.LoadUnitTypesAsync();
+            foreach (var unitType in unitDefinitions)
+			{
+				DefinitionManager.AddDefinition(unitType);
 
-        public async Task LoadTerrainDefinitionsAsync ()
-        {
-            await m_Network.LoadTerrainTypesAsync (ClientConstants.TERRAIN_TYPES_SERVER_PATH);
-
-            var json = m_Network.JsonTerrainTypeString;
-            var terrainDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.TerrainDefinition>> (json);
-
-            foreach (var terrain in terrainDefintions) {
-                DefinitionManager.AddDefinition (terrain);
-
-            }
-        }
-
-        public async Task LoadEntityDefinitionsAsync ()
-        {
-            await m_Network.LoadTerrainTypesAsync (ClientConstants.ENTITY_TYPES_SERVER_PATH);
-
-            var json = m_Network.JsonTerrainTypeString;
-            var unitDefintions = JsonConvert.DeserializeObject<ObservableCollection<@base.model.definitions.UnitDefinition>> (json);
-
-            foreach (var unitType in unitDefintions ) {
-                DefinitionManager.AddDefinition (unitType);
-
-            }
-        }
+			}
+		}
 
 
 
 
-        #region private Fields
+		#region private Fields
 
-        private NetworkController m_Network;
-        private RegionManagerController m_RegionManagerController;
-
-        #endregion
-    }
+		#endregion
+	}
 }
 

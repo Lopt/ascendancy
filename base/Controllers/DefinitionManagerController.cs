@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using Newtonsoft.Json;
-using @base.model;
-using @base.model.definitions;
+using Core.Models;
+using Core.Models.Definitions;
 
-namespace @base.control
+namespace Core.Controllers
 {
-    public class DefinitionManagerController 
+    public class DefinitionManagerController
     {
         public DefinitionManagerController()
         {
@@ -15,7 +15,10 @@ namespace @base.control
 
         public DefinitionManager DefinitionManager
         {
-            get { return m_definitionManager; }
+            get
+            {
+                return m_definitionManager;
+            }
         }
 
         DefinitionManager m_definitionManager;

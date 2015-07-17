@@ -1,19 +1,26 @@
-﻿using @base.model;
+﻿using Core.Models;
 using SQLite;
 using System;
 using System.Collections.Generic;
-using server.model;
+using Server.Models;
 using System.Collections;
-using server.DB.Model;
+using Server.DB.Models;
 
-namespace server.DB
+namespace Server.DB
 {
+	/// <summary>
+	/// DB handle.
+	/// </summary>
     public class DBHandle
     {
        private static DBHandle instance;
 
        private DBHandle() { }
 
+	   /// <summary>
+	   /// Gets the instance.
+	   /// </summary>
+	   /// <value>The instance.</value>
        public static DBHandle Instance
        {
            get
@@ -25,18 +32,25 @@ namespace server.DB
                return instance;
            }
        }
-
+		/// <summary>
+		/// Creates the new DB account.
+		/// </summary>
+		/// <param name="account">Account.</param>
+	   	/// <param name="password">Password.</param>
        public void CreateNewDBAccount(Account account, string password)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH);  
 
            DBAccount dbacc = new DBAccount(con);
-          // DBUnits dbunit = new DBUnits(con);
-          // DBBuildings dbbuild = new DBBuildings(con);
 
            dbacc.CreateAccount(account, password);
        }
-
+		/// <summary>
+		/// Gets the account data via DB login.
+		/// </summary>
+		/// <returns>The account data via DB login.</returns>
+		/// <param name="account">Account.</param>
+		/// <param name="password">Password.</param>
        public TableData GetAccountDataViaDBLogin(Account account, string password)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH);  
@@ -55,7 +69,11 @@ namespace server.DB
            
            return tb;
        }
-
+		/// <summary>
+		/// Gets the account data via ID.
+		/// </summary>
+		/// <returns>The account data via ID.</returns>
+		/// <param name="Id">Identifier.</param>
        public TableData GetAccountDataViaID(int Id)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH);
@@ -68,7 +86,11 @@ namespace server.DB
 
            return tb;
        }
-
+		/// <summary>
+		/// Inserts the unitv into the databank.
+		/// </summary>
+		/// <param name="id">Identifier.</param>
+		/// <param name="unitEntity">Unit entity.</param>
        public void InsertIntoUnit(int id, Entity unitEntity)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
@@ -76,7 +98,11 @@ namespace server.DB
            DBUnits dbu = new DBUnits(con);
            dbu.NewUnit(unitEntity, id);  
        }
-
+		/// <summary>
+		/// Inserts the building into the databank.
+		/// </summary>
+		/// <param name="id">Identifier.</param>
+		/// <param name="buildingEntity">Building entity.</param>
        public void InsertIntoBuilding(int id, Entity buildingEntity)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
@@ -84,7 +110,16 @@ namespace server.DB
            DBBuildings dbb = new DBBuildings(con);
            dbb.NewBuildings(buildingEntity, id);
        }
-
+		/// <summary>
+		/// Inserts the resource into the databank, which belong to the owner Id..
+		/// </summary>
+		/// <param name="ressourceFire">Ressource fire.</param>
+		/// <param name="ressourceEarth">Ressource earth.</param>
+		/// <param name="ressourceWater">Ressource water.</param>
+		/// <param name="ressourceAir">Ressource air.</param>
+		/// <param name="ressourceMagic">Ressource magic.</param>
+		/// <param name="ressourceGold">Ressource gold.</param>
+		/// <param name="id">Identifier.</param>
        public void InsertIntoResource(int ressourceFire, int ressourceEarth, int ressourceWater, int ressourceAir, int ressourceMagic, int ressourceGold, int id)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
@@ -92,7 +127,11 @@ namespace server.DB
            DBRessource dbr = new DBRessource(con);
            dbr.TableRessource(ressourceFire, ressourceEarth, ressourceWater, ressourceAir, ressourceMagic, ressourceGold, id);  
        }
-
+		/// <summary>
+		/// Updates the unit, which belong to the owner Id.
+		/// </summary>
+		/// <param name="unitEntity">Unit entity.</param>
+		/// <param name="id">Identifier.</param>
        public void UpdateUnit(Entity unitEntity, int id)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
@@ -104,7 +143,11 @@ namespace server.DB
 
            con.InsertOrReplace(tu);
        }
-
+		/// <summary>
+		/// Updates the building, which belong to the owner Id.
+		/// </summary>
+		/// <param name="buildingEntity">Building entity.</param>
+		/// <param name="id">Identifier.</param>
        public void UpdateBuilding(Entity buildingEntity, int id)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
@@ -116,8 +159,12 @@ namespace server.DB
 
            con.InsertOrReplace(tb);
        }
-
-       public void InsertAllUntis(IList<Entity>  unitEntitiys, int id)
+		/// <summary>
+		/// Inserts all units, which belong to the owner Id.
+		/// </summary>
+		/// <param name="unitEntitiys">Unit entitiys.</param>
+		/// <param name="id">Identifier.</param>
+       public void InsertAllUnits(IList<Entity>  unitEntitiys, int id)
        {          
 
            for (int index = 0; index < unitEntitiys.Count; ++index)
@@ -125,7 +172,11 @@ namespace server.DB
                InsertIntoUnit(id, unitEntitiys[index]);
            }
        }
-
+		/// <summary>
+		/// Inserts all buildings, which belong to the owner Id.
+		/// </summary>
+		/// <param name="buildingEntitys">Building entitys.</param>
+		/// <param name="id">Identifier.</param>
        public void InsertAllBuildings(IList<Entity> buildingEntitys, int id)
        {
 
@@ -134,7 +185,16 @@ namespace server.DB
                InsertIntoBuilding(id, buildingEntitys[index]);
            }
        }
-
+		/// <summary>
+		/// Updates the ressource, which belong to the owner Id.
+		/// </summary>
+		/// <param name="ressourceFire">Ressource fire.</param>
+		/// <param name="ressourceEarth">Ressource earth.</param>
+		/// <param name="ressourceWater">Ressource water.</param>
+		/// <param name="ressourceAir">Ressource air.</param>
+		/// <param name="ressourceMagic">Ressource magic.</param>
+		/// <param name="ressourceGold">Ressource gold.</param>
+		/// <param name="id">Identifier.</param>
        public void UpdateRessource(int ressourceFire, int ressourceEarth, int ressourceWater, int ressourceAir, int ressourceMagic, int ressourceGold, int id)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
@@ -151,21 +211,30 @@ namespace server.DB
            con.InsertOrReplace(tr);
 
        }
-
+		/// <summary>
+		/// Deletes the unit.
+		/// </summary>
+		/// <param name="id">Identifier.</param>
        public void DeleteUnit(int id)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
 
            con.Delete<TableUnit>(id);
        }
-
+		/// <summary>
+		/// Deletes the building.
+		/// </summary>
+		/// <param name="id">Identifier.</param>
        public void DeleteBuilding(int id)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 
 
            con.Delete<TableBuilding>(id);
        }
-
+		/// <summary>
+		/// Deletes the account from all tables.
+		/// </summary>
+		/// <param name="id">Identifier.</param>
        public void DeleteAccountFromAllTables(int id)
        {
            SQLiteConnection con = new SQLiteConnection(ServerConstants.DB_PATH); 

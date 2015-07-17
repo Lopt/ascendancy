@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "server", "server\server.csproj", "{819D1AEA-CAFF-4B65-A3CC-86666FF3F6D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "base", "base\base.csproj", "{163A206B-36D1-46D5-AA19-B515F7350C6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "core", "base\core.csproj", "{163A206B-36D1-46D5-AA19-B515F7350C6E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client.Common", "client\client\client.Common\client.Common.csproj", "{92AF0C3C-1F4F-4070-B925-F587F0C8063F}"
 EndProject
@@ -314,10 +314,33 @@ Global
 		$29.IncludeInstanceMembers = True
 		$29.IncludeStaticEntities = True
 		$0.TextStylePolicy = $31
-		$31.inheritsSet = VisualStudio
-		$31.inheritsScope = text/plain
+		$31.inheritsSet = null
 		$31.scope = text/x-csharp
 		$0.CSharpFormattingPolicy = $32
+		$32.IndentSwitchBody = True
+		$32.IndentBlocksInsideExpressions = True
+		$32.AnonymousMethodBraceStyle = NextLine
+		$32.PropertyBraceStyle = NextLine
+		$32.PropertyGetBraceStyle = NextLine
+		$32.PropertySetBraceStyle = NextLine
+		$32.EventBraceStyle = NextLine
+		$32.EventAddBraceStyle = NextLine
+		$32.EventRemoveBraceStyle = NextLine
+		$32.StatementBraceStyle = NextLine
+		$32.ElseNewLinePlacement = NewLine
+		$32.CatchNewLinePlacement = NewLine
+		$32.FinallyNewLinePlacement = NewLine
+		$32.WhileNewLinePlacement = DoNotCare
+		$32.ArrayInitializerWrapping = DoNotChange
+		$32.ArrayInitializerBraceStyle = NextLine
+		$32.BeforeMethodDeclarationParentheses = False
+		$32.BeforeMethodCallParentheses = False
+		$32.BeforeConstructorDeclarationParentheses = False
+		$32.NewLineBeforeConstructorInitializerColon = NewLine
+		$32.NewLineAfterConstructorInitializerColon = SameLine
+		$32.BeforeDelegateDeclarationParentheses = False
+		$32.NewParentheses = False
+		$32.SpacesBeforeBrackets = False
 		$32.inheritsSet = Mono
 		$32.inheritsScope = text/x-csharp
 		$32.scope = text/x-csharp

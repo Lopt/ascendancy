@@ -41,10 +41,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\base\base.csproj">
-      <Project>{163A206B-36D1-46D5-AA19-B515F7350C6E}</Project>
-      <Name>base</Name>
-    </ProjectReference>
     <ProjectReference Include="..\server\server.csproj">
       <Project>{819D1AEA-CAFF-4B65-A3CC-86666FF3F6D1}</Project>
       <Name>server</Name>

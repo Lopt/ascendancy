@@ -1,23 +1,32 @@
-﻿using System;
-using System.Collections;
-using @base.model;
+﻿using Core.Models;
 using SQLite;
-using @server.model;
+using Server.Models;
 using System.Security.Cryptography;
+using Server.DB.Models;
 using System.Text;
-using server.DB.Model;
+using System;
 
-namespace server.DB
+namespace Server.DB
 {
+    /// <summary>
+    /// DB account.
+    /// </summary>
     class DBAccount
     {
-        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="server.DB.DBAccount"/> class.
+        /// </summary>
+        /// <param name="con">Connection to the databank.</param>
         public DBAccount(SQLiteConnection con)
         {
             m_db = con;
             m_db.CreateTable<TableAccount>();
-        }
-        
+        }        
+		/// <summary>
+		/// Creates the account with username, password, and the calculated salt value.
+		/// </summary>
+		/// <param name="account">Account.</param>
+		/// <param name="password">Password.</param>
         public void CreateAccount(Account account, string password)
         {
             var salt = GenerateSaltValue();
@@ -30,7 +39,11 @@ namespace server.DB
 
             m_db.InsertOrReplace(newData);
         }
-        
+        /// <summary>
+        /// Login the specified username and password.
+        /// </summary>
+        /// <param name="username">Username.</param>
+        /// <param name="password">Password.</param>
         public bool Login(string username, string password)
         {
             var result = m_db.Query<TableAccount>("SELECT Id, UserName, Salt, Password FROM Account WHERE UserName = ? LIMIT 1", username);
@@ -52,7 +65,10 @@ namespace server.DB
                 return false;
             }
         }
-        
+        /// <summary>
+        /// Generates the salt value.
+        /// </summary>
+        /// <returns>The salt value.</returns>
         private string GenerateSaltValue()
         {
             var utf16 = new UnicodeEncoding();
@@ -66,7 +82,12 @@ namespace server.DB
 
             return SaltValueString;
         }
-
+		/// <summary>
+		/// Generates the salted hash.
+		/// </summary>
+		/// <returns>The salted hash.</returns>
+		/// <param name="password">Password.</param>
+		/// <param name="salt">Salt.</param>
         private string GenerateSaltedHash(string password, string salt)
         {
         
@@ -77,7 +98,7 @@ namespace server.DB
 
             byte[] hash = algorithm.ComputeHash(saltedHashBytes);
 
-            for (int index = 0; index < ServerConstants.HASH_CICLE -1; ++index)
+            for (int index = 0; index < ServerConstants.HASH_CYCLES -1; ++index)
             {
                 hash = algorithm.ComputeHash(saltedHashBytes);
             }

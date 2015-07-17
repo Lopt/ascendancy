@@ -2,35 +2,82 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace @base.model
+namespace Core.Models
 {
+    /// <summary>
+    /// Position in the Gameworld as Integer (so it is discrete).
+    /// Can be used to identify one field in the World.
+    /// </summary>
     public class PositionI
-	{
+    {
         [JsonConstructor]
-        public PositionI (int x, int y)
-		{
-			m_x = x;
-			m_y = y;
-		}
-
-        public PositionI (JContainer obj)
+        public PositionI(int x, int y)
         {
-            m_x = (int) obj.SelectToken("X");
-            m_y = (int) obj.SelectToken("Y");
+            X = x;
+            Y = y;
         }
 
-        public PositionI(LatLon latLon)
+        public PositionI(JContainer obj)
         {
-            var zoom = Constants.EARTH_CIRCUMFERENCE / Constants.CELL_SIZE;
-            m_x = (int)((latLon.Lon + 180.0) / 360.0 * zoom);
-            m_y = (int)((1.0 - Math.Log(Math.Tan(latLon.Lat * Math.PI / 180.0) +
-                1.0 / Math.Cos(latLon.Lat * Math.PI / 180.0)) / Math.PI) / 2.0 * zoom);
+            X = (int)obj.SelectToken("X");
+            Y = (int)obj.SelectToken("Y");
         }
-
+            
         public PositionI(RegionPosition regionPosition, CellPosition cellPosition)
         {
-            m_x = regionPosition.RegionX * Constants.REGION_SIZE_X + cellPosition.CellX;
-            m_y = regionPosition.RegionY * Constants.REGION_SIZE_Y + cellPosition.CellY;
+            X = regionPosition.RegionX * Constants.REGION_SIZE_X + cellPosition.CellX;
+            Y = regionPosition.RegionY * Constants.REGION_SIZE_Y + cellPosition.CellY;
+        }
+
+        public PositionI(Position position)
+        {
+            X = (int) position.X;
+            Y = (int) position.Y;
+        }
+
+        [JsonIgnore]
+        public RegionPosition RegionPosition
+        {
+            get
+            {
+                return new RegionPosition(this);
+            }
+        }
+
+        [JsonIgnore]
+        public CellPosition CellPosition
+        {
+            get
+            {
+                return new CellPosition(this);
+            }
+        }
+
+        public int X
+        {
+            get;
+            private set;
+        }
+
+        public int Y
+        {
+            get;
+            private set;
+        }
+
+
+
+
+        public override int GetHashCode()
+        {
+            return X * 1000000 + Y;
+        }
+
+
+        public override bool Equals(Object obj)
+        {
+            var pos = (PositionI)obj;
+            return this == pos;
         }
 
         public static PositionI operator +(PositionI first, PositionI second)
@@ -60,7 +107,8 @@ namespace @base.model
         }
 
         public static bool operator !=(PositionI first, PositionI second)
-        {            if (System.Object.ReferenceEquals(first, second))
+        {
+            if (System.Object.ReferenceEquals(first, second))
             {
                 return false;
             }
@@ -78,49 +126,18 @@ namespace @base.model
 
         public double Distance(PositionI position)
         {
-            var xDistance = (position.X - m_x);
-            var yDistance = (position.Y - m_y);
+            var xDistance = (position.X - X);
+            var yDistance = (position.Y - Y);
             return xDistance * xDistance + yDistance * yDistance;
         }
 
-        [JsonIgnore]
-        public RegionPosition RegionPosition
+        public double Distance(Position position)
         {
-            get { return new RegionPosition(this); }
+            var xDistance = (position.X - X);
+            var yDistance = (position.Y - Y);
+            return xDistance * xDistance + yDistance * yDistance;
         }
 
-        [JsonIgnore]
-        public CellPosition CellPosition
-        {
-            get { return new CellPosition(this); }
-        }
-
-		public int X
-		{
-			get { return this.m_x; }
-		}
-
-        public int Y
-		{
-			get { return this.m_y; }
-		}
-
-
-        public override bool Equals(Object obj)
-        {
-            var pos = (PositionI)obj;
-            return this == pos;
-        }
-
-
-        public override int GetHashCode()
-        {
-            return X * 1000000 + Y;
-        }
-
-
-        private readonly int m_x;
-        private readonly int m_y;
-	}
+    }
 }
 
