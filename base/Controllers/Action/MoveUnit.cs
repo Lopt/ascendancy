@@ -5,8 +5,6 @@ using System.Collections.ObjectModel;
 using Core.Controllers.Actions;
 using Core.Models.Definitions;
 using Core.Models;
-using @base.Models;
-using @base.Models.Definition;
 using System.Collections;
 using AStar;
 
@@ -15,7 +13,7 @@ namespace Core.Controllers.Actions
     public class MoveUnit : Action
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="base.control.action.MoveUnit"/> class.
+        /// Initializes a new instance of the <see cref="Core.Models.Actions.MoveUnit"/> class.
         /// </summary>
         /// <param name="model">Model.</param>
         public MoveUnit(Core.Models.ModelEntity model)

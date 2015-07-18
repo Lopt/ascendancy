@@ -9,7 +9,7 @@ namespace Core.Models
     public class LatLon
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="base.model.LatLon"/> class.
+        /// Initializes a new instance of the <see cref="Core.Models.LatLon"/> class.
         /// A LatLon is an Latitude/Longitude Position of (spheric) earth.
         /// </summary>
         /// <param name="lat">Latitude</param>
@@ -21,7 +21,7 @@ namespace Core.Models
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="base.model.LatLon"/> class.
+        /// Initializes a new instance of the <see cref="Core.Models.LatLon"/> class.
         /// </summary>
         /// <param name="position">Position which should be converted to a LatLon Position.</param>
         public LatLon(Position position)
