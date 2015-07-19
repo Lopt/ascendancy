@@ -177,7 +177,7 @@ namespace client.Common.Views
                     break;
 
                 case(TouchGesture.Move):
-                    //m_worldLayer.CheckCenterRegion();
+                    m_worldLayer.CheckCenterRegion();
                     m_touchGesture = TouchGesture.None;
                     break;
 
