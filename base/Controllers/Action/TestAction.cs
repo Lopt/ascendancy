@@ -17,21 +17,13 @@ namespace Core.Controllers.Actions
         public const string REGIONS = "Regions";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="base.control.action.Action"/> class.
+        /// Initializes a new instance of the <see cref="Core.Controllers.Actions.Action"/> class.
         /// </summary>
         /// <param name="actionType">Action type.</param>
         /// <param name="regions">Affected Regions of this action.</param>
         /// <param name="parameters">Parameters.</param>
         override public ConcurrentBag<Core.Models.Region> GetAffectedRegions()
         {
-            /*
-            var action = (model.Action)Model;
-            var regions = new ConcurrentBag<model.Region> ();
-            foreach (Newtonsoft.Json.Linq.JObject regionPosition in (Newtonsoft.Json.Linq.JContainer) action.Parameters[REGIONS])
-            {
-                regions.Add(regionManagerC.GetRegion(new @base.model.RegionPosition(regionPosition)));
-            }
-            return regions;*/
             var action = (Core.Models.Action)Model;
             return (ConcurrentBag<Core.Models.Region>)action.Parameters[REGIONS];
 

@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 using Core.Models;
-using @base.Models;
 
-namespace @base.Models.Definition
+namespace Core.Models
 {
     class LogicRules
     {

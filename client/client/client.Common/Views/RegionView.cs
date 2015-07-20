@@ -175,12 +175,7 @@ namespace client.Common.Views
 
             return false;
         }
-
-        public void DrawMenu(CCTileMapCoordinates mapCoordinat, Entity unit)
-        {
             
-        }
-
         #region Fields
 
         client.Common.Manager.RegionManagerController m_RegionManagerController;
