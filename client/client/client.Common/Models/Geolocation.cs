@@ -10,32 +10,32 @@ using XLabs.Platform.Device;
 
 
 
-namespace client.Common.Models
+namespace Client.Common.Models
 {
-    [Table ("Geolocation")]
+    [Table("Geolocation")]
     public sealed class Geolocation : ViewBaseModel
     {
         #region Singelton
 
         private static readonly Lazy<Geolocation> lazy =
             new Lazy<Geolocation>(() => new Geolocation());
-        
+
         public static Geolocation Instance { get { return lazy.Value; } }
 
-        private Geolocation ()
+        private Geolocation()
         {
-            m_geolocator = DependencyService.Get<IGeolocator> ();
+            m_geolocator = DependencyService.Get<IGeolocator>();
             m_geolocator.DesiredAccuracy = 1.0;
             m_geolocator.PositionChanged += OnPositionChanged;
 
-            m_tokensource = new CancellationTokenSource ();
-            m_scheduler = TaskScheduler.FromCurrentSynchronizationContext ();
+            m_tokensource = new CancellationTokenSource();
+            m_scheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
-            Position position = new Position ();
+            Position position = new Position();
             position.Latitude = 50.98520741; // standartPosition
             position.Longitude = 11.04233265; // standartPosition
             CurrentPosition = position;
-            LastPosition = new Position ();
+            LastPosition = new Position();
 
             IsBusy = false;
             IsPositionChanged = false;
@@ -50,71 +50,81 @@ namespace client.Common.Models
         private CancellationTokenSource m_tokensource = null;
         private readonly TaskScheduler m_scheduler = null;
 
-        public bool IsBusy { 
+        public bool IsBusy
+        { 
             get;
             private set; 
         }
 
-        public bool IsPositionChanged {
+        public bool IsPositionChanged
+        {
             get; 
             set; 
         }
 
-        public bool IsGeolocationAvailable { 
-            get {
+        public bool IsGeolocationAvailable
+        { 
+            get
+            {
                 return m_geolocator.IsGeolocationAvailable; 
             } 
         }
 
-        public bool IsGeolocationEnabled { 
-            get {
+        public bool IsGeolocationEnabled
+        { 
+            get
+            {
                 return m_geolocator.IsGeolocationEnabled; 
             } 
         }
 
-        public bool IsGeolocationListening { 
-            get { 
+        public bool IsGeolocationListening
+        { 
+            get
+            { 
                 return m_geolocator.IsListening; 
             } 
         }
 
-        public void StartListening (uint minTimeIntervallInMilliSec, double minDistance)
+        public void StartListening(uint minTimeIntervallInMilliSec, double minDistance)
         {
-            m_geolocator.StartListening (minTimeIntervallInMilliSec, minDistance);
+            m_geolocator.StartListening(minTimeIntervallInMilliSec, minDistance);
         }
 
-        public void StopListening ()
+        public void StopListening()
         {
-            m_geolocator.StopListening ();
+            m_geolocator.StopListening();
         }
 
-        private async void OnPositionChanged (object sender, PositionEventArgs e)
+        private async void OnPositionChanged(object sender, PositionEventArgs e)
         {
-            await GetPosition ();
+            await GetPosition();
             IsPositionChanged = true;
         }
 
-        private async Task GetPosition ()
+        private async Task GetPosition()
         {  
             if (m_geolocator == null)
                 return;
             IsBusy = true;
 
-            await m_geolocator.GetPositionAsync (timeout: 4000, cancelToken: m_tokensource.Token, includeHeading: true)
-                .ContinueWith (t => {
-                IsBusy = false;
-                if (t.IsFaulted)
-                    Status = ((GeolocationException)t.Exception.InnerException).Error.ToString ();
-                else if (t.IsCanceled)
-                    Status = "Canceled";
-                else {
-                    Status = "ok";
-                    CurrentPosition = t.Result as Position;
+            await m_geolocator.GetPositionAsync(timeout: 4000, cancelToken: m_tokensource.Token, includeHeading: true)
+                .ContinueWith(t =>
+                {
+                    IsBusy = false;
+                    if (t.IsFaulted)
+                        Status = ((GeolocationException)t.Exception.InnerException).Error.ToString();
+                    else if (t.IsCanceled)
+                        Status = "Canceled";
+                    else
+                    {
+                        Status = "ok";
+                        CurrentPosition = t.Result as Position;
 //                    if (CurrentPosition.Latitude < 10 && CurrentPosition.Longitude < 10)
                             
-                }
+                    }
 
-            }, m_scheduler);
+                }, m_scheduler);
         }
 
         #endregion
@@ -122,32 +132,37 @@ namespace client.Common.Models
         #region ViewPoperties
 
         [PrimaryKey, AutoIncrement]
-        public int Id {
+        public int Id
+        {
             get; 
             set; 
         }
 
-        [Column ("CurrentPosition")]
-        public Position CurrentPosition { 
-            get {
+        [Column("CurrentPosition")]
+        public Position CurrentPosition
+        { 
+            get
+            {
                 return m_currentPosition; 
             }
-            set {
-                SetProperty (m_currentPosition, value, (val) => {
-                    LastPosition = m_currentPosition;
-                    m_currentPosition = val;
-                }, PropertyNameCurrentPosition);
+            set
+            {
+                SetProperty(m_currentPosition, value, (val) =>
+                    {
+                        LastPosition = m_currentPosition;
+                        m_currentPosition = val;
+                    }, PropertyNameCurrentPosition);
 
-                Latitude = m_currentPosition.Latitude.ToString ("N4");
-                Longitude = m_currentPosition.Longitude.ToString ("N4");
-                Altitude = m_currentPosition.Altitude.ToString ();
-                TimeStamp = m_currentPosition.Timestamp.ToString ("G");
-                Heading = m_currentPosition.Heading.ToString ();
-                Accuracy = m_currentPosition.Accuracy.ToString ();
-                CurrentGamePosition = new Core.Models.Position (new Core.Models.LatLon (m_currentPosition.Latitude, m_currentPosition.Longitude));
-                StringGamePosition = string.Format ("PosX = {0}, PosY = {1}", CurrentGamePosition.X, CurrentGamePosition.Y);
-                CurrentRegionPosition = new Core.Models.RegionPosition (CurrentGamePosition);
-                CurrentCellPosition = new Core.Models.CellPosition (CurrentGamePosition);
+                Latitude = m_currentPosition.Latitude.ToString("N4");
+                Longitude = m_currentPosition.Longitude.ToString("N4");
+                Altitude = m_currentPosition.Altitude.ToString();
+                TimeStamp = m_currentPosition.Timestamp.ToString("G");
+                Heading = m_currentPosition.Heading.ToString();
+                Accuracy = m_currentPosition.Accuracy.ToString();
+                CurrentGamePosition = new Core.Models.Position(new Core.Models.LatLon(m_currentPosition.Latitude, m_currentPosition.Longitude));
+                StringGamePosition = string.Format("PosX = {0}, PosY = {1}", CurrentGamePosition.X, CurrentGamePosition.Y);
+                CurrentRegionPosition = new Core.Models.RegionPosition(CurrentGamePosition);
+                CurrentCellPosition = new Core.Models.CellPosition(CurrentGamePosition);
 
             }
         }
@@ -156,16 +171,20 @@ namespace client.Common.Models
         private Position m_currentPosition;
 
 
-        [Column ("CurrentGamePosition")]
-        public Core.Models.Position CurrentGamePosition { 
-            get {
+        [Column("CurrentGamePosition")]
+        public Core.Models.Position CurrentGamePosition
+        { 
+            get
+            {
                 return m_currentGamePosition; 
             }
-            set {
-                SetProperty (m_currentGamePosition, value, (val) => {
-                    m_currentGamePosition = val;
+            set
+            {
+                SetProperty(m_currentGamePosition, value, (val) =>
+                    {
+                        m_currentGamePosition = val;
 
-                }, PropertyNameCurrentGamePosition);
+                    }, PropertyNameCurrentGamePosition);
             }
         }
 
@@ -173,16 +192,20 @@ namespace client.Common.Models
         private Core.Models.Position m_currentGamePosition;
 
 
-        [Column ("CurrentRegionPosition")]
-        public Core.Models.RegionPosition CurrentRegionPosition { 
-            get {
+        [Column("CurrentRegionPosition")]
+        public Core.Models.RegionPosition CurrentRegionPosition
+        { 
+            get
+            {
                 return m_currentRegionPosition; 
             }
-            set {
-                SetProperty (m_currentRegionPosition, value, (val) => {
-                    m_currentRegionPosition = val;
+            set
+            {
+                SetProperty(m_currentRegionPosition, value, (val) =>
+                    {
+                        m_currentRegionPosition = val;
 
-                }, PropertyNameCurrentRegionPosition);
+                    }, PropertyNameCurrentRegionPosition);
             }
         }
 
@@ -190,16 +213,20 @@ namespace client.Common.Models
         private Core.Models.RegionPosition m_currentRegionPosition;
 
 
-        [Column ("CurrentCellPosition")]
-        public Core.Models.CellPosition CurrentCellPosition { 
-            get { 
+        [Column("CurrentCellPosition")]
+        public Core.Models.CellPosition CurrentCellPosition
+        { 
+            get
+            { 
                 return m_currentCellPosition; 
             }
-            set {
-                SetProperty (m_currentCellPosition, value, (val) => {
-                    m_currentCellPosition = val;
+            set
+            {
+                SetProperty(m_currentCellPosition, value, (val) =>
+                    {
+                        m_currentCellPosition = val;
 
-                }, PropertyNameCurrentCellPosition);
+                    }, PropertyNameCurrentCellPosition);
             }
         }
 
@@ -207,19 +234,23 @@ namespace client.Common.Models
         private Core.Models.CellPosition m_currentCellPosition;
 
 
-        [Column ("LastPosition")]
-        public Position LastPosition { 
-            get {
+        [Column("LastPosition")]
+        public Position LastPosition
+        { 
+            get
+            {
                 return m_lastPosition; 
             }
-            set {
-                SetProperty (m_lastPosition, value, (val) => {
-                    m_lastPosition = val;
-                    LastGamePosition = new Core.Models.Position (new Core.Models.LatLon (val.Latitude, val.Longitude));
-                    LastRegionPosition = new Core.Models.RegionPosition (LastGamePosition);
-                    LastCellPosition = new Core.Models.CellPosition (LastGamePosition);
+            set
+            {
+                SetProperty(m_lastPosition, value, (val) =>
+                    {
+                        m_lastPosition = val;
+                        LastGamePosition = new Core.Models.Position(new Core.Models.LatLon(val.Latitude, val.Longitude));
+                        LastRegionPosition = new Core.Models.RegionPosition(LastGamePosition);
+                        LastCellPosition = new Core.Models.CellPosition(LastGamePosition);
 
-                }, PropertyNameLastPosition);
+                    }, PropertyNameLastPosition);
             }
         }
 
@@ -227,16 +258,20 @@ namespace client.Common.Models
         private Position m_lastPosition;
 
 
-        [Column ("LastGamePosition")]
-        public Core.Models.Position LastGamePosition { 
-            get { 
+        [Column("LastGamePosition")]
+        public Core.Models.Position LastGamePosition
+        { 
+            get
+            { 
                 return m_lastGamePosition; 
             }
-            set {
-                SetProperty (m_lastGamePosition, value, (val) => {
-                    m_lastGamePosition = val;
+            set
+            {
+                SetProperty(m_lastGamePosition, value, (val) =>
+                    {
+                        m_lastGamePosition = val;
 
-                }, PropertyNameLastGamePosition);
+                    }, PropertyNameLastGamePosition);
             }
         }
 
@@ -244,16 +279,20 @@ namespace client.Common.Models
         private Core.Models.Position m_lastGamePosition;
 
 
-        [Column ("LastRegionPosition")]
-        public Core.Models.RegionPosition LastRegionPosition { 
-            get { 
+        [Column("LastRegionPosition")]
+        public Core.Models.RegionPosition LastRegionPosition
+        { 
+            get
+            { 
                 return m_lastRegionPosition; 
             }
-            set {
-                SetProperty (m_lastRegionPosition, value, (val) => {
-                    m_lastRegionPosition = val;
+            set
+            {
+                SetProperty(m_lastRegionPosition, value, (val) =>
+                    {
+                        m_lastRegionPosition = val;
 
-                }, PropertyNameLastRegionPosition);
+                    }, PropertyNameLastRegionPosition);
             }
         }
 
@@ -261,16 +300,20 @@ namespace client.Common.Models
         private Core.Models.RegionPosition m_lastRegionPosition;
 
 
-        [Column ("LastCellPosition")]
-        public Core.Models.CellPosition LastCellPosition { 
-            get { 
+        [Column("LastCellPosition")]
+        public Core.Models.CellPosition LastCellPosition
+        { 
+            get
+            { 
                 return m_lastCellPosition;
             }
-            set {
-                SetProperty (m_lastCellPosition, value, (val) => {
-                    m_lastCellPosition = val;
+            set
+            {
+                SetProperty(m_lastCellPosition, value, (val) =>
+                    {
+                        m_lastCellPosition = val;
 
-                }, PropertyNameLastCellPosition);
+                    }, PropertyNameLastCellPosition);
             }
         }
 
@@ -278,16 +321,20 @@ namespace client.Common.Models
         private Core.Models.CellPosition m_lastCellPosition;
 
 
-        [Column ("Latitude")]
-        public string Latitude { 
-            get { 
+        [Column("Latitude")]
+        public string Latitude
+        { 
+            get
+            { 
                 return m_latitude; 
             }
-            set {
-                SetProperty (m_latitude, value, (val) => {
-                    m_latitude = val;
+            set
+            {
+                SetProperty(m_latitude, value, (val) =>
+                    {
+                        m_latitude = val;
 
-                }, PropertyNameLatitude);
+                    }, PropertyNameLatitude);
             }
         }
 
@@ -295,16 +342,20 @@ namespace client.Common.Models
         private string m_latitude;
 
 
-        [Column ("Longitude")]
-        public string Longitude { 
-            get {
+        [Column("Longitude")]
+        public string Longitude
+        { 
+            get
+            {
                 return m_longitude; 
             }
-            set {
-                SetProperty (m_longitude, value, (val) => {
-                    m_longitude = val;
+            set
+            {
+                SetProperty(m_longitude, value, (val) =>
+                    {
+                        m_longitude = val;
 
-                }, PropertyNameLongitude);
+                    }, PropertyNameLongitude);
             }
         }
 
@@ -312,16 +363,20 @@ namespace client.Common.Models
         private string m_longitude;
 
 
-        [Column ("Altitude")]
-        public string Altitude { 
-            get {
+        [Column("Altitude")]
+        public string Altitude
+        { 
+            get
+            {
                 return m_altitude;
             }
-            set {
-                SetProperty (m_altitude, value, (val) => {
-                    m_altitude = val;
+            set
+            {
+                SetProperty(m_altitude, value, (val) =>
+                    {
+                        m_altitude = val;
 
-                }, PropertyNameAltitude);
+                    }, PropertyNameAltitude);
             }
         }
 
@@ -329,16 +384,20 @@ namespace client.Common.Models
         private string m_stringGamePosition;
 
 
-        [Column ("StringGamePosition")]
-        public string StringGamePosition { 
-            get {
+        [Column("StringGamePosition")]
+        public string StringGamePosition
+        { 
+            get
+            {
                 return m_stringGamePosition; 
             }
-            set {
-                SetProperty (m_stringGamePosition, value, (val) => {
-                    m_stringGamePosition = val;
+            set
+            {
+                SetProperty(m_stringGamePosition, value, (val) =>
+                    {
+                        m_stringGamePosition = val;
 
-                }, PropertyNameStringGamePosition);
+                    }, PropertyNameStringGamePosition);
             }
         }
 
@@ -346,16 +405,20 @@ namespace client.Common.Models
         private string m_altitude;
 
 
-        [Column ("TimeStamp")]
-        public string TimeStamp { 
-            get {
+        [Column("TimeStamp")]
+        public string TimeStamp
+        { 
+            get
+            {
                 return m_timeStamp;
             }
-            set {
-                SetProperty (m_timeStamp, value, (val) => {
-                    m_timeStamp = val;
+            set
+            {
+                SetProperty(m_timeStamp, value, (val) =>
+                    {
+                        m_timeStamp = val;
 
-                }, PropertyNameTimeStamp);
+                    }, PropertyNameTimeStamp);
             }
         }
 
@@ -364,16 +427,20 @@ namespace client.Common.Models
 
 
         //Heading in dergees relative to the north
-        [Column ("Heading")]
-        public string Heading { 
-            get { 
+        [Column("Heading")]
+        public string Heading
+        { 
+            get
+            { 
                 return m_heading;
             }
-            set {
-                SetProperty (m_heading, value, (val) => {
-                    m_heading = val;
+            set
+            {
+                SetProperty(m_heading, value, (val) =>
+                    {
+                        m_heading = val;
 
-                }, PropertyNameHeading);
+                    }, PropertyNameHeading);
             }
         }
 
@@ -382,16 +449,20 @@ namespace client.Common.Models
 
 
         //the potential position error radius in meters
-        [Column ("Accuracy")]
-        public string Accuracy { 
-            get { 
+        [Column("Accuracy")]
+        public string Accuracy
+        { 
+            get
+            { 
                 return m_accuracy;
             }
-            set {
-                SetProperty (m_accuracy, value, (val) => {
-                    m_accuracy = val;
+            set
+            {
+                SetProperty(m_accuracy, value, (val) =>
+                    {
+                        m_accuracy = val;
 
-                }, PropertyNameAccuracy);
+                    }, PropertyNameAccuracy);
             }
         }
 
@@ -399,16 +470,20 @@ namespace client.Common.Models
         private string m_accuracy;
 
 
-        [Column ("Status")]
-        public string Status { 
-            get { 
+        [Column("Status")]
+        public string Status
+        { 
+            get
+            { 
                 return m_status;
             }
-            set {
-                SetProperty (m_status, value, (val) => {
-                    m_status = val;
+            set
+            {
+                SetProperty(m_status, value, (val) =>
+                    {
+                        m_status = val;
 
-                }, PropertyNameStatus);
+                    }, PropertyNameStatus);
             }
         }
 

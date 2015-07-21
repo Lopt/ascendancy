@@ -2,11 +2,11 @@
 using CocosSharp;
 using Core.Models.Definitions;
 using System.Collections.Generic;
-using client.Common.Helper;
+using Client.Common.Helper;
 using Core.Models;
 
 
-namespace client.Common.Views
+namespace Client.Common.Views
 {
     public class ViewDefinitions
     {
@@ -120,12 +120,12 @@ namespace client.Common.Views
 
 
 
-        public CCTileGidAndFlags DefinitionToTileGid(Definition definition, Sort sort=Sort.Normal)
+        public CCTileGidAndFlags DefinitionToTileGid(Definition definition, Sort sort = Sort.Normal)
         {
             CCTileGidAndFlags gid;
             gid = new CCTileGidAndFlags(ClientConstants.INVALID_GID);
 
-			if (definition.Category == Core.Models.Definitions.Category.Terrain)
+            if (definition.Category == Core.Models.Definitions.Category.Terrain)
             {
                 var terrainDefinition = definition as TerrainDefinition;
                 m_TerrainsGid.TryGetValue(terrainDefinition.SubType, out gid);

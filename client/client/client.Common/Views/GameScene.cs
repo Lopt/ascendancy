@@ -1,9 +1,9 @@
 ﻿using System;
 using CocosSharp;
 using System.Collections.Generic;
-using client.Common.Models;
+using Client.Common.Models;
 
-namespace client.Common.Views
+namespace Client.Common.Views
 {
     public class GameScene : CCScene
     {

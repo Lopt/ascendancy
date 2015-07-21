@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Reflection;
 using CocosSharp;
-using client.Common.Helper;
+using Client.Common.Helper;
 
-namespace client.Common.Models
+namespace Client.Common.Models
 {
     public class MapCellPosition
     {
-        public MapCellPosition (int cellX, int cellY)
+        public MapCellPosition(int cellX, int cellY)
         {
             m_CellX = cellX;
             m_CellY = cellY;
         }
-            
-        public MapCellPosition (CCTileMapCoordinates tileMapCoordinates)
+
+        public MapCellPosition(CCTileMapCoordinates tileMapCoordinates)
         {
             var x = tileMapCoordinates.Column;
             var y = tileMapCoordinates.Row;
@@ -22,32 +22,36 @@ namespace client.Common.Models
             m_CellY = (y / 2);
         }
 
-        public int CellX {
-            get {
+        public int CellX
+        {
+            get
+            {
                 return m_CellX;
             }
         }
 
-        public int CellY {
-            get {
+        public int CellY
+        {
+            get
+            {
                 return m_CellY;
             }
         }
 
 
 
-        public CCTileMapCoordinates GetTileMapCoordinates ()
+        public CCTileMapCoordinates GetTileMapCoordinates()
         {
-            return new CCTileMapCoordinates (m_CellX / 2, (m_CellY * 2) + (m_CellX % 2));
+            return new CCTileMapCoordinates(m_CellX / 2, (m_CellY * 2) + (m_CellX % 2));
         }
 
-        public CCPoint GetAnchor ()
+        public CCPoint GetAnchor()
         {
 
             float x = (m_CellX) / (ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
             float y = (m_CellY) / (ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
 
-            return new CCPoint (x, (1 - y) / 2);
+            return new CCPoint(x, (1 - y) / 2);
         }
 
         private readonly int m_CellX;

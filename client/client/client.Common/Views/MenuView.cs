@@ -1,12 +1,12 @@
 ﻿using System;
 using CocosSharp;
-using client.Common.Models;
+using Client.Common.Models;
 using System.Collections;
 using System.Collections.Generic;
 using Core.Models.Definitions;
 
 
-namespace client.Common.Views
+namespace Client.Common.Views
 {
     public class MenuView
     {

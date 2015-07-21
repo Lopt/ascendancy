@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace client.Common.Views.Actions
+namespace Client.Common.Views.Actions
 {
-    public class CreateUnit : client.Common.Views.Actions.Action
+    public class CreateUnit : Client.Common.Views.Actions.Action
     {
         public CreateUnit(Core.Models.ModelEntity model, WorldLayer worldLayer)
             : base(model)

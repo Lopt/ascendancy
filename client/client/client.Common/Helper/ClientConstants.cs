@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace client.Common.Helper
+namespace Client.Common.Helper
 {
     public class ClientConstants
     {
-        public ClientConstants ()
+        public ClientConstants()
         {
         }
 
@@ -82,11 +82,11 @@ namespace client.Common.Helper
 
         #region UnitsGid
 
-        public const short BOWMAN_GID  = 46;
-        public const short HERO_GID    = 47;
+        public const short BOWMAN_GID = 46;
+        public const short HERO_GID = 47;
         public const short WARRIOR_GID = 48;
-        public const short MAGE_GID    = 49;
-        public const short SCOUT_GID   = 50;
+        public const short MAGE_GID = 49;
+        public const short SCOUT_GID = 50;
         public const short UNKNOWN_GID = 51;
 
         #endregion
@@ -167,7 +167,9 @@ namespace client.Common.Helper
         #endregion
 
         #region Action-Animations
+
         public const float MOVE_SPEED_PER_FIELD = 0.50f;
+
         #endregion
 
     }

@@ -6,12 +6,12 @@ using ModernHttpClient;
 
 using Core.Models.Definitions;
 using Core.Models;
-using client.Common.Helper;
+using Client.Common.Helper;
 using System.Collections.Generic;
 
 
 
-namespace client.Common.Controllers
+namespace Client.Common.Controllers
 {
     public sealed class NetworkController
     {

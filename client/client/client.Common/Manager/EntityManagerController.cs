@@ -1,7 +1,7 @@
 ﻿using Core.Controllers.Actions;
 using Core.Models;
-using client.Common.Controllers;
-using client.Common.Helper;
+using Client.Common.Controllers;
+using Client.Common.Helper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
@@ -9,7 +9,7 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace client.Common.Manager
+namespace Client.Common.Manager
 {
     public sealed class EntityManagerController
     {
