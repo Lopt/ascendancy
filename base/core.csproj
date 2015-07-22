@@ -30,7 +30,6 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Controllers\Action\CreateBuilding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Constants.cs" />
@@ -59,21 +58,22 @@
     <Compile Include="Models\Manager\DefinitionManager.cs" />
     <Compile Include="Models\World.cs" />
     <Compile Include="Controllers\DefinitionManagerController.cs" />
-    <Compile Include="Controllers\Action\AStar\Node.cs" />
-    <Compile Include="Controllers\Action\AStar\NodeState.cs" />
-    <Compile Include="Controllers\Action\AStar\PathFinder.cs" />
-    <Compile Include="Controllers\Action\AStar\SearchParameters.cs" />
-    <Compile Include="Controllers\Action\CreateUnit.cs" />
-    <Compile Include="Controllers\Action\CreateHeadquarter.cs" />
-    <Compile Include="Controllers\Action\Action.cs" />
-    <Compile Include="Controllers\Action\MoveUnit.cs" />
-    <Compile Include="Controllers\Action\TestAction.cs" />
     <Compile Include="Models\Manager\AccountManager.cs" />
     <Compile Include="Models\Definitions\UnitDefinition.cs" />
     <Compile Include="Models\Definitions\Definition.cs" />
     <Compile Include="Models\Definitions\TerrainDefinition.cs" />
     <Compile Include="Models\LogicRules.cs" />
     <Compile Include="Helper\LoadHelper.cs" />
+    <Compile Include="Controllers\Actions\CreateBuilding.cs" />
+    <Compile Include="Controllers\Actions\AStar\Node.cs" />
+    <Compile Include="Controllers\Actions\AStar\NodeState.cs" />
+    <Compile Include="Controllers\Actions\AStar\PathFinder.cs" />
+    <Compile Include="Controllers\Actions\AStar\SearchParameters.cs" />
+    <Compile Include="Controllers\Actions\CreateUnit.cs" />
+    <Compile Include="Controllers\Actions\CreateHeadquarter.cs" />
+    <Compile Include="Controllers\Actions\Action.cs" />
+    <Compile Include="Controllers\Actions\MoveUnit.cs" />
+    <Compile Include="Controllers\Actions\TestAction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

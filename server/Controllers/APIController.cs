@@ -29,34 +29,14 @@ namespace Server.Controllers
 
         private APIController()
         {
-            m_threadingInfos = new AveragePositionQueue[Models.ServerConstants.ACTION_THREADS];
+            m_threads = new Models.AveragePositionQueue[Models.ServerConstants.ACTION_THREADS];
 			for (int nr = 0; nr < Models.ServerConstants.ACTION_THREADS; ++nr)
             {
-                m_threadingInfos[nr] = new AveragePositionQueue();
+                m_threads[nr] = new Models.AveragePositionQueue();
             }
         }
 
 
-		/// <summary>
-		/// An Class which provides an queue with an position.
-		/// It is used to avoid threading collisions.
-		/// </summary>
-        public class AveragePositionQueue
-        {
-            public AveragePositionQueue()
-            {
-                Count = 0;
-                Average = new Core.Models.Position(0, 0);
-                Lock = new Mutex();
-
-                Queue = new Queue<Core.Models.Action>();
-            }
-
-            public int Count = 0;
-            public Core.Models.Position Average;
-            public Mutex Lock;
-            public Queue<Core.Models.Action> Queue;
-        }
 
 		/// <summary>
 		/// Possible return values, what could have been happen
@@ -70,7 +50,6 @@ namespace Server.Controllers
             Exception,
             Unknown,
             RegionDontExist
-
         }
 
         public class RegionData
@@ -107,44 +86,29 @@ namespace Server.Controllers
         {
             foreach (var action in actions)
             {
-                var bestQueue = 0;
-				var actionC = (Core.Controllers.Actions.Action)action.Control;
-                var actionPosition = new Core.Models.Position(actionC.GetRegionPosition());
+                var bestThread = m_threads[0];
 
                 action.Account = account;
                 action.ActionTime = DateTime.Now;
 
+                var actionC = (Core.Controllers.Actions.Action) action.Control;
+                var actionPosition = new Core.Models.Position(actionC.GetRegionPosition());
+
 				for (int queueNr = 0; queueNr < Models.ServerConstants.ACTION_THREADS; ++queueNr)
                 {
-                    if (m_threadingInfos[queueNr].Count == 0)
+                    var thread = m_threads[queueNr];
+
+                    if (thread.IsEmpty())
                     {   
-                        bestQueue = queueNr;
+                        bestThread = thread;
                         break;
                     }
-
-                    if (m_threadingInfos[queueNr].Average.Distance(actionPosition) < m_threadingInfos[bestQueue].Average.Distance(actionPosition))
+                    else if (thread.Distance(actionPosition) < bestThread.Distance(actionPosition))
                     {
-                        bestQueue = queueNr;  
+                        bestThread = thread;  
                     }
                 }
-
-                var bestThread = m_threadingInfos[bestQueue];
-                try
-                {
-
-                    bestThread.Lock.WaitOne();
-
-                    var newAverageX = bestThread.Average.X * bestThread.Count + actionPosition.X; 
-                    var newAverageY = bestThread.Average.Y * bestThread.Count + actionPosition.Y;                            
-                    bestThread.Count += 1;
-                    bestThread.Average = new Core.Models.Position(newAverageX / bestThread.Count, newAverageY / bestThread.Count);
-
-                    bestThread.Queue.Enqueue(action);  
-                }
-                finally
-                {
-                    bestThread.Lock.ReleaseMutex();
-                }
+				bestThread.Enqueue(action);
             }
         }
 
@@ -303,34 +267,17 @@ namespace Server.Controllers
 		/// <param name="state">Threading Number (for queue association)</param>
         public void Worker(object state)
         {
-            var threadInfo = m_threadingInfos[(int)state];
+            var thread = m_threads[(int)state];
             Core.Models.Action action;
            
             while (MvcApplication.Phase != MvcApplication.Phases.Exit)
             {
-                while (threadInfo.Count == 0 || MvcApplication.Phase == MvcApplication.Phases.Pause)
+                while (thread.IsEmpty() || MvcApplication.Phase == MvcApplication.Phases.Pause)
                 {
 					Thread.Sleep(Models.ServerConstants.ACTION_THREAD_SLEEP);
                 }
 
-                try
-                {
-                    threadInfo.Lock.WaitOne();
-                    action = threadInfo.Queue.Dequeue();
-
-                    action.ActionTime = DateTime.Now;
-                    var actionC = (Core.Controllers.Actions.Action)action.Control;
-                    var actionPosition = new Core.Models.Position(actionC.GetRegionPosition());
-                    var newAverageX = threadInfo.Average.X * threadInfo.Count - actionPosition.X; 
-                    var newAverageY = threadInfo.Average.Y * threadInfo.Count - actionPosition.Y;                            
-                    threadInfo.Count -= 1;
-                    threadInfo.Average = new Core.Models.Position(newAverageX / threadInfo.Count, newAverageY / threadInfo.Count);
-                }
-                finally
-                {
-                    threadInfo.Lock.ReleaseMutex();
-                }
-
+                action = thread.Dequeue();
                 if (WorkAction(action) == ActionReturn.RessourceBlocked)
                 {   
                     APIController.Instance.DoAction(action.Account, new Core.Models.Action[]{ action, });
@@ -338,6 +285,6 @@ namespace Server.Controllers
             }
         }
 
-        public AveragePositionQueue[] m_threadingInfos;
+        public Models.AveragePositionQueue[] m_threads;
     }
 }

@@ -38,6 +38,10 @@ namespace Core.Controllers.Actions
         public const string START_POSITION = "EntityPosition";
         public const string END_POSITION = "NewPosition";
 
+
+        // don't send from the client
+        public const string CLIENT_UNIT_INFOS = "Unit";
+
         /// <summary>
         /// Gets the affected regions.
         /// </summary>
@@ -140,6 +144,9 @@ namespace Core.Controllers.Actions
             {
                 Bag.Add(regionManagerC.GetRegion(endPosition.RegionPosition));
             }
+
+
+            action.Parameters[CLIENT_UNIT_INFOS] = entity;
 
             return Bag;
         }

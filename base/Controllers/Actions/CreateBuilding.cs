@@ -12,6 +12,7 @@ namespace Core.Controllers.Actions
         public const string CREATE_POSITION = "CreatePosition";
         public const string CREATION_TYPE = "CreateBuilding";
 
+
         /// <summary>
         /// Constructor of the class CreateHeadquarter.
         /// </summary>

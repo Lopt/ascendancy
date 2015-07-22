@@ -127,6 +127,7 @@
     <Compile Include="Controllers\HTTPController.cs" />
     <Compile Include="Controllers\AccountManagerController.cs" />
     <Compile Include="Controllers\DefinitionManagerController.cs" />
+    <Compile Include="Models\AveragePositionQueue.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
