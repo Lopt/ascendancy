@@ -1,7 +1,8 @@
 ﻿using Core.Controllers.Actions;
 using Core.Models;
-using client.Common.Helper;
-using client.Common.Models;
+using Client.Common.Helper;
+using Client.Common.Models;
+using Client.Common.Manager;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -10,12 +11,12 @@ using System.Collections.Concurrent;
 using System.ComponentModel.DataAnnotations;
 using CocosSharp;
 using Microsoft.Xna.Framework;
-using client.Common.Manager;
 
 
 
 
-namespace client.Common.Views
+
+namespace Client.Common.Views
 {
     public class WorldLayer : CCLayerColor
     {
@@ -53,7 +54,7 @@ namespace client.Common.Views
             m_gameScene = gameScene;
 
             RegionView = new RegionView();
-			m_regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
+            m_regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
 
             WorldTileMap = new CCTileMap(ClientConstants.TILEMAP_FILE);
             CenterPosition = Geolocation.Instance.CurrentGamePosition;
@@ -224,8 +225,8 @@ namespace client.Common.Views
             if (ClientConstants.TILEMAP_MIN_SCALE < newScale &&
                 newScale < ClientConstants.TILEMAP_MAX_SCALE)
             {
-				m_scale = newScale;
-				WorldTileMap.TileLayersContainer.Scale = m_scale;
+                m_scale = newScale;
+                WorldTileMap.TileLayersContainer.Scale = m_scale;
             }
         }
 
@@ -296,7 +297,7 @@ namespace client.Common.Views
             private set;
         }
 
-        client.Common.Manager.RegionManagerController m_regionManagerController;
+        Client.Common.Manager.RegionManagerController m_regionManagerController;
 
         DrawNode m_currentPositionNode;
 

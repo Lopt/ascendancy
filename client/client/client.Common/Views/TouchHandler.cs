@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using client.Common.Helper;
+using Client.Common.Helper;
 using Core.Models.Definitions;
 
-namespace client.Common.Views
+namespace Client.Common.Views
 {
     public class TouchHandler
     {
@@ -66,8 +66,8 @@ namespace client.Common.Views
                 m_worldLayer.MoveWorld(diff);
             }
             else if (touches.Count >= 2 &&
-                (m_touchGesture == TouchGesture.Start ||
-                m_touchGesture == TouchGesture.Zoom))
+                     (m_touchGesture == TouchGesture.Start ||
+                     m_touchGesture == TouchGesture.Zoom))
             {
                 m_touchGesture = TouchGesture.Zoom;
 
@@ -79,7 +79,7 @@ namespace client.Common.Views
                 CCPoint currentPoint1 = touches[1].LocationOnScreen;
 
                 var screen = new CCPoint(m_worldLayer.VisibleBoundsWorldspace.MaxX,
-                     m_worldLayer.VisibleBoundsWorldspace.MaxY); 
+                                 m_worldLayer.VisibleBoundsWorldspace.MaxY); 
 
                 float StartDistance = screenStart0.DistanceSquared(ref screenStart1);
                 float CurrentDistance = currentPoint0.DistanceSquared(ref currentPoint1);
@@ -109,14 +109,14 @@ namespace client.Common.Views
             {
                 case TouchGesture.MoveUnit:
 					
-                    var startMapCellPosition = new client.Common.Models.MapCellPosition(oldCoord);
+                    var startMapCellPosition = new Client.Common.Models.MapCellPosition(oldCoord);
                     var startPosition = m_worldLayer.RegionView.GetCurrentGamePosition(startMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
                     var startPositionI = new Core.Models.PositionI((int)startPosition.X, (int)startPosition.Y);
 
                     var location = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
                     var endCoord = m_worldLayer.ClosestTileCoordAtNodePosition(location);
 
-                    var endMapCellPosition = new client.Common.Models.MapCellPosition(endCoord);
+                    var endMapCellPosition = new Client.Common.Models.MapCellPosition(endCoord);
                     var endPosition = m_worldLayer.RegionView.GetCurrentGamePosition(endMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
                     var endPositionI = new Core.Models.PositionI((int)endPosition.X, (int)endPosition.Y);
 
@@ -138,7 +138,7 @@ namespace client.Common.Views
                     {
                         var oldPositionI2 = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
                         var action2 = ActionHelper.CreateEntity(oldPositionI2, def);
-                        var actionC2 = (Core.Controllers.Actions.Action) action2.Control;
+                        var actionC2 = (Core.Controllers.Actions.Action)action2.Control;
                         if (actionC2.Possible())
                         {
                             m_worldLayer.DoAction(action2);

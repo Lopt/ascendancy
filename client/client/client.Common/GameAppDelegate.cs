@@ -2,20 +2,20 @@
 using CocosSharp;
 using Xamarin.Forms;
 using CocosDenshion;
-using client.Common.Helper;
-using client.Common.Controllers;
+using Client.Common.Helper;
+using Client.Common.Controllers;
 using Core.Models;
-using client.Common.Views;
+using Client.Common.Views;
 using System.Threading.Tasks;
-using client.Common.Models;
-using client.Common.Manager;
+using Client.Common.Models;
+using Client.Common.Manager;
 using Xamarin.Forms.Xaml;
 
 
 
 
 
-namespace client.Common
+namespace Client.Common
 {
     public class GameAppDelegate : CCApplicationDelegate
     {
@@ -75,20 +75,20 @@ namespace client.Common
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
            
-			SceneStart();//.RunSynchronously();
+            SceneStart();//.RunSynchronously();
         }
 
-		private async Task SceneStart()
-		{
+        private async Task SceneStart()
+        {
 			
-			m_currentScene = new StartScene(m_window);
-			Phase = Phases.StartScene;
-			m_window.RunWithScene(m_currentScene);
+            m_currentScene = new StartScene(m_window);
+            Phase = Phases.StartScene;
+            m_window.RunWithScene(m_currentScene);
 
 
-			Account = await ((StartScene) m_currentScene).InitLoadingAsync();
+            Account = await ((StartScene)m_currentScene).InitLoadingAsync();
 
-			m_currentScene = new GameScene(m_window);
+            m_currentScene = new GameScene(m_window);
             Phase = Phases.GameScene;
             m_window.DefaultDirector.ReplaceScene(m_currentScene);
         }
@@ -117,7 +117,7 @@ namespace client.Common
         }
 
         private CCWindow m_window;
-		private CCScene m_currentScene;
+        private CCScene m_currentScene;
 
     }
 }

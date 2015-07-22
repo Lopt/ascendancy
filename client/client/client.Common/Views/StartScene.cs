@@ -2,7 +2,7 @@
 using CocosSharp;
 using System.Threading.Tasks;
 
-namespace client.Common.Views
+namespace Client.Common.Views
 {
     public class StartScene : CCScene
     {
@@ -15,7 +15,7 @@ namespace client.Common.Views
             RegionLoaded,
             EntitiesLoaded,
             Done,
-			Failure,
+            Failure,
         }
 
         public Phases Phase
@@ -35,19 +35,19 @@ namespace client.Common.Views
             InitWorld();
         }
 
-		void InitWorld()
-		{
-			var initNet = Controllers.NetworkController.Instance;
-			var initGeo = Models.Geolocation.Instance;
+        void InitWorld()
+        {
+            var initNet = Controllers.NetworkController.Instance;
+            var initGeo = Models.Geolocation.Instance;
 
-			var world = Core.Models.World.Instance;
-			var controller = Core.Controllers.Controller.Instance;
-			controller.RegionManagerController = new client.Common.Manager.RegionManagerController();      
-			controller.DefinitionManagerController = new client.Common.Manager.DefinitionManagerController();
-		}
+            var world = Core.Models.World.Instance;
+            var controller = Core.Controllers.Controller.Instance;
+            controller.RegionManagerController = new Client.Common.Manager.RegionManagerController();      
+            controller.DefinitionManagerController = new Client.Common.Manager.DefinitionManagerController();
+        }
 
 
-		public async Task<Core.Models.Account> InitLoadingAsync()
+        public async Task<Core.Models.Account> InitLoadingAsync()
         {
             var account = await LoginAsync(); 
             if (account != null)
@@ -58,14 +58,14 @@ namespace client.Common.Views
                 // adds his own account to AccountManager, so it is known
                 Core.Models.World.Instance.AccountManager.AddAccount(account);
 
-                var entityManagerController = controller.DefinitionManagerController as client.Common.Manager.DefinitionManagerController;
+                var entityManagerController = controller.DefinitionManagerController as Client.Common.Manager.DefinitionManagerController;
                 await entityManagerController.LoadTerrainDefinitionsAsync();
                 Phase = Phases.TerrainTypeLoaded;
 
                 await entityManagerController.LoadUnitDefinitionsAsync();
                 Phase = Phases.EntitiesLoaded;
 
-                var regionManagerController = controller.RegionManagerController as client.Common.Manager.RegionManagerController;
+                var regionManagerController = controller.RegionManagerController as Client.Common.Manager.RegionManagerController;
                 await regionManagerController.LoadRegionsAsync();
                 Phase = Phases.RegionLoaded;
                 // do something in the future
@@ -73,23 +73,23 @@ namespace client.Common.Views
 
             }
             else
-			{
-				Phase = Phases.Failure;
+            {
+                Phase = Phases.Failure;
                 throw new NotImplementedException("Login failure");
             }
-			return account;
+            return account;
         }
 
 
 
         async Task<Core.Models.Account> LoginAsync()
         {
-            var currentGamePosition = client.Common.Models.Geolocation.Instance.CurrentGamePosition;
-            var device = client.Common.Models.Device.GetInstance;
+            var currentGamePosition = Client.Common.Models.Geolocation.Instance.CurrentGamePosition;
+            var device = Client.Common.Models.Device.GetInstance;
             var user = device.DeviceId;
             user += device.DeviceName;
 
-            return await client.Common.Controllers.NetworkController.Instance.LoginAsync(currentGamePosition, user, "Password");
+            return await Client.Common.Controllers.NetworkController.Instance.LoginAsync(currentGamePosition, user, "Password");
         }
 
 

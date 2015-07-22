@@ -1,15 +1,15 @@
 ﻿using System;
 using CocosSharp;
 
-namespace client.Common.Models
+namespace Client.Common.Models
 {
     public class DrawNode : CCDrawNode
     {
-        public DrawNode ()
+        public DrawNode()
         {
         }
 
-        public void DrawHexagonForHexMap (CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
+        public void DrawHexagonForHexMap(CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
         {
             // Calculate our width and height of the tile
             CCSize texelToContentScaling = CCTileMapLayer.DefaultTexelToContentSizeRatios;
@@ -18,15 +18,15 @@ namespace client.Common.Models
 
             // Convert the tile coordinates position to world coordinates for
             // our outline drawing
-            var worldPos = layer.TilePosition (tileCoordinates);
+            var worldPos = layer.TilePosition(tileCoordinates);
             var X = worldPos.X + (tilewidth / 2);
             var Y = worldPos.Y + (tileheight / 2);
 
-            this.Clear ();
+            this.Clear();
 
             this.Opacity = opacity;
 
-            var center = new CCPoint (X, Y);
+            var center = new CCPoint(X, Y);
 
             var right = center;
             right.X += tilewidth / 2;
@@ -50,18 +50,19 @@ namespace client.Common.Models
             leftbottom.X -= tilewidth / 4;
             leftbottom.Y -= tileheight / 2;
 
-            DrawPolygon (new CCPoint[] {
-                right,
-                righttop,
-                lefttop,
-                left,
-                leftbottom,
-                rightbottom
-            }, 6, CCColor4B.Transparent, 3, borderColor);
+            DrawPolygon(new CCPoint[]
+                {
+                    right,
+                    righttop,
+                    lefttop,
+                    left,
+                    leftbottom,
+                    rightbottom
+                }, 6, CCColor4B.Transparent, 3, borderColor);
 
         }
 
-        public void DrawHexagonForIsoStagMap (float pngWidth, CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
+        public void DrawHexagonForIsoStagMap(float pngWidth, CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
         {
             // Calculate our width and height of the tile
             CCSize texelToContentScaling = CCTileMapLayer.DefaultTexelToContentSizeRatios;
@@ -70,15 +71,15 @@ namespace client.Common.Models
 
             // Convert the tile coordinates position to world coordinates for
             // our outline drawing
-            var worldPos = layer.TilePosition (tileCoordinates);
+            var worldPos = layer.TilePosition(tileCoordinates);
             var X = worldPos.X + (tilewidth / 2);
             var Y = worldPos.Y + (tileheight / 2);
 
-            this.Clear ();
+            this.Clear();
 
             this.Opacity = opacity;
 
-            var center = new CCPoint (X, Y);
+            var center = new CCPoint(X, Y);
 
             var right = center;
             right.X += pngWidth / 2;
@@ -102,18 +103,19 @@ namespace client.Common.Models
             leftbottom.X -= pngWidth / 4;
             leftbottom.Y -= tileheight / 2;
 
-            DrawPolygon (new CCPoint[] {
-                right,
-                righttop,
-                lefttop,
-                left,
-                leftbottom,
-                rightbottom
-            }, 6, CCColor4B.Transparent, 3, borderColor);
+            DrawPolygon(new CCPoint[]
+                {
+                    right,
+                    righttop,
+                    lefttop,
+                    left,
+                    leftbottom,
+                    rightbottom
+                }, 6, CCColor4B.Transparent, 3, borderColor);
 
         }
 
-        public void DrawISOForIsoStagMap (float pngWidth, CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
+        public void DrawISOForIsoStagMap(float pngWidth, CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
         {
             // Calculate our width and height of the tile
             CCSize texelToContentScaling = CCTileMapLayer.DefaultTexelToContentSizeRatios;
@@ -122,15 +124,15 @@ namespace client.Common.Models
 
             // Convert the tile coordinates position to world coordinates for
             // our outline drawing
-            var worldPos = layer.TilePosition (tileCoordinates);
+            var worldPos = layer.TilePosition(tileCoordinates);
             var X = worldPos.X + (tilewidth / 2);
             var Y = worldPos.Y + (tileheight / 2);
 
-            this.Clear ();
+            this.Clear();
 
             this.Opacity = opacity;
 
-            var center = new CCPoint (X, Y);
+            var center = new CCPoint(X, Y);
 
             var right = center;
             right.X += pngWidth / 2;
@@ -144,12 +146,13 @@ namespace client.Common.Models
             var left = center;
             left.X -= pngWidth / 2;
 
-            DrawPolygon (new CCPoint[] {
-                right,
-                top,
-                left,
-                bottom
-            }, 4, CCColor4B.Transparent, 3, borderColor);
+            DrawPolygon(new CCPoint[]
+                {
+                    right,
+                    top,
+                    left,
+                    bottom
+                }, 4, CCColor4B.Transparent, 3, borderColor);
 
         }
 

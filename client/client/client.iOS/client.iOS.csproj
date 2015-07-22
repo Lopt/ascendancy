@@ -175,18 +175,16 @@
       <Project>{92AF0C3C-1F4F-4070-B925-F587F0C8063F}</Project>
       <Name>client.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\base\base.csproj">
+    <ProjectReference Include="..\..\..\base\core.csproj">
       <Project>{163A206B-36D1-46D5-AA19-B515F7350C6E}</Project>
-      <Name>base</Name>
+      <Name>core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Content\fonts\arial-22.xnb" />
     <BundleResource Include="Content\images\hd\Ladebalken.png" />
-    <BundleResource Include="Content\images\hd\logo.png" />
     <BundleResource Include="Content\images\ld\Ladebalken.png" />
-    <BundleResource Include="Content\images\ld\logo.png" />
     <BundleResource Include="Content\tiles\Spritesheet_20150704.png" />
     <BundleResource Include="Content\tiles\Worldmap-160x160%2880x320%29_20150704.xnb" />
     <BundleResource Include="Resources\Icon.png" />
@@ -202,6 +200,8 @@
     <BundleResource Include="Resources\Icon-Small-50%402x.png" />
     <BundleResource Include="Resources\Icon-Small-40.png" />
     <BundleResource Include="Resources\Icon-Small-40%402x.png" />
+    <BundleResource Include="Content\images\hd\logo.png" />
+    <BundleResource Include="Content\images\ld\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />

@@ -2,7 +2,7 @@
 using Core.Models;
 using Core.Models.Definitions;
 
-namespace client.Common.Helper
+namespace Client.Common.Helper
 {
     public class ActionHelper
     {

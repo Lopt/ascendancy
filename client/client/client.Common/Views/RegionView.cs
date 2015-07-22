@@ -1,19 +1,19 @@
 ﻿using System;
 using CocosSharp;
 using Core.Models;
-using client.Common.Manager;
-using client.Common.Models;
-using client.Common.Helper;
+using Client.Common.Manager;
+using Client.Common.Models;
+using Client.Common.Helper;
 using System.Linq.Expressions;
 using System.Threading;
 
-namespace client.Common.Views
+namespace Client.Common.Views
 {
     public class RegionView
     {
         public RegionView()
         {
-            m_RegionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as client.Common.Manager.RegionManagerController;
+            m_RegionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
         }
 
         public void SetTilesInMap160(Core.Models.Region region)
@@ -49,7 +49,7 @@ namespace client.Common.Views
 
         public void SetTerrainTileInMap(CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {
-            var gid = client.Common.Views.ViewDefinitions.Instance.DefinitionToTileGid(region.GetTerrain(cellPosition));
+            var gid = Client.Common.Views.ViewDefinitions.Instance.DefinitionToTileGid(region.GetTerrain(cellPosition));
             TerrainLayer.SetTileGID(gid, mapCoordinat);
         }
 
@@ -96,11 +96,11 @@ namespace client.Common.Views
             var entity = region.GetEntity(cellPosition);
             if (entity != null)
             {
-				if (entity.Definition.Category == Core.Models.Definitions.Category.Unit)
+                if (entity.Definition.Category == Core.Models.Definitions.Category.Unit)
                 {
                     SetUnit(mapCoordinat, entity);
                 }
-				if (entity.Definition.Category == Core.Models.Definitions.Category.Building)
+                if (entity.Definition.Category == Core.Models.Definitions.Category.Building)
                 {
                     SetBuilding(mapCoordinat, entity);
                 }
@@ -175,10 +175,10 @@ namespace client.Common.Views
 
             return false;
         }
-            
+
         #region Fields
 
-        client.Common.Manager.RegionManagerController m_RegionManagerController;
+        Client.Common.Manager.RegionManagerController m_RegionManagerController;
 
         public CCTileMapLayer TerrainLayer;
         public CCTileMapLayer BuildingLayer;

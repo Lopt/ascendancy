@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace client.Common.Views.Actions
+namespace Client.Common.Views.Actions
 {
-    public class CreateBuilding : client.Common.Views.Actions.Action
+    public class CreateBuilding : Client.Common.Views.Actions.Action
     {
         public CreateBuilding(Core.Models.ModelEntity model, WorldLayer worldLayer)
             : base(model)

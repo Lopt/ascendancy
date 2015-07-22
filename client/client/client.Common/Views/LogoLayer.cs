@@ -1,10 +1,10 @@
 ﻿using System;
 using CocosSharp;
-using client.Common.Helper;
-using client.Common.Controllers;
+using Client.Common.Helper;
+using Client.Common.Controllers;
 using Core.Controllers.Actions;
 
-namespace client.Common.Views
+namespace Client.Common.Views
 {
     public class LogoLayer : CCLayerColor
     {
