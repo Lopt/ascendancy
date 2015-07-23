@@ -1,12 +1,12 @@
 ﻿using Core.Models;
 using Core.Models.Definitions;
-using client.Common.Helper;
-using client.Common.Controllers;
-using client.Common.Models;
+using Client.Common.Helper;
+using Client.Common.Controllers;
+using Client.Common.Models;
 using System.Threading.Tasks;
 
 
-namespace client.Common.Manager
+namespace Client.Common.Manager
 {
     public class RegionManagerController : Core.Controllers.RegionManagerController
     {
@@ -51,7 +51,7 @@ namespace client.Common.Manager
             {
                 World.Instance.RegionManager.AddRegion(region);
             }
-            catch 
+            catch
             {
                 if (null != null)
                 {
@@ -102,7 +102,7 @@ namespace client.Common.Manager
                 for (int y = -halfY; y <= halfY; y++)
                 {
                     worldRegion[x + halfX, y + halfY] = new RegionPosition(regionPosition.RegionX + x,
-                           regionPosition.RegionY + y);
+                        regionPosition.RegionY + y);
                 }
             }
 

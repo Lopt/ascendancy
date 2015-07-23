@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace client.Common.Views.Actions
+namespace Client.Common.Views.Actions
 {
     public class Action : Core.Views.ViewEntity
     {

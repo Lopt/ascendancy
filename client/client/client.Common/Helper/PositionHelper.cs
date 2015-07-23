@@ -1,10 +1,10 @@
 ﻿using System;
 
-using client.Common.Views;
-using client.Common.Models;
+using Client.Common.Views;
+using Client.Common.Models;
 using Core.Models;
 
-namespace client.Common.Helper
+namespace Client.Common.Helper
 {
     public class PositionHelper
     {
