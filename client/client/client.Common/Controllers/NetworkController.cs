@@ -155,7 +155,7 @@ namespace Client.Common.Controllers
         }
 
         /// <summary>
-        /// Loads the entities async.
+        /// Loads the entities and actions async from the server.
         /// </summary>
         /// <returns>The entities response from the server.</returns>
         /// <param name="currentGamePosition">Current game position.</param>
