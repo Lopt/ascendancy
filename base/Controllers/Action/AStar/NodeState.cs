@@ -1,4 +1,4 @@
-﻿namespace AStar
+﻿namespace Core.Controllers.AStar
 {
     /// <summary>
     /// Represents the search state of a Node

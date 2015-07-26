@@ -6,7 +6,7 @@ using Core.Controllers.Actions;
 using Core.Models.Definitions;
 using Core.Models;
 using System.Collections;
-using AStar;
+using Core.Controllers.AStar;
 
 namespace Core.Controllers.Actions
 {

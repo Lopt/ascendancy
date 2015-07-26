@@ -2,7 +2,7 @@
 using Core.Models.Definitions;
 using System;
 
-namespace AStar
+namespace Core.Controllers.AStar
 {
     /// <summary>
     /// Represents a single node on a grid that is being searched for a path between two points
