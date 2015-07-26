@@ -9,9 +9,14 @@ using Core.Models.Definitions;
 
 namespace Client.Common.Views
 {
+    /// <summary>
+    /// Touch handler.
+    /// </summary>
     public class TouchHandler
     {
-
+        /// <summary>
+        /// Touch gesture states.
+        /// </summary>
         public enum TouchGesture
         {
             None,
@@ -23,17 +28,40 @@ namespace Client.Common.Views
             Zoom
         }
 
+        /// <summary>
+        /// The m_touch gesture.
+        /// </summary>
         TouchGesture m_touchGesture;
+        /// <summary>
+        /// The m_timer.
+        /// </summary>
         Stopwatch m_timer;
+        /// <summary>
+        /// The m_world layer.
+        /// </summary>
         WorldLayer m_worldLayer;
 
+        /// <summary>
+        /// The m_new scale.
+        /// </summary>
         float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
+        /// <summary>
+        /// The m_scale.
+        /// </summary>
         float m_scale = ClientConstants.TILEMAP_NORM_SCALE;
-
+        /// <summary>
+        /// The m_start location.
+        /// </summary>
         CCPoint m_startLocation;
+        /// <summary>
+        /// The m_menu view.
+        /// </summary>
         MenuView m_menuView;
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.TouchHandler"/> class.
+        /// </summary>
+        /// <param name="worldLayer">World layer.</param>
         public TouchHandler(WorldLayer worldLayer)
         {
             m_timer = new Stopwatch();
@@ -42,7 +70,11 @@ namespace Client.Common.Views
             m_startLocation = new CCPoint(1, 1);
         }
 
-
+        /// <summary>
+        /// On the touches moved event. Set the gesture to move or scale and scale or move the map.
+        /// </summary>
+        /// <param name="touches">Touches.</param>
+        /// <param name="touchEvent">Touch event.</param>
         public void OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             if (touches.Count == 1 && m_touchGesture == TouchGesture.Zoom)
@@ -92,6 +124,11 @@ namespace Client.Common.Views
             }
         }
 
+        /// <summary>
+        /// On the touches began event.
+        /// </summary>
+        /// <param name="touches">Touches.</param>
+        /// <param name="touchEvent">Touch event.</param>
         public void OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             var oldStart = m_startLocation;
@@ -161,7 +198,11 @@ namespace Client.Common.Views
             m_scale = m_worldLayer.GetScale();
         }
 
-
+        /// <summary>
+        /// On the touches ended event.
+        /// </summary>
+        /// <param name="touches">Touches.</param>
+        /// <param name="touchEvent">Touch event.</param>
         public void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             m_timer.Stop();
@@ -221,7 +262,7 @@ namespace Client.Common.Views
 
                     break;
             }
-
+                    
             m_worldLayer.UglyDraw();
         }
     }

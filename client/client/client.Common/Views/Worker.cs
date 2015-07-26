@@ -3,14 +3,25 @@ using System.Collections.Concurrent;
 
 namespace Client.Common.Views
 {
+    /// <summary>
+    /// The Worker do the actions on the view.
+    /// </summary>
     public class Worker
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.Worker"/> class.
+        /// </summary>
+        /// <param name="worldLayer">World layer.</param>
         public Worker(Views.WorldLayer worldLayer)
         {
             WorldLayer = worldLayer;
             Queue = new ConcurrentQueue<Core.Models.Action>();
         }
 
+        /// <summary>
+        /// Do the actions.
+        /// </summary>
+        /// <param name="frameTimesInSecond">Frame times in second.</param>
         public void Schedule(float frameTimesInSecond)
         {
             
@@ -36,6 +47,11 @@ namespace Client.Common.Views
             }
         }
 
+        /// <summary>
+        /// Creates the action.
+        /// </summary>
+        /// <returns>The action.</returns>
+        /// <param name="action">Action.</param>
         Client.Common.Views.Actions.Action CreateActionView(Core.Models.Action action)
         {
             switch (action.Type)
@@ -58,8 +74,17 @@ namespace Client.Common.Views
             return new Client.Common.Views.Actions.Action(action);
         }
 
+        /// <summary>
+        /// The actionqueue.
+        /// </summary>
         public ConcurrentQueue<Core.Models.Action> Queue;
+        /// <summary>
+        /// The action.
+        /// </summary>
         public Core.Models.Action Action = null;
+        /// <summary>
+        /// The world layer.
+        /// </summary>
         public Views.WorldLayer WorldLayer;
 
     }

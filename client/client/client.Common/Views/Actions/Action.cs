@@ -2,6 +2,7 @@
 
 namespace Client.Common.Views.Actions
 {
+    
     public class Action : Core.Views.ViewEntity
     {
         public Action(Core.Models.ModelEntity model)

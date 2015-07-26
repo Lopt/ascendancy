@@ -4,8 +4,14 @@ using System.Threading.Tasks;
 
 namespace Client.Common.Views
 {
+    /// <summary>
+    /// The Start scene.
+    /// </summary>
     public class StartScene : CCScene
     {
+        /// <summary>
+        /// The loading phases.
+        /// </summary>
         public enum Phases
         {
             Start,
@@ -18,12 +24,20 @@ namespace Client.Common.Views
             Failure,
         }
 
+        /// <summary>
+        /// Gets the loading phase.
+        /// </summary>
+        /// <value>The phase.</value>
         public Phases Phase
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.StartScene"/> class.
+        /// </summary>
+        /// <param name="mainWindow">Main window.</param>
         public StartScene(CCWindow mainWindow)
             : base(mainWindow)
         {
@@ -35,6 +49,9 @@ namespace Client.Common.Views
             InitWorld();
         }
 
+        /// <summary>
+        /// Initializing the network controller, geolocation and the world with their region and definition controllers.
+        /// </summary>
         void InitWorld()
         {
             var initNet = Controllers.NetworkController.Instance;
@@ -46,7 +63,10 @@ namespace Client.Common.Views
             controller.DefinitionManagerController = new Client.Common.Manager.DefinitionManagerController();
         }
 
-
+        /// <summary>
+        /// Inits the loadings async. Login to the server and set the account and load the definitions and regions at the current geolocation.
+        /// </summary>
+        /// <returns>The account async.</returns>
         public async Task<Core.Models.Account> InitLoadingAsync()
         {
             var account = await LoginAsync(); 
@@ -80,8 +100,10 @@ namespace Client.Common.Views
             return account;
         }
 
-
-
+        /// <summary>
+        /// Login async to the server, with the device id and name and a password.
+        /// </summary>
+        /// <returns>The account.</returns>
         async Task<Core.Models.Account> LoginAsync()
         {
             var currentGamePosition = Client.Common.Models.Geolocation.Instance.CurrentGamePosition;
@@ -95,6 +117,9 @@ namespace Client.Common.Views
 
         #region Properties
 
+        /// <summary>
+        /// The m_logo layer.
+        /// </summary>
         LogoLayer m_LogoLayer;
 
         #endregion

@@ -5,14 +5,25 @@ using System.Collections.Generic;
 
 namespace Client.Common.Views.Actions
 {
+    /// <summary>
+    /// Move a unit.
+    /// </summary>
     public class MoveUnit : Client.Common.Views.Actions.Action
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.Actions.MoveUnit"/> class.
+        /// </summary>
+        /// <param name="model">Model.</param>
+        /// <param name="worldLayer">World layer.</param>
         public MoveUnit(Core.Models.ModelEntity model, WorldLayer worldLayer)
             : base(model)
         {
             WorldLayer = worldLayer;
         }
 
+        /// <summary>
+        /// Gets called before ActionControl.Do() gets executed. Should get and store data which will be needed in Schedule.
+        /// </summary>
         override public void BeforeDo()
         {
             var action = (Core.Models.Action)Model;
@@ -25,7 +36,12 @@ namespace Client.Common.Views.Actions
             m_currentPosition = startPosition;
         }
 
-
+        /// <summary>
+        /// Schedules the action. Should do anything do animate the action (e.g. draw the entity, animate his moving or
+        /// start/end animating a fight)
+        /// Returns true if the action has ended, otherwise false.
+        /// </summary>
+        /// <param name="frameTimesInSecond">frames times in seconds.</param>
         override public bool Schedule(float frameTimesInSecond)
         {
             frameTimesInSecond /= Helper.ClientConstants.MOVE_SPEED_PER_FIELD;
@@ -50,16 +66,31 @@ namespace Client.Common.Views.Actions
             return m_runTime >= m_path.Count;
         }
 
+        /// <summary>
+        /// Gets the world layer.
+        /// </summary>
+        /// <value>The world layer.</value>
         public WorldLayer WorldLayer
         {
             private set;
             get;
         }
 
-
+        /// <summary>
+        /// The m_run time.
+        /// </summary>
         float m_runTime;
+        /// <summary>
+        /// The m_entity.
+        /// </summary>
         Core.Models.Entity m_entity;
+        /// <summary>
+        /// The m_current position.
+        /// </summary>
         Core.Models.PositionI m_currentPosition;
+        /// <summary>
+        /// The m_path.
+        /// </summary>
         IList m_path;
 
     }

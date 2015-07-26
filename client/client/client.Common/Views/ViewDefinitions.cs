@@ -8,8 +8,14 @@ using Core.Models;
 
 namespace Client.Common.Views
 {
+    /// <summary>
+    /// View definitions to set the correct pictures to the entity and terrain types. 
+    /// </summary>
     public class ViewDefinitions
     {
+        /// <summary>
+        /// The definition sort.
+        /// </summary>
         public enum Sort
         {
             Normal,
@@ -17,10 +23,16 @@ namespace Client.Common.Views
             Menu,
         }
 
-
+        /// <summary>
+        /// The lazy m_singleton.
+        /// </summary>
         private static readonly Lazy<ViewDefinitions> m_singleton =
             new Lazy<ViewDefinitions>(() => new ViewDefinitions());
 
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>The instance.</value>
         public static ViewDefinitions Instance
         {
             get
@@ -29,6 +41,9 @@ namespace Client.Common.Views
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.ViewDefinitions"/> class.
+        /// </summary>
         private ViewDefinitions()
         {
             InitTerrainsGid();
@@ -37,7 +52,9 @@ namespace Client.Common.Views
             InitEnemyEntitiesGid();
         }
 
-
+        /// <summary>
+        /// Inits the terrains gids.
+        /// </summary>
         private void InitTerrainsGid()
         {
             m_TerrainsGid = new Dictionary<EntityType,  CCTileGidAndFlags>();
@@ -57,7 +74,9 @@ namespace Client.Common.Views
             m_TerrainsGid.Add(EntityType.Woods, new CCTileGidAndFlags(ClientConstants.WOODS_GID));
         }
 
-
+        /// <summary>
+        /// Inits the entities gids.
+        /// </summary>
         private void InitEntitiesGid()
         {
             m_EntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
@@ -77,7 +96,9 @@ namespace Client.Common.Views
 
         }
 
-
+        /// <summary>
+        /// Inits the enemy entities gids.
+        /// </summary>
         private void InitEnemyEntitiesGid()
         {
             m_EnemyEntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
@@ -96,9 +117,9 @@ namespace Client.Common.Views
             //m_EnemyEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(ClientConstants.ENEMYFARM_GID));
         }
 
-
-
-
+        /// <summary>
+        /// Inits the menu entities gids.
+        /// </summary>
         private void InitMenuEntitiesGid()
         {
             m_MenuEntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
@@ -118,8 +139,12 @@ namespace Client.Common.Views
 
         }
 
-
-
+        /// <summary>
+        /// Sets the Definitions to tile gids.
+        /// </summary>
+        /// <returns>The tile gid.</returns>
+        /// <param name="definition">Definition.</param>
+        /// <param name="sort">Sort.</param>
         public CCTileGidAndFlags DefinitionToTileGid(Definition definition, Sort sort = Sort.Normal)
         {
             CCTileGidAndFlags gid;
@@ -154,9 +179,21 @@ namespace Client.Common.Views
 
         #region Fields
 
+        /// <summary>
+        /// The m_entities gid.
+        /// </summary>
         private Dictionary<EntityType, CCTileGidAndFlags> m_EntitiesGid;
+        /// <summary>
+        /// The m_enemy entities gid.
+        /// </summary>
         private Dictionary<EntityType, CCTileGidAndFlags> m_EnemyEntitiesGid;
+        /// <summary>
+        /// The m_menu entities gid.
+        /// </summary>
         private Dictionary<EntityType, CCTileGidAndFlags> m_MenuEntitiesGid;
+        /// <summary>
+        /// The m_terrains gid.
+        /// </summary>
         private Dictionary<EntityType, CCTileGidAndFlags> m_TerrainsGid;
 
         #endregion

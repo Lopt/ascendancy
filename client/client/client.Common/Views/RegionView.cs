@@ -9,13 +9,23 @@ using System.Threading;
 
 namespace Client.Common.Views
 {
+    /// <summary>
+    /// Region view to set the content of the tile map.
+    /// </summary>
     public class RegionView
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.RegionView"/> class.
+        /// </summary>
         public RegionView()
         {
             m_RegionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
         }
 
+        /// <summary>
+        /// Sets the tiles in map 160x160.
+        /// </summary>
+        /// <param name="region">Region.</param>
         public void SetTilesInMap160(Core.Models.Region region)
         {
 
@@ -31,6 +41,11 @@ namespace Client.Common.Views
             }
         }
 
+        /// <summary>
+        /// Sets the tiles in map 32x32.
+        /// </summary>
+        /// <param name="mapUpperLeftCoordinate">Map upper left coordinate.</param>
+        /// <param name="region">Region.</param>
         public void SetTilesInMap32(CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
         {
             for (int y = 0; y < Constants.REGION_SIZE_Y; y++)
@@ -47,12 +62,23 @@ namespace Client.Common.Views
             }
         }
 
+        /// <summary>
+        /// Sets the terrain tile in map.
+        /// </summary>
+        /// <param name="cellPosition">Cell position.</param>
+        /// <param name="mapCoordinat">Map coordinat.</param>
+        /// <param name="region">Region.</param>
         public void SetTerrainTileInMap(CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {
             var gid = Client.Common.Views.ViewDefinitions.Instance.DefinitionToTileGid(region.GetTerrain(cellPosition));
             TerrainLayer.SetTileGID(gid, mapCoordinat);
         }
 
+        /// <summary>
+        /// Sets the unit in the map.
+        /// </summary>
+        /// <param name="mapCoordinat">Map coordinat.</param>
+        /// <param name="unit">Unit.</param>
         public void SetUnit(CCTileMapCoordinates mapCoordinat, Entity unit)
         {
             if (unit == null)
@@ -71,6 +97,11 @@ namespace Client.Common.Views
             }
         }
 
+        /// <summary>
+        /// Sets the building in the map.
+        /// </summary>
+        /// <param name="mapCoordinat">Map coordinat.</param>
+        /// <param name="building">Building.</param>
         public void SetBuilding(CCTileMapCoordinates mapCoordinat, Entity building)
         {
             if (building == null)
@@ -89,7 +120,12 @@ namespace Client.Common.Views
             }
         }
 
-
+        /// <summary>
+        /// Sets the entity tile in in the map.
+        /// </summary>
+        /// <param name="cellPosition">Cell position.</param>
+        /// <param name="mapCoordinat">Map coordinat.</param>
+        /// <param name="region">Region.</param>
         public void SetEntityTileInMap(CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {   
             
@@ -114,8 +150,11 @@ namespace Client.Common.Views
 
         }
 
-
-
+        /// <summary>
+        /// Gets the current tile in map at the position. Converts the position to the tile in the map.
+        /// </summary>
+        /// <returns>The current tile in map.</returns>
+        /// <param name="position">Position.</param>
         public CCTileMapCoordinates GetCurrentTileInMap(Position position)
         {
             var regionPos = new RegionPosition(position);
@@ -143,7 +182,12 @@ namespace Client.Common.Views
             return MapCellPosition.GetTileMapCoordinates();
         }
 
-
+        /// <summary>
+        /// Gets the current game position at the map cell position. Convert the map cell to the game position. 
+        /// </summary>
+        /// <returns>The current game position.</returns>
+        /// <param name="mapCellPosition">Map cell position.</param>
+        /// <param name="currentCenterRegion">Current center region.</param>
         public Position GetCurrentGamePosition(MapCellPosition mapCellPosition, RegionPosition currentCenterRegion)
         {
             var worldRegions = m_RegionManagerController.GetWorldNearRegionPositions(currentCenterRegion);
@@ -166,6 +210,11 @@ namespace Client.Common.Views
             return null;
         }
 
+        /// <summary>
+        /// Determines whether this instance is cell in outside region the specified mapCellPosition.
+        /// </summary>
+        /// <returns><c>true</c> if this instance is cell in outside region the specified mapCellPosition; otherwise, <c>false</c>.</returns>
+        /// <param name="mapCellPosition">Map cell position.</param>
         public bool IsCellInOutsideRegion(MapCellPosition mapCellPosition)
         {
             if (mapCellPosition.CellX < ClientConstants.REDRAW_REGIONS_START_X || mapCellPosition.CellX > ClientConstants.REDRAW_REGIONS_END_X)
@@ -178,14 +227,32 @@ namespace Client.Common.Views
 
         #region Fields
 
+        /// <summary>
+        /// The m_region manager controller.
+        /// </summary>
         Client.Common.Manager.RegionManagerController m_RegionManagerController;
 
+        /// <summary>
+        /// The terrain layer.
+        /// </summary>
         public CCTileMapLayer TerrainLayer;
+        /// <summary>
+        /// The building layer.
+        /// </summary>
         public CCTileMapLayer BuildingLayer;
+        /// <summary>
+        /// The unit layer.
+        /// </summary>
         public CCTileMapLayer UnitLayer;
+        /// <summary>
+        /// The menu layer.
+        /// </summary>
         public CCTileMapLayer MenuLayer;
 
-
+        /// <summary>
+        /// Gets the world layer.
+        /// </summary>
+        /// <value>The world layer.</value>
         public WorldLayer WorldLayer
         {
             private set;

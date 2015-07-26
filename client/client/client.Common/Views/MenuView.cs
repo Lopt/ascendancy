@@ -8,10 +8,17 @@ using Core.Models.Definitions;
 
 namespace Client.Common.Views
 {
+    /// <summary>
+    /// Menu view.
+    /// </summary>
     public class MenuView
     {
-
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.MenuView"/> class.
+        /// </summary>
+        /// <param name="menuLayer">Menu layer.</param>
+        /// <param name="center">Center.</param>
+        /// <param name="types">Types.</param>
         public MenuView(CCTileMapLayer menuLayer, CCTileMapCoordinates center, Definition[] types)
         {
             m_center = center;
@@ -20,6 +27,10 @@ namespace Client.Common.Views
     
         }
 
+        /// <summary>
+        /// Gets the surrounded tiles.
+        /// </summary>
+        /// <returns>The surrounded tiles.</returns>
         public CCTileMapCoordinates[] GetSurroundedTiles()
         {
             var coordHelper = new CCTileMapCoordinates[6];
@@ -47,11 +58,10 @@ namespace Client.Common.Views
 
 
         /// <summary>
-        /// Shows the menu at a given Location.
+        /// Draws the menu at a given Location.
         /// </summary>
         /// <param name="location">Touch Location.</param>
         /// <param name="menutype">Menutype.</param>
-
         public void DrawMenu()
         {
             var surroundedCoords = GetSurroundedTiles();
@@ -63,6 +73,11 @@ namespace Client.Common.Views
             }
         }
 
+        /// <summary>
+        /// Gets the selected definition.
+        /// </summary>
+        /// <returns>The selected definition.</returns>
+        /// <param name="coord">Coordinate.</param>
         public Core.Models.Definitions.Definition GetSelectedDefinition(CCTileMapCoordinates coord)
         {
             var surroundedCoords = GetSurroundedTiles();
@@ -90,8 +105,17 @@ namespace Client.Common.Views
             //UglyDraw();
         }
 
+        /// <summary>
+        /// The m_enter.
+        /// </summary>
         CCTileMapCoordinates m_center;
+        /// <summary>
+        /// The definition m_types.
+        /// </summary>
         Core.Models.Definitions.Definition[] m_types;
+        /// <summary>
+        /// The m_menu layer.
+        /// </summary>
         CCTileMapLayer m_menuLayer;
     }
 }

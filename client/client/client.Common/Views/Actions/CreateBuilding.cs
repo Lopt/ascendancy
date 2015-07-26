@@ -2,19 +2,35 @@
 
 namespace Client.Common.Views.Actions
 {
+    /// <summary>
+    /// Create a building.
+    /// </summary>
     public class CreateBuilding : Client.Common.Views.Actions.Action
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.Actions.CreateBuilding"/> class.
+        /// </summary>
+        /// <param name="model">Model.</param>
+        /// <param name="worldLayer">World layer.</param>
         public CreateBuilding(Core.Models.ModelEntity model, WorldLayer worldLayer)
             : base(model)
         {
             WorldLayer = worldLayer;
         }
 
+        /// <summary>
+        /// Gets called before ActionControl.Do() gets executed. Should get and store data which will be needed in Schedule.
+        /// </summary>
         override public void BeforeDo()
         {
         }
 
-
+        /// <summary>
+        /// Schedules the action. Should do anything do animate the action (e.g. draw the entity, animate his moving or
+        /// start/end animating a fight)
+        /// Returns true if the action has ended, otherwise false.
+        /// </summary>
+        /// <param name="frameTimesInSecond">frames times in seconds.</param>
         override public bool Schedule(float frameTimesInSecond)
         {
             var action = (Core.Models.Action)Model;
@@ -28,6 +44,10 @@ namespace Client.Common.Views.Actions
             return true;
         }
 
+        /// <summary>
+        /// Gets the world layer.
+        /// </summary>
+        /// <value>The world layer.</value>
         public WorldLayer WorldLayer
         {
             private set;
