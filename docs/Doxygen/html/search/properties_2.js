@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['earth',['Earth',['../classServer_1_1DB_1_1Models_1_1TableRessource.html#a28f20f3d468730ffaa1fe87c34b5eb34',1,'Server::DB::Models::TableRessource']]],
-  ['exceptionmessage',['ExceptionMessage',['../classClient_1_1Common_1_1Controllers_1_1NetworkController.html#a6a99e2fc6e8db9a23ad1f4477b5e0426',1,'Client::Common::Controllers::NetworkController']]],
-  ['exist',['Exist',['../classCore_1_1Models_1_1Region.html#a8521c3cdb0ee6884d5e394217b44c66e',1,'Core::Models::Region']]]
+  ['cellx',['CellX',['../classClient_1_1Common_1_1Models_1_1MapCellPosition.html#a3698c44e12f74fef06625e4bf751620c',1,'Client::Common::Models::MapCellPosition']]],
+  ['celly',['CellY',['../classClient_1_1Common_1_1Models_1_1MapCellPosition.html#a4051441b879311d5f933fa6a801ed2cd',1,'Client::Common::Models::MapCellPosition']]],
+  ['centerposition',['CenterPosition',['../classClient_1_1Common_1_1Views_1_1WorldLayer.html#afd03e15ab33d9374896b26f270b4ed49',1,'Client::Common::Views::WorldLayer']]],
+  ['currentcellposition',['CurrentCellPosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#af3cd420ed76212d5399fbceea41ba03a',1,'Client::Common::Models::Geolocation']]],
+  ['currentgameposition',['CurrentGamePosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#ad14334db3507a02eb7ecf245d0e4154c',1,'Client::Common::Models::Geolocation']]],
+  ['currentposition',['CurrentPosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#a481303a3e49d4ab404050ca8ca7d3e86',1,'Client::Common::Models::Geolocation']]],
+  ['currentregionposition',['CurrentRegionPosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#accfb783b87b9df12f895053cb865f016',1,'Client::Common::Models::Geolocation']]]
 ];

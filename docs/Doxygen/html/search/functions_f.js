@@ -1,6 +1,8 @@
 var searchData=
 [
   ['refreshregion',['RefreshRegion',['../classServer_1_1Controllers_1_1AccountController.html#a2326ec6c25856d4dcf65d9422b753c97',1,'Server::Controllers::AccountController']]],
+  ['regionmanagercontroller',['RegionManagerController',['../classClient_1_1Common_1_1Manager_1_1RegionManagerController.html#a89a6a0097ec0ed4b2e26c2dcf312a27d',1,'Client::Common::Manager::RegionManagerController']]],
+  ['regionview',['RegionView',['../classClient_1_1Common_1_1Views_1_1RegionView.html#a249349659eb53e9e2a764cef0bfea9cb',1,'Client::Common::Views::RegionView']]],
   ['registrate',['Registrate',['../classServer_1_1Controllers_1_1AccountManagerController.html#aa78f40e7fdfcc38730c4fe118b52b5eb',1,'Server::Controllers::AccountManagerController']]],
   ['release',['Release',['../classSQLite_1_1SQLiteConnection.html#a6813c9dd152354284ccdc96353bcfbdd',1,'SQLite.SQLiteConnection.Release(string savepoint)'],['../classSQLite_1_1SQLiteConnection.html#a6813c9dd152354284ccdc96353bcfbdd',1,'SQLite.SQLiteConnection.Release(string savepoint)']]],
   ['removeentity',['RemoveEntity',['../classCore_1_1Models_1_1Region.html#a05d102bebab28be04e9184ed438b6cda',1,'Core::Models::Region']]],

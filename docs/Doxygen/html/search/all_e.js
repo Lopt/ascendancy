@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['parentnode',['ParentNode',['../classAStar_1_1Node.html#af01de677cce55f979bab4ce6577c9614',1,'AStar::Node']]],
-  ['password',['Password',['../classServer_1_1DB_1_1Models_1_1TableAccount.html#ae2e067ab09522520d715b4cf51386cd9',1,'Server::DB::Models::TableAccount']]],
-  ['pathfinder',['PathFinder',['../classAStar_1_1PathFinder.html#a56a02796dc128e54a9ff805dc1860ce3',1,'AStar::PathFinder']]],
-  ['pathfinder',['PathFinder',['../classAStar_1_1PathFinder.html',1,'AStar']]],
-  ['position',['Position',['../classCore_1_1Models_1_1Position.html',1,'Core::Models']]],
-  ['positionhelper',['PositionHelper',['../classClient_1_1Common_1_1Helper_1_1PositionHelper.html',1,'Client::Common::Helper']]],
-  ['positioni',['PositionI',['../classCore_1_1Models_1_1PositionI.html',1,'Core::Models']]],
-  ['positionx',['PositionX',['../classServer_1_1DB_1_1Models_1_1TableBuilding.html#a51f82ae3d59ec5972f1203df61f835b7',1,'Server.DB.Models.TableBuilding.PositionX()'],['../classServer_1_1DB_1_1Models_1_1TableUnit.html#ac3f6fbba28d575332fb8272acea1ede7',1,'Server.DB.Models.TableUnit.PositionX()']]],
-  ['positiony',['PositionY',['../classServer_1_1DB_1_1Models_1_1TableBuilding.html#ac12da5d0fc35d3fd054286c48e8e34d6',1,'Server.DB.Models.TableBuilding.PositionY()'],['../classServer_1_1DB_1_1Models_1_1TableUnit.html#a9f536f4d39ce82ef7071734b2037fde8',1,'Server.DB.Models.TableUnit.PositionY()']]],
-  ['possible',['Possible',['../classCore_1_1Controllers_1_1Actions_1_1Action.html#a405b995343a9394ad19e05a699a4e6d9',1,'Core.Controllers.Actions.Action.Possible()'],['../classCore_1_1Controllers_1_1Actions_1_1CreatBuilding.html#a10b4bb58784bd5da25abac85727e30b0',1,'Core.Controllers.Actions.CreatBuilding.Possible()'],['../classCore_1_1Controllers_1_1Actions_1_1CreateHeadquarter.html#aae428d8792453bea4aae8dfd9478a1fd',1,'Core.Controllers.Actions.CreateHeadquarter.Possible()'],['../classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#a30ceafb2aa0fb1b801a8abd659c9d70f',1,'Core.Controllers.Actions.CreateUnit.Possible()'],['../classCore_1_1Controllers_1_1Actions_1_1MoveUnit.html#a6689af13f9a2f8ff90ad72d2ac327a52',1,'Core.Controllers.Actions.MoveUnit.Possible()'],['../classCore_1_1Controllers_1_1Actions_1_1TestAction.html#a34c402de500bea49dcf438efb421517d',1,'Core.Controllers.Actions.TestAction.Possible()']]],
-  ['preparedsqlliteinsertcommand',['PreparedSqlLiteInsertCommand',['../classSQLite_1_1PreparedSqlLiteInsertCommand.html',1,'SQLite']]],
-  ['primarykeyattribute',['PrimaryKeyAttribute',['../classSQLite_1_1PrimaryKeyAttribute.html',1,'SQLite']]]
+  ['objectjavabox_5f1',['ObjectJavaBox_1',['../classmd5530bd51e982e6e7b340b73e88efe666e_1_1ObjectJavaBox__1.html',1,'md5530bd51e982e6e7b340b73e88efe666e']]],
+  ['onapplywindowinsetslistenerimplementor',['OnApplyWindowInsetsListenerImplementor',['../classmono_1_1android_1_1support_1_1v4_1_1view_1_1OnApplyWindowInsetsListenerImplementor.html',1,'mono::android::support::v4::view']]],
+  ['oncreate',['OnCreate',['../classClient_1_1Droid_1_1MainActivity.html#a81c1652b05e56f45d7d6291f2fee2e3a',1,'Client::Droid::MainActivity']]],
+  ['oninstancecreated',['OnInstanceCreated',['../classSQLite_1_1SQLiteCommand.html#a4761647a6b02f398aa1d7bbd1f090828',1,'SQLite.SQLiteCommand.OnInstanceCreated(object obj)'],['../classSQLite_1_1SQLiteCommand.html#a4761647a6b02f398aa1d7bbd1f090828',1,'SQLite.SQLiteCommand.OnInstanceCreated(object obj)']]],
+  ['ontouchesbegan',['OnTouchesBegan',['../classClient_1_1Common_1_1Views_1_1TouchHandler.html#ac21679b308098e955aecb76562481078',1,'Client::Common::Views::TouchHandler']]],
+  ['ontouchesended',['OnTouchesEnded',['../classClient_1_1Common_1_1Views_1_1TouchHandler.html#a3598c47862156c696862c5017567d630',1,'Client::Common::Views::TouchHandler']]],
+  ['ontouchesmoved',['OnTouchesMoved',['../classClient_1_1Common_1_1Views_1_1TouchHandler.html#ad028e4ba02913c0d9d4cb55a658b07aa',1,'Client::Common::Views::TouchHandler']]],
+  ['open',['Open',['../namespaceCore_1_1Controllers_1_1AStar.html#a35790b9ccd2b721f3e90cb49769caab9ac3bf447eabe632720a3aa1a7ce401274',1,'Core::Controllers::AStar']]],
+  ['openglviewrenderer',['OpenGLViewRenderer',['../classmd5530bd51e982e6e7b340b73e88efe666e_1_1OpenGLViewRenderer.html',1,'md5530bd51e982e6e7b340b73e88efe666e']]],
+  ['openglviewrenderer_5frenderer',['OpenGLViewRenderer_Renderer',['../classmd5530bd51e982e6e7b340b73e88efe666e_1_1OpenGLViewRenderer__Renderer.html',1,'md5530bd51e982e6e7b340b73e88efe666e']]],
+  ['ordering',['Ordering',['../classSQLite_1_1BaseTableQuery_1_1Ordering.html',1,'SQLite::BaseTableQuery']]],
+  ['orientationlistener',['OrientationListener',['../classmd50e38c77f31dbf1ba1bcdac48fd82ebe5_1_1OrientationListener.html',1,'md50e38c77f31dbf1ba1bcdac48fd82ebe5']]]
 ];

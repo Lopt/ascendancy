@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['startlocation',['StartLocation',['../classAStar_1_1SearchParameters.html#afaa7cfd59fcd28741a9d681b11d8e12d',1,'AStar::SearchParameters']]],
-  ['state',['State',['../classAStar_1_1Node.html#a71d509fe94dee571f3852c9f60c63e13',1,'AStar::Node']]]
+  ['buildinglayer',['BuildingLayer',['../classClient_1_1Common_1_1Views_1_1RegionView.html#a5ef2df453b1fe9f0b7b27dca874fb09e',1,'Client::Common::Views::RegionView']]]
 ];

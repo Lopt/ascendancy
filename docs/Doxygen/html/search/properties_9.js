@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['parentnode',['ParentNode',['../classAStar_1_1Node.html#af01de677cce55f979bab4ce6577c9614',1,'AStar::Node']]],
-  ['password',['Password',['../classServer_1_1DB_1_1Models_1_1TableAccount.html#ae2e067ab09522520d715b4cf51386cd9',1,'Server::DB::Models::TableAccount']]],
-  ['positionx',['PositionX',['../classServer_1_1DB_1_1Models_1_1TableBuilding.html#a51f82ae3d59ec5972f1203df61f835b7',1,'Server.DB.Models.TableBuilding.PositionX()'],['../classServer_1_1DB_1_1Models_1_1TableUnit.html#ac3f6fbba28d575332fb8272acea1ede7',1,'Server.DB.Models.TableUnit.PositionX()']]],
-  ['positiony',['PositionY',['../classServer_1_1DB_1_1Models_1_1TableBuilding.html#ac12da5d0fc35d3fd054286c48e8e34d6',1,'Server.DB.Models.TableBuilding.PositionY()'],['../classServer_1_1DB_1_1Models_1_1TableUnit.html#a9f536f4d39ce82ef7071734b2037fde8',1,'Server.DB.Models.TableUnit.PositionY()']]]
+  ['languagecode',['LanguageCode',['../classClient_1_1Common_1_1Models_1_1Device.html#ac83cd54233e05b757043739f6e82e7f4',1,'Client::Common::Models::Device']]],
+  ['lastcellposition',['LastCellPosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#aa14cd6c1f33d576b14b12528654bda50',1,'Client::Common::Models::Geolocation']]],
+  ['lastgameposition',['LastGamePosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#a577d828c7e1b51a10bd7444a10278548',1,'Client::Common::Models::Geolocation']]],
+  ['lastposition',['LastPosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#ac05323e0dbb238fae5123a514aac3eaf',1,'Client::Common::Models::Geolocation']]],
+  ['lastregionposition',['LastRegionPosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#a37781ed0d4705776dabe76b1291ad5da',1,'Client::Common::Models::Geolocation']]],
+  ['latitude',['Latitude',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#a838a5734aea2d628c1f1f74666ee872d',1,'Client::Common::Models::Geolocation']]],
+  ['location',['Location',['../classCore_1_1Controllers_1_1AStar_1_1Node.html#a035f31738d38e887cef34e7d1a34ea39',1,'Core::Controllers::AStar::Node']]],
+  ['longitude',['Longitude',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#ad21ed8fd7165bc867d3013698878a9b8',1,'Client::Common::Models::Geolocation']]]
 ];

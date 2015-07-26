@@ -1,14 +1,9 @@
 var searchData=
 [
-  ['region',['Region',['../classCore_1_1Models_1_1Region.html',1,'Core::Models']]],
-  ['regiondata',['RegionData',['../classServer_1_1Controllers_1_1APIController_1_1RegionData.html',1,'Server::Controllers::APIController']]],
-  ['regionmanager',['RegionManager',['../classCore_1_1Models_1_1RegionManager.html',1,'Core::Models']]],
-  ['regionmanagercontroller',['RegionManagerController',['../classClient_1_1Common_1_1Manager_1_1RegionManagerController.html',1,'Client::Common::Manager']]],
-  ['regionmanagercontroller',['RegionManagerController',['../classServer_1_1Controllers_1_1RegionManagerController.html',1,'Server::Controllers']]],
-  ['regionmanagercontroller',['RegionManagerController',['../classCore_1_1Controllers_1_1RegionManagerController.html',1,'Core::Controllers']]],
-  ['regionposition',['RegionPosition',['../classCore_1_1Models_1_1RegionPosition.html',1,'Core::Models']]],
-  ['regionview',['RegionView',['../classClient_1_1Common_1_1Views_1_1RegionView.html',1,'Client::Common::Views']]],
-  ['request',['Request',['../classCore_1_1Connections_1_1Request.html',1,'Core::Connections']]],
-  ['resource',['Resource',['../classclient_1_1Droid_1_1Resource.html',1,'client::Droid']]],
-  ['response',['Response',['../classCore_1_1Connections_1_1Response.html',1,'Core::Connections']]]
+  ['objectjavabox_5f1',['ObjectJavaBox_1',['../classmd5530bd51e982e6e7b340b73e88efe666e_1_1ObjectJavaBox__1.html',1,'md5530bd51e982e6e7b340b73e88efe666e']]],
+  ['onapplywindowinsetslistenerimplementor',['OnApplyWindowInsetsListenerImplementor',['../classmono_1_1android_1_1support_1_1v4_1_1view_1_1OnApplyWindowInsetsListenerImplementor.html',1,'mono::android::support::v4::view']]],
+  ['openglviewrenderer',['OpenGLViewRenderer',['../classmd5530bd51e982e6e7b340b73e88efe666e_1_1OpenGLViewRenderer.html',1,'md5530bd51e982e6e7b340b73e88efe666e']]],
+  ['openglviewrenderer_5frenderer',['OpenGLViewRenderer_Renderer',['../classmd5530bd51e982e6e7b340b73e88efe666e_1_1OpenGLViewRenderer__Renderer.html',1,'md5530bd51e982e6e7b340b73e88efe666e']]],
+  ['ordering',['Ordering',['../classSQLite_1_1BaseTableQuery_1_1Ordering.html',1,'SQLite::BaseTableQuery']]],
+  ['orientationlistener',['OrientationListener',['../classmd50e38c77f31dbf1ba1bcdac48fd82ebe5_1_1OrientationListener.html',1,'md50e38c77f31dbf1ba1bcdac48fd82ebe5']]]
 ];

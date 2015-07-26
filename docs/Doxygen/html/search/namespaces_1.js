@@ -1,21 +1,9 @@
 var searchData=
 [
-  ['actions',['Actions',['../namespaceClient_1_1Common_1_1Views_1_1Actions.html',1,'Client::Common::Views']]],
-  ['actions',['Actions',['../namespaceCore_1_1Controllers_1_1Actions.html',1,'Core::Controllers']]],
-  ['client',['client',['../namespaceclient.html',1,'client'],['../namespaceClient.html',1,'Client']]],
-  ['common',['Common',['../namespaceClient_1_1Common.html',1,'Client']]],
-  ['connections',['Connections',['../namespaceCore_1_1Connections.html',1,'Core']]],
-  ['controllers',['Controllers',['../namespaceClient_1_1Common_1_1Controllers.html',1,'Client::Common']]],
-  ['controllers',['Controllers',['../namespaceCore_1_1Controllers.html',1,'Core']]],
-  ['core',['Core',['../namespaceCore.html',1,'']]],
-  ['definitions',['Definitions',['../namespaceCore_1_1Models_1_1Definitions.html',1,'Core::Models']]],
-  ['droid',['Droid',['../namespaceclient_1_1Droid.html',1,'client.Droid'],['../namespaceClient_1_1Droid.html',1,'Client.Droid']]],
-  ['helper',['Helper',['../namespaceClient_1_1Common_1_1Helper.html',1,'Client::Common']]],
-  ['helper',['Helper',['../namespaceCore_1_1Helper.html',1,'Core']]],
-  ['ios',['iOS',['../namespaceClient_1_1iOS.html',1,'Client']]],
-  ['manager',['Manager',['../namespaceClient_1_1Common_1_1Manager.html',1,'Client::Common']]],
-  ['models',['Models',['../namespaceClient_1_1Common_1_1Models.html',1,'Client::Common']]],
-  ['models',['Models',['../namespaceCore_1_1Models.html',1,'Core']]],
-  ['views',['Views',['../namespaceCore_1_1Views.html',1,'Core']]],
-  ['views',['Views',['../namespaceClient_1_1Common_1_1Views.html',1,'Client::Common']]]
+  ['controllers',['Controllers',['../namespaceServer_1_1Controllers.html',1,'Server']]],
+  ['db',['DB',['../namespaceServer_1_1DB.html',1,'Server']]],
+  ['models',['Models',['../namespaceServer_1_1Models.html',1,'Server']]],
+  ['models',['Models',['../namespaceServer_1_1DB_1_1Models.html',1,'Server::DB']]],
+  ['server',['Server',['../namespaceServer.html',1,'']]],
+  ['sqlite',['SQLite',['../namespaceSQLite.html',1,'']]]
 ];

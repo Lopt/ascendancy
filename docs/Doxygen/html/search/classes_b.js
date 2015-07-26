@@ -1,4 +1,24 @@
 var searchData=
 [
-  ['ordering',['Ordering',['../classSQLite_1_1BaseTableQuery_1_1Ordering.html',1,'SQLite::BaseTableQuery']]]
+  ['mainactivity',['MainActivity',['../classClient_1_1Droid_1_1MainActivity.html',1,'Client::Droid']]],
+  ['mainactivity',['MainActivity',['../classmd5d9d89bb64e317a7b570b1a1a2229fa76_1_1MainActivity.html',1,'md5d9d89bb64e317a7b570b1a1a2229fa76']]],
+  ['mainclass',['MainClass',['../classtest_1_1MainClass.html',1,'test']]],
+  ['mapcellposition',['MapCellPosition',['../classClient_1_1Common_1_1Models_1_1MapCellPosition.html',1,'Client::Common::Models']]],
+  ['masterdetailcontainer',['MasterDetailContainer',['../classmd5530bd51e982e6e7b340b73e88efe666e_1_1MasterDetailContainer.html',1,'md5530bd51e982e6e7b340b73e88efe666e']]],
+  ['masterdetailrenderer',['MasterDetailRenderer',['../classmd5530bd51e982e6e7b340b73e88efe666e_1_1MasterDetailRenderer.html',1,'md5530bd51e982e6e7b340b73e88efe666e']]],
+  ['maxlengthattribute',['MaxLengthAttribute',['../classSQLite_1_1MaxLengthAttribute.html',1,'SQLite']]],
+  ['mediapickeractivity',['MediaPickerActivity',['../classmd5deb5db30d5c1a31578355ad288560cc8_1_1MediaPickerActivity.html',1,'md5deb5db30d5c1a31578355ad288560cc8']]],
+  ['mediasessioncompat_5fonactivechangelistenerimplementor',['MediaSessionCompat_OnActiveChangeListenerImplementor',['../classmono_1_1android_1_1support_1_1v4_1_1media_1_1session_1_1MediaSessionCompat__OnActiveChangeListenerImplementor.html',1,'mono::android::support::v4::media::session']]],
+  ['menuitemcompat_5fonactionexpandlistenerimplementor',['MenuItemCompat_OnActionExpandListenerImplementor',['../classmono_1_1android_1_1support_1_1v4_1_1view_1_1MenuItemCompat__OnActionExpandListenerImplementor.html',1,'mono::android::support::v4::view']]],
+  ['menuview',['MenuView',['../classClient_1_1Common_1_1Views_1_1MenuView.html',1,'Client::Common::Views']]],
+  ['modelentity',['ModelEntity',['../classCore_1_1Models_1_1ModelEntity.html',1,'Core::Models']]],
+  ['monogameandroidgameview',['MonoGameAndroidGameView',['../classmd50e38c77f31dbf1ba1bcdac48fd82ebe5_1_1MonoGameAndroidGameView.html',1,'md50e38c77f31dbf1ba1bcdac48fd82ebe5']]],
+  ['monopackagemanager',['MonoPackageManager',['../classmono_1_1MonoPackageManager.html',1,'mono']]],
+  ['monoruntimeprovider',['MonoRuntimeProvider',['../classmono_1_1MonoRuntimeProvider.html',1,'mono']]],
+  ['monthadapter',['MonthAdapter',['../classmd554b34bb83ebb7e18224badece0c2f62d_1_1MonthAdapter.html',1,'md554b34bb83ebb7e18224badece0c2f62d']]],
+  ['monthcelldescriptor',['MonthCellDescriptor',['../classmd554b34bb83ebb7e18224badece0c2f62d_1_1MonthCellDescriptor.html',1,'md554b34bb83ebb7e18224badece0c2f62d']]],
+  ['monthview',['MonthView',['../classmd554b34bb83ebb7e18224badece0c2f62d_1_1MonthView.html',1,'md554b34bb83ebb7e18224badece0c2f62d']]],
+  ['moveunit',['MoveUnit',['../classClient_1_1Common_1_1Views_1_1Actions_1_1MoveUnit.html',1,'Client::Common::Views::Actions']]],
+  ['moveunit',['MoveUnit',['../classCore_1_1Controllers_1_1Actions_1_1MoveUnit.html',1,'Core::Controllers::Actions']]],
+  ['mvcapplication',['MvcApplication',['../classServer_1_1MvcApplication.html',1,'Server']]]
 ];
