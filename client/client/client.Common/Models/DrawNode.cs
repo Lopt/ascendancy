@@ -3,12 +3,26 @@ using CocosSharp;
 
 namespace Client.Common.Models
 {
+    /// <summary>
+    /// The Draw node to draw polygons.
+    /// </summary>
     public class DrawNode : CCDrawNode
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Models.DrawNode"/> class.
+        /// </summary>
         public DrawNode()
         {
         }
 
+        /// <summary>
+        /// Draws the hexagon for a hex map.
+        /// </summary>
+        /// <param name="layer">Layer.</param>
+        /// <param name="tileCoordinates">Tile coordinates.</param>
+        /// <param name="borderColor">Border color.</param>
+        /// <param name="opacity">Opacity.</param>
+        /// <param name="borderWith">Border with.</param>
         public void DrawHexagonForHexMap(CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
         {
             // Calculate our width and height of the tile
@@ -62,6 +76,15 @@ namespace Client.Common.Models
 
         }
 
+        /// <summary>
+        /// Draws the hexagon for a iso stag map.
+        /// </summary>
+        /// <param name="pngWidth">Png width.</param>
+        /// <param name="layer">Layer.</param>
+        /// <param name="tileCoordinates">Tile coordinates.</param>
+        /// <param name="borderColor">Border color.</param>
+        /// <param name="opacity">Opacity.</param>
+        /// <param name="borderWith">Border with.</param>
         public void DrawHexagonForIsoStagMap(float pngWidth, CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
         {
             // Calculate our width and height of the tile
@@ -115,6 +138,15 @@ namespace Client.Common.Models
 
         }
 
+        /// <summary>
+        /// Draws the ISO trapez for iso stag map.
+        /// </summary>
+        /// <param name="pngWidth">Png width.</param>
+        /// <param name="layer">Layer.</param>
+        /// <param name="tileCoordinates">Tile coordinates.</param>
+        /// <param name="borderColor">Border color.</param>
+        /// <param name="opacity">Opacity.</param>
+        /// <param name="borderWith">Border with.</param>
         public void DrawISOForIsoStagMap(float pngWidth, CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
         {
             // Calculate our width and height of the tile

@@ -10,14 +10,23 @@ using XLabs.Ioc;
 
 namespace Client.Common.Models
 {
+    /// <summary>
+    /// The Device as a singleton class for device information.
+    /// </summary>
     [Table("Device")]
     public sealed class Device : ViewBaseModel
     {
 
         #region Singelton
 
+        /// <summary>
+        /// The m instance.
+        /// </summary>
         private static readonly Device m_instance = new Device();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Models.Device"/> class.
+        /// </summary>
         private Device()
         {
             m_device = Resolver.Resolve<IDevice>();
@@ -50,6 +59,10 @@ namespace Client.Common.Models
        
         }
 
+        /// <summary>
+        /// Gets the get instance.
+        /// </summary>
+        /// <value>The get instance.</value>
         public static Device GetInstance
         {
             get
@@ -62,27 +75,46 @@ namespace Client.Common.Models
 
         #region Device
 
+        /// <summary>
+        /// The m device.
+        /// </summary>
         private readonly IDevice m_device = null;
 
         //TODO solve Exception IAccelerometer why returns null
+        /// <summary>
+        /// Gets the accelerometer.
+        /// </summary>
+        /// <value>The accelerometer.</value>
         public IAccelerometer Accelerometer
         { 
             get; 
             private set; 
         }
 
+        /// <summary>
+        /// Gets the battery.
+        /// </summary>
+        /// <value>The battery.</value>
         public IBattery Battery
         {
             get;
             private set; 
         }
 
+        /// <summary>
+        /// Gets the bluetooth hub.
+        /// </summary>
+        /// <value>The bluetooth hub.</value>
         public IBluetoothHub BluetoothHub
         { 
             get; 
             private set; 
         }
 
+        /// <summary>
+        /// Gets the display.
+        /// </summary>
+        /// <value>The display.</value>
         public IDisplay Display
         { 
             get; 
@@ -90,12 +122,20 @@ namespace Client.Common.Models
         }
 
         //TODO solve Exception IGyroscope why returns null
+        /// <summary>
+        /// Gets the gyroscope.
+        /// </summary>
+        /// <value>The gyroscope.</value>
         public IGyroscope Gyroscope
         { 
             get; 
             private set; 
         }
 
+        /// <summary>
+        /// Gets the media picker.
+        /// </summary>
+        /// <value>The media picker.</value>
         public IMediaPicker MediaPicker
         { 
             get; 
@@ -103,12 +143,20 @@ namespace Client.Common.Models
         }
 
         //TODO solve Exception IAudioStream why returns null
+        /// <summary>
+        /// Gets the microphone.
+        /// </summary>
+        /// <value>The microphone.</value>
         public IAudioStream Microphone
         { 
             get; 
             private set; 
         }
 
+        /// <summary>
+        /// Gets the network.
+        /// </summary>
+        /// <value>The network.</value>
         public INetwork Network
         { 
             get; 
@@ -116,6 +164,10 @@ namespace Client.Common.Models
         }
 
         //TODO solve Exception IPhoneService why returns null
+        /// <summary>
+        /// Gets the phone service.
+        /// </summary>
+        /// <value>The phone service.</value>
         public IPhoneService PhoneService
         { 
             get; 
@@ -126,6 +178,10 @@ namespace Client.Common.Models
 
         #region ViewPoperties
 
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         [PrimaryKey, AutoIncrement]
         public int Id
         { 
@@ -133,6 +189,10 @@ namespace Client.Common.Models
             set; 
         }
 
+        /// <summary>
+        /// Gets or sets the battery level.
+        /// </summary>
+        /// <value>The battery level.</value>
         [Column("BatteryLevel")]
         public string BatteryLevel
         { 
@@ -150,9 +210,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name battery level.
+        /// </summary>
         public static string PropertyNameBatteryLevel = "BatteryLevel";
+        /// <summary>
+        /// The m_battery level.
+        /// </summary>
         private string m_batteryLevel;
 
+        /// <summary>
+        /// Gets or sets the device identifier.
+        /// </summary>
+        /// <value>The device identifier.</value>
         [Column("DeviceId")]
         public string DeviceId
         { 
@@ -170,9 +240,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name device identifier.
+        /// </summary>
         public static string PropertyNameDeviceId = "DeviceId";
+        /// <summary>
+        /// The m_device identifier.
+        /// </summary>
         private string m_deviceId;
 
+        /// <summary>
+        /// Gets or sets the firmware version.
+        /// </summary>
+        /// <value>The firmware version.</value>
         [Column("FirmwareVersion")]
         public string FirmwareVersion
         { 
@@ -190,9 +270,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name firmware version.
+        /// </summary>
         public static string PropertyNameFirmwareVersion = "FirmwareVersion";
+        /// <summary>
+        /// The m_firmware version.
+        /// </summary>
         private string m_firmwareVersion;
 
+        /// <summary>
+        /// Gets or sets the hardware version.
+        /// </summary>
+        /// <value>The hardware version.</value>
         [Column("HardwareVersion")]
         public string HardwareVersion
         { 
@@ -210,9 +300,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name hardware version.
+        /// </summary>
         public static string PropertyNameHardwareVersion = "HardwareVersion";
+        /// <summary>
+        /// The m_hardware version.
+        /// </summary>
         private string m_hardwareVersion;
 
+        /// <summary>
+        /// Gets or sets the language code.
+        /// </summary>
+        /// <value>The language code.</value>
         [Column("LanguageCode")]
         public string LanguageCode
         { 
@@ -230,9 +330,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name language code.
+        /// </summary>
         public static string PropertyNameLanguageCode = "LanguageCode";
+        /// <summary>
+        /// The m_language code.
+        /// </summary>
         private string m_languageCode;
 
+        /// <summary>
+        /// Gets or sets the manufacturer.
+        /// </summary>
+        /// <value>The manufacturer.</value>
         [Column("Manufacturer")]
         public string Manufacturer
         { 
@@ -250,9 +360,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name manufacturer.
+        /// </summary>
         public static string PropertyNameManufacturer = "Manufacturer";
+        /// <summary>
+        /// The m_manufacturer.
+        /// </summary>
         private string m_manufacturer;
 
+        /// <summary>
+        /// Gets or sets the name of the device.
+        /// </summary>
+        /// <value>The name of the device.</value>
         [Column("DeviceName")]
         public string DeviceName
         { 
@@ -270,9 +390,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The name of the property name device.
+        /// </summary>
         public static string PropertyNameDeviceName = "DeviceName";
+        /// <summary>
+        /// The name of the m_device.
+        /// </summary>
         private string m_deviceName;
 
+        /// <summary>
+        /// Gets or sets the time zone.
+        /// </summary>
+        /// <value>The time zone.</value>
         [Column("TimeZone")]
         public string TimeZone
         { 
@@ -290,9 +420,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name time zone.
+        /// </summary>
         public static string PropertyNameTimeZone = "TimeZone";
+        /// <summary>
+        /// The m_time zone.
+        /// </summary>
         private string m_timeZone;
 
+        /// <summary>
+        /// Gets or sets the time zone offset.
+        /// </summary>
+        /// <value>The time zone offset.</value>
         [Column("TimeZoneOffset")]
         public string TimeZoneOffset
         { 
@@ -310,10 +450,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name time zone offset.
+        /// </summary>
         public static string PropertyNameTimeZoneOffset = "TimeZoneOffset";
+        /// <summary>
+        /// The m_time zone offset.
+        /// </summary>
         private string m_timeZoneOffset;
 
-
+        /// <summary>
+        /// Gets or sets the device memory.
+        /// </summary>
+        /// <value>The device memory.</value>
         [Column("DeviceMemory")]
         public string DeviceMemory
         { 
@@ -331,7 +480,13 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name device memory.
+        /// </summary>
         public static string PropertyNameDeviceMemory = "DeviceMemory";
+        /// <summary>
+        /// The m_device memory.
+        /// </summary>
         private string m_deviceMemory;
 
         #endregion

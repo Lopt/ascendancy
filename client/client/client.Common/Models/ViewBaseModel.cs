@@ -5,7 +5,10 @@ using Xamarin.Forms;
 
 namespace Client.Common.Models
 {
-    // This Code is from https://github.com/zumero/Xamarin.Forms-demo/blob/master/demo.Shared/Models/BaseModel.cs
+    /// <summary>
+    /// View base model.
+    /// This Code is from https://github.com/zumero/Xamarin.Forms-demo/blob/master/demo.Shared/Models/BaseModel.cs
+    /// </summary>
     public class ViewBaseModel : INotifyPropertyChanged
     {
         public bool NotifyIfPropertiesChange = true;
