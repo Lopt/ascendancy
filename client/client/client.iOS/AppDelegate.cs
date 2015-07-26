@@ -17,6 +17,9 @@ namespace Client.iOS
 	// The UIApplicationDelegate for the application. This class is responsible for launching the
 	// User Interface of the application, as well as listening (and optionally responding) to
 	// application events from iOS.
+	/// <summary>
+	/// App delegate.
+	/// </summary>
 	[Register("AppDelegate")]
 	public partial class AppDelegate : UIApplicationDelegate
 	{
@@ -27,6 +30,10 @@ namespace Client.iOS
 		//
 		// You have 17 seconds to return from this method, or iOS will terminate your application.
 		//
+		/// <summary>
+		/// When Finished the launching.
+		/// </summary>
+		/// <param name="app">App.</param>
 		public override void FinishedLaunching(UIApplication app)
 		{
 			if (!Resolver.IsSet)
@@ -48,11 +55,18 @@ namespace Client.iOS
 			application.StartGame();
 		}
 
+		/// <summary>
+		/// The entry point of the program, where the program control starts and ends.
+		/// </summary>
+		/// <param name="args">The command-line arguments.</param>
 		static void Main(string[] args)
 		{
 			UIApplication.Main(args, null, "AppDelegate");
 		}
 
+		/// <summary>
+		/// Sets the io container.
+		/// </summary>
 		private void SetIoc()
 		{
 			var resolverContainer = new SimpleContainer();
