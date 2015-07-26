@@ -12,22 +12,27 @@ using Client.Common.Manager;
 using Xamarin.Forms.Xaml;
 
 
-
-
-
 namespace Client.Common
 {
+    /// <summary>
+    /// The Game app delegate is the game entry point.
+    /// </summary>
     public class GameAppDelegate : CCApplicationDelegate
     {
 
-
+        /// <summary>
+        /// Gets the account.
+        /// </summary>
+        /// <value>The account.</value>
         static public Account Account
         {
             get;
             private set;
         }
 
-
+        /// <summary>
+        /// Game phases.
+        /// </summary>
         public enum Phases
         {
             Start,
@@ -36,12 +41,21 @@ namespace Client.Common
             Exit,
         }
 
+        /// <summary>
+        /// Gets the game phase.
+        /// </summary>
+        /// <value>The phase.</value>
         public Phases Phase
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// When the Application did finish launching.
+        /// </summary>
+        /// <param name="application">Application.</param>
+        /// <param name="mainWindow">Main window.</param>
         public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
         {
             m_window = mainWindow;
@@ -75,16 +89,19 @@ namespace Client.Common
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
            
-            SceneStart();//.RunSynchronously();
+            SceneStartAsync();//.RunSynchronously();
         }
 
-        private async Task SceneStart()
+        /// <summary>
+        /// Set the start scene and if all is initialized the game scene.
+        /// </summary>
+        /// <returns>The task.</returns>
+        private async Task SceneStartAsync()
         {
 			
             m_currentScene = new StartScene(m_window);
             Phase = Phases.StartScene;
             m_window.RunWithScene(m_currentScene);
-
 
             Account = await ((StartScene)m_currentScene).InitLoadingAsync();
 
@@ -93,19 +110,30 @@ namespace Client.Common
             m_window.DefaultDirector.ReplaceScene(m_currentScene);
         }
 
-
+        /// <summary>
+        /// When the Application did enter background. Stop listening the geolocation and pause the application. 
+        /// </summary>
+        /// <param name="application">Application.</param>
         public override void ApplicationDidEnterBackground(CCApplication application)
         {
             Geolocation.Instance.StopListening();
             application.Paused = true;
         }
 
+        /// <summary>
+        /// When the Application will enter foreground end the pause and start listening the geolocation.
+        /// </summary>
+        /// <param name="application">Application.</param>
         public override void ApplicationWillEnterForeground(CCApplication application)
         {
             application.Paused = false;
             Geolocation.Instance.StartListening(1000, 4);
         }
 
+        /// <summary>
+        /// Sets the content paths.
+        /// </summary>
+        /// <param name="application">Application.</param>
         private void SetContentPaths(CCApplication application)
         {
             application.ContentRootDirectory = ClientConstants.CONTENT;
@@ -116,7 +144,13 @@ namespace Client.Common
             application.ContentSearchPaths.Add(ClientConstants.IMAGES);
         }
 
+        /// <summary>
+        /// The m_window.
+        /// </summary>
         private CCWindow m_window;
+        /// <summary>
+        /// The m_current scene.
+        /// </summary>
         private CCScene m_currentScene;
 
     }
