@@ -32,7 +32,11 @@ Benötigt:
 - Xamarin Studio (Empfohlen) oder Xamarin für Visual Studio - minimal Probe- oder Indie-Zugang
 http://xamarin.com/studio
 
-(TODO: Chris bitte hinzufügen)
+- iOS: XCode 
+https://developer.apple.com/xcode/
+
+- Android: Beliebiger Android Emulator ODER Genymotion (Empfehlung) ODER echtes Gerät
+https://www.genymotion.com/
 
 ## Linux (Server)
 
@@ -60,8 +64,6 @@ Es kann kontrolliert werden, ob der Server läuft, in dem folgende Adressen im W
 http://derfalke.no-ip.biz/
 http://derfalke.no-ip.biz:9000
 - Falls kein GPS existiert, sieht man nur grüne Wiese -> GPS ändern. Gültige Koordinaten: Erfurt und Umgebung
-
-
 
 # Aufbau
 Das Projekt Ascendancy besteht aus 3 kompilierbaren Projekten (server, client, test) und einer Bibliothek (core).
