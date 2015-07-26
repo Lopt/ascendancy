@@ -2,6 +2,9 @@
 
 namespace Client.Common.Helper
 {
+    /// <summary>
+    /// Client constants.
+    /// </summary>
     public class ClientConstants
     {
         public ClientConstants()
