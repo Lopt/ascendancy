@@ -1,12 +1,14 @@
-﻿using Core.Controllers.Actions;
+﻿using System;
+using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
+
+using Newtonsoft.Json;
+
+using Core.Controllers.Actions;
 using Core.Models;
 using Client.Common.Controllers;
 using Client.Common.Helper;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
-using System;
-using System.Collections.Generic;
 
 
 namespace Client.Common.Manager
@@ -49,9 +51,6 @@ namespace Client.Common.Manager
 
             }
         }
-
-
-
 
         #region private Fields
 

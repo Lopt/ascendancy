@@ -1,25 +1,39 @@
-﻿using Core.Controllers.Actions;
-using Core.Models;
-using Client.Common.Controllers;
-using Client.Common.Helper;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System;
+
 using Microsoft.Xna.Framework.Graphics;
+
+using Core.Controllers.Actions;
+using Core.Models;
+using Client.Common.Controllers;
+using Client.Common.Helper;
+
 
 
 namespace Client.Common.Manager
 {
+    /// <summary>
+    /// The Entity manager controller to control(load,remove,get and save) the entities.
+    /// </summary>
     public sealed class EntityManagerController
     {
+        /// <summary>
+        /// The lazy singleton.
+        /// </summary>
         private static readonly Lazy<EntityManagerController> lazy =
             new Lazy<EntityManagerController>(() => new EntityManagerController());
 
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>The instance.</value>
         public static EntityManagerController Instance { get { return lazy.Value; } }
 
-
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Manager.EntityManagerController"/> class.
+        /// </summary>
         private EntityManagerController()
         {
             Entities = new Dictionary<int, Entity>();
@@ -28,6 +42,12 @@ namespace Client.Common.Manager
 
         #region Entities
 
+        /// <summary>
+        /// Loads the entities async to the regions around the surrender center region and add the entities to these regions.
+        /// </summary>
+        /// <returns>The task async.</returns>
+        /// <param name="currentGamePosition">Current game position.</param>
+        /// <param name="centerRegionPosition">Center region position.</param>
         public async Task LoadEntitiesAsync(Position currentGamePosition, RegionPosition centerRegionPosition)
         {
             var regionManagerC = (Manager.RegionManagerController)Core.Controllers.Controller.Instance.RegionManagerController;
@@ -44,8 +64,13 @@ namespace Client.Common.Manager
             await LoadEntitiesAsync(currentGamePosition, listRegions);
         }
 
-
-
+        /// <summary>
+        /// Loads the entities async from the list of regions and add the entities to these regions.
+        /// Also add the loaded actions to the view worker queue.
+        /// </summary>
+        /// <returns>The task async.</returns>
+        /// <param name="currentGamePosition">Current game position.</param>
+        /// <param name="listRegions">List regions.</param>
         public async Task LoadEntitiesAsync(Position currentGamePosition, RegionPosition[] listRegions)
         {
 
@@ -87,6 +112,11 @@ namespace Client.Common.Manager
 
         #endregion
 
+        /// <summary>
+        /// Gets the entity.
+        /// </summary>
+        /// <returns>The entity.</returns>
+        /// <param name="Id">Identifier.</param>
         Entity GetEntity(int Id)
         {
             Entity entity = null;
@@ -94,6 +124,10 @@ namespace Client.Common.Manager
             return entity;
         }
 
+        /// <summary>
+        /// Remove the specified entity.
+        /// </summary>
+        /// <param name="entity">Entity.</param>
         void Remove(Entity entity)
         {
             if (Entities.ContainsKey(entity.ID))
@@ -102,12 +136,23 @@ namespace Client.Common.Manager
             }
         }
 
+        /// <summary>
+        /// Add the specified entity.
+        /// </summary>
+        /// <param name="entity">Entity.</param>
         void Add(Entity entity)
         {
             Entities[entity.ID] = entity;
         }
 
+        /// <summary>
+        /// The entities.
+        /// </summary>
         public static Dictionary<int, Entity> Entities;
+
+        /// <summary>
+        /// The worker.
+        /// </summary>
         public static Views.Worker Worker;
     }
 }
