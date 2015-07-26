@@ -1,0 +1,211 @@
+\hypertarget{classCore_1_1Models_1_1Region}{\section{Core.\-Models.\-Region Class Reference}
+\label{classCore_1_1Models_1_1Region}\index{Core.\-Models.\-Region@{Core.\-Models.\-Region}}
+}
+
+
+A part of the world. Contains a \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position} which determinates where (in the world) the region is. Also contains all entities to a specific time and all actions which were executed on the region.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classCore_1_1Models_1_1Region_1_1DatedActions}{Dated\-Actions}
+\item 
+class \hyperlink{classCore_1_1Models_1_1Region_1_1DatedEntities}{Dated\-Entities}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCore_1_1Models_1_1Region_a36ae96644a4ac7f34c2b608f56df38fc}{{\bfseries Region} (\hyperlink{classCore_1_1Models_1_1Region}{Region} region)}\label{classCore_1_1Models_1_1Region_a36ae96644a4ac7f34c2b608f56df38fc}
+
+\item 
+\hypertarget{classCore_1_1Models_1_1Region_a68736570a0df9f1e9b64d6a9d6744c02}{{\bfseries Region} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position} region\-Position)}\label{classCore_1_1Models_1_1Region_a68736570a0df9f1e9b64d6a9d6744c02}
+
+\item 
+\hypertarget{classCore_1_1Models_1_1Region_afcf20af4ea09f9eed57e373a8a8210ea}{{\bfseries Region} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position} region\-Position, \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Terrain\-Definition}\mbox{[},\mbox{]} terrains)}\label{classCore_1_1Models_1_1Region_afcf20af4ea09f9eed57e373a8a8210ea}
+
+\item 
+void \hyperlink{classCore_1_1Models_1_1Region_ad5e343aa96c3a1a28f5a98df87272cd9}{Add\-Terrain} (\hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Terrain\-Definition}\mbox{[},\mbox{]} terrains)
+\begin{DoxyCompactList}\small\item\em Adds the terrain afterward if the region was created without. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Terrain\-Definition} \hyperlink{classCore_1_1Models_1_1Region_a1a49bf46e734963dc63aeb2cd2ce4063}{Get\-Terrain} (\hyperlink{classCore_1_1Models_1_1CellPosition}{Cell\-Position} cell\-Position)
+\item 
+\hyperlink{classCore_1_1Models_1_1Entity}{Entity} \hyperlink{classCore_1_1Models_1_1Region_aef86ef05f6bc2d535aca5d902e0c2731}{Get\-Entity} (\hyperlink{classCore_1_1Models_1_1CellPosition}{Cell\-Position} cell\-Position)
+\begin{DoxyCompactList}\small\item\em Returns Buildings or Units at the given position \end{DoxyCompactList}\item 
+void \hyperlink{classCore_1_1Models_1_1Region_ab696b3c1b6cc9d55b3c4eae768339ebd}{Add\-Entity} (Date\-Time date\-Time, \hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Adds the entity to a specific time. \end{DoxyCompactList}\item 
+void \hyperlink{classCore_1_1Models_1_1Region_a05d102bebab28be04e9184ed438b6cda}{Remove\-Entity} (Date\-Time date\-Time, \hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Removes the entity to a specific time. \end{DoxyCompactList}\item 
+\hypertarget{classCore_1_1Models_1_1Region_a4d5cf1050b208c1d06fcf344027dabf9}{\hyperlink{classCore_1_1Models_1_1Region_1_1DatedEntities}{Dated\-Entities} {\bfseries Get\-Entities} ()}\label{classCore_1_1Models_1_1Region_a4d5cf1050b208c1d06fcf344027dabf9}
+
+\item 
+\hyperlink{classCore_1_1Models_1_1Region_1_1DatedActions}{Dated\-Actions} \hyperlink{classCore_1_1Models_1_1Region_ab1e90f76e173a9a28396f806f274b697}{Get\-Completed\-Actions} (Date\-Time start\-Time)
+\begin{DoxyCompactList}\small\item\em Builds a new list with all actions which are lower then the given start\-Time. \end{DoxyCompactList}\item 
+\hypertarget{classCore_1_1Models_1_1Region_a44181d46f6b2541119734f74cd195365}{bool {\bfseries Lock\-Writer} ()}\label{classCore_1_1Models_1_1Region_a44181d46f6b2541119734f74cd195365}
+
+\item 
+\hypertarget{classCore_1_1Models_1_1Region_a377dbd594c64a01e00234efa9d91aa01}{void {\bfseries Release\-Writer} ()}\label{classCore_1_1Models_1_1Region_a377dbd594c64a01e00234efa9d91aa01}
+
+\item 
+\hypertarget{classCore_1_1Models_1_1Region_a33168014b3d76ef375e03fe123c6e172}{bool {\bfseries Lock\-Reader} ()}\label{classCore_1_1Models_1_1Region_a33168014b3d76ef375e03fe123c6e172}
+
+\item 
+\hypertarget{classCore_1_1Models_1_1Region_ab4fdcaab29033ad62ac611f74aeeab70}{void {\bfseries Release\-Reader} ()}\label{classCore_1_1Models_1_1Region_ab4fdcaab29033ad62ac611f74aeeab70}
+
+\item 
+void \hyperlink{classCore_1_1Models_1_1Region_a73612bd601b7c22498bb599e82e83cfb}{Add\-Completed\-Action} (\hyperlink{classCore_1_1Models_1_1Action}{Core.\-Models.\-Action} action)
+\begin{DoxyCompactList}\small\item\em An \hyperlink{classCore_1_1Models_1_1Action}{Action} was executed and affected this region, then it should be added with Add\-Completed\-Action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classCore_1_1Models_1_1Region_a8521c3cdb0ee6884d5e394217b44c66e}{Exist}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether this base.\-model.\-Region really exist. Empty regions always return false. A region is empty if the terrain can't be loaded. (as example, bescause there were connection issues at the client -\/ or the region file don't exist) \end{DoxyCompactList}\item 
+\hypertarget{classCore_1_1Models_1_1Region_a2b370559aea0f72e9c2ee19dfcc7f7d8}{\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position} {\bfseries Region\-Position}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classCore_1_1Models_1_1Region_a2b370559aea0f72e9c2ee19dfcc7f7d8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A part of the world. Contains a \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position} which determinates where (in the world) the region is. Also contains all entities to a specific time and all actions which were executed on the region. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Models_1_1Region_a73612bd601b7c22498bb599e82e83cfb}{\index{Core\-::\-Models\-::\-Region@{Core\-::\-Models\-::\-Region}!Add\-Completed\-Action@{Add\-Completed\-Action}}
+\index{Add\-Completed\-Action@{Add\-Completed\-Action}!Core::Models::Region@{Core\-::\-Models\-::\-Region}}
+\subsubsection[{Add\-Completed\-Action}]{\setlength{\rightskip}{0pt plus 5cm}void Core.\-Models.\-Region.\-Add\-Completed\-Action (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\-Models.\-Action}}]{action}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCore_1_1Models_1_1Region_a73612bd601b7c22498bb599e82e83cfb}
+
+
+An \hyperlink{classCore_1_1Models_1_1Action}{Action} was executed and affected this region, then it should be added with Add\-Completed\-Action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & \hyperlink{classCore_1_1Models_1_1Action}{Action}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1Region_ab696b3c1b6cc9d55b3c4eae768339ebd}{\index{Core\-::\-Models\-::\-Region@{Core\-::\-Models\-::\-Region}!Add\-Entity@{Add\-Entity}}
+\index{Add\-Entity@{Add\-Entity}!Core::Models::Region@{Core\-::\-Models\-::\-Region}}
+\subsubsection[{Add\-Entity}]{\setlength{\rightskip}{0pt plus 5cm}void Core.\-Models.\-Region.\-Add\-Entity (
+\begin{DoxyParamCaption}
+\item[{Date\-Time}]{date\-Time, }
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCore_1_1Models_1_1Region_ab696b3c1b6cc9d55b3c4eae768339ebd}
+
+
+Adds the entity to a specific time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date\-Time} & Date time when the action was called.\\
+\hline
+{\em entity} & \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1Region_ad5e343aa96c3a1a28f5a98df87272cd9}{\index{Core\-::\-Models\-::\-Region@{Core\-::\-Models\-::\-Region}!Add\-Terrain@{Add\-Terrain}}
+\index{Add\-Terrain@{Add\-Terrain}!Core::Models::Region@{Core\-::\-Models\-::\-Region}}
+\subsubsection[{Add\-Terrain}]{\setlength{\rightskip}{0pt plus 5cm}void Core.\-Models.\-Region.\-Add\-Terrain (
+\begin{DoxyParamCaption}
+\item[{{\bf Terrain\-Definition}}]{terrains\mbox{[},\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCore_1_1Models_1_1Region_ad5e343aa96c3a1a28f5a98df87272cd9}
+
+
+Adds the terrain afterward if the region was created without. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em terrains} & 2\-D array of Terrains\-Type \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1Region_ab1e90f76e173a9a28396f806f274b697}{\index{Core\-::\-Models\-::\-Region@{Core\-::\-Models\-::\-Region}!Get\-Completed\-Actions@{Get\-Completed\-Actions}}
+\index{Get\-Completed\-Actions@{Get\-Completed\-Actions}!Core::Models::Region@{Core\-::\-Models\-::\-Region}}
+\subsubsection[{Get\-Completed\-Actions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Dated\-Actions} Core.\-Models.\-Region.\-Get\-Completed\-Actions (
+\begin{DoxyParamCaption}
+\item[{Date\-Time}]{start\-Time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCore_1_1Models_1_1Region_ab1e90f76e173a9a28396f806f274b697}
+
+
+Builds a new list with all actions which are lower then the given start\-Time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\-Time} & Datetime when region was lasttime loaded.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1Region_aef86ef05f6bc2d535aca5d902e0c2731}{\index{Core\-::\-Models\-::\-Region@{Core\-::\-Models\-::\-Region}!Get\-Entity@{Get\-Entity}}
+\index{Get\-Entity@{Get\-Entity}!Core::Models::Region@{Core\-::\-Models\-::\-Region}}
+\subsubsection[{Get\-Entity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Entity} Core.\-Models.\-Region.\-Get\-Entity (
+\begin{DoxyParamCaption}
+\item[{{\bf Cell\-Position}}]{cell\-Position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCore_1_1Models_1_1Region_aef86ef05f6bc2d535aca5d902e0c2731}
+
+
+Returns Buildings or Units at the given position 
+
+\begin{DoxyReturn}{Returns}
+The entity or null when there was no entity.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em cell\-Position} & Cell position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1Region_a1a49bf46e734963dc63aeb2cd2ce4063}{\index{Core\-::\-Models\-::\-Region@{Core\-::\-Models\-::\-Region}!Get\-Terrain@{Get\-Terrain}}
+\index{Get\-Terrain@{Get\-Terrain}!Core::Models::Region@{Core\-::\-Models\-::\-Region}}
+\subsubsection[{Get\-Terrain}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Terrain\-Definition} Core.\-Models.\-Region.\-Get\-Terrain (
+\begin{DoxyParamCaption}
+\item[{{\bf Cell\-Position}}]{cell\-Position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCore_1_1Models_1_1Region_a1a49bf46e734963dc63aeb2cd2ce4063}
+
+
+
+
+\begin{DoxyReturn}{Returns}
+Returns the Terrain\-Defintion of the specific given cell\-Position.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em cell\-Position} & Cell position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1Region_a05d102bebab28be04e9184ed438b6cda}{\index{Core\-::\-Models\-::\-Region@{Core\-::\-Models\-::\-Region}!Remove\-Entity@{Remove\-Entity}}
+\index{Remove\-Entity@{Remove\-Entity}!Core::Models::Region@{Core\-::\-Models\-::\-Region}}
+\subsubsection[{Remove\-Entity}]{\setlength{\rightskip}{0pt plus 5cm}void Core.\-Models.\-Region.\-Remove\-Entity (
+\begin{DoxyParamCaption}
+\item[{Date\-Time}]{date\-Time, }
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCore_1_1Models_1_1Region_a05d102bebab28be04e9184ed438b6cda}
+
+
+Removes the entity to a specific time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date\-Time} & Date time when the action was called.\\
+\hline
+{\em entity} & \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{classCore_1_1Models_1_1Region_a8521c3cdb0ee6884d5e394217b44c66e}{\index{Core\-::\-Models\-::\-Region@{Core\-::\-Models\-::\-Region}!Exist@{Exist}}
+\index{Exist@{Exist}!Core::Models::Region@{Core\-::\-Models\-::\-Region}}
+\subsubsection[{Exist}]{\setlength{\rightskip}{0pt plus 5cm}bool Core.\-Models.\-Region.\-Exist\hspace{0.3cm}{\ttfamily [get]}}}\label{classCore_1_1Models_1_1Region_a8521c3cdb0ee6884d5e394217b44c66e}
+
+
+Gets a value indicating whether this base.\-model.\-Region really exist. Empty regions always return false. A region is empty if the terrain can't be loaded. (as example, bescause there were connection issues at the client -\/ or the region file don't exist) 
+
+{\ttfamily true} if exist; otherwise, {\ttfamily false}.
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+base/\-Models/\-Map/Region.\-cs\end{DoxyCompactItemize}

@@ -1,0 +1,102 @@
+Alle Angaben ohne Gewähr. Die Einrichtung wurde bisher nur auf wenigen Machinen vorgenommen.
+
+\section*{Einrichtung\-:}
+
+\subsection*{Allgemein}
+
+Es muss das Git Repository heruntergeladen werden. ascendancy.\-git runterladen, stable auschecken und, falls Serverbetrieb, die Weltdaten in server/data herunterladen.
+
+git clone ssh\-://username.no-\/ip.\-biz/home/git/ascendancy.git cd ascendancy checkout stable cd server/data git clone ssh\-://username.no-\/ip.\-biz/home/git/ascendancy-\/world.git
+
+\subsection*{Windows (Android \& \hyperlink{namespaceServer}{Server})}
+
+Benötigt\-:
+\begin{DoxyItemize}
+\item Installiertes V\-S2012 (für \hyperlink{namespaceServer}{Server} und \hyperlink{namespaceClient}{Client}) oder höher (nur \hyperlink{namespaceClient}{Client} -\/ \hyperlink{namespaceServer}{Server} benötigt V\-S2012) \href{https://www.visualstudio.com/downloads/download-visual-studio-vs}{\tt https\-://www.\-visualstudio.\-com/downloads/download-\/visual-\/studio-\/vs}
+\item Xamarin Studio (Empfohlen) oder Xamarin für Visual Studio -\/ minimal Probe-\/ oder Indie-\/\-Zugang \href{http://xamarin.com/studio}{\tt http\-://xamarin.\-com/studio}
+\item Beliebiger Android Emulator O\-D\-E\-R Genymotion (Empfehlung) O\-D\-E\-R echtes Gerät \href{https://www.genymotion.com/}{\tt https\-://www.\-genymotion.\-com/}
+\end{DoxyItemize}
+
+Es muss das Git Repository heruntergeladen werden. Die Git-\/\-Befehle für Linux gelten auch hier\-: ascendancy.\-git runterladen, stable auschecken und, falls Serverbetrieb, die Weltdaten in server/data herunterladen.
+
+\subsection*{Mac O\-S (i\-O\-S \& Android \& \hyperlink{namespaceServer}{Server})}
+
+Benötigt\-:
+\begin{DoxyItemize}
+\item Xamarin Studio (Empfohlen) oder Xamarin für Visual Studio -\/ minimal Probe-\/ oder Indie-\/\-Zugang \href{http://xamarin.com/studio}{\tt http\-://xamarin.\-com/studio}
+\end{DoxyItemize}
+
+(T\-O\-D\-O\-: Chris bitte hinzufügen)
+
+\subsection*{Linux (\hyperlink{namespaceServer}{Server})}
+
+Offizielles Mono Repo hinzufügen\-:
+
+sudo apt-\/key adv --keyserver hkp\-://keyserver.ubuntu.\-com\-:80 --recv-\/keys 3\-F\-A7\-E0328081\-B\-F\-F6\-A14\-D\-A29\-A\-A6\-A19\-B38\-D3\-D831\-E\-F echo \char`\"{}deb http\-://download.\-mono-\/project.\-com/repo/debian wheezy main\char`\"{} $\vert$ sudo tee /etc/apt/sources.list.\-d/mono-\/xamarin.list sudo apt-\/get update
+
+Mono und Abhängigkeiten isntallieren (Mono, I\-D\-E, Webserver und P\-C\-L für die Core-\/\-Bibliothek)\-:
+
+sudo apt-\/get install mono monodevelop mono-\/xsp4 referenceassemblies-\/pcl
+
+\section*{Eigenen \hyperlink{namespaceServer}{Server} aufsetzen}
+
+Der \hyperlink{namespaceServer}{Server} kann nun mit einer beliebigen Xamarin, Mono\-Develop Version oder Visual\-Studio 2012 kompiliert und ausgeführt werden.
+
+Damit der \hyperlink{namespaceServer}{Server} von einem \hyperlink{namespaceClient}{Client} genutzt wird, muss der \hyperlink{namespaceServer}{Server} von aussen erreichbar sein. Es muss gegebenfalls eine Port Weiterleitung eingerichtet werden. Im \hyperlink{namespaceClient}{Client} unter Client\-Constants muss die \hyperlink{namespaceServer}{Server} Adresse angepasst werden. (in Client\-Constants.\-cs die Konstanten D\-A\-T\-A\-\_\-\-S\-E\-R\-V\-E\-R = Apache/\-Datenserver; L\-O\-G\-I\-C\-\_\-\-S\-E\-R\-V\-E\-R = Spieleserver ändern)
+
+\section*{Probleme\-:}
+
+
+\begin{DoxyItemize}
+\item Falls keine Verbindung zum \hyperlink{namespaceServer}{Server} existiert, läd er nur den Startbildschirm -\/$>$ Netzwerk einrichten, im Smartphone-\/\-Browser testen und App neustarten Es kann kontrolliert werden, ob der \hyperlink{namespaceServer}{Server} läuft, in dem folgende Adressen im Webbrowser gestartet werden\-: \href{http://derfalke.no-ip.biz/}{\tt http\-://derfalke.\-no-\/ip.\-biz/} \href{http://derfalke.no-ip.biz:9000}{\tt http\-://derfalke.\-no-\/ip.\-biz\-:9000}
+\item Falls kein G\-P\-S existiert, sieht man nur grüne Wiese -\/$>$ G\-P\-S ändern. Gültige Koordinaten\-: Erfurt und Umgebung
+\end{DoxyItemize}
+
+\section*{Aufbau}
+
+Das Projekt Ascendancy besteht aus 3 kompilierbaren Projekten (server, client, test) und einer Bibliothek (core). Das test-\/\-Projekt diente zum ersten testen der Funktionalität, kann im aktuellen Stand aber ignoriert werden, da der \hyperlink{namespaceClient}{Client} mittlerweile diese Funktionalität nutzt.
+
+\subsection*{\hyperlink{namespaceCore}{Core}}
+
+Der \hyperlink{namespaceCore}{Core} beinhaltet sämtliche Kernfunktionalität, welche sich \hyperlink{namespaceServer}{Server} und \hyperlink{namespaceClient}{Client} teilen (sollten)\-:
+\begin{DoxyItemize}
+\item Spielelemente (Entititäten, Regionen, Definitionen)
+\item Verwalten der Spielelementen (Manager)
+\item Positionenstransformationen der verschiedenen Koordinatensysteme (Lat\-Lon, Spielfeld-\/\-Position, Region+\-Cell)
+\item Die komplette Spielelogik (In Form von Actions, plus alle zusätzlichen Algorithmen wie A$\ast$ zur Wegfindung)
+\item Klassen für den Datentransfer
+\end{DoxyItemize}
+
+\subsection*{\hyperlink{namespaceClient}{Client}}
+
+
+\begin{DoxyItemize}
+\item G\-P\-S
+\item Anzeige des Logos
+\item Laden von Definitionen vom \hyperlink{namespaceServer}{Server}
+\item Login beim \hyperlink{namespaceServer}{Server}
+\item Anzeige des Spielfelds anhand der vom \hyperlink{namespaceServer}{Server} geladenen Spielinformationen
+\item Laden der Entities und Aktionen vom \hyperlink{namespaceServer}{Server} (sowie Anzeige)
+\item Rudimentäre Implementation von Aktions-\/\-Animationen (Bewegungen)
+\end{DoxyItemize}
+
+\subsection*{\hyperlink{namespaceServer}{Server}}
+
+
+\begin{DoxyItemize}
+\item Verwaltung und Authentifizierung von Spielern (registrierung, sessions, einloggen)
+\item Verwaltung welche Aktionen ausgeführt werden können
+\item Verwaltung welche Spieler welche Informationen erhalten (Ortsabhängig, und abhängig welche der Spieler diese bereits erhielt))
+\item Vermeidung von Threading-\/\-Problemen bei mehreren Spielern (siehe ascendancy/docs/\-S\-K\-B\-S\-\_\-\-Bernd\-\_\-\-Schmidt.\-pdf)
+\item Speicherung von persistenten Zuständen (Datenbank, implementiert aber ungenutzt)
+\item Scripts zum Konvertieren von Open\-Street\-Maps-\/\-Daten in nutzbare J\-S\-O\-N Dateien
+\end{DoxyItemize}
+
+\section*{Rechtliches, Copyright und Lizenzrechtliches}
+
+siehe ascendancy/licences
+\begin{DoxyItemize}
+\item Kartendaten von Open\-Street\-Maps ( Contributors)
+\item Bilder von Battle of Wesnoth
+\item Bilder von pixel32 
+\end{DoxyItemize}

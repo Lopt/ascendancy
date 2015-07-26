@@ -1,0 +1,2237 @@
+\hypertarget{classSQLite_1_1SQLiteConnection}{\section{S\-Q\-Lite.\-S\-Q\-Lite\-Connection Class Reference}
+\label{classSQLite_1_1SQLiteConnection}\index{S\-Q\-Lite.\-S\-Q\-Lite\-Connection@{S\-Q\-Lite.\-S\-Q\-Lite\-Connection}}
+}
+
+
+Represents an open connection to a \hyperlink{namespaceSQLite}{S\-Q\-Lite} database.  
+
+
+Inheritance diagram for S\-Q\-Lite.\-S\-Q\-Lite\-Connection\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSQLite_1_1SQLiteConnection}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classSQLite_1_1SQLiteConnection_1_1ColumnInfo}{Column\-Info}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSQLite_1_1SQLiteConnection_a21204da14d0e2a44039f3395bb4ff12d}{S\-Q\-Lite\-Connection} (string database\-Path, bool store\-Date\-Time\-As\-Ticks=false)
+\begin{DoxyCompactList}\small\item\em Constructs a new \hyperlink{classSQLite_1_1SQLiteConnection}{S\-Q\-Lite\-Connection} and opens a \hyperlink{namespaceSQLite}{S\-Q\-Lite} database specified by database\-Path. \end{DoxyCompactList}\item 
+\hyperlink{classSQLite_1_1SQLiteConnection_a5d0deb6299d3f479e53cf81899023457}{S\-Q\-Lite\-Connection} (string database\-Path, S\-Q\-Lite\-Open\-Flags open\-Flags, bool store\-Date\-Time\-As\-Ticks=false)
+\begin{DoxyCompactList}\small\item\em Constructs a new \hyperlink{classSQLite_1_1SQLiteConnection}{S\-Q\-Lite\-Connection} and opens a \hyperlink{namespaceSQLite}{S\-Q\-Lite} database specified by database\-Path. \end{DoxyCompactList}\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_ae9cb05b6c85322d73dd70688182edb01}{void {\bfseries Enable\-Load\-Extension} (int onoff)}\label{classSQLite_1_1SQLiteConnection_ae9cb05b6c85322d73dd70688182edb01}
+
+\item 
+\hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} \hyperlink{classSQLite_1_1SQLiteConnection_a0c0db552a653e0797cf772706148eb41}{Get\-Mapping} (Type type, Create\-Flags create\-Flags=Create\-Flags.\-None)
+\begin{DoxyCompactList}\small\item\em Retrieves the mapping that is automatically generated for the given type. \end{DoxyCompactList}\item 
+\hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} \hyperlink{classSQLite_1_1SQLiteConnection_adf0ed08567e1ca36e4fda72c94ede544}{Get\-Mapping$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the mapping that is automatically generated for the given type. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a783032226b2db2ebd6417f21abe9cd5a}{Drop\-Table$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Executes a \char`\"{}drop table\char`\"{} on the database. This is non-\/recoverable. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_abc8fda93774fb74dd2f97e9549eb46b5}{Create\-Table$<$ T $>$} (Create\-Flags create\-Flags=Create\-Flags.\-None)
+\begin{DoxyCompactList}\small\item\em Executes a \char`\"{}create table if not exists\char`\"{} on the database. It also creates any specified indexes on the columns of the table. It uses a schema automatically generated from the specified type. You can later access this schema by calling Get\-Mapping. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_abfd7ba959c93db259983427b5e7ee05a}{Create\-Table} (Type ty, Create\-Flags create\-Flags=Create\-Flags.\-None)
+\begin{DoxyCompactList}\small\item\em Executes a \char`\"{}create table if not exists\char`\"{} on the database. It also creates any specified indexes on the columns of the table. It uses a schema automatically generated from the specified type. You can later access this schema by calling Get\-Mapping. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a006cda01a29a2f202be1659cbf3810a8}{Create\-Index} (string index\-Name, string table\-Name, string\mbox{[}$\,$\mbox{]} column\-Names, bool unique=false)
+\begin{DoxyCompactList}\small\item\em Creates an index for the specified table and columns. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a41bc451f0fed96a6cb79ae2d61ab3a11}{Create\-Index} (string index\-Name, string table\-Name, string column\-Name, bool unique=false)
+\begin{DoxyCompactList}\small\item\em Creates an index for the specified table and column. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a91adc40b863214a5efc495b33ec9a351}{Create\-Index} (string table\-Name, string column\-Name, bool unique=false)
+\begin{DoxyCompactList}\small\item\em Creates an index for the specified table and column. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a30996f7f4a91d17d719ef4dd582b4cee}{Create\-Index} (string table\-Name, string\mbox{[}$\,$\mbox{]} column\-Names, bool unique=false)
+\begin{DoxyCompactList}\small\item\em Creates an index for the specified table and columns. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a7283c295b89b54728d7201e0812ccaac}{Create\-Index$<$ T $>$} (Expression$<$ Func$<$ T, object $>$$>$ property, bool unique=false)
+\begin{DoxyCompactList}\small\item\em Creates an index for the specified object property. e.\-g. Create\-Index$<$\-Client$>$(c =$>$ c.\-Name); \end{DoxyCompactList}\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_a695bad5670f4d38a9aae39e4aec85329}{List$<$ \hyperlink{classSQLite_1_1SQLiteConnection_1_1ColumnInfo}{Column\-Info} $>$ {\bfseries Get\-Table\-Info} (string table\-Name)}\label{classSQLite_1_1SQLiteConnection_a695bad5670f4d38a9aae39e4aec85329}
+
+\item 
+\hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} \hyperlink{classSQLite_1_1SQLiteConnection_a112ac999fccd302bda742992f044f3ee}{Create\-Command} (string cmd\-Text, params object\mbox{[}$\,$\mbox{]} ps)
+\begin{DoxyCompactList}\small\item\em Creates a new \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text with arguments. Place a '?' in the command text for each of the arguments. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a5fbb3e385d21cfbee95e4a2a71a3043b}{Execute} (string query, params object\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. Use this method instead of Query when you don't expect rows back. Such cases include I\-N\-S\-E\-R\-Ts, U\-P\-D\-A\-T\-Es, and D\-E\-L\-E\-T\-Es. You can set the Trace or Time\-Execution properties of the connection to profile execution. \end{DoxyCompactList}\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_af88acbe7da213c81875c3a35a5d61337}{T {\bfseries Execute\-Scalar$<$ T $>$} (string query, params object\mbox{[}$\,$\mbox{]} args)}\label{classSQLite_1_1SQLiteConnection_af88acbe7da213c81875c3a35a5d61337}
+
+\item 
+List$<$ T $>$ \hyperlink{classSQLite_1_1SQLiteConnection_ade363948abe65a6b97fe8574f943db91}{Query$<$ T $>$} (string query, params object\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the mapping automatically generated for the given type. \end{DoxyCompactList}\item 
+I\-Enumerable$<$ T $>$ \hyperlink{classSQLite_1_1SQLiteConnection_a334b139ead4620ad13b5e1d54e8077af}{Deferred\-Query$<$ T $>$} (string query, params object\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the mapping automatically generated for the given type. \end{DoxyCompactList}\item 
+List$<$ object $>$ \hyperlink{classSQLite_1_1SQLiteConnection_aeac8a5ef1be5cfabc5bbf33f1fec01b0}{Query} (\hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} map, string query, params object\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the specified mapping. This function is only used by libraries in order to query the database via introspection. It is normally not used. \end{DoxyCompactList}\item 
+I\-Enumerable$<$ object $>$ \hyperlink{classSQLite_1_1SQLiteConnection_ab359d97e7938a573e0a565d2c46aa401}{Deferred\-Query} (\hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} map, string query, params object\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the specified mapping. This function is only used by libraries in order to query the database via introspection. It is normally not used. \end{DoxyCompactList}\item 
+Table\-Query$<$ T $>$ \hyperlink{classSQLite_1_1SQLiteConnection_ab44d5100216c3cdcea76e45c6f7d6246}{Table$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Returns a queryable interface to the table represented by the given type. \end{DoxyCompactList}\item 
+T \hyperlink{classSQLite_1_1SQLiteConnection_a17fdec8364635853d573e84530e1ab48}{Get$<$ T $>$} (object pk)
+\begin{DoxyCompactList}\small\item\em Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). \end{DoxyCompactList}\item 
+T \hyperlink{classSQLite_1_1SQLiteConnection_a4034d4b62385b2ab7451c5404ffb5efa}{Get$<$ T $>$} (Expression$<$ Func$<$ T, bool $>$$>$ predicate)
+\begin{DoxyCompactList}\small\item\em Attempts to retrieve the first object that matches the predicate from the table associated with the specified type. \end{DoxyCompactList}\item 
+T \hyperlink{classSQLite_1_1SQLiteConnection_adfe66fe8c304aca8575f07fc1c05d9f5}{Find$<$ T $>$} (object pk)
+\begin{DoxyCompactList}\small\item\em Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). \end{DoxyCompactList}\item 
+object \hyperlink{classSQLite_1_1SQLiteConnection_a95729c5ebf5fad75631109db91e7c14b}{Find} (object pk, \hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} map)
+\begin{DoxyCompactList}\small\item\em Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). \end{DoxyCompactList}\item 
+T \hyperlink{classSQLite_1_1SQLiteConnection_aeba2ae3cf5c1ffcb0c7eec7f8ccc64ca}{Find$<$ T $>$} (Expression$<$ Func$<$ T, bool $>$$>$ predicate)
+\begin{DoxyCompactList}\small\item\em Attempts to retrieve the first object that matches the predicate from the table associated with the specified type. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} ()
+\begin{DoxyCompactList}\small\item\em Begins a new transaction. Call \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit} to end the transaction. \end{DoxyCompactList}\item 
+string \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point} ()
+\begin{DoxyCompactList}\small\item\em Creates a savepoint in the database at the current point in the transaction timeline. Begins a new transaction if one is not in progress. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a70cfe1d5799d71ce3a0a62c244bb7ea8}{Rollback} ()
+\begin{DoxyCompactList}\small\item\em Rolls back the transaction that was begun by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} or \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a94674fbf861328e85a249dd8c14ef6ea}{Rollback\-To} (string savepoint)
+\begin{DoxyCompactList}\small\item\em Rolls back the savepoint created by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} or Save\-Transaction\-Point. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a6813c9dd152354284ccdc96353bcfbdd}{Release} (string savepoint)
+\begin{DoxyCompactList}\small\item\em Releases a savepoint returned from \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}. Releasing a savepoint makes changes since that savepoint permanent if the savepoint began the transaction, or otherwise the changes are permanent pending a call to \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit}. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit} ()
+\begin{DoxyCompactList}\small\item\em Commits the transaction that was begun by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction}. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a9132bae9e577ae479ddc6b919547759f}{Run\-In\-Transaction} (Action action)
+\begin{DoxyCompactList}\small\item\em Executes 
+\begin{DoxyParams}{Parameters}
+{\em action} & within a (possibly nested) transaction by wrapping it in a S\-A\-V\-E\-P\-O\-I\-N\-T. If an exception occurs the whole transaction is rolled back, not just the current savepoint. The exception is rethrown. \\
+\hline
+\end{DoxyParams}
+\end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a920c3f7421ad1c967730228abb5915fc}{Insert\-All} (System.\-Collections.\-I\-Enumerable objects)
+\begin{DoxyCompactList}\small\item\em Inserts all specified objects. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a62b62415941ce6486f7dfa219a69f1f1}{Insert\-All} (System.\-Collections.\-I\-Enumerable objects, string extra)
+\begin{DoxyCompactList}\small\item\em Inserts all specified objects. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a08e03803dd01aa67ee56a8e6d184c9d9}{Insert\-All} (System.\-Collections.\-I\-Enumerable objects, Type obj\-Type)
+\begin{DoxyCompactList}\small\item\em Inserts all specified objects. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a937382b36e6726d12fe6d09f7bfb0ab6}{Insert} (object obj)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a1c16c3dda43037326b7f2afc6c822abd}{Insert\-Or\-Replace} (object obj)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. If a U\-N\-I\-Q\-U\-E constraint violation occurs with some pre-\/existing object, this function deletes the old object. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a19576a29af1c0891a646ff3e904f2cdc}{Insert} (object obj, Type obj\-Type)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a812215a88043259b6a107994756000ae}{Insert\-Or\-Replace} (object obj, Type obj\-Type)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. If a U\-N\-I\-Q\-U\-E constraint violation occurs with some pre-\/existing object, this function deletes the old object. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a3ab0fde4b10c4b492b2f5f64535c6d66}{Insert} (object obj, string extra)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_ab88782cd2d5c77bb14d6a17baf7c49bc}{Insert} (object obj, string extra, Type obj\-Type)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_ae4effee772569a47256bcb5f8764eabc}{Update} (object obj)
+\begin{DoxyCompactList}\small\item\em Updates all of the columns of a table using the specified object except for its primary key. The object is required to have a primary key. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_ab474a534faebfec1288672ef4e4f2140}{Update} (object obj, Type obj\-Type)
+\begin{DoxyCompactList}\small\item\em Updates all of the columns of a table using the specified object except for its primary key. The object is required to have a primary key. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a1a95399fe5d61f8bbb56e36eac38d467}{Update\-All} (System.\-Collections.\-I\-Enumerable objects)
+\begin{DoxyCompactList}\small\item\em Updates all specified objects. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a55234164e36bc4abcb086e197f25e436}{Delete} (object object\-To\-Delete)
+\begin{DoxyCompactList}\small\item\em Deletes the given object from the database using its primary key. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a0d4046198236b8c96b0bf50593f592a6}{Delete$<$ T $>$} (object primary\-Key)
+\begin{DoxyCompactList}\small\item\em Deletes the object with the specified primary key. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_abed406a2cd17e1e360b79924a749b67c}{Delete\-All$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Deletes all the objects from the specified table. W\-A\-R\-N\-I\-N\-G W\-A\-R\-N\-I\-N\-G\-: Let me repeat. It deletes A\-L\-L the objects from the specified table. Do you really want to do that? \end{DoxyCompactList}\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_ad9e1e281245e83dbe9c5303eaefe95f6}{void {\bfseries Dispose} ()}\label{classSQLite_1_1SQLiteConnection_ad9e1e281245e83dbe9c5303eaefe95f6}
+
+\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_a74160304a4a218b7508220106eeb10d0}{void {\bfseries Close} ()}\label{classSQLite_1_1SQLiteConnection_a74160304a4a218b7508220106eeb10d0}
+
+\item 
+\hyperlink{classSQLite_1_1SQLiteConnection_a21204da14d0e2a44039f3395bb4ff12d}{S\-Q\-Lite\-Connection} (string database\-Path, bool store\-Date\-Time\-As\-Ticks=false)
+\begin{DoxyCompactList}\small\item\em Constructs a new \hyperlink{classSQLite_1_1SQLiteConnection}{S\-Q\-Lite\-Connection} and opens a \hyperlink{namespaceSQLite}{S\-Q\-Lite} database specified by database\-Path. \end{DoxyCompactList}\item 
+\hyperlink{classSQLite_1_1SQLiteConnection_a5d0deb6299d3f479e53cf81899023457}{S\-Q\-Lite\-Connection} (string database\-Path, S\-Q\-Lite\-Open\-Flags open\-Flags, bool store\-Date\-Time\-As\-Ticks=false)
+\begin{DoxyCompactList}\small\item\em Constructs a new \hyperlink{classSQLite_1_1SQLiteConnection}{S\-Q\-Lite\-Connection} and opens a \hyperlink{namespaceSQLite}{S\-Q\-Lite} database specified by database\-Path. \end{DoxyCompactList}\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_ae9cb05b6c85322d73dd70688182edb01}{void {\bfseries Enable\-Load\-Extension} (int onoff)}\label{classSQLite_1_1SQLiteConnection_ae9cb05b6c85322d73dd70688182edb01}
+
+\item 
+\hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} \hyperlink{classSQLite_1_1SQLiteConnection_a0c0db552a653e0797cf772706148eb41}{Get\-Mapping} (Type type, Create\-Flags create\-Flags=Create\-Flags.\-None)
+\begin{DoxyCompactList}\small\item\em Retrieves the mapping that is automatically generated for the given type. \end{DoxyCompactList}\item 
+\hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} \hyperlink{classSQLite_1_1SQLiteConnection_adf0ed08567e1ca36e4fda72c94ede544}{Get\-Mapping$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the mapping that is automatically generated for the given type. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a783032226b2db2ebd6417f21abe9cd5a}{Drop\-Table$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Executes a \char`\"{}drop table\char`\"{} on the database. This is non-\/recoverable. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_abc8fda93774fb74dd2f97e9549eb46b5}{Create\-Table$<$ T $>$} (Create\-Flags create\-Flags=Create\-Flags.\-None)
+\begin{DoxyCompactList}\small\item\em Executes a \char`\"{}create table if not exists\char`\"{} on the database. It also creates any specified indexes on the columns of the table. It uses a schema automatically generated from the specified type. You can later access this schema by calling Get\-Mapping. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_abfd7ba959c93db259983427b5e7ee05a}{Create\-Table} (Type ty, Create\-Flags create\-Flags=Create\-Flags.\-None)
+\begin{DoxyCompactList}\small\item\em Executes a \char`\"{}create table if not exists\char`\"{} on the database. It also creates any specified indexes on the columns of the table. It uses a schema automatically generated from the specified type. You can later access this schema by calling Get\-Mapping. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a006cda01a29a2f202be1659cbf3810a8}{Create\-Index} (string index\-Name, string table\-Name, string\mbox{[}$\,$\mbox{]} column\-Names, bool unique=false)
+\begin{DoxyCompactList}\small\item\em Creates an index for the specified table and columns. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a41bc451f0fed96a6cb79ae2d61ab3a11}{Create\-Index} (string index\-Name, string table\-Name, string column\-Name, bool unique=false)
+\begin{DoxyCompactList}\small\item\em Creates an index for the specified table and column. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a91adc40b863214a5efc495b33ec9a351}{Create\-Index} (string table\-Name, string column\-Name, bool unique=false)
+\begin{DoxyCompactList}\small\item\em Creates an index for the specified table and column. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a30996f7f4a91d17d719ef4dd582b4cee}{Create\-Index} (string table\-Name, string\mbox{[}$\,$\mbox{]} column\-Names, bool unique=false)
+\begin{DoxyCompactList}\small\item\em Creates an index for the specified table and columns. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a7283c295b89b54728d7201e0812ccaac}{Create\-Index$<$ T $>$} (Expression$<$ Func$<$ T, object $>$$>$ property, bool unique=false)
+\begin{DoxyCompactList}\small\item\em Creates an index for the specified object property. e.\-g. Create\-Index$<$\-Client$>$(c =$>$ c.\-Name); \end{DoxyCompactList}\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_a695bad5670f4d38a9aae39e4aec85329}{List$<$ \hyperlink{classSQLite_1_1SQLiteConnection_1_1ColumnInfo}{Column\-Info} $>$ {\bfseries Get\-Table\-Info} (string table\-Name)}\label{classSQLite_1_1SQLiteConnection_a695bad5670f4d38a9aae39e4aec85329}
+
+\item 
+\hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} \hyperlink{classSQLite_1_1SQLiteConnection_a112ac999fccd302bda742992f044f3ee}{Create\-Command} (string cmd\-Text, params object\mbox{[}$\,$\mbox{]} ps)
+\begin{DoxyCompactList}\small\item\em Creates a new \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text with arguments. Place a '?' in the command text for each of the arguments. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a5fbb3e385d21cfbee95e4a2a71a3043b}{Execute} (string query, params object\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. Use this method instead of Query when you don't expect rows back. Such cases include I\-N\-S\-E\-R\-Ts, U\-P\-D\-A\-T\-Es, and D\-E\-L\-E\-T\-Es. You can set the Trace or Time\-Execution properties of the connection to profile execution. \end{DoxyCompactList}\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_af88acbe7da213c81875c3a35a5d61337}{T {\bfseries Execute\-Scalar$<$ T $>$} (string query, params object\mbox{[}$\,$\mbox{]} args)}\label{classSQLite_1_1SQLiteConnection_af88acbe7da213c81875c3a35a5d61337}
+
+\item 
+List$<$ T $>$ \hyperlink{classSQLite_1_1SQLiteConnection_ade363948abe65a6b97fe8574f943db91}{Query$<$ T $>$} (string query, params object\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the mapping automatically generated for the given type. \end{DoxyCompactList}\item 
+I\-Enumerable$<$ T $>$ \hyperlink{classSQLite_1_1SQLiteConnection_a334b139ead4620ad13b5e1d54e8077af}{Deferred\-Query$<$ T $>$} (string query, params object\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the mapping automatically generated for the given type. \end{DoxyCompactList}\item 
+List$<$ object $>$ \hyperlink{classSQLite_1_1SQLiteConnection_aeac8a5ef1be5cfabc5bbf33f1fec01b0}{Query} (\hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} map, string query, params object\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the specified mapping. This function is only used by libraries in order to query the database via introspection. It is normally not used. \end{DoxyCompactList}\item 
+I\-Enumerable$<$ object $>$ \hyperlink{classSQLite_1_1SQLiteConnection_ab359d97e7938a573e0a565d2c46aa401}{Deferred\-Query} (\hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} map, string query, params object\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the specified mapping. This function is only used by libraries in order to query the database via introspection. It is normally not used. \end{DoxyCompactList}\item 
+Table\-Query$<$ T $>$ \hyperlink{classSQLite_1_1SQLiteConnection_ab44d5100216c3cdcea76e45c6f7d6246}{Table$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Returns a queryable interface to the table represented by the given type. \end{DoxyCompactList}\item 
+T \hyperlink{classSQLite_1_1SQLiteConnection_a17fdec8364635853d573e84530e1ab48}{Get$<$ T $>$} (object pk)
+\begin{DoxyCompactList}\small\item\em Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). \end{DoxyCompactList}\item 
+T \hyperlink{classSQLite_1_1SQLiteConnection_a4034d4b62385b2ab7451c5404ffb5efa}{Get$<$ T $>$} (Expression$<$ Func$<$ T, bool $>$$>$ predicate)
+\begin{DoxyCompactList}\small\item\em Attempts to retrieve the first object that matches the predicate from the table associated with the specified type. \end{DoxyCompactList}\item 
+T \hyperlink{classSQLite_1_1SQLiteConnection_adfe66fe8c304aca8575f07fc1c05d9f5}{Find$<$ T $>$} (object pk)
+\begin{DoxyCompactList}\small\item\em Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). \end{DoxyCompactList}\item 
+object \hyperlink{classSQLite_1_1SQLiteConnection_a95729c5ebf5fad75631109db91e7c14b}{Find} (object pk, \hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} map)
+\begin{DoxyCompactList}\small\item\em Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). \end{DoxyCompactList}\item 
+T \hyperlink{classSQLite_1_1SQLiteConnection_aeba2ae3cf5c1ffcb0c7eec7f8ccc64ca}{Find$<$ T $>$} (Expression$<$ Func$<$ T, bool $>$$>$ predicate)
+\begin{DoxyCompactList}\small\item\em Attempts to retrieve the first object that matches the predicate from the table associated with the specified type. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} ()
+\begin{DoxyCompactList}\small\item\em Begins a new transaction. Call \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit} to end the transaction. \end{DoxyCompactList}\item 
+string \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point} ()
+\begin{DoxyCompactList}\small\item\em Creates a savepoint in the database at the current point in the transaction timeline. Begins a new transaction if one is not in progress. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a70cfe1d5799d71ce3a0a62c244bb7ea8}{Rollback} ()
+\begin{DoxyCompactList}\small\item\em Rolls back the transaction that was begun by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} or \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a94674fbf861328e85a249dd8c14ef6ea}{Rollback\-To} (string savepoint)
+\begin{DoxyCompactList}\small\item\em Rolls back the savepoint created by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} or Save\-Transaction\-Point. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a6813c9dd152354284ccdc96353bcfbdd}{Release} (string savepoint)
+\begin{DoxyCompactList}\small\item\em Releases a savepoint returned from \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}. Releasing a savepoint makes changes since that savepoint permanent if the savepoint began the transaction, or otherwise the changes are permanent pending a call to \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit}. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit} ()
+\begin{DoxyCompactList}\small\item\em Commits the transaction that was begun by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction}. \end{DoxyCompactList}\item 
+void \hyperlink{classSQLite_1_1SQLiteConnection_a9132bae9e577ae479ddc6b919547759f}{Run\-In\-Transaction} (Action action)
+\begin{DoxyCompactList}\small\item\em Executes 
+\begin{DoxyParams}{Parameters}
+{\em action} & within a (possibly nested) transaction by wrapping it in a S\-A\-V\-E\-P\-O\-I\-N\-T. If an exception occurs the whole transaction is rolled back, not just the current savepoint. The exception is rethrown. \\
+\hline
+\end{DoxyParams}
+\end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a920c3f7421ad1c967730228abb5915fc}{Insert\-All} (System.\-Collections.\-I\-Enumerable objects)
+\begin{DoxyCompactList}\small\item\em Inserts all specified objects. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a62b62415941ce6486f7dfa219a69f1f1}{Insert\-All} (System.\-Collections.\-I\-Enumerable objects, string extra)
+\begin{DoxyCompactList}\small\item\em Inserts all specified objects. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a08e03803dd01aa67ee56a8e6d184c9d9}{Insert\-All} (System.\-Collections.\-I\-Enumerable objects, Type obj\-Type)
+\begin{DoxyCompactList}\small\item\em Inserts all specified objects. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a937382b36e6726d12fe6d09f7bfb0ab6}{Insert} (object obj)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a1c16c3dda43037326b7f2afc6c822abd}{Insert\-Or\-Replace} (object obj)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. If a U\-N\-I\-Q\-U\-E constraint violation occurs with some pre-\/existing object, this function deletes the old object. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a19576a29af1c0891a646ff3e904f2cdc}{Insert} (object obj, Type obj\-Type)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a812215a88043259b6a107994756000ae}{Insert\-Or\-Replace} (object obj, Type obj\-Type)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. If a U\-N\-I\-Q\-U\-E constraint violation occurs with some pre-\/existing object, this function deletes the old object. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a3ab0fde4b10c4b492b2f5f64535c6d66}{Insert} (object obj, string extra)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_ab88782cd2d5c77bb14d6a17baf7c49bc}{Insert} (object obj, string extra, Type obj\-Type)
+\begin{DoxyCompactList}\small\item\em Inserts the given object and retrieves its auto incremented primary key if it has one. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_ae4effee772569a47256bcb5f8764eabc}{Update} (object obj)
+\begin{DoxyCompactList}\small\item\em Updates all of the columns of a table using the specified object except for its primary key. The object is required to have a primary key. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_ab474a534faebfec1288672ef4e4f2140}{Update} (object obj, Type obj\-Type)
+\begin{DoxyCompactList}\small\item\em Updates all of the columns of a table using the specified object except for its primary key. The object is required to have a primary key. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a1a95399fe5d61f8bbb56e36eac38d467}{Update\-All} (System.\-Collections.\-I\-Enumerable objects)
+\begin{DoxyCompactList}\small\item\em Updates all specified objects. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a55234164e36bc4abcb086e197f25e436}{Delete} (object object\-To\-Delete)
+\begin{DoxyCompactList}\small\item\em Deletes the given object from the database using its primary key. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_a0d4046198236b8c96b0bf50593f592a6}{Delete$<$ T $>$} (object primary\-Key)
+\begin{DoxyCompactList}\small\item\em Deletes the object with the specified primary key. \end{DoxyCompactList}\item 
+int \hyperlink{classSQLite_1_1SQLiteConnection_abed406a2cd17e1e360b79924a749b67c}{Delete\-All$<$ T $>$} ()
+\begin{DoxyCompactList}\small\item\em Deletes all the objects from the specified table. W\-A\-R\-N\-I\-N\-G W\-A\-R\-N\-I\-N\-G\-: Let me repeat. It deletes A\-L\-L the objects from the specified table. Do you really want to do that? \end{DoxyCompactList}\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_ad9e1e281245e83dbe9c5303eaefe95f6}{void {\bfseries Dispose} ()}\label{classSQLite_1_1SQLiteConnection_ad9e1e281245e83dbe9c5303eaefe95f6}
+
+\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_a74160304a4a218b7508220106eeb10d0}{void {\bfseries Close} ()}\label{classSQLite_1_1SQLiteConnection_a74160304a4a218b7508220106eeb10d0}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} \hyperlink{classSQLite_1_1SQLiteConnection_a7535db6cca83fcde078fa4340b32e982}{New\-Command} ()
+\begin{DoxyCompactList}\small\item\em Creates a new \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command}. Can be overridden to provide a sub-\/class. \end{DoxyCompactList}\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_ab5e33e84b34867c48d1578d2890ff7e7}{virtual void {\bfseries Dispose} (bool disposing)}\label{classSQLite_1_1SQLiteConnection_ab5e33e84b34867c48d1578d2890ff7e7}
+
+\item 
+virtual \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} \hyperlink{classSQLite_1_1SQLiteConnection_a7535db6cca83fcde078fa4340b32e982}{New\-Command} ()
+\begin{DoxyCompactList}\small\item\em Creates a new \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command}. Can be overridden to provide a sub-\/class. \end{DoxyCompactList}\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_ab5e33e84b34867c48d1578d2890ff7e7}{virtual void {\bfseries Dispose} (bool disposing)}\label{classSQLite_1_1SQLiteConnection_ab5e33e84b34867c48d1578d2890ff7e7}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_a16d37b3b0dea1963011c5b00d801ca6f}{Sqlite3\-Database\-Handle {\bfseries Handle}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classSQLite_1_1SQLiteConnection_a16d37b3b0dea1963011c5b00d801ca6f}
+
+\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_a9683d167bafc5fb1efffcc7d9ef51569}{string {\bfseries Database\-Path}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classSQLite_1_1SQLiteConnection_a9683d167bafc5fb1efffcc7d9ef51569}
+
+\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_a742389c351ab013e9207b0ea00a3aa6f}{bool {\bfseries Time\-Execution}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classSQLite_1_1SQLiteConnection_a742389c351ab013e9207b0ea00a3aa6f}
+
+\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_a15284c2b66d0b7432cfd2f8409bfc42c}{bool {\bfseries Trace}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classSQLite_1_1SQLiteConnection_a15284c2b66d0b7432cfd2f8409bfc42c}
+
+\item 
+\hypertarget{classSQLite_1_1SQLiteConnection_a3762b496e0facc8f0614adf20218e464}{bool {\bfseries Store\-Date\-Time\-As\-Ticks}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classSQLite_1_1SQLiteConnection_a3762b496e0facc8f0614adf20218e464}
+
+\item 
+Time\-Span \hyperlink{classSQLite_1_1SQLiteConnection_a825c0ebf745f8424ee0e8444b13cb6ff}{Busy\-Timeout}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Sets a busy handler to sleep the specified amount of time when a table is locked. The handler will sleep multiple times until a total time of \hyperlink{classSQLite_1_1SQLiteConnection_a825c0ebf745f8424ee0e8444b13cb6ff}{Busy\-Timeout} has accumulated. \end{DoxyCompactList}\item 
+I\-Enumerable$<$ \hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} $>$ \hyperlink{classSQLite_1_1SQLiteConnection_a72dd4f277b04c171222a199744aef32b}{Table\-Mappings}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Returns the mappings from types to tables that the connection currently understands. \end{DoxyCompactList}\item 
+bool \hyperlink{classSQLite_1_1SQLiteConnection_a82a4af3768596d6d0031110be9f56ae0}{Is\-In\-Transaction}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Whether \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} has been called and the database is waiting for a \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents an open connection to a \hyperlink{namespaceSQLite}{S\-Q\-Lite} database. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSQLite_1_1SQLiteConnection_a21204da14d0e2a44039f3395bb4ff12d}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!S\-Q\-Lite\-Connection@{S\-Q\-Lite\-Connection}}
+\index{S\-Q\-Lite\-Connection@{S\-Q\-Lite\-Connection}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{S\-Q\-Lite\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-S\-Q\-Lite\-Connection (
+\begin{DoxyParamCaption}
+\item[{string}]{database\-Path, }
+\item[{bool}]{store\-Date\-Time\-As\-Ticks = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a21204da14d0e2a44039f3395bb4ff12d}
+
+
+Constructs a new \hyperlink{classSQLite_1_1SQLiteConnection}{S\-Q\-Lite\-Connection} and opens a \hyperlink{namespaceSQLite}{S\-Q\-Lite} database specified by database\-Path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em database\-Path} & Specifies the path to the database file. \\
+\hline
+{\em store\-Date\-Time\-As\-Ticks} & Specifies whether to store Date\-Time properties as ticks (true) or strings (false). You absolutely do want to store them as Ticks in all new projects. The default of false is only here for backwards compatibility. There is a {\itshape significant} speed advantage, with no down sides, when setting store\-Date\-Time\-As\-Ticks = true. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a5d0deb6299d3f479e53cf81899023457}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!S\-Q\-Lite\-Connection@{S\-Q\-Lite\-Connection}}
+\index{S\-Q\-Lite\-Connection@{S\-Q\-Lite\-Connection}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{S\-Q\-Lite\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-S\-Q\-Lite\-Connection (
+\begin{DoxyParamCaption}
+\item[{string}]{database\-Path, }
+\item[{S\-Q\-Lite\-Open\-Flags}]{open\-Flags, }
+\item[{bool}]{store\-Date\-Time\-As\-Ticks = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a5d0deb6299d3f479e53cf81899023457}
+
+
+Constructs a new \hyperlink{classSQLite_1_1SQLiteConnection}{S\-Q\-Lite\-Connection} and opens a \hyperlink{namespaceSQLite}{S\-Q\-Lite} database specified by database\-Path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em database\-Path} & Specifies the path to the database file. \\
+\hline
+{\em store\-Date\-Time\-As\-Ticks} & Specifies whether to store Date\-Time properties as ticks (true) or strings (false). You absolutely do want to store them as Ticks in all new projects. The default of false is only here for backwards compatibility. There is a {\itshape significant} speed advantage, with no down sides, when setting store\-Date\-Time\-As\-Ticks = true. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a21204da14d0e2a44039f3395bb4ff12d}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!S\-Q\-Lite\-Connection@{S\-Q\-Lite\-Connection}}
+\index{S\-Q\-Lite\-Connection@{S\-Q\-Lite\-Connection}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{S\-Q\-Lite\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-S\-Q\-Lite\-Connection (
+\begin{DoxyParamCaption}
+\item[{string}]{database\-Path, }
+\item[{bool}]{store\-Date\-Time\-As\-Ticks = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a21204da14d0e2a44039f3395bb4ff12d}
+
+
+Constructs a new \hyperlink{classSQLite_1_1SQLiteConnection}{S\-Q\-Lite\-Connection} and opens a \hyperlink{namespaceSQLite}{S\-Q\-Lite} database specified by database\-Path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em database\-Path} & Specifies the path to the database file. \\
+\hline
+{\em store\-Date\-Time\-As\-Ticks} & Specifies whether to store Date\-Time properties as ticks (true) or strings (false). You absolutely do want to store them as Ticks in all new projects. The default of false is only here for backwards compatibility. There is a {\itshape significant} speed advantage, with no down sides, when setting store\-Date\-Time\-As\-Ticks = true. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a5d0deb6299d3f479e53cf81899023457}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!S\-Q\-Lite\-Connection@{S\-Q\-Lite\-Connection}}
+\index{S\-Q\-Lite\-Connection@{S\-Q\-Lite\-Connection}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{S\-Q\-Lite\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-S\-Q\-Lite\-Connection (
+\begin{DoxyParamCaption}
+\item[{string}]{database\-Path, }
+\item[{S\-Q\-Lite\-Open\-Flags}]{open\-Flags, }
+\item[{bool}]{store\-Date\-Time\-As\-Ticks = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a5d0deb6299d3f479e53cf81899023457}
+
+
+Constructs a new \hyperlink{classSQLite_1_1SQLiteConnection}{S\-Q\-Lite\-Connection} and opens a \hyperlink{namespaceSQLite}{S\-Q\-Lite} database specified by database\-Path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em database\-Path} & Specifies the path to the database file. \\
+\hline
+{\em store\-Date\-Time\-As\-Ticks} & Specifies whether to store Date\-Time properties as ticks (true) or strings (false). You absolutely do want to store them as Ticks in all new projects. The default of false is only here for backwards compatibility. There is a {\itshape significant} speed advantage, with no down sides, when setting store\-Date\-Time\-As\-Ticks = true. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Begin\-Transaction@{Begin\-Transaction}}
+\index{Begin\-Transaction@{Begin\-Transaction}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Begin\-Transaction}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Begin\-Transaction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}
+
+
+Begins a new transaction. Call \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit} to end the transaction. 
+
+Throws if a transaction has already begun.\hypertarget{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Begin\-Transaction@{Begin\-Transaction}}
+\index{Begin\-Transaction@{Begin\-Transaction}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Begin\-Transaction}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Begin\-Transaction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}
+
+
+Begins a new transaction. Call \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit} to end the transaction. 
+
+Throws if a transaction has already begun.\hypertarget{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Commit@{Commit}}
+\index{Commit@{Commit}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Commit}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Commit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}
+
+
+Commits the transaction that was begun by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction}. 
+
+\hypertarget{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Commit@{Commit}}
+\index{Commit@{Commit}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Commit}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Commit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}
+
+
+Commits the transaction that was begun by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction}. 
+
+\hypertarget{classSQLite_1_1SQLiteConnection_a112ac999fccd302bda742992f044f3ee}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Command@{Create\-Command}}
+\index{Create\-Command@{Create\-Command}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Command}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\-Q\-Lite\-Command} S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Command (
+\begin{DoxyParamCaption}
+\item[{string}]{cmd\-Text, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{ps}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a112ac999fccd302bda742992f044f3ee}
+
+
+Creates a new \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text with arguments. Place a '?' in the command text for each of the arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd\-Text} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the command text. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a112ac999fccd302bda742992f044f3ee}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Command@{Create\-Command}}
+\index{Create\-Command@{Create\-Command}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Command}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\-Q\-Lite\-Command} S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Command (
+\begin{DoxyParamCaption}
+\item[{string}]{cmd\-Text, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{ps}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a112ac999fccd302bda742992f044f3ee}
+
+
+Creates a new \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text with arguments. Place a '?' in the command text for each of the arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd\-Text} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the command text. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a006cda01a29a2f202be1659cbf3810a8}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Index@{Create\-Index}}
+\index{Create\-Index@{Create\-Index}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Index (
+\begin{DoxyParamCaption}
+\item[{string}]{index\-Name, }
+\item[{string}]{table\-Name, }
+\item[{string\mbox{[}$\,$\mbox{]}}]{column\-Names, }
+\item[{bool}]{unique = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a006cda01a29a2f202be1659cbf3810a8}
+
+
+Creates an index for the specified table and columns. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\-Name} & Name of the index to create\\
+\hline
+{\em table\-Name} & Name of the database table\\
+\hline
+{\em column\-Names} & An array of column names to index\\
+\hline
+{\em unique} & Whether the index should be unique\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a006cda01a29a2f202be1659cbf3810a8}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Index@{Create\-Index}}
+\index{Create\-Index@{Create\-Index}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Index (
+\begin{DoxyParamCaption}
+\item[{string}]{index\-Name, }
+\item[{string}]{table\-Name, }
+\item[{string\mbox{[}$\,$\mbox{]}}]{column\-Names, }
+\item[{bool}]{unique = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a006cda01a29a2f202be1659cbf3810a8}
+
+
+Creates an index for the specified table and columns. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\-Name} & Name of the index to create\\
+\hline
+{\em table\-Name} & Name of the database table\\
+\hline
+{\em column\-Names} & An array of column names to index\\
+\hline
+{\em unique} & Whether the index should be unique\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a41bc451f0fed96a6cb79ae2d61ab3a11}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Index@{Create\-Index}}
+\index{Create\-Index@{Create\-Index}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Index (
+\begin{DoxyParamCaption}
+\item[{string}]{index\-Name, }
+\item[{string}]{table\-Name, }
+\item[{string}]{column\-Name, }
+\item[{bool}]{unique = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a41bc451f0fed96a6cb79ae2d61ab3a11}
+
+
+Creates an index for the specified table and column. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\-Name} & Name of the index to create\\
+\hline
+{\em table\-Name} & Name of the database table\\
+\hline
+{\em column\-Name} & Name of the column to index\\
+\hline
+{\em unique} & Whether the index should be unique\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a41bc451f0fed96a6cb79ae2d61ab3a11}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Index@{Create\-Index}}
+\index{Create\-Index@{Create\-Index}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Index (
+\begin{DoxyParamCaption}
+\item[{string}]{index\-Name, }
+\item[{string}]{table\-Name, }
+\item[{string}]{column\-Name, }
+\item[{bool}]{unique = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a41bc451f0fed96a6cb79ae2d61ab3a11}
+
+
+Creates an index for the specified table and column. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\-Name} & Name of the index to create\\
+\hline
+{\em table\-Name} & Name of the database table\\
+\hline
+{\em column\-Name} & Name of the column to index\\
+\hline
+{\em unique} & Whether the index should be unique\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a91adc40b863214a5efc495b33ec9a351}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Index@{Create\-Index}}
+\index{Create\-Index@{Create\-Index}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Index (
+\begin{DoxyParamCaption}
+\item[{string}]{table\-Name, }
+\item[{string}]{column\-Name, }
+\item[{bool}]{unique = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a91adc40b863214a5efc495b33ec9a351}
+
+
+Creates an index for the specified table and column. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\-Name} & Name of the database table\\
+\hline
+{\em column\-Name} & Name of the column to index\\
+\hline
+{\em unique} & Whether the index should be unique\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a91adc40b863214a5efc495b33ec9a351}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Index@{Create\-Index}}
+\index{Create\-Index@{Create\-Index}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Index (
+\begin{DoxyParamCaption}
+\item[{string}]{table\-Name, }
+\item[{string}]{column\-Name, }
+\item[{bool}]{unique = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a91adc40b863214a5efc495b33ec9a351}
+
+
+Creates an index for the specified table and column. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\-Name} & Name of the database table\\
+\hline
+{\em column\-Name} & Name of the column to index\\
+\hline
+{\em unique} & Whether the index should be unique\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a30996f7f4a91d17d719ef4dd582b4cee}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Index@{Create\-Index}}
+\index{Create\-Index@{Create\-Index}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Index (
+\begin{DoxyParamCaption}
+\item[{string}]{table\-Name, }
+\item[{string\mbox{[}$\,$\mbox{]}}]{column\-Names, }
+\item[{bool}]{unique = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a30996f7f4a91d17d719ef4dd582b4cee}
+
+
+Creates an index for the specified table and columns. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\-Name} & Name of the database table\\
+\hline
+{\em column\-Names} & An array of column names to index\\
+\hline
+{\em unique} & Whether the index should be unique\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a30996f7f4a91d17d719ef4dd582b4cee}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Index@{Create\-Index}}
+\index{Create\-Index@{Create\-Index}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Index (
+\begin{DoxyParamCaption}
+\item[{string}]{table\-Name, }
+\item[{string\mbox{[}$\,$\mbox{]}}]{column\-Names, }
+\item[{bool}]{unique = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a30996f7f4a91d17d719ef4dd582b4cee}
+
+
+Creates an index for the specified table and columns. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table\-Name} & Name of the database table\\
+\hline
+{\em column\-Names} & An array of column names to index\\
+\hline
+{\em unique} & Whether the index should be unique\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a7283c295b89b54728d7201e0812ccaac}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Index$<$ T $>$@{Create\-Index$<$ T $>$}}
+\index{Create\-Index$<$ T $>$@{Create\-Index$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Index$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Index}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{Expression$<$ Func$<$ T, object $>$$>$}]{property, }
+\item[{bool}]{unique = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a7283c295b89b54728d7201e0812ccaac}
+
+
+Creates an index for the specified object property. e.\-g. Create\-Index$<$\-Client$>$(c =$>$ c.\-Name); 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type to reflect to a database table.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em property} & Property to index\\
+\hline
+{\em unique} & Whether the index should be unique\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a7283c295b89b54728d7201e0812ccaac}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Index$<$ T $>$@{Create\-Index$<$ T $>$}}
+\index{Create\-Index$<$ T $>$@{Create\-Index$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Index$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Index}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{Expression$<$ Func$<$ T, object $>$$>$}]{property, }
+\item[{bool}]{unique = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a7283c295b89b54728d7201e0812ccaac}
+
+
+Creates an index for the specified object property. e.\-g. Create\-Index$<$\-Client$>$(c =$>$ c.\-Name); 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type to reflect to a database table.\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em property} & Property to index\\
+\hline
+{\em unique} & Whether the index should be unique\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_abfd7ba959c93db259983427b5e7ee05a}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Table@{Create\-Table}}
+\index{Create\-Table@{Create\-Table}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Table}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Table (
+\begin{DoxyParamCaption}
+\item[{Type}]{ty, }
+\item[{Create\-Flags}]{create\-Flags = {\ttfamily CreateFlags.None}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_abfd7ba959c93db259983427b5e7ee05a}
+
+
+Executes a \char`\"{}create table if not exists\char`\"{} on the database. It also creates any specified indexes on the columns of the table. It uses a schema automatically generated from the specified type. You can later access this schema by calling Get\-Mapping. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ty} & Type to reflect to a database table.\\
+\hline
+{\em create\-Flags} & Optional flags allowing implicit P\-K and indexes based on naming conventions.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of entries added to the database schema. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_abfd7ba959c93db259983427b5e7ee05a}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Table@{Create\-Table}}
+\index{Create\-Table@{Create\-Table}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Table}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Table (
+\begin{DoxyParamCaption}
+\item[{Type}]{ty, }
+\item[{Create\-Flags}]{create\-Flags = {\ttfamily CreateFlags.None}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_abfd7ba959c93db259983427b5e7ee05a}
+
+
+Executes a \char`\"{}create table if not exists\char`\"{} on the database. It also creates any specified indexes on the columns of the table. It uses a schema automatically generated from the specified type. You can later access this schema by calling Get\-Mapping. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ty} & Type to reflect to a database table.\\
+\hline
+{\em create\-Flags} & Optional flags allowing implicit P\-K and indexes based on naming conventions.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of entries added to the database schema. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_abc8fda93774fb74dd2f97e9549eb46b5}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Table$<$ T $>$@{Create\-Table$<$ T $>$}}
+\index{Create\-Table$<$ T $>$@{Create\-Table$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Table$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Table}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{Create\-Flags}]{create\-Flags = {\ttfamily CreateFlags.None}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_abc8fda93774fb74dd2f97e9549eb46b5}
+
+
+Executes a \char`\"{}create table if not exists\char`\"{} on the database. It also creates any specified indexes on the columns of the table. It uses a schema automatically generated from the specified type. You can later access this schema by calling Get\-Mapping. 
+
+\begin{DoxyReturn}{Returns}
+The number of entries added to the database schema. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_abc8fda93774fb74dd2f97e9549eb46b5}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Create\-Table$<$ T $>$@{Create\-Table$<$ T $>$}}
+\index{Create\-Table$<$ T $>$@{Create\-Table$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Create\-Table$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Create\-Table}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{Create\-Flags}]{create\-Flags = {\ttfamily CreateFlags.None}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_abc8fda93774fb74dd2f97e9549eb46b5}
+
+
+Executes a \char`\"{}create table if not exists\char`\"{} on the database. It also creates any specified indexes on the columns of the table. It uses a schema automatically generated from the specified type. You can later access this schema by calling Get\-Mapping. 
+
+\begin{DoxyReturn}{Returns}
+The number of entries added to the database schema. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_ab359d97e7938a573e0a565d2c46aa401}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Deferred\-Query@{Deferred\-Query}}
+\index{Deferred\-Query@{Deferred\-Query}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Deferred\-Query}]{\setlength{\rightskip}{0pt plus 5cm}I\-Enumerable$<$object$>$ S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Deferred\-Query (
+\begin{DoxyParamCaption}
+\item[{{\bf Table\-Mapping}}]{map, }
+\item[{string}]{query, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ab359d97e7938a573e0a565d2c46aa401}
+
+
+Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the specified mapping. This function is only used by libraries in order to query the database via introspection. It is normally not used. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & A \hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} to use to convert the resulting rows into objects. \\
+\hline
+{\em query} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An enumerable with one result for each row returned by the query. The enumerator will call sqlite3\-\_\-step on each call to Move\-Next, so the database connection must remain open for the lifetime of the enumerator. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_ab359d97e7938a573e0a565d2c46aa401}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Deferred\-Query@{Deferred\-Query}}
+\index{Deferred\-Query@{Deferred\-Query}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Deferred\-Query}]{\setlength{\rightskip}{0pt plus 5cm}I\-Enumerable$<$object$>$ S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Deferred\-Query (
+\begin{DoxyParamCaption}
+\item[{{\bf Table\-Mapping}}]{map, }
+\item[{string}]{query, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ab359d97e7938a573e0a565d2c46aa401}
+
+
+Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the specified mapping. This function is only used by libraries in order to query the database via introspection. It is normally not used. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & A \hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} to use to convert the resulting rows into objects. \\
+\hline
+{\em query} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An enumerable with one result for each row returned by the query. The enumerator will call sqlite3\-\_\-step on each call to Move\-Next, so the database connection must remain open for the lifetime of the enumerator. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a334b139ead4620ad13b5e1d54e8077af}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Deferred\-Query$<$ T $>$@{Deferred\-Query$<$ T $>$}}
+\index{Deferred\-Query$<$ T $>$@{Deferred\-Query$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Deferred\-Query$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}I\-Enumerable$<$T$>$ {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Deferred\-Query}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{string}]{query, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a334b139ead4620ad13b5e1d54e8077af}
+
+
+Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the mapping automatically generated for the given type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An enumerable with one result for each row returned by the query. The enumerator will call sqlite3\-\_\-step on each call to Move\-Next, so the database connection must remain open for the lifetime of the enumerator. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_a334b139ead4620ad13b5e1d54e8077af}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Deferred\-Query$<$ T $>$@{Deferred\-Query$<$ T $>$}}
+\index{Deferred\-Query$<$ T $>$@{Deferred\-Query$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Deferred\-Query$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}I\-Enumerable$<$T$>$ {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Deferred\-Query}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{string}]{query, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a334b139ead4620ad13b5e1d54e8077af}
+
+
+Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the mapping automatically generated for the given type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An enumerable with one result for each row returned by the query. The enumerator will call sqlite3\-\_\-step on each call to Move\-Next, so the database connection must remain open for the lifetime of the enumerator. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_a55234164e36bc4abcb086e197f25e436}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Delete@{Delete}}
+\index{Delete@{Delete}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Delete}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Delete (
+\begin{DoxyParamCaption}
+\item[{object}]{object\-To\-Delete}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a55234164e36bc4abcb086e197f25e436}
+
+
+Deletes the given object from the database using its primary key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\-To\-Delete} & The object to delete. It must have a primary key designated using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows deleted. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a55234164e36bc4abcb086e197f25e436}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Delete@{Delete}}
+\index{Delete@{Delete}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Delete}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Delete (
+\begin{DoxyParamCaption}
+\item[{object}]{object\-To\-Delete}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a55234164e36bc4abcb086e197f25e436}
+
+
+Deletes the given object from the database using its primary key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\-To\-Delete} & The object to delete. It must have a primary key designated using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows deleted. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a0d4046198236b8c96b0bf50593f592a6}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Delete$<$ T $>$@{Delete$<$ T $>$}}
+\index{Delete$<$ T $>$@{Delete$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Delete$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Delete}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{object}]{primary\-Key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a0d4046198236b8c96b0bf50593f592a6}
+
+
+Deletes the object with the specified primary key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em primary\-Key} & The primary key of the object to delete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of objects deleted. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of object. \\
+\hline
+\end{DoxyTemplParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a0d4046198236b8c96b0bf50593f592a6}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Delete$<$ T $>$@{Delete$<$ T $>$}}
+\index{Delete$<$ T $>$@{Delete$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Delete$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Delete}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{object}]{primary\-Key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a0d4046198236b8c96b0bf50593f592a6}
+
+
+Deletes the object with the specified primary key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em primary\-Key} & The primary key of the object to delete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of objects deleted. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of object. \\
+\hline
+\end{DoxyTemplParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_abed406a2cd17e1e360b79924a749b67c}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Delete\-All$<$ T $>$@{Delete\-All$<$ T $>$}}
+\index{Delete\-All$<$ T $>$@{Delete\-All$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Delete\-All$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Delete\-All$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_abed406a2cd17e1e360b79924a749b67c}
+
+
+Deletes all the objects from the specified table. W\-A\-R\-N\-I\-N\-G W\-A\-R\-N\-I\-N\-G\-: Let me repeat. It deletes A\-L\-L the objects from the specified table. Do you really want to do that? 
+
+\begin{DoxyReturn}{Returns}
+The number of objects deleted. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of objects to delete. \\
+\hline
+\end{DoxyTemplParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_abed406a2cd17e1e360b79924a749b67c}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Delete\-All$<$ T $>$@{Delete\-All$<$ T $>$}}
+\index{Delete\-All$<$ T $>$@{Delete\-All$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Delete\-All$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Delete\-All$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_abed406a2cd17e1e360b79924a749b67c}
+
+
+Deletes all the objects from the specified table. W\-A\-R\-N\-I\-N\-G W\-A\-R\-N\-I\-N\-G\-: Let me repeat. It deletes A\-L\-L the objects from the specified table. Do you really want to do that? 
+
+\begin{DoxyReturn}{Returns}
+The number of objects deleted. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of objects to delete. \\
+\hline
+\end{DoxyTemplParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a783032226b2db2ebd6417f21abe9cd5a}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Drop\-Table$<$ T $>$@{Drop\-Table$<$ T $>$}}
+\index{Drop\-Table$<$ T $>$@{Drop\-Table$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Drop\-Table$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Drop\-Table$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a783032226b2db2ebd6417f21abe9cd5a}
+
+
+Executes a \char`\"{}drop table\char`\"{} on the database. This is non-\/recoverable. 
+
+\hypertarget{classSQLite_1_1SQLiteConnection_a783032226b2db2ebd6417f21abe9cd5a}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Drop\-Table$<$ T $>$@{Drop\-Table$<$ T $>$}}
+\index{Drop\-Table$<$ T $>$@{Drop\-Table$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Drop\-Table$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Drop\-Table$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a783032226b2db2ebd6417f21abe9cd5a}
+
+
+Executes a \char`\"{}drop table\char`\"{} on the database. This is non-\/recoverable. 
+
+\hypertarget{classSQLite_1_1SQLiteConnection_a5fbb3e385d21cfbee95e4a2a71a3043b}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Execute@{Execute}}
+\index{Execute@{Execute}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Execute}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Execute (
+\begin{DoxyParamCaption}
+\item[{string}]{query, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a5fbb3e385d21cfbee95e4a2a71a3043b}
+
+
+Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. Use this method instead of Query when you don't expect rows back. Such cases include I\-N\-S\-E\-R\-Ts, U\-P\-D\-A\-T\-Es, and D\-E\-L\-E\-T\-Es. You can set the Trace or Time\-Execution properties of the connection to profile execution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows modified in the database as a result of this execution. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a5fbb3e385d21cfbee95e4a2a71a3043b}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Execute@{Execute}}
+\index{Execute@{Execute}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Execute}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Execute (
+\begin{DoxyParamCaption}
+\item[{string}]{query, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a5fbb3e385d21cfbee95e4a2a71a3043b}
+
+
+Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. Use this method instead of Query when you don't expect rows back. Such cases include I\-N\-S\-E\-R\-Ts, U\-P\-D\-A\-T\-Es, and D\-E\-L\-E\-T\-Es. You can set the Trace or Time\-Execution properties of the connection to profile execution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows modified in the database as a result of this execution. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a95729c5ebf5fad75631109db91e7c14b}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Find@{Find}}
+\index{Find@{Find}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Find}]{\setlength{\rightskip}{0pt plus 5cm}object S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Find (
+\begin{DoxyParamCaption}
+\item[{object}]{pk, }
+\item[{{\bf Table\-Mapping}}]{map}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a95729c5ebf5fad75631109db91e7c14b}
+
+
+Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pk} & The primary key. \\
+\hline
+{\em map} & The \hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} used to identify the object type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object with the given primary key or null if the object is not found. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a95729c5ebf5fad75631109db91e7c14b}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Find@{Find}}
+\index{Find@{Find}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Find}]{\setlength{\rightskip}{0pt plus 5cm}object S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Find (
+\begin{DoxyParamCaption}
+\item[{object}]{pk, }
+\item[{{\bf Table\-Mapping}}]{map}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a95729c5ebf5fad75631109db91e7c14b}
+
+
+Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pk} & The primary key. \\
+\hline
+{\em map} & The \hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} used to identify the object type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object with the given primary key or null if the object is not found. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_adfe66fe8c304aca8575f07fc1c05d9f5}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Find$<$ T $>$@{Find$<$ T $>$}}
+\index{Find$<$ T $>$@{Find$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Find$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}T {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Find}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{object}]{pk}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_adfe66fe8c304aca8575f07fc1c05d9f5}
+
+
+Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pk} & The primary key. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object with the given primary key or null if the object is not found. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_adfe66fe8c304aca8575f07fc1c05d9f5}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Find$<$ T $>$@{Find$<$ T $>$}}
+\index{Find$<$ T $>$@{Find$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Find$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}T {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Find}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{object}]{pk}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_adfe66fe8c304aca8575f07fc1c05d9f5}
+
+
+Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pk} & The primary key. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object with the given primary key or null if the object is not found. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_aeba2ae3cf5c1ffcb0c7eec7f8ccc64ca}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Find$<$ T $>$@{Find$<$ T $>$}}
+\index{Find$<$ T $>$@{Find$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Find$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}T {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Find}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{Expression$<$ Func$<$ T, bool $>$$>$}]{predicate}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_aeba2ae3cf5c1ffcb0c7eec7f8ccc64ca}
+
+
+Attempts to retrieve the first object that matches the predicate from the table associated with the specified type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em predicate} & A predicate for which object to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object that matches the given predicate or null if the object is not found. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_aeba2ae3cf5c1ffcb0c7eec7f8ccc64ca}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Find$<$ T $>$@{Find$<$ T $>$}}
+\index{Find$<$ T $>$@{Find$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Find$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}T {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Find}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{Expression$<$ Func$<$ T, bool $>$$>$}]{predicate}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_aeba2ae3cf5c1ffcb0c7eec7f8ccc64ca}
+
+
+Attempts to retrieve the first object that matches the predicate from the table associated with the specified type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em predicate} & A predicate for which object to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object that matches the given predicate or null if the object is not found. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_a17fdec8364635853d573e84530e1ab48}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Get$<$ T $>$@{Get$<$ T $>$}}
+\index{Get$<$ T $>$@{Get$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Get$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}T S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Get$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{object}]{pk}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a17fdec8364635853d573e84530e1ab48}
+
+
+Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pk} & The primary key. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object with the given primary key. Throws a not found exception if the object is not found. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_a17fdec8364635853d573e84530e1ab48}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Get$<$ T $>$@{Get$<$ T $>$}}
+\index{Get$<$ T $>$@{Get$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Get$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}T S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Get$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{object}]{pk}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a17fdec8364635853d573e84530e1ab48}
+
+
+Attempts to retrieve an object with the given primary key from the table associated with the specified type. Use of this method requires that the given type have a designated Primary\-Key (using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pk} & The primary key. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object with the given primary key. Throws a not found exception if the object is not found. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_a4034d4b62385b2ab7451c5404ffb5efa}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Get$<$ T $>$@{Get$<$ T $>$}}
+\index{Get$<$ T $>$@{Get$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Get$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}T S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Get$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{Expression$<$ Func$<$ T, bool $>$$>$}]{predicate}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a4034d4b62385b2ab7451c5404ffb5efa}
+
+
+Attempts to retrieve the first object that matches the predicate from the table associated with the specified type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em predicate} & A predicate for which object to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object that matches the given predicate. Throws a not found exception if the object is not found. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_a4034d4b62385b2ab7451c5404ffb5efa}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Get$<$ T $>$@{Get$<$ T $>$}}
+\index{Get$<$ T $>$@{Get$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Get$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}T S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Get$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{Expression$<$ Func$<$ T, bool $>$$>$}]{predicate}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a4034d4b62385b2ab7451c5404ffb5efa}
+
+
+Attempts to retrieve the first object that matches the predicate from the table associated with the specified type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em predicate} & A predicate for which object to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The object that matches the given predicate. Throws a not found exception if the object is not found. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_a0c0db552a653e0797cf772706148eb41}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Get\-Mapping@{Get\-Mapping}}
+\index{Get\-Mapping@{Get\-Mapping}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Get\-Mapping}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Table\-Mapping} S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Get\-Mapping (
+\begin{DoxyParamCaption}
+\item[{Type}]{type, }
+\item[{Create\-Flags}]{create\-Flags = {\ttfamily CreateFlags.None}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a0c0db552a653e0797cf772706148eb41}
+
+
+Retrieves the mapping that is automatically generated for the given type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type whose mapping to the database is returned. \\
+\hline
+{\em create\-Flags} & Optional flags allowing implicit P\-K and indexes based on naming conventions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mapping represents the schema of the columns of the database and contains methods to set and get properties of objects. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a0c0db552a653e0797cf772706148eb41}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Get\-Mapping@{Get\-Mapping}}
+\index{Get\-Mapping@{Get\-Mapping}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Get\-Mapping}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Table\-Mapping} S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Get\-Mapping (
+\begin{DoxyParamCaption}
+\item[{Type}]{type, }
+\item[{Create\-Flags}]{create\-Flags = {\ttfamily CreateFlags.None}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a0c0db552a653e0797cf772706148eb41}
+
+
+Retrieves the mapping that is automatically generated for the given type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type whose mapping to the database is returned. \\
+\hline
+{\em create\-Flags} & Optional flags allowing implicit P\-K and indexes based on naming conventions \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mapping represents the schema of the columns of the database and contains methods to set and get properties of objects. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_adf0ed08567e1ca36e4fda72c94ede544}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Get\-Mapping$<$ T $>$@{Get\-Mapping$<$ T $>$}}
+\index{Get\-Mapping$<$ T $>$@{Get\-Mapping$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Get\-Mapping$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Table\-Mapping} {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Get\-Mapping}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_adf0ed08567e1ca36e4fda72c94ede544}
+
+
+Retrieves the mapping that is automatically generated for the given type. 
+
+\begin{DoxyReturn}{Returns}
+The mapping represents the schema of the columns of the database and contains methods to set and get properties of objects. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_adf0ed08567e1ca36e4fda72c94ede544}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Get\-Mapping$<$ T $>$@{Get\-Mapping$<$ T $>$}}
+\index{Get\-Mapping$<$ T $>$@{Get\-Mapping$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Get\-Mapping$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Table\-Mapping} {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Get\-Mapping}$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_adf0ed08567e1ca36e4fda72c94ede544}
+
+
+Retrieves the mapping that is automatically generated for the given type. 
+
+\begin{DoxyReturn}{Returns}
+The mapping represents the schema of the columns of the database and contains methods to set and get properties of objects. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a937382b36e6726d12fe6d09f7bfb0ab6}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert@{Insert}}
+\index{Insert@{Insert}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert (
+\begin{DoxyParamCaption}
+\item[{object}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a937382b36e6726d12fe6d09f7bfb0ab6}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a937382b36e6726d12fe6d09f7bfb0ab6}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert@{Insert}}
+\index{Insert@{Insert}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert (
+\begin{DoxyParamCaption}
+\item[{object}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a937382b36e6726d12fe6d09f7bfb0ab6}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a19576a29af1c0891a646ff3e904f2cdc}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert@{Insert}}
+\index{Insert@{Insert}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{Type}]{obj\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a19576a29af1c0891a646ff3e904f2cdc}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+{\em obj\-Type} & The type of object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a19576a29af1c0891a646ff3e904f2cdc}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert@{Insert}}
+\index{Insert@{Insert}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{Type}]{obj\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a19576a29af1c0891a646ff3e904f2cdc}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+{\em obj\-Type} & The type of object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a3ab0fde4b10c4b492b2f5f64535c6d66}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert@{Insert}}
+\index{Insert@{Insert}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{string}]{extra}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a3ab0fde4b10c4b492b2f5f64535c6d66}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+{\em extra} & Literal S\-Q\-L code that gets placed into the command. I\-N\-S\-E\-R\-T \{extra\} I\-N\-T\-O ... \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a3ab0fde4b10c4b492b2f5f64535c6d66}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert@{Insert}}
+\index{Insert@{Insert}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{string}]{extra}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a3ab0fde4b10c4b492b2f5f64535c6d66}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+{\em extra} & Literal S\-Q\-L code that gets placed into the command. I\-N\-S\-E\-R\-T \{extra\} I\-N\-T\-O ... \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_ab88782cd2d5c77bb14d6a17baf7c49bc}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert@{Insert}}
+\index{Insert@{Insert}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{string}]{extra, }
+\item[{Type}]{obj\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ab88782cd2d5c77bb14d6a17baf7c49bc}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+{\em extra} & Literal S\-Q\-L code that gets placed into the command. I\-N\-S\-E\-R\-T \{extra\} I\-N\-T\-O ... \\
+\hline
+{\em obj\-Type} & The type of object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_ab88782cd2d5c77bb14d6a17baf7c49bc}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert@{Insert}}
+\index{Insert@{Insert}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{string}]{extra, }
+\item[{Type}]{obj\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ab88782cd2d5c77bb14d6a17baf7c49bc}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+{\em extra} & Literal S\-Q\-L code that gets placed into the command. I\-N\-S\-E\-R\-T \{extra\} I\-N\-T\-O ... \\
+\hline
+{\em obj\-Type} & The type of object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a920c3f7421ad1c967730228abb5915fc}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert\-All@{Insert\-All}}
+\index{Insert\-All@{Insert\-All}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert\-All}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert\-All (
+\begin{DoxyParamCaption}
+\item[{System.\-Collections.\-I\-Enumerable}]{objects}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a920c3f7421ad1c967730228abb5915fc}
+
+
+Inserts all specified objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & An I\-Enumerable of the objects to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a920c3f7421ad1c967730228abb5915fc}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert\-All@{Insert\-All}}
+\index{Insert\-All@{Insert\-All}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert\-All}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert\-All (
+\begin{DoxyParamCaption}
+\item[{System.\-Collections.\-I\-Enumerable}]{objects}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a920c3f7421ad1c967730228abb5915fc}
+
+
+Inserts all specified objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & An I\-Enumerable of the objects to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a62b62415941ce6486f7dfa219a69f1f1}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert\-All@{Insert\-All}}
+\index{Insert\-All@{Insert\-All}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert\-All}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert\-All (
+\begin{DoxyParamCaption}
+\item[{System.\-Collections.\-I\-Enumerable}]{objects, }
+\item[{string}]{extra}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a62b62415941ce6486f7dfa219a69f1f1}
+
+
+Inserts all specified objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & An I\-Enumerable of the objects to insert. \\
+\hline
+{\em extra} & Literal S\-Q\-L code that gets placed into the command. I\-N\-S\-E\-R\-T \{extra\} I\-N\-T\-O ... \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a62b62415941ce6486f7dfa219a69f1f1}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert\-All@{Insert\-All}}
+\index{Insert\-All@{Insert\-All}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert\-All}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert\-All (
+\begin{DoxyParamCaption}
+\item[{System.\-Collections.\-I\-Enumerable}]{objects, }
+\item[{string}]{extra}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a62b62415941ce6486f7dfa219a69f1f1}
+
+
+Inserts all specified objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & An I\-Enumerable of the objects to insert. \\
+\hline
+{\em extra} & Literal S\-Q\-L code that gets placed into the command. I\-N\-S\-E\-R\-T \{extra\} I\-N\-T\-O ... \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a08e03803dd01aa67ee56a8e6d184c9d9}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert\-All@{Insert\-All}}
+\index{Insert\-All@{Insert\-All}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert\-All}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert\-All (
+\begin{DoxyParamCaption}
+\item[{System.\-Collections.\-I\-Enumerable}]{objects, }
+\item[{Type}]{obj\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a08e03803dd01aa67ee56a8e6d184c9d9}
+
+
+Inserts all specified objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & An I\-Enumerable of the objects to insert. \\
+\hline
+{\em obj\-Type} & The type of object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a08e03803dd01aa67ee56a8e6d184c9d9}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert\-All@{Insert\-All}}
+\index{Insert\-All@{Insert\-All}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert\-All}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert\-All (
+\begin{DoxyParamCaption}
+\item[{System.\-Collections.\-I\-Enumerable}]{objects, }
+\item[{Type}]{obj\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a08e03803dd01aa67ee56a8e6d184c9d9}
+
+
+Inserts all specified objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & An I\-Enumerable of the objects to insert. \\
+\hline
+{\em obj\-Type} & The type of object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added to the table. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a1c16c3dda43037326b7f2afc6c822abd}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert\-Or\-Replace@{Insert\-Or\-Replace}}
+\index{Insert\-Or\-Replace@{Insert\-Or\-Replace}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert\-Or\-Replace}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert\-Or\-Replace (
+\begin{DoxyParamCaption}
+\item[{object}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a1c16c3dda43037326b7f2afc6c822abd}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. If a U\-N\-I\-Q\-U\-E constraint violation occurs with some pre-\/existing object, this function deletes the old object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows modified. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a1c16c3dda43037326b7f2afc6c822abd}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert\-Or\-Replace@{Insert\-Or\-Replace}}
+\index{Insert\-Or\-Replace@{Insert\-Or\-Replace}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert\-Or\-Replace}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert\-Or\-Replace (
+\begin{DoxyParamCaption}
+\item[{object}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a1c16c3dda43037326b7f2afc6c822abd}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. If a U\-N\-I\-Q\-U\-E constraint violation occurs with some pre-\/existing object, this function deletes the old object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows modified. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a812215a88043259b6a107994756000ae}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert\-Or\-Replace@{Insert\-Or\-Replace}}
+\index{Insert\-Or\-Replace@{Insert\-Or\-Replace}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert\-Or\-Replace}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert\-Or\-Replace (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{Type}]{obj\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a812215a88043259b6a107994756000ae}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. If a U\-N\-I\-Q\-U\-E constraint violation occurs with some pre-\/existing object, this function deletes the old object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+{\em obj\-Type} & The type of object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows modified. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a812215a88043259b6a107994756000ae}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Insert\-Or\-Replace@{Insert\-Or\-Replace}}
+\index{Insert\-Or\-Replace@{Insert\-Or\-Replace}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Insert\-Or\-Replace}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Insert\-Or\-Replace (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{Type}]{obj\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a812215a88043259b6a107994756000ae}
+
+
+Inserts the given object and retrieves its auto incremented primary key if it has one. If a U\-N\-I\-Q\-U\-E constraint violation occurs with some pre-\/existing object, this function deletes the old object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to insert. \\
+\hline
+{\em obj\-Type} & The type of object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows modified. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a7535db6cca83fcde078fa4340b32e982}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!New\-Command@{New\-Command}}
+\index{New\-Command@{New\-Command}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{New\-Command}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf S\-Q\-Lite\-Command} S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-New\-Command (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classSQLite_1_1SQLiteConnection_a7535db6cca83fcde078fa4340b32e982}
+
+
+Creates a new \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command}. Can be overridden to provide a sub-\/class. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classSQLite_1_1SQLiteCommand_a4761647a6b02f398aa1d7bbd1f090828}{S\-Q\-Lite\-Command.\-On\-Instance\-Created}
+
+
+\end{DoxySeeAlso}
+\hypertarget{classSQLite_1_1SQLiteConnection_a7535db6cca83fcde078fa4340b32e982}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!New\-Command@{New\-Command}}
+\index{New\-Command@{New\-Command}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{New\-Command}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf S\-Q\-Lite\-Command} S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-New\-Command (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classSQLite_1_1SQLiteConnection_a7535db6cca83fcde078fa4340b32e982}
+
+
+Creates a new \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command}. Can be overridden to provide a sub-\/class. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classSQLite_1_1SQLiteCommand_a4761647a6b02f398aa1d7bbd1f090828}{S\-Q\-Lite\-Command.\-On\-Instance\-Created}
+
+
+\end{DoxySeeAlso}
+\hypertarget{classSQLite_1_1SQLiteConnection_aeac8a5ef1be5cfabc5bbf33f1fec01b0}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Query@{Query}}
+\index{Query@{Query}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Query}]{\setlength{\rightskip}{0pt plus 5cm}List$<$object$>$ S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Query (
+\begin{DoxyParamCaption}
+\item[{{\bf Table\-Mapping}}]{map, }
+\item[{string}]{query, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_aeac8a5ef1be5cfabc5bbf33f1fec01b0}
+
+
+Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the specified mapping. This function is only used by libraries in order to query the database via introspection. It is normally not used. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & A \hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} to use to convert the resulting rows into objects. \\
+\hline
+{\em query} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An enumerable with one result for each row returned by the query. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_aeac8a5ef1be5cfabc5bbf33f1fec01b0}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Query@{Query}}
+\index{Query@{Query}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Query}]{\setlength{\rightskip}{0pt plus 5cm}List$<$object$>$ S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Query (
+\begin{DoxyParamCaption}
+\item[{{\bf Table\-Mapping}}]{map, }
+\item[{string}]{query, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_aeac8a5ef1be5cfabc5bbf33f1fec01b0}
+
+
+Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the specified mapping. This function is only used by libraries in order to query the database via introspection. It is normally not used. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & A \hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping} to use to convert the resulting rows into objects. \\
+\hline
+{\em query} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An enumerable with one result for each row returned by the query. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_ade363948abe65a6b97fe8574f943db91}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Query$<$ T $>$@{Query$<$ T $>$}}
+\index{Query$<$ T $>$@{Query$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Query$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}List$<$T$>$ {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Query}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{string}]{query, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ade363948abe65a6b97fe8574f943db91}
+
+
+Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the mapping automatically generated for the given type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An enumerable with one result for each row returned by the query. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_ade363948abe65a6b97fe8574f943db91}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Query$<$ T $>$@{Query$<$ T $>$}}
+\index{Query$<$ T $>$@{Query$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Query$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}List$<$T$>$ {\bf S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Query}$<$ T $>$ (
+\begin{DoxyParamCaption}
+\item[{string}]{query, }
+\item[{params object\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ade363948abe65a6b97fe8574f943db91}
+
+
+Creates a \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command} given the command text (S\-Q\-L) with arguments. Place a '?' in the command text for each of the arguments and then executes that command. It returns each row of the result using the mapping automatically generated for the given type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The fully escaped S\-Q\-L. \\
+\hline
+{\em args} & Arguments to substitute for the occurences of '?' in the query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An enumerable with one result for each row returned by the query. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_a6813c9dd152354284ccdc96353bcfbdd}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Release@{Release}}
+\index{Release@{Release}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Release}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Release (
+\begin{DoxyParamCaption}
+\item[{string}]{savepoint}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a6813c9dd152354284ccdc96353bcfbdd}
+
+
+Releases a savepoint returned from \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}. Releasing a savepoint makes changes since that savepoint permanent if the savepoint began the transaction, or otherwise the changes are permanent pending a call to \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit}. 
+
+The R\-E\-L\-E\-A\-S\-E command is like a C\-O\-M\-M\-I\-T for a S\-A\-V\-E\-P\-O\-I\-N\-T. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em savepoint} & The name of the savepoint to release. The string should be the result of a call to \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a6813c9dd152354284ccdc96353bcfbdd}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Release@{Release}}
+\index{Release@{Release}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Release}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Release (
+\begin{DoxyParamCaption}
+\item[{string}]{savepoint}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a6813c9dd152354284ccdc96353bcfbdd}
+
+
+Releases a savepoint returned from \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}. Releasing a savepoint makes changes since that savepoint permanent if the savepoint began the transaction, or otherwise the changes are permanent pending a call to \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit}. 
+
+The R\-E\-L\-E\-A\-S\-E command is like a C\-O\-M\-M\-I\-T for a S\-A\-V\-E\-P\-O\-I\-N\-T. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em savepoint} & The name of the savepoint to release. The string should be the result of a call to \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a70cfe1d5799d71ce3a0a62c244bb7ea8}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Rollback@{Rollback}}
+\index{Rollback@{Rollback}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Rollback}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Rollback (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a70cfe1d5799d71ce3a0a62c244bb7ea8}
+
+
+Rolls back the transaction that was begun by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} or \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}. 
+
+\hypertarget{classSQLite_1_1SQLiteConnection_a70cfe1d5799d71ce3a0a62c244bb7ea8}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Rollback@{Rollback}}
+\index{Rollback@{Rollback}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Rollback}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Rollback (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a70cfe1d5799d71ce3a0a62c244bb7ea8}
+
+
+Rolls back the transaction that was begun by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} or \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}. 
+
+\hypertarget{classSQLite_1_1SQLiteConnection_a94674fbf861328e85a249dd8c14ef6ea}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Rollback\-To@{Rollback\-To}}
+\index{Rollback\-To@{Rollback\-To}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Rollback\-To}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Rollback\-To (
+\begin{DoxyParamCaption}
+\item[{string}]{savepoint}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a94674fbf861328e85a249dd8c14ef6ea}
+
+
+Rolls back the savepoint created by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} or Save\-Transaction\-Point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em savepoint} & The name of the savepoint to roll back to, as returned by \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}. If savepoint is null or empty, this method is equivalent to a call to \hyperlink{classSQLite_1_1SQLiteConnection_a70cfe1d5799d71ce3a0a62c244bb7ea8}{Rollback}\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a94674fbf861328e85a249dd8c14ef6ea}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Rollback\-To@{Rollback\-To}}
+\index{Rollback\-To@{Rollback\-To}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Rollback\-To}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Rollback\-To (
+\begin{DoxyParamCaption}
+\item[{string}]{savepoint}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a94674fbf861328e85a249dd8c14ef6ea}
+
+
+Rolls back the savepoint created by \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} or Save\-Transaction\-Point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em savepoint} & The name of the savepoint to roll back to, as returned by \hyperlink{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{Save\-Transaction\-Point}. If savepoint is null or empty, this method is equivalent to a call to \hyperlink{classSQLite_1_1SQLiteConnection_a70cfe1d5799d71ce3a0a62c244bb7ea8}{Rollback}\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a9132bae9e577ae479ddc6b919547759f}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Run\-In\-Transaction@{Run\-In\-Transaction}}
+\index{Run\-In\-Transaction@{Run\-In\-Transaction}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Run\-In\-Transaction}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Run\-In\-Transaction (
+\begin{DoxyParamCaption}
+\item[{Action}]{action}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a9132bae9e577ae479ddc6b919547759f}
+
+
+Executes 
+\begin{DoxyParams}{Parameters}
+{\em action} & within a (possibly nested) transaction by wrapping it in a S\-A\-V\-E\-P\-O\-I\-N\-T. If an exception occurs the whole transaction is rolled back, not just the current savepoint. The exception is rethrown. \\
+\hline
+\end{DoxyParams}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & The Action to perform within a transaction. 
+\begin{DoxyParams}{Parameters}
+{\em action} & can contain any number of operations on the connection but should never call \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} or \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit}. \\
+\hline
+\end{DoxyParams}
+\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_a9132bae9e577ae479ddc6b919547759f}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Run\-In\-Transaction@{Run\-In\-Transaction}}
+\index{Run\-In\-Transaction@{Run\-In\-Transaction}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Run\-In\-Transaction}]{\setlength{\rightskip}{0pt plus 5cm}void S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Run\-In\-Transaction (
+\begin{DoxyParamCaption}
+\item[{Action}]{action}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a9132bae9e577ae479ddc6b919547759f}
+
+
+Executes 
+\begin{DoxyParams}{Parameters}
+{\em action} & within a (possibly nested) transaction by wrapping it in a S\-A\-V\-E\-P\-O\-I\-N\-T. If an exception occurs the whole transaction is rolled back, not just the current savepoint. The exception is rethrown. \\
+\hline
+\end{DoxyParams}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & The Action to perform within a transaction. 
+\begin{DoxyParams}{Parameters}
+{\em action} & can contain any number of operations on the connection but should never call \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} or \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit}. \\
+\hline
+\end{DoxyParams}
+\\
+\hline
+\end{DoxyParams}
+\hypertarget{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Save\-Transaction\-Point@{Save\-Transaction\-Point}}
+\index{Save\-Transaction\-Point@{Save\-Transaction\-Point}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Save\-Transaction\-Point}]{\setlength{\rightskip}{0pt plus 5cm}string S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Save\-Transaction\-Point (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}
+
+
+Creates a savepoint in the database at the current point in the transaction timeline. Begins a new transaction if one is not in progress. 
+
+Call \hyperlink{classSQLite_1_1SQLiteConnection_a94674fbf861328e85a249dd8c14ef6ea}{Rollback\-To} to undo transactions since the returned savepoint. Call \hyperlink{classSQLite_1_1SQLiteConnection_a6813c9dd152354284ccdc96353bcfbdd}{Release} to commit transactions after the savepoint returned here. Call \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit} to end the transaction, committing all changes. 
+
+\begin{DoxyReturn}{Returns}
+A string naming the savepoint.
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Save\-Transaction\-Point@{Save\-Transaction\-Point}}
+\index{Save\-Transaction\-Point@{Save\-Transaction\-Point}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Save\-Transaction\-Point}]{\setlength{\rightskip}{0pt plus 5cm}string S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Save\-Transaction\-Point (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ab571412a681990a95131ded731ad6c4a}
+
+
+Creates a savepoint in the database at the current point in the transaction timeline. Begins a new transaction if one is not in progress. 
+
+Call \hyperlink{classSQLite_1_1SQLiteConnection_a94674fbf861328e85a249dd8c14ef6ea}{Rollback\-To} to undo transactions since the returned savepoint. Call \hyperlink{classSQLite_1_1SQLiteConnection_a6813c9dd152354284ccdc96353bcfbdd}{Release} to commit transactions after the savepoint returned here. Call \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit} to end the transaction, committing all changes. 
+
+\begin{DoxyReturn}{Returns}
+A string naming the savepoint.
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_ab44d5100216c3cdcea76e45c6f7d6246}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Table$<$ T $>$@{Table$<$ T $>$}}
+\index{Table$<$ T $>$@{Table$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Table$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}Table\-Query$<$T$>$ S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Table$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ab44d5100216c3cdcea76e45c6f7d6246}
+
+
+Returns a queryable interface to the table represented by the given type. 
+
+\begin{DoxyReturn}{Returns}
+A queryable object that is able to translate Where, Order\-By, and Take queries into native S\-Q\-L. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_ab44d5100216c3cdcea76e45c6f7d6246}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Table$<$ T $>$@{Table$<$ T $>$}}
+\index{Table$<$ T $>$@{Table$<$ T $>$}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Table$<$ T $>$}]{\setlength{\rightskip}{0pt plus 5cm}Table\-Query$<$T$>$ S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Table$<$ T $>$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ab44d5100216c3cdcea76e45c6f7d6246}
+
+
+Returns a queryable interface to the table represented by the given type. 
+
+\begin{DoxyReturn}{Returns}
+A queryable object that is able to translate Where, Order\-By, and Take queries into native S\-Q\-L. 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em new()}]\end{description}
+\end{Desc}
+\hypertarget{classSQLite_1_1SQLiteConnection_ae4effee772569a47256bcb5f8764eabc}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Update@{Update}}
+\index{Update@{Update}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Update (
+\begin{DoxyParamCaption}
+\item[{object}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ae4effee772569a47256bcb5f8764eabc}
+
+
+Updates all of the columns of a table using the specified object except for its primary key. The object is required to have a primary key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to update. It must have a primary key designated using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows updated. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_ae4effee772569a47256bcb5f8764eabc}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Update@{Update}}
+\index{Update@{Update}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Update (
+\begin{DoxyParamCaption}
+\item[{object}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ae4effee772569a47256bcb5f8764eabc}
+
+
+Updates all of the columns of a table using the specified object except for its primary key. The object is required to have a primary key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to update. It must have a primary key designated using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows updated. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_ab474a534faebfec1288672ef4e4f2140}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Update@{Update}}
+\index{Update@{Update}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Update (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{Type}]{obj\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ab474a534faebfec1288672ef4e4f2140}
+
+
+Updates all of the columns of a table using the specified object except for its primary key. The object is required to have a primary key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to update. It must have a primary key designated using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}. \\
+\hline
+{\em obj\-Type} & The type of object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows updated. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_ab474a534faebfec1288672ef4e4f2140}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Update@{Update}}
+\index{Update@{Update}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Update (
+\begin{DoxyParamCaption}
+\item[{object}]{obj, }
+\item[{Type}]{obj\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_ab474a534faebfec1288672ef4e4f2140}
+
+
+Updates all of the columns of a table using the specified object except for its primary key. The object is required to have a primary key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to update. It must have a primary key designated using the \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}. \\
+\hline
+{\em obj\-Type} & The type of object to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows updated. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a1a95399fe5d61f8bbb56e36eac38d467}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Update\-All@{Update\-All}}
+\index{Update\-All@{Update\-All}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Update\-All}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Update\-All (
+\begin{DoxyParamCaption}
+\item[{System.\-Collections.\-I\-Enumerable}]{objects}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a1a95399fe5d61f8bbb56e36eac38d467}
+
+
+Updates all specified objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & An I\-Enumerable of the objects to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows modified. 
+\end{DoxyReturn}
+\hypertarget{classSQLite_1_1SQLiteConnection_a1a95399fe5d61f8bbb56e36eac38d467}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Update\-All@{Update\-All}}
+\index{Update\-All@{Update\-All}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Update\-All}]{\setlength{\rightskip}{0pt plus 5cm}int S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Update\-All (
+\begin{DoxyParamCaption}
+\item[{System.\-Collections.\-I\-Enumerable}]{objects}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSQLite_1_1SQLiteConnection_a1a95399fe5d61f8bbb56e36eac38d467}
+
+
+Updates all specified objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & An I\-Enumerable of the objects to insert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows modified. 
+\end{DoxyReturn}
+
+
+\subsection{Property Documentation}
+\hypertarget{classSQLite_1_1SQLiteConnection_a825c0ebf745f8424ee0e8444b13cb6ff}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Busy\-Timeout@{Busy\-Timeout}}
+\index{Busy\-Timeout@{Busy\-Timeout}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Busy\-Timeout}]{\setlength{\rightskip}{0pt plus 5cm}Time\-Span S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Busy\-Timeout\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{classSQLite_1_1SQLiteConnection_a825c0ebf745f8424ee0e8444b13cb6ff}
+
+
+Sets a busy handler to sleep the specified amount of time when a table is locked. The handler will sleep multiple times until a total time of \hyperlink{classSQLite_1_1SQLiteConnection_a825c0ebf745f8424ee0e8444b13cb6ff}{Busy\-Timeout} has accumulated. 
+
+\hypertarget{classSQLite_1_1SQLiteConnection_a82a4af3768596d6d0031110be9f56ae0}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Is\-In\-Transaction@{Is\-In\-Transaction}}
+\index{Is\-In\-Transaction@{Is\-In\-Transaction}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Is\-In\-Transaction}]{\setlength{\rightskip}{0pt plus 5cm}bool S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Is\-In\-Transaction\hspace{0.3cm}{\ttfamily [get]}}}\label{classSQLite_1_1SQLiteConnection_a82a4af3768596d6d0031110be9f56ae0}
+
+
+Whether \hyperlink{classSQLite_1_1SQLiteConnection_aba3becdb524808bd49f349587f1b7049}{Begin\-Transaction} has been called and the database is waiting for a \hyperlink{classSQLite_1_1SQLiteConnection_a2c8187a19b5065f6b23c079e7cca29fe}{Commit}. 
+
+\hypertarget{classSQLite_1_1SQLiteConnection_a72dd4f277b04c171222a199744aef32b}{\index{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}!Table\-Mappings@{Table\-Mappings}}
+\index{Table\-Mappings@{Table\-Mappings}!SQLite::SQLiteConnection@{S\-Q\-Lite\-::\-S\-Q\-Lite\-Connection}}
+\subsubsection[{Table\-Mappings}]{\setlength{\rightskip}{0pt plus 5cm}I\-Enumerable$<$ {\bf Table\-Mapping} $>$ S\-Q\-Lite.\-S\-Q\-Lite\-Connection.\-Table\-Mappings\hspace{0.3cm}{\ttfamily [get]}}}\label{classSQLite_1_1SQLiteConnection_a72dd4f277b04c171222a199744aef32b}
+
+
+Returns the mappings from types to tables that the connection currently understands. 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+packages/sqlite-\/net.\-1.\-0.\-8/content/S\-Q\-Lite.\-cs\end{DoxyCompactItemize}

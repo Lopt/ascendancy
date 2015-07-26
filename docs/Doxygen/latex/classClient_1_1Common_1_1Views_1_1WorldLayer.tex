@@ -1,0 +1,89 @@
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer}{\section{Client.\-Common.\-Views.\-World\-Layer Class Reference}
+\label{classClient_1_1Common_1_1Views_1_1WorldLayer}\index{Client.\-Common.\-Views.\-World\-Layer@{Client.\-Common.\-Views.\-World\-Layer}}
+}
+Inheritance diagram for Client.\-Common.\-Views.\-World\-Layer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classClient_1_1Common_1_1Views_1_1WorldLayer}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Phases} \{ \\*
+{\bfseries Start}, 
+{\bfseries Load\-Terrain}, 
+{\bfseries Load\-Entities}, 
+{\bfseries Idle}, 
+\\*
+{\bfseries Exit}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_ada890fb7de1fd3eb6f22db5922c3b3c6}{{\bfseries World\-Layer} (\hyperlink{classClient_1_1Common_1_1Views_1_1GameScene}{Game\-Scene} game\-Scene)}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_ada890fb7de1fd3eb6f22db5922c3b3c6}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_a9c8d0ab2c10ac9444749d61ccb1eb13e}{void {\bfseries Ugly\-Draw} ()}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_a9c8d0ab2c10ac9444749d61ccb1eb13e}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_a9d6b9089fd6dbee086d2d29979654453}{C\-C\-Point {\bfseries Layer\-World\-To\-Parentspace} (C\-C\-Point point)}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_a9d6b9089fd6dbee086d2d29979654453}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_a78ba26390dbd8846292d5ddaf7498d2f}{C\-C\-Tile\-Map\-Coordinates {\bfseries Closest\-Tile\-Coord\-At\-Node\-Position} (C\-C\-Point point)}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_a78ba26390dbd8846292d5ddaf7498d2f}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_ac15c64e5bcea6628c8826233fbfe7441}{void {\bfseries Do\-Action} (\hyperlink{classCore_1_1Models_1_1Action}{Core.\-Models.\-Action} action)}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_ac15c64e5bcea6628c8826233fbfe7441}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_ae05e7392f00366f82975cdbb98888ff7}{void {\bfseries Move\-World} (C\-C\-Point diff)}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_ae05e7392f00366f82975cdbb98888ff7}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_a461a75adc0ce851c50c6e404bb0cc9bc}{float {\bfseries Get\-Scale} ()}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_a461a75adc0ce851c50c6e404bb0cc9bc}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_afb5fdabd309821659a05293f3a19f9cf}{void {\bfseries Scale\-World} (float new\-Scale)}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_afb5fdabd309821659a05293f3a19f9cf}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_a721d2e25aad2d8043fb9d266469ed512}{void {\bfseries Check\-Center\-Region} ()}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_a721d2e25aad2d8043fb9d266469ed512}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_a4fefbd0db68b1ef20b134fb39ed340f9}{override void {\bfseries Added\-To\-Scene} ()}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_a4fefbd0db68b1ef20b134fb39ed340f9}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_ae3646a0cc23442a3b7b96edfd673e6e1}{Phases {\bfseries Phase}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_ae3646a0cc23442a3b7b96edfd673e6e1}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_aad5e33a7256b817694809da2b7bd8e0c}{\hyperlink{classClient_1_1Common_1_1Views_1_1RegionView}{Region\-View} {\bfseries Region\-View}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_aad5e33a7256b817694809da2b7bd8e0c}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_afd03e15ab33d9374896b26f270b4ed49}{\hyperlink{classCore_1_1Models_1_1Position}{Position} {\bfseries Center\-Position}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_afd03e15ab33d9374896b26f270b4ed49}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_aba9b73da6c67f236c61b71ca42336414}{C\-C\-Tile\-Map {\bfseries World\-Tile\-Map}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_aba9b73da6c67f236c61b71ca42336414}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_a6720eb38ee9ed4cf9234f8f31ed8e928}{C\-C\-Tile\-Map\-Layer {\bfseries Terrain\-Layer}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_a6720eb38ee9ed4cf9234f8f31ed8e928}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_a1e5285954c32c948cbbb6c3b11f39bc5}{C\-C\-Tile\-Map\-Layer {\bfseries Building\-Layer}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_a1e5285954c32c948cbbb6c3b11f39bc5}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_af56bd228892f4cd8f354c8270e97020f}{C\-C\-Tile\-Map\-Layer {\bfseries Unit\-Layer}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_af56bd228892f4cd8f354c8270e97020f}
+
+\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayer_aed55542d07b095c07bf54cab0070ee33}{C\-C\-Tile\-Map\-Layer {\bfseries Menu\-Layer}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classClient_1_1Common_1_1Views_1_1WorldLayer_aed55542d07b095c07bf54cab0070ee33}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+client/client/client.\-Common/\-Views/World\-Layer.\-cs\end{DoxyCompactItemize}

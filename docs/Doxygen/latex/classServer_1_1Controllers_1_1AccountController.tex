@@ -1,0 +1,102 @@
+\hypertarget{classServer_1_1Controllers_1_1AccountController}{\section{Server.\-Controllers.\-Account\-Controller Class Reference}
+\label{classServer_1_1Controllers_1_1AccountController}\index{Server.\-Controllers.\-Account\-Controller@{Server.\-Controllers.\-Account\-Controller}}
+}
+
+
+Manages an account. Which includes Login, holding password and session and the last time when each region was loaded.  
+
+
+Inheritance diagram for Server.\-Controllers.\-Account\-Controller\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classServer_1_1Controllers_1_1AccountController}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classServer_1_1Controllers_1_1AccountController_ac35adf7e9f6d20dfbf584df2723b320c}{{\bfseries Account\-Controller} (\hyperlink{classCore_1_1Models_1_1Account}{Core.\-Models.\-Account} account, string password)}\label{classServer_1_1Controllers_1_1AccountController_ac35adf7e9f6d20dfbf584df2723b320c}
+
+\item 
+void \hyperlink{classServer_1_1Controllers_1_1AccountController_a2326ec6c25856d4dcf65d9422b753c97}{Refresh\-Region} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\-Models.\-Region\-Position} region\-Position, Date\-Time date\-Time)
+\begin{DoxyCompactList}\small\item\em Everytime the client is loading a region, this function should be called with the datetime of the last action of the region. So it is known which data version the client has. \end{DoxyCompactList}\item 
+Date\-Time \hyperlink{classServer_1_1Controllers_1_1AccountController_ae318dc148368d8a293c7fdf6dabceab6}{Get\-Region\-Status} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\-Models.\-Region\-Position} region\-Position)
+\begin{DoxyCompactList}\small\item\em Returns the Date\-Time of the specific region, when the last status was transfered. \end{DoxyCompactList}\item 
+bool \hyperlink{classServer_1_1Controllers_1_1AccountController_a73d7223e39a37a1adfb3b04ab7513031}{Login} (string username, string password)
+\begin{DoxyCompactList}\small\item\em Tries to login the user, return true if everything worked. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classServer_1_1Controllers_1_1AccountController_a243d08e18b7e88f0ed33f3283aaf5709}{Guid {\bfseries Session\-I\-D}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classServer_1_1Controllers_1_1AccountController_a243d08e18b7e88f0ed33f3283aaf5709}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Manages an account. Which includes Login, holding password and session and the last time when each region was loaded. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classServer_1_1Controllers_1_1AccountController_ae318dc148368d8a293c7fdf6dabceab6}{\index{Server\-::\-Controllers\-::\-Account\-Controller@{Server\-::\-Controllers\-::\-Account\-Controller}!Get\-Region\-Status@{Get\-Region\-Status}}
+\index{Get\-Region\-Status@{Get\-Region\-Status}!Server::Controllers::AccountController@{Server\-::\-Controllers\-::\-Account\-Controller}}
+\subsubsection[{Get\-Region\-Status}]{\setlength{\rightskip}{0pt plus 5cm}Date\-Time Server.\-Controllers.\-Account\-Controller.\-Get\-Region\-Status (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\-Models.\-Region\-Position}}]{region\-Position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1Controllers_1_1AccountController_ae318dc148368d8a293c7fdf6dabceab6}
+
+
+Returns the Date\-Time of the specific region, when the last status was transfered. 
+
+\begin{DoxyReturn}{Returns}
+A Date\-Time when the last action of a specific region was transfered. {\bfseries null} if it wasn't loaded before.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em region\-Position} & Region Position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classServer_1_1Controllers_1_1AccountController_a73d7223e39a37a1adfb3b04ab7513031}{\index{Server\-::\-Controllers\-::\-Account\-Controller@{Server\-::\-Controllers\-::\-Account\-Controller}!Login@{Login}}
+\index{Login@{Login}!Server::Controllers::AccountController@{Server\-::\-Controllers\-::\-Account\-Controller}}
+\subsubsection[{Login}]{\setlength{\rightskip}{0pt plus 5cm}bool Server.\-Controllers.\-Account\-Controller.\-Login (
+\begin{DoxyParamCaption}
+\item[{string}]{username, }
+\item[{string}]{password}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1Controllers_1_1AccountController_a73d7223e39a37a1adfb3b04ab7513031}
+
+
+Tries to login the user, return true if everything worked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Username\\
+\hline
+{\em password} & Password\\
+\hline
+\end{DoxyParams}
+\hypertarget{classServer_1_1Controllers_1_1AccountController_a2326ec6c25856d4dcf65d9422b753c97}{\index{Server\-::\-Controllers\-::\-Account\-Controller@{Server\-::\-Controllers\-::\-Account\-Controller}!Refresh\-Region@{Refresh\-Region}}
+\index{Refresh\-Region@{Refresh\-Region}!Server::Controllers::AccountController@{Server\-::\-Controllers\-::\-Account\-Controller}}
+\subsubsection[{Refresh\-Region}]{\setlength{\rightskip}{0pt plus 5cm}void Server.\-Controllers.\-Account\-Controller.\-Refresh\-Region (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\-Models.\-Region\-Position}}]{region\-Position, }
+\item[{Date\-Time}]{date\-Time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1Controllers_1_1AccountController_a2326ec6c25856d4dcf65d9422b753c97}
+
+
+Everytime the client is loading a region, this function should be called with the datetime of the last action of the region. So it is known which data version the client has. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em region\-Position} & Region position.\\
+\hline
+{\em date\-Time} & Date time.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+server/\-Controllers/Account\-Controller.\-cs\end{DoxyCompactItemize}

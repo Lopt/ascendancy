@@ -1,0 +1,111 @@
+\hypertarget{classAStar_1_1Node}{\section{A\-Star.\-Node Class Reference}
+\label{classAStar_1_1Node}\index{A\-Star.\-Node@{A\-Star.\-Node}}
+}
+
+
+Represents a single node on a grid that is being searched for a path between two points  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAStar_1_1Node_a937f422d6e30afb82921967fdeb1a27b}{Node} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} location, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} end\-Location)
+\begin{DoxyCompactList}\small\item\em Constructor from a \hyperlink{classAStar_1_1Node}{Node}, it set the position\-I of the \hyperlink{classAStar_1_1Node}{Node}, set the nodstate to open and calculate the travel cost to the destination tile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceAStar_a44d96e2d4066e21483fa07d62358c358}{Node\-State} \hyperlink{classAStar_1_1Node_a71d509fe94dee571f3852c9f60c63e13}{State}
+\begin{DoxyCompactList}\small\item\em Flags whether the node is open, closed or untested by the \hyperlink{classAStar_1_1PathFinder}{Path\-Finder} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} \hyperlink{classAStar_1_1Node_afd917b94b45e7f39ebebb8b180bf16b5}{Location}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The node's location in the grid \end{DoxyCompactList}\item 
+double \hyperlink{classAStar_1_1Node_ad35f9676be4b5d25936033f87a490d5d}{G}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Cost from start to here \end{DoxyCompactList}\item 
+double \hyperlink{classAStar_1_1Node_ac396e73b68313b7402307f6f41da8179}{H}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Estimated cost from here to end \end{DoxyCompactList}\item 
+double \hyperlink{classAStar_1_1Node_a2093196ab12b8969927bbd441f395558}{F}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Estimated total cost (F = G + H) \end{DoxyCompactList}\item 
+\hyperlink{classAStar_1_1Node}{Node} \hyperlink{classAStar_1_1Node_af01de677cce55f979bab4ce6577c9614}{Parent\-Node}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the parent node. The start node's parent is always null. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a single node on a grid that is being searched for a path between two points 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classAStar_1_1Node_a937f422d6e30afb82921967fdeb1a27b}{\index{A\-Star\-::\-Node@{A\-Star\-::\-Node}!Node@{Node}}
+\index{Node@{Node}!AStar::Node@{A\-Star\-::\-Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}A\-Star.\-Node.\-Node (
+\begin{DoxyParamCaption}
+\item[{{\bf Position\-I}}]{location, }
+\item[{{\bf Position\-I}}]{end\-Location}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classAStar_1_1Node_a937f422d6e30afb82921967fdeb1a27b}
+
+
+Constructor from a \hyperlink{classAStar_1_1Node}{Node}, it set the position\-I of the \hyperlink{classAStar_1_1Node}{Node}, set the nodstate to open and calculate the travel cost to the destination tile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Current postion\-I of the \hyperlink{classAStar_1_1Node}{Node}.\\
+\hline
+{\em end\-Location} & Position\-I of the destination tile.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classAStar_1_1Node_a71d509fe94dee571f3852c9f60c63e13}{\index{A\-Star\-::\-Node@{A\-Star\-::\-Node}!State@{State}}
+\index{State@{State}!AStar::Node@{A\-Star\-::\-Node}}
+\subsubsection[{State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node\-State} A\-Star.\-Node.\-State}}\label{classAStar_1_1Node_a71d509fe94dee571f3852c9f60c63e13}
+
+
+Flags whether the node is open, closed or untested by the \hyperlink{classAStar_1_1PathFinder}{Path\-Finder} 
+
+
+
+\subsection{Property Documentation}
+\hypertarget{classAStar_1_1Node_a2093196ab12b8969927bbd441f395558}{\index{A\-Star\-::\-Node@{A\-Star\-::\-Node}!F@{F}}
+\index{F@{F}!AStar::Node@{A\-Star\-::\-Node}}
+\subsubsection[{F}]{\setlength{\rightskip}{0pt plus 5cm}double A\-Star.\-Node.\-F\hspace{0.3cm}{\ttfamily [get]}}}\label{classAStar_1_1Node_a2093196ab12b8969927bbd441f395558}
+
+
+Estimated total cost (F = G + H) 
+
+\hypertarget{classAStar_1_1Node_ad35f9676be4b5d25936033f87a490d5d}{\index{A\-Star\-::\-Node@{A\-Star\-::\-Node}!G@{G}}
+\index{G@{G}!AStar::Node@{A\-Star\-::\-Node}}
+\subsubsection[{G}]{\setlength{\rightskip}{0pt plus 5cm}double A\-Star.\-Node.\-G\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{classAStar_1_1Node_ad35f9676be4b5d25936033f87a490d5d}
+
+
+Cost from start to here 
+
+\hypertarget{classAStar_1_1Node_ac396e73b68313b7402307f6f41da8179}{\index{A\-Star\-::\-Node@{A\-Star\-::\-Node}!H@{H}}
+\index{H@{H}!AStar::Node@{A\-Star\-::\-Node}}
+\subsubsection[{H}]{\setlength{\rightskip}{0pt plus 5cm}double A\-Star.\-Node.\-H\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{classAStar_1_1Node_ac396e73b68313b7402307f6f41da8179}
+
+
+Estimated cost from here to end 
+
+\hypertarget{classAStar_1_1Node_afd917b94b45e7f39ebebb8b180bf16b5}{\index{A\-Star\-::\-Node@{A\-Star\-::\-Node}!Location@{Location}}
+\index{Location@{Location}!AStar::Node@{A\-Star\-::\-Node}}
+\subsubsection[{Location}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position\-I} A\-Star.\-Node.\-Location\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{classAStar_1_1Node_afd917b94b45e7f39ebebb8b180bf16b5}
+
+
+The node's location in the grid 
+
+\hypertarget{classAStar_1_1Node_af01de677cce55f979bab4ce6577c9614}{\index{A\-Star\-::\-Node@{A\-Star\-::\-Node}!Parent\-Node@{Parent\-Node}}
+\index{Parent\-Node@{Parent\-Node}!AStar::Node@{A\-Star\-::\-Node}}
+\subsubsection[{Parent\-Node}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} A\-Star.\-Node.\-Parent\-Node\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{classAStar_1_1Node_af01de677cce55f979bab4ce6577c9614}
+
+
+Gets or sets the parent node. The start node's parent is always null. 
+
+The parent node.
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+base/\-Controllers/\-Action/\-A\-Star/Node.\-cs\end{DoxyCompactItemize}

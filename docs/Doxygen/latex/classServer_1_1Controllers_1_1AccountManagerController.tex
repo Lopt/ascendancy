@@ -1,0 +1,94 @@
+\hypertarget{classServer_1_1Controllers_1_1AccountManagerController}{\section{Server.\-Controllers.\-Account\-Manager\-Controller Class Reference}
+\label{classServer_1_1Controllers_1_1AccountManagerController}\index{Server.\-Controllers.\-Account\-Manager\-Controller@{Server.\-Controllers.\-Account\-Manager\-Controller}}
+}
+
+
+The \hyperlink{classServer_1_1Controllers_1_1AccountManagerController}{Account\-Manager\-Controller} handles a list of all users and those, which are logged in. It can also log in users and verify a session id.  
+
+
+Inheritance diagram for Server.\-Controllers.\-Account\-Manager\-Controller\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classServer_1_1Controllers_1_1AccountManagerController}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCore_1_1Models_1_1Account}{Account} \hyperlink{classServer_1_1Controllers_1_1AccountManagerController_ae290a06ee465aca4b38a7cd61c304a26}{Login} (string username, string password)
+\begin{DoxyCompactList}\small\item\em Login with a username und password, returns Account if everything worked, otherwise {\bfseries null} \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Account}{Account} \hyperlink{classServer_1_1Controllers_1_1AccountManagerController_aa78f40e7fdfcc38730c4fe118b52b5eb}{Registrate} (string username, string password)
+\begin{DoxyCompactList}\small\item\em Registrates the username/password combination as a new user. If the username already exist, he will be logged in. returns {\bfseries null} when username is already taken with an different password. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Account}{Account} \hyperlink{classServer_1_1Controllers_1_1AccountManagerController_afd9fd2cdd749a94178834540c91ceef4}{Get\-Account\-By\-Session} (Guid session\-I\-D)
+\begin{DoxyCompactList}\small\item\em Gets the account by a session. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classServer_1_1Controllers_1_1AccountManagerController}{Account\-Manager\-Controller} handles a list of all users and those, which are logged in. It can also log in users and verify a session id. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classServer_1_1Controllers_1_1AccountManagerController_afd9fd2cdd749a94178834540c91ceef4}{\index{Server\-::\-Controllers\-::\-Account\-Manager\-Controller@{Server\-::\-Controllers\-::\-Account\-Manager\-Controller}!Get\-Account\-By\-Session@{Get\-Account\-By\-Session}}
+\index{Get\-Account\-By\-Session@{Get\-Account\-By\-Session}!Server::Controllers::AccountManagerController@{Server\-::\-Controllers\-::\-Account\-Manager\-Controller}}
+\subsubsection[{Get\-Account\-By\-Session}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Account} Server.\-Controllers.\-Account\-Manager\-Controller.\-Get\-Account\-By\-Session (
+\begin{DoxyParamCaption}
+\item[{Guid}]{session\-I\-D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1Controllers_1_1AccountManagerController_afd9fd2cdd749a94178834540c91ceef4}
+
+
+Gets the account by a session. 
+
+\begin{DoxyReturn}{Returns}
+An Account which is assigned to this session id or null, if there was none.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em session\-I\-D} & Session I\-D\\
+\hline
+\end{DoxyParams}
+\hypertarget{classServer_1_1Controllers_1_1AccountManagerController_ae290a06ee465aca4b38a7cd61c304a26}{\index{Server\-::\-Controllers\-::\-Account\-Manager\-Controller@{Server\-::\-Controllers\-::\-Account\-Manager\-Controller}!Login@{Login}}
+\index{Login@{Login}!Server::Controllers::AccountManagerController@{Server\-::\-Controllers\-::\-Account\-Manager\-Controller}}
+\subsubsection[{Login}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Account} Server.\-Controllers.\-Account\-Manager\-Controller.\-Login (
+\begin{DoxyParamCaption}
+\item[{string}]{username, }
+\item[{string}]{password}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1Controllers_1_1AccountManagerController_ae290a06ee465aca4b38a7cd61c304a26}
+
+
+Login with a username und password, returns Account if everything worked, otherwise {\bfseries null} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Username.\\
+\hline
+{\em password} & Password.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classServer_1_1Controllers_1_1AccountManagerController_aa78f40e7fdfcc38730c4fe118b52b5eb}{\index{Server\-::\-Controllers\-::\-Account\-Manager\-Controller@{Server\-::\-Controllers\-::\-Account\-Manager\-Controller}!Registrate@{Registrate}}
+\index{Registrate@{Registrate}!Server::Controllers::AccountManagerController@{Server\-::\-Controllers\-::\-Account\-Manager\-Controller}}
+\subsubsection[{Registrate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Account} Server.\-Controllers.\-Account\-Manager\-Controller.\-Registrate (
+\begin{DoxyParamCaption}
+\item[{string}]{username, }
+\item[{string}]{password}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1Controllers_1_1AccountManagerController_aa78f40e7fdfcc38730c4fe118b52b5eb}
+
+
+Registrates the username/password combination as a new user. If the username already exist, he will be logged in. returns {\bfseries null} when username is already taken with an different password. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Username.\\
+\hline
+{\em password} & Password.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+server/\-Controllers/Account\-Manager\-Controller.\-cs\end{DoxyCompactItemize}

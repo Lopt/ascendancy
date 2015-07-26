@@ -1,0 +1,151 @@
+\hypertarget{namespaceSQLite}{\section{Package S\-Q\-Lite}
+\label{namespaceSQLite}\index{S\-Q\-Lite@{S\-Q\-Lite}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classSQLite_1_1SQLiteException}{S\-Q\-Lite\-Exception}
+\item 
+class \hyperlink{classSQLite_1_1NotNullConstraintViolationException}{Not\-Null\-Constraint\-Violation\-Exception}
+\item 
+class \hyperlink{classSQLite_1_1SQLiteConnection}{S\-Q\-Lite\-Connection}
+\begin{DoxyCompactList}\small\item\em Represents an open connection to a \hyperlink{namespaceSQLite}{S\-Q\-Lite} database. \end{DoxyCompactList}\item 
+class \hyperlink{classSQLite_1_1SQLiteConnectionString}{S\-Q\-Lite\-Connection\-String}
+\begin{DoxyCompactList}\small\item\em Represents a parsed connection string. \end{DoxyCompactList}\item 
+class \hyperlink{classSQLite_1_1TableAttribute}{Table\-Attribute}
+\item 
+class \hyperlink{classSQLite_1_1ColumnAttribute}{Column\-Attribute}
+\item 
+class \hyperlink{classSQLite_1_1PrimaryKeyAttribute}{Primary\-Key\-Attribute}
+\item 
+class \hyperlink{classSQLite_1_1AutoIncrementAttribute}{Auto\-Increment\-Attribute}
+\item 
+class \hyperlink{classSQLite_1_1IndexedAttribute}{Indexed\-Attribute}
+\item 
+class \hyperlink{classSQLite_1_1IgnoreAttribute}{Ignore\-Attribute}
+\item 
+class \hyperlink{classSQLite_1_1UniqueAttribute}{Unique\-Attribute}
+\item 
+class \hyperlink{classSQLite_1_1MaxLengthAttribute}{Max\-Length\-Attribute}
+\item 
+class \hyperlink{classSQLite_1_1CollationAttribute}{Collation\-Attribute}
+\item 
+class \hyperlink{classSQLite_1_1NotNullAttribute}{Not\-Null\-Attribute}
+\item 
+class \hyperlink{classSQLite_1_1TableMapping}{Table\-Mapping}
+\item 
+class {\bfseries Orm}
+\item 
+class \hyperlink{classSQLite_1_1SQLiteCommand}{S\-Q\-Lite\-Command}
+\item 
+class \hyperlink{classSQLite_1_1PreparedSqlLiteInsertCommand}{Prepared\-Sql\-Lite\-Insert\-Command}
+\begin{DoxyCompactList}\small\item\em Since the insert never changed, we only need to prepare once. \end{DoxyCompactList}\item 
+class \hyperlink{classSQLite_1_1BaseTableQuery}{Base\-Table\-Query}
+\item 
+class \hyperlink{classSQLite_1_1TableQuery_3_01T_01_4}{Table\-Query$<$ T $>$}
+\item 
+class {\bfseries S\-Q\-Lite3}
+\item 
+class \hyperlink{classSQLite_1_1SQLiteAsyncConnection}{S\-Q\-Lite\-Async\-Connection}
+\item 
+class \hyperlink{classSQLite_1_1AsyncTableQuery_3_01T_01_4}{Async\-Table\-Query$<$ T $>$}
+\item 
+class \hyperlink{classSQLite_1_1CreateTablesResult}{Create\-Tables\-Result}
+\item 
+class \hyperlink{classSQLite_1_1SQLiteConnectionPool}{S\-Q\-Lite\-Connection\-Pool}
+\item 
+class \hyperlink{classSQLite_1_1SQLiteConnectionWithLock}{S\-Q\-Lite\-Connection\-With\-Lock}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries S\-Q\-Lite\-Open\-Flags} \{ \\*
+{\bfseries Read\-Only} = 1, 
+{\bfseries Read\-Write} = 2, 
+{\bfseries Create} = 4, 
+{\bfseries No\-Mutex} = 0x8000, 
+\\*
+{\bfseries Full\-Mutex} = 0x10000, 
+{\bfseries Shared\-Cache} = 0x20000, 
+{\bfseries Private\-Cache} = 0x40000, 
+{\bfseries Protection\-Complete} = 0x00100000, 
+\\*
+{\bfseries Protection\-Complete\-Unless\-Open} = 0x00200000, 
+{\bfseries Protection\-Complete\-Until\-First\-User\-Authentication} = 0x00300000, 
+{\bfseries Protection\-None} = 0x00400000, 
+{\bfseries Read\-Only} = 1, 
+\\*
+{\bfseries Read\-Write} = 2, 
+{\bfseries Create} = 4, 
+{\bfseries No\-Mutex} = 0x8000, 
+{\bfseries Full\-Mutex} = 0x10000, 
+\\*
+{\bfseries Shared\-Cache} = 0x20000, 
+{\bfseries Private\-Cache} = 0x40000, 
+{\bfseries Protection\-Complete} = 0x00100000, 
+{\bfseries Protection\-Complete\-Unless\-Open} = 0x00200000, 
+\\*
+{\bfseries Protection\-Complete\-Until\-First\-User\-Authentication} = 0x00300000, 
+{\bfseries Protection\-None} = 0x00400000
+ \}
+\item 
+enum {\bfseries Create\-Flags} \{ \\*
+{\bfseries None} = 0, 
+{\bfseries Implicit\-P\-K} = 1, 
+{\bfseries Implicit\-Index} = 2, 
+{\bfseries All\-Implicit} = 3, 
+\\*
+{\bfseries Auto\-Inc\-P\-K} = 4, 
+{\bfseries None} = 0, 
+{\bfseries Implicit\-P\-K} = 1, 
+{\bfseries Implicit\-Index} = 2, 
+\\*
+{\bfseries All\-Implicit} = 3, 
+{\bfseries Auto\-Inc\-P\-K} = 4
+ \}
+\item 
+enum {\bfseries S\-Q\-Lite\-Open\-Flags} \{ \\*
+{\bfseries Read\-Only} = 1, 
+{\bfseries Read\-Write} = 2, 
+{\bfseries Create} = 4, 
+{\bfseries No\-Mutex} = 0x8000, 
+\\*
+{\bfseries Full\-Mutex} = 0x10000, 
+{\bfseries Shared\-Cache} = 0x20000, 
+{\bfseries Private\-Cache} = 0x40000, 
+{\bfseries Protection\-Complete} = 0x00100000, 
+\\*
+{\bfseries Protection\-Complete\-Unless\-Open} = 0x00200000, 
+{\bfseries Protection\-Complete\-Until\-First\-User\-Authentication} = 0x00300000, 
+{\bfseries Protection\-None} = 0x00400000, 
+{\bfseries Read\-Only} = 1, 
+\\*
+{\bfseries Read\-Write} = 2, 
+{\bfseries Create} = 4, 
+{\bfseries No\-Mutex} = 0x8000, 
+{\bfseries Full\-Mutex} = 0x10000, 
+\\*
+{\bfseries Shared\-Cache} = 0x20000, 
+{\bfseries Private\-Cache} = 0x40000, 
+{\bfseries Protection\-Complete} = 0x00100000, 
+{\bfseries Protection\-Complete\-Unless\-Open} = 0x00200000, 
+\\*
+{\bfseries Protection\-Complete\-Until\-First\-User\-Authentication} = 0x00300000, 
+{\bfseries Protection\-None} = 0x00400000
+ \}
+\item 
+enum {\bfseries Create\-Flags} \{ \\*
+{\bfseries None} = 0, 
+{\bfseries Implicit\-P\-K} = 1, 
+{\bfseries Implicit\-Index} = 2, 
+{\bfseries All\-Implicit} = 3, 
+\\*
+{\bfseries Auto\-Inc\-P\-K} = 4, 
+{\bfseries None} = 0, 
+{\bfseries Implicit\-P\-K} = 1, 
+{\bfseries Implicit\-Index} = 2, 
+\\*
+{\bfseries All\-Implicit} = 3, 
+{\bfseries Auto\-Inc\-P\-K} = 4
+ \}
+\end{DoxyCompactItemize}
