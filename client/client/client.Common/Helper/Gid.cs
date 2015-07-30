@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace client.Common.Helper
+namespace Client.Common.Helper
 {
     /// <summary>
     /// Terrain GIDs assingment accordngly to client/data/tiles/Tile zuordnung.pdf.
@@ -112,7 +112,7 @@ namespace client.Common.Helper
     {
         public const short BOWMAN = 60;
         public const short HERO = 61;
-        public const short WARRIOR= 62;
+        public const short WARRIOR = 62;
         public const short MAGE = 63;
         public const short SCOUT = 64;
         public const short UNKNOWN = 65;
