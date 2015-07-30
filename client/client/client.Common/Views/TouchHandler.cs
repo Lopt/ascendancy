@@ -227,7 +227,7 @@ namespace Client.Common.Views
                     {
                         m_touchGesture = TouchGesture.MoveUnit;
                     }
-                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid != 0)
+                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid != 0 && m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid <= 67)
                     {
                         var types = new Core.Models.Definitions.Definition[6];
                         var defM = Core.Models.World.Instance.DefinitionManager;
@@ -243,7 +243,7 @@ namespace Client.Common.Views
                         m_menuView.DrawMenu();
                         m_touchGesture = TouchGesture.Menu;
                     }
-                    else
+                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid == 0)
                     {
                         var types = new Core.Models.Definitions.Definition[6];
                         var defM = Core.Models.World.Instance.DefinitionManager;

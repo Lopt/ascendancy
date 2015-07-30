@@ -149,7 +149,7 @@ namespace Client.Common.Views
         public CCTileGidAndFlags DefinitionToTileGid(Definition definition, Sort sort = Sort.Normal)
         {
             CCTileGidAndFlags gid;
-            gid = new CCTileGidAndFlags(ClientConstants.INVALID_GID);
+            gid = new CCTileGidAndFlags(client.Common.Helper.TerrainGid.INVALID);
 
             if (definition.Category == Core.Models.Definitions.Category.Terrain)
             {
