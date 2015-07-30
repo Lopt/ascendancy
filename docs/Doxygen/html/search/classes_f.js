@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['r',['R',['../classandroid_1_1support_1_1v4_1_1R.html',1,'android::support::v4']]],
   ['r',['R',['../classclient_1_1droid_1_1R.html',1,'client::droid']]],
+  ['r',['R',['../classandroid_1_1support_1_1v4_1_1R.html',1,'android::support::v4']]],
   ['radiobuttonrenderer',['RadioButtonRenderer',['../classmd50af85d46f9bd85eaa13076bff15d9a6f_1_1RadioButtonRenderer.html',1,'md50af85d46f9bd85eaa13076bff15d9a6f']]],
   ['region',['Region',['../classCore_1_1Models_1_1Region.html',1,'Core::Models']]],
   ['regiondata',['RegionData',['../classServer_1_1Controllers_1_1APIController_1_1RegionData.html',1,'Server::Controllers::APIController']]],

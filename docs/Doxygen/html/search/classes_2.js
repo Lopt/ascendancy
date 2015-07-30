@@ -32,6 +32,6 @@ var searchData=
   ['createbuilding',['CreateBuilding',['../classClient_1_1Common_1_1Views_1_1Actions_1_1CreateBuilding.html',1,'Client::Common::Views::Actions']]],
   ['createheadquarter',['CreateHeadquarter',['../classCore_1_1Controllers_1_1Actions_1_1CreateHeadquarter.html',1,'Core::Controllers::Actions']]],
   ['createtablesresult',['CreateTablesResult',['../classSQLite_1_1CreateTablesResult.html',1,'SQLite']]],
-  ['createunit',['CreateUnit',['../classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html',1,'Core::Controllers::Actions']]],
-  ['createunit',['CreateUnit',['../classClient_1_1Common_1_1Views_1_1Actions_1_1CreateUnit.html',1,'Client::Common::Views::Actions']]]
+  ['createunit',['CreateUnit',['../classClient_1_1Common_1_1Views_1_1Actions_1_1CreateUnit.html',1,'Client::Common::Views::Actions']]],
+  ['createunit',['CreateUnit',['../classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html',1,'Core::Controllers::Actions']]]
 ];

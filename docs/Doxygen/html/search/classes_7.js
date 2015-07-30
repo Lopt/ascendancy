@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['helperspritesgid',['HelperSpritesGid',['../classClient_1_1Common_1_1Helper_1_1HelperSpritesGid.html',1,'Client::Common::Helper']]],
   ['homecontroller',['HomeController',['../classServer_1_1Controllers_1_1HomeController.html',1,'Server::Controllers']]],
   ['hostnameverifier',['HostnameVerifier',['../classmd595f4b8ab717b9da13f11267a86077f20_1_1HostnameVerifier.html',1,'md595f4b8ab717b9da13f11267a86077f20']]],
   ['httpcontroller',['HTTPController',['../classServer_1_1Controllers_1_1HTTPController.html',1,'Server::Controllers']]],

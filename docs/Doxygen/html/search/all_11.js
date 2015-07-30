@@ -1,8 +1,8 @@
 var searchData=
 [
   ['readme',['README',['../md_README.html',1,'']]],
-  ['r',['R',['../classclient_1_1droid_1_1R.html',1,'client::droid']]],
   ['r',['R',['../classandroid_1_1support_1_1v4_1_1R.html',1,'android::support::v4']]],
+  ['r',['R',['../classclient_1_1droid_1_1R.html',1,'client::droid']]],
   ['radiobuttonrenderer',['RadioButtonRenderer',['../classmd50af85d46f9bd85eaa13076bff15d9a6f_1_1RadioButtonRenderer.html',1,'md50af85d46f9bd85eaa13076bff15d9a6f']]],
   ['refreshregion',['RefreshRegion',['../classServer_1_1Controllers_1_1AccountController.html#a2326ec6c25856d4dcf65d9422b753c97',1,'Server::Controllers::AccountController']]],
   ['region',['Region',['../classCore_1_1Models_1_1Region.html',1,'Core::Models']]],

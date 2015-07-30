@@ -2,6 +2,8 @@ var searchData=
 [
   ['editoredittext',['EditorEditText',['../classmd5530bd51e982e6e7b340b73e88efe666e_1_1EditorEditText.html',1,'md5530bd51e982e6e7b340b73e88efe666e']]],
   ['editorrenderer',['EditorRenderer',['../classmd5530bd51e982e6e7b340b73e88efe666e_1_1EditorRenderer.html',1,'md5530bd51e982e6e7b340b73e88efe666e']]],
+  ['enemybuildinggid',['EnemyBuildingGid',['../classClient_1_1Common_1_1Helper_1_1EnemyBuildingGid.html',1,'Client::Common::Helper']]],
+  ['enemyunitgid',['EnemyUnitGid',['../classClient_1_1Common_1_1Helper_1_1EnemyUnitGid.html',1,'Client::Common::Helper']]],
   ['entity',['Entity',['../classCore_1_1Models_1_1Entity.html',1,'Core::Models']]],
   ['entitymanagercontroller',['EntityManagerController',['../classClient_1_1Common_1_1Manager_1_1EntityManagerController.html',1,'Client::Common::Manager']]],
   ['entrycelledittext',['EntryCellEditText',['../classmd5530bd51e982e6e7b340b73e88efe666e_1_1EntryCellEditText.html',1,'md5530bd51e982e6e7b340b73e88efe666e']]],
