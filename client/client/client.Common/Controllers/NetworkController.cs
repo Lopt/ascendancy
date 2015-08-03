@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using ModernHttpClient;
 
 using Core.Models.Definitions;
 using Core.Models;
 using Client.Common.Helper;
-using System.Collections.Generic;
+
 
 
 
 namespace Client.Common.Controllers
 {
+    /// <summary>
+    /// the Network controller is a singleton to controll the network up and download to the server.
+    /// </summary>
     public sealed class NetworkController
     {
         #region Singleton
@@ -126,7 +130,7 @@ namespace Client.Common.Controllers
         /// <summary>
         /// Login async to the server and save the sessionID.
         /// </summary>
-        /// <returns>The AccoountId.</returns>
+        /// <returns>The Accoount.</returns>
         /// <param name="currentGamePosition">Current game position.</param>
         /// <param name="user">User.</param>
         /// <param name="password">Password.</param>
@@ -151,9 +155,9 @@ namespace Client.Common.Controllers
         }
 
         /// <summary>
-        /// Loads the entities async.
+        /// Loads the entities and actions async from the server.
         /// </summary>
-        /// <returns>The entities async.</returns>
+        /// <returns>The entities response from the server.</returns>
         /// <param name="currentGamePosition">Current game position.</param>
         /// <param name="regionPositions">Region positions.</param>
         public async Task<Core.Connections.Response> LoadEntitiesAsync(Core.Models.Position currentGamePosition, RegionPosition[] regionPositions)
@@ -173,6 +177,12 @@ namespace Client.Common.Controllers
             return new Core.Connections.Response();
         }
 
+        /// <summary>
+        /// Sends the actions to the server.
+        /// </summary>
+        /// <returns>True if the response is ok, otherwise false.</returns>
+        /// <param name="currentGamePosition">Current game position.</param>
+        /// <param name="actions">Actions.</param>
         public async Task<bool> DoActionsAsync(Core.Models.Position currentGamePosition, Core.Models.Action[] actions)
         {
             var request = new Core.Connections.DoActionsRequest(m_sessionID, currentGamePosition, actions);
@@ -192,13 +202,18 @@ namespace Client.Common.Controllers
         }
 
 
-
-
         #endregion
 
         #region private Fields
 
+        /// <summary>
+        /// The m client.
+        /// </summary>
         private HttpClient m_client;
+
+        /// <summary>
+        /// The m sessionID.
+        /// </summary>
         private Guid m_sessionID;
 
         #endregion

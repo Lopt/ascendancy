@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AStar
+namespace Core.Controllers.AStar
 {
     /// <summary>
     /// Defines the parameters which will be used to find a path across a section of the map

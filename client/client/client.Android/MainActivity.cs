@@ -19,6 +19,9 @@ using Android.Net.Rtp;
 
 namespace Client.Droid
 {
+	/// <summary>
+	/// Main activity.
+	/// </summary>
 	[Activity(
 		Label = "Ascendancy",
 		AlwaysRetainTaskState = true,
@@ -31,6 +34,10 @@ namespace Client.Droid
     ]
 	public class MainActivity : AndroidGameActivity
 	{
+		/// <summary>
+		/// On the create event.
+		/// </summary>
+		/// <param name="bundle">Bundle.</param>
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
@@ -53,7 +60,9 @@ namespace Client.Droid
 			application.StartGame();
 		}
 
-
+		/// <summary>
+		/// Sets the io container.
+		/// </summary>
 		private void SetIoc()
 		{
 			var resolverContainer = new SimpleContainer();

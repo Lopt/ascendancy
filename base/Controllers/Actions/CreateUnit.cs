@@ -69,9 +69,19 @@ namespace Core.Controllers.Actions
             var action = (Core.Models.Action)Model;
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             var type = (long)action.Parameters[CREATION_TYPE];
+            var Entity = Controller.Instance.RegionManagerController.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition);
+           
+            if (action.AccountID == Entity.AccountID)
+            {
+                RealCreatePosition = GetFreeField(positionI, regionManagerC);
 
-            RealCreatePosition = GetFreeField(positionI, regionManagerC);
-            return RealCreatePosition != null;
+                return RealCreatePosition != null;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
         /// <summary>

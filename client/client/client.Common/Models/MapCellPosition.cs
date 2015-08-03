@@ -5,14 +5,26 @@ using Client.Common.Helper;
 
 namespace Client.Common.Models
 {
+    /// <summary>
+    /// The Map cell position to convert between tilemap and map cell.
+    /// </summary>
     public class MapCellPosition
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Models.MapCellPosition"/> class.
+        /// </summary>
+        /// <param name="cellX">Cell x.</param>
+        /// <param name="cellY">Cell y.</param>
         public MapCellPosition(int cellX, int cellY)
         {
             m_CellX = cellX;
             m_CellY = cellY;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Models.MapCellPosition"/> class.
+        /// </summary>
+        /// <param name="tileMapCoordinates">Tile map coordinates.</param>
         public MapCellPosition(CCTileMapCoordinates tileMapCoordinates)
         {
             var x = tileMapCoordinates.Column;
@@ -22,6 +34,10 @@ namespace Client.Common.Models
             m_CellY = (y / 2);
         }
 
+        /// <summary>
+        /// Gets the cell x.
+        /// </summary>
+        /// <value>The cell x.</value>
         public int CellX
         {
             get
@@ -30,6 +46,10 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// Gets the cell y.
+        /// </summary>
+        /// <value>The cell y.</value>
         public int CellY
         {
             get
@@ -39,12 +59,19 @@ namespace Client.Common.Models
         }
 
 
-
+        /// <summary>
+        /// Gets the tile map coordinates.
+        /// </summary>
+        /// <returns>The tile map coordinates.</returns>
         public CCTileMapCoordinates GetTileMapCoordinates()
         {
             return new CCTileMapCoordinates(m_CellX / 2, (m_CellY * 2) + (m_CellX % 2));
         }
 
+        /// <summary>
+        /// Gets the anchor.
+        /// </summary>
+        /// <returns>The anchor.</returns>
         public CCPoint GetAnchor()
         {
 
@@ -54,7 +81,13 @@ namespace Client.Common.Models
             return new CCPoint(x, (1 - y) / 2);
         }
 
+        /// <summary>
+        /// The m_cell x.
+        /// </summary>
         private readonly int m_CellX;
+        /// <summary>
+        /// The m_cell y.
+        /// </summary>
         private readonly int m_CellY;
     }
 }

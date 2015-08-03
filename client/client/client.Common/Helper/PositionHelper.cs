@@ -6,13 +6,28 @@ using Core.Models;
 
 namespace Client.Common.Helper
 {
+    /// <summary>
+    /// Position helper convert map and tile positions.
+    /// </summary>
     public class PositionHelper
     {
+        /// <summary>
+        /// Positions to tile map coordinates.
+        /// </summary>
+        /// <returns>The tile map coordinates.</returns>
+        /// <param name="centerPosition">Center position.</param>
+        /// <param name="position">Position.</param>
         static public CocosSharp.CCTileMapCoordinates PositionToTileMapCoordinates(Position centerPosition, PositionI position)
         {
             return PositionToMapCellPosition(centerPosition, position).GetTileMapCoordinates();
         }
 
+        /// <summary>
+        /// Positions to map cell position.
+        /// </summary>
+        /// <returns>The map cell position.</returns>
+        /// <param name="centerPosition">Center position.</param>
+        /// <param name="position">Position.</param>
         static public MapCellPosition PositionToMapCellPosition(Position centerPosition, PositionI position)
         {
             var cellPos = centerPosition.CellPosition;

@@ -12,16 +12,29 @@ using XLabs.Platform.Device;
 
 namespace Client.Common.Models
 {
+    /// <summary>
+    /// The Geolocation as a singleton class for geolocation information.
+    /// </summary>
     [Table("Geolocation")]
     public sealed class Geolocation : ViewBaseModel
     {
         #region Singelton
 
+        /// <summary>
+        /// The lazy.
+        /// </summary>
         private static readonly Lazy<Geolocation> lazy =
             new Lazy<Geolocation>(() => new Geolocation());
 
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>The instance.</value>
         public static Geolocation Instance { get { return lazy.Value; } }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Models.Geolocation"/> class.
+        /// </summary>
         private Geolocation()
         {
             m_geolocator = DependencyService.Get<IGeolocator>();
@@ -32,8 +45,8 @@ namespace Client.Common.Models
             m_scheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
             Position position = new Position();
-            position.Latitude = 50.98520741; // standartPosition
-            position.Longitude = 11.04233265; // standartPosition
+            position.Latitude = 50.98520741; // standardPosition
+            position.Longitude = 11.04233265; // standardPosition
             CurrentPosition = position;
             LastPosition = new Position();
 
@@ -46,22 +59,43 @@ namespace Client.Common.Models
 
         #region Geolocator
 
+        /// <summary>
+        /// The m_geolocator.
+        /// </summary>
         private readonly IGeolocator m_geolocator = null;
+        /// <summary>
+        /// The m_tokensource.
+        /// </summary>
         private CancellationTokenSource m_tokensource = null;
+        /// <summary>
+        /// The m_scheduler.
+        /// </summary>
         private readonly TaskScheduler m_scheduler = null;
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is busy.
+        /// </summary>
+        /// <value><c>true</c> if this instance is busy; otherwise, <c>false</c>.</value>
         public bool IsBusy
         { 
             get;
             private set; 
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is position changed.
+        /// </summary>
+        /// <value><c>true</c> if this instance is position changed; otherwise, <c>false</c>.</value>
         public bool IsPositionChanged
         {
             get; 
             set; 
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is geolocation available.
+        /// </summary>
+        /// <value><c>true</c> if this instance is geolocation available; otherwise, <c>false</c>.</value>
         public bool IsGeolocationAvailable
         { 
             get
@@ -70,6 +104,10 @@ namespace Client.Common.Models
             } 
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is geolocation enabled.
+        /// </summary>
+        /// <value><c>true</c> if this instance is geolocation enabled; otherwise, <c>false</c>.</value>
         public bool IsGeolocationEnabled
         { 
             get
@@ -78,6 +116,10 @@ namespace Client.Common.Models
             } 
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is geolocation listening.
+        /// </summary>
+        /// <value><c>true</c> if this instance is geolocation listening; otherwise, <c>false</c>.</value>
         public bool IsGeolocationListening
         { 
             get
@@ -86,22 +128,39 @@ namespace Client.Common.Models
             } 
         }
 
+        /// <summary>
+        /// Starts the listening.
+        /// </summary>
+        /// <param name="minTimeIntervallInMilliSec">Minimum time intervall in milli sec.</param>
+        /// <param name="minDistance">Minimum distance.</param>
         public void StartListening(uint minTimeIntervallInMilliSec, double minDistance)
         {
             m_geolocator.StartListening(minTimeIntervallInMilliSec, minDistance);
         }
 
+        /// <summary>
+        /// Stops the listening.
+        /// </summary>
         public void StopListening()
         {
             m_geolocator.StopListening();
         }
 
+        /// <summary>
+        /// Raises the position changed event.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">E.</param>
         private async void OnPositionChanged(object sender, PositionEventArgs e)
         {
             await GetPosition();
             IsPositionChanged = true;
         }
 
+        /// <summary>
+        /// Gets the position.
+        /// </summary>
+        /// <returns>The position.</returns>
         private async Task GetPosition()
         {  
             if (m_geolocator == null)
@@ -131,6 +190,10 @@ namespace Client.Common.Models
 
         #region ViewPoperties
 
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         [PrimaryKey, AutoIncrement]
         public int Id
         {
@@ -138,6 +201,10 @@ namespace Client.Common.Models
             set; 
         }
 
+        /// <summary>
+        /// Gets or sets the current position.
+        /// </summary>
+        /// <value>The current position.</value>
         [Column("CurrentPosition")]
         public Position CurrentPosition
         { 
@@ -167,10 +234,20 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name current position.
+        /// </summary>
         public static string PropertyNameCurrentPosition = "CurrentPosition";
+        /// <summary>
+        /// The m_current position.
+        /// </summary>
         private Position m_currentPosition;
 
 
+        /// <summary>
+        /// Gets or sets the current game position.
+        /// </summary>
+        /// <value>The current game position.</value>
         [Column("CurrentGamePosition")]
         public Core.Models.Position CurrentGamePosition
         { 
@@ -188,10 +265,20 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name current game position.
+        /// </summary>
         public static string PropertyNameCurrentGamePosition = "CurrentGamePosition";
+        /// <summary>
+        /// The m_current game position.
+        /// </summary>
         private Core.Models.Position m_currentGamePosition;
 
 
+        /// <summary>
+        /// Gets or sets the current region position.
+        /// </summary>
+        /// <value>The current region position.</value>
         [Column("CurrentRegionPosition")]
         public Core.Models.RegionPosition CurrentRegionPosition
         { 
@@ -209,10 +296,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name current region position.
+        /// </summary>
         public static string PropertyNameCurrentRegionPosition = "CurrentRegionPosition";
+        /// <summary>
+        /// The m_current region position.
+        /// </summary>
         private Core.Models.RegionPosition m_currentRegionPosition;
 
-
+        /// <summary>
+        /// Gets or sets the current cell position.
+        /// </summary>
+        /// <value>The current cell position.</value>
         [Column("CurrentCellPosition")]
         public Core.Models.CellPosition CurrentCellPosition
         { 
@@ -230,10 +326,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name current cell position.
+        /// </summary>
         public static string PropertyNameCurrentCellPosition = "CurrentCellPosition";
+        /// <summary>
+        /// The m_current cell position.
+        /// </summary>
         private Core.Models.CellPosition m_currentCellPosition;
 
-
+        /// <summary>
+        /// Gets or sets the last position.
+        /// </summary>
+        /// <value>The last position.</value>
         [Column("LastPosition")]
         public Position LastPosition
         { 
@@ -254,10 +359,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name last position.
+        /// </summary>
         public static string PropertyNameLastPosition = "LastPosition";
+        /// <summary>
+        /// The m_last position.
+        /// </summary>
         private Position m_lastPosition;
 
-
+        /// <summary>
+        /// Gets or sets the last game position.
+        /// </summary>
+        /// <value>The last game position.</value>
         [Column("LastGamePosition")]
         public Core.Models.Position LastGamePosition
         { 
@@ -275,10 +389,20 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name last game position.
+        /// </summary>
         public static string PropertyNameLastGamePosition = "LastGamePosition";
+        /// <summary>
+        /// The m_last game position.
+        /// </summary>
         private Core.Models.Position m_lastGamePosition;
 
 
+        /// <summary>
+        /// Gets or sets the last region position.
+        /// </summary>
+        /// <value>The last region position.</value>
         [Column("LastRegionPosition")]
         public Core.Models.RegionPosition LastRegionPosition
         { 
@@ -296,10 +420,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name last region position.
+        /// </summary>
         public static string PropertyNameLastRegionPosition = "LastRegionPosition";
+        /// <summary>
+        /// The m_last region position.
+        /// </summary>
         private Core.Models.RegionPosition m_lastRegionPosition;
 
-
+        /// <summary>
+        /// Gets or sets the last cell position.
+        /// </summary>
+        /// <value>The last cell position.</value>
         [Column("LastCellPosition")]
         public Core.Models.CellPosition LastCellPosition
         { 
@@ -317,10 +450,20 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name last cell position.
+        /// </summary>
         public static string PropertyNameLastCellPosition = "LastCellPosition";
+        /// <summary>
+        /// The m_last cell position.
+        /// </summary>
         private Core.Models.CellPosition m_lastCellPosition;
 
 
+        /// <summary>
+        /// Gets or sets the latitude.
+        /// </summary>
+        /// <value>The latitude.</value>
         [Column("Latitude")]
         public string Latitude
         { 
@@ -338,10 +481,20 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name latitude.
+        /// </summary>
         public static string PropertyNameLatitude = "Latitude";
+        /// <summary>
+        /// The m_latitude.
+        /// </summary>
         private string m_latitude;
 
 
+        /// <summary>
+        /// Gets or sets the longitude.
+        /// </summary>
+        /// <value>The longitude.</value>
         [Column("Longitude")]
         public string Longitude
         { 
@@ -359,10 +512,20 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name longitude.
+        /// </summary>
         public static string PropertyNameLongitude = "Longitude";
+        /// <summary>
+        /// The m_longitude.
+        /// </summary>
         private string m_longitude;
 
 
+        /// <summary>
+        /// Gets or sets the altitude.
+        /// </summary>
+        /// <value>The altitude.</value>
         [Column("Altitude")]
         public string Altitude
         { 
@@ -380,10 +543,19 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name string game position.
+        /// </summary>
         public static string PropertyNameStringGamePosition = "StringGamePosition";
+        /// <summary>
+        /// The m_string game position.
+        /// </summary>
         private string m_stringGamePosition;
 
-
+        /// <summary>
+        /// Gets or sets the string game position.
+        /// </summary>
+        /// <value>The string game position.</value>
         [Column("StringGamePosition")]
         public string StringGamePosition
         { 
@@ -401,10 +573,20 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name altitude.
+        /// </summary>
         public static string PropertyNameAltitude = "Altitude";
+        /// <summary>
+        /// The m_altitude.
+        /// </summary>
         private string m_altitude;
 
 
+        /// <summary>
+        /// Gets or sets the time stamp.
+        /// </summary>
+        /// <value>The time stamp.</value>
         [Column("TimeStamp")]
         public string TimeStamp
         { 
@@ -422,11 +604,21 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name time stamp.
+        /// </summary>
         public static string PropertyNameTimeStamp = "TimeStamp";
+        /// <summary>
+        /// The m time stamp.
+        /// </summary>
         private string m_timeStamp;
 
 
-        //Heading in dergees relative to the north
+
+        /// <summary>
+        /// Gets or sets the heading in dergees relative to the north.
+        /// </summary>
+        /// <value>The heading.</value>
         [Column("Heading")]
         public string Heading
         { 
@@ -444,11 +636,21 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name heading.
+        /// </summary>
         public static string PropertyNameHeading = "Heading";
+        /// <summary>
+        /// The m_heading.
+        /// </summary>
         private string m_heading;
 
 
-        //the potential position error radius in meters
+
+        /// <summary>
+        /// Gets or sets the accuracy.The potential position error radius in meters
+        /// </summary>
+        /// <value>The accuracy.</value>
         [Column("Accuracy")]
         public string Accuracy
         { 
@@ -466,10 +668,20 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name accuracy.
+        /// </summary>
         public static string PropertyNameAccuracy = "Accuracy";
+        /// <summary>
+        /// The m_accuracy.
+        /// </summary>
         private string m_accuracy;
 
 
+        /// <summary>
+        /// Gets or sets the status.
+        /// </summary>
+        /// <value>The status.</value>
         [Column("Status")]
         public string Status
         { 
@@ -487,7 +699,13 @@ namespace Client.Common.Models
             }
         }
 
+        /// <summary>
+        /// The property name status.
+        /// </summary>
         public static string PropertyNameStatus = "Status";
+        /// <summary>
+        /// The m_status.
+        /// </summary>
         private string m_status;
 
         #endregion

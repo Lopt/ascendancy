@@ -1,0 +1,129 @@
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1TestAction}{\section{Core.\-Controllers.\-Actions.\-Test\-Action Class Reference}
+\label{classCore_1_1Controllers_1_1Actions_1_1TestAction}\index{Core.\-Controllers.\-Actions.\-Test\-Action@{Core.\-Controllers.\-Actions.\-Test\-Action}}
+}
+Inheritance diagram for Core.\-Controllers.\-Actions.\-Test\-Action\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classCore_1_1Controllers_1_1Actions_1_1TestAction}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1TestAction_acde41768970ae5575ff02cbe5892759b}{{\bfseries Test\-Action} (\hyperlink{classCore_1_1Models_1_1ModelEntity}{Core.\-Models.\-Model\-Entity} model)}\label{classCore_1_1Controllers_1_1Actions_1_1TestAction_acde41768970ae5575ff02cbe5892759b}
+
+\item 
+override Concurrent\-Bag\\*
+$<$ \hyperlink{classCore_1_1Models_1_1Region}{Core.\-Models.\-Region} $>$ \hyperlink{classCore_1_1Controllers_1_1Actions_1_1TestAction_a67ca0915de8d842e7ddaaada1ca4efa6}{Get\-Affected\-Regions} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action}{Core.\-Controllers.\-Actions.\-Action} class. \end{DoxyCompactList}\item 
+override \hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\-Models.\-Region\-Position} \hyperlink{classCore_1_1Controllers_1_1Actions_1_1TestAction_a054601a2ec2a06e9b28367b9f77788f2}{Get\-Region\-Position} ()
+\begin{DoxyCompactList}\small\item\em Returns the Position where the action should be executed (e.\-g. first region) \end{DoxyCompactList}\item 
+override bool \hyperlink{classCore_1_1Controllers_1_1Actions_1_1TestAction_a34c402de500bea49dcf438efb421517d}{Possible} ()
+\begin{DoxyCompactList}\small\item\em Returns if the action is even possible. \end{DoxyCompactList}\item 
+override Concurrent\-Bag\\*
+$<$ \hyperlink{classCore_1_1Models_1_1Region}{Core.\-Models.\-Region} $>$ \hyperlink{classCore_1_1Controllers_1_1Actions_1_1TestAction_a5d7f62d1d383e7b31ea51dd078a2139d}{Do} ()
+\begin{DoxyCompactList}\small\item\em Apply action-\/related changes to the world. Returns false if something went terrible wrong \end{DoxyCompactList}\item 
+override bool \hyperlink{classCore_1_1Controllers_1_1Actions_1_1TestAction_a5335698d7fc5aabc08748af1ffe18fcc}{Catch} ()
+\begin{DoxyCompactList}\small\item\em In case of errors, revert the world data to a valid state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1TestAction_a6fbbbe54392a6011d5c0ef455396afd8}{const string {\bfseries R\-E\-G\-I\-O\-N\-S} = \char`\"{}Regions\char`\"{}}\label{classCore_1_1Controllers_1_1Actions_1_1TestAction_a6fbbbe54392a6011d5c0ef455396afd8}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1TestAction_a5335698d7fc5aabc08748af1ffe18fcc}{\index{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action@{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action}!Catch@{Catch}}
+\index{Catch@{Catch}!Core::Controllers::Actions::TestAction@{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action}}
+\subsubsection[{Catch}]{\setlength{\rightskip}{0pt plus 5cm}override bool Core.\-Controllers.\-Actions.\-Test\-Action.\-Catch (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classCore_1_1Controllers_1_1Actions_1_1TestAction_a5335698d7fc5aabc08748af1ffe18fcc}
+
+
+In case of errors, revert the world data to a valid state. 
+
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_ada4c77dfeee78ded10a6eb6a506defb4}{Core.\-Controllers.\-Actions.\-Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1TestAction_a5d7f62d1d383e7b31ea51dd078a2139d}{\index{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action@{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action}!Do@{Do}}
+\index{Do@{Do}!Core::Controllers::Actions::TestAction@{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action}}
+\subsubsection[{Do}]{\setlength{\rightskip}{0pt plus 5cm}override Concurrent\-Bag$<${\bf Core.\-Models.\-Region}$>$ Core.\-Controllers.\-Actions.\-Test\-Action.\-Do (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classCore_1_1Controllers_1_1Actions_1_1TestAction_a5d7f62d1d383e7b31ea51dd078a2139d}
+
+
+Apply action-\/related changes to the world. Returns false if something went terrible wrong 
+
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_afbb091ee28eee896951fac600188d446}{Core.\-Controllers.\-Actions.\-Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1TestAction_a67ca0915de8d842e7ddaaada1ca4efa6}{\index{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action@{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action}!Get\-Affected\-Regions@{Get\-Affected\-Regions}}
+\index{Get\-Affected\-Regions@{Get\-Affected\-Regions}!Core::Controllers::Actions::TestAction@{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action}}
+\subsubsection[{Get\-Affected\-Regions}]{\setlength{\rightskip}{0pt plus 5cm}override Concurrent\-Bag$<${\bf Core.\-Models.\-Region}$>$ Core.\-Controllers.\-Actions.\-Test\-Action.\-Get\-Affected\-Regions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classCore_1_1Controllers_1_1Actions_1_1TestAction_a67ca0915de8d842e7ddaaada1ca4efa6}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action}{Core.\-Controllers.\-Actions.\-Action} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action\-Type} & \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action}{Action} type.\\
+\hline
+{\em regions} & Affected Regions of this action.\\
+\hline
+{\em parameters} & Parameters.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_aa11bdeffff43ec47ac7c3d6843a85674}{Core.\-Controllers.\-Actions.\-Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1TestAction_a054601a2ec2a06e9b28367b9f77788f2}{\index{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action@{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action}!Get\-Region\-Position@{Get\-Region\-Position}}
+\index{Get\-Region\-Position@{Get\-Region\-Position}!Core::Controllers::Actions::TestAction@{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action}}
+\subsubsection[{Get\-Region\-Position}]{\setlength{\rightskip}{0pt plus 5cm}override {\bf Core.\-Models.\-Region\-Position} Core.\-Controllers.\-Actions.\-Test\-Action.\-Get\-Region\-Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classCore_1_1Controllers_1_1Actions_1_1TestAction_a054601a2ec2a06e9b28367b9f77788f2}
+
+
+Returns the Position where the action should be executed (e.\-g. first region) 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action}{Action} execution Region\-Position.
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_a6ffe3c30cb5648a81f50096f4f332d5a}{Core.\-Controllers.\-Actions.\-Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1TestAction_a34c402de500bea49dcf438efb421517d}{\index{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action@{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action}!Possible@{Possible}}
+\index{Possible@{Possible}!Core::Controllers::Actions::TestAction@{Core\-::\-Controllers\-::\-Actions\-::\-Test\-Action}}
+\subsubsection[{Possible}]{\setlength{\rightskip}{0pt plus 5cm}override bool Core.\-Controllers.\-Actions.\-Test\-Action.\-Possible (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classCore_1_1Controllers_1_1Actions_1_1TestAction_a34c402de500bea49dcf438efb421517d}
+
+
+Returns if the action is even possible. 
+
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_a405b995343a9394ad19e05a699a4e6d9}{Core.\-Controllers.\-Actions.\-Action}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+base/\-Controllers/\-Action/Test\-Action.\-cs\end{DoxyCompactItemize}

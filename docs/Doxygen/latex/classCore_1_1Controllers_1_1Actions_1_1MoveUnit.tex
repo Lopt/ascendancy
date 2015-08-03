@@ -1,0 +1,162 @@
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1MoveUnit}{\section{Core.\-Controllers.\-Actions.\-Move\-Unit Class Reference}
+\label{classCore_1_1Controllers_1_1Actions_1_1MoveUnit}\index{Core.\-Controllers.\-Actions.\-Move\-Unit@{Core.\-Controllers.\-Actions.\-Move\-Unit}}
+}
+Inheritance diagram for Core.\-Controllers.\-Actions.\-Move\-Unit\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classCore_1_1Controllers_1_1Actions_1_1MoveUnit}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a323064ada90151bcd8d659ee27d87917}{Move\-Unit} (\hyperlink{classCore_1_1Models_1_1ModelEntity}{Core.\-Models.\-Model\-Entity} model)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the Core.\-Models.\-Actions.\-Move\-Unit class. \end{DoxyCompactList}\item 
+override Concurrent\-Bag\\*
+$<$ \hyperlink{classCore_1_1Models_1_1Region}{Core.\-Models.\-Region} $>$ \hyperlink{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a0331c4888d9efc148ecc501b4db37481}{Get\-Affected\-Regions} ()
+\begin{DoxyCompactList}\small\item\em Gets the affected regions. \end{DoxyCompactList}\item 
+override bool \hyperlink{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a6689af13f9a2f8ff90ad72d2ac327a52}{Possible} ()
+\begin{DoxyCompactList}\small\item\em Returns true if the action is even possible. \end{DoxyCompactList}\item 
+override Concurrent\-Bag\\*
+$<$ \hyperlink{classCore_1_1Models_1_1Region}{Core.\-Models.\-Region} $>$ \hyperlink{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_adaf6b91a2e858d8805ea8ed83947b27a}{Do} ()
+\begin{DoxyCompactList}\small\item\em Apply action-\/related changes to the world. Returns set of changed Regions if everything worked, otherwise null \end{DoxyCompactList}\item 
+override bool \hyperlink{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a80ff3497561ed98a933e41f48830d947}{Catch} ()
+\begin{DoxyCompactList}\small\item\em In case of errors, revert the world data to a valid state. \end{DoxyCompactList}\item 
+override \hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\-Models.\-Region\-Position} \hyperlink{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a87a9c5589011c8e86770e1b1be487381}{Get\-Region\-Position} ()
+\begin{DoxyCompactList}\small\item\em Gets the region position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_aa00af18610776c1a0eebde8ae273286a}{const string {\bfseries S\-T\-A\-R\-T\-\_\-\-P\-O\-S\-I\-T\-I\-O\-N} = \char`\"{}Entity\-Position\char`\"{}}\label{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_aa00af18610776c1a0eebde8ae273286a}
+
+\item 
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a411193c1cf0e0784fbc3340dcc3cd21c}{const string {\bfseries E\-N\-D\-\_\-\-P\-O\-S\-I\-T\-I\-O\-N} = \char`\"{}New\-Position\char`\"{}}\label{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a411193c1cf0e0784fbc3340dcc3cd21c}
+
+\item 
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a32d0ea3d4b02301de1b754a4e8bcaacd}{I\-List {\bfseries Path}}\label{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a32d0ea3d4b02301de1b754a4e8bcaacd}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a323064ada90151bcd8d659ee27d87917}{\index{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}!Move\-Unit@{Move\-Unit}}
+\index{Move\-Unit@{Move\-Unit}!Core::Controllers::Actions::MoveUnit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}}
+\subsubsection[{Move\-Unit}]{\setlength{\rightskip}{0pt plus 5cm}Core.\-Controllers.\-Actions.\-Move\-Unit.\-Move\-Unit (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\-Models.\-Model\-Entity}}]{model}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a323064ada90151bcd8d659ee27d87917}
+
+
+Initializes a new instance of the Core.\-Models.\-Actions.\-Move\-Unit class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & Model.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a80ff3497561ed98a933e41f48830d947}{\index{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}!Catch@{Catch}}
+\index{Catch@{Catch}!Core::Controllers::Actions::MoveUnit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}}
+\subsubsection[{Catch}]{\setlength{\rightskip}{0pt plus 5cm}override bool Core.\-Controllers.\-Actions.\-Move\-Unit.\-Catch (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a80ff3497561ed98a933e41f48830d947}
+
+
+In case of errors, revert the world data to a valid state. 
+
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_ada4c77dfeee78ded10a6eb6a506defb4}{Core.\-Controllers.\-Actions.\-Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_adaf6b91a2e858d8805ea8ed83947b27a}{\index{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}!Do@{Do}}
+\index{Do@{Do}!Core::Controllers::Actions::MoveUnit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}}
+\subsubsection[{Do}]{\setlength{\rightskip}{0pt plus 5cm}override Concurrent\-Bag$<${\bf Core.\-Models.\-Region}$>$ Core.\-Controllers.\-Actions.\-Move\-Unit.\-Do (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_adaf6b91a2e858d8805ea8ed83947b27a}
+
+
+Apply action-\/related changes to the world. Returns set of changed Regions if everything worked, otherwise null 
+
+
+\begin{DoxyParams}{Parameters}
+{\em region\-Manager\-C} & Region manager c.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_afbb091ee28eee896951fac600188d446}{Core.\-Controllers.\-Actions.\-Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a0331c4888d9efc148ecc501b4db37481}{\index{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}!Get\-Affected\-Regions@{Get\-Affected\-Regions}}
+\index{Get\-Affected\-Regions@{Get\-Affected\-Regions}!Core::Controllers::Actions::MoveUnit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}}
+\subsubsection[{Get\-Affected\-Regions}]{\setlength{\rightskip}{0pt plus 5cm}override Concurrent\-Bag$<${\bf Core.\-Models.\-Region}$>$ Core.\-Controllers.\-Actions.\-Move\-Unit.\-Get\-Affected\-Regions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a0331c4888d9efc148ecc501b4db37481}
+
+
+Gets the affected regions. 
+
+\begin{DoxyReturn}{Returns}
+The affected regions.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em region\-Manager\-C} & Region manager c.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_aa11bdeffff43ec47ac7c3d6843a85674}{Core.\-Controllers.\-Actions.\-Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a87a9c5589011c8e86770e1b1be487381}{\index{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}!Get\-Region\-Position@{Get\-Region\-Position}}
+\index{Get\-Region\-Position@{Get\-Region\-Position}!Core::Controllers::Actions::MoveUnit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}}
+\subsubsection[{Get\-Region\-Position}]{\setlength{\rightskip}{0pt plus 5cm}override {\bf Core.\-Models.\-Region\-Position} Core.\-Controllers.\-Actions.\-Move\-Unit.\-Get\-Region\-Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a87a9c5589011c8e86770e1b1be487381}
+
+
+Gets the region position. 
+
+\begin{DoxyReturn}{Returns}
+The region position.
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_a6ffe3c30cb5648a81f50096f4f332d5a}{Core.\-Controllers.\-Actions.\-Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a6689af13f9a2f8ff90ad72d2ac327a52}{\index{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}!Possible@{Possible}}
+\index{Possible@{Possible}!Core::Controllers::Actions::MoveUnit@{Core\-::\-Controllers\-::\-Actions\-::\-Move\-Unit}}
+\subsubsection[{Possible}]{\setlength{\rightskip}{0pt plus 5cm}override bool Core.\-Controllers.\-Actions.\-Move\-Unit.\-Possible (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classCore_1_1Controllers_1_1Actions_1_1MoveUnit_a6689af13f9a2f8ff90ad72d2ac327a52}
+
+
+Returns true if the action is even possible. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em region\-Manager\-C} & Region manager c.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_a405b995343a9394ad19e05a699a4e6d9}{Core.\-Controllers.\-Actions.\-Action}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+base/\-Controllers/\-Action/Move\-Unit.\-cs\end{DoxyCompactItemize}

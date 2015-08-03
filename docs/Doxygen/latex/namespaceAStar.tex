@@ -1,0 +1,38 @@
+\hypertarget{namespaceAStar}{\section{Package A\-Star}
+\label{namespaceAStar}\index{A\-Star@{A\-Star}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classAStar_1_1Node}{Node}
+\begin{DoxyCompactList}\small\item\em Represents a single node on a grid that is being searched for a path between two points \end{DoxyCompactList}\item 
+class \hyperlink{classAStar_1_1PathFinder}{Path\-Finder}
+\begin{DoxyCompactList}\small\item\em \href{http://blog.two-cats.com/2014/06/a-star-example/}{\tt http\-://blog.\-two-\/cats.\-com/2014/06/a-\/star-\/example/} founded by Mike Clift \end{DoxyCompactList}\item 
+class \hyperlink{classAStar_1_1SearchParameters}{Search\-Parameters}
+\begin{DoxyCompactList}\small\item\em Defines the parameters which will be used to find a path across a section of the map \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespaceAStar_a44d96e2d4066e21483fa07d62358c358}{Node\-State} \{ \hyperlink{namespaceAStar_a44d96e2d4066e21483fa07d62358c358ac3bf447eabe632720a3aa1a7ce401274}{Node\-State.\-Open}, 
+\hyperlink{namespaceAStar_a44d96e2d4066e21483fa07d62358c358a03f4a47830f97377a35321051685071e}{Node\-State.\-Closed}
+ \}
+\begin{DoxyCompactList}\small\item\em Represents the search state of a Node \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespaceAStar_a44d96e2d4066e21483fa07d62358c358}{\index{A\-Star@{A\-Star}!Node\-State@{Node\-State}}
+\index{Node\-State@{Node\-State}!AStar@{A\-Star}}
+\subsubsection[{Node\-State}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf A\-Star.\-Node\-State}}}\label{namespaceAStar_a44d96e2d4066e21483fa07d62358c358}
+
+
+Represents the search state of a \hyperlink{classAStar_1_1Node}{Node} 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Open@{Open}!A\-Star@{A\-Star}}\index{A\-Star@{A\-Star}!Open@{Open}}\item[{\em 
+\hypertarget{namespaceAStar_a44d96e2d4066e21483fa07d62358c358ac3bf447eabe632720a3aa1a7ce401274}{Open}\label{namespaceAStar_a44d96e2d4066e21483fa07d62358c358ac3bf447eabe632720a3aa1a7ce401274}
+}]The node has been identified as a possible step in a path \index{Closed@{Closed}!A\-Star@{A\-Star}}\index{A\-Star@{A\-Star}!Closed@{Closed}}\item[{\em 
+\hypertarget{namespaceAStar_a44d96e2d4066e21483fa07d62358c358a03f4a47830f97377a35321051685071e}{Closed}\label{namespaceAStar_a44d96e2d4066e21483fa07d62358c358a03f4a47830f97377a35321051685071e}
+}]The node has already been included in a path and will not be considered again \end{description}
+\end{Desc}

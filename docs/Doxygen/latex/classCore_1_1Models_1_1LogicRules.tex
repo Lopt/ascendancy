@@ -1,0 +1,73 @@
+\hypertarget{classCore_1_1Models_1_1LogicRules}{\section{Core.\-Models.\-Logic\-Rules Class Reference}
+\label{classCore_1_1Models_1_1LogicRules}\index{Core.\-Models.\-Logic\-Rules@{Core.\-Models.\-Logic\-Rules}}
+}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classCore_1_1Models_1_1LogicRules_a27e2ffeb0da34f1119908281fc5a6510}{static \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I}\mbox{[}$\,$\mbox{]} {\bfseries Get\-Surrounded\-Fields} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} pos)}\label{classCore_1_1Models_1_1LogicRules_a27e2ffeb0da34f1119908281fc5a6510}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I}\mbox{[}$\,$\mbox{]} {\bfseries Surround\-Tiles\-Even}
+\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I}\mbox{[}$\,$\mbox{]} {\bfseries Surround\-Tiles\-Odd}
+\item 
+static readonly \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position}\mbox{[}$\,$\mbox{]} {\bfseries Surround\-Regions}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a42380b97e68c7128580776742ef94e56}{\index{Core\-::\-Models\-::\-Logic\-Rules@{Core\-::\-Models\-::\-Logic\-Rules}!Surround\-Regions@{Surround\-Regions}}
+\index{Surround\-Regions@{Surround\-Regions}!Core::Models::LogicRules@{Core\-::\-Models\-::\-Logic\-Rules}}
+\subsubsection[{Surround\-Regions}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Region\-Position} \mbox{[}$\,$\mbox{]} Core.\-Models.\-Logic\-Rules.\-Surround\-Regions\hspace{0.3cm}{\ttfamily [static]}}}\label{classCore_1_1Models_1_1LogicRules_a42380b97e68c7128580776742ef94e56}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} RegionPosition(-1, -1),
+                \textcolor{keyword}{new} RegionPosition(-1,  0),
+                \textcolor{keyword}{new} RegionPosition(-1, +1),
+                \textcolor{keyword}{new} RegionPosition( 0, +1),
+                \textcolor{keyword}{new} RegionPosition(+1, +1),
+                \textcolor{keyword}{new} RegionPosition(+1,  0),
+                \textcolor{keyword}{new} RegionPosition(+1, -1),
+                \textcolor{keyword}{new} RegionPosition( 0, -1)
+        \}
+\end{DoxyCode}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a3d587d8f781d3b37c26c501d003f3d4d}{\index{Core\-::\-Models\-::\-Logic\-Rules@{Core\-::\-Models\-::\-Logic\-Rules}!Surround\-Tiles\-Even@{Surround\-Tiles\-Even}}
+\index{Surround\-Tiles\-Even@{Surround\-Tiles\-Even}!Core::Models::LogicRules@{Core\-::\-Models\-::\-Logic\-Rules}}
+\subsubsection[{Surround\-Tiles\-Even}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\-I} \mbox{[}$\,$\mbox{]} Core.\-Models.\-Logic\-Rules.\-Surround\-Tiles\-Even\hspace{0.3cm}{\ttfamily [static]}}}\label{classCore_1_1Models_1_1LogicRules_a3d587d8f781d3b37c26c501d003f3d4d}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(0, -1),
+                \textcolor{keyword}{new} PositionI(1, 0),
+                \textcolor{keyword}{new} PositionI(1, 1),
+                \textcolor{keyword}{new} PositionI(0, 1),
+                \textcolor{keyword}{new} PositionI(-1, 1),
+                \textcolor{keyword}{new} PositionI(-1, 0)
+            \}
+\end{DoxyCode}
+\hypertarget{classCore_1_1Models_1_1LogicRules_ae559d0e04d49b4cea7874d1e7ca5a5b2}{\index{Core\-::\-Models\-::\-Logic\-Rules@{Core\-::\-Models\-::\-Logic\-Rules}!Surround\-Tiles\-Odd@{Surround\-Tiles\-Odd}}
+\index{Surround\-Tiles\-Odd@{Surround\-Tiles\-Odd}!Core::Models::LogicRules@{Core\-::\-Models\-::\-Logic\-Rules}}
+\subsubsection[{Surround\-Tiles\-Odd}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\-I} \mbox{[}$\,$\mbox{]} Core.\-Models.\-Logic\-Rules.\-Surround\-Tiles\-Odd\hspace{0.3cm}{\ttfamily [static]}}}\label{classCore_1_1Models_1_1LogicRules_ae559d0e04d49b4cea7874d1e7ca5a5b2}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(0, -1),
+                \textcolor{keyword}{new} PositionI(1, -1),
+                \textcolor{keyword}{new} PositionI(1, 0),
+                \textcolor{keyword}{new} PositionI(0, 1),
+                \textcolor{keyword}{new} PositionI(-1, 0),
+                \textcolor{keyword}{new} PositionI(-1, -1)
+            \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+base/\-Models/Logic\-Rules.\-cs\end{DoxyCompactItemize}

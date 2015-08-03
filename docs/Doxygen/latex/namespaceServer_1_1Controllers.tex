@@ -1,0 +1,20 @@
+\hypertarget{namespaceServer_1_1Controllers}{\section{Package Server.\-Controllers}
+\label{namespaceServer_1_1Controllers}\index{Server.\-Controllers@{Server.\-Controllers}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classServer_1_1Controllers_1_1AccountController}{Account\-Controller}
+\begin{DoxyCompactList}\small\item\em Manages an account. Which includes Login, holding password and session and the last time when each region was loaded. \end{DoxyCompactList}\item 
+class \hyperlink{classServer_1_1Controllers_1_1AccountManagerController}{Account\-Manager\-Controller}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classServer_1_1Controllers_1_1AccountManagerController}{Account\-Manager\-Controller} handles a list of all users and those, which are logged in. It can also log in users and verify a session id. \end{DoxyCompactList}\item 
+class \hyperlink{classServer_1_1Controllers_1_1APIController}{A\-P\-I\-Controller}
+\begin{DoxyCompactList}\small\item\em A\-P\-I Controller provides functionality to access the game. Every access from outside should use A\-P\-I Controller. As example \hyperlink{classServer_1_1Controllers_1_1HTTPController}{H\-T\-T\-P\-Controller} uses only A\-P\-I Controller. If we later switch to another protocol (or directly sockets) we just need to build another H\-T\-T\-P Controller-\/like which uses the A\-P\-I Controller functionality. \end{DoxyCompactList}\item 
+class \hyperlink{classServer_1_1Controllers_1_1DefinitionManagerController}{Definition\-Manager\-Controller}
+\begin{DoxyCompactList}\small\item\em Loads the Definitions and contains them. \end{DoxyCompactList}\item 
+class \hyperlink{classServer_1_1Controllers_1_1HomeController}{Home\-Controller}
+\item 
+class \hyperlink{classServer_1_1Controllers_1_1HTTPController}{H\-T\-T\-P\-Controller}
+\begin{DoxyCompactList}\small\item\em Handles all H\-T\-T\-P Accesses from the client. \end{DoxyCompactList}\item 
+class \hyperlink{classServer_1_1Controllers_1_1RegionManagerController}{Region\-Manager\-Controller}
+\begin{DoxyCompactList}\small\item\em Contains all loaded regions and loads regions. \end{DoxyCompactList}\end{DoxyCompactItemize}

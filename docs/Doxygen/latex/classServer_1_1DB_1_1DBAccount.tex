@@ -1,0 +1,87 @@
+\hypertarget{classServer_1_1DB_1_1DBAccount}{\section{Server.\-D\-B.\-D\-B\-Account Class Reference}
+\label{classServer_1_1DB_1_1DBAccount}\index{Server.\-D\-B.\-D\-B\-Account@{Server.\-D\-B.\-D\-B\-Account}}
+}
+
+
+\hyperlink{namespaceServer_1_1DB}{D\-B} account.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classServer_1_1DB_1_1DBAccount_a09329b7a7cc362eca6d1d54571159395}{D\-B\-Account} (\hyperlink{classSQLite_1_1SQLiteConnection}{S\-Q\-Lite\-Connection} con)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the server.\-D\-B.\-D\-B\-Account class. \end{DoxyCompactList}\item 
+void \hyperlink{classServer_1_1DB_1_1DBAccount_a3b7e2921efb6f6e7ceecba07d3068a1f}{Create\-Account} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, string password)
+\begin{DoxyCompactList}\small\item\em Creates the account with username, password, and the calculated salt value. \end{DoxyCompactList}\item 
+bool \hyperlink{classServer_1_1DB_1_1DBAccount_a53bbc0085fc15347e5d67ff1ee9ee925}{Login} (string username, string password)
+\begin{DoxyCompactList}\small\item\em Login the specified username and password. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{namespaceServer_1_1DB}{D\-B} account. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classServer_1_1DB_1_1DBAccount_a09329b7a7cc362eca6d1d54571159395}{\index{Server\-::\-D\-B\-::\-D\-B\-Account@{Server\-::\-D\-B\-::\-D\-B\-Account}!D\-B\-Account@{D\-B\-Account}}
+\index{D\-B\-Account@{D\-B\-Account}!Server::DB::DBAccount@{Server\-::\-D\-B\-::\-D\-B\-Account}}
+\subsubsection[{D\-B\-Account}]{\setlength{\rightskip}{0pt plus 5cm}Server.\-D\-B.\-D\-B\-Account.\-D\-B\-Account (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-Q\-Lite\-Connection}}]{con}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1DB_1_1DBAccount_a09329b7a7cc362eca6d1d54571159395}
+
+
+Initializes a new instance of the server.\-D\-B.\-D\-B\-Account class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em con} & Connection to the databank.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classServer_1_1DB_1_1DBAccount_a3b7e2921efb6f6e7ceecba07d3068a1f}{\index{Server\-::\-D\-B\-::\-D\-B\-Account@{Server\-::\-D\-B\-::\-D\-B\-Account}!Create\-Account@{Create\-Account}}
+\index{Create\-Account@{Create\-Account}!Server::DB::DBAccount@{Server\-::\-D\-B\-::\-D\-B\-Account}}
+\subsubsection[{Create\-Account}]{\setlength{\rightskip}{0pt plus 5cm}void Server.\-D\-B.\-D\-B\-Account.\-Create\-Account (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{string}]{password}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1DB_1_1DBAccount_a3b7e2921efb6f6e7ceecba07d3068a1f}
+
+
+Creates the account with username, password, and the calculated salt value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Account.\\
+\hline
+{\em password} & Password.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classServer_1_1DB_1_1DBAccount_a53bbc0085fc15347e5d67ff1ee9ee925}{\index{Server\-::\-D\-B\-::\-D\-B\-Account@{Server\-::\-D\-B\-::\-D\-B\-Account}!Login@{Login}}
+\index{Login@{Login}!Server::DB::DBAccount@{Server\-::\-D\-B\-::\-D\-B\-Account}}
+\subsubsection[{Login}]{\setlength{\rightskip}{0pt plus 5cm}bool Server.\-D\-B.\-D\-B\-Account.\-Login (
+\begin{DoxyParamCaption}
+\item[{string}]{username, }
+\item[{string}]{password}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1DB_1_1DBAccount_a53bbc0085fc15347e5d67ff1ee9ee925}
+
+
+Login the specified username and password. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Username.\\
+\hline
+{\em password} & Password.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+server/\-D\-B/D\-B\-Account.\-cs\end{DoxyCompactItemize}

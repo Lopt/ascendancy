@@ -6,8 +6,15 @@ using Core.Controllers.Actions;
 
 namespace Client.Common.Views
 {
+    /// <summary>
+    /// Logo layer.
+    /// </summary>
     public class LogoLayer : CCLayerColor
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.LogoLayer"/> class.
+        /// </summary>
+        /// <param name="startScene">Start scene.</param>
         public LogoLayer(StartScene startScene)
             : base()
         {
@@ -31,6 +38,9 @@ namespace Client.Common.Views
 
         #region overide
 
+        /// <summary>
+        /// Add the logo and loaded sprite to scene.
+        /// </summary>
         protected override void AddedToScene()
         {
             base.AddedToScene();
@@ -50,6 +60,10 @@ namespace Client.Common.Views
 
         #region Scheduling
 
+        /// <summary>
+        /// Show the loaded sprite if the terrain type is loaded.
+        /// </summary>
+        /// <param name="frameTimesInSecond">Frame times in second.</param>
         void LoadingProgress(float frameTimesInSecond)
         {
             if (m_startScene.Phase >= StartScene.Phases.TerrainTypeLoaded)
@@ -64,8 +78,17 @@ namespace Client.Common.Views
 
         #region Properties
 
+        /// <summary>
+        /// The m_logo.
+        /// </summary>
         CCSprite m_logo;
+        /// <summary>
+        /// The m_loaded sprite.
+        /// </summary>
         CCSprite m_loadedSprite;
+        /// <summary>
+        /// The m_start scene.
+        /// </summary>
         StartScene m_startScene;
 
         #endregion

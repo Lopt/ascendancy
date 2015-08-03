@@ -8,8 +8,14 @@ using Core.Models;
 
 namespace Client.Common.Views
 {
+    /// <summary>
+    /// View definitions to set the correct pictures to the entity and terrain types. 
+    /// </summary>
     public class ViewDefinitions
     {
+        /// <summary>
+        /// The definition sort.
+        /// </summary>
         public enum Sort
         {
             Normal,
@@ -17,10 +23,16 @@ namespace Client.Common.Views
             Menu,
         }
 
-
+        /// <summary>
+        /// The lazy m_singleton.
+        /// </summary>
         private static readonly Lazy<ViewDefinitions> m_singleton =
             new Lazy<ViewDefinitions>(() => new ViewDefinitions());
 
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>The instance.</value>
         public static ViewDefinitions Instance
         {
             get
@@ -29,6 +41,9 @@ namespace Client.Common.Views
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.ViewDefinitions"/> class.
+        /// </summary>
         private ViewDefinitions()
         {
             InitTerrainsGid();
@@ -37,93 +52,104 @@ namespace Client.Common.Views
             InitEnemyEntitiesGid();
         }
 
-
+        /// <summary>
+        /// Inits the terrains gids.
+        /// </summary>
         private void InitTerrainsGid()
         {
             m_TerrainsGid = new Dictionary<EntityType,  CCTileGidAndFlags>();
 
-            m_TerrainsGid.Add(EntityType.Beach, new CCTileGidAndFlags(ClientConstants.BEACH_GID));
-            m_TerrainsGid.Add(EntityType.Buildings, new CCTileGidAndFlags(ClientConstants.BUILDINGS_GID));
-            m_TerrainsGid.Add(EntityType.Fields, new CCTileGidAndFlags(ClientConstants.FIELDS_GID));
-            m_TerrainsGid.Add(EntityType.Forbidden, new CCTileGidAndFlags(ClientConstants.FORBIDDEN_GID));
-            m_TerrainsGid.Add(EntityType.Glacier, new CCTileGidAndFlags(ClientConstants.GLACIER_GID));
-            m_TerrainsGid.Add(EntityType.Grassland, new CCTileGidAndFlags(ClientConstants.GRASSLAND_GID));
-            m_TerrainsGid.Add(EntityType.Invalid, new CCTileGidAndFlags(ClientConstants.INVALID_GID));
-            m_TerrainsGid.Add(EntityType.NotDefined, new CCTileGidAndFlags(ClientConstants.NOTDEFINED_GID));
-            m_TerrainsGid.Add(EntityType.Park, new CCTileGidAndFlags(ClientConstants.PARK_GID));
-            m_TerrainsGid.Add(EntityType.Streets, new CCTileGidAndFlags(ClientConstants.STREETS_GID));
-            m_TerrainsGid.Add(EntityType.Town, new CCTileGidAndFlags(ClientConstants.TOWN_GID));
-            m_TerrainsGid.Add(EntityType.Water, new CCTileGidAndFlags(ClientConstants.WATER_GID));
-            m_TerrainsGid.Add(EntityType.Woods, new CCTileGidAndFlags(ClientConstants.WOODS_GID));
+            m_TerrainsGid.Add(EntityType.Beach, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.BEACH));
+            m_TerrainsGid.Add(EntityType.Buildings, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.BUILDINGS));
+            m_TerrainsGid.Add(EntityType.Fields, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.FIELDS));
+            m_TerrainsGid.Add(EntityType.Forbidden, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.FORBIDDEN));
+            m_TerrainsGid.Add(EntityType.Glacier, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.GLACIER));
+            m_TerrainsGid.Add(EntityType.Grassland, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.GRASSLAND));
+            m_TerrainsGid.Add(EntityType.Invalid, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.INVALID));
+            m_TerrainsGid.Add(EntityType.NotDefined, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.NOTDEFINED));
+            m_TerrainsGid.Add(EntityType.Park, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.PARK));
+            m_TerrainsGid.Add(EntityType.Streets, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.STREETS));
+            m_TerrainsGid.Add(EntityType.Town, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.TOWN));
+            m_TerrainsGid.Add(EntityType.Water, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.WATER));
+            m_TerrainsGid.Add(EntityType.Woods, new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.WOODS));
         }
 
-
+        /// <summary>
+        /// Inits the entities gids.
+        /// </summary>
         private void InitEntitiesGid()
         {
             m_EntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
 
-            m_EntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(ClientConstants.HERO_GID));
-            m_EntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(ClientConstants.WARRIOR_GID));
-            m_EntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(ClientConstants.MAGE_GID));
-            m_EntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(ClientConstants.SCOUT_GID));
-            m_EntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(ClientConstants.BOWMAN_GID));
-            m_EntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(ClientConstants.UNKNOWN_GID));
-            m_EntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(ClientConstants.HEADQUARTER_GID));
-            m_EntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(ClientConstants.HEADQUARTER_GID));
-            m_EntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(ClientConstants.HOUSE_GID));
-            m_EntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(ClientConstants.WALL1_GID));
-            m_EntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(ClientConstants.GARNISION_GID));
-            m_EntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(ClientConstants.FARM_GID));
+            m_EntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(Client.Common.Helper.UnitGid.HERO));
+            m_EntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Client.Common.Helper.UnitGid.WARRIOR));
+            m_EntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Client.Common.Helper.UnitGid.MAGE));
+            m_EntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Client.Common.Helper.UnitGid.SCOUT));
+            m_EntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Client.Common.Helper.UnitGid.BOWMAN));
+            m_EntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(Client.Common.Helper.UnitGid.UNKNOWN));
+            m_EntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Client.Common.Helper.BuildingGid.HEADQUARTER));
+            m_EntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Client.Common.Helper.BuildingGid.HEADQUARTER));
+            m_EntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(Client.Common.Helper.BuildingGid.HOUSE));
+            m_EntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(Client.Common.Helper.BuildingGid.WALL1));
+            m_EntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Client.Common.Helper.BuildingGid.GARNISION));
+            m_EntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(Client.Common.Helper.BuildingGid.FARM));
 
         }
 
-
+        /// <summary>
+        /// Inits the enemy entities gids.
+        /// </summary>
         private void InitEnemyEntitiesGid()
         {
             m_EnemyEntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
 
-            m_EnemyEntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(ClientConstants.ENEMYHERO_GID));
-            m_EnemyEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(ClientConstants.ENEMYWARRIOR_GID));
-            m_EnemyEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(ClientConstants.ENEMYMAGE_GID));
-            m_EnemyEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(ClientConstants.ENEMYSCOUT_GID));
-            m_EnemyEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(ClientConstants.ENEMYBOWMAN_GID));
+            m_EnemyEntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(Client.Common.Helper.EnemyUnitGid.HERO));
+            m_EnemyEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Client.Common.Helper.EnemyUnitGid.WARRIOR));
+            m_EnemyEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Client.Common.Helper.EnemyUnitGid.MAGE));
+            m_EnemyEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Client.Common.Helper.EnemyUnitGid.SCOUT));
+            m_EnemyEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Client.Common.Helper.EnemyUnitGid.BOWMAN));
             //m_EnemyEntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(ClientConstants.ENEMYUNKNOWN_GID));
-            m_EnemyEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(ClientConstants.ENEMYHEADQUARTER_GID));
-            m_EnemyEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(ClientConstants.ENEMYHEADQUARTER_GID));
+            m_EnemyEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Client.Common.Helper.EnemyBuildingGid.HEADQUARTER));
+            m_EnemyEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Client.Common.Helper.EnemyBuildingGid.HEADQUARTER));
             //            m_EnemyEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(ClientConstants.ENEMYHOUSE_GID));
             //m_EnemyEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(ClientConstants.ENEMYWALL1_GID));
             //m_EnemyEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(ClientConstants.ENEMYGARNISION_GID));
             //m_EnemyEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(ClientConstants.ENEMYFARM_GID));
         }
 
-
-
-
+        /// <summary>
+        /// Inits the menu entities gids.
+        /// </summary>
         private void InitMenuEntitiesGid()
         {
             m_MenuEntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
 
-            m_MenuEntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(ClientConstants.MENUEHERO_GID));
-            m_MenuEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(ClientConstants.MENUEWARRIOR_GID));
-            m_MenuEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(ClientConstants.MENUEMAGE_GID));
-            m_MenuEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(ClientConstants.MENUESCOUT_GID));
-            m_MenuEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(ClientConstants.MENUEBOWMAN_GID));
-            m_MenuEntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(ClientConstants.MENUEUNKNOWN_GID));
-            m_MenuEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(ClientConstants.MENUEGOLD_GID));
-            m_MenuEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(ClientConstants.MENUEFIRE_GID));
-            m_MenuEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(ClientConstants.MENUEGOLD_GID));
-            m_MenuEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(ClientConstants.MENUEAIR_GID));
-            m_MenuEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(ClientConstants.MENUEMANA_GID));
-            m_MenuEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(ClientConstants.MENUEWATER_GID));
+            m_MenuEntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(Client.Common.Helper.UnitMenuGid.HERO));
+            m_MenuEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Client.Common.Helper.UnitMenuGid.WARRIOR));
+            m_MenuEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Client.Common.Helper.UnitMenuGid.MAGE));
+            m_MenuEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Client.Common.Helper.UnitMenuGid.SCOUT));
+            m_MenuEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Client.Common.Helper.UnitMenuGid.BOWMAN));
+            m_MenuEntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(Client.Common.Helper.UnitMenuGid.UNKNOWN));
+
+            m_MenuEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Client.Common.Helper.BuildingMenuGid.HEADQUARTER));
+            m_MenuEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Client.Common.Helper.BuildingMenuGid.HEADQUARTER));
+            m_MenuEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(Client.Common.Helper.BuildingMenuGid.FIRE));
+            m_MenuEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(Client.Common.Helper.BuildingMenuGid.EARTH));
+            m_MenuEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Client.Common.Helper.BuildingMenuGid.GOLD));
+            m_MenuEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(Client.Common.Helper.BuildingMenuGid.AIR));
 
         }
 
-
-
+        /// <summary>
+        /// Sets the Definitions to tile gids.
+        /// </summary>
+        /// <returns>The tile gid.</returns>
+        /// <param name="definition">Definition.</param>
+        /// <param name="sort">Sort.</param>
         public CCTileGidAndFlags DefinitionToTileGid(Definition definition, Sort sort = Sort.Normal)
         {
             CCTileGidAndFlags gid;
-            gid = new CCTileGidAndFlags(ClientConstants.INVALID_GID);
+            gid = new CCTileGidAndFlags(Client.Common.Helper.TerrainGid.INVALID);
 
             if (definition.Category == Core.Models.Definitions.Category.Terrain)
             {
@@ -154,9 +180,21 @@ namespace Client.Common.Views
 
         #region Fields
 
+        /// <summary>
+        /// The m_entities gid.
+        /// </summary>
         private Dictionary<EntityType, CCTileGidAndFlags> m_EntitiesGid;
+        /// <summary>
+        /// The m_enemy entities gid.
+        /// </summary>
         private Dictionary<EntityType, CCTileGidAndFlags> m_EnemyEntitiesGid;
+        /// <summary>
+        /// The m_menu entities gid.
+        /// </summary>
         private Dictionary<EntityType, CCTileGidAndFlags> m_MenuEntitiesGid;
+        /// <summary>
+        /// The m_terrains gid.
+        /// </summary>
         private Dictionary<EntityType, CCTileGidAndFlags> m_TerrainsGid;
 
         #endregion
