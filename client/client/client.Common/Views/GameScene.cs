@@ -1,10 +1,10 @@
-﻿using System;
-using CocosSharp;
-using System.Collections.Generic;
-using Client.Common.Models;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
+    using System;
+    using System.Collections.Generic;
+    using Client.Common.Models;
+    using CocosSharp;
+
     /// <summary>
     /// The Game scene.
     /// </summary>
@@ -21,28 +21,26 @@ namespace Client.Common.Views
             this.AddChild(m_world);
 
             m_touchHandler = new TouchHandler(m_world); 
-            var TouchListener = new CCEventListenerTouchAllAtOnce();
-            TouchListener.OnTouchesMoved = m_touchHandler.OnTouchesMoved;
-            TouchListener.OnTouchesBegan = m_touchHandler.OnTouchesBegan;
-            TouchListener.OnTouchesEnded = m_touchHandler.OnTouchesEnded;
+            var touchListener = new CCEventListenerTouchAllAtOnce();
+            touchListener.OnTouchesMoved = m_touchHandler.OnTouchesMoved;
+            touchListener.OnTouchesBegan = m_touchHandler.OnTouchesBegan;
+            touchListener.OnTouchesEnded = m_touchHandler.OnTouchesEnded;
 
-            m_world.AddEventListener(TouchListener);
-
+            m_world.AddEventListener(touchListener);
         }
-
 
         #region Properties
 
         /// <summary>
         /// The m_touch handler.
         /// </summary>
-        TouchHandler m_touchHandler;
+        private TouchHandler m_touchHandler;
+
         /// <summary>
         /// The m_world.
         /// </summary>
-        WorldLayer m_world;
+        private WorldLayer m_world;
 
         #endregion
     }
 }
-

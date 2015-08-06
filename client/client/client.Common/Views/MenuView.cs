@@ -1,13 +1,12 @@
-﻿using System;
-using CocosSharp;
-using Client.Common.Models;
-using System.Collections;
-using System.Collections.Generic;
-using Core.Models.Definitions;
-
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using Client.Common.Models;
+    using Core.Models.Definitions;
+    using CocosSharp;
+
     /// <summary>
     /// Menu view.
     /// </summary>
@@ -16,15 +15,14 @@ namespace Client.Common.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.MenuView"/> class.
         /// </summary>
-        /// <param name="menuLayer">Menu layer.</param>
-        /// <param name="center">Center.</param>
-        /// <param name="types">Types.</param>
+        /// <param name="menuLayer">Layer where the menu should be drawn.</param>
+        /// <param name="center">TileMap Coordinates where the menu should be drawn.</param>
+        /// <param name="types">Which menuentries should be shown.</param>
         public MenuView(CCTileMapLayer menuLayer, CCTileMapCoordinates center, Definition[] types)
         {
             m_center = center;
             m_types = types;
             m_menuLayer = menuLayer;
-    
         }
 
         /// <summary>
@@ -35,33 +33,36 @@ namespace Client.Common.Views
         {
             var coordHelper = new CCTileMapCoordinates[6];
 
-            coordHelper[0] = new CCTileMapCoordinates(m_center.Column + (m_center.Row) % 2,
+            coordHelper[0] = new CCTileMapCoordinates(
+                m_center.Column + (m_center.Row % 2),
                 m_center.Row - 1);
 
-            coordHelper[1] = new CCTileMapCoordinates(m_center.Column + (m_center.Row) % 2,
+            coordHelper[1] = new CCTileMapCoordinates(
+                m_center.Column + (m_center.Row % 2),
                 m_center.Row + 1);
 
-            coordHelper[2] = new CCTileMapCoordinates(m_center.Column,
+            coordHelper[2] = new CCTileMapCoordinates(
+                m_center.Column,
                 m_center.Row + 2);
 
-            coordHelper[3] = new CCTileMapCoordinates(m_center.Column - (m_center.Row + 1) % 2,
+            coordHelper[3] = new CCTileMapCoordinates(
+                m_center.Column - ((m_center.Row + 1) % 2),
                 m_center.Row + 1);
 
-            coordHelper[4] = new CCTileMapCoordinates(m_center.Column - (m_center.Row + 1) % 2,
+            coordHelper[4] = new CCTileMapCoordinates(
+                m_center.Column - ((m_center.Row + 1) % 2),
                 m_center.Row - 1);
 
-            coordHelper[5] = new CCTileMapCoordinates(m_center.Column,
+            coordHelper[5] = new CCTileMapCoordinates(
+                m_center.Column,
                 m_center.Row - 2);
 
             return coordHelper;
         }
 
-
         /// <summary>
-        /// Draws the menu at a given Location.
+        /// Draws the menu
         /// </summary>
-        /// <param name="location">Touch Location.</param>
-        /// <param name="menutype">Menutype.</param>
         public void DrawMenu()
         {
             var surroundedCoords = GetSurroundedTiles();
@@ -77,7 +78,7 @@ namespace Client.Common.Views
         /// Gets the selected definition.
         /// </summary>
         /// <returns>The selected definition.</returns>
-        /// <param name="coord">Coordinate.</param>
+        /// <param name="coord">Coordinate which was selected.</param>
         public Core.Models.Definitions.Definition GetSelectedDefinition(CCTileMapCoordinates coord)
         {
             var surroundedCoords = GetSurroundedTiles();
@@ -102,21 +103,21 @@ namespace Client.Common.Views
             {
                 m_menuLayer.RemoveTile(coord);
             }
-            //UglyDraw();
         }
 
         /// <summary>
         /// The m_enter.
         /// </summary>
-        CCTileMapCoordinates m_center;
+        private CCTileMapCoordinates m_center;
+
         /// <summary>
         /// The definition m_types.
         /// </summary>
-        Core.Models.Definitions.Definition[] m_types;
+        private Core.Models.Definitions.Definition[] m_types;
+
         /// <summary>
         /// The m_menu layer.
         /// </summary>
-        CCTileMapLayer m_menuLayer;
+        private CCTileMapLayer m_menuLayer;
     }
 }
-

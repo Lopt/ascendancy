@@ -1,13 +1,12 @@
-﻿using Core.Models;
-using Core.Models.Definitions;
-using Client.Common.Helper;
-using Client.Common.Controllers;
-using Client.Common.Models;
-using System.Threading.Tasks;
-
-
-namespace Client.Common.Manager
+﻿namespace Client.Common.Manager
 {
+    using System.Threading.Tasks;
+    using Client.Common.Controllers;
+    using Client.Common.Helper;
+    using Client.Common.Models;
+    using Core.Models;
+    using Core.Models.Definitions;
+
     /// <summary>
     /// The Region manager controller to control the regions.
     /// </summary>
@@ -23,9 +22,9 @@ namespace Client.Common.Manager
         #region Regions
 
         /// <summary>
-        /// Gets the region by current geolocation.
+        /// Gets the region by current geo location.
         /// </summary>
-        /// <returns>The region by current geolocation.</returns>
+        /// <returns>The region by current geo location.</returns>
         public Region GetRegionByGeolocator()
         {
             var geolocationPosition = Geolocation.Instance.CurrentGamePosition;
@@ -56,36 +55,11 @@ namespace Client.Common.Manager
             {
                 LoadRegionAsync(region);
             }
-				
             return region;
         }
 
         /// <summary>
-        /// Loads the terrain async over the network controller and adds the region to the world.
-        /// </summary>
-        /// <returns>The task async.</returns>
-        /// <param name="region">Region.</param>
-        private async Task LoadRegionAsync(Region region)
-        {
-            TerrainDefinition[,] terrain = await NetworkController.Instance.LoadTerrainsAsync(region.RegionPosition);
-
-            if (terrain != null)
-                region.AddTerrain(terrain);
-
-            try
-            {
-                World.Instance.RegionManager.AddRegion(region);
-            }
-            catch
-            {
-                if (null != null)
-                {
-                }
-            }
-        }
-
-        /// <summary>
-        /// Loads the regions async around the current region position by the geolocator.
+        /// Loads the regions async around the current region position by the geo locator.
         /// </summary>
         /// <returns>The task async.</returns>
         public async Task LoadRegionsAsync()
@@ -97,14 +71,14 @@ namespace Client.Common.Manager
         /// Loads the regions async around the surrender region position.
         /// </summary>
         /// <returns>The task async.</returns>
-        /// <param name="regionPosition">Region position.</param>
-        public async Task LoadRegionsAsync(RegionPosition regionPosition)
+        /// <param name="centerRegionPosition">Region position which is in the center.</param>
+        public async Task LoadRegionsAsync(RegionPosition centerRegionPosition)
         {
-            var WorldRegions = GetWorldNearRegionPositions(regionPosition);
+            var worldRegions = GetWorldNearRegionPositions(centerRegionPosition);
 
-            foreach (var RegionPosition in WorldRegions)
+            foreach (var regionPosition in worldRegions)
             {
-                var region = World.Instance.RegionManager.GetRegion(RegionPosition);
+                var region = World.Instance.RegionManager.GetRegion(regionPosition);
 
                 if (!region.Exist)
                 {
@@ -119,14 +93,13 @@ namespace Client.Common.Manager
         /// </summary>
         /// <returns>True once the action is done.</returns>
         /// <param name="currentGamePosition">Current game position.</param>
-        /// <param name="actions">Actions.</param>
+        /// <param name="actions">Actions which should be executed.</param>
         public async Task<bool> DoActionAsync(Core.Models.Position currentGamePosition, Core.Models.Action[] actions)
         {
             await NetworkController.Instance.DoActionsAsync(currentGamePosition, actions);
             await EntityManagerController.Instance.LoadEntitiesAsync(currentGamePosition, currentGamePosition.RegionPosition);
             return true;
         }
-
 
         #endregion
 
@@ -147,20 +120,40 @@ namespace Client.Common.Manager
             {
                 for (int y = -halfY; y <= halfY; y++)
                 {
-                    worldRegion[x + halfX, y + halfY] = new RegionPosition(regionPosition.RegionX + x,
-                        regionPosition.RegionY + y);
+                    var regPos = new RegionPosition(regionPosition.RegionX + x, regionPosition.RegionY + y);
+                    worldRegion[x + halfX, y + halfY] = regPos;
                 }
             }
 
             return worldRegion;
         }
 
+        /// <summary>
+        /// Loads the terrain async over the network controller and adds the region to the world.
+        /// </summary>
+        /// <returns>The function as task.</returns>
+        /// <param name="region">Region which should be loaded.</param>
+        private async Task LoadRegionAsync(Region region)
+        {
+            TerrainDefinition[,] terrain = await NetworkController.Instance.LoadTerrainsAsync(region.RegionPosition);
+
+            if (terrain != null)
+            {
+                region.AddTerrain(terrain);
+            }
+            try
+            {
+                World.Instance.RegionManager.AddRegion(region);
+            }
+            catch
+            {
+            }
+        }
+
         #endregion
 
         #region private Fields
 
-
         #endregion
     }
 }
-

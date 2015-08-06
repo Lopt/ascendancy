@@ -1,11 +1,10 @@
-﻿using System;
-
-using Client.Common.Views;
-using Client.Common.Models;
-using Core.Models;
-
-namespace Client.Common.Helper
+﻿namespace Client.Common.Helper
 {
+    using System;
+    using Client.Common.Models;
+    using Client.Common.Views;
+    using Core.Models;
+
     /// <summary>
     /// Position helper convert map and tile positions.
     /// </summary>
@@ -15,9 +14,9 @@ namespace Client.Common.Helper
         /// Positions to tile map coordinates.
         /// </summary>
         /// <returns>The tile map coordinates.</returns>
-        /// <param name="centerPosition">Center position.</param>
-        /// <param name="position">Position.</param>
-        static public CocosSharp.CCTileMapCoordinates PositionToTileMapCoordinates(Position centerPosition, PositionI position)
+        /// <param name="centerPosition">Current center position of the drawn world.</param>
+        /// <param name="position">Position which should be transformed to a CCTileMapCoordinates.</param>
+        public static CocosSharp.CCTileMapCoordinates PositionToTileMapCoordinates(Position centerPosition, PositionI position)
         {
             return PositionToMapCellPosition(centerPosition, position).GetTileMapCoordinates();
         }
@@ -26,25 +25,24 @@ namespace Client.Common.Helper
         /// Positions to map cell position.
         /// </summary>
         /// <returns>The map cell position.</returns>
-        /// <param name="centerPosition">Center position.</param>
-        /// <param name="position">Position.</param>
-        static public MapCellPosition PositionToMapCellPosition(Position centerPosition, PositionI position)
+        /// <param name="centerPosition">Current center position of the drawn world.</param>
+        /// <param name="position">Position which should be transformed to a MapPosition.</param>
+        public static MapCellPosition PositionToMapCellPosition(Position centerPosition, PositionI position)
         {
             var cellPos = centerPosition.CellPosition;
             int halfRegionX = (int)ClientConstants.DRAW_REGIONS_X / 2;
             int halfRegionY = (int)ClientConstants.DRAW_REGIONS_Y / 2;
 
-            var relativeCenter = new PositionI((Constants.REGION_SIZE_X * halfRegionX) + cellPos.CellX,
-                                     (Constants.REGION_SIZE_Y * halfRegionY + cellPos.CellY));
+            var x = (Constants.REGION_SIZE_X * halfRegionX) + cellPos.CellX;
+            var y = (Constants.REGION_SIZE_Y * halfRegionY) + cellPos.CellY;
 
+            var relativeCenter = new PositionI(x, y);
+                       
             var upperLeftPos = new PositionI((int)centerPosition.X, (int)centerPosition.Y) - relativeCenter;
             var mapCellPosition = position - upperLeftPos;
-            var MapPosition = new MapCellPosition(mapCellPosition.X, mapCellPosition.Y);
+            var mapPosition = new MapCellPosition(mapCellPosition.X, mapCellPosition.Y);
 
-            return MapPosition;//.GetTileMapCoordinates();
+            return mapPosition;
         }
-
-    
     }
 }
-

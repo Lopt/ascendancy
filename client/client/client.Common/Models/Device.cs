@@ -1,31 +1,29 @@
-﻿using System;
-using SQLite;
-using XLabs.Platform.Device;
-using Xamarin.Forms;
-using XLabs.Platform.Services.Media;
-using XLabs.Platform.Services;
-using CocosSharp;
-using XLabs.Ioc;
-
-
-namespace Client.Common.Models
+﻿namespace Client.Common.Models
 {
+    using System;
+    using SQLite;
+    using XLabs.Platform.Device;
+    using Xamarin.Forms;
+    using XLabs.Platform.Services.Media;
+    using XLabs.Platform.Services;
+    using CocosSharp;
+    using XLabs.Ioc;
+
     /// <summary>
     /// The Device as a singleton class for device information.
     /// </summary>
     [Table("Device")]
     public sealed class Device : ViewBaseModel
     {
-
         #region Singelton
 
         /// <summary>
         /// The m instance.
         /// </summary>
-        private static readonly Device m_instance = new Device();
+        private static readonly Device Singleton = new Device();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Client.Common.Models.Device"/> class.
+        /// Prevents a default instance of the <see cref="Device"/> class from being created.
         /// </summary>
         private Device()
         {
@@ -55,8 +53,6 @@ namespace Client.Common.Models
             TimeZone = m_device.TimeZone;
             TimeZoneOffset = m_device.TimeZoneOffset.ToString();
             DeviceMemory = m_device.TotalMemory.ToString();
-
-       
         }
 
         /// <summary>
@@ -67,7 +63,7 @@ namespace Client.Common.Models
         {
             get
             { 
-                return m_instance;
+                return Singleton;
             }
         }
 
@@ -80,7 +76,8 @@ namespace Client.Common.Models
         /// </summary>
         private readonly IDevice m_device = null;
 
-        //TODO solve Exception IAccelerometer why returns null
+        // TODO solve Exception IAccelerometer why returns null
+
         /// <summary>
         /// Gets the accelerometer.
         /// </summary>
@@ -121,7 +118,8 @@ namespace Client.Common.Models
             private set; 
         }
 
-        //TODO solve Exception IGyroscope why returns null
+        // TODO solve Exception IGyroscope why returns null
+
         /// <summary>
         /// Gets the gyroscope.
         /// </summary>
@@ -142,7 +140,8 @@ namespace Client.Common.Models
             private set; 
         }
 
-        //TODO solve Exception IAudioStream why returns null
+        // TODO solve Exception IAudioStream why returns null
+
         /// <summary>
         /// Gets the microphone.
         /// </summary>
@@ -163,7 +162,8 @@ namespace Client.Common.Models
             private set; 
         }
 
-        //TODO solve Exception IPhoneService why returns null
+        // TODO solve Exception IPhoneService why returns null
+
         /// <summary>
         /// Gets the phone service.
         /// </summary>
@@ -200,13 +200,14 @@ namespace Client.Common.Models
             { 
                 return m_batteryLevel;
             }
+
             set
             {
-                SetProperty(m_batteryLevel, value, (val) =>
+                SetProperty(m_batteryLevel, value, val =>
                     {
                         m_batteryLevel = val;
-
-                    }, PropertyNameBatteryLevel);
+                    },
+                    PropertyNameBatteryLevel);
             }
         }
 
@@ -214,6 +215,7 @@ namespace Client.Common.Models
         /// The property name battery level.
         /// </summary>
         public static string PropertyNameBatteryLevel = "BatteryLevel";
+
         /// <summary>
         /// The m_battery level.
         /// </summary>
@@ -230,6 +232,7 @@ namespace Client.Common.Models
             {
                 return m_deviceId;
             }
+
             set
             {
                 SetProperty(m_deviceId, value, (val) =>
@@ -244,6 +247,7 @@ namespace Client.Common.Models
         /// The property name device identifier.
         /// </summary>
         public static string PropertyNameDeviceId = "DeviceId";
+
         /// <summary>
         /// The m_device identifier.
         /// </summary>

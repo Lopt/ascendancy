@@ -1,14 +1,14 @@
-﻿using System;
-using CocosSharp;
-using Core.Models;
-using Client.Common.Manager;
-using Client.Common.Models;
-using Client.Common.Helper;
-using System.Linq.Expressions;
-using System.Threading;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
+    using System;
+    using System.Linq.Expressions;
+    using System.Threading;
+    using Client.Common.Helper;
+    using Client.Common.Manager;
+    using Client.Common.Models;
+    using CocosSharp;
+    using Core.Models;
+
     /// <summary>
     /// Region view to set the content of the tile map.
     /// </summary>
@@ -19,24 +19,23 @@ namespace Client.Common.Views
         /// </summary>
         public RegionView()
         {
-            m_RegionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
+            m_regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
         }
 
         /// <summary>
         /// Sets the tiles in map 160x160.
         /// </summary>
-        /// <param name="region">Region.</param>
-        public void SetTilesInMap160(Core.Models.Region region)
+        /// <param name="region">Region which is in the center.</param>
+        public void SetTilesInMap160(Core.Models.Region centerRegion)
         {
-
-            var worldRegionPositions = m_RegionManagerController.GetWorldNearRegionPositions(region.RegionPosition);
+            var worldRegionPositions = m_regionManagerController.GetWorldNearRegionPositions(centerRegion.RegionPosition);
 
             for (int y = 0; y < ClientConstants.DRAW_REGIONS_X; y++)
             {
                 for (int x = 0; x < ClientConstants.DRAW_REGIONS_Y; x++)
                 {
-                    var Region = m_RegionManagerController.GetRegion(worldRegionPositions[x, y]);
-                    SetTilesInMap32(new CCTileMapCoordinates(x * Constants.REGION_SIZE_X, y * Constants.REGION_SIZE_Y), Region);
+                    var region = m_regionManagerController.GetRegion(worldRegionPositions[x, y]);
+                    SetTilesInMap32(new CCTileMapCoordinates(x * Constants.REGION_SIZE_X, y * Constants.REGION_SIZE_Y), region);
                 }
             }
         }
@@ -45,7 +44,7 @@ namespace Client.Common.Views
         /// Sets the tiles in map 32x32.
         /// </summary>
         /// <param name="mapUpperLeftCoordinate">Map upper left coordinate.</param>
-        /// <param name="region">Region.</param>
+        /// <param name="region">Region which should be drawn.</param>
         public void SetTilesInMap32(CCTileMapCoordinates mapUpperLeftCoordinate, Region region)
         {
             for (int y = 0; y < Constants.REGION_SIZE_Y; y++)
@@ -53,11 +52,10 @@ namespace Client.Common.Views
                 for (int x = 0; x < Constants.REGION_SIZE_X; x++)
                 {
                     var newCellPosition = new CellPosition(x, y);
-                    var mapCellPosition = new MapCellPosition((mapUpperLeftCoordinate.Column + x), (mapUpperLeftCoordinate.Row + y));
+                    var mapCellPosition = new MapCellPosition(mapUpperLeftCoordinate.Column + x, mapUpperLeftCoordinate.Row + y);
 
                     SetTerrainTileInMap(newCellPosition, mapCellPosition.GetTileMapCoordinates(), region); 
                     SetEntityTileInMap(newCellPosition, mapCellPosition.GetTileMapCoordinates(), region); 
-                
                 }
             }
         }
@@ -66,8 +64,8 @@ namespace Client.Common.Views
         /// Sets the terrain tile in map.
         /// </summary>
         /// <param name="cellPosition">Cell position.</param>
-        /// <param name="mapCoordinat">Map coordinat.</param>
-        /// <param name="region">Region.</param>
+        /// <param name="mapCoordinat">Map coordinate.</param>
+        /// <param name="region">Region which should be drawn.</param>
         public void SetTerrainTileInMap(CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {
             var gid = Client.Common.Views.ViewDefinitions.Instance.DefinitionToTileGid(region.GetTerrain(cellPosition));
@@ -77,13 +75,13 @@ namespace Client.Common.Views
         /// <summary>
         /// Sets the unit in the map.
         /// </summary>
-        /// <param name="mapCoordinat">Map coordinat.</param>
-        /// <param name="unit">Unit.</param>
+        /// <param name="mapCoordinat">Map coordinate.</param>
+        /// <param name="unit">Unit which should be drawn (or null if it should be erased).</param>
         public void SetUnit(CCTileMapCoordinates mapCoordinat, Entity unit)
         {
             if (unit == null)
             {
-                UnitLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);
+                UnitLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);
             }
             else
             {
@@ -100,13 +98,13 @@ namespace Client.Common.Views
         /// <summary>
         /// Sets the building in the map.
         /// </summary>
-        /// <param name="mapCoordinat">Map coordinat.</param>
-        /// <param name="building">Building.</param>
+        /// <param name="mapCoordinat">Map coordinate.</param>
+        /// <param name="building">Building which should be drawn (or null if it should be erased).</param>
         public void SetBuilding(CCTileMapCoordinates mapCoordinat, Entity building)
         {
             if (building == null)
             {
-                BuildingLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);//RemoveTile (mapCoordinat);               
+                BuildingLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);               
             }
             else
             {
@@ -124,11 +122,10 @@ namespace Client.Common.Views
         /// Sets the entity tile in in the map.
         /// </summary>
         /// <param name="cellPosition">Cell position.</param>
-        /// <param name="mapCoordinat">Map coordinat.</param>
-        /// <param name="region">Region.</param>
+        /// <param name="mapCoordinat">Map coordinate.</param>
+        /// <param name="region">Region which should draw entities.</param>
         public void SetEntityTileInMap(CellPosition cellPosition, CCTileMapCoordinates mapCoordinat, Region region)
         {   
-            
             var entity = region.GetEntity(cellPosition);
             if (entity != null)
             {
@@ -146,20 +143,18 @@ namespace Client.Common.Views
                 UnitLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);
                 BuildingLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);
             }
-          
-
         }
 
         /// <summary>
         /// Gets the current tile in map at the position. Converts the position to the tile in the map.
         /// </summary>
         /// <returns>The current tile in map.</returns>
-        /// <param name="position">Position.</param>
+        /// <param name="position">Position which should be transformed into a TileMap Coordinate.</param>
         public CCTileMapCoordinates GetCurrentTileInMap(Position position)
         {
             var regionPos = new RegionPosition(position);
             var cellPos = new CellPosition(position);
-            var worldRegions = m_RegionManagerController.GetWorldNearRegionPositions(regionPos);
+            var worldRegions = m_regionManagerController.GetWorldNearRegionPositions(regionPos);
 
             int mapCellX = -1;
             int mapCellY = -1;
@@ -173,13 +168,11 @@ namespace Client.Common.Views
                         mapCellX = cellPos.CellX + (x * Constants.REGION_SIZE_X);
                         mapCellY = cellPos.CellY + (y * Constants.REGION_SIZE_Y);
                     } 
-
                 }
-
             }
 
-            var MapCellPosition = new MapCellPosition(mapCellX, mapCellY);
-            return MapCellPosition.GetTileMapCoordinates();
+            var mapCellPosition = new MapCellPosition(mapCellX, mapCellY);
+            return mapCellPosition.GetTileMapCoordinates();
         }
 
         /// <summary>
@@ -190,7 +183,7 @@ namespace Client.Common.Views
         /// <param name="currentCenterRegion">Current center region.</param>
         public Position GetCurrentGamePosition(MapCellPosition mapCellPosition, RegionPosition currentCenterRegion)
         {
-            var worldRegions = m_RegionManagerController.GetWorldNearRegionPositions(currentCenterRegion);
+            var worldRegions = m_regionManagerController.GetWorldNearRegionPositions(currentCenterRegion);
 
             var cellX = mapCellPosition.CellX % Constants.REGION_SIZE_X;
             var cellY = mapCellPosition.CellY % Constants.REGION_SIZE_Y;
@@ -202,7 +195,6 @@ namespace Client.Common.Views
             if (x >= 0 && x < ClientConstants.DRAW_REGIONS_X &&
                 y >= 0 && y < ClientConstants.DRAW_REGIONS_Y)
             {
-                     
                 var regionPosition = worldRegions[x, y];
 
                 return new Position(regionPosition, cellPosition);
@@ -218,10 +210,13 @@ namespace Client.Common.Views
         public bool IsCellInOutsideRegion(MapCellPosition mapCellPosition)
         {
             if (mapCellPosition.CellX < ClientConstants.REDRAW_REGIONS_START_X || mapCellPosition.CellX > ClientConstants.REDRAW_REGIONS_END_X)
+            {
                 return true;
+            }
             if (mapCellPosition.CellY < ClientConstants.REDRAW_REGIONS_START_Y || mapCellPosition.CellY > ClientConstants.REDRAW_REGIONS_END_Y)
+            {
                 return true;
-
+            }
             return false;
         }
 
@@ -230,20 +225,23 @@ namespace Client.Common.Views
         /// <summary>
         /// The m_region manager controller.
         /// </summary>
-        Client.Common.Manager.RegionManagerController m_RegionManagerController;
+        private Client.Common.Manager.RegionManagerController m_regionManagerController;
 
         /// <summary>
         /// The terrain layer.
         /// </summary>
         public CCTileMapLayer TerrainLayer;
+
         /// <summary>
         /// The building layer.
         /// </summary>
         public CCTileMapLayer BuildingLayer;
+
         /// <summary>
         /// The unit layer.
         /// </summary>
         public CCTileMapLayer UnitLayer;
+
         /// <summary>
         /// The menu layer.
         /// </summary>
@@ -255,12 +253,10 @@ namespace Client.Common.Views
         /// <value>The world layer.</value>
         public WorldLayer WorldLayer
         {
-            private set;
             get;
+            private set;
         }
-
 
         #endregion
     }
 }
-

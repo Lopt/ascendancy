@@ -1,20 +1,20 @@
-﻿using Core.Controllers.Actions;
-using Core.Models;
-using Client.Common.Helper;
-using Client.Common.Models;
-using Client.Common.Manager;
-using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Collections.Concurrent;
-using System.ComponentModel.DataAnnotations;
-using CocosSharp;
-using Microsoft.Xna.Framework;
-
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Diagnostics;
+    using System.Threading.Tasks;
+
+    using Client.Common.Helper;
+    using Client.Common.Manager;
+    using Client.Common.Models;
+    using CocosSharp;
+    using Core.Controllers.Actions;
+    using Core.Models;
+    using Microsoft.Xna.Framework;
+
     /// <summary>
     /// The World layer.
     /// </summary>
@@ -91,170 +91,65 @@ namespace Client.Common.Views
             RegionView.BuildingLayer = BuildingLayer;
             RegionView.UnitLayer = UnitLayer;
             RegionView.MenuLayer = MenuLayer;
-
-
-           
+                       
             this.AddChild(WorldTileMap);
 
-
             m_worker = new Views.Worker(this);
-            EntityManagerController.Worker = m_worker;
+            EntityManagerController.Instance.Worker = m_worker;
 
             Schedule(m_worker.Schedule);
             Schedule(CheckGeolocation);
-
-
         }
 
         /// <summary>
-        /// Clears the Layers for initialization.
-        /// </summary>
-        void ClearLayers()
-        {
-            var coordHelper = new CCTileMapCoordinates(0, 0);
-            BuildingLayer.RemoveTile(coordHelper);
-            UnitLayer.RemoveTile(coordHelper);
-            MenuLayer.RemoveTile(coordHelper);
-        }
-
-
-        #region overide
-
-        /// <summary>
-        /// Add the tilemap to scene.
-        /// </summary>
-        protected override void AddedToScene()
-        {
-            base.AddedToScene();
-
-            SetMapAnchor(Geolocation.Instance.CurrentGamePosition);
-            WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
-            WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
-            ScaleWorld(ClientConstants.TILEMAP_NORM_SCALE);
-
-        }
-
-        #endregion
-
-
-        /// <summary>
-        /// Move the tilelayer position a little bit.
+        /// Move the TileLayer-Position a little bit. So the Framework has to redraw everything.
         /// </summary>
         public void UglyDraw()
         {
-            //TODO: find better solution
+            // TODO: find better solution
             WorldTileMap.TileLayersContainer.Position += new CCPoint(0.0001f, 0.0001f);
         }
-
-
-        #region Scheduling
-
-        /// <summary>
-        /// Checks the geolocation. If The geolocation is changed draw the regions new.
-        /// </summary>
-        /// <param name="frameTimesInSecond">Frame times in second.</param>
-        void CheckGeolocation(float frameTimesInSecond)
-        {
-            if (Geolocation.Instance.IsPositionChanged)
-            {
-                DrawRegionsAsync(Geolocation.Instance.CurrentGamePosition);
-                Geolocation.Instance.IsPositionChanged = false;
-            }
-
-        }
-
-        #endregion
-
+            
         #region
 
         /// <summary>
-        /// Sets the current position once in the tilemap by draw a red hexagon on the current position.
+        /// Converts the point to ParentSpace-position.
         /// </summary>
-        /// <param name="position">Position.</param>
-        void SetCurrentPositionOnce(Position position)
-        {
-            var tileCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(CenterPosition, new PositionI(position));
-            m_currentPositionNode.DrawHexagonForIsoStagMap(ClientConstants.TILE_IMAGE_WIDTH, TerrainLayer,
-                tileCoordinate, new CCColor4F(CCColor3B.Red), 255, 3.0f);
-//            var tileCoordinate = m_regionView.GetCurrentTileInMap (m_geolocation.CurrentGamePosition);
-
-            bool isInWorld = false;
-            m_currentPositionNode.Visible = false;
-
-            if (CenterPosition.RegionPosition.Equals(Geolocation.Instance.CurrentRegionPosition))
-                isInWorld = true;
-
-            if (tileCoordinate.Column > -1 && isInWorld)
-            {
-                m_currentPositionNode.Visible = true;
-                m_currentPositionNode.DrawHexagonForIsoStagMap(ClientConstants.TILE_IMAGE_WIDTH, TerrainLayer,
-                    tileCoordinate, new CCColor4F(CCColor3B.Red), 255, 3.0f);
-            } 
-        }
-
-        /// <summary>
-        /// Draws the regions async.
-        /// </summary>
-        /// <returns>The task async.</returns>
-        /// <param name="gamePosition">Game position.</param>
-        async Task DrawRegionsAsync(Position gamePosition)
-        {
-            CenterPosition = gamePosition;
-            Phase = Phases.LoadTerrain;
-            await m_regionManagerController.LoadRegionsAsync(new RegionPosition(gamePosition));
-            Phase = Phases.LoadEntities;
-            await EntityManagerController.Instance.LoadEntitiesAsync(gamePosition, CenterPosition.RegionPosition);
-            Phase = Phases.Idle;
-
-            // set the loaded regions in a 160x160 Map
-            RegionView.SetTilesInMap160(m_regionManagerController.GetRegionByGamePosition(gamePosition));
-            SetCurrentPositionOnce(gamePosition);
-            SetMapAnchor(gamePosition);
-
-            CenterPosition = gamePosition;
-            //SetMapAnchor (gamePosition);
-            UglyDraw();
-        }
-
-        /// <summary>
-        /// Set the point to parentspace.
-        /// </summary>
-        /// <returns>The point in parentspace.</returns>
-        /// <param name="point">Point.</param>
+        /// <returns>The point in ParentSpace.</returns>
+        /// <param name="point">Relative Point (from TileMap-Layer).</param>
         public CCPoint LayerWorldToParentspace(CCPoint point)
         {
             return TerrainLayer.WorldToParentspace(point);
         }
 
         /// <summary>
-        /// Closests the tile coordinate at node position.
+        /// The closest tile coordinate from the node position.
         /// </summary>
         /// <returns>The tile coordinate at node position.</returns>
-        /// <param name="point">Point.</param>
+        /// <param name="point">Relative Point (from screen).</param>
         public CCTileMapCoordinates ClosestTileCoordAtNodePosition(CCPoint point)
         {
             return TerrainLayer.ClosestTileCoordAtNodePosition(point);
         }
 
         /// <summary>
-        /// Dos the action.
+        /// Collects all Action to send them to the server. So they can be executed.
         /// </summary>
-        /// <param name="action">Action.</param>
+        /// <param name="action">Action which should be executed.</param>
         public void DoAction(Core.Models.Action action)
         {
             var actions = new List<Core.Models.Action>();
             actions.Add(action);
             m_regionManagerController.DoActionAsync(Geolocation.Instance.CurrentGamePosition, actions.ToArray());
-            //var mapCell = GetMapCell(m_terrainLayer, new CCPoint(VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
-            //var position = RegionView.GetCurrentGamePosition(mapCell, CenterPosition.RegionPosition);
-            //DrawRegionsAsync (position);
+            // var mapCell = GetMapCell(m_terrainLayer, new CCPoint(VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
+            // var position = RegionView.GetCurrentGamePosition(mapCell, CenterPosition.RegionPosition);
+            // DrawRegionsAsync (position);
         }
-
 
         /// <summary>
         /// Moves the world.
         /// </summary>
-        /// <param name="diff">Diff.</param>
+        /// <param name="diff">Difference how much the world should be moved.</param>
         public void MoveWorld(CCPoint diff)
         {
             var anchor = WorldTileMap.TileLayersContainer.AnchorPoint;
@@ -266,9 +161,9 @@ namespace Client.Common.Views
         }
 
         /// <summary>
-        /// Gets the scalefactor.
+        /// Gets the scale factor.
         /// </summary>
-        /// <returns>The scalefactor.</returns>
+        /// <returns>The scale factor.</returns>
         public float GetScale()
         {
             return m_scale;
@@ -288,31 +183,6 @@ namespace Client.Common.Views
             }
         }
 
-
-        /// <summary>
-        /// Sets the map anchor.
-        /// </summary>
-        /// <param name="anchorPosition">Anchor position.</param>
-        void SetMapAnchor(Position anchorPosition)
-        {
-            var mapCellPosition = PositionHelper.PositionToMapCellPosition(CenterPosition, new PositionI(anchorPosition));//new MapCellPosition(RegionView.GetCurrentTileInMap(anchorPosition));
-            var anchor = mapCellPosition.GetAnchor();
-            WorldTileMap.TileLayersContainer.AnchorPoint = anchor;
-        }
-
-        /// <summary>
-        /// Gets the map cell at the location on the layer.
-        /// </summary>
-        /// <returns>The map cell.</returns>
-        /// <param name="layer">Layer.</param>
-        /// <param name="location">Location.</param>
-        MapCellPosition GetMapCell(CCTileMapLayer layer, CCPoint location)
-        {
-            var point = layer.WorldToParentspace(location);
-            var tileMapCooardinate = layer.ClosestTileCoordAtNodePosition(point);
-            return new MapCellPosition(tileMapCooardinate);
-        }
-
         /// <summary>
         /// Checks the center region to draw new regions at the view if the map is moved.
         /// </summary>
@@ -325,12 +195,136 @@ namespace Client.Common.Views
                 CenterPosition = RegionView.GetCurrentGamePosition(mapCell, CenterPosition.RegionPosition);
                 DrawRegionsAsync(CenterPosition);
             }
-
         }
 
+        #endregion
 
+        #region overide
+
+        /// <summary>
+        /// Add the TileMap to scene.
+        /// </summary>
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            SetMapAnchor(Geolocation.Instance.CurrentGamePosition);
+            WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
+            WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
+            ScaleWorld(ClientConstants.TILEMAP_NORM_SCALE);
+        }
 
         #endregion
+
+        /// <summary>
+        /// Sets the map anchor.
+        /// </summary>
+        /// <param name="anchorPosition">Anchor position.</param>
+        private void SetMapAnchor(Position anchorPosition)
+        {
+            var mapCellPosition = PositionHelper.PositionToMapCellPosition(
+                CenterPosition,
+                new PositionI(anchorPosition));
+            var anchor = mapCellPosition.GetAnchor();
+            WorldTileMap.TileLayersContainer.AnchorPoint = anchor;
+        }
+
+        /// <summary>
+        /// Draws the regions async.
+        /// </summary>
+        /// <returns>The task async.</returns>
+        /// <param name="gamePosition">Game position.</param>
+        private async Task DrawRegionsAsync(Position gamePosition)
+        {
+            CenterPosition = gamePosition;
+            Phase = Phases.LoadTerrain;
+            await m_regionManagerController.LoadRegionsAsync(new RegionPosition(gamePosition));
+            Phase = Phases.LoadEntities;
+            await EntityManagerController.Instance.LoadEntitiesAsync(gamePosition, CenterPosition.RegionPosition);
+            Phase = Phases.Idle;
+
+            // set the loaded regions in a 160x160 Map
+            RegionView.SetTilesInMap160(m_regionManagerController.GetRegionByGamePosition(gamePosition));
+            SetCurrentPositionOnce(gamePosition);
+            SetMapAnchor(gamePosition);
+
+            CenterPosition = gamePosition;
+            // SetMapAnchor (gamePosition);
+            UglyDraw();
+        }
+
+        /// <summary>
+        /// Converts the given location to a MapCellPosition.
+        /// </summary>
+        /// <returns>The map cell.</returns>
+        /// <param name="layer">Any TileMapLayer.</param>
+        /// <param name="location">Location which should be converted into MapCellPosition.</param>
+        private MapCellPosition GetMapCell(CCTileMapLayer layer, CCPoint location)
+        {
+            var point = layer.WorldToParentspace(location);
+            var tileMapCooardinate = layer.ClosestTileCoordAtNodePosition(point);
+            return new MapCellPosition(tileMapCooardinate);
+        }
+
+        /// <summary>
+        /// Checks the Geo Location. If The Geo Location is changed draw the regions new.
+        /// </summary>
+        /// <param name="frameTimesInSecond">Frame times in second.</param>
+        private void CheckGeolocation(float frameTimesInSecond)
+        {
+            if (Geolocation.Instance.IsPositionChanged)
+            {
+                DrawRegionsAsync(Geolocation.Instance.CurrentGamePosition);
+                Geolocation.Instance.IsPositionChanged = false;
+            }
+        }
+
+        /// <summary>
+        /// Clears the Layers for initialization.
+        /// </summary>
+        private void ClearLayers()
+        {
+            var coordHelper = new CCTileMapCoordinates(0, 0);
+            BuildingLayer.RemoveTile(coordHelper);
+            UnitLayer.RemoveTile(coordHelper);
+            MenuLayer.RemoveTile(coordHelper);
+        }
+
+        /// <summary>
+        /// Sets the current position once in the TileMap by draw a red hexagon on the current position.
+        /// </summary>
+        /// <param name="position">New Player Position .</param>
+        private void SetCurrentPositionOnce(Position position)
+        {
+            var tileCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(CenterPosition, new PositionI(position));
+            m_currentPositionNode.DrawHexagonForIsoStagMap(
+                ClientConstants.TILE_IMAGE_WIDTH,
+                TerrainLayer,
+                tileCoordinate,
+                new CCColor4F(CCColor3B.Red),
+                255,
+                3.0f);
+
+            bool isInWorld = false;
+            m_currentPositionNode.Visible = false;
+
+            if (CenterPosition.RegionPosition.Equals(Geolocation.Instance.CurrentRegionPosition))
+            {
+                isInWorld = true;
+            }
+
+            if (tileCoordinate.Column > -1 && isInWorld)
+            {
+                m_currentPositionNode.Visible = true;
+                m_currentPositionNode.DrawHexagonForIsoStagMap(
+                    ClientConstants.TILE_IMAGE_WIDTH,
+                    TerrainLayer,
+                    tileCoordinate,
+                    new CCColor4F(CCColor3B.Red),
+                    255,
+                    3.0f);
+            } 
+        }
 
         #region Properties
 
@@ -387,25 +381,28 @@ namespace Client.Common.Views
         /// <summary>
         /// The m region manager controller.
         /// </summary>
-        Client.Common.Manager.RegionManagerController m_regionManagerController;
+        private Client.Common.Manager.RegionManagerController m_regionManagerController;
+
         /// <summary>
         /// The m current position node.
         /// </summary>
-        DrawNode m_currentPositionNode;
+        private DrawNode m_currentPositionNode;
+
         /// <summary>
         /// The m worker.
         /// </summary>
-        Worker m_worker;
+        private Worker m_worker;
+
         /// <summary>
         /// The m scale.
         /// </summary>
-        float m_scale;
+        private float m_scale;
+
         /// <summary>
         /// The m_game scene.
         /// </summary>
-        GameScene m_gameScene;
+        private GameScene m_gameScene;
 
         #endregion
     }
 }
-

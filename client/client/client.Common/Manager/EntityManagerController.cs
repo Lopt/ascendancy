@@ -1,19 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
-using System;
-
-using Microsoft.Xna.Framework.Graphics;
-
-using Core.Controllers.Actions;
-using Core.Models;
-using Client.Common.Controllers;
-using Client.Common.Helper;
-
-
-
-namespace Client.Common.Manager
+﻿namespace Client.Common.Manager
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Threading.Tasks;
+
+    using Client.Common.Controllers;
+    using Client.Common.Helper;
+    using Core.Models;
+
     /// <summary>
     /// The Entity manager controller to control(load,remove,get and save) the entities.
     /// </summary>
@@ -22,23 +17,28 @@ namespace Client.Common.Manager
         /// <summary>
         /// The lazy singleton.
         /// </summary>
-        private static readonly Lazy<EntityManagerController> lazy =
+        private static readonly Lazy<EntityManagerController> Singleton =
             new Lazy<EntityManagerController>(() => new EntityManagerController());
 
         /// <summary>
         /// Gets the instance.
         /// </summary>
         /// <value>The instance.</value>
-        public static EntityManagerController Instance { get { return lazy.Value; } }
+        public static EntityManagerController Instance
+        {
+            get
+            {
+                return Singleton.Value;
+            }
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Client.Common.Manager.EntityManagerController"/> class.
+        /// Prevents a default instance of the <see cref="EntityManagerController"/> class from being created.
         /// </summary>
         private EntityManagerController()
         {
-            Entities = new Dictionary<int, Entity>();
+            m_entities = new Dictionary<int, Entity>();
         }
-
 
         #region Entities
 
@@ -73,7 +73,6 @@ namespace Client.Common.Manager
         /// <param name="listRegions">List regions.</param>
         public async Task LoadEntitiesAsync(Position currentGamePosition, RegionPosition[] listRegions)
         {
-
             var response = await NetworkController.Instance.LoadEntitiesAsync(currentGamePosition, listRegions);
             var entities = response.Entities;
             if (entities != null)
@@ -85,7 +84,6 @@ namespace Client.Common.Manager
                         var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(entity.Position.RegionPosition);
                         region.AddEntity(DateTime.Now, entity);
                         Add(entity);
-
                     }
                 }
             }
@@ -116,44 +114,47 @@ namespace Client.Common.Manager
         /// Gets the entity.
         /// </summary>
         /// <returns>The entity.</returns>
-        /// <param name="Id">Identifier.</param>
-        Entity GetEntity(int Id)
+        /// <param name="id">Identifier which entity should be returned.</param>
+        private Entity GetEntity(int id)
         {
             Entity entity = null;
-            Entities.TryGetValue(Id, out entity);
+            m_entities.TryGetValue(id, out entity);
             return entity;
         }
 
         /// <summary>
         /// Remove the specified entity.
         /// </summary>
-        /// <param name="entity">Entity.</param>
-        void Remove(Entity entity)
+        /// <param name="entity">Entity which should be removed.</param>
+        private void Remove(Entity entity)
         {
-            if (Entities.ContainsKey(entity.ID))
+            if (m_entities.ContainsKey(entity.ID))
             {
-                Entities.Remove(entity.ID);
+                m_entities.Remove(entity.ID);
             }
         }
 
         /// <summary>
         /// Add the specified entity.
         /// </summary>
-        /// <param name="entity">Entity.</param>
-        void Add(Entity entity)
+        /// <param name="entity">Entity which should be added.</param>
+        private void Add(Entity entity)
         {
-            Entities[entity.ID] = entity;
+            m_entities[entity.ID] = entity;
         }
 
         /// <summary>
         /// The entities.
         /// </summary>
-        public static Dictionary<int, Entity> Entities;
+        private Dictionary<int, Entity> m_entities;
 
         /// <summary>
-        /// The worker.
+        /// Gets or sets the worker
         /// </summary>
-        public static Views.Worker Worker;
+        public Views.Worker Worker
+        {
+            get;
+            set;
+        }
     }
 }
-

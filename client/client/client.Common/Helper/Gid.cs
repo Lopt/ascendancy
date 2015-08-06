@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace Client.Common.Helper
+﻿namespace Client.Common.Helper
 {
     /// <summary>
-    /// Terrain GIDs assingment accordngly to client/data/tiles/Tile zuordnung.pdf.
+    /// Terrain GIDs assingment according to client/data/tiles/Tile zuordnung.pdf.
     /// </summary>
     public class TerrainGid
     {
@@ -127,4 +125,3 @@ namespace Client.Common.Helper
         public const short CROSS = 67;
     }
 }
-

@@ -1,9 +1,9 @@
-﻿using System;
-using CocosSharp;
-using System.Threading.Tasks;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
+    using System;
+    using System.Threading.Tasks;
+    using CocosSharp;
+
     /// <summary>
     /// The Start scene.
     /// </summary>
@@ -43,28 +43,17 @@ namespace Client.Common.Views
         {
             Phase = Phases.Start;
 
-            m_LogoLayer = new LogoLayer(this);
-            this.AddChild(m_LogoLayer);
+            m_logoLayer = new LogoLayer(this);
+            this.AddChild(m_logoLayer);
 
             InitWorld();
         }
-
+            
         /// <summary>
-        /// Initializing the network controller, geolocation and the world with their region and definition controllers.
-        /// </summary>
-        void InitWorld()
-        {
-            var initNet = Controllers.NetworkController.Instance;
-            var initGeo = Models.Geolocation.Instance;
-
-            var world = Core.Models.World.Instance;
-            var controller = Core.Controllers.Controller.Instance;
-            controller.RegionManagerController = new Client.Common.Manager.RegionManagerController();      
-            controller.DefinitionManagerController = new Client.Common.Manager.DefinitionManagerController();
-        }
-
-        /// <summary>
-        /// Inits the loadings async. Login to the server and set the account and load the definitions and regions at the current geolocation.
+        /// Loads everything async.
+        /// - User Login to the Server (and sets the Account)
+        /// - Loads the definitions (unit and terrain)
+        /// - Loads regions at the current Geo Location.
         /// </summary>
         /// <returns>The account async.</returns>
         public async Task<Core.Models.Account> InitLoadingAsync()
@@ -90,7 +79,6 @@ namespace Client.Common.Views
                 Phase = Phases.RegionLoaded;
                 // do something in the future
                 Phase = Phases.Done;
-
             }
             else
             {
@@ -104,7 +92,7 @@ namespace Client.Common.Views
         /// Login async to the server, with the device id and name and a password.
         /// </summary>
         /// <returns>The account.</returns>
-        async Task<Core.Models.Account> LoginAsync()
+        private async Task<Core.Models.Account> LoginAsync()
         {
             var currentGamePosition = Client.Common.Models.Geolocation.Instance.CurrentGamePosition;
             var device = Client.Common.Models.Device.GetInstance;
@@ -114,15 +102,27 @@ namespace Client.Common.Views
             return await Client.Common.Controllers.NetworkController.Instance.LoginAsync(currentGamePosition, user, "Password");
         }
 
+        /// <summary>
+        /// Initializing the network controller, Geo Location and the world with their region and definition controllers.
+        /// </summary>
+        private void InitWorld()
+        {
+            var initNet = Controllers.NetworkController.Instance;
+            var initGeo = Models.Geolocation.Instance;
+
+            var world = Core.Models.World.Instance;
+            var controller = Core.Controllers.Controller.Instance;
+            controller.RegionManagerController = new Client.Common.Manager.RegionManagerController();      
+            controller.DefinitionManagerController = new Client.Common.Manager.DefinitionManagerController();
+        }
 
         #region Properties
 
         /// <summary>
         /// The m_logo layer.
         /// </summary>
-        LogoLayer m_LogoLayer;
+        private LogoLayer m_logoLayer;
 
         #endregion
     }
 }
-

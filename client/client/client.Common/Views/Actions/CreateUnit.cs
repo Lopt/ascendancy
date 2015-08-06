@@ -21,17 +21,17 @@ namespace Client.Common.Views.Actions
         /// <summary>
         /// Gets called before ActionControl.Do() gets executed. Should get and store data which will be needed in Schedule.
         /// </summary>
-        override public void BeforeDo()
+        public override void BeforeDo()
         {
         }
 
         /// <summary>
-        /// Schedules the action. Should do anything do animate the action (e.g. draw the entity, animate his moving or
-        /// start/end animating a fight)
+        /// Schedules the action. Should do anything do animate the action (e.g. draw the entity, animate his moving or start/end animating a fight)
         /// Returns true if the action has ended, otherwise false.
         /// </summary>
         /// <param name="frameTimesInSecond">frames times in seconds.</param>
-        override public bool Schedule(float frameTimesInSecond)
+        /// <returns>true if the schedule of the action is done</returns>
+        public override bool Schedule(float frameTimesInSecond)
         {
             var action = (Core.Models.Action)Model;
             var actionC = (Core.Controllers.Actions.CreateUnit)Model.Control;

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-
-namespace Client.Common.Views.Actions
+﻿namespace Client.Common.Views.Actions
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Move a unit.
     /// </summary>
@@ -13,7 +12,7 @@ namespace Client.Common.Views.Actions
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.Actions.MoveUnit"/> class.
         /// </summary>
-        /// <param name="model">Model.</param>
+        /// <param name="model">The action Model.</param>
         /// <param name="worldLayer">World layer.</param>
         public MoveUnit(Core.Models.ModelEntity model, WorldLayer worldLayer)
             : base(model)
@@ -24,7 +23,7 @@ namespace Client.Common.Views.Actions
         /// <summary>
         /// Gets called before ActionControl.Do() gets executed. Should get and store data which will be needed in Schedule.
         /// </summary>
-        override public void BeforeDo()
+        public override void BeforeDo()
         {
             var action = (Core.Models.Action)Model;
             var actionC = (Core.Controllers.Actions.MoveUnit)Model.Control;
@@ -37,12 +36,12 @@ namespace Client.Common.Views.Actions
         }
 
         /// <summary>
-        /// Schedules the action. Should do anything do animate the action (e.g. draw the entity, animate his moving or
-        /// start/end animating a fight)
+        /// Schedules the action. Should do anything do animate the action (e.g. draw the entity, animate his moving or start/end animating a fight)
         /// Returns true if the action has ended, otherwise false.
         /// </summary>
         /// <param name="frameTimesInSecond">frames times in seconds.</param>
-        override public bool Schedule(float frameTimesInSecond)
+        /// <returns>true if the schedule of the action is done</returns>
+        public override bool Schedule(float frameTimesInSecond)
         {
             frameTimesInSecond /= Helper.ClientConstants.MOVE_SPEED_PER_FIELD;
 
@@ -72,27 +71,28 @@ namespace Client.Common.Views.Actions
         /// <value>The world layer.</value>
         public WorldLayer WorldLayer
         {
-            private set;
             get;
+            private set;
         }
 
         /// <summary>
-        /// The m_run time.
+        /// The runtime of the action.
         /// </summary>
-        float m_runTime;
-        /// <summary>
-        /// The m_entity.
-        /// </summary>
-        Core.Models.Entity m_entity;
-        /// <summary>
-        /// The m_current position.
-        /// </summary>
-        Core.Models.PositionI m_currentPosition;
-        /// <summary>
-        /// The m_path.
-        /// </summary>
-        IList m_path;
+        private float m_runTime;
 
+        /// <summary>
+        /// The entities which should be moved.
+        /// </summary>
+        private Core.Models.Entity m_entity;
+
+        /// <summary>
+        /// The current position of the entity.
+        /// </summary>
+        private Core.Models.PositionI m_currentPosition;
+
+        /// <summary>
+        /// The path which the enemy should go.
+        /// </summary>
+        private IList m_path;
     }
 }
-

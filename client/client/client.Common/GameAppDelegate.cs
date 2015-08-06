@@ -1,30 +1,28 @@
-﻿using System;
-using CocosSharp;
-using Xamarin.Forms;
-using CocosDenshion;
-using Client.Common.Helper;
-using Client.Common.Controllers;
-using Core.Models;
-using Client.Common.Views;
-using System.Threading.Tasks;
-using Client.Common.Models;
-using Client.Common.Manager;
-using Xamarin.Forms.Xaml;
-
-
-namespace Client.Common
+﻿namespace Client.Common
 {
+    using System;
+    using System.Threading.Tasks;
+    using Client.Common.Controllers;
+    using Client.Common.Helper;
+    using Client.Common.Manager;
+    using Client.Common.Models;
+    using Client.Common.Views;
+    using CocosDenshion;
+    using CocosSharp;
+    using Core.Models;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+
     /// <summary>
     /// The Game app delegate is the game entry point.
     /// </summary>
     public class GameAppDelegate : CCApplicationDelegate
     {
-
         /// <summary>
         /// Gets the account.
         /// </summary>
         /// <value>The account.</value>
-        static public Account Account
+        public static Account Account
         {
             get;
             private set;
@@ -54,7 +52,7 @@ namespace Client.Common
         /// <summary>
         /// When the Application did finish launching.
         /// </summary>
-        /// <param name="application">Application.</param>
+        /// <param name="application">Main Application.</param>
         /// <param name="mainWindow">Main window.</param>
         public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
         {
@@ -68,8 +66,7 @@ namespace Client.Common
             CCSize windowSize = mainWindow.WindowSizeInPixels;
 
             float desiredWidth = 1024.0f;
-            //float desiredHeight = 768.0f;
-
+            // float desiredHeight = 768.0f;
 
             // This will set the world bounds to be (0,0, w, h)
             // CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
@@ -89,31 +86,13 @@ namespace Client.Common
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
            
-            SceneStartAsync();//.RunSynchronously();
+            SceneStartAsync(); // .RunSynchronously();
         }
 
         /// <summary>
-        /// Set the start scene and if all is initialized the game scene.
+        /// When the Application enters background. Stops listening the GeoLocation and pause the application. 
         /// </summary>
-        /// <returns>The task.</returns>
-        private async Task SceneStartAsync()
-        {
-			
-            m_currentScene = new StartScene(m_window);
-            Phase = Phases.StartScene;
-            m_window.RunWithScene(m_currentScene);
-
-            Account = await ((StartScene)m_currentScene).InitLoadingAsync();
-
-            m_currentScene = new GameScene(m_window);
-            Phase = Phases.GameScene;
-            m_window.DefaultDirector.ReplaceScene(m_currentScene);
-        }
-
-        /// <summary>
-        /// When the Application did enter background. Stop listening the geolocation and pause the application. 
-        /// </summary>
-        /// <param name="application">Application.</param>
+        /// <param name="application">Main Application.</param>
         public override void ApplicationDidEnterBackground(CCApplication application)
         {
             Geolocation.Instance.StopListening();
@@ -121,9 +100,9 @@ namespace Client.Common
         }
 
         /// <summary>
-        /// When the Application will enter foreground end the pause and start listening the geolocation.
+        /// When the Application enters foreground, then end the pause and start listening the GeoLocation.
         /// </summary>
-        /// <param name="application">Application.</param>
+        /// <param name="application">Main Application.</param>
         public override void ApplicationWillEnterForeground(CCApplication application)
         {
             application.Paused = false;
@@ -133,7 +112,7 @@ namespace Client.Common
         /// <summary>
         /// Sets the content paths.
         /// </summary>
-        /// <param name="application">Application.</param>
+        /// <param name="application">Main Application.</param>
         private void SetContentPaths(CCApplication application)
         {
             application.ContentRootDirectory = ClientConstants.CONTENT;
@@ -145,13 +124,30 @@ namespace Client.Common
         }
 
         /// <summary>
+        /// Set the start scene and if all is initialized the game scene.
+        /// </summary>
+        /// <returns>The task.</returns>
+        private async Task SceneStartAsync()
+        {
+            m_currentScene = new StartScene(m_window);
+            Phase = Phases.StartScene;
+            m_window.RunWithScene(m_currentScene);
+
+            Account = await((StartScene)m_currentScene).InitLoadingAsync();
+
+            m_currentScene = new GameScene(m_window);
+            Phase = Phases.GameScene;
+            m_window.DefaultDirector.ReplaceScene(m_currentScene);
+        }
+
+        /// <summary>
         /// The m_window.
         /// </summary>
         private CCWindow m_window;
+
         /// <summary>
         /// The m_current scene.
         /// </summary>
         private CCScene m_currentScene;
-
     }
 }

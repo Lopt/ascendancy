@@ -1,14 +1,14 @@
-﻿using System;
-using CocosSharp;
-using System.Collections.Generic;
-using System.Collections;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using Client.Common.Helper;
-using Core.Models.Definitions;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Threading.Tasks;
+    using Client.Common.Helper;
+    using CocosSharp;
+    using Core.Models.Definitions;
+
     /// <summary>
     /// Touch handler.
     /// </summary>
@@ -31,32 +31,37 @@ namespace Client.Common.Views
         /// <summary>
         /// The m_touch gesture.
         /// </summary>
-        TouchGesture m_touchGesture;
+        private TouchGesture m_touchGesture;
+
         /// <summary>
         /// The m_timer.
         /// </summary>
-        Stopwatch m_timer;
+        private Stopwatch m_timer;
+
         /// <summary>
         /// The m_world layer.
         /// </summary>
-        WorldLayer m_worldLayer;
+        private WorldLayer m_worldLayer;
 
         /// <summary>
         /// The m_new scale.
         /// </summary>
-        float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
+        private float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
+
         /// <summary>
         /// The m_scale.
         /// </summary>
-        float m_scale = ClientConstants.TILEMAP_NORM_SCALE;
+        private float m_scale = ClientConstants.TILEMAP_NORM_SCALE;
+
         /// <summary>
         /// The m_start location.
         /// </summary>
-        CCPoint m_startLocation;
+        private CCPoint m_startLocation;
+
         /// <summary>
         /// The m_menu view.
         /// </summary>
-        MenuView m_menuView;
+        private MenuView m_menuView;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.TouchHandler"/> class.
@@ -73,7 +78,7 @@ namespace Client.Common.Views
         /// <summary>
         /// On the touches moved event. Set the gesture to move or scale and scale or move the map.
         /// </summary>
-        /// <param name="touches">Touches.</param>
+        /// <param name="touches">Touches, where the user touched.</param>
         /// <param name="touchEvent">Touch event.</param>
         public void OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
@@ -85,7 +90,6 @@ namespace Client.Common.Views
             {
                 m_touchGesture = TouchGesture.Zoom;
             }
-                    
 
             if (touches.Count == 1 &&
                 (m_touchGesture == TouchGesture.Start ||
@@ -106,18 +110,19 @@ namespace Client.Common.Views
                 CCPoint screenStart0 = touches[0].StartLocationOnScreen;
                 CCPoint screenStart1 = touches[1].StartLocationOnScreen;
 
-                //calculate Current Position
+                // calculate Current Position
                 CCPoint currentPoint0 = touches[0].LocationOnScreen;
                 CCPoint currentPoint1 = touches[1].LocationOnScreen;
 
-                var screen = new CCPoint(m_worldLayer.VisibleBoundsWorldspace.MaxX,
+                var screen = new CCPoint(
+                                 m_worldLayer.VisibleBoundsWorldspace.MaxX,
                                  m_worldLayer.VisibleBoundsWorldspace.MaxY); 
 
-                float StartDistance = screenStart0.DistanceSquared(ref screenStart1);
-                float CurrentDistance = currentPoint0.DistanceSquared(ref currentPoint1);
-                float ScreenDistance = screen.LengthSquared;
+                float startDistance = screenStart0.DistanceSquared(ref screenStart1);
+                float currentDistance = currentPoint0.DistanceSquared(ref currentPoint1);
+                float screenDistance = screen.LengthSquared;
 
-                float relation = (CurrentDistance - StartDistance) / ScreenDistance;
+                float relation = (currentDistance - startDistance) / screenDistance;
 
                 m_newScale = m_scale + (relation * m_newScale);
                 m_worldLayer.ScaleWorld(m_newScale);
@@ -127,7 +132,7 @@ namespace Client.Common.Views
         /// <summary>
         /// On the touches began event.
         /// </summary>
-        /// <param name="touches">Touches.</param>
+        /// <param name="touches">Touches, where the user touched.</param>
         /// <param name="touchEvent">Touch event.</param>
         public void OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
@@ -137,15 +142,12 @@ namespace Client.Common.Views
             var oldMapCell = new Models.MapCellPosition(oldCoord);
             var oldPosition = m_worldLayer.RegionView.GetCurrentGamePosition(oldMapCell, m_worldLayer.CenterPosition.RegionPosition);
 
-
             m_startLocation = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
             var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
-
 
             switch (m_touchGesture)
             {
                 case TouchGesture.MoveUnit:
-					
                     var startMapCellPosition = new Client.Common.Models.MapCellPosition(oldCoord);
                     var startPosition = m_worldLayer.RegionView.GetCurrentGamePosition(startMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
                     var startPositionI = new Core.Models.PositionI((int)startPosition.X, (int)startPosition.Y);
@@ -169,7 +171,7 @@ namespace Client.Common.Views
                     m_touchGesture = TouchGesture.None;
                     break;
 
-                case (TouchGesture.Menu):
+                case TouchGesture.Menu:
                     var def = m_menuView.GetSelectedDefinition(coord);
                     if (def != null)
                     {
@@ -187,7 +189,7 @@ namespace Client.Common.Views
 
                     return;
 
-                case (TouchGesture.None):
+                case TouchGesture.None:
                     m_touchGesture = TouchGesture.Start;
                     break;
             }
@@ -201,7 +203,7 @@ namespace Client.Common.Views
         /// <summary>
         /// On the touches ended event.
         /// </summary>
-        /// <param name="touches">Touches.</param>
+        /// <param name="touches">Touches, where the user touched.</param>
         /// <param name="touchEvent">Touch event.</param>
         public void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
@@ -210,19 +212,18 @@ namespace Client.Common.Views
 
             switch (m_touchGesture)
             {
-
-                case(TouchGesture.Zoom):
-                    //Set Current Scale
+                case TouchGesture.Zoom:
+                    // Set Current Scale
                     m_worldLayer.ScaleWorld(m_newScale);
                     m_touchGesture = TouchGesture.None;
                     break;
 
-                case(TouchGesture.Move):
+                case TouchGesture.Move:
                     m_worldLayer.CheckCenterRegion();
                     m_touchGesture = TouchGesture.None;
                     break;
 
-                case(TouchGesture.Start):
+                case TouchGesture.Start:
                     if (m_worldLayer.UnitLayer.TileGIDAndFlags(coord).Gid != 0)
                     {
                         m_touchGesture = TouchGesture.MoveUnit;
@@ -267,4 +268,3 @@ namespace Client.Common.Views
         }
     }
 }
-

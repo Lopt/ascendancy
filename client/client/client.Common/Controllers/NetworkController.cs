@@ -1,21 +1,18 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using ModernHttpClient;
-
-using Core.Models.Definitions;
-using Core.Models;
-using Client.Common.Helper;
-
-
-
-
-namespace Client.Common.Controllers
+﻿namespace Client.Common.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+
+    using Client.Common.Helper;
+    using Core.Models;
+    using Core.Models.Definitions;
+    using ModernHttpClient;
+    using Newtonsoft.Json;
+
     /// <summary>
-    /// the Network controller is a singleton to controll the network up and download to the server.
+    /// the Network controller is a singleton to control the network up and download to the server.
     /// </summary>
     public sealed class NetworkController
     {
@@ -24,23 +21,29 @@ namespace Client.Common.Controllers
         /// <summary>
         /// The lazy singleton.
         /// </summary>
-        private static readonly Lazy<NetworkController> m_singleton =
+        private static readonly Lazy<NetworkController> Singleton =
             new Lazy<NetworkController>(() => new NetworkController());
+        
+        /// <summary>
+        /// Prevents a default instance of the <see cref="NetworkController" /> class from being created.
+        /// </summary>
+        private NetworkController()
+        {
+            ExceptionMessage = string.Empty;
+            m_client = new HttpClient(new NativeMessageHandler());
+            m_sessionID = Guid.Empty;
+        }
 
         /// <summary>
         /// Gets the instance.
         /// </summary>
         /// <value>The instance.</value>
-        public static NetworkController Instance { get { return m_singleton.Value; } }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="client.Common.Controllers.NetworkController"/> class.
-        /// </summary>
-        private NetworkController()
+        public static NetworkController Instance
         {
-            ExceptionMessage = "";
-            m_client = new HttpClient(new NativeMessageHandler());
-            m_sessionID = Guid.Empty;
+            get
+            {
+                return Singleton.Value;
+            }
         }
 
         #endregion
@@ -57,11 +60,10 @@ namespace Client.Common.Controllers
             private set; 
         }
 
-
         /// <summary>
-        /// Gets a value indicating whether this instance is logedin.
+        /// Gets a value indicating whether this instance is logged in .
         /// </summary>
-        /// <value><c>true</c> if this instance is logedin; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if this instance is logged in; otherwise, <c>false</c>.</value>
         public bool IsLoggedIn
         {
             get
@@ -70,35 +72,16 @@ namespace Client.Common.Controllers
                 {
                     return true;
                 }
+
                 return false;
             }
         }
 
-
         /// <summary>
-        /// Tries to call the given url. Throws an exception when the website returns an error message (e.g. 404)
+        /// Loads the terrains async and returns it.
         /// </summary>
-        /// <returns>json string from server</returns>
-        /// <param name="url">Which URL should be called</param>
-        private async Task<string> RequestAsync(string url)
-        {
-            try
-            {
-                HttpResponseMessage response = await m_client.GetAsync(new Uri(url));
-                response.EnsureSuccessStatusCode();
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                ExceptionMessage = ex.Message;
-                throw ex;
-            }
-        }
-
-        /// <summary>
-        /// Loads the terrains async and write it in property JsonTerrainString.
-        /// </summary>
-        /// <param name="jsonRegionServerPath">Json region server path.</param>
+        /// <returns>The terrains async.</returns>
+        /// <param name="regionPosition">Region position.</param>
         public async Task<TerrainDefinition[,]> LoadTerrainsAsync(RegionPosition regionPosition)
         {
             var path = Core.Helper.LoadHelper.ReplacePath(ClientConstants.REGION_SERVER_PATH, regionPosition);
@@ -109,6 +92,7 @@ namespace Client.Common.Controllers
         /// <summary>
         /// Loads the terrain types async and returns an array of TerrainDefinition
         /// </summary>
+        /// <returns>The terrain types async.</returns>
         public async Task<Core.Models.Definitions.TerrainDefinition[]> LoadTerrainTypesAsync()
         {
             string path = ClientConstants.TERRAIN_TYPES_SERVER_PATH;
@@ -119,6 +103,7 @@ namespace Client.Common.Controllers
         /// <summary>
         /// Loads the terrain types async and returns an array of TerrainDefinition
         /// </summary>
+        /// <returns>The unit types async.</returns>
         public async Task<Core.Models.Definitions.UnitDefinition[]> LoadUnitTypesAsync()
         {
             string path = ClientConstants.UNIT_TYPES_SERVER_PATH;
@@ -126,14 +111,13 @@ namespace Client.Common.Controllers
             return JsonConvert.DeserializeObject<Core.Models.Definitions.UnitDefinition[]>(json);
         }
 
-
         /// <summary>
         /// Login async to the server and save the sessionID.
         /// </summary>
-        /// <returns>The Accoount.</returns>
+        /// <returns>The Account.</returns>
         /// <param name="currentGamePosition">Current game position.</param>
-        /// <param name="user">User.</param>
-        /// <param name="password">Password.</param>
+        /// <param name="user">User which wanted to log in.</param>
+        /// <param name="password">Password of the user.</param>
         public async Task<Account> LoginAsync(Core.Models.Position currentGamePosition, string user, string password)
         {
             var request = new Core.Connections.LoginRequest(currentGamePosition, user, password);
@@ -149,6 +133,7 @@ namespace Client.Common.Controllers
                 m_sessionID = loginResponse.SessionID;
                 return new Account(loginResponse.AccountId, user);
             }
+
             ExceptionMessage = "Login failure";
 
             return null;
@@ -174,6 +159,7 @@ namespace Client.Common.Controllers
             {
                 return entitiesResponse;
             }
+
             return new Core.Connections.Response();
         }
 
@@ -182,7 +168,7 @@ namespace Client.Common.Controllers
         /// </summary>
         /// <returns>True if the response is ok, otherwise false.</returns>
         /// <param name="currentGamePosition">Current game position.</param>
-        /// <param name="actions">Actions.</param>
+        /// <param name="actions">Actions which should be executed.</param>
         public async Task<bool> DoActionsAsync(Core.Models.Position currentGamePosition, Core.Models.Action[] actions)
         {
             var request = new Core.Connections.DoActionsRequest(m_sessionID, currentGamePosition, actions);
@@ -192,15 +178,34 @@ namespace Client.Common.Controllers
             path = path.Replace(ClientConstants.LOGIC_SERVER_JSON, json);
             var jsonFromServer = await RequestAsync(path);
 
-
             var entitiesResponse = JsonConvert.DeserializeObject<Core.Connections.Response>(jsonFromServer);
             if (entitiesResponse.Status == Core.Connections.Response.ReponseStatus.OK)
             {
                 return true;
             }
+
             return false;
         }
 
+        /// <summary>
+        /// Tries to call the given url. Throws an exception when the website returns an error message (e.g. 404)
+        /// </summary>
+        /// <returns>JSON string from server</returns>
+        /// <param name="url">Which URL should be called</param>
+        private async Task<string> RequestAsync(string url)
+        {
+            try
+            {
+                HttpResponseMessage response = await m_client.GetAsync(new Uri(url));
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                ExceptionMessage = ex.Message;
+                throw ex;
+            }
+        }
 
         #endregion
 
@@ -212,11 +217,10 @@ namespace Client.Common.Controllers
         private HttpClient m_client;
 
         /// <summary>
-        /// The m sessionID.
+        /// The sessionID.
         /// </summary>
         private Guid m_sessionID;
 
         #endregion
     }
 }
-

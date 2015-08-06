@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Concurrent;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
+    using System;
+    using System.Collections.Concurrent;
+
     /// <summary>
     /// The Worker do the actions on the view.
     /// </summary>
@@ -23,8 +23,7 @@ namespace Client.Common.Views
         /// </summary>
         /// <param name="frameTimesInSecond">Frame times in second.</param>
         public void Schedule(float frameTimesInSecond)
-        {
-            
+        {   
             if (Action != null)
             {
                 var actionV = (Client.Common.Views.Actions.Action)Action.View;
@@ -35,8 +34,7 @@ namespace Client.Common.Views
                 }
             }
             else if (Queue.TryDequeue(out Action))
-            {
-                
+            {   
                 var regionC = Core.Controllers.Controller.Instance.RegionManagerController;
                 var actionC = (Core.Controllers.Actions.Action)Action.Control;
                 var actionV = CreateActionView(Action);
@@ -48,45 +46,42 @@ namespace Client.Common.Views
         }
 
         /// <summary>
-        /// Creates the action.
+        /// Creates the action view, depending on the action.
         /// </summary>
-        /// <returns>The action.</returns>
-        /// <param name="action">Action.</param>
-        Client.Common.Views.Actions.Action CreateActionView(Core.Models.Action action)
+        /// <returns>The action view.</returns>
+        /// <param name="action">Action without action view.</param>
+        private Client.Common.Views.Actions.Action CreateActionView(Core.Models.Action action)
         {
             switch (action.Type)
             {
-                case(Core.Models.Action.ActionType.CreateUnit):
+                case Core.Models.Action.ActionType.CreateUnit:
                     return new Client.Common.Views.Actions.CreateUnit(action, WorldLayer);
 
-                case(Core.Models.Action.ActionType.MoveUnit):
+                case Core.Models.Action.ActionType.MoveUnit:
                     return new Client.Common.Views.Actions.MoveUnit(action, WorldLayer);
 
-                case(Core.Models.Action.ActionType.CreateHeadquarter):
+                case Core.Models.Action.ActionType.CreateHeadquarter:
                     throw new NotImplementedException();
 
-                case(Core.Models.Action.ActionType.CreateBuilding):
+                case Core.Models.Action.ActionType.CreateBuilding:
                     return new Client.Common.Views.Actions.CreateBuilding(action, WorldLayer);
-
             }
-
-
             return new Client.Common.Views.Actions.Action(action);
         }
 
         /// <summary>
-        /// The actionqueue.
+        /// The action queue.
         /// </summary>
         public ConcurrentQueue<Core.Models.Action> Queue;
+
         /// <summary>
         /// The action.
         /// </summary>
         public Core.Models.Action Action = null;
+
         /// <summary>
         /// The world layer.
         /// </summary>
         public Views.WorldLayer WorldLayer;
-
     }
 }
-

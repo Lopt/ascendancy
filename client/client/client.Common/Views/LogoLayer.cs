@@ -1,11 +1,11 @@
-﻿using System;
-using CocosSharp;
-using Client.Common.Helper;
-using Client.Common.Controllers;
-using Core.Controllers.Actions;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
+    using System;
+    using Client.Common.Controllers;
+    using Client.Common.Helper;
+    using CocosSharp;
+    using Core.Controllers.Actions;
+
     /// <summary>
     /// Logo layer.
     /// </summary>
@@ -25,15 +25,13 @@ namespace Client.Common.Views
             m_loadedSprite = new CCSprite("Ladebalken");
             m_loadedSprite.Visible = false;
 
+            AddChild(m_logo);
+            AddChild(m_loadedSprite); 
 
+            Color = CCColor3B.White;
+            Opacity = 255;
 
-            this.AddChild(m_logo);
-            this.AddChild(m_loadedSprite); 
-
-            this.Color = CCColor3B.White;
-            this.Opacity = 255;
-
-            this.Schedule(LoadingProgress);
+            Schedule(LoadingProgress);
         }
 
         #region overide
@@ -48,12 +46,10 @@ namespace Client.Common.Views
             m_logo.PositionX = this.VisibleBoundsWorldspace.MidX;
             m_logo.PositionY = this.VisibleBoundsWorldspace.MidY;
             m_logo.AnchorPoint = CCPoint.AnchorMiddle;
-            //m_logo.Scale = Modify.GetScaleFactor(m_logo.ContentSize, new CCSize(VisibleBoundsWorldspace.MaxX, VisibleBoundsWorldspace.MaxY));
 
             m_loadedSprite.PositionX = this.VisibleBoundsWorldspace.MidX;
             m_loadedSprite.PositionY = this.VisibleBoundsWorldspace.MinY;
             m_loadedSprite.AnchorPoint = CCPoint.AnchorMiddleBottom;
-
         }
 
         #endregion
@@ -64,15 +60,13 @@ namespace Client.Common.Views
         /// Show the loaded sprite if the terrain type is loaded.
         /// </summary>
         /// <param name="frameTimesInSecond">Frame times in second.</param>
-        void LoadingProgress(float frameTimesInSecond)
+        private void LoadingProgress(float frameTimesInSecond)
         {
             if (m_startScene.Phase >= StartScene.Phases.TerrainTypeLoaded)
             {
                 m_loadedSprite.Visible = true;
             }
-
         }
-
 
         #endregion
 
@@ -81,17 +75,18 @@ namespace Client.Common.Views
         /// <summary>
         /// The m_logo.
         /// </summary>
-        CCSprite m_logo;
+        private CCSprite m_logo;
+
         /// <summary>
         /// The m_loaded sprite.
         /// </summary>
-        CCSprite m_loadedSprite;
+        private CCSprite m_loadedSprite;
+
         /// <summary>
         /// The m_start scene.
         /// </summary>
-        StartScene m_startScene;
+        private StartScene m_startScene;
 
         #endregion
     }
 }
-
