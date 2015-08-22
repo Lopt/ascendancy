@@ -1,21 +1,31 @@
-﻿using System;
-using System.Collections.Concurrent;
-
-using Core.Controllers.Actions;
-using Core.Models.Definitions;
-using Core.Models;
-
-namespace Core.Controllers.Actions
+﻿namespace Core.Controllers.Actions
 {
+    using System;
+    using System.Collections.Concurrent;
+
+    using Core.Controllers.Actions;
+    using Core.Models;
+    using Core.Models.Definitions;
+
+    /// <summary>
+    /// Create unit.
+    /// </summary>
     public class CreateUnit : Action
     {
+        /// <summary>
+        /// Position of the parent-entity (e.g. position of barracks, if it spawns an unit)
+        /// </summary>
         public const string CREATE_POSITION = "CreatePosition";
+
+        /// <summary>
+        /// Unit Type which should be created
+        /// </summary>
         public const string CREATION_TYPE = "CreateUnit";
 
         /// <summary>
-        /// Constructor of the class CreateUnit.
+        /// Initializes a new instance of the <see cref="Core.Controllers.Actions.CreateUnit"/> class.
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">action model.</param>
         public CreateUnit(Core.Models.ModelEntity model)
             : base(model)
         {
@@ -27,41 +37,36 @@ namespace Core.Controllers.Actions
                 param[CREATE_POSITION] = new PositionI((Newtonsoft.Json.Linq.JContainer)param[CREATE_POSITION]);
             }
         }
-
-
+            
         /// <summary>
-        /// /// <summary>
-        /// Initializes a new instance of the <see cref="base.control.action.Action"/> class.
-        /// Identify alle affected regions by this action.       
+        /// Returns a bag of all regions which could be affected by this action.
         /// </summary>
-        /// <param name="regionManagerC"></param>
-        /// <returns> Returns <see cref="System.Collections.Concurrent.ConcurrentBag<t>"/> class with the affected regions. </returns>
-        override public ConcurrentBag<Core.Models.Region> GetAffectedRegions()
+        /// <returns>The affected regions.</returns>
+        public override ConcurrentBag<Core.Models.Region> GetAffectedRegions()
         {
             var regionManagerC = Controller.Instance.RegionManagerController;
 
-            ConcurrentBag<Core.Models.Region> Bag = new ConcurrentBag<Core.Models.Region>();
+            ConcurrentBag<Core.Models.Region> bag = new ConcurrentBag<Core.Models.Region>();
             var action = (Core.Models.Action)Model;
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
-            Bag.Add(region);
+            bag.Add(region);
 
             var adjacentRegions = GetAdjacentRegions(regionManagerC, region.RegionPosition, positionI);
 
             foreach (var adjRegions in adjacentRegions)
             {
-                Bag.Add(regionManagerC.GetRegion(adjRegions));
+                bag.Add(regionManagerC.GetRegion(adjRegions));
             }
 
-            return Bag;
+            return bag;
         }
 
         /// <summary>
         /// Returns if the action is even possible.
         /// </summary>
-        /// <param name="regionManagerC"></param>
-        /// <returns> True if the actions is possible, otherwise false.</returns>
+        /// <returns> True if the Building is buildable at the current position, otherwise false.</returns>
         public override bool Possible()
         {   
             var regionManagerC = Controller.Instance.RegionManagerController;
@@ -69,9 +74,9 @@ namespace Core.Controllers.Actions
             var action = (Core.Models.Action)Model;
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             var type = (long)action.Parameters[CREATION_TYPE];
-            var Entity = Controller.Instance.RegionManagerController.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition);
+            var entity = Controller.Instance.RegionManagerController.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition);
            
-            if (action.AccountID == Entity.AccountID)
+            if (action.AccountID == entity.OwnerID)
             {
                 RealCreatePosition = GetFreeField(positionI, regionManagerC);
 
@@ -81,14 +86,12 @@ namespace Core.Controllers.Actions
             {
                 return false;
             }
-
         }
 
         /// <summary>
         /// Apply action-related changes to the world.
         /// </summary>
-        /// <param name="regionManagerC"></param>
-        /// <returns> Returns <see cref="System.Collections.Concurrent.ConcurrentBag<t>"/> class with the affected region.</returns>
+        /// <returns> Returns <see cref="System.Collections.Concurrent.ConcurrentBag"/> class with the affected region./></returns>
         public override ConcurrentBag<Core.Models.Region> Do()
         {   
             var regionManagerC = Controller.Instance.RegionManagerController;
@@ -102,10 +105,11 @@ namespace Core.Controllers.Actions
             var dt = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
 
             // create the new entity and link to the correct account
-            var entity = new Core.Models.Entity(IdGenerator.GetId(),
-                             dt,  
-                             action.Account,
-                             positionI);
+            var entity = new Core.Models.Entity(
+                IdGenerator.GetId(),
+                dt,  
+                action.Account,
+                positionI);
 
             entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);
@@ -115,28 +119,38 @@ namespace Core.Controllers.Actions
                 action.Account.Units.AddLast(entity.Position);
             }
 
-
             return new ConcurrentBag<Core.Models.Region>() { region };
         }
 
         /// <summary>
-        /// In case of errors, revert the world data to a valid state.
+        /// If an error occurred in do, this function will be called to set the data to the last known valid state.
         /// </summary>
+        /// <returns>true if rewind was successfully</returns>
         public override bool Catch()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Override <see cref="base.model.RegionPosition"/> class and return the positionI of the region.
+        /// </summary>
+        /// <returns>The region position.</returns>
+        public override Core.Models.RegionPosition GetRegionPosition()
+        {
+            var action = (Core.Models.Action)Model;
+            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+            return positionI.RegionPosition;
+        }
      
         /// <summary>
         /// Check all possible spawn locations around a building.
+        /// TODO: THOMAS FILL OUT THIS COMMENT
         /// </summary>
         /// <param name="position"></param>
         /// <param name="regionManagerC"></param>
         /// <returns> Position which is free or null if nothing is free </returns>   
         private PositionI GetFreeField(PositionI position, RegionManagerController regionManagerC)
-        {      
-
+        {     
             foreach (var surpos in LogicRules.GetSurroundedFields(position))
             {                   
                 var td = regionManagerC.GetRegion(surpos.RegionPosition).GetTerrain(surpos.CellPosition);
@@ -151,7 +165,7 @@ namespace Core.Controllers.Actions
         }
 
         /// <summary>
-        /// 
+        /// TODO: THOMAS FILL OUT THIS COMMENT
         /// </summary>
         /// <param name="regionManagerC"></param>
         /// <param name="position"></param>
@@ -229,17 +243,8 @@ namespace Core.Controllers.Actions
         }
 
         /// <summary>
-        /// Gets the region position.
+        /// Position where the unit should be created
         /// </summary>
-        /// <returns>The region position.</returns>
-        override public Core.Models.RegionPosition GetRegionPosition()
-        {
-            var action = (Core.Models.Action)Model;
-            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
-            return positionI.RegionPosition;
-        }
-
         public PositionI RealCreatePosition;
     }
-
 }

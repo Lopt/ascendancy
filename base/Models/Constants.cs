@@ -1,37 +1,71 @@
-﻿using System;
-
-namespace Core.Models
+﻿namespace Core.Models
 {
+    using System;
+
+    /// <summary>
+    /// all constants which should be known by the server and client
+    /// </summary>
     public class Constants
     {
-        // size of a cell at the equator (in meters)
+        /// <summary>
+        /// size of a cell at the equator (in meters)
+        /// </summary>
         public const double CELL_SIZE = 4;
 
-        // earth size at equator (in meters)
+        /// <summary>
+        /// earth size at equator (in meters)
+        /// </summary>
         public const double EARTH_CIRCUMFERENCE = 40075036.0;
 
-        // amount of cells per region
+        /// <summary>
+        /// amount of cells per region x
+        /// </summary>
         public const int REGION_SIZE_X = 32;
+
+        /// <summary>
+        /// amount of cells per region y
+        /// </summary>
         public const int REGION_SIZE_Y = 32;
 
-        // amount of regions per folder
+        /// <summary>
+        /// amount of regions per folder x
+        /// </summary>
         public const int MAJOR_REGION_SIZE_X = 16;
+
+        /// <summary>
+        /// amount of regions per folder y
+        /// </summary>
         public const int MAJOR_REGION_SIZE_Y = 16;
 
-        // start and end of playable world
+        /// <summary>
+        /// start x of playable world
+        /// </summary>
         public const int START_X = 41504;
+
+        /// <summary>
+        /// end x of playable world
+        /// </summary>
         public const int END_X = 41519;
 
+        /// <summary>
+        /// start y of playable world
+        /// </summary>
         public const int START_Y = 26184;
+
+        /// <summary>
+        /// end y of playable world
+        /// </summary>
         public const int END_Y = 26191;
 
-        // if there are more than entries in a LinkedList/array, the API will dismiss the request
-        // for safety reasons
+        /// <summary>
+        /// if there are more than entries in a LinkedList/array, the API will dismiss the request
+        /// for safety reasons
+        /// </summary>
         public const int MAX_ENTRIES_PER_CONNECTION = 25;
 
-
+        /// <summary>
+        /// wait time for region writer lock
+        /// </summary>
         public const int REGION_LOCK_WAIT_TIME = 0;
     }
 }
-
-	

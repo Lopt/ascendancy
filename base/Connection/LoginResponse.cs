@@ -1,21 +1,26 @@
-﻿using System;
-using System.Collections.Concurrent;
-
-namespace Core.Connections
+﻿namespace Core.Connections
 {
+    using System;
+    using System.Collections.Concurrent;
+
     /// <summary>
     /// Response class which should be used to login.
-    /// Will be serialised before sending, should be deserialised after recieving.
+    /// Will be serialized before sending, should be deserialized after receiving.
     /// </summary>
-
     public class LoginResponse
     {
+        /// <summary>
+        /// Response status of the login response.
+        /// </summary>
         public enum ReponseStatus
         {
             OK,
             ERROR,
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Core.Connections.LoginResponse"/> class.
+        /// </summary>
         public LoginResponse()
         {
             Status = ReponseStatus.ERROR;
@@ -23,11 +28,19 @@ namespace Core.Connections
             AccountId = 0;
         }
 
+        /// <summary>
+        /// The Response Status. Only use other data if ResponseStatus == OK
+        /// </summary>
         public ReponseStatus Status;
+
+        /// <summary>
+        /// The session which the got after the login.
+        /// </summary>
         public Guid SessionID;
+
+        /// <summary>
+        /// The account identifier which the user has, who logged in.
+        /// </summary>
         public int AccountId;
-
-
     }
 }
-

@@ -1,8 +1,11 @@
-﻿using System;
-
-namespace Core.Models
+﻿namespace Core.Models
 {
-    public enum Ressources
+    using System;
+
+    /// <summary>
+    /// All available Resources.
+    /// </summary>
+    public enum Resources
     {
         Gold = 0,
         Fire = 1,
@@ -12,4 +15,3 @@ namespace Core.Models
         Magic = 5,
     }
 }
-

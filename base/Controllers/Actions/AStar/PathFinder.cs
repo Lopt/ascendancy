@@ -1,13 +1,12 @@
-﻿using Core.Controllers.Actions;
-using Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.Controllers.AStar
+﻿namespace Core.Controllers.AStar
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Core.Controllers.Actions;
+    using Core.Models;
 
     /// <summary>
     ///  http://blog.two-cats.com/2014/06/a-star-example/ founded by Mike Clift
@@ -115,7 +114,7 @@ namespace Core.Controllers.AStar
                 var terrainDefinition = region.GetTerrain(newPosition.CellPosition);
                 var unit = region.GetEntity(newPosition.CellPosition);
                 // check terrai for walkable and other units in the path
-                if (newPosition == searchParameters.EndLocation && unit.AccountID != searchParameters.AccountID)
+                if (newPosition == searchParameters.EndLocation && unit.OwnerID != searchParameters.AccountID)
                 {
                     if (terrainDefinition.Walkable)
                     {

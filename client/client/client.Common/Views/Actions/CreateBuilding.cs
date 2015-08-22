@@ -35,7 +35,7 @@
         {
             var action = (Core.Models.Action)Model;
 
-            var position = (Core.Models.PositionI)action.Parameters[Core.Controllers.Actions.CreatBuilding.CREATE_POSITION];
+            var position = (Core.Models.PositionI)action.Parameters[Core.Controllers.Actions.CreateBuilding.CREATE_POSITION];
             var mapCoordinat = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, position);
             var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
             WorldLayer.RegionView.SetBuilding(mapCoordinat, entity);

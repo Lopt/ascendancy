@@ -86,7 +86,7 @@
             else
             {
                 var sort = ViewDefinitions.Sort.Normal;
-                if (GameAppDelegate.Account != unit.Account)
+                if (GameAppDelegate.Account != unit.Owner)
                 {
                     sort = ViewDefinitions.Sort.Enemy;
                 }
@@ -109,7 +109,7 @@
             else
             {
                 var sort = ViewDefinitions.Sort.Normal;
-                if (GameAppDelegate.Account != building.Account)
+                if (GameAppDelegate.Account != building.Owner)
                 {
                     sort = ViewDefinitions.Sort.Enemy;
                 }

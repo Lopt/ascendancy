@@ -73,7 +73,6 @@
     <Compile Include="Controllers\Actions\CreateHeadquarter.cs" />
     <Compile Include="Controllers\Actions\Action.cs" />
     <Compile Include="Controllers\Actions\MoveUnit.cs" />
-    <Compile Include="Controllers\Actions\TestAction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

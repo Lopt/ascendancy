@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Concurrent;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace Core.Models
+﻿namespace Core.Models
 {
+    using System;
+    using System.Collections.Concurrent;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
     /// <summary>
     /// Represents a position of a region.
     /// </summary>
-    public class RegionPosition : Object
+    public class RegionPosition : object
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Core.Models.RegionPosition"/> class.
+        /// </summary>
+        /// <param name="regionX">Region x.</param>
+        /// <param name="regionY">Region y.</param>
         [JsonConstructor]
         public RegionPosition(int regionX, int regionY)
         {
@@ -17,19 +22,30 @@ namespace Core.Models
             RegionY = regionY;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Core.Models.RegionPosition"/> class.
+        /// </summary>
+        /// <param name="position">Game Position.</param>
         public RegionPosition(Position position)
         {
             RegionX = (int)(position.X / Constants.REGION_SIZE_X);
             RegionY = (int)(position.Y / Constants.REGION_SIZE_Y);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Core.Models.RegionPosition"/> class.
+        /// </summary>
+        /// <param name="position">Game Position Integer.</param>
         public RegionPosition(PositionI position)
         {
             RegionX = (int)(position.X / Constants.REGION_SIZE_X);
             RegionY = (int)(position.Y / Constants.REGION_SIZE_Y);
         }
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Core.Models.RegionPosition"/> class.
+        /// </summary>
+        /// <param name="obj">JContainer Object.</param>
         public RegionPosition(JContainer obj)
         {
             RegionX = (int)obj.SelectToken("RegionX");
@@ -41,18 +57,30 @@ namespace Core.Models
             return new RegionPosition(first.RegionX + second.RegionX, first.RegionY + second.RegionY);
         }
 
+        /// <summary>
+        /// Gets the region x.
+        /// </summary>
+        /// <value>The region x.</value>
         public int RegionX
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets the region y.
+        /// </summary>
+        /// <value>The region y.</value>
         public int RegionY
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets the major x.
+        /// </summary>
+        /// <value>The major x.</value>
         [JsonIgnore]
         public int MajorX
         {
@@ -62,6 +90,10 @@ namespace Core.Models
             }
         }
 
+        /// <summary>
+        /// Gets the major y.
+        /// </summary>
+        /// <value>The major y.</value>
         [JsonIgnore]
         public int MajorY
         {
@@ -71,17 +103,26 @@ namespace Core.Models
             }
         }
 
-
-        public override bool Equals(Object obj)
+        /// <summary>
+        /// tests if the given object is equal to this object
+        /// </summary>
+        /// <returns>true, if it is equal, otherwise false.</returns>
+        /// <param name="obj">The <see cref="System.Object"/> to compare with the current <see cref="Core.Models.RegionPosition"/>.</param>
+        /// <filterpriority>2</filterpriority>
+        public override bool Equals(object obj)
         {
             var regionPosition = (RegionPosition)obj;
-            return (regionPosition.RegionX == RegionX && regionPosition.RegionY == RegionY);
+            return regionPosition.RegionX == RegionX && regionPosition.RegionY == RegionY;
         }
 
+        /// <summary>
+        /// standard hash function
+        /// </summary>
+        /// <returns>hash code.</returns>
+        /// <filterpriority>2</filterpriority>
         public override int GetHashCode()
         {
-            return RegionX * 1000000 + RegionY;
+            return (RegionX * 1000000) + RegionY;
         }
-
     }
 }

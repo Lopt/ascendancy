@@ -1,9 +1,9 @@
-﻿using Core.Models;
-using Core.Models.Definitions;
-using System;
-
-namespace Core.Controllers.AStar
+﻿namespace Core.Controllers.AStar
 {
+    using System;
+    using Core.Models;
+    using Core.Models.Definitions;
+
     /// <summary>
     /// Represents a single node on a grid that is being searched for a path between two points
     /// </summary>

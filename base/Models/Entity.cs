@@ -1,41 +1,62 @@
-﻿using System;
-
-using Core.Models;
-using Core.Models.Definitions;
-using Newtonsoft.Json;
-
-namespace Core.Models
+﻿namespace Core.Models
 {
+    using System;
+    using Core.Models;
+    using Core.Models.Definitions;
+    using Newtonsoft.Json;
+
+    /// <summary>
+    /// Entity which represents an "object" in the game world: units, terrain, buildings... etc.
+    /// </summary>
     public class Entity : ModelEntity
     {
-        public Entity(int id, Definition defintion, Account account, PositionI position)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Core.Models.Entity"/> class.
+        /// </summary>
+        /// <param name="id">Identifier of entity.</param>
+        /// <param name="definition">Entity Type Definition.</param>
+        /// <param name="owner">Entity Owner.</param>
+        /// <param name="position">Entity Position.</param>
+        public Entity(int id, Definition definition, Account owner, PositionI position)
             : base()
         {
             ID = id; 
-            Definition = defintion;
+            Definition = definition;
             Position = position;
-            Account = account;
+            Owner = owner;
         }
 
+        /// <summary>
+        /// Gets the ID
+        /// </summary>
+        /// <value>The ID</value>
         public int ID
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets or sets the definition ID.
+        /// </summary>
+        /// <value>The definition ID.</value>
         public int DefinitionID
         {
             get
             {
                 return Definition.ID;
-            }  
+            }
+
             set
             {
-                Definition = World.Instance.DefinitionManager.GetDefinition((EntityType) value);
+                Definition = World.Instance.DefinitionManager.GetDefinition((EntityType)value);
             }
         }
 
-
+        /// <summary>
+        /// Gets the definition.
+        /// </summary>
+        /// <value>The definition.</value>
         [JsonIgnore]
         public Definition Definition
         {
@@ -43,32 +64,42 @@ namespace Core.Models
             private set;
         }
 
+        /// <summary>
+        /// Gets or sets the position.
+        /// </summary>
+        /// <value>The position.</value>
         public PositionI Position
         {
             get;
             set;
-
         }
 
+        /// <summary>
+        /// Gets the account.
+        /// </summary>
+        /// <value>The account.</value>
         [JsonIgnore]
-        public Account Account
+        public Account Owner
         {
             get;
             private set;
         }
 
-        public int AccountID
+        /// <summary>
+        /// Gets or sets the account I.
+        /// </summary>
+        /// <value>The account ID.</value>
+        public int OwnerID
         {
             get
             {
-                return Account.ID;
+                return Owner.ID;
             }
+
             set
             {
-                Account = World.Instance.AccountManager.GetAccountOrEmpty(value);
+                Owner = World.Instance.AccountManager.GetAccountOrEmpty(value);
             }
         }
-
     }
 }
-

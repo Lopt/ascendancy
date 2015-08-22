@@ -1,14 +1,20 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-using Core.Models;
-
-namespace Core.Models
+﻿namespace Core.Models
 {
-    class LogicRules
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
+    using Core.Models;
+
+    /// <summary>
+    /// Logic rules.
+    /// </summary>
+    public class LogicRules
     {
-        // From North to NorthEast in clockwise
+        /// <summary>
+        /// The surround tiles on even x positions.
+        /// From North to NorthEast in clockwise
+        /// </summary>
         public static readonly PositionI[] SurroundTilesEven =
             {
                 new PositionI(0, -1),
@@ -19,7 +25,10 @@ namespace Core.Models
                 new PositionI(-1, 0)
             };
 
-        // From North to NorthEast in clockwise
+        /// <summary>
+        /// The surround tiles on odd x positions.
+        /// From North to NorthEast in clockwise
+        /// </summary>
         public static readonly PositionI[] SurroundTilesOdd =
             {
                 new PositionI(0, -1),
@@ -30,6 +39,11 @@ namespace Core.Models
                 new PositionI(-1, -1)
             };
 
+        /// <summary>
+        /// Gets the surrounded fields.
+        /// </summary>
+        /// <returns>The surrounded fields.</returns>
+        /// <param name="pos">Center Position.</param>
         public static PositionI[] GetSurroundedFields(PositionI pos)
         {
             var surroundedFields = SurroundTilesEven;
@@ -39,29 +53,35 @@ namespace Core.Models
             }
 
             var surrounded = new PositionI[6];
-            for (var Index = 0; Index < surroundedFields.Length; ++Index)
+            for (var index = 0; index < surroundedFields.Length; ++index)
             {
-                surrounded[Index] = pos + surroundedFields[Index];
+                surrounded[index] = pos + surroundedFields[index];
             }
             return surrounded;
         }
 
-        // Surrounded Regions from topleft clockwise
+        /// <summary>
+        /// Surrounded Regions from top left clockwise
+        /// </summary>
         public static readonly RegionPosition[] SurroundRegions =
             {
                 new RegionPosition(-1, -1),
                 new RegionPosition(-1,  0),
                 new RegionPosition(-1, +1),
-                new RegionPosition( 0, +1),
+                new RegionPosition(0, +1),
                 new RegionPosition(+1, +1),
                 new RegionPosition(+1,  0),
                 new RegionPosition(+1, -1),
-                new RegionPosition( 0, -1)
-        };
+                new RegionPosition(0, -1)
+            };
 
+        /// <summary>
+        /// ???? TODO: Delete this stuff
+        /// </summary>
+        /// <returns><c>true</c>, if won, <c>false</c> otherwise.</returns>
         public static bool FightSystem()
         {
-            var result = new Random().Next(1,10);
+            var result = new Random().Next(1, 10);
             
             if (result > 5)
             {

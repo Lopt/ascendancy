@@ -64,8 +64,8 @@
         private static Core.Models.Action CreateBuilding(PositionI positionI, Definition definition)
         {
             var dictParam = new System.Collections.Generic.Dictionary<string, object>();
-            dictParam[Core.Controllers.Actions.CreatBuilding.CREATE_POSITION] = positionI; 
-            dictParam[Core.Controllers.Actions.CreatBuilding.CREATION_TYPE] = (long)definition.SubType;
+            dictParam[Core.Controllers.Actions.CreateBuilding.CREATE_POSITION] = positionI; 
+            dictParam[Core.Controllers.Actions.CreateBuilding.CREATION_TYPE] = (long)definition.SubType;
             return new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.CreateBuilding, dictParam);
         }
     }

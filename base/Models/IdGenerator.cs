@@ -1,21 +1,25 @@
-﻿using System;
-using System.Threading;
-
-namespace Core.Models
+﻿namespace Core.Models
 {
+    using System;
+    using System.Threading;
+
     /// <summary>
-    /// Generates Thradsafe IDs.
+    /// Generates thread safe IDs.
     /// </summary>
     public class IdGenerator
     {
-        static int m_currentId;
+        /// <summary>
+        /// The current identifier.
+        /// </summary>
+        private static int m_currentId;
 
-        static public int GetId()
+        /// <summary>
+        /// Gets the identifier and increments it.
+        /// </summary>
+        /// <returns>An identifier.</returns>
+        public static int GetId()
         {
             return Interlocked.Increment(ref m_currentId);
         }
-
-
     }
 }
-

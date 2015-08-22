@@ -1,28 +1,30 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
-using Core.Controllers.Actions;
-using Core.Models.Definitions;
-using Core.Models;
-using System.Collections;
-using Core.Controllers.AStar;
-
-namespace Core.Controllers.Actions
+﻿namespace Core.Controllers.Actions
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+
+    using Core.Controllers.Actions;
+    using Core.Controllers.AStar;
+    using Core.Models;
+    using Core.Models.Definitions;
+
+    /// <summary>
+    /// Action to move an unit
+    /// </summary>
     public class MoveUnit : Action
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Core.Models.Actions.MoveUnit"/> class.
+        /// Initializes a new instance of the <see cref="Core.Controllers.Actions.MoveUnit"/> class.
         /// </summary>
-        /// <param name="model">Model.</param>
+        /// <param name="model">action model.</param>
         public MoveUnit(Core.Models.ModelEntity model)
             : base(model)
         {
             var action = (Core.Models.Action)Model;
             var param = action.Parameters;
-
 
             if (param[START_POSITION].GetType() != typeof(PositionI))
             {
@@ -35,18 +37,23 @@ namespace Core.Controllers.Actions
             }
         }
 
+        /// <summary>
+        /// Position where the unit stands
+        /// </summary>
         public const string START_POSITION = "EntityPosition";
-        public const string END_POSITION = "NewPosition";
 
+        /// <summary>
+        /// Target Position
+        /// </summary>
+        public const string END_POSITION = "NewPosition";
 
         // don't send from the client
         public const string CLIENT_UNIT_INFOS = "Unit";
 
         /// <summary>
-        /// Gets the affected regions.
+        /// Returns a bag of all regions which could be affected by this action.
         /// </summary>
         /// <returns>The affected regions.</returns>
-        /// <param name="regionManagerC">Region manager c.</param>
         public override ConcurrentBag<Core.Models.Region> GetAffectedRegions()
         {
             var regionManagerC = Controller.Instance.RegionManagerController;
@@ -69,10 +76,9 @@ namespace Core.Controllers.Actions
         }
 
         /// <summary>
-        /// Returns true if the action is even possible.
+        /// Returns if the action is even possible.
         /// </summary>
-        /// <param name="regionManagerC"></param>
-        /// <returns></returns>
+        /// <returns>true if this is action possible</returns>
         public override bool Possible()
         {
             var action = (Core.Models.Action)Model;
@@ -86,7 +92,7 @@ namespace Core.Controllers.Actions
                 return false;
             }
 
-            if (unit != null && action.Account != null && action.Account.ID == unit.Account.ID)
+            if (unit != null && action.Account != null && action.Account.ID == unit.Owner.ID)
             {
                 var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition, action.Account.ID));
                 Path = pathfinder.FindPath(((UnitDefinition)unit.Definition).Moves);
@@ -95,7 +101,7 @@ namespace Core.Controllers.Actions
                 {
                     var destpoint = Controller.Instance.RegionManagerController.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
 
-                    if (destpoint != null && action.Account.ID != unit.AccountID)
+                    if (destpoint != null && action.Account.ID != unit.OwnerID)
                     {
                         m_fightPos = (PositionI)Path[Path.Count - 1];
                         Path.RemoveAt(Path.Count - 1);
@@ -111,7 +117,7 @@ namespace Core.Controllers.Actions
         /// Apply action-related changes to the world.
         /// Returns set of changed Regions if everything worked, otherwise null
         /// </summary>
-        /// <param name="regionManagerC">Region manager c.</param>
+        /// <returns>all affected (changed) regions</returns>
         public override ConcurrentBag<Core.Models.Region> Do()
         {
             var regionManagerC = Controller.Instance.RegionManagerController;
@@ -135,7 +141,6 @@ namespace Core.Controllers.Actions
                     regionManagerC.GetRegion(endPosition.RegionPosition).RemoveEntity(action.ActionTime, defeatetentity);
                     entity.Position = m_fightPos;
                 }
-
             }    
 
             Bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
@@ -145,15 +150,28 @@ namespace Core.Controllers.Actions
                 Bag.Add(regionManagerC.GetRegion(endPosition.RegionPosition));
             }
 
-
             action.Parameters[CLIENT_UNIT_INFOS] = entity;
 
             return Bag;
         }
 
+
         /// <summary>
-        /// In case of errors, revert the world data to a valid state.
-        /// </summary> 
+        /// Gets the region position.
+        /// </summary>
+        /// <returns>The region position.</returns>
+        override public Core.Models.RegionPosition GetRegionPosition()
+        {
+            var action = (Core.Models.Action)Model;
+
+            var startPosition = (PositionI)action.Parameters[START_POSITION];
+            return startPosition.RegionPosition;
+        }
+
+        /// <summary>
+        /// If an error occurred in do, this function will be called to set the data to the last known valid state.
+        /// </summary>
+        /// <returns>true if rewind was successfully</returns>
         public override bool Catch()
         {
             throw new NotImplementedException();
@@ -225,21 +243,9 @@ namespace Core.Controllers.Actions
             return list;
         }
 
-        /// <summary>
-        /// Gets the region position.
-        /// </summary>
-        /// <returns>The region position.</returns>
-        override public Core.Models.RegionPosition GetRegionPosition()
-        {
-            var action = (Core.Models.Action)Model;
-
-            var startPosition = (PositionI)action.Parameters[START_POSITION];
-            return startPosition.RegionPosition;
-        }
 
         public IList Path;
         private bool m_fight;
         private PositionI m_fightPos;
     }
 }
-

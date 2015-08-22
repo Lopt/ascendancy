@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace Core.Models
+﻿namespace Core.Models
 {
+    using System;
 
     /// <summary>
     /// Latitude and Longitude of the real world.
@@ -10,49 +9,47 @@ namespace Core.Models
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Core.Models.LatLon"/> class.
-        /// A LatLon is an Latitude/Longitude Position of (spheric) earth.
+        /// Latitude/Longitude Position of earth.
         /// </summary>
-        /// <param name="lat">Latitude</param>
-        /// <param name="lon">Longitude</param>
+        /// <param name="lat">Latitude of earth</param>
+        /// <param name="lon">Longitude of earth</param>
         public LatLon(double lat, double lon)
         {
-            m_lat = lat;
-            m_lon = lon;
+            Lat = lat;
+            Lon = lon;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Core.Models.LatLon"/> class.
         /// </summary>
-        /// <param name="position">Position which should be converted to a LatLon Position.</param>
+        /// <param name="position">Position which should be converted to a <see cref="Core.Models.LatLon"/>  Position.</param>
         public LatLon(Position position)
         {
             var zoom = Constants.EARTH_CIRCUMFERENCE / Constants.CELL_SIZE;
             var n = Math.PI - ((2.0 * Math.PI * position.Y) / zoom);
 
-            m_lon = (float)((position.X / zoom * 360.0) - 180.0);
-            m_lat = (float)(180.0 / Math.PI * Math.Atan(Math.Sinh(n)));
+            Lon = (float)((position.X / zoom * 360.0) - 180.0);
+            Lat = (float)(180.0 / Math.PI * Math.Atan(Math.Sinh(n)));
         }
 
+        /// <summary>
+        /// Gets the latitude
+        /// </summary>
+        /// <value>The latitude.</value>
         public double Lat
         {
-            //set { this.m_lat = value; }
-            get
-            {
-                return this.m_lat;
-            }
+            get;
+            private set;
         }
 
+        /// <summary>
+        /// Gets the longitude.
+        /// </summary>
+        /// <value>The longitude.</value>
         public double Lon
         {
-            //set { this.m_lon = value; }
-            get
-            {
-                return this.m_lon;
-            }
+            get;
+            private set;
         }
-
-        private double m_lat;
-        private double m_lon;
     }
 }
-
