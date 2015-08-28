@@ -1,2 +1,2 @@
-﻿<%@ Application Inherits="server.MvcApplication" %>
+﻿<%@ Application Inherits="Server.MvcApplication" %>
 
