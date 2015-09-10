@@ -130,7 +130,6 @@
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
   </ItemGroup>
-
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <MonoDevelop>

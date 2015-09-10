@@ -44,6 +44,11 @@
         private WorldLayer m_worldLayer;
 
         /// <summary>
+        /// The m_world layer.
+        /// </summary>
+        private DebugLayer m_debugLayer;
+
+        /// <summary>
         /// The m_new scale.
         /// </summary>
         private float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
@@ -67,11 +72,12 @@
         /// Initializes a new instance of the <see cref="Client.Common.Views.TouchHandler"/> class.
         /// </summary>
         /// <param name="worldLayer">World layer.</param>
-        public TouchHandler(WorldLayer worldLayer)
+        public TouchHandler(GameScene scene)
         {
             m_timer = new Stopwatch();
             m_touchGesture = TouchGesture.None;
-            m_worldLayer = worldLayer;
+            m_worldLayer = scene.WorldLayer;
+            m_debugLayer = scene.DebugLayer;
             m_startLocation = new CCPoint(1, 1);
         }
 
@@ -144,6 +150,13 @@
 
             m_startLocation = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
             var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
+
+            // 3 touchs = open/close debug layer
+            if (touches.Count == 3)
+            {
+                m_debugLayer.Toggle();
+                return;
+            }
 
             switch (m_touchGesture)
             {

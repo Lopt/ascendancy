@@ -23,6 +23,7 @@ namespace Client.Common.Views.Actions
         /// </summary>
         public override void BeforeDo()
         {
+            Helper.Logging.Info("CreateUnit Executed");
         }
 
         /// <summary>

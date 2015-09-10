@@ -23,6 +23,7 @@
         /// </summary>
         public override void BeforeDo()
         {
+            Helper.Logging.Info("CreateBuiding Executed");
         }
 
         /// <summary>

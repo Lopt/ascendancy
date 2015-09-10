@@ -83,7 +83,7 @@
         /// <returns>The terrains async.</returns>
         /// <param name="regionPosition">Region position.</param>
         public async Task<TerrainDefinition[,]> LoadTerrainsAsync(RegionPosition regionPosition)
-        {
+        {            
             var path = Core.Helper.LoadHelper.ReplacePath(ClientConstants.REGION_SERVER_PATH, regionPosition);
             var json = await RequestAsync(path);
             return Core.Helper.LoadHelper.JsonToTerrain(json);
@@ -196,14 +196,15 @@
         {
             try
             {
+                Helper.Logging.Info("URL load: " + url);
                 HttpResponseMessage response = await m_client.GetAsync(new Uri(url));
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync();
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                ExceptionMessage = ex.Message;
-                throw ex;
+                Helper.Logging.Error("URL load failed: " + exception.Message);
+                throw exception;
             }
         }
 

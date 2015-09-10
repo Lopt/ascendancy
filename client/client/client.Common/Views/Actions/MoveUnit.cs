@@ -25,6 +25,8 @@
         /// </summary>
         public override void BeforeDo()
         {
+            Helper.Logging.Info("MoveUnit Executed");
+
             var action = (Core.Models.Action)Model;
             var actionC = (Core.Controllers.Actions.MoveUnit)Model.Control;
             var startPosition = (Core.Models.PositionI)action.Parameters[Core.Controllers.Actions.MoveUnit.START_POSITION];

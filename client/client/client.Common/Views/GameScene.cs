@@ -17,16 +17,18 @@
         public GameScene(CCWindow mainWindow)
             : base(mainWindow)
         {
-            m_world = new WorldLayer(this);
-            this.AddChild(m_world);
+            WorldLayer = new WorldLayer(this);
+            AddChild(WorldLayer);
 
-            m_touchHandler = new TouchHandler(m_world); 
+            DebugLayer = new DebugLayer();
+            AddChild(DebugLayer);
+
+            m_touchHandler = new TouchHandler(this); 
             var touchListener = new CCEventListenerTouchAllAtOnce();
             touchListener.OnTouchesMoved = m_touchHandler.OnTouchesMoved;
             touchListener.OnTouchesBegan = m_touchHandler.OnTouchesBegan;
             touchListener.OnTouchesEnded = m_touchHandler.OnTouchesEnded;
-
-            m_world.AddEventListener(touchListener);
+            WorldLayer.AddEventListener(touchListener);
         }
 
         #region Properties
@@ -37,9 +39,14 @@
         private TouchHandler m_touchHandler;
 
         /// <summary>
-        /// The m_world.
+        /// The world (whole gamefield).
         /// </summary>
-        private WorldLayer m_world;
+        public WorldLayer WorldLayer;
+
+        /// <summary>
+        /// The debug layer (shows logging information).
+        /// </summary>
+        public DebugLayer DebugLayer;
 
         #endregion
     }
