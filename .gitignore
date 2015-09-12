@@ -24,3 +24,5 @@ UpgradeLog2.htm
 server/data/world/
 server/data/ascendancy-world/
 server/data/.directory
+tcpserver/bin/
+tcpserver/obj/
