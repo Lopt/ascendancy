@@ -95,12 +95,12 @@
         #region TileMap
 
         /// <summary>
-        /// tilemap size
+        /// Tile Map size
         /// </summary>
         public const int CELLMAP_160x160_SIZE = 160;
 
         /// <summary>
-        /// tilemap file name
+        /// Tile Map file name
         /// </summary>
         public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20150704";
 
@@ -193,17 +193,16 @@
         /// </summary>
         public const float MOVE_SPEED_PER_FIELD = 0.50f;
 
-                #endregion
+        #endregion
 
         /// <summary>
         /// The Server Address (which he should listen).
         /// </summary>
-        public static readonly string TCP_SERVER = "192.168.2.5";
+        public static readonly string TCP_SERVER = "192.168.2.13";
 
         /// <summary>
         /// The Server Port
         /// </summary>
         public static readonly int TCP_PORT = 13000;
-
     }
 }

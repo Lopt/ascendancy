@@ -1,25 +1,28 @@
-﻿using System;
-using System.Collections.Concurrent;
-using Newtonsoft.Json;
-using Core.Models;
-using Server.Models;
-
-namespace Server.Controllers
+﻿namespace Server.Controllers
 {
-	/// <summary>
-	/// Contains all loaded regions and loads regions.
-	/// </summary>
+    using System;
+    using System.Collections.Concurrent;
+    using Core.Models;
+    using Newtonsoft.Json;
+    using Server.Models;
+
+    /// <summary>
+    /// Contains all loaded regions and loads regions.
+    /// </summary>
     public class RegionManagerController : Core.Controllers.RegionManagerController
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Server.Controllers.RegionManagerController"/> class.
+        /// </summary>
         public RegionManagerController()
         {
         }
 
-		/// <summary>
-		/// Tries to get the Region.
-		/// </summary>
-		/// <returns>The region. If it couln't be loaded, region.exist is false.</returns>
-		/// <param name="regionPosition">Region position.</param>
+        /// <summary>
+        /// Tries to get the Region.
+        /// </summary>
+        /// <returns>The region. If it couldn't be loaded, region.exist is false.</returns>
+        /// <param name="regionPosition">Region position.</param>
         override public Region GetRegion(RegionPosition regionPosition)
         {
             var regionManager = World.Instance.RegionManager;
@@ -30,7 +33,7 @@ namespace Server.Controllers
                 try
                 {
                     string json = System.IO.File.ReadAllText(path);
-					region.AddTerrain(Core.Helper.LoadHelper.JsonToTerrain(json));
+                    region.AddTerrain(Core.Helper.LoadHelper.JsonToTerrain(json));
                     regionManager.AddRegion(region);
                 }
                 catch (System.IO.DirectoryNotFoundException exception)
@@ -42,8 +45,8 @@ namespace Server.Controllers
                     Console.WriteLine(exception.ToString());
                 }
             }
+
             return region;
         }
     }
 }
-

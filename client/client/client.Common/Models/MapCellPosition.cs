@@ -1,12 +1,12 @@
-﻿using System;
-using System.Reflection;
-using CocosSharp;
-using Client.Common.Helper;
-
-namespace Client.Common.Models
+﻿namespace Client.Common.Models
 {
+    using System;
+    using System.Reflection;
+    using CocosSharp;
+    using Client.Common.Helper;
+
     /// <summary>
-    /// The Map cell position to convert between tilemap and map cell.
+    /// The Map cell position to convert between Tile Map and map cell.
     /// </summary>
     public class MapCellPosition
     {
@@ -31,7 +31,7 @@ namespace Client.Common.Models
             var y = tileMapCoordinates.Row;
         
             m_CellX = (x * 2) + (y % 2);
-            m_CellY = (y / 2);
+            m_CellY = y / 2;
         }
 
         /// <summary>

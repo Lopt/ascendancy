@@ -12,19 +12,19 @@
     public class DebugLayer : CCLayerColor
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Client.Common.Views.LogoLayer"/> class.
+        /// Initializes a new instance of the <see cref="Client.Common.Views.DebugLayer"/> class.
         /// </summary>
-        /// <param name="startScene">Start scene.</param>
         public DebugLayer()
             : base()
         {
-            m_label = new CCLabel ("", "verdana", 12) {
+            m_label = new CCLabel ("", "verdana", 12)
+            {
                 Position = VisibleBoundsWorldspace.LowerLeft,
                 Color = CCColor3B.Black,
                 HorizontalAlignment = CCTextAlignment.Left,
                 VerticalAlignment = CCVerticalTextAlignment.Top,
                 AnchorPoint = CCPoint.AnchorLowerLeft,
-                Dimensions = VisibleBoundsWorldspace.Size//new CCSize(200, 200)
+                Dimensions = VisibleBoundsWorldspace.Size
             };
 
             Position = VisibleBoundsWorldspace.LowerLeft;
@@ -47,7 +47,7 @@
             if (Visible)
             {
                 Helper.Logging.Info("Logging Layer opened");
-                string output = "";
+                string output = string.Empty;
 
                 foreach (var text in Helper.Logging.GetLog())
                 {
@@ -61,8 +61,5 @@
         #endregion
 
         private CCLabel m_label;
-
-
-
     }
 }

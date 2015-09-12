@@ -1,46 +1,54 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Collections.Generic;
-using System.Collections.Concurrent;
-using SQLite;
-using System.Threading;
-
-namespace Server.Controllers
+﻿namespace Server.Controllers
 {
-	/// <summary>
-	/// API Controller provides functionality to access the game. 
-	/// Every access from outside should use API Controller.
-	/// As example HTTPController uses only API Controller.
-	/// If we later switch to another protocol (or directly sockets) we just need
-	/// to build another HTTP Controller-like which uses the API Controller functionality.
-	/// </summary>
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Threading;
+    using SQLite;
+
+    /// <summary>
+    /// API Controller provides functionality to access the game. 
+    /// Every access from outside should use API Controller.
+    /// As example HTTPController uses only API Controller.
+    /// If we later switch to another protocol (or directly sockets) we just need
+    /// to build another HTTP Controller-like which uses the API Controller functionality.
+    /// </summary>
     public sealed class APIController
     {
-        private static readonly Lazy<APIController> m_singleton =
+        /// <summary>
+        /// The singleton instance.
+        /// </summary>
+        private static readonly Lazy<APIController> Singleton =
             new Lazy<APIController>(() => new APIController());
 
+        /// <summary>
+        /// Gets the singleton instance.
+        /// </summary>
+        /// <value>The instance.</value>
         public static APIController Instance
         {
             get
             {
-                return m_singleton.Value;
+                return Singleton.Value;
             }
         }
 
+        /// <summary>
+        /// Prevents a default instance of the <see cref="Server.Controllers.APIController"/> class from being created.
+        /// </summary>
         private APIController()
         {
             m_threads = new Models.AveragePositionQueue[Models.ServerConstants.ACTION_THREADS];
-			for (int nr = 0; nr < Models.ServerConstants.ACTION_THREADS; ++nr)
+            for (int nr = 0; nr < Models.ServerConstants.ACTION_THREADS; ++nr)
             {
                 m_threads[nr] = new Models.AveragePositionQueue();
             }
         }
 
-
-
-		/// <summary>
-		/// Possible return values, what could have been happen
-		/// </summary>
+        /// <summary>
+        /// Possible return values, what could have been happen
+        /// </summary>
         private enum ActionReturn
         {
             Done,
@@ -52,19 +60,30 @@ namespace Server.Controllers
             RegionDontExist
         }
 
+        /// <summary>
+        /// Region data.
+        /// </summary>
         public class RegionData
         {
+            /// <summary>
+            /// The entities in every region.
+            /// </summary>
             public LinkedList<LinkedList<Core.Models.Entity>> EntityDict;
+
+            /// <summary>
+            /// The actions in every region.
+            /// </summary>
             public LinkedList<LinkedList<Core.Models.Action>> ActionDict;
         }
 
-		/// <summary>
-		/// Login with a username und password, returns Account if everything worked, otherwise <b>null</b>
-		/// </summary>
-		/// <param name="username">Username.</param>
-		/// <param name="password">Password.</param>
+        /// <summary>
+        /// Login with a username und password, returns Account if everything worked, otherwise <b>null</b>
+        /// </summary>
+        /// <param name="username">Account Username.</param>
+        /// <param name="password">Account Password.</param>
+        /// <returns>Account if login worked. Otherwise <b>null</b></returns>
         public Core.Models.Account Login(string username, string password)
-        {	
+        {    
             if (username != null && password != null)
             {
                 var controller = Core.Controllers.Controller.Instance;
@@ -72,17 +91,15 @@ namespace Server.Controllers
                 return accountManagerC.Registrate(username, password);
             }
             return null;
-            //return accountManagerC.Login (username, password);
         }
 
-		/// <summary>
-		/// Send Actions the server so they will be executed.
-		/// (but first, the actions have to wait in a queue)
-		/// </summary>
-		/// <param name="account">Account who wants the actions executed.</param>
-		/// <param name="actions">Array of Actions which should be executed.</param>
-        public void DoAction(Core.Models.Account account, 
-                             Core.Models.Action[] actions)
+        /// <summary>
+        /// Send Actions the server so they will be executed.
+        /// (but first, the actions have to wait in a queue)
+        /// </summary>
+        /// <param name="account">Account who wants the actions executed.</param>
+        /// <param name="actions">Array of Actions which should be executed.</param>
+        public void DoAction(Core.Models.Account account, Core.Models.Action[] actions)
         {
             foreach (var action in actions)
             {
@@ -91,10 +108,10 @@ namespace Server.Controllers
                 action.Account = account;
                 action.ActionTime = DateTime.Now;
 
-                var actionC = (Core.Controllers.Actions.Action) action.Control;
+                var actionC = (Core.Controllers.Actions.Action)action.Control;
                 var actionPosition = new Core.Models.Position(actionC.GetRegionPosition());
 
-				for (int queueNr = 0; queueNr < Models.ServerConstants.ACTION_THREADS; ++queueNr)
+                for (int queueNr = 0; queueNr < Models.ServerConstants.ACTION_THREADS; ++queueNr)
                 {
                     var thread = m_threads[queueNr];
 
@@ -108,18 +125,19 @@ namespace Server.Controllers
                         bestThread = thread;  
                     }
                 }
-				bestThread.Enqueue(action);
+                bestThread.Enqueue(action);
             }
         }
 
-		/// <summary>
-		/// Loads the regions.
-		/// </summary>
-		/// <returns>The regions.</returns>
-		/// <param name="account">Account who wants the load the regions.</param>
-		/// <param name="regionPositions">Positions of the regions.</param>
-        public RegionData LoadRegions(Core.Models.Account account,
-                                      Core.Models.RegionPosition[] regionPositions)
+        /// <summary>
+        /// Loads the regions.
+        /// </summary>
+        /// <returns>The regions.</returns>
+        /// <param name="account">Account who wants the load the regions.</param>
+        /// <param name="regionPositions">Positions of the regions.</param>
+        public RegionData LoadRegions(
+            Core.Models.Account account,
+            Core.Models.RegionPosition[] regionPositions)
         {
             // List<@base.model.Region>, List<@base.control.action.Action> 
             var controller = Core.Controllers.Controller.Instance;
@@ -182,21 +200,20 @@ namespace Server.Controllers
             regionData.ActionDict = actionDict;
             regionData.EntityDict = entityDict;
             return regionData;
-            //return regionList;
         }
 
-		/// <summary>
-		/// Executes the action.
-		/// </summary>
-		/// <returns>If it could executed or why not.</returns>
-		/// <param name="action">Action which should be executed.</param>
+        /// <summary>
+        /// Executes the action.
+        /// </summary>
+        /// <returns>If it could executed or why not.</returns>
+        /// <param name="action">Action which should be executed.</param>
         private ActionReturn WorkAction(Core.Models.Action action)
         {
             if (action != null)
             {
                 var regionManager = Core.Controllers.Controller.Instance.RegionManagerController;
 
-                var actionC = (action.Control as Core.Controllers.Actions.Action);
+                var actionC = action.Control as Core.Controllers.Actions.Action;
                 var gotLocked = new LinkedList<Core.Models.Region>() { };
 
                 try
@@ -219,7 +236,6 @@ namespace Server.Controllers
                         }
                     }
 
-
                     if (gotLocked.Count != affectedRegions.Count)
                     {
                         return ActionReturn.RessourceBlocked;
@@ -233,10 +249,9 @@ namespace Server.Controllers
                     var changedRegions = actionC.Do();
                     if (changedRegions.Count == 0)
                     {
-                        //actionC.Catch (regionStatesController.Next);
+                        // actionC.Catch (regionStatesController.Next);
                         return ActionReturn.InternalError;
                     }
-
 
                     foreach (var region in changedRegions)
                     {
@@ -261,10 +276,10 @@ namespace Server.Controllers
             return ActionReturn.Unknown;
         }
 
-		/// <summary>
-		/// Worker (normally an own thread) which runs until the application finishes.
-		/// </summary>
-		/// <param name="state">Threading Number (for queue association)</param>
+        /// <summary>
+        /// Worker (normally an own thread) which runs until the application finishes.
+        /// </summary>
+        /// <param name="state">Threading Number (for queue association)</param>
         public void Worker(object state)
         {
             var thread = m_threads[(int)state];
@@ -274,17 +289,20 @@ namespace Server.Controllers
             {
                 while (thread.IsEmpty() || MvcApplication.Phase == MvcApplication.Phases.Pause)
                 {
-					Thread.Sleep(Models.ServerConstants.ACTION_THREAD_SLEEP);
+                    Thread.Sleep(Models.ServerConstants.ACTION_THREAD_SLEEP);
                 }
 
                 action = thread.Dequeue();
                 if (WorkAction(action) == ActionReturn.RessourceBlocked)
                 {   
-                    APIController.Instance.DoAction(action.Account, new Core.Models.Action[]{ action, });
+                    APIController.Instance.DoAction(action.Account, new Core.Models.Action[] { action });
                 }
             }
         }
 
-        public Models.AveragePositionQueue[] m_threads;
+        /// <summary>
+        /// The active threads.
+        /// </summary>
+        private Models.AveragePositionQueue[] m_threads;
     }
 }

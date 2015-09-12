@@ -1,28 +1,32 @@
-﻿using System;
-using System.Collections.Concurrent;
-using Newtonsoft.Json;
-using Core.Models;
-using Server.Models;
-using Server.DB;
-
-namespace Server.Controllers
+﻿namespace Server.Controllers
 {
-	/// <summary>
-	/// The AccountManagerController handles a list of all users and those, which are logged in. It can also log in users and verify a session id.
-	/// </summary>
+    using System;
+    using System.Collections.Concurrent;
+    using Newtonsoft.Json;
+    using Core.Models;
+    using Server.Models;
+    using Server.DB;
+
+    /// <summary>
+    /// The AccountManagerController handles a list of all users and those, which are logged in. It can also log in users and verify a session id.
+    /// </summary>
     public class AccountManagerController : Core.Models.AccountManager
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Server.Controllers.AccountManagerController"/> class.
+        /// </summary>
         public AccountManagerController()
             : base()
         {
             m_sessions = new ConcurrentDictionary<Guid, Account>();
         }
 
-		/// <summary>
-		/// Login with a username und password, returns Account if everything worked, otherwise <b>null</b>
-		/// </summary>
-		/// <param name="username">Username.</param>
-		/// <param name="password">Password.</param>
+        /// <summary>
+        /// Login with a username und password, returns Account if everything worked, otherwise <b>null</b>
+        /// </summary>
+        /// <param name="username">Account Username.</param>
+        /// <param name="password">Account Password.</param>
+        /// <returns>Account if username and password were correct. Otherwise null.</returns>
         public Account Login(string username, string password)
         {
             foreach (var accountPair in World.Instance.AccountManager.Accounts)
@@ -40,11 +44,11 @@ namespace Server.Controllers
             return null;
         }
 
-		/// <summary>
-		/// Registrates the username/password combination as a new user. If the username already exist, he will be logged in. returns <b>null</b> when username is already taken with an different password.
-		/// </summary>
-		/// <param name="username">Username.</param>
-		/// <param name="password">Password.</param>
+        /// <summary>
+        /// Registrate the username/password combination as a new user. If the username already exist, he will be logged in. returns <b>null</b> when username is already taken with an different password.
+        /// </summary>
+        /// <param name="username">Account Username.</param>
+        /// <param name="password">Account Password.</param>
         public Account Registrate(string username, string password)
         {
             foreach (var accountPair in Core.Models.World.Instance.AccountManager.Accounts)
@@ -52,7 +56,7 @@ namespace Server.Controllers
                 if (accountPair.Value.UserName.ToLower() == username.ToLower())
                 {
                     return Login(username, password);
-                }				
+                }                
             }
             var account = new Account(IdGenerator.GetId(), username);
             new AccountController(account, password);
@@ -61,11 +65,11 @@ namespace Server.Controllers
             return Login(username, password);
         }
 
-		/// <summary>
-		/// Gets the account by a session.
-		/// </summary>
-		/// <returns>An Account which is assigned to this session id or null, if there was none.</returns>
-		/// <param name="sessionID">Session ID</param>
+        /// <summary>
+        /// Gets the account by a session.
+        /// </summary>
+        /// <returns>An Account which is assigned to this session id or null, if there was none.</returns>
+        /// <param name="sessionID">Session ID</param>
         public Account GetAccountBySession(Guid sessionID)
         {
             Account account = null;
@@ -76,7 +80,9 @@ namespace Server.Controllers
             return null;
         }
 
-        ConcurrentDictionary<Guid, Account> m_sessions;
+        /// <summary>
+        /// The current active sessions.
+        /// </summary>
+        private ConcurrentDictionary<Guid, Account> m_sessions;
     }
 }
-

@@ -11,7 +11,7 @@
         /// The entry point of the program, where the program control starts and ends.
         /// </summary>
         /// <param name="args">The command-line arguments.</param>
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             // Phase = Phases.Init;
             var world = Core.Models.World.Instance;
@@ -24,7 +24,6 @@
             controller.RegionManagerController = new Server.Controllers.RegionManagerController();
 
             var server = new TcpServer();
-
 
             server.Start();
         }

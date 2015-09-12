@@ -1,8 +1,8 @@
 ﻿namespace Core.Connection
 {
     using System;
-    using System.Net;
     using System.IO;
+    using System.Net;
     using System.Text;
     using System.IO.Compression;
 
@@ -16,8 +16,9 @@
     public class Packet
     {
         /// <summary>
-        /// Which method should be called
+        /// Gets or sets the type of the method.
         /// </summary>
+        /// <value>The type of the method.</value>
         public MethodType MethodType
         {
             get
@@ -30,9 +31,15 @@
             }
         }
 
+        /// <summary>
+        /// The type of the method as byte array.
+        /// </summary>
         private Byte[] ByteMethodType = new byte[2];
 
-
+        /// <summary>
+        /// Gets the size of the content.
+        /// </summary>
+        /// <value>The size of the content.</value>
         public int ContentSize
         {
             get
@@ -42,8 +49,9 @@
         }
 
         /// <summary>
-        /// Size of content (in bytes)
+        /// Gets the size of the content as byte array.
         /// </summary>
+        /// <value>The size of the byte content.</value>
         private Byte[] ByteContentSize
         {
             get
@@ -53,26 +61,31 @@
         }
 
         /// <summary>
-        /// Content (JSON string or GZIPPED data, or...)
+        /// The content as byte array.
         /// </summary>
         private Byte[] ByteContent;
 
-
         /// <summary>
-        /// Content (JSON string or GZIPPED data, or...)
+        /// Gets or sets the content.
         /// </summary>
+        /// <value>The content.</value>
         public string Content
         {
             get
             {
                 return Encoding.UTF8.GetString(ByteContent, 0, ByteContent.Length);
             }
+
             set
             {
                 ByteContent = Encoding.UTF8.GetBytes(value);
             }
         }
 
+        /// <summary>
+        /// Send this packet at the specified stream.
+        /// </summary>
+        /// <param name="stream">Stream (TCP Socket Stream e.g.).</param>
         public void Send(Stream stream)
         {
             stream.Write(ByteMethodType, 0, ByteMethodType.Length);
@@ -80,6 +93,11 @@
             stream.Write(ByteContent, 0, ByteContent.Length);
         }
 
+        /// <summary>
+        /// Receives an packet from the specified stream.
+        /// </summary>
+        /// <param name="stream">Stream (TCP Socket Stream e.g.).</param>
+        /// <returns>Packet which was received</returns>
         public static Packet Receive(Stream stream)
         {
             var packetOut = new Packet();
@@ -115,6 +133,9 @@
             return new string(chars);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Core.Connection.Packet"/> class.
+        /// </summary>
         public Packet()
         {
         }

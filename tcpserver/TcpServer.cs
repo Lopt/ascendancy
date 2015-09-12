@@ -5,9 +5,9 @@
     using System.Net;
     using System.Net.Sockets;
     using System.Threading;
-    using Server.Controllers;
 
     using Core.Connection;
+    using Server.Controllers;
    
     /// <summary>
     /// TCP server.
@@ -15,7 +15,7 @@
     public class TcpServer
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TCPServer.TCPServer"/> class.
+        /// Initializes a new instance of the <see cref="TCPServer.TcpServer"/> class.
         /// </summary>
         public TcpServer()
         {
@@ -39,8 +39,6 @@
                 return;
             }
 
-
-            Console.Write("Debug: Test.\n");
             Running = true;
             while (Running)
             {
@@ -52,10 +50,28 @@
         }
 
         /// <summary>
+        /// Stop listening.
+        /// </summary>
+        public void Stop()
+        {
+            m_listener.Stop();
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="TCPServer.TcpServer"/> is running.
+        /// </summary>
+        /// <value><c>true</c> if running; otherwise, <c>false</c>.</value>
+        public bool Running
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// Starts the TCP thread.
         /// </summary>
-        /// <param name="stateInfo">TcpClient Object who connected.</param>
-        private void StartTcpThread(Object stateInfo)
+        /// <param name="stateInfo">TCPClient Object who connected.</param>
+        private void StartTcpThread(object stateInfo)
         {
             Console.Write("Client Thread opened.\n");
 
@@ -67,7 +83,7 @@
                 var packetIn = Packet.Receive(stream);
                 if (packetIn.Content.Length <= Config.MAX_CONTENT_SIZE)
                 {
-                    var json = "";
+                    var json = string.Empty;
                     switch (packetIn.MethodType)
                     {
                         case MethodType.Login:
@@ -83,7 +99,7 @@
                             json = JSONController.LoadRegions(packetIn.Content);
                             break;
                         default:
-                            Console.Write("Client Invalid Method?.\n");
+                            Console.Write("Client Invalid Method?\n");
                             json = JSONController.Default(packetIn.Content);
                             break;
                     }
@@ -100,24 +116,7 @@
             }
             client.Close();
         }
-
-        /// <summary>
-        /// Stop listening.
-        /// </summary>
-        public void Stop()
-        {
-            m_listener.Stop();
-        }
-
-        /// <summary>
-        /// true if the listener is running
-        /// </summary>
-        public bool Running
-        {
-            private set;
-            get;
-        }
-            
+                        
         /// <summary>
         /// The TCP listener.
         /// </summary>

@@ -1,4 +1,4 @@
-﻿namespace TCPServer
+﻿ namespace TCPServer
 {
     using System;
 

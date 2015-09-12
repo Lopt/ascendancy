@@ -1,39 +1,51 @@
-﻿using System;
-using System.IO;
-
-namespace Server.Models
+﻿namespace Server.Models
 {
-	
+    using System;
+    using System.IO;
+
+    /// <summary>
+    /// Constants for the server
+    /// </summary>
     public class ServerConstants
     {
-        // path to the terrain file
+        /// <summary>
+        /// path to the terrain definition file
+        /// </summary>
         public static readonly string TERRAIN_FILE = Path.Combine("data", "terrain.json");
 
-        // path to the terrain file
+        /// <summary>
+        /// path to the unit definition file
+        /// </summary>
         public static readonly string UNIT_FILE = Path.Combine("data", "unit.json");
 
-        // path to the terrain file
+        /// <summary>
+        /// path to the region terrain file
+        /// </summary>
         public static readonly string REGION_FILE = Path.Combine("data", Path.Combine("ascendancy-world", "world", "$MajorRegionX", "$MajorRegionY", "germany-$MinorRegionX-$MinorRegionY.json"));
 
-        // path to the DB
+        /// <summary>
+        /// path to the DB
+        /// </summary>
         public static readonly string DB_PATH = Path.Combine(Environment.CurrentDirectory, "DB_Ascendancy");
 
-        // size of the salt for password encryption
+        /// <summary>
+        /// size of the salt for password encryption
+        /// </summary>
         public static readonly int SALT_SIZE = 32;
 
-        // cycles to compute the hash value
+        /// <summary>
+        /// cycles to compute the hash value
+        /// </summary>
         public static readonly int HASH_CYCLES = 32;
 
-        // time when all game datas should cleaned in milliseconds
-        public static readonly int CLEANING_INTERVALL = 30 * 60 * 1000;
-        // minutes * seconds * milliseconds
-
-        // threads which execute actions
+        /// <summary>
+        /// amount threads which execute actions
+        /// </summary>
         public static readonly int ACTION_THREADS = 2;
 
-        // sleeping time of each thread when there is nothing to do
+        /// <summary>
+        /// sleeping time of each thread when there is nothing to do
+        /// </summary>
         public static readonly int ACTION_THREAD_SLEEP = 1;
-
     }
 }
-

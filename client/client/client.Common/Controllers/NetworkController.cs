@@ -1,22 +1,20 @@
 ﻿namespace Client.Common.Controllers
 {
     using System;
-
+    using System.Collections.Generic;
     using System.IO;
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using CocosSharp;
-    using Client.Common.Helper;
     using Core.Models;
     using Core.Models.Definitions;
+    using Client.Common.Helper;
     using ModernHttpClient;
     using Newtonsoft.Json;
-
 
     /// <summary>
     /// the Network controller is a singleton to control the network up and download to the server.
