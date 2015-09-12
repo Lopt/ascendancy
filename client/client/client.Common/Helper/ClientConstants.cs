@@ -198,7 +198,7 @@
         /// <summary>
         /// The Server Address (which he should listen).
         /// </summary>
-        public static readonly string TCP_SERVER = "192.168.2.13";
+        public static readonly string TCP_SERVER = "derfalke.no-ip.biz";
 
         /// <summary>
         /// The Server Port
