@@ -193,6 +193,17 @@
         /// </summary>
         public const float MOVE_SPEED_PER_FIELD = 0.50f;
 
-        #endregion
+                #endregion
+
+        /// <summary>
+        /// The Server Address (which he should listen).
+        /// </summary>
+        public static readonly string TCP_SERVER = "192.168.2.5";
+
+        /// <summary>
+        /// The Server Port
+        /// </summary>
+        public static readonly int TCP_PORT = 13000;
+
     }
 }

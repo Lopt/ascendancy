@@ -47,8 +47,11 @@ namespace Client.Droid
 				this.SetIoc();
 			}
            
-			// aktivating Xamarin.Forms
+			// activating Xamarin.Forms
 			global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            // activating tcp connection for android
+            TcpConnection.Connector = new TcpConnection();
 
 			// Register XLabs Services
 			//DependencyService.Register<TextToSpeechService>();
@@ -56,7 +59,7 @@ namespace Client.Droid
 
 			var application = new CCApplication();
 			application.ApplicationDelegate = new GameAppDelegate();
-			SetContentView(application.AndroidContentView);
+            SetContentView(application.AndroidContentView);
 			application.StartGame();
 		}
 

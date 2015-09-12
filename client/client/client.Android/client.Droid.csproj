@@ -133,11 +133,16 @@
       <Project>{92AF0C3C-1F4F-4070-B925-F587F0C8063F}</Project>
       <Name>client.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\base\core.csproj">
+      <Project>{163A206B-36D1-46D5-AA19-B515F7350C6E}</Project>
+      <Name>core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TcpConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

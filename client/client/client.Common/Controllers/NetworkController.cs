@@ -1,15 +1,22 @@
 ﻿namespace Client.Common.Controllers
 {
     using System;
-    using System.Collections.Generic;
+
+    using System.IO;
+    using System.Net;
     using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using CocosSharp;
     using Client.Common.Helper;
     using Core.Models;
     using Core.Models.Definitions;
     using ModernHttpClient;
     using Newtonsoft.Json;
+
 
     /// <summary>
     /// the Network controller is a singleton to control the network up and download to the server.
@@ -123,9 +130,7 @@
             var request = new Core.Connections.LoginRequest(currentGamePosition, user, password);
             var json = JsonConvert.SerializeObject(request);
 
-            var path = ClientConstants.LOGIN_PATH;
-            path = path.Replace(ClientConstants.LOGIC_SERVER_JSON, json);
-            var jsonFromServer = await RequestAsync(path);
+            var jsonFromServer = TcpConnection.Connector.Send(Core.Connection.MethodType.Login, json);
 
             var loginResponse = JsonConvert.DeserializeObject<Core.Connections.LoginResponse>(jsonFromServer);
             if (loginResponse.Status == Core.Connections.LoginResponse.ReponseStatus.OK)
@@ -150,9 +155,7 @@
             var request = new Core.Connections.LoadRegionsRequest(m_sessionID, currentGamePosition, regionPositions);
             var json = JsonConvert.SerializeObject(request);
 
-            var path = ClientConstants.LOAD_REGIONS_PATH;
-            path = path.Replace(ClientConstants.LOGIC_SERVER_JSON, json);
-            var jsonFromServer = await RequestAsync(path);
+            var jsonFromServer = TcpConnection.Connector.Send(Core.Connection.MethodType.LoadEntities, json);
             var entitiesResponse = JsonConvert.DeserializeObject<Core.Connections.Response>(jsonFromServer);
 
             if (entitiesResponse.Status == Core.Connections.Response.ReponseStatus.OK)
@@ -174,9 +177,7 @@
             var request = new Core.Connections.DoActionsRequest(m_sessionID, currentGamePosition, actions);
             var json = JsonConvert.SerializeObject(request);
 
-            var path = ClientConstants.DO_ACTIONS_PATH;
-            path = path.Replace(ClientConstants.LOGIC_SERVER_JSON, json);
-            var jsonFromServer = await RequestAsync(path);
+            var jsonFromServer = TcpConnection.Connector.Send(Core.Connection.MethodType.DoActions, json);
 
             var entitiesResponse = JsonConvert.DeserializeObject<Core.Connections.Response>(jsonFromServer);
             if (entitiesResponse.Status == Core.Connections.Response.ReponseStatus.OK)
@@ -198,6 +199,7 @@
             {
                 Helper.Logging.Info("URL load: " + url);
                 HttpResponseMessage response = await m_client.GetAsync(new Uri(url));
+
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync();
             }
@@ -213,7 +215,7 @@
         #region private Fields
 
         /// <summary>
-        /// The m client.
+        /// The client.
         /// </summary>
         private HttpClient m_client;
 

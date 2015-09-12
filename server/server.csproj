@@ -117,10 +117,10 @@
     <Compile Include="SQLiteAsync.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HTTPController.cs" />
     <Compile Include="Controllers\AccountManagerController.cs" />
     <Compile Include="Controllers\DefinitionManagerController.cs" />
     <Compile Include="Models\AveragePositionQueue.cs" />
+    <Compile Include="Controllers\JSONController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
