@@ -29,22 +29,49 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCL.raw">
+      <HintPath>..\packages\SQLitePCL.raw_basic.0.7.1\lib\net45\SQLitePCL.raw.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net">
+      <HintPath>..\packages\sqlite-net-pcl.1.0.11\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="TcpServer.cs" />
+    <Compile Include="Models\AveragePositionQueue.cs" />
+    <Compile Include="Models\ServerConstants.cs" />
+    <Compile Include="DB\DBAccount.cs" />
+    <Compile Include="DB\DBBuildings.cs" />
+    <Compile Include="DB\DBHandle.cs" />
+    <Compile Include="DB\DBRessource.cs" />
+    <Compile Include="DB\DBUnits.cs" />
+    <Compile Include="DB\Model\TableAccount.cs" />
+    <Compile Include="DB\Model\TableBuilding.cs" />
+    <Compile Include="DB\Model\TableData.cs" />
+    <Compile Include="DB\Model\TableRessource.cs" />
+    <Compile Include="DB\Model\TableUnit.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountManagerController.cs" />
+    <Compile Include="Controllers\APIController.cs" />
+    <Compile Include="Controllers\DefinitionManagerController.cs" />
+    <Compile Include="Controllers\JSONController.cs" />
+    <Compile Include="Controllers\RegionManagerController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SQLitePCL.raw_basic.0.7.1\build\net45\SQLitePCL.raw_basic.targets" Condition="Exists('..\packages\SQLitePCL.raw_basic.0.7.1\build\net45\SQLitePCL.raw_basic.targets')" />
   <ItemGroup>
     <ProjectReference Include="..\base\core.csproj">
       <Project>{163A206B-36D1-46D5-AA19-B515F7350C6E}</Project>
       <Name>core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\server\server.csproj">
-      <Project>{819D1AEA-CAFF-4B65-A3CC-86666FF3F6D1}</Project>
-      <Name>server</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

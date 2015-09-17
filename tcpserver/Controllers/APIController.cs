@@ -17,6 +17,22 @@
     public sealed class APIController
     {
         /// <summary>
+        /// Phases of the program.
+        /// </summary>
+        private enum Phases
+        {
+            Start,
+            Run,
+            Pause,
+            Exit
+        }
+
+        /// <summary>
+        /// current phase
+        /// </summary>
+        private Phases m_phase;
+
+        /// <summary>
         /// The singleton instance.
         /// </summary>
         private static readonly Lazy<APIController> Singleton =
@@ -285,9 +301,9 @@
             var thread = m_threads[(int)state];
             Core.Models.Action action;
            
-            while (MvcApplication.Phase != MvcApplication.Phases.Exit)
+            while (Phase != Phases.Exit)
             {
-                while (thread.IsEmpty() || MvcApplication.Phase == MvcApplication.Phases.Pause)
+                while (thread.IsEmpty() || Phase == Phases.Pause)
                 {
                     Thread.Sleep(Models.ServerConstants.ACTION_THREAD_SLEEP);
                 }

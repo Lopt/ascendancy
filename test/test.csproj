@@ -41,12 +41,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\server\server.csproj">
-      <Project>{819D1AEA-CAFF-4B65-A3CC-86666FF3F6D1}</Project>
-      <Name>server</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
 </Project>
