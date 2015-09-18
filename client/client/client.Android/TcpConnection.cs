@@ -16,9 +16,18 @@
         public override string Send(Core.Connection.MethodType methodType, string json)
         {
             var client = new TcpClient();
-            client.Connect(
-                Client.Common.Helper.ClientConstants.TCP_SERVER,
-                Client.Common.Helper.ClientConstants.TCP_PORT);
+            try
+            {
+                client.Connect(
+                    Client.Common.Helper.ClientConstants.DEBUG_TCP_SERVER,
+                    Client.Common.Helper.ClientConstants.TCP_PORT);
+            }
+            catch (SocketException exception)
+            {
+                client.Connect(
+                    Client.Common.Helper.ClientConstants.TCP_SERVER,
+                    Client.Common.Helper.ClientConstants.TCP_PORT);                
+            }
             var stream = client.GetStream();
 
             var packetOut = new Core.Connection.Packet();
