@@ -30,7 +30,7 @@
         /// <summary>
         /// current phase
         /// </summary>
-        private Phases m_phase;
+        private Phases m_phase = Phases.Start;
 
         /// <summary>
         /// The singleton instance.
@@ -301,9 +301,9 @@
             var thread = m_threads[(int)state];
             Core.Models.Action action;
            
-            while (Phase != Phases.Exit)
+            while (m_phase != Phases.Exit)
             {
-                while (thread.IsEmpty() || Phase == Phases.Pause)
+                while (thread.IsEmpty() || m_phase == Phases.Pause)
                 {
                     Thread.Sleep(Models.ServerConstants.ACTION_THREAD_SLEEP);
                 }
