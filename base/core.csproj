@@ -75,6 +75,7 @@
     <Compile Include="Controllers\Actions\MoveUnit.cs" />
     <Compile Include="Connection\Packet.cs" />
     <Compile Include="Connection\MethodType.cs" />
+    <Compile Include="Helper\CompressionHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

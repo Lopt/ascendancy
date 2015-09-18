@@ -63,24 +63,25 @@
         /// <summary>
         /// The content as byte array.
         /// </summary>
-        private Byte[] ByteContent;
+        private Byte[] ByteContent
+        {
+            get
+            {
+                return Helper.CompressionHelper.Compress(Encoding.UTF8.GetBytes(Content));
+            }
+
+            set
+            {
+                var content = Helper.CompressionHelper.Decompress(value);
+                Content = Encoding.UTF8.GetString(content, 0, content.Length);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the content.
         /// </summary>
         /// <value>The content.</value>
-        public string Content
-        {
-            get
-            {
-                return Encoding.UTF8.GetString(ByteContent, 0, ByteContent.Length);
-            }
-
-            set
-            {
-                ByteContent = Encoding.UTF8.GetBytes(value);
-            }
-        }
+        public string Content;
 
         /// <summary>
         /// Send this packet at the specified stream.
@@ -104,8 +105,9 @@
             stream.Read(packetOut.ByteMethodType, 0, 2);
             byte[] size = new byte[4];
             stream.Read(size, 0, size.Length);
-            packetOut.ByteContent = new byte[BitConverter.ToInt32(size, 0)];
-            stream.Read(packetOut.ByteContent, 0, BitConverter.ToInt32(size, 0));
+            var buffer = new byte[BitConverter.ToInt32(size, 0)];
+            stream.Read(buffer, 0, BitConverter.ToInt32(size, 0));
+            packetOut.ByteContent = buffer;
             return packetOut;
         }
 
