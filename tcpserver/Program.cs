@@ -1,6 +1,7 @@
 ﻿namespace TCPServer
 {
     using System;
+    using System.Threading;
 
     /// <summary>
     /// Main class which starts everything
@@ -22,6 +23,12 @@
             controller.DefinitionManagerController = new Server.Controllers.DefinitionManagerController();
             world.AccountManager = new Server.Controllers.AccountManagerController();
             controller.RegionManagerController = new Server.Controllers.RegionManagerController();
+
+            for (int threadNr = 0; threadNr < Server.Models.ServerConstants.ACTION_THREADS; ++threadNr)
+            {
+                var t = new Thread(new ParameterizedThreadStart(Server.Controllers.APIController.Instance.Worker));
+                t.Start(threadNr);
+            }
 
             var server = new TcpServer();
 
