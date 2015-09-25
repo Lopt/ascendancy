@@ -86,7 +86,7 @@
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
            
-            SceneStartAsync(); // .RunSynchronously();
+            SceneStartAsync();//.RunSynchronously();
         }
 
         /// <summary>

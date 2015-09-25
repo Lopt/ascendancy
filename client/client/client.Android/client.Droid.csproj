@@ -168,6 +168,14 @@
     <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20150704.xnb" />
     <AndroidAsset Include="Assets\Content\images\ld\logo.png" />
     <AndroidAsset Include="Assets\Content\images\hd\logo.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\radars2-touched.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\radars2-touched.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\radars2-standard.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\debug-standard.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\debug-touched.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\radars2-standard.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\debug-standard.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\debug-touched.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />

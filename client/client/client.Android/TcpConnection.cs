@@ -3,6 +3,7 @@
     using System;
     using System.Net;
     using System.Net.Sockets;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// TCP connection. Provides an TCP Connection to write/read.
@@ -13,28 +14,28 @@
         {            
         }   
             
-        public override string Send(Core.Connection.MethodType methodType, string json)
+        public override async Task<string> SendAsync(Core.Connection.MethodType methodType, string json)
         {
             var client = new TcpClient();
-            try
+            /*try
             {
                 client.Connect(
                     Client.Common.Helper.ClientConstants.DEBUG_TCP_SERVER,
                     Client.Common.Helper.ClientConstants.TCP_PORT);
             }
             catch (SocketException exception)
-            {
-                client.Connect(
-                    Client.Common.Helper.ClientConstants.TCP_SERVER,
-                    Client.Common.Helper.ClientConstants.TCP_PORT);                
-            }
+            {*/
+            client.Connect(
+                Client.Common.Helper.ClientConstants.TCP_SERVER,
+                Client.Common.Helper.ClientConstants.TCP_PORT);                
+            //}
             var stream = client.GetStream();
 
             var packetOut = new Core.Connection.Packet();
             packetOut.Content = json;
             packetOut.MethodType = methodType;
-            packetOut.Send(stream);
-            var packetIn = Core.Connection.Packet.Receive(stream);
+            await packetOut.SendAsync(stream);
+            var packetIn = await Core.Connection.Packet.ReceiveAsync(stream);
            
             client.Close();
             return packetIn.Content;

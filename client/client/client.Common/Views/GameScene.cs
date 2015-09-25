@@ -17,8 +17,12 @@
         public GameScene(CCWindow mainWindow)
             : base(mainWindow)
         {
+            
             WorldLayer = new WorldLayer(this);
             AddChild(WorldLayer);
+
+            HUD = new Client.Common.Views.HUD.HUDLayer(this);
+            AddChild(HUD);
 
             DebugLayer = new DebugLayer();
             AddChild(DebugLayer);
@@ -30,7 +34,7 @@
             touchListener.OnTouchesEnded = m_touchHandler.OnTouchesEnded;
             WorldLayer.AddEventListener(touchListener);
         }
-
+            
         #region Properties
 
         /// <summary>
@@ -47,6 +51,8 @@
         /// The debug layer (shows logging information).
         /// </summary>
         public DebugLayer DebugLayer;
+
+        public HUD.HUDLayer HUD;
 
         #endregion
     }

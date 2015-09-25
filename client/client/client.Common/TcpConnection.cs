@@ -2,6 +2,7 @@
 {
     using System;
     using System.Net;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// TCP connection. Provides an TCP Connection to write/read.
@@ -14,7 +15,7 @@
         /// <param name="methodType">Method type.</param>
         /// <param name="json">JSON serialized Request.</param>
         /// <returns>JSON serialized Response</returns>
-        public virtual string Send(Core.Connection.MethodType methodType, string json)
+        public virtual async Task<string> SendAsync(Core.Connection.MethodType methodType, string json)
         {
             throw new NotImplementedException();
         }

@@ -233,8 +233,17 @@
         /// Draws the regions async.
         /// </summary>
         /// <returns>The task async.</returns>
+        public async Task DrawRegionsAsync()
+        {
+            await DrawRegionsAsync(Geolocation.Instance.CurrentGamePosition);
+        }
+
+        /// <summary>
+        /// Draws the regions async.
+        /// </summary>
+        /// <returns>The task async.</returns>
         /// <param name="gamePosition">Game position.</param>
-        private async Task DrawRegionsAsync(Position gamePosition)
+        public async Task DrawRegionsAsync(Position gamePosition)
         {
             CenterPosition = gamePosition;
             Phase = Phases.LoadTerrain;

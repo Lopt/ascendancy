@@ -17,6 +17,9 @@
         public DebugLayer()
             : base()
         {
+            Position = VisibleBoundsWorldspace.LowerLeft;
+            AnchorPoint = CCPoint.AnchorLowerLeft;
+
             m_label = new CCLabel ("", "verdana", 12)
             {
                 Position = VisibleBoundsWorldspace.LowerLeft,
@@ -26,13 +29,10 @@
                 AnchorPoint = CCPoint.AnchorLowerLeft,
                 Dimensions = VisibleBoundsWorldspace.Size
             };
-
-            Position = VisibleBoundsWorldspace.LowerLeft;
-            AnchorPoint = CCPoint.AnchorLowerLeft;
             Color = CCColor3B.White;
             Opacity = 255;
-            Visible = false;
             AddChild(m_label);
+            Visible = false;
         }
 
         #region overide

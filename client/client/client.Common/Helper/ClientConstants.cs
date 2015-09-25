@@ -199,11 +199,12 @@
         /// The Server Address (which he should listen).
         /// </summary>
         public static readonly string TCP_SERVER = "derfalke.no-ip.biz";
-        public static readonly string DEBUG_TCP_SERVER = "192.168.43.90";
+        public static readonly string DEBUG_TCP_SERVER = "192.168.2.5";
 
         /// <summary>
         /// The Server Port
         /// </summary>
         public static readonly int TCP_PORT = 13000;
+
     }
 }

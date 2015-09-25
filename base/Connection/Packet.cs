@@ -4,6 +4,7 @@
     using System.IO;
     using System.Net;
     using System.Text;
+    using System.Threading.Tasks;
     using System.IO.Compression;
 
     /// <summary>
@@ -87,11 +88,11 @@
         /// Send this packet at the specified stream.
         /// </summary>
         /// <param name="stream">Stream (TCP Socket Stream e.g.).</param>
-        public void Send(Stream stream)
+        public async Task SendAsync(Stream stream)
         {
-            stream.Write(ByteMethodType, 0, ByteMethodType.Length);
-            stream.Write(ByteContentSize, 0, ByteContentSize.Length);
-            stream.Write(ByteContent, 0, ByteContent.Length);
+            await stream.WriteAsync(ByteMethodType, 0, ByteMethodType.Length);
+            await stream.WriteAsync(ByteContentSize, 0, ByteContentSize.Length);
+            await stream.WriteAsync(ByteContent, 0, ByteContent.Length);
         }
 
         /// <summary>
@@ -99,14 +100,14 @@
         /// </summary>
         /// <param name="stream">Stream (TCP Socket Stream e.g.).</param>
         /// <returns>Packet which was received</returns>
-        public static Packet Receive(Stream stream)
+        public static async Task<Packet> ReceiveAsync(Stream stream)
         {
             var packetOut = new Packet();
-            stream.Read(packetOut.ByteMethodType, 0, 2);
+            await stream.ReadAsync(packetOut.ByteMethodType, 0, 2);
             byte[] size = new byte[4];
-            stream.Read(size, 0, size.Length);
+            await stream.ReadAsync(size, 0, size.Length);
             var buffer = new byte[BitConverter.ToInt32(size, 0)];
-            stream.Read(buffer, 0, BitConverter.ToInt32(size, 0));
+            await stream.ReadAsync(buffer, 0, BitConverter.ToInt32(size, 0));
             packetOut.ByteContent = buffer;
             return packetOut;
         }

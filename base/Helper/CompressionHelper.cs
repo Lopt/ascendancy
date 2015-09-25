@@ -13,11 +13,9 @@
         /// Compress the specified inputData.
         /// </summary>
         /// <param name="inputData">Input data.</param>
+        /// <returns>compressed byte array</returns>
         public static byte[] Compress(byte[] inputData)
         {
-            if (inputData == null)
-                throw new ArgumentNullException("inputData must be non-null");
-
             using (var compressIntoMs = new MemoryStream())
             {
                 using (var gzs = new GZipStream(compressIntoMs, CompressionMode.Compress))
@@ -32,17 +30,14 @@
         /// Decompress the specified inputData.
         /// </summary>
         /// <param name="inputData">Input data.</param>
+        /// <returns>decompressed byte array</returns>
         public static byte[] Decompress(byte[] inputData)
         {
-            if (inputData == null)
-                throw new ArgumentNullException("inputData must be non-null");
-
             using (var compressedMs = new MemoryStream(inputData))
             {
                 using (var decompressedMs = new MemoryStream())
                 {
-                    using (var gzs = new GZipStream(compressedMs, 
-                        CompressionMode.Decompress))
+                    using (var gzs = new GZipStream(compressedMs, CompressionMode.Decompress))
                     {
                         gzs.CopyTo(decompressedMs);
                     }

@@ -51,7 +51,7 @@ namespace Client.Common.Models
             LastPosition = new Position();
 
             IsBusy = false;
-            IsPositionChanged = false;
+            IsPositionChanged = true;
         }
 
 

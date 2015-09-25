@@ -128,7 +128,7 @@
             var request = new Core.Connections.LoginRequest(currentGamePosition, user, password);
             var json = JsonConvert.SerializeObject(request);
 
-            var jsonFromServer = TcpConnection.Connector.Send(Core.Connection.MethodType.Login, json);
+            var jsonFromServer = await TcpConnection.Connector.SendAsync(Core.Connection.MethodType.Login, json);
 
             var loginResponse = JsonConvert.DeserializeObject<Core.Connections.LoginResponse>(jsonFromServer);
             if (loginResponse.Status == Core.Connections.LoginResponse.ReponseStatus.OK)
@@ -153,7 +153,7 @@
             var request = new Core.Connections.LoadRegionsRequest(m_sessionID, currentGamePosition, regionPositions);
             var json = JsonConvert.SerializeObject(request);
 
-            var jsonFromServer = TcpConnection.Connector.Send(Core.Connection.MethodType.LoadEntities, json);
+            var jsonFromServer = await TcpConnection.Connector.SendAsync(Core.Connection.MethodType.LoadEntities, json);
             var entitiesResponse = JsonConvert.DeserializeObject<Core.Connections.Response>(jsonFromServer);
 
             if (entitiesResponse.Status == Core.Connections.Response.ReponseStatus.OK)
@@ -175,7 +175,7 @@
             var request = new Core.Connections.DoActionsRequest(m_sessionID, currentGamePosition, actions);
             var json = JsonConvert.SerializeObject(request);
 
-            var jsonFromServer = TcpConnection.Connector.Send(Core.Connection.MethodType.DoActions, json);
+            var jsonFromServer = await TcpConnection.Connector.SendAsync(Core.Connection.MethodType.DoActions, json);
 
             var entitiesResponse = JsonConvert.DeserializeObject<Core.Connections.Response>(jsonFromServer);
             if (entitiesResponse.Status == Core.Connections.Response.ReponseStatus.OK)
