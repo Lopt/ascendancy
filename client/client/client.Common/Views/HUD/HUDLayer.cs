@@ -3,6 +3,10 @@
     using System;
     using CocosSharp;
 
+    /// <summary>
+    /// HUD layer. Contains everything which lays in front of the screen and never move
+    /// (btw it moves with the camera). Ressources, Dialogs, etc.
+    /// </summary>
     public class HUDLayer : CCLayerColor
     {
         public HUDLayer(GameScene gameScene)

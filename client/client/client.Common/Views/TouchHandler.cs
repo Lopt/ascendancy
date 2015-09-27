@@ -1,84 +1,103 @@
 ﻿namespace Client.Common.Views
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Threading.Tasks;
-    using Client.Common.Helper;
     using CocosSharp;
-    using Core.Models.Definitions;
 
-    /// <summary>
-    /// Touch handler.
-    /// </summary>
-    public class TouchHandler
+    public sealed class TouchHandler
     {
         /// <summary>
-        /// Touch gesture states.
+        /// Gets the instance.
         /// </summary>
-        public enum TouchGesture
+        /// <value>The instance.</value>
+        public static TouchHandler Instance
         {
-            None,
-            Start,
-            Menu,
-            MenuDrawn,
-            Move,
-            MoveUnit,
-            Zoom
+            get
+            {
+                return Singleton.Value;
+            }
+        }
+            
+        public void ListenBegan(CCNode node, Func<List<CCTouch>, CCEvent, bool> action)
+        {
+            AddToList(m_beganNodes, node, action);
+        }
+
+        public void StopListenBegan(CCNode node, Func<List<CCTouch>, CCEvent, bool> action)
+        {
+            RemoveFromList(m_beganNodes, node, action);
+        }
+
+        public void ListenMoved(CCNode node, Func<List<CCTouch>, CCEvent, bool> action)
+        {
+            AddToList(m_movedNodes, node, action);
+        }
+
+        public void StopListenMoved(CCNode node, Func<List<CCTouch>, CCEvent, bool> action)
+        {
+            RemoveFromList(m_movedNodes, node, action);
+        }
+
+        public void ListenEnded(CCNode node, Func<List<CCTouch>, CCEvent, bool> action)
+        {
+            AddToList(m_endedNodes, node, action);
+        }
+
+        public void StopListenEnded(CCNode node, Func<List<CCTouch>, CCEvent, bool> action)
+        {
+            RemoveFromList(m_endedNodes, node, action);
+        }
+
+        public void ListenCancelled(CCNode node, Func<List<CCTouch>, CCEvent, bool> action)
+        {
+            AddToList(m_cancelledNodes, node, action);
+        }
+
+        public void StopListenCancelled(CCNode node, Func<List<CCTouch>, CCEvent, bool> action)
+        {
+            AddToList(m_cancelledNodes, node, action);
+        }
+
+        private void AddToList(List<NodeAction> list, CCNode node, Func<List<CCTouch>, CCEvent, bool> action)
+        {
+            var nodeAction = new NodeAction();
+            var index = 0;
+
+            nodeAction.Node = node;
+            nodeAction.Action = action;
+            if (list.Count != 0)
+            {
+                index = list.FindIndex((x) => x.Node.GlobalZOrder >= node.GlobalZOrder);
+            }
+            else
+            {
+                index = 0;
+            }
+            list.Insert(index, nodeAction);
+        }
+
+        private void RemoveFromList(List<NodeAction> list, CCNode node, Func<List<CCTouch>, CCEvent, bool> action)
+        {
+            list.RemoveAll((x) => x.Node == node && x.Action == action);
         }
 
         /// <summary>
-        /// The m_touch gesture.
+        /// Prevents a default instance of the <see cref="TouchHandler"/> class from being created.
         /// </summary>
-        private TouchGesture m_touchGesture;
-
-        /// <summary>
-        /// The m_timer.
-        /// </summary>
-        private Stopwatch m_timer;
-
-        /// <summary>
-        /// The m_world layer.
-        /// </summary>
-        private WorldLayer m_worldLayer;
-
-        /// <summary>
-        /// The m_world layer.
-        /// </summary>
-        private DebugLayer m_debugLayer;
-
-        /// <summary>
-        /// The m_new scale.
-        /// </summary>
-        private float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
-
-        /// <summary>
-        /// The m_scale.
-        /// </summary>
-        private float m_scale = ClientConstants.TILEMAP_NORM_SCALE;
-
-        /// <summary>
-        /// The m_start location.
-        /// </summary>
-        private CCPoint m_startLocation;
-
-        /// <summary>
-        /// The m_menu view.
-        /// </summary>
-        private MenuView m_menuView;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Client.Common.Views.TouchHandler"/> class.
-        /// </summary>
-        /// <param name="worldLayer">World layer.</param>
-        public TouchHandler(GameScene scene)
+        private TouchHandler()
         {
-            m_timer = new Stopwatch();
-            m_touchGesture = TouchGesture.None;
-            m_worldLayer = scene.WorldLayer;
-            m_debugLayer = scene.DebugLayer;
-            m_startLocation = new CCPoint(1, 1);
+            Reset();
+        }
+
+        public void Init(GameScene scene)
+        {
+            m_touchListener = new CCEventListenerTouchAllAtOnce();
+            m_touchListener.OnTouchesBegan = OnTouchesBegan;
+            m_touchListener.OnTouchesCancelled = OnTouchesCancelled;
+            m_touchListener.OnTouchesEnded = OnTouchesEnded;
+            m_touchListener.OnTouchesMoved = OnTouchesMoved;
+
+            scene.WorldLayer.AddEventListener(m_touchListener);
         }
 
         /// <summary>
@@ -88,196 +107,74 @@
         /// <param name="touchEvent">Touch event.</param>
         public void OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-            if (touches.Count == 1 && m_touchGesture == TouchGesture.Zoom)
+            foreach (var node in m_movedNodes)
             {
-                m_touchGesture = TouchGesture.Move;
-            }
-            else if (touches.Count == 2 && m_touchGesture == TouchGesture.Move)
-            {
-                m_touchGesture = TouchGesture.Zoom;
-            }
-
-            if (touches.Count == 1 &&
-                (m_touchGesture == TouchGesture.Start ||
-                m_touchGesture == TouchGesture.Move))
-            {
-                m_touchGesture = TouchGesture.Move;
-                var touch = touches[0];
-
-                CCPoint diff = touch.Delta;
-                m_worldLayer.MoveWorld(diff);
-            }
-            else if (touches.Count >= 2 &&
-                     (m_touchGesture == TouchGesture.Start ||
-                     m_touchGesture == TouchGesture.Zoom))
-            {
-                m_touchGesture = TouchGesture.Zoom;
-
-                CCPoint screenStart0 = touches[0].StartLocationOnScreen;
-                CCPoint screenStart1 = touches[1].StartLocationOnScreen;
-
-                // calculate Current Position
-                CCPoint currentPoint0 = touches[0].LocationOnScreen;
-                CCPoint currentPoint1 = touches[1].LocationOnScreen;
-
-                var screen = new CCPoint(
-                                 m_worldLayer.VisibleBoundsWorldspace.MaxX,
-                                 m_worldLayer.VisibleBoundsWorldspace.MaxY); 
-
-                float startDistance = screenStart0.DistanceSquared(ref screenStart1);
-                float currentDistance = currentPoint0.DistanceSquared(ref currentPoint1);
-                float screenDistance = screen.LengthSquared;
-
-                float relation = (currentDistance - startDistance) / screenDistance;
-
-                m_newScale = m_scale + (relation * m_newScale);
-                m_worldLayer.ScaleWorld(m_newScale);
+                if (node.Action(touches, touchEvent))
+                {
+                    break;
+                }
             }
         }
 
-        /// <summary>
-        /// On the touches began event.
-        /// </summary>
-        /// <param name="touches">Touches, where the user touched.</param>
-        /// <param name="touchEvent">Touch event.</param>
-        public void OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
-        {
-            var oldStart = m_startLocation;
-            var oldCoord = m_worldLayer.ClosestTileCoordAtNodePosition(oldStart);
-
-            var oldMapCell = new Models.MapCellPosition(oldCoord);
-            var oldPosition = m_worldLayer.RegionView.GetCurrentGamePosition(oldMapCell, m_worldLayer.CenterPosition.RegionPosition);
-
-            m_startLocation = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
-            var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
-
-            // 3 touchs = open/close debug layer
-            if (touches.Count == 3)
-            {
-                m_debugLayer.Toggle();
-                return;
-            }
-
-            switch (m_touchGesture)
-            {
-                case TouchGesture.MoveUnit:
-                    var startMapCellPosition = new Client.Common.Models.MapCellPosition(oldCoord);
-                    var startPosition = m_worldLayer.RegionView.GetCurrentGamePosition(startMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-                    var startPositionI = new Core.Models.PositionI((int)startPosition.X, (int)startPosition.Y);
-
-                    var location = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
-                    var endCoord = m_worldLayer.ClosestTileCoordAtNodePosition(location);
-
-                    var endMapCellPosition = new Client.Common.Models.MapCellPosition(endCoord);
-                    var endPosition = m_worldLayer.RegionView.GetCurrentGamePosition(endMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-                    var endPositionI = new Core.Models.PositionI((int)endPosition.X, (int)endPosition.Y);
-
-                    var oldPositionI = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
-                    var action = ActionHelper.MoveUnit(oldPositionI, endPositionI);
-
-                    var actionC = (Core.Controllers.Actions.Action)action.Control;
-                    var possible = actionC.Possible();
-                    if (possible)
-                    {
-                        m_worldLayer.DoAction(action);
-                    }
-                    m_touchGesture = TouchGesture.None;
-                    break;
-
-                case TouchGesture.Menu:
-                    var def = m_menuView.GetSelectedDefinition(coord);
-                    if (def != null)
-                    {
-                        var oldPositionI2 = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
-                        var action2 = ActionHelper.CreateEntity(oldPositionI2, def);
-                        var actionC2 = (Core.Controllers.Actions.Action)action2.Control;
-                        if (actionC2.Possible())
-                        {
-                            m_worldLayer.DoAction(action2);
-                        }
-                    }
-                    m_menuView.CloseMenu();
-                    m_menuView = null;
-                    m_touchGesture = TouchGesture.None;
-
-                    return;
-
-                case TouchGesture.None:
-                    m_touchGesture = TouchGesture.Start;
-                    break;
-            }
-
-            m_timer.Reset();
-            m_timer.Start();
-
-            m_scale = m_worldLayer.GetScale();
-        }
-
-        /// <summary>
-        /// On the touches ended event.
-        /// </summary>
-        /// <param name="touches">Touches, where the user touched.</param>
-        /// <param name="touchEvent">Touch event.</param>
         public void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
-            m_timer.Stop();
-            var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
-
-            switch (m_touchGesture)
+            foreach (var node in m_endedNodes)
             {
-                case TouchGesture.Zoom:
-                    // Set Current Scale
-                    m_worldLayer.ScaleWorld(m_newScale);
-                    m_touchGesture = TouchGesture.None;
+                if (node.Action(touches, touchEvent))
+                {
                     break;
-
-                case TouchGesture.Move:
-                    m_worldLayer.CheckCenterRegion();
-                    m_touchGesture = TouchGesture.None;
-                    break;
-
-                case TouchGesture.Start:
-                    if (m_worldLayer.UnitLayer.TileGIDAndFlags(coord).Gid != 0)
-                    {
-                        m_touchGesture = TouchGesture.MoveUnit;
-                    }
-                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid != 0 && m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid <= 67)
-                    {
-                        var types = new Core.Models.Definitions.Definition[6];
-                        var defM = Core.Models.World.Instance.DefinitionManager;
-
-                        types[0] = defM.GetDefinition(EntityType.Archer);
-                        types[1] = defM.GetDefinition(EntityType.Hero);
-                        types[2] = defM.GetDefinition(EntityType.Warrior);
-                        types[3] = defM.GetDefinition(EntityType.Mage);
-                        types[4] = defM.GetDefinition(EntityType.Archer);
-                        types[5] = defM.GetDefinition(EntityType.Archer);
-
-                        m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
-                        m_menuView.DrawMenu();
-                        m_touchGesture = TouchGesture.Menu;
-                    }
-                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid == 0)
-                    {
-                        var types = new Core.Models.Definitions.Definition[6];
-                        var defM = Core.Models.World.Instance.DefinitionManager;
-
-                        types[0] = defM.GetDefinition(EntityType.Headquarter);
-                        types[1] = defM.GetDefinition(EntityType.Headquarter);
-                        types[2] = defM.GetDefinition(EntityType.Headquarter);
-                        types[3] = defM.GetDefinition(EntityType.Headquarter);
-                        types[4] = defM.GetDefinition(EntityType.Headquarter);
-                        types[5] = defM.GetDefinition(EntityType.Headquarter);
-
-                        m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
-                        m_menuView.DrawMenu();
-                        m_touchGesture = TouchGesture.Menu;
-                    }
-
-                    break;
+                }
             }
-                    
-            m_worldLayer.UglyDraw();
+        }
+
+        public void OnTouchesCancelled(List<CCTouch> touches, CCEvent touchEvent)
+        {
+            foreach (var node in m_cancelledNodes)
+            {
+                if (node.Action(touches, touchEvent))
+                {
+                    break;
+                }
+            }
+        }
+
+        public void OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
+        {
+            foreach (var node in m_beganNodes)
+            {
+                if (node.Action(touches, touchEvent))
+                {
+                    break;
+                }
+            }
+        }
+
+        public void Reset()
+        {
+            m_beganNodes = new List<NodeAction>();
+            m_endedNodes = new List<NodeAction>();
+            m_cancelledNodes = new List<NodeAction>();
+            m_movedNodes = new List<NodeAction>();
+        }
+
+        private List<NodeAction> m_beganNodes;
+        private List<NodeAction> m_endedNodes;
+        private List<NodeAction> m_cancelledNodes;
+        private List<NodeAction> m_movedNodes;
+
+        private CCEventListenerTouchAllAtOnce m_touchListener;
+
+        /// <summary>
+        /// The singleton instance.
+        /// </summary>
+        private static readonly Lazy<TouchHandler> Singleton =
+            new Lazy<TouchHandler>(() => new TouchHandler());        
+
+        private struct NodeAction
+        {
+            public CCNode Node;
+            public Func<List<CCTouch>, CCEvent, bool> Action;
         }
     }
 }
+

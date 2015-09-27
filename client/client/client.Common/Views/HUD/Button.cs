@@ -19,11 +19,9 @@
 
             m_touched.Visible = false;
 
-            var touchListener = new CCEventListenerTouchAllAtOnce();
-            touchListener.OnTouchesBegan = OnTouchesBegan;
-            touchListener.OnTouchesEnded = OnTouchesEnded;
-            touchListener.OnTouchesCancelled = OnTouchesCancelled;
-            AddEventListener(touchListener);
+            TouchHandler.Instance.ListenBegan(this, new Func<List<CCTouch>, CCEvent, bool>(OnTouchesBegan));
+            TouchHandler.Instance.ListenEnded(this, new Func<List<CCTouch>, CCEvent, bool>(OnTouchesEnded));
+            TouchHandler.Instance.ListenCancelled(this, new Func<List<CCTouch>, CCEvent, bool>(OnTouchesCancelled));
         }
 
         /// <summary>
@@ -49,30 +47,37 @@
 
 
 
-        public void OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
+        public bool OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             if (m_standard.BoundingBoxTransformedToWorld.ContainsPoint(touches[0].Location))
             {
                 m_touched.Visible = true;
                 m_standard.Visible = false;
+                return true;
             }
+            return false;
         }
 
-        public void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        public bool OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             if (m_touched.BoundingBoxTransformedToWorld.ContainsPoint(touches[0].Location) &&
                 m_touched.Visible)
             {
                 m_callback();
+                m_touched.Visible = false;
+                m_standard.Visible = true;
+                return true;
             }
             m_touched.Visible = false;
             m_standard.Visible = true;
+            return false;
         }
 
-        public void OnTouchesCancelled(List<CCTouch> touches, CCEvent touchEvent)
+        public bool OnTouchesCancelled(List<CCTouch> touches, CCEvent touchEvent)
         {
             m_touched.Visible = false;
             m_standard.Visible = true;
+            return false;
         }
 
         private CCSprite m_standard;

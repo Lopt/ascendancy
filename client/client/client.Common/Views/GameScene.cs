@@ -17,9 +17,9 @@
         public GameScene(CCWindow mainWindow)
             : base(mainWindow)
         {
-            
             WorldLayer = new WorldLayer(this);
             AddChild(WorldLayer);
+            m_touchHandler = new TileTouchHandler(this);
 
             HUD = new Client.Common.Views.HUD.HUDLayer(this);
             AddChild(HUD);
@@ -27,12 +27,8 @@
             DebugLayer = new DebugLayer();
             AddChild(DebugLayer);
 
-            m_touchHandler = new TouchHandler(this); 
-            var touchListener = new CCEventListenerTouchAllAtOnce();
-            touchListener.OnTouchesMoved = m_touchHandler.OnTouchesMoved;
-            touchListener.OnTouchesBegan = m_touchHandler.OnTouchesBegan;
-            touchListener.OnTouchesEnded = m_touchHandler.OnTouchesEnded;
-            WorldLayer.AddEventListener(touchListener);
+            TouchHandler.Instance.Init(this);
+
         }
             
         #region Properties
@@ -40,7 +36,7 @@
         /// <summary>
         /// The m_touch handler.
         /// </summary>
-        private TouchHandler m_touchHandler;
+        private TileTouchHandler m_touchHandler;
 
         /// <summary>
         /// The world (whole gamefield).
