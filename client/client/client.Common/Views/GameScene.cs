@@ -48,6 +48,9 @@
         /// </summary>
         public DebugLayer DebugLayer;
 
+        /// <summary>
+        /// The HUD with all player output information.
+        /// </summary>
         public HUD.HUDLayer HUD;
 
         #endregion

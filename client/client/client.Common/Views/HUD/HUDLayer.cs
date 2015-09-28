@@ -9,6 +9,10 @@
     /// </summary>
     public class HUDLayer : CCLayerColor
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.HUD.HUDLayer"/> class.
+        /// </summary>
+        /// <param name="gameScene">Game scene.</param>
         public HUDLayer(GameScene gameScene)
             : base()
         {
@@ -46,19 +50,35 @@
             //m_standard.AnchorPoint = CCPoint.AnchorUpperLeft;
         }
 
+        /// <summary>
+        /// Relocates center of the Map to GPS coordinates.
+        /// </summary>
         public void BackToGPS()
         {
             m_gameScene.WorldLayer.DrawRegionsAsync();
         }
 
+        /// <summary>
+        /// Starts the debugging.
+        /// </summary>
         public void StartDebug()
         {
             m_gameScene.DebugLayer.Toggle();
         }
 
+        /// <summary>
+        /// The back to gps coordinates position button.
+        /// </summary>
         private Button m_gps;
+
+        /// <summary>
+        /// The open debug layer button.
+        /// </summary>
         private Button m_debug;
 
+        /// <summary>
+        /// The game scene.
+        /// </summary>
         private GameScene m_gameScene;
     }
 }

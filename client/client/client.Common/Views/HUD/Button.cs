@@ -7,6 +7,12 @@
 
     public class Button : CCNode
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.HUD.Button"/> class.
+        /// </summary>
+        /// <param name="standard">Standard Sprite.</param>
+        /// <param name="touched">Sprite when Touched.</param>
+        /// <param name="callback">Callback function.</param>
         public Button(CCSprite standard, CCSprite touched, Action callback)
             :base()
         {
@@ -37,6 +43,10 @@
             m_touched.Position = Position;
         }
 
+        /// <summary>
+        /// Gets the size of the standard sprite.
+        /// </summary>
+        /// <value>The size.</value>
         public CCSize Size
         {
             get
@@ -45,8 +55,11 @@
             }
         }
 
-
-
+        /// <summary>
+        /// Raises the touches began event.
+        /// </summary>
+        /// <param name="touches">Touch Positions.</param>
+        /// <param name="touchEvent">Touch event.</param>
         public bool OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             if (m_standard.BoundingBoxTransformedToWorld.ContainsPoint(touches[0].Location))
@@ -58,6 +71,11 @@
             return false;
         }
 
+        /// <summary>
+        /// Raises the touches ended event.
+        /// </summary>
+        /// <param name="touches">Touch Positions.</param>
+        /// <param name="touchEvent">Touch event.</param>
         public bool OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             if (m_touched.BoundingBoxTransformedToWorld.ContainsPoint(touches[0].Location) &&
@@ -73,6 +91,11 @@
             return false;
         }
 
+        /// <summary>
+        /// Raises the touches cancelled event.
+        /// </summary>
+        /// <param name="touches">Touch Positions.</param>
+        /// <param name="touchEvent">Touch event.</param>
         public bool OnTouchesCancelled(List<CCTouch> touches, CCEvent touchEvent)
         {
             m_touched.Visible = false;
@@ -80,10 +103,20 @@
             return false;
         }
 
+        /// <summary>
+        /// The standard button sprite.
+        /// </summary>
         private CCSprite m_standard;
-        private CCSprite m_touched;
-        private Action m_callback;
 
+        /// <summary>
+        /// The touched button sprite.
+        /// </summary>
+        private CCSprite m_touched;
+
+        /// <summary>
+        /// The callback was happens when the button was pressed.
+        /// </summary>
+        private Action m_callback;
     }
 }
 

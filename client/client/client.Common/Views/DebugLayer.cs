@@ -1,6 +1,7 @@
 ﻿namespace Client.Common.Views
 {
     using System;
+    using System.Collections.Generic;
     using Client.Common.Controllers;
     using Client.Common.Helper;
     using CocosSharp;
@@ -33,9 +34,34 @@
             Opacity = 255;
             AddChild(m_label);
             Visible = false;
+
+            TouchHandler.Instance.ListenEnded(this, new Func<List<CCTouch>, CCEvent, bool>(OnTouchesEnded));
+            TouchHandler.Instance.ListenBegan(this, new Func<List<CCTouch>, CCEvent, bool>(OnTouchesCatch));
+            TouchHandler.Instance.ListenMoved(this, new Func<List<CCTouch>, CCEvent, bool>(OnTouchesCatch));
+            TouchHandler.Instance.ListenCancelled(this, new Func<List<CCTouch>, CCEvent, bool>(OnTouchesCatch));
         }
 
         #region overide
+
+        public bool OnTouchesCatch(List<CCTouch> touches, CCEvent touchEvent)
+        {
+            return Visible;
+        }
+
+        /// <summary>
+        /// Raises the touches ended event.
+        /// </summary>
+        /// <param name="touches">Touch Positions.</param>
+        /// <param name="touchEvent">Touch event.</param>
+        public bool OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        {
+            if (Visible)
+            {
+                Visible = !Visible;
+                return true;
+            }
+            return false;
+        }
 
         /// <summary>
         /// Shows/Hides the DebugLayer.
@@ -60,6 +86,9 @@
 
         #endregion
 
+        /// <summary>
+        /// label where all debugging output stands
+        /// </summary>
         private CCLabel m_label;
     }
 }
