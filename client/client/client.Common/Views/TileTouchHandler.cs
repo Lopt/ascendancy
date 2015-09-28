@@ -44,11 +44,6 @@
         private WorldLayer m_worldLayer;
 
         /// <summary>
-        /// The m_world layer.
-        /// </summary>
-        private DebugLayer m_debugLayer;
-
-        /// <summary>
         /// The m_new scale.
         /// </summary>
         private float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
@@ -77,7 +72,6 @@
             m_timer = new Stopwatch();
             m_touchGesture = TouchGesture.None;
             m_worldLayer = scene.WorldLayer;
-            m_debugLayer = scene.DebugLayer;
             m_startLocation = new CCPoint(1, 1);
 
             TouchHandler.Instance.ListenBegan(m_worldLayer, OnTouchesBegan);
