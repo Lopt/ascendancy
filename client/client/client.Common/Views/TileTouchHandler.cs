@@ -156,13 +156,6 @@
             m_startLocation = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
             var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
 
-            // 3 touchs = open/close debug layer
-            if (touches.Count == 3)
-            {
-                m_debugLayer.Toggle();
-                return true;
-            }
-
             switch (m_touchGesture)
             {
                 case TouchGesture.MoveUnit:
