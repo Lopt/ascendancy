@@ -30,9 +30,9 @@
         {
             var worldRegionPositions = m_regionManagerController.GetWorldNearRegionPositions(centerRegion.RegionPosition);
 
-            for (int y = 0; y < ClientConstants.DRAW_REGIONS_X; y++)
+            for (int y = 0; y < Common.Constants.ClientConstants.DRAW_REGIONS_X; y++)
             {
-                for (int x = 0; x < ClientConstants.DRAW_REGIONS_Y; x++)
+                for (int x = 0; x < Common.Constants.ClientConstants.DRAW_REGIONS_Y; x++)
                 {
                     var region = m_regionManagerController.GetRegion(worldRegionPositions[x, y]);
                     SetTilesInMap32(new CCTileMapCoordinates(x * Constants.REGION_SIZE_X, y * Constants.REGION_SIZE_Y), region);
@@ -159,9 +159,9 @@
             int mapCellX = -1;
             int mapCellY = -1;
 
-            for (int x = 0; x < ClientConstants.DRAW_REGIONS_X; x++)
+            for (int x = 0; x < Common.Constants.ClientConstants.DRAW_REGIONS_X; x++)
             {
-                for (int y = 0; y < ClientConstants.DRAW_REGIONS_Y; y++)
+                for (int y = 0; y < Common.Constants.ClientConstants.DRAW_REGIONS_Y; y++)
                 {
                     if (regionPos.Equals(worldRegions[x, y]))
                     {
@@ -192,8 +192,8 @@
             var x = mapCellPosition.CellX / Constants.REGION_SIZE_X;
             var y = mapCellPosition.CellY / Constants.REGION_SIZE_Y;
 
-            if (x >= 0 && x < ClientConstants.DRAW_REGIONS_X &&
-                y >= 0 && y < ClientConstants.DRAW_REGIONS_Y)
+            if (x >= 0 && x < Common.Constants.ClientConstants.DRAW_REGIONS_X &&
+                y >= 0 && y < Common.Constants.ClientConstants.DRAW_REGIONS_Y)
             {
                 var regionPosition = worldRegions[x, y];
 
@@ -209,11 +209,13 @@
         /// <param name="mapCellPosition">Map cell position.</param>
         public bool IsCellInOutsideRegion(MapCellPosition mapCellPosition)
         {
-            if (mapCellPosition.CellX < ClientConstants.REDRAW_REGIONS_START_X || mapCellPosition.CellX > ClientConstants.REDRAW_REGIONS_END_X)
+            if (mapCellPosition.CellX < Common.Constants.ClientConstants.REDRAW_REGIONS_START_X ||
+                mapCellPosition.CellX > Common.Constants.ClientConstants.REDRAW_REGIONS_END_X)
             {
                 return true;
             }
-            if (mapCellPosition.CellY < ClientConstants.REDRAW_REGIONS_START_Y || mapCellPosition.CellY > ClientConstants.REDRAW_REGIONS_END_Y)
+            if (mapCellPosition.CellY < Common.Constants.ClientConstants.REDRAW_REGIONS_START_Y ||
+                mapCellPosition.CellY > Common.Constants.ClientConstants.REDRAW_REGIONS_END_Y)
             {
                 return true;
             }

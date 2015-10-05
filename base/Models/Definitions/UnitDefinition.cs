@@ -1,6 +1,7 @@
 ﻿namespace Core.Models.Definitions
 {
     using System;
+    using Resources;
 
     /// <summary>
     /// Unit definition which contains information about a unit type.

@@ -77,12 +77,12 @@
             // Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
             if (desiredWidth < windowSize.Width)
             {
-                application.ContentSearchPaths.Add(ClientConstants.IMAGES_HD);
+                application.ContentSearchPaths.Add(Constants.ClientConstants.IMAGES_HD);
                 CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
             }
             else
             {
-                application.ContentSearchPaths.Add(ClientConstants.IMAGES_LD);
+                application.ContentSearchPaths.Add(Constants.ClientConstants.IMAGES_LD);
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
            
@@ -116,12 +116,12 @@
         /// <param name="application">Main Application.</param>
         private void SetContentPaths(CCApplication application)
         {
-            application.ContentRootDirectory = ClientConstants.CONTENT;
-            application.ContentSearchPaths.Add(ClientConstants.ANIMATIONS);
-            application.ContentSearchPaths.Add(ClientConstants.FONTS);
-            application.ContentSearchPaths.Add(ClientConstants.SOUNDS);
-            application.ContentSearchPaths.Add(ClientConstants.TILES);
-            application.ContentSearchPaths.Add(ClientConstants.IMAGES);
+            application.ContentRootDirectory = Constants.ClientConstants.CONTENT;
+            application.ContentSearchPaths.Add(Constants.ClientConstants.ANIMATIONS);
+            application.ContentSearchPaths.Add(Constants.ClientConstants.FONTS);
+            application.ContentSearchPaths.Add(Constants.ClientConstants.SOUNDS);
+            application.ContentSearchPaths.Add(Constants.ClientConstants.TILES);
+            application.ContentSearchPaths.Add(Constants.ClientConstants.IMAGES);
         }
 
         /// <summary>

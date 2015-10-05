@@ -89,7 +89,7 @@
         /// <param name="regionPosition">Region position.</param>
         public async Task<TerrainDefinition[,]> LoadTerrainsAsync(RegionPosition regionPosition)
         {            
-            var path = Core.Helper.LoadHelper.ReplacePath(ClientConstants.REGION_SERVER_PATH, regionPosition);
+            var path = Core.Helper.LoadHelper.ReplacePath(Common.Constants.ClientConstants.REGION_SERVER_PATH, regionPosition);
             var json = await RequestAsync(path);
             return Core.Helper.LoadHelper.JsonToTerrain(json);
         }
@@ -100,7 +100,7 @@
         /// <returns>The terrain types async.</returns>
         public async Task<Core.Models.Definitions.TerrainDefinition[]> LoadTerrainTypesAsync()
         {
-            string path = ClientConstants.TERRAIN_TYPES_SERVER_PATH;
+            string path = Common.Constants.ClientConstants.TERRAIN_TYPES_SERVER_PATH;
             var json = await RequestAsync(path);
             return JsonConvert.DeserializeObject<Core.Models.Definitions.TerrainDefinition[]>(json);
         }
@@ -111,7 +111,7 @@
         /// <returns>The unit types async.</returns>
         public async Task<Core.Models.Definitions.UnitDefinition[]> LoadUnitTypesAsync()
         {
-            string path = ClientConstants.UNIT_TYPES_SERVER_PATH;
+            string path = Common.Constants.ClientConstants.UNIT_TYPES_SERVER_PATH;
             var json = await RequestAsync(path);
             return JsonConvert.DeserializeObject<Core.Models.Definitions.UnitDefinition[]>(json);
         }

@@ -32,9 +32,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\Entity.cs" />
-    <Compile Include="Models\Ressources.cs" />
     <Compile Include="Models\Manager\RegionManager.cs" />
     <Compile Include="Models\Map\Region.cs" />
     <Compile Include="Models\Position\LatLon.cs" />
@@ -76,6 +74,10 @@
     <Compile Include="Connection\Packet.cs" />
     <Compile Include="Connection\MethodType.cs" />
     <Compile Include="Helper\CompressionHelper.cs" />
+    <Compile Include="Models\Resources\Resources.cs" />
+    <Compile Include="Models\Resources\IncrementalResource.cs" />
+    <Compile Include="Models\Resources\StateResource.cs" />
+    <Compile Include="Models\Constants.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -169,4 +171,8 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="Models\Resources\" />
+    <Folder Include="Constants\" />
+  </ItemGroup>
 </Project>

@@ -176,6 +176,10 @@
     <AndroidAsset Include="Assets\Content\images\hd\radars2-standard.png" />
     <AndroidAsset Include="Assets\Content\images\ld\debug-standard.png" />
     <AndroidAsset Include="Assets\Content\images\ld\debug-touched.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\EnergyRessource2.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\EnergyRessource2.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\EnergyRessource1.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\EnergyRessource1.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />

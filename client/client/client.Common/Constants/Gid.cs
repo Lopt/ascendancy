@@ -1,4 +1,4 @@
-﻿namespace Client.Common.Helper
+﻿namespace Client.Common.Constants
 {
     /// <summary>
     /// Terrain GIDs assingment according to client/data/tiles/Tile zuordnung.pdf.

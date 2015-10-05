@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using SQLite;
+    using Resources;
 
     /// <summary>
     /// Account model which represents an user and information about the user.
@@ -21,6 +21,12 @@
             Headquarters = new LinkedList<PositionI>();
             Buildings = new LinkedList<PositionI>();
             Units = new LinkedList<PositionI>();
+
+            Scrap = new Scrap();
+            Population = new Population();
+            Technology = new Technology();
+            Energy = new Energy();
+            Plutonium = new Plutonium();
         }
 
         /// <summary>
@@ -35,6 +41,12 @@
             Headquarters = new LinkedList<PositionI>();
             Units = new LinkedList<PositionI>();
             Buildings = new LinkedList<PositionI>();
+
+            Scrap = new Scrap();
+            Population = new Population();
+            Technology = new Technology();
+            Energy = new Energy();
+            Plutonium = new Plutonium();
         }
 
         /// <summary>
@@ -86,5 +98,11 @@
             get;
             private set;
         }
+
+        public Scrap Scrap;
+        public Plutonium Plutonium;
+        public Energy Energy;
+        public Technology Technology;
+        public Population Population;
     }
 }

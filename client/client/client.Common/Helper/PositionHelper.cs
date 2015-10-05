@@ -30,8 +30,8 @@
         public static MapCellPosition PositionToMapCellPosition(Position centerPosition, PositionI position)
         {
             var cellPos = centerPosition.CellPosition;
-            int halfRegionX = (int)ClientConstants.DRAW_REGIONS_X / 2;
-            int halfRegionY = (int)ClientConstants.DRAW_REGIONS_Y / 2;
+            int halfRegionX = (int)Common.Constants.ClientConstants.DRAW_REGIONS_X / 2;
+            int halfRegionY = (int)Common.Constants.ClientConstants.DRAW_REGIONS_Y / 2;
 
             var x = (Constants.REGION_SIZE_X * halfRegionX) + cellPos.CellX;
             var y = (Constants.REGION_SIZE_Y * halfRegionY) + cellPos.CellY;

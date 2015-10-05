@@ -74,16 +74,16 @@
             RegionView = new RegionView();
             m_regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
 
-            WorldTileMap = new CCTileMap(ClientConstants.TILEMAP_FILE);
+            WorldTileMap = new CCTileMap(Common.Constants.ClientConstants.TILEMAP_FILE);
             CenterPosition = Geolocation.Instance.CurrentGamePosition;
 
             m_currentPositionNode = new DrawNode();
             WorldTileMap.TileLayersContainer.AddChild(m_currentPositionNode);
 
-            TerrainLayer = WorldTileMap.LayerNamed(ClientConstants.LAYER_TERRAIN);
-            BuildingLayer = WorldTileMap.LayerNamed(ClientConstants.LAYER_BUILDING);
-            UnitLayer = WorldTileMap.LayerNamed(ClientConstants.LAYER_UNIT);
-            MenuLayer = WorldTileMap.LayerNamed(ClientConstants.LAYER_MENU);
+            TerrainLayer = WorldTileMap.LayerNamed(Common.Constants.ClientConstants.LAYER_TERRAIN);
+            BuildingLayer = WorldTileMap.LayerNamed(Common.Constants.ClientConstants.LAYER_BUILDING);
+            UnitLayer = WorldTileMap.LayerNamed(Common.Constants.ClientConstants.LAYER_UNIT);
+            MenuLayer = WorldTileMap.LayerNamed(Common.Constants.ClientConstants.LAYER_MENU);
 
             ClearLayers();
 
@@ -175,8 +175,8 @@
         /// <param name="newScale">New scale.</param>
         public void ScaleWorld(float newScale)
         {
-            if (ClientConstants.TILEMAP_MIN_SCALE < newScale &&
-                newScale < ClientConstants.TILEMAP_MAX_SCALE)
+            if (Common.Constants.ClientConstants.TILEMAP_MIN_SCALE < newScale &&
+                newScale < Common.Constants.ClientConstants.TILEMAP_MAX_SCALE)
             {
                 m_scale = newScale;
                 WorldTileMap.TileLayersContainer.Scale = m_scale;
@@ -211,7 +211,7 @@
             SetMapAnchor(Geolocation.Instance.CurrentGamePosition);
             WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
             WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
-            ScaleWorld(ClientConstants.TILEMAP_NORM_SCALE);
+            ScaleWorld(Common.Constants.ClientConstants.TILEMAP_NORM_SCALE);
         }
 
         #endregion
@@ -307,7 +307,7 @@
         {
             var tileCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(CenterPosition, new PositionI(position));
             m_currentPositionNode.DrawHexagonForIsoStagMap(
-                ClientConstants.TILE_IMAGE_WIDTH,
+                Common.Constants.ClientConstants.TILE_IMAGE_WIDTH,
                 TerrainLayer,
                 tileCoordinate,
                 new CCColor4F(CCColor3B.Red),
@@ -326,7 +326,7 @@
             {
                 m_currentPositionNode.Visible = true;
                 m_currentPositionNode.DrawHexagonForIsoStagMap(
-                    ClientConstants.TILE_IMAGE_WIDTH,
+                    Common.Constants.ClientConstants.TILE_IMAGE_WIDTH,
                     TerrainLayer,
                     tileCoordinate,
                     new CCColor4F(CCColor3B.Red),

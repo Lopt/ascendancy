@@ -45,7 +45,7 @@
         /// <returns>true if the schedule of the action is done</returns>
         public override bool Schedule(float frameTimesInSecond)
         {
-            frameTimesInSecond /= Helper.ClientConstants.MOVE_SPEED_PER_FIELD;
+            frameTimesInSecond /= Common.Constants.ClientConstants.MOVE_SPEED_PER_FIELD;
 
             var action = (Core.Models.Action)Model;
 

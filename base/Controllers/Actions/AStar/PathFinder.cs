@@ -13,14 +13,17 @@
     /// </summary>
     public class PathFinder
     {
+        /// <summary>
+        /// The nodes.
+        /// </summary>
         private Dictionary<PositionI, Node> m_nodes;
         private Node startNode;
         private SearchParameters searchParameters;
 
         /// <summary>
-        /// Create a new instance of PathFinder
+        /// Initializes a new instance of the <see cref="Core.Controllers.AStar.PathFinder"/> class.
         /// </summary>
-        /// <param name="searchParameters"></param>
+        /// <param name="searchParameters">Search parameters.</param>
         public PathFinder(SearchParameters searchParameters)
         {
             m_nodes = new Dictionary<PositionI, Node>();

@@ -46,12 +46,12 @@
         /// <summary>
         /// The m_new scale.
         /// </summary>
-        private float m_newScale = ClientConstants.TILEMAP_NORM_SCALE;
+        private float m_newScale = Common.Constants.ClientConstants.TILEMAP_NORM_SCALE;
 
         /// <summary>
         /// The m_scale.
         /// </summary>
-        private float m_scale = ClientConstants.TILEMAP_NORM_SCALE;
+        private float m_scale = Common.Constants.ClientConstants.TILEMAP_NORM_SCALE;
 
         /// <summary>
         /// The m_start location.

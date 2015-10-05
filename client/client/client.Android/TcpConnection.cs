@@ -17,17 +17,19 @@
         public override async Task<string> SendAsync(Core.Connection.MethodType methodType, string json)
         {
             var client = new TcpClient();
-            /*try
+            /* // decomment for debugging purpose
+            try
             {
                 client.Connect(
                     Client.Common.Helper.ClientConstants.DEBUG_TCP_SERVER,
                     Client.Common.Helper.ClientConstants.TCP_PORT);
             }
             catch (SocketException exception)
-            {*/
+            {
+            */
             client.Connect(
-                Client.Common.Helper.ClientConstants.TCP_SERVER,
-                Client.Common.Helper.ClientConstants.TCP_PORT);                
+                Common.Constants.ClientConstants.TCP_SERVER,
+                Common.Constants.ClientConstants.TCP_PORT);                
             //}
             var stream = client.GetStream();
 

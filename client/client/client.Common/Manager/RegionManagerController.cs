@@ -112,8 +112,8 @@
         /// <param name="regionPosition">Region position.</param>
         public RegionPosition[,] GetWorldNearRegionPositions(RegionPosition regionPosition)
         {
-            int halfX = ClientConstants.DRAW_REGIONS_X / 2;
-            int halfY = ClientConstants.DRAW_REGIONS_X / 2;
+            int halfX = Common.Constants.ClientConstants.DRAW_REGIONS_X / 2;
+            int halfY = Common.Constants.ClientConstants.DRAW_REGIONS_X / 2;
 
             RegionPosition[,] worldRegion = new RegionPosition[5, 5];
             for (int x = -halfX; x <= halfX; x++)

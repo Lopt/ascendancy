@@ -1,4 +1,4 @@
-﻿namespace Client.Common.Helper
+﻿namespace Client.Common.Constants
 {
     using System;
 

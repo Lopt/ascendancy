@@ -75,8 +75,8 @@
         public CCPoint GetAnchor()
         {
 
-            float x = (m_CellX) / (ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
-            float y = (m_CellY) / (ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
+            float x = (m_CellX) / (Common.Constants.ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
+            float y = (m_CellY) / (Common.Constants.ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
 
             return new CCPoint(x, (1 - y) / 2);
         }

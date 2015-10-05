@@ -19,17 +19,24 @@
             m_gameScene = gameScene;
 
             m_gps = new Button(
-                new CCSprite("radars2-standard"),
-                new CCSprite("radars2-touched"),
+                "radars2-standard",
+                "radars2-touched",
                 new Action(BackToGPS));
+            
+            m_gps.AnchorPoint = CCPoint.AnchorLowerLeft;
             AddChild(m_gps);
 
             m_debug = new Button(
-                new CCSprite("debug-standard"),
-                new CCSprite("debug-touched"),
+                "debug-standard",
+                "debug-touched",
                 new Action(StartDebug));
+            m_debug.AnchorPoint = CCPoint.AnchorLowerLeft;
             AddChild(m_debug);
-        }   
+
+            m_energyRessource = new EnergyResource();
+            m_energyRessource.AnchorPoint = CCPoint.AnchorUpperLeft;
+            AddChild(m_energyRessource);
+        }  
 
         /// <summary>
         /// Add the logo and loaded sprite to scene.
@@ -40,11 +47,12 @@
 
             m_debug.PositionX = VisibleBoundsWorldspace.MinX;
             m_debug.PositionY = VisibleBoundsWorldspace.MinY;
-            m_debug.AnchorPoint = CCPoint.AnchorLowerLeft;
 
             m_gps.PositionX = VisibleBoundsWorldspace.MinX + m_debug.Size.Width;
             m_gps.PositionY = VisibleBoundsWorldspace.MinY;
-            m_gps.AnchorPoint = CCPoint.AnchorLowerLeft;
+
+            m_energyRessource.PositionX = VisibleBoundsWorldspace.MinX;
+            m_energyRessource.PositionY = VisibleBoundsWorldspace.MaxY;
 
             //m_touched.AnchorPoint = CCPoint.AnchorUpperLeft;
             //m_standard.AnchorPoint = CCPoint.AnchorUpperLeft;
@@ -75,6 +83,11 @@
         /// The open debug layer button.
         /// </summary>
         private Button m_debug;
+
+        /// <summary>
+        /// The energy ressource hud element.
+        /// </summary>
+        private EnergyResource m_energyRessource;
 
         /// <summary>
         /// The game scene.
