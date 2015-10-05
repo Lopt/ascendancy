@@ -67,7 +67,7 @@
             nodeAction.Action = action;
             if (list.Count != 0)
             {
-                index = list.FindIndex((x) => x.Node.GlobalZOrder >= node.GlobalZOrder);
+                index = list.FindIndex((x) => x.Node.ZOrder >= node.ZOrder);
             }
             else
             {

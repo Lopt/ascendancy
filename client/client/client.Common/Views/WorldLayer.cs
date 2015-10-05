@@ -94,10 +94,10 @@
                        
             this.AddChild(WorldTileMap);
 
-            m_worker = new Views.Worker(this);
-            EntityManagerController.Instance.Worker = m_worker;
+            Worker = new Views.Worker(this);
+            EntityManagerController.Instance.Worker = Worker;
 
-            Schedule(m_worker.Schedule);
+            Schedule(Worker.Schedule);
             Schedule(CheckGeolocation);
         }
 
@@ -400,7 +400,7 @@
         /// <summary>
         /// The m worker.
         /// </summary>
-        private Worker m_worker;
+        public Worker Worker;
 
         /// <summary>
         /// The m scale.

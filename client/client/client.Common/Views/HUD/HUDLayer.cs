@@ -36,6 +36,14 @@
             m_energyRessource = new EnergyResource();
             m_energyRessource.AnchorPoint = CCPoint.AnchorUpperLeft;
             AddChild(m_energyRessource);
+
+            m_question = new Button(
+                "question-standard",
+                "question-touched",
+                new Action(DeveloperFunction));
+            m_question.AnchorPoint = CCPoint.AnchorLowerRight;
+            AddChild(m_question);
+
         }  
 
         /// <summary>
@@ -53,6 +61,9 @@
 
             m_energyRessource.PositionX = VisibleBoundsWorldspace.MinX;
             m_energyRessource.PositionY = VisibleBoundsWorldspace.MaxY;
+
+            m_question.PositionX = VisibleBoundsWorldspace.MaxX;
+            m_question.PositionY = VisibleBoundsWorldspace.MinY;
 
             //m_touched.AnchorPoint = CCPoint.AnchorUpperLeft;
             //m_standard.AnchorPoint = CCPoint.AnchorUpperLeft;
@@ -74,6 +85,18 @@
             m_gameScene.DebugLayer.Toggle();
         }
 
+        public void DeveloperFunction()
+        {
+            var pos = Models.Geolocation.Instance.CurrentGamePosition;
+            var actionCreate = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(pos),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Headquarter));
+            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate);
+
+            var actionCreate2 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(pos),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Archer));
+            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate2);
+        }
+
         /// <summary>
         /// The back to gps coordinates position button.
         /// </summary>
@@ -83,6 +106,11 @@
         /// The open debug layer button.
         /// </summary>
         private Button m_debug;
+
+        /// <summary>
+        /// Call developer function.
+        /// </summary>
+        private Button m_question;
 
         /// <summary>
         /// The energy ressource hud element.
