@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client.Droid", "client\clie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client.iOS", "client\client\client.iOS\client.iOS.csproj", "{25870EA1-5A09-4AE6-A17A-7CBDF81B1F82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{BF15860D-E0A3-46E0-835E-1C7463E2483B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcpserver", "tcpserver\tcpserver.csproj", "{9A2F13CD-73C7-4EA9-9166-E129FF967715}"
 EndProject
 Global
@@ -135,26 +133,6 @@ Global
 		{9A2F13CD-73C7-4EA9-9166-E129FF967715}.Release|iPhoneSimulator.Build.0 = Release|iPhone
 		{9A2F13CD-73C7-4EA9-9166-E129FF967715}.Release|x86.ActiveCfg = Release|iPhone
 		{9A2F13CD-73C7-4EA9-9166-E129FF967715}.Release|x86.Build.0 = Release|iPhone
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Ad-Hoc|iPhone.ActiveCfg = Debug|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Ad-Hoc|iPhone.Build.0 = Debug|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Ad-Hoc|x86.ActiveCfg = Release|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.AppStore|iPhone.ActiveCfg = Debug|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.AppStore|iPhone.Build.0 = Debug|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.AppStore|iPhoneSimulator.ActiveCfg = Release|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.AppStore|x86.ActiveCfg = Release|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Debug|iPhone.ActiveCfg = Debug|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Debug|iPhone.Build.0 = Debug|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Debug|iPhoneSimulator.Build.0 = Debug|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Debug|x86.ActiveCfg = Debug|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Debug|x86.Build.0 = Debug|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Release|iPhone.ActiveCfg = Release|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Release|iPhone.Build.0 = Release|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Release|iPhoneSimulator.ActiveCfg = Release|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Release|iPhoneSimulator.Build.0 = Release|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Release|x86.ActiveCfg = Release|x86
-		{BF15860D-E0A3-46E0-835E-1C7463E2483B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
