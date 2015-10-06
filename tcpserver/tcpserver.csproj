@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhone</Platform>
     <ProjectGuid>{9A2F13CD-73C7-4EA9-9166-E129FF967715}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>tcpserver</RootNamespace>
+    <RootNamespace>Server</RootNamespace>
     <AssemblyName>tcpserver</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
