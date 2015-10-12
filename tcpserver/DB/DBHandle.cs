@@ -193,12 +193,12 @@
        /// <summary>
        /// Updates the resource.
        /// </summary>
-       /// <param name="ressourceFire">Resource fire.</param>
-       /// <param name="ressourceEarth">Resource earth.</param>
-       /// <param name="ressourceWater">Resource water.</param>
-       /// <param name="ressourceAir">Resource air.</param>
-       /// <param name="ressourceMagic">Resource magic.</param>
-       /// <param name="ressourceGold">Resource gold.</param>
+       /// <param name="resourceFire">Resource fire.</param>
+       /// <param name="resourceEarth">Resource earth.</param>
+       /// <param name="resourceWater">Resource water.</param>
+       /// <param name="resourceAir">Resource air.</param>
+       /// <param name="resourceMagic">Resource magic.</param>
+       /// <param name="resourceGold">Resource gold.</param>
        /// <param name="id">Identifier for the account.</param>
        public void UpdateResource(int resourceFire, int resourceEarth, int resourceWater, int resourceAir, int resourceMagic, int resourceGold, int id)
        {
