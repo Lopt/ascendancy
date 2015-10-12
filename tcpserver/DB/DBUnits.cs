@@ -1,31 +1,31 @@
-﻿using Core.Models;
-using SQLite;
-using System;
-using Server.Models;
-using Server.DB.Models;
-
-
-namespace Server.DB
+﻿namespace Server.DB
 {
-	/// <summary>
-	/// DB units.
-	/// </summary>
-    class DBUnits
+    using System;
+    using Core.Models;
+    using Server.DB.Models;
+    using Server.Models;
+    using SQLite;
+
+    /// <summary>
+    /// DB units.
+    /// </summary>
+    public class DBUnits
     {
-		/// <summary>
-		/// Initializes a new instance of the <see cref="server.DB.DBUnits"/> class.
-		/// </summary>
-		/// <param name="con">Con.</param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Server.DB.DBUnits"/> class.
+        /// </summary>
+        /// <param name="con">Connection to the DB.</param>
         public DBUnits(SQLiteConnection con)           
         {
-            m_db = con;
-            m_db.CreateTable<TableUnit>();
+            db = con;
+            db.CreateTable<TableUnit>();
         }
-		/// <summary>
-		/// Insert a new unit into the databank.
-		/// </summary>
-		/// <param name="unitEntity">Unit entity.</param>
-		/// <param name="id">Identifier.</param>
+
+        /// <summary>
+        /// News the unit.
+        /// </summary>
+        /// <param name="unitEntity">Unit entity.</param>
+        /// <param name="id">Identifier for the account.</param>
         public void NewUnit(Entity unitEntity, int id)
         {
                 var newData = new TableUnit();
@@ -33,10 +33,12 @@ namespace Server.DB
                 newData.PositionX = unitEntity.Position.X;
                 newData.PositionY = unitEntity.Position.Y;
 
-                m_db.InsertOrReplace(newData);
+                db.InsertOrReplace(newData);
         }
 
-        private SQLiteConnection m_db;
-
+        /// <summary>
+        /// The DB.
+        /// </summary>
+        private SQLiteConnection db;
     }
 }
