@@ -8,11 +8,11 @@
     /// Represents a single node on a grid that is being searched for a path between two points
     /// </summary>
     public class Node
-    {
+    {    
         /// <summary>
-        /// The parent node.
+        /// Flags whether the node is open, closed or untested by the PathFinder
         /// </summary>
-        private Node parentNode;
+        public NodeState State;
 
         /// <summary>
         /// Gets the location.
@@ -43,11 +43,6 @@
             get;
             private set;
         }
-
-        /// <summary>
-        /// Flags whether the node is open, closed or untested by the PathFinder
-        /// </summary>
-        public NodeState State;
 
         /// <summary>
         /// Gets the f value it stand for estimated total cost (F = G + H).
@@ -89,7 +84,7 @@
         public Node(PositionI location, PositionI endLocation)
         {
             Location = location;
-            State = NodeState.Open;
+            state = NodeState.Open;
             H = GetTraversalCost(Location, endLocation);
             G = 0;
         }
@@ -104,5 +99,10 @@
         {
             return location.Distance(otherLocation);   
         }    
+
+        /// <summary>
+        /// The parent node.
+        /// </summary>
+        private Node parentNode;
     }
 }
