@@ -129,10 +129,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\client.Common\client.Common.csproj">
-      <Project>{92AF0C3C-1F4F-4070-B925-F587F0C8063F}</Project>
-      <Name>client.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\base\core.csproj">
       <Project>{163A206B-36D1-46D5-AA19-B515F7350C6E}</Project>
       <Name>core</Name>

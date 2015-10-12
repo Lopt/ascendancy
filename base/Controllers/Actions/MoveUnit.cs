@@ -47,7 +47,9 @@
         /// </summary>
         public const string END_POSITION = "NewPosition";
 
-        // don't send from the client
+        /// <summary>
+        /// don't send from the client
+        /// </summary>
         public const string CLIENT_UNIT_INFOS = "Unit";
 
         /// <summary>
@@ -58,21 +60,21 @@
         {
             var regionManagerC = Controller.Instance.RegionManagerController;
 
-            var Bag = new ConcurrentBag<Core.Models.Region>();
+            var bag = new ConcurrentBag<Core.Models.Region>();
 
             var action = (Core.Models.Action)Model;
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
 
-            Bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
+            bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
             var adjacentRegions = GetAdjacentRegions(regionManagerC, regionManagerC.GetRegion(startPosition.RegionPosition).RegionPosition);
 
             foreach (var adjRegions in adjacentRegions)
             {
-                Bag.Add(regionManagerC.GetRegion(adjRegions));
+                bag.Add(regionManagerC.GetRegion(adjRegions));
             }
 
-            return Bag;
+            return bag;
         }
 
         /// <summary>
@@ -122,7 +124,7 @@
         {
             var regionManagerC = Controller.Instance.RegionManagerController;
 
-            var Bag = new ConcurrentBag<Core.Models.Region>();
+            var bag = new ConcurrentBag<Core.Models.Region>();
 
             var action = (Core.Models.Action)Model;
 
@@ -143,24 +145,23 @@
                 }
             }    
 
-            Bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
+            bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
 
             if (startPosition.RegionPosition != endPosition.RegionPosition)
             {
-                Bag.Add(regionManagerC.GetRegion(endPosition.RegionPosition));
+                bag.Add(regionManagerC.GetRegion(endPosition.RegionPosition));
             }
 
             action.Parameters[CLIENT_UNIT_INFOS] = entity;
 
-            return Bag;
+            return bag;
         }
-
 
         /// <summary>
         /// Gets the region position.
         /// </summary>
         /// <returns>The region position.</returns>
-        override public Core.Models.RegionPosition GetRegionPosition()
+        public override Core.Models.RegionPosition GetRegionPosition()
         {
             var action = (Core.Models.Action)Model;
 
@@ -178,11 +179,11 @@
         }
 
         /// <summary>
-        /// Check all possible regions around the startregion of a unit and add them to a ConcurrentBag.
+        /// Check all possible regions around the start region of a unit and add them to a ConcurrentBag.
         /// </summary>
-        /// <param name="regionManagerC"></param>
-        /// <param name="position"></param>
-        /// <returns> Returns all regions around the startregion</returns>
+        /// <returns>The adjacent regions.</returns>
+        /// <param name="regionManagerC">Region manager c.</param>
+        /// <param name="position">PositionI of the region.</param>
         private ConcurrentBag<RegionPosition> GetAdjacentRegions(RegionManagerController regionManagerC, RegionPosition position)
         {
             var list = new ConcurrentBag<RegionPosition>();
@@ -243,9 +244,19 @@
             return list;
         }
 
-
+        /// <summary>
+        /// The path.
+        /// </summary>
         public IList Path;
+
+        /// <summary>
+        /// The m fight.
+        /// </summary>
         private bool m_fight;
+
+        /// <summary>
+        /// The m fight position.
+        /// </summary>
         private PositionI m_fightPos;
     }
 }

@@ -1,42 +1,55 @@
-﻿using System;
-using SQLite;
-
-namespace Server.DB.Models
+﻿namespace Server.DB.Models
 {
+    using System;
+    using SQLite;
+
     /// <summary>
-    /// Represantation from the databank table Ressource. 
+    /// Table resource.
     /// </summary>
-    [Table("Ressources")]
-    class TableRessource
+    [Table("Resources")]
+    public class TableResource
     {
         /// <summary>
-        /// Set and get for column Id, as primary key.
+        /// Gets or sets the identifier.
         /// </summary>
+        /// <value>The identifier.</value>
         [PrimaryKey, Column("Id")]
         public int Id { get; set; }
+
         /// <summary>
-        /// Set and get for column Fire.
+        /// Gets or sets the fire.
         /// </summary>
+        /// <value>The fire.</value>
         public int Fire { get; set; }
+
         /// <summary>
-        /// Set and get for column Earth.
+        /// Gets or sets the earth.
         /// </summary>
+        /// <value>The earth.</value>
         public int Earth { get; set; }
+
         /// <summary>
-        /// Set and get for column Water.
+        /// Gets or sets the water.
         /// </summary>
+        /// <value>The water.</value>
         public int Water { get; set; }
+
         /// <summary>
-        /// Set and get for column Air.
+        /// Gets or sets the air.
         /// </summary>
+        /// <value>The air.</value>
         public int Air { get; set; }
+
         /// <summary>
-        /// Set and get for column Magic.
+        /// Gets or sets the magic.
         /// </summary>
+        /// <value>The magic.</value>
         public int Magic { get; set; }
+
         /// <summary>
-        /// Set and get for column Gold.
+        /// Gets or sets the gold.
         /// </summary>
+        /// <value>The gold.</value>
         public int Gold { get; set; }
     }
 }
