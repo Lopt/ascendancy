@@ -85,9 +85,8 @@
                 application.ContentSearchPaths.Add(Constants.ClientConstants.IMAGES_LD);
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
-           
 
-            SceneStartAsync();//.RunSynchronously();
+            SceneStartAsync(); // .RunSynchronously();
         }
 
         /// <summary>
