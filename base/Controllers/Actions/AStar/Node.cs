@@ -84,7 +84,7 @@
         public Node(PositionI location, PositionI endLocation)
         {
             Location = location;
-            state = NodeState.Open;
+            State = NodeState.Open;
             H = GetTraversalCost(Location, endLocation);
             G = 0;
         }
