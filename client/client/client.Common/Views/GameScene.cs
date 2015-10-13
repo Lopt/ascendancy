@@ -28,18 +28,12 @@
             AddChild(DebugLayer);
 
             TouchHandler.Instance.Init(this);
-
         }
             
         #region Properties
 
         /// <summary>
-        /// The m_touch handler.
-        /// </summary>
-        private TileTouchHandler m_touchHandler;
-
-        /// <summary>
-        /// The world (whole gamefield).
+        /// The world (whole game field).
         /// </summary>
         public WorldLayer WorldLayer;
 
@@ -52,6 +46,11 @@
         /// The HUD with all player output information.
         /// </summary>
         public HUD.HUDLayer HUD;
+
+        /// <summary>
+        /// The m_touch handler.
+        /// </summary>
+        private TileTouchHandler m_touchHandler;
 
         #endregion
     }
