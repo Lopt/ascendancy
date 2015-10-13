@@ -61,7 +61,7 @@
         private bool Search(Node currentNode, int moves)
         {
             // Set the current node to Closed since it cannot be traversed more than once
-            currentNode.state = NodeState.Closed;
+            currentNode.State = NodeState.Closed;
             List<Node> nextNodes = GetAdjacentWalkableNodes(currentNode);
 
             // Sort by F-value so that the shortest possible routes are considered first
@@ -119,7 +119,7 @@
                             {
                                 // use the dictionary and get the Node at the positonI
                                 var node = m_nodes[newPosition];
-                                if (node.state == NodeState.Open)
+                                if (node.State == NodeState.Open)
                                 {
                                     // calculate the travel cost to the next tile
                                     double traversalCost = terrainDefinition.TravelCost;
