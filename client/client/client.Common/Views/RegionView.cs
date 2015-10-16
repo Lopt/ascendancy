@@ -25,7 +25,7 @@
         /// <summary>
         /// Sets the tiles in map 160x160.
         /// </summary>
-        /// <param name="centerRegion">Region which is in the center.</param>
+        /// <param name="region">Region which is in the center.</param>
         public void SetTilesInMap160(Core.Models.Region centerRegion)
         {
             var worldRegionPositions = m_regionManagerController.GetWorldNearRegionPositions(centerRegion.RegionPosition);

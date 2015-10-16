@@ -66,7 +66,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.TouchHandler"/> class.
         /// </summary>
-        /// <param name="scene">The entire scene.</param>
+        /// <param name="worldLayer">World layer.</param>
         public TileTouchHandler(GameScene scene)
         {
             m_timer = new Stopwatch();
@@ -84,7 +84,6 @@
         /// </summary>
         /// <param name="touches">Touches, where the user touched.</param>
         /// <param name="touchEvent">Touch event.</param>
-        /// <returns>Returns a true after processed the event. </returns>
         public bool OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             if (touches.Count == 1 && m_touchGesture == TouchGesture.Zoom)
@@ -140,7 +139,6 @@
         /// </summary>
         /// <param name="touches">Touches, where the user touched.</param>
         /// <param name="touchEvent">Touch event.</param>
-        /// <returns> Returns true after processing the touches.</returns>
         public bool OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             var oldStart = m_startLocation;
@@ -214,7 +212,6 @@
         /// </summary>
         /// <param name="touches">Touches, where the user touched.</param>
         /// <param name="touchEvent">Touch event.</param>
-        /// <returns>Return true after processing the touch events and drawing.</returns>
         public bool OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             m_timer.Stop();

@@ -1,39 +1,35 @@
-﻿namespace Server.DB.Models
-{
-    using System;
-    using SQLite;
+﻿using System;
+using SQLite;
 
+namespace Server.DB.Models
+{
     /// <summary>
-    /// Representation  from the databank table Account. 
+    /// Represantation from the databank table Account. 
     /// </summary>
     [Table("Account")]
-    public class TableAccount
+    class TableAccount
     {
         /// <summary>
-        /// Gets or sets the identifier.
+        /// Set and get for column id, as primary key.
         /// </summary>
-        /// <value>The identifier.</value>
         [PrimaryKey, Column("Id")]
-        public int Id { get; set; }
+        public int Id{ get; set;}
 
         /// <summary>
-        /// Gets or sets the name of the user.
+        /// Set and get for column username, maximal length is 25 signs.
         /// </summary>
-        /// <value>The name of the user.</value>
         [MaxLength(25), Unique]
-        public string UserName { get; set; }
+        public string UserName{ get; set; }
 
         /// <summary>
-        /// Gets or sets the password.
+        /// Set and get for column password, maximal length is 50 signs.
         /// </summary>
-        /// <value>The password.</value>
         [MaxLength(50)]
         public string Password { get; set; }
 
         /// <summary>
-        /// Gets or sets the salt.
+        /// Set and get for column salt, for verifieng the user password. Maximal length is 50.
         /// </summary>
-        /// <value>The salt.</value>
         [MaxLength(50)]
         public string Salt { get; set; }
     }

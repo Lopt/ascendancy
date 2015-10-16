@@ -1,31 +1,26 @@
-﻿namespace Server.DB.Models
-{
-    using System;
-    using SQLite;
+﻿using System;
+using SQLite;
 
+namespace Server.DB.Models
+{
     /// <summary>
-    /// Table unit.
+    /// Represantation from the databank table Unit. 
     /// </summary>
     [Table("Unit")]
-    public class TableUnit
+    class TableUnit
     {
         /// <summary>
-        /// Gets or sets the identifier.
+        /// Set and get for column Id, as primary key.
         /// </summary>
-        /// <value>The identifier.</value>
         [PrimaryKey, Column("Id")]
         public int Id { get; set; }
-
         /// <summary>
-        /// Gets or sets the position x.
+        /// Set and get for column PositionX.
         /// </summary>
-        /// <value>The position x.</value>
         public int PositionX { get; set; }
-
         /// <summary>
-        /// Gets or sets the position y.
-        /// </summary>
-        /// <value>The position y.</value>
+        /// Set and get for column PositionY.
+        /// </summary> 
         public int PositionY { get; set; }
     }
 }

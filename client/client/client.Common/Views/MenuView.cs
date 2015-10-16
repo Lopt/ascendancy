@@ -4,8 +4,8 @@
     using System.Collections;
     using System.Collections.Generic;
     using Client.Common.Models;
-    using CocosSharp;
     using Core.Models.Definitions;
+    using CocosSharp;
 
     /// <summary>
     /// Menu view.
@@ -17,7 +17,7 @@
         /// </summary>
         /// <param name="menuLayer">Layer where the menu should be drawn.</param>
         /// <param name="center">TileMap Coordinates where the menu should be drawn.</param>
-        /// <param name="types">Which menu entries should be shown.</param>
+        /// <param name="types">Which menuentries should be shown.</param>
         public MenuView(CCTileMapLayer menuLayer, CCTileMapCoordinates center, Definition[] types)
         {
             m_center = center;

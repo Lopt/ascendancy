@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhone</Platform>
     <ProjectGuid>{9A2F13CD-73C7-4EA9-9166-E129FF967715}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Server</RootNamespace>
+    <RootNamespace>tcpserver</RootNamespace>
     <AssemblyName>tcpserver</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -49,6 +49,7 @@
     <Compile Include="DB\DBAccount.cs" />
     <Compile Include="DB\DBBuildings.cs" />
     <Compile Include="DB\DBHandle.cs" />
+    <Compile Include="DB\DBRessource.cs" />
     <Compile Include="DB\DBUnits.cs" />
     <Compile Include="DB\Model\TableAccount.cs" />
     <Compile Include="DB\Model\TableBuilding.cs" />
@@ -61,7 +62,6 @@
     <Compile Include="Controllers\DefinitionManagerController.cs" />
     <Compile Include="Controllers\JSONController.cs" />
     <Compile Include="Controllers\RegionManagerController.cs" />
-    <Compile Include="DB\DBResource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw_basic.0.8.2\build\net45\SQLitePCL.raw_basic.targets" Condition="Exists('..\packages\SQLitePCL.raw_basic.0.8.2\build\net45\SQLitePCL.raw_basic.targets')" />

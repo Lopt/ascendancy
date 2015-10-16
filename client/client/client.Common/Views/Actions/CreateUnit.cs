@@ -1,7 +1,7 @@
-﻿namespace Client.Common.Views.Actions
-{
-    using System;
+﻿using System;
 
+namespace Client.Common.Views.Actions
+{
     /// <summary>
     /// Create a unit.
     /// </summary>
@@ -10,7 +10,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.Actions.CreateUnit"/> class.
         /// </summary>
-        /// <param name="model">Model of the unit.</param>
+        /// <param name="model">Model.</param>
         /// <param name="worldLayer">World layer.</param>
         public CreateUnit(Core.Models.ModelEntity model, WorldLayer worldLayer)
             : base(model)
@@ -37,12 +37,13 @@
             var action = (Core.Models.Action)Model;
             var actionC = (Core.Controllers.Actions.CreateUnit)Model.Control;
 
-            var position = actionC.RealCreatePosition; // (@base.model.PositionI)action.Parameters [@base.control.action.CreateUnit.CREATE_POSITION];
-            // var mapCoordinat = WorldLayer.RegionView.GetCurrentTileInMap(new @base.model.Position(position.X, position.Y));
+            var position = actionC.RealCreatePosition;//(@base.model.PositionI)action.Parameters [@base.control.action.CreateUnit.CREATE_POSITION];
+            //var mapCoordinat = WorldLayer.RegionView.GetCurrentTileInMap(new @base.model.Position(position.X, position.Y));
             var mapCoordinat = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, position);
             var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
-            WorldLayer.RegionView.SetUnit(mapCoordinat, entity); // positionI.Get, CCTileMapCoordinates mapCoordinat, position.RegionPosition);
+            WorldLayer.RegionView.SetUnit(mapCoordinat, entity);//positionI.Get, CCTileMapCoordinates mapCoordinat, position.RegionPosition);
             WorldLayer.UglyDraw();
+
 
             return true;
         }
@@ -53,8 +54,10 @@
         /// <value>The world layer.</value>
         public WorldLayer WorldLayer
         {
-            get;
             private set;
+            get;
         }
+
     }
 }
+

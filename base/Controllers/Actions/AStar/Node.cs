@@ -8,16 +8,12 @@
     /// Represents a single node on a grid that is being searched for a path between two points
     /// </summary>
     public class Node
-    {    
-        /// <summary>
-        /// Flags whether the node is open, closed or untested by the PathFinder
-        /// </summary>
-        public NodeState State;
+    {
+        private Node parentNode;
 
         /// <summary>
-        /// Gets the location.
+        /// The node's location in the grid
         /// </summary>
-        /// <value>The location.</value>
         public PositionI Location
         {
             get;
@@ -25,9 +21,8 @@
         }
 
         /// <summary>
-        /// Gets the g value it stand for the costs from start to this position.
+        /// Cost from start to here
         /// </summary>
-        /// <value>The g.</value>
         public double G
         {
             get;
@@ -35,9 +30,8 @@
         }
 
         /// <summary>
-        /// Gets the h value it stand for the estimated cost from this position to end destination.
+        /// Estimated cost from here to end
         /// </summary>
-        /// <value>The h.</value>
         public double H
         {
             get;
@@ -45,9 +39,13 @@
         }
 
         /// <summary>
-        /// Gets the f value it stand for estimated total cost (F = G + H).
+        /// Flags whether the node is open, closed or untested by the PathFinder
         /// </summary>
-        /// <value>The f.</value>
+        public NodeState State;
+
+        /// <summary>
+        /// Estimated total cost (F = G + H)
+        /// </summary>
         public double F
         {
             get
@@ -66,7 +64,6 @@
             {
                 return parentNode;
             }
-
             set
             {
                 // When setting the parent, also calculate the traversal cost from the start node to here (the 'G' value)
@@ -76,11 +73,10 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Core.Controllers.AStar.Node"/> class. 
-        /// It set the positionI of the Node, set the node state to open and calculate the travel cost to the destination tile.
+        /// Constructor from a Node, it set the positionI of the Node, set the nodstate to open and calculate the travel cost to the destination tile.
         /// </summary>
-        /// <param name="location">Current PositionI of the Node.</param>
-        /// <param name="endLocation">PositionI of the destination tile.</param>
+        /// <param name="location"> Current postionI of the Node.</param>
+        /// <param name="endLocation"> PositionI of the destination tile.</param>
         public Node(PositionI location, PositionI endLocation)
         {
             Location = location;
@@ -92,17 +88,13 @@
         /// <summary>
         /// Gets the distance between two points.
         /// </summary>
-        /// <returns>The traversal cost.</returns>
-        /// <param name="location">Current PositionI</param>
-        /// <param name="otherLocation">Other PositionI.</param>
+        /// <param name="location"></param>
+        /// <param name="otherLocation"></param>
+        /// <returns></returns>
         internal static double GetTraversalCost(PositionI location, PositionI otherLocation)
         {
-            return location.Distance(otherLocation);   
-        }    
-
-        /// <summary>
-        /// The parent node.
-        /// </summary>
-        private Node parentNode;
+            return location.Distance(otherLocation);            
+            
+        }
     }
 }

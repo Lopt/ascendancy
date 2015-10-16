@@ -144,11 +144,11 @@
      
         /// <summary>
         /// Check all possible spawn locations around a building.
-        /// Check surrounding area around the building for units, if there is a free location this will be returned.
+        /// TODO: THOMAS FILL OUT THIS COMMENT
         /// </summary>
-        /// <returns>The free field.</returns>
-        /// <param name="position">IPosition of the current selected building..</param>
-        /// <param name="regionManagerC">Region manager c.</param>
+        /// <param name="position"></param>
+        /// <param name="regionManagerC"></param>
+        /// <returns> Position which is free or null if nothing is free </returns>   
         private PositionI GetFreeField(PositionI position, RegionManagerController regionManagerC)
         {     
             foreach (var surpos in LogicRules.GetSurroundedFields(position))
@@ -164,13 +164,13 @@
             return null;
         }
 
-       /// <summary>
-       /// Gets the adjacent regions, which can be affected.
-       /// </summary>
-       /// <returns>The adjacent regions.</returns>
-       /// <param name="regionManagerC">Region manager c.</param>
-       /// <param name="position">Current Position od the selected building.</param>
-       /// <param name="buildpoint">PositionI from the new unit.</param>
+        /// <summary>
+        /// TODO: THOMAS FILL OUT THIS COMMENT
+        /// </summary>
+        /// <param name="regionManagerC"></param>
+        /// <param name="position"></param>
+        /// <param name="buildpoint"></param>
+        /// <returns></returns>
         private ConcurrentBag<RegionPosition> GetAdjacentRegions(RegionManagerController regionManagerC, RegionPosition position, PositionI buildpoint)
         {
             var list = new ConcurrentBag<RegionPosition>();

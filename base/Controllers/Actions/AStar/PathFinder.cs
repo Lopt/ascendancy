@@ -14,6 +14,13 @@
     public class PathFinder
     {
         /// <summary>
+        /// The nodes.
+        /// </summary>
+        private Dictionary<PositionI, Node> m_nodes;
+        private Node startNode;
+        private SearchParameters searchParameters;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Core.Controllers.AStar.PathFinder"/> class.
         /// </summary>
         /// <param name="searchParameters">Search parameters.</param>
@@ -26,10 +33,10 @@
         }
 
         /// <summary>
-        /// Attempts to find a path from the start location to the end location based on the supplied SearchParameters.
+        /// Attempts to find a path from the start location to the end location based on the supplied SearchParameters
         /// </summary>
-        /// <returns>The path.</returns>
-        /// <param name="moves">Amount of moves from the unit.</param>
+        /// /// <param name="moves"></param>
+        /// <returns>A List of Points representing the path. If no path was found, the returned list is empty.</returns>
         public List<PositionI> FindPath(int moves)
         {
             // The start node is the first entry in the 'open' list
@@ -55,8 +62,8 @@
         /// <summary>
         /// Attempts to find a path to the destination node using <paramref name="currentNode"/> as the starting location with consideration of the moves from the current unit.
         /// </summary>
-        /// <param name="currentNode"> Current code which is under discover.</param>
-        /// <param name="moves">Amount of moves from the unit.</param>
+        /// <param name="currentNode"></param>
+        /// <param name="moves"></param>
         /// <returns> True if the path was found otherwise false.</returns>
         private bool Search(Node currentNode, int moves)
         {
@@ -80,11 +87,11 @@
                     else
                     {
                         // If not, check the next set of nodes
-                        // Note: Recurses back into Search(Node)
-                        if (Search(nextNode, moves)) 
+                        if (Search(nextNode, moves)) // Note: Recurses back into Search(Node)
                         {                            
                             return true;
                         }
+                    
                     }
                 }
             }
@@ -99,7 +106,8 @@
         /// <returns>A list of next possible nodes in the path</returns>
         private List<Node> GetAdjacentWalkableNodes(Node fromNode)
         {
-            List<Node> walkableNodes = new List<Node>();         
+            List<Node> walkableNodes = new List<Node>();                           
+
 
             // check surrounded tiles of the current position
             foreach (var newPosition in LogicRules.GetSurroundedFields(fromNode.Location))
@@ -123,8 +131,8 @@
                                 {
                                     // calculate the travel cost to the next tile
                                     double traversalCost = terrainDefinition.TravelCost;
-                                    double temp = node.G + traversalCost;
-                                    if (temp < node.G)
+                                    double gTemp = node.G + traversalCost;
+                                    if (gTemp < node.G)
                                     {
                                         node.ParentNode = fromNode;
                                         walkableNodes.Add(node);
@@ -145,20 +153,5 @@
             }
             return walkableNodes;
         }
-
-        /// <summary>
-        /// The m nodes in a dictionary.
-        /// </summary>
-        private Dictionary<PositionI, Node> m_nodes;
-
-        /// <summary>
-        /// The start node.
-        /// </summary>
-        private Node startNode;
-
-        /// <summary>
-        /// The search parameters.
-        /// </summary>
-        private SearchParameters searchParameters;
     }
 }

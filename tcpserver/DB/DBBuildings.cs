@@ -1,30 +1,30 @@
-﻿namespace Server.DB
-{
-    using System;
-    using Core.Models;
-    using Server.DB.Models;
-    using SQLite;
+﻿using System;
+using SQLite;
+using Core.Models;
+using Server.DB.Models;
 
+namespace Server.DB
+{
     /// <summary>
     /// DB buildings.
     /// </summary>
-    public class DBBuildings
+    class DBBuildings
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Server.DB.DBBuildings"/> class.
+        /// Initializes a new instance of the <see cref="server.DB.DBBuildings"/> class.
         /// </summary>
-        /// <param name="con">Connection to the DB.</param>
+        /// <param name="con">Con.</param>
         public DBBuildings(SQLiteConnection con)
         {
-            db = con;
-            db.CreateTable<TableBuilding>();
+            m_db = con;
+            m_db.CreateTable<TableBuilding>();
         }
 
         /// <summary>
         /// Insert a building into the database, with the current position.
         /// </summary>
         /// <param name="buildingEntity">Building entity.</param>
-        /// <param name="id">Identifier for the entry.</param>
+        /// <param name="id">Identifier.</param>
         public void NewBuildings(Entity buildingEntity, int id)
         {
             var newData = new TableBuilding();
@@ -32,12 +32,10 @@
             newData.PositionX = buildingEntity.Position.X;
             newData.PositionY = buildingEntity.Position.Y;
 
-            db.InsertOrReplace(newData);           
+            m_db.InsertOrReplace(newData);
+           
         }
 
-        /// <summary>
-        /// The DB.
-        /// </summary>
-        private SQLiteConnection db;
+        private SQLiteConnection m_db;
     }
 }

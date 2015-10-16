@@ -14,28 +14,25 @@
     public class SearchParameters
     {
         /// <summary>
-        /// Set the start location for the AStar algorithm.
+        /// Set the start location for the Astar algorithm.
         /// </summary>
         public PositionI StartLocation;
 
         /// <summary>
-        /// Set the destination location for the AStar algorithm. 
+        /// Set the destination location for the Astar algorithm. 
         /// </summary>
         public PositionI EndLocation;
 
         /// <summary>
-        /// Gets or sets the account ID.
+        /// Set the account id of the walking unit
         /// </summary>
-         /// <value>The account ID.</value>
         public int AccountID { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Core.Controllers.AStar.SearchParameters"/> class.
-        /// Set start and end point for the AStar algorithm.
+        /// Set start and enp point for the Astar algorithm.
         /// </summary>
-        /// <param name="startLocation">PositionI from the start for the algorithm.</param>
-        /// <param name="endLocation">PositionI from the end for the algorithm.</param>
-        /// <param name="accountID">Account ID.</param>
+        /// <param name="startLocation"></param>
+        /// <param name="endLocation"></param>
         public SearchParameters(PositionI startLocation, PositionI endLocation, int accountID)
         {
             this.StartLocation = startLocation;

@@ -1,8 +1,8 @@
 ﻿namespace Client.Common.Views.HUD
 {
     using System;
-    using System.Collections.Generic;
     using System.Threading;
+    using System.Collections.Generic;
     using CocosSharp;
 
     /// <summary>
