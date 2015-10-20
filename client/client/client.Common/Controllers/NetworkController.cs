@@ -9,10 +9,10 @@
     using System.Threading;
     using System.Threading.Tasks;
 
+    using Client.Common.Helper;
     using CocosSharp;
     using Core.Models;
     using Core.Models.Definitions;
-    using Client.Common.Helper;
     using ModernHttpClient;
     using Newtonsoft.Json;
 
@@ -28,7 +28,7 @@
         /// </summary>
         private static readonly Lazy<NetworkController> Singleton =
             new Lazy<NetworkController>(() => new NetworkController());
-        
+
         /// <summary>
         /// Prevents a default instance of the <see cref="NetworkController" /> class from being created.
         /// </summary>
