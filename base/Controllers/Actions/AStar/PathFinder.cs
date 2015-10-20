@@ -107,12 +107,11 @@
                 // gather environment information
                 var region = World.Instance.RegionManager.GetRegion(newPosition.RegionPosition);
                 var terrainDefinition = region.GetTerrain(newPosition.CellPosition);
-                var unit = region.GetEntity(newPosition.CellPosition);
-                // check terrai for walkable and other units in the path
-                if (newPosition == searchParameters.EndLocation && unit.OwnerID != searchParameters.AccountID)
-                {
-                    if (terrainDefinition.Walkable)
+                // check terrain for walkable and other units in the path
+                if (terrainDefinition.Walkable)
                     {
+                        var unit = region.GetEntity(newPosition.CellPosition);
+
                         if (unit == null)
                         {
                             if (m_nodes.ContainsKey(newPosition))
@@ -140,7 +139,6 @@
                                 m_nodes[newPosition] = newNode;
                             }
                         }
-                    }
                 }
             }
             return walkableNodes;
