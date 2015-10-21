@@ -1,36 +1,34 @@
-﻿using System;
-using XLabs.Forms.Mvvm;
-using Xamarin.Forms;
-using SQLite;
-using XLabs.Platform.Services.Geolocation;
-using Xamarin.Forms.Xaml;
-using System.Threading.Tasks;
-using System.Threading;
-using XLabs.Platform.Device;
-
-
-
-namespace Client.Common.Models
+﻿namespace Client.Common.Models
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using SQLite;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+    using XLabs.Forms.Mvvm;
+    using XLabs.Platform.Device;
+    using XLabs.Platform.Services.Geolocation;
+
     /// <summary>
     /// The Geolocation as a singleton class for geolocation information.
     /// </summary>
     [Table("Geolocation")]
     public sealed class Geolocation : ViewBaseModel
     {
-        #region Singelton
-
-        /// <summary>
-        /// The lazy.
-        /// </summary>
-        private static readonly Lazy<Geolocation> lazy =
-            new Lazy<Geolocation>(() => new Geolocation());
+        #region Singleton
 
         /// <summary>
         /// Gets the instance.
         /// </summary>
         /// <value>The instance.</value>
-        public static Geolocation Instance { get { return lazy.Value; } }
+        public static Geolocation Instance
+        { 
+            get
+            { 
+                return Singleton.Value; 
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Models.Geolocation"/> class.
@@ -54,6 +52,11 @@ namespace Client.Common.Models
             IsPositionChanged = true;
         }
 
+        /// <summary>
+        /// The Sinleton Instance.
+        /// </summary>
+        private static readonly Lazy<Geolocation> Singleton =
+            new Lazy<Geolocation>(() => new Geolocation());
 
         #endregion
 

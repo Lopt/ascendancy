@@ -14,7 +14,7 @@
     /// </summary>
     public sealed class Device
     {
-        #region Singelton
+        #region Singleton
 
         /// <summary>
         /// Gets the instance.
@@ -63,10 +63,6 @@
             {
                 return m_device.Accelerometer;
             }
-
-            private set
-            {
-            } 
         }
 
         /// <summary>
@@ -78,10 +74,6 @@
             get
             {
                 return m_device.Battery;
-            }
-
-            private set
-            {
             }
         }
 
@@ -95,10 +87,6 @@
             {
                 return m_device.BluetoothHub;
             }
-
-            private set
-            {
-            }
         }
 
         /// <summary>
@@ -110,10 +98,6 @@
             get
             {
                 return m_device.Display;
-            }
-
-            private set
-            {
             }
         }
 
@@ -129,10 +113,6 @@
             {
                 return m_device.Gyroscope;
             }
-
-            private set
-            {
-            }
         }
 
         /// <summary>
@@ -144,10 +124,6 @@
             get
             {
                 return m_device.MediaPicker;
-            }
-
-            private set
-            {
             }
         }
 
@@ -163,10 +139,6 @@
             {
                 return m_device.Microphone;
             }
-
-            private set
-            {
-            }
         }
 
         /// <summary>
@@ -178,10 +150,6 @@
             get
             {
                 return m_device.Network;
-            }
-
-            private set
-            {
             }
         }
 
@@ -195,10 +163,6 @@
             {
                 return m_device.PhoneService;
             }
-
-            private set
-            {
-            }
         }
 
         /// <summary>
@@ -210,10 +174,6 @@
             get
             { 
                 return m_device.Battery.Level.ToString();
-            }
-
-            private set
-            {
             }
         }
 
@@ -227,10 +187,6 @@
             {
                 return m_device.Id;
             }
-
-            private set
-            {
-            }
         }
 
         /// <summary>
@@ -242,10 +198,6 @@
             get
             {
                 return m_device.FirmwareVersion;
-            }
-
-            private set
-            {
             }
         }
 
@@ -259,10 +211,6 @@
             {
                 return m_device.HardwareVersion; 
             }
-
-            private set
-            {
-            }
         }
 
         /// <summary>
@@ -274,10 +222,6 @@
             get
             {
                 return m_device.LanguageCode; 
-            }
-
-            private set
-            {
             }
         }
 
@@ -291,10 +235,6 @@
             {
                 return m_device.Manufacturer;
             }
-
-            private set
-            {
-            }
         }
 
         /// <summary>
@@ -306,10 +246,6 @@
             get
             { 
                 return m_device.Name;
-            }
-
-            private set
-            {
             }
         }
 
@@ -323,10 +259,6 @@
             { 
                 return m_device.TimeZone; 
             }
-
-            private set
-            {
-            }
         }
 
         /// <summary>
@@ -339,10 +271,6 @@
             { 
                 return m_device.TimeZoneOffset.ToString(); 
             }
-
-            private set
-            {
-            }
         }
 
         /// <summary>
@@ -354,10 +282,6 @@
             get
             { 
                 return m_device.TotalMemory.ToString();
-            }
-
-            private set
-            {
             }
         }
 
