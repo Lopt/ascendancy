@@ -138,12 +138,10 @@
         /// <param name="action">Action which should be executed.</param>
         public void DoAction(Core.Models.Action action)
         {
-            var actions = new List<Core.Models.Action>();
-            actions.Add(action);
-            m_regionManagerController.DoActionAsync(Geolocation.Instance.CurrentGamePosition, actions.ToArray());
-            // var mapCell = GetMapCell(m_terrainLayer, new CCPoint(VisibleBoundsWorldspace.MidX, VisibleBoundsWorldspace.MidY));
-            // var position = RegionView.GetCurrentGamePosition(mapCell, CenterPosition.RegionPosition);
-            // DrawRegionsAsync (position);
+            // var actions = new List<Core.Models.Action>();
+            // actions.Add(action);
+            // m_regionManagerController.DoActionAsync(Geolocation.Instance.CurrentGamePosition, actions.ToArray());
+            Worker.Queue.Enqueue(action);
         }
 
         /// <summary>
