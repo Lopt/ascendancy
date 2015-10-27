@@ -71,19 +71,17 @@
             // This will set the world bounds to be (0,0, w, h)
             // CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
             CCScene.SetDefaultDesignResolution(windowSize.Width, windowSize.Height, CCSceneResolutionPolicy.ShowAll);
-            
+            CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             // Determine whether to use the high or low def versions of our images
             // Make sure the default texel to content size ratio is set correctly
             // Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
             if (desiredWidth < windowSize.Width)
             {
-                application.ContentSearchPaths.Add(Constants.ClientConstants.IMAGES_HD);
-                CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
+                application.ContentSearchPaths.Add(Constants.ClientConstants.IMAGES_HD);               
             }
             else
             {
                 application.ContentSearchPaths.Add(Constants.ClientConstants.IMAGES_LD);
-                CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
 
             SceneStartAsync(); // .RunSynchronously();
