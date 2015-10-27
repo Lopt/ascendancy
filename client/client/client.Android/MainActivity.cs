@@ -54,7 +54,6 @@
             TcpConnection.Connector = new TcpConnection();
 
             // Register XLabs Services
-            // DependencyService.Register<TextToSpeechService>();
             DependencyService.Register<Geolocator>();
 
             var application = new CCApplication();
@@ -76,8 +75,5 @@
             
             Resolver.SetResolver(resolverContainer.GetResolver());
         }
-            
     }
 }
-
-

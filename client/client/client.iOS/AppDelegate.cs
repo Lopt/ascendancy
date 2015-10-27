@@ -1,83 +1,77 @@
-﻿using System;
-using Foundation;
-using UIKit;
-using CocosSharp;
-using XLabs.Forms;
-using Xamarin.Forms;
-using XLabs.Platform.Services;
-using XLabs.Platform.Services.Geolocation;
-using XLabs.Platform.Services.Media;
-using XLabs.Platform.Services.IO;
-using XLabs.Platform.Device;
-using Client.Common;
-using XLabs.Ioc;
-
-namespace Client.iOS
+﻿namespace Client.iOS
 {
-	// The UIApplicationDelegate for the application. This class is responsible for launching the
-	// User Interface of the application, as well as listening (and optionally responding) to
-	// application events from iOS.
-	/// <summary>
-	/// App delegate.
-	/// </summary>
-	[Register("AppDelegate")]
-	public partial class AppDelegate : UIApplicationDelegate
-	{
-		//
-		// This method is invoked when the application has loaded and is ready to run. In this
-		// method you should instantiate the window, load the UI into it and then make the window
-		// visible.
-		//
-		// You have 17 seconds to return from this method, or iOS will terminate your application.
-		//
-		/// <summary>
-		/// When Finished the launching.
-		/// </summary>
-		/// <param name="app">App.</param>
-		public override void FinishedLaunching(UIApplication app)
-		{
-			if (!Resolver.IsSet)
-			{
-				this.SetIoc();
-			}
+    using System;
+    using Client.Common;
+    using CocosSharp;
+    using Foundation;
+    using UIKit;
+    using Xamarin.Forms;
+    using XLabs.Forms;
+    using XLabs.Ioc;
+    using XLabs.Platform.Device;
+    using XLabs.Platform.Services;
+    using XLabs.Platform.Services.Geolocation;
+    using XLabs.Platform.Services.IO;
+    using XLabs.Platform.Services.Media;
 
-			// aktivating Xamarin.Forms
-			global::Xamarin.Forms.Forms.Init();
-			// Register XLabs Services
-			// DependencyService.Register<TextToSpeechService>();
-			DependencyService.Register<Geolocator>();
-			// DependencyService.Register<SoundService>();
-			//DependencyService.Register<AppleDevice>();
+    // The UIApplicationDelegate for the application. This class is responsible for launching the
+    // User Interface of the application, as well as listening (and optionally responding) to
+    // application events from iOS.
 
-			CCApplication application = new CCApplication();
-			application.ApplicationDelegate = new GameAppDelegate();
+    /// <summary>
+    /// App delegate.
+    /// </summary>
+    [Register("AppDelegate")]
+    public partial class AppDelegate : UIApplicationDelegate
+    {
+        // This method is invoked when the application has loaded and is ready to run. In this
+        // method you should instantiate the window, load the UI into it and then make the window
+        // visible.
+        // You have 17 seconds to return from this method, or iOS will terminate your application.
 
-			application.StartGame();
-		}
+        /// <summary>
+        /// When Finished the launching.
+        /// </summary>
+        /// <param name="app">The App.</param>
+        public override void FinishedLaunching(UIApplication app)
+        {
+            if (!Resolver.IsSet)
+            {
+                this.SetIoc();
+            }
 
-		/// <summary>
-		/// The entry point of the program, where the program control starts and ends.
-		/// </summary>
-		/// <param name="args">The command-line arguments.</param>
-		static void Main(string[] args)
-		{
-			UIApplication.Main(args, null, "AppDelegate");
-		}
+            // aktivating Xamarin.Forms
+            global::Xamarin.Forms.Forms.Init();
 
-		/// <summary>
-		/// Sets the io container.
-		/// </summary>
-		private void SetIoc()
-		{
-			var resolverContainer = new SimpleContainer();
+            DependencyService.Register<Geolocator>();
 
-			resolverContainer.Register<IDevice>(t => AppleDevice.CurrentDevice)
+            CCApplication application = new CCApplication();
+            application.ApplicationDelegate = new GameAppDelegate();
+
+            application.StartGame();
+        }
+
+        /// <summary>
+        /// The entry point of the program, where the program control starts and ends.
+        /// </summary>
+        /// <param name="args">The command-line arguments.</param>
+        public static void Main(string[] args)
+        {
+            UIApplication.Main(args, null, "AppDelegate");
+        }
+
+        /// <summary>
+        /// Sets the io container.
+        /// </summary>
+        private void SetIoc()
+        {
+            var resolverContainer = new SimpleContainer();
+
+            resolverContainer.Register<IDevice>(t => AppleDevice.CurrentDevice)
                 .Register<IAccelerometer>(t => t.Resolve<IDevice>().Accelerometer)
                 .Register<IDependencyContainer>(resolverContainer);
 
-			Resolver.SetResolver(resolverContainer.GetResolver());
-		}
-	}
+            Resolver.SetResolver(resolverContainer.GetResolver());
+        }
+    }
 }
-
-
