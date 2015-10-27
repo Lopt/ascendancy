@@ -109,7 +109,7 @@
             // TODO: find better solution
             WorldTileMap.TileLayersContainer.Position += new CCPoint(0.0001f, 0.0001f);
         }
-            
+
         #region
 
         /// <summary>
@@ -197,36 +197,6 @@
 
         #endregion
 
-        #region overide
-
-        /// <summary>
-        /// Add the TileMap to scene.
-        /// </summary>
-        protected override void AddedToScene()
-        {
-            base.AddedToScene();
-
-            SetMapAnchor(Geolocation.Instance.CurrentGamePosition);
-            WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
-            WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
-            ScaleWorld(Common.Constants.ClientConstants.TILEMAP_NORM_SCALE);
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Sets the map anchor.
-        /// </summary>
-        /// <param name="anchorPosition">Anchor position.</param>
-        private void SetMapAnchor(Position anchorPosition)
-        {
-            var mapCellPosition = PositionHelper.PositionToMapCellPosition(
-                CenterPosition,
-                new PositionI(anchorPosition));
-            var anchor = mapCellPosition.GetAnchor();
-            WorldTileMap.TileLayersContainer.AnchorPoint = anchor;
-        }
-
         /// <summary>
         /// Draws the regions async.
         /// </summary>
@@ -258,6 +228,36 @@
             CenterPosition = gamePosition;
             // SetMapAnchor (gamePosition);
             UglyDraw();
+        }
+
+        #region overide
+
+        /// <summary>
+        /// Add the TileMap to scene.
+        /// </summary>
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            SetMapAnchor(Geolocation.Instance.CurrentGamePosition);
+            WorldTileMap.TileLayersContainer.PositionX = VisibleBoundsWorldspace.MidX;
+            WorldTileMap.TileLayersContainer.PositionY = VisibleBoundsWorldspace.MidY;
+            ScaleWorld(Common.Constants.ClientConstants.TILEMAP_NORM_SCALE);
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Sets the map anchor.
+        /// </summary>
+        /// <param name="anchorPosition">Anchor position.</param>
+        private void SetMapAnchor(Position anchorPosition)
+        {
+            var mapCellPosition = PositionHelper.PositionToMapCellPosition(
+                                      CenterPosition,
+                                      new PositionI(anchorPosition));
+            var anchor = mapCellPosition.GetAnchor();
+            WorldTileMap.TileLayersContainer.AnchorPoint = anchor;
         }
 
         /// <summary>

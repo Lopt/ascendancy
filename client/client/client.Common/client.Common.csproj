@@ -34,15 +34,8 @@
     <Compile Include="Controllers\NetworkController.cs" />
     <Compile Include="Models\Geolocation.cs" />
     <Compile Include="Models\Device.cs" />
-    <Compile Include="Try-Tests\DeviceScene.cs" />
-    <Compile Include="Try-Tests\GameLayer.cs" />
-    <Compile Include="Try-Tests\GeolocationScene.cs" />
-    <Compile Include="Try-Tests\Network.cs" />
-    <Compile Include="Try-Tests\TouchTestScene.cs" />
     <Compile Include="Views\StartScene.cs" />
     <Compile Include="Views\GameScene.cs" />
-    <Compile Include="Try-Tests\testResource.cs" />
-    <Compile Include="Try-Tests\WorldTestLayerTileMap.cs" />
     <Compile Include="Models\DrawNode.cs" />
     <Compile Include="Views\LogoLayer.cs" />
     <Compile Include="Views\WorldLayer.cs" />
@@ -53,7 +46,6 @@
     <Compile Include="Views\Worker.cs" />
     <Compile Include="Manager\DefinitionManagerController.cs" />
     <Compile Include="Manager\EntityManagerController.cs" />
-    <Compile Include="Models\ViewBaseModel.cs" />
     <Compile Include="Helper\PositionHelper.cs" />
     <Compile Include="Views\MenuView.cs" />
     <Compile Include="Helper\ActionHelper.cs" />

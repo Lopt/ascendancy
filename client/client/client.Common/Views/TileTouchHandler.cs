@@ -64,7 +64,7 @@
         private MenuView m_menuView;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Client.Common.Views.TouchHandler"/> class.
+        /// Initializes a new instance of the <see cref="Client.Common.Views.TileTouchHandler"/> class.
         /// </summary>
         /// <param name="scene">The entire scene.</param>
         public TileTouchHandler(GameScene scene)

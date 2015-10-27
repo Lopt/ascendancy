@@ -34,17 +34,6 @@
         }
 
         /// <summary>
-        /// Add the button to the scene
-        /// </summary>
-        protected override void AddedToScene()
-        {
-            base.AddedToScene();
-
-            m_standard.Position = Position;
-            m_touched.Position = Position;
-        }
-
-        /// <summary>
         /// Gets the size of the standard sprite.
         /// </summary>
         /// <value>The size.</value>
@@ -105,6 +94,17 @@
             m_touched.Visible = false;
             m_standard.Visible = true;
             return false;
+        }
+
+        /// <summary>
+        /// Add the button to the scene
+        /// </summary>
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            m_standard.Position = Position;
+            m_touched.Position = Position;
         }
 
         /// <summary>

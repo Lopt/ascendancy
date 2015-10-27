@@ -43,8 +43,46 @@
                 new Action(DeveloperFunction));
             m_question.AnchorPoint = CCPoint.AnchorLowerRight;
             AddChild(m_question);
+        }
 
-        }  
+        /// <summary>
+        /// Relocates center of the Map to GPS coordinates.
+        /// </summary>
+        public void BackToGPS()
+        {
+            m_gameScene.WorldLayer.DrawRegionsAsync();
+        }
+
+        /// <summary>
+        /// Starts the debugging.
+        /// </summary>
+        public void StartDebug()
+        {
+            m_gameScene.DebugLayer.Toggle();
+        }
+
+        /// <summary>
+        /// Do somthing for tests.
+        /// </summary>
+        public void DeveloperFunction()
+        {
+            var pos = Models.Geolocation.Instance.CurrentGamePosition;
+            var posI = new Core.Models.PositionI(pos);
+            var actionCreate = Helper.ActionHelper.CreateEntity(
+                                   new Core.Models.PositionI(pos),
+                                   Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Headquarter));
+            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate);
+
+            var actionCreate2 = Helper.ActionHelper.CreateEntity(
+                                    new Core.Models.PositionI(pos),
+                                    Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Archer));
+            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate2);
+
+            var newPosI = new Core.Models.PositionI(posI.X + 10, posI.Y + 0);
+
+            var actionMove = Helper.ActionHelper.MoveUnit(Core.Models.LogicRules.GetSurroundedFields(new Core.Models.PositionI(pos))[0], newPosI);
+            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionMove);
+        }
 
         /// <summary>
         /// Add the logo and loaded sprite to scene.
@@ -64,43 +102,6 @@
 
             m_question.PositionX = VisibleBoundsWorldspace.MaxX;
             m_question.PositionY = VisibleBoundsWorldspace.MinY;
-
-            //m_touched.AnchorPoint = CCPoint.AnchorUpperLeft;
-            //m_standard.AnchorPoint = CCPoint.AnchorUpperLeft;
-        }
-
-        /// <summary>
-        /// Relocates center of the Map to GPS coordinates.
-        /// </summary>
-        public void BackToGPS()
-        {
-            m_gameScene.WorldLayer.DrawRegionsAsync();
-        }
-
-        /// <summary>
-        /// Starts the debugging.
-        /// </summary>
-        public void StartDebug()
-        {
-            m_gameScene.DebugLayer.Toggle();
-        }
-
-        public void DeveloperFunction()
-        {
-            var pos = Models.Geolocation.Instance.CurrentGamePosition;
-            var posI = new Core.Models.PositionI(pos);
-            var actionCreate = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(pos),
-                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Headquarter));
-            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate);
-
-            var actionCreate2 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(pos),
-                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Archer));
-            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate2);
-
-            var newPosI = new Core.Models.PositionI(posI.X + 10, posI.Y + 0);
-
-            var actionMove = Helper.ActionHelper.MoveUnit(Core.Models.LogicRules.GetSurroundedFields(new Core.Models.PositionI(pos))[0], newPosI);
-            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionMove);
         }
 
         /// <summary>
