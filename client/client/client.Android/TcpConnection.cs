@@ -10,10 +10,19 @@
     /// </summary>
     public class TcpConnection : Common.TcpConnection
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Droid.TcpConnection"/> class.
+        /// </summary>
         public TcpConnection()
         {            
-        }   
-            
+        }
+
+        /// <summary>
+        /// Send the specified methodType and JSON to the TCP server.
+        /// </summary>
+        /// <param name="methodType">Method type.</param>
+        /// <param name="json">JSON serialized Request.</param>
+        /// <returns>JSON serialized Response</returns>
         public override async Task<string> SendAsync(Core.Connection.MethodType methodType, string json)
         {
             var client = new TcpClient();
@@ -29,8 +38,9 @@
             */
             client.Connect(
                 Common.Constants.ClientConstants.TCP_SERVER,
-                Common.Constants.ClientConstants.TCP_PORT);                
-            //}
+                Common.Constants.ClientConstants.TCP_PORT); 
+                
+            // }
             var stream = client.GetStream();
 
             var packetOut = new Core.Connection.Packet();
