@@ -93,24 +93,13 @@
             {
                 return false;
             }
-
+        
             if (unit != null && action.Account != null && action.Account.ID == unit.Owner.ID)
             {
                 var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition, action.Account.ID));
                 Path = pathfinder.FindPath(((UnitDefinition)unit.Definition).Moves);
-                
-                if (Path.Count != 0)
-                {
-                    var destpoint = Controller.Instance.RegionManagerController.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
 
-                    if (destpoint != null && action.Account.ID != unit.OwnerID)
-                    {
-                        m_fightPos = (PositionI)Path[Path.Count - 1];
-                        Path.RemoveAt(Path.Count - 1);
-                        m_fight = true;
-                    }
-                    return true;   
-                }     
+                return Path.Count != 0;
             }
             return false;           
         }
@@ -133,17 +122,8 @@
             
             var entity = regionManagerC.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
             regionManagerC.GetRegion(startPosition.RegionPosition).RemoveEntity(action.ActionTime, entity);
-
-            if (m_fight)
-            {
-                if (LogicRules.FightSystem())
-                {
-                    var defeatetentity = regionManagerC.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
-                    regionManagerC.GetRegion(m_fightPos.RegionPosition).AddEntity(action.ActionTime, entity);
-                    regionManagerC.GetRegion(endPosition.RegionPosition).RemoveEntity(action.ActionTime, defeatetentity);
-                    entity.Position = m_fightPos;
-                }
-            }    
+            regionManagerC.GetRegion(endPosition.RegionPosition).AddEntity(action.ActionTime, entity);   
+            entity.Position = endPosition;
 
             bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
 

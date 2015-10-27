@@ -74,23 +74,5 @@
                 new RegionPosition(+1, -1),
                 new RegionPosition(0, -1)
             };
-
-        /// <summary>
-        /// ???? TODO: Delete this stuff
-        /// </summary>
-        /// <returns><c>true</c>, if won, <c>false</c> otherwise.</returns>
-        public static bool FightSystem()
-        {
-            var result = new Random().Next(1, 10);
-            
-            if (result > 5)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }        
 }
