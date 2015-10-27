@@ -1,8 +1,8 @@
-﻿using System;
-using CocosSharp;
-
-namespace Client.Common.Models
+﻿namespace Client.Common.Models
 {
+    using System;
+    using CocosSharp;
+
     /// <summary>
     /// The Draw node to draw polygons.
     /// </summary>
@@ -19,11 +19,16 @@ namespace Client.Common.Models
         /// Draws the hexagon for a hex map.
         /// </summary>
         /// <param name="layer">Layer.</param>
-        /// <param name="tileCoordinates">Tile coordinates.</param>
-        /// <param name="borderColor">Border color.</param>
+        /// <param name="tileCoordinates">Tilecoordinates.</param>
+        /// <param name="borderColor">Bordercolor.</param>
         /// <param name="opacity">Opacity.</param>
-        /// <param name="borderWith">Border with.</param>
-        public void DrawHexagonForHexMap(CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
+        /// <param name="borderWith">Borderwith.</param>
+        public void DrawHexagonForHexMap(
+            CCTileMapLayer layer, 
+            CCTileMapCoordinates tileCoordinates, 
+            CCColor4F borderColor, 
+            byte opacity, 
+            float borderWith)
         {
             // Calculate our width and height of the tile
             CCSize texelToContentScaling = CCTileMapLayer.DefaultTexelToContentSizeRatios;
@@ -33,14 +38,14 @@ namespace Client.Common.Models
             // Convert the tile coordinates position to world coordinates for
             // our outline drawing
             var worldPos = layer.TilePosition(tileCoordinates);
-            var X = worldPos.X + (tilewidth / 2);
-            var Y = worldPos.Y + (tileheight / 2);
+            var x = worldPos.X + (tilewidth / 2);
+            var y = worldPos.Y + (tileheight / 2);
 
             this.Clear();
 
             this.Opacity = opacity;
 
-            var center = new CCPoint(X, Y);
+            var center = new CCPoint(x, y);
 
             var right = center;
             right.X += tilewidth / 2;
@@ -64,7 +69,8 @@ namespace Client.Common.Models
             leftbottom.X -= tilewidth / 4;
             leftbottom.Y -= tileheight / 2;
 
-            DrawPolygon(new CCPoint[]
+            DrawPolygon(
+                new CCPoint[]
                 {
                     right,
                     righttop,
@@ -72,8 +78,11 @@ namespace Client.Common.Models
                     left,
                     leftbottom,
                     rightbottom
-                }, 6, CCColor4B.Transparent, 3, borderColor);
-
+                },
+                6,
+                CCColor4B.Transparent,
+                3,
+                borderColor);
         }
 
         /// <summary>
@@ -85,7 +94,13 @@ namespace Client.Common.Models
         /// <param name="borderColor">Border color.</param>
         /// <param name="opacity">Opacity.</param>
         /// <param name="borderWith">Border with.</param>
-        public void DrawHexagonForIsoStagMap(float pngWidth, CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
+        public void DrawHexagonForIsoStagMap(
+            float pngWidth,
+            CCTileMapLayer layer,
+            CCTileMapCoordinates tileCoordinates,
+            CCColor4F borderColor,
+            byte opacity,
+            float borderWith)
         {
             // Calculate our width and height of the tile
             CCSize texelToContentScaling = CCTileMapLayer.DefaultTexelToContentSizeRatios;
@@ -95,14 +110,14 @@ namespace Client.Common.Models
             // Convert the tile coordinates position to world coordinates for
             // our outline drawing
             var worldPos = layer.TilePosition(tileCoordinates);
-            var X = worldPos.X + (tilewidth / 2);
-            var Y = worldPos.Y + (tileheight / 2);
+            var x = worldPos.X + (tilewidth / 2);
+            var y = worldPos.Y + (tileheight / 2);
 
             this.Clear();
 
             this.Opacity = opacity;
 
-            var center = new CCPoint(X, Y);
+            var center = new CCPoint(x, y);
 
             var right = center;
             right.X += pngWidth / 2;
@@ -126,7 +141,8 @@ namespace Client.Common.Models
             leftbottom.X -= pngWidth / 4;
             leftbottom.Y -= tileheight / 2;
 
-            DrawPolygon(new CCPoint[]
+            DrawPolygon(
+                new CCPoint[]
                 {
                     right,
                     righttop,
@@ -134,8 +150,11 @@ namespace Client.Common.Models
                     left,
                     leftbottom,
                     rightbottom
-                }, 6, CCColor4B.Transparent, 3, borderColor);
-
+                },
+                6,
+                CCColor4B.Transparent,
+                3, 
+                borderColor);
         }
 
         /// <summary>
@@ -147,7 +166,13 @@ namespace Client.Common.Models
         /// <param name="borderColor">Border color.</param>
         /// <param name="opacity">Opacity.</param>
         /// <param name="borderWith">Border with.</param>
-        public void DrawISOForIsoStagMap(float pngWidth, CCTileMapLayer layer, CCTileMapCoordinates tileCoordinates, CCColor4F borderColor, byte opacity, float borderWith)
+        public void DrawISOForIsoStagMap(
+            float pngWidth,
+            CCTileMapLayer layer,
+            CCTileMapCoordinates tileCoordinates,
+            CCColor4F borderColor, 
+            byte opacity,
+            float borderWith)
         {
             // Calculate our width and height of the tile
             CCSize texelToContentScaling = CCTileMapLayer.DefaultTexelToContentSizeRatios;
@@ -157,14 +182,14 @@ namespace Client.Common.Models
             // Convert the tile coordinates position to world coordinates for
             // our outline drawing
             var worldPos = layer.TilePosition(tileCoordinates);
-            var X = worldPos.X + (tilewidth / 2);
-            var Y = worldPos.Y + (tileheight / 2);
+            var x = worldPos.X + (tilewidth / 2);
+            var y = worldPos.Y + (tileheight / 2);
 
             this.Clear();
 
             this.Opacity = opacity;
 
-            var center = new CCPoint(X, Y);
+            var center = new CCPoint(x, y);
 
             var right = center;
             right.X += pngWidth / 2;
@@ -178,16 +203,18 @@ namespace Client.Common.Models
             var left = center;
             left.X -= pngWidth / 2;
 
-            DrawPolygon(new CCPoint[]
+            DrawPolygon(
+                new CCPoint[]
                 {
                     right,
                     top,
                     left,
                     bottom
-                }, 4, CCColor4B.Transparent, 3, borderColor);
-
+                },
+                4,
+                CCColor4B.Transparent, 
+                3,
+                borderColor);
         }
-
     }
 }
-

@@ -26,3 +26,4 @@ server/data/ascendancy-world/
 server/data/.directory
 tcpserver/bin/
 tcpserver/obj/
+*.Cache

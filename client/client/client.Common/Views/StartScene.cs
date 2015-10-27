@@ -48,7 +48,7 @@
 
             InitWorld();
         }
-            
+
         /// <summary>
         /// Loads everything async.
         /// - User Login to the Server (and sets the Account)
@@ -95,7 +95,7 @@
         private async Task<Core.Models.Account> LoginAsync()
         {
             var currentGamePosition = Client.Common.Models.Geolocation.Instance.CurrentGamePosition;
-            var device = Client.Common.Models.Device.GetInstance;
+            var device = Client.Common.Models.Device.Instance;
             var user = device.DeviceId;
             user += device.DeviceName;
 
