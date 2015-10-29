@@ -2,8 +2,8 @@
 {
     using System;
     using System.Reflection;
-    using CocosSharp;
     using Client.Common.Helper;
+    using CocosSharp;
 
     /// <summary>
     /// The Map cell position to convert between Tile Map and map cell.
@@ -17,8 +17,8 @@
         /// <param name="cellY">Cell y.</param>
         public MapCellPosition(int cellX, int cellY)
         {
-            m_CellX = cellX;
-            m_CellY = cellY;
+            m_cellX = cellX;
+            m_celly = cellY;
         }
 
         /// <summary>
@@ -30,8 +30,8 @@
             var x = tileMapCoordinates.Column;
             var y = tileMapCoordinates.Row;
         
-            m_CellX = (x * 2) + (y % 2);
-            m_CellY = y / 2;
+            m_cellX = (x * 2) + (y % 2);
+            m_celly = y / 2;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@
         {
             get
             {
-                return m_CellX;
+                return m_cellX;
             }
         }
 
@@ -54,10 +54,9 @@
         {
             get
             {
-                return m_CellY;
+                return m_celly;
             }
         }
-
 
         /// <summary>
         /// Gets the tile map coordinates.
@@ -65,7 +64,7 @@
         /// <returns>The tile map coordinates.</returns>
         public CCTileMapCoordinates GetTileMapCoordinates()
         {
-            return new CCTileMapCoordinates(m_CellX / 2, (m_CellY * 2) + (m_CellX % 2));
+            return new CCTileMapCoordinates(m_cellX / 2, (m_celly * 2) + (m_cellX % 2));
         }
 
         /// <summary>
@@ -74,9 +73,8 @@
         /// <returns>The anchor.</returns>
         public CCPoint GetAnchor()
         {
-
-            float x = (m_CellX) / (Common.Constants.ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
-            float y = (m_CellY) / (Common.Constants.ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
+            float x = m_cellX / (Common.Constants.ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
+            float y = m_celly / (Common.Constants.ClientConstants.CELLMAP_160x160_SIZE - 1.0f);
 
             return new CCPoint(x, (1 - y) / 2);
         }
@@ -84,11 +82,11 @@
         /// <summary>
         /// The m_cell x.
         /// </summary>
-        private readonly int m_CellX;
+        private readonly int m_cellX;
+
         /// <summary>
         /// The m_cell y.
         /// </summary>
-        private readonly int m_CellY;
+        private readonly int m_celly;
     }
 }
-
