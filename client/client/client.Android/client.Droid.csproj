@@ -199,6 +199,8 @@
     <AndroidAsset Include="Assets\Content\images\ld\question-touched.png" />
     <AndroidAsset Include="Assets\Content\images\hd\question-standard.png" />
     <AndroidAsset Include="Assets\Content\images\hd\question-touched.png" />
+    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20151027.png" />
+    <AndroidAsset Include="Assets\Content\tiles\Worldmap-32x32-Hexa-20151027.tmx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />
