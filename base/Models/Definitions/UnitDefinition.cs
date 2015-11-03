@@ -15,21 +15,21 @@
         /// <param name="actions">The actions which can be used by this kind of units.</param>
         /// <param name="attack">Attack value.</param>
         /// <param name="defense">Defense value.</param>
-        /// <param name="health">current Health.</param>
+        /// <param name="health">Maximum Health.</param>
         /// <param name="moves">Moves per turn.</param>
         public UnitDefinition(
             EntityType unitType,
             string[] actions,
             int attack,
-            //int attackRange,
             int defense,
             int health,
-            int moves)
+            int moves,
+            int attackRange)
             : base((int)unitType)
         {
             Actions = actions;
             Attack = attack;
-           // AttackRange = attackRange;
+            AttackRange = 2;
             Defense = defense;
             Health = health;
             Moves = moves;
@@ -71,11 +71,11 @@
         /// Gets the attack range.
         /// </summary>
         /// <value>The attack range.</value>
-        //public int AttackRange
-        //{
-            //            get;
-//            private set;
-//        }
+        public int AttackRange
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Gets the defense value.
@@ -94,7 +94,7 @@
         public int Health
         {
             get;
-            set;
+            private set;
         }
 
         /// <summary>

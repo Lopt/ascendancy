@@ -17,13 +17,14 @@
         /// <param name="definition">Entity Type Definition.</param>
         /// <param name="owner">Entity Owner.</param>
         /// <param name="position">Entity Position.</param>
-        public Entity(int id, Definition definition, Account owner, PositionI position)
+        public Entity(int id, Definition definition, Account owner, PositionI position, int health)
             : base()
         {
             ID = id; 
             Definition = definition;
             Position = position;
             Owner = owner;
+            Health = health;
         }
 
         /// <summary>
@@ -50,6 +51,7 @@
             set
             {
                 Definition = World.Instance.DefinitionManager.GetDefinition((EntityType)value);
+
             }
         }
 
@@ -100,6 +102,16 @@
             {
                 Owner = World.Instance.AccountManager.GetAccountOrEmpty(value);
             }
+        }
+
+        /// <summary>
+        /// Gets or sets the health.
+        /// </summary>
+        /// <value>The health.</value>
+        public int Health
+        {
+            get;
+            set;                
         }
     }
 }

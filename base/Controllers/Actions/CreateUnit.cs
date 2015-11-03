@@ -102,14 +102,16 @@
 
             positionI = RealCreatePosition;
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
-            var dt = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
+            var entityDef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
+            var unitHealth = ((UnitDefinition)entityDef).Health;
 
             // create the new entity and link to the correct account
             var entity = new Core.Models.Entity(
                 IdGenerator.GetId(),
-                dt,  
+                entityDef,  
                 action.Account,
-                positionI);
+                positionI,
+                unitHealth);
 
             entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);

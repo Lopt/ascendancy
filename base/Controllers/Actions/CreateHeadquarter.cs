@@ -91,9 +91,11 @@
                     0,
                     0,
                     0,
+                    0,
                     0),
                 action.Account,
-                positionI);
+                positionI,
+                100);
 
             entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);

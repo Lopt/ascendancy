@@ -140,7 +140,7 @@
                         }
                             
                     }
-                    else if (unit != null && newPosition == searchParameters.EndLocation)                        
+                    else if (unit != null && newPosition == searchParameters.EndLocation && unit.OwnerID != searchParameters.AccountID)                        
                     {
                         if (m_nodes.ContainsKey(newPosition))
                         {

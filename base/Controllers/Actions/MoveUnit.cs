@@ -103,7 +103,7 @@
                 if (endLocationUnit != null && endLocationUnit.OwnerID != action.AccountID)
                 {
                     //TODO: add Attack range to entity
-                    if (1 == Path.Count)
+                    if (((UnitDefinition)unit.Definition).AttackRange <= Path.Count)
                     {
                         m_fight = true;
                         Path.Clear();
@@ -141,9 +141,10 @@
             if (m_fight)
             {
                 var enemyEntity = regionManagerC.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
-                ((UnitDefinition)enemyEntity.Definition).Health = ((UnitDefinition)enemyEntity.Definition).Health - ((UnitDefinition)entity.Definition).Attack;
+              
+                enemyEntity.Health = enemyEntity.Health - ((UnitDefinition)entity.Definition).Attack;
 
-                if (((UnitDefinition)enemyEntity.Definition).Health <= 0)
+                if (enemyEntity.Health <= 0)
                 {
                     regionManagerC.GetRegion(endPosition.RegionPosition).RemoveEntity(action.ActionTime, enemyEntity);
                 }               
