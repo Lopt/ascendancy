@@ -54,12 +54,11 @@
         public override bool Possible()
         {   
             var regionManagerC = Controller.Instance.RegionManagerController;
-
             var action = (Core.Models.Action)Model;  
+            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
                         
-            if (action.Account.Headquarters.Count == 0)
-            {
-                var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+            if (action.Account.Headquarters.Count == 0 && regionManagerC.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition) == null)
+            {                
                 var td = (TerrainDefinition)regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition);       
        
                 // entity and terrain check 

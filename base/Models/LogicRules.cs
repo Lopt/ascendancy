@@ -16,28 +16,28 @@
         /// From North to NorthEast in clockwise
         /// </summary>
         public static readonly PositionI[] SurroundTilesEven =
-            {
-                new PositionI(0, -1),
-                new PositionI(1, 0),
-                new PositionI(1, 1),
-                new PositionI(0, 1),
-                new PositionI(-1, 1),
-                new PositionI(-1, 0)
-            };
+        {
+            new PositionI(0, -1),
+            new PositionI(1, 0),
+            new PositionI(1, 1),
+            new PositionI(0, 1),
+            new PositionI(-1, 1),
+            new PositionI(-1, 0)
+        };
 
         /// <summary>
         /// The surround tiles on odd x positions.
         /// From North to NorthEast in clockwise
         /// </summary>
         public static readonly PositionI[] SurroundTilesOdd =
-            {
-                new PositionI(0, -1),
-                new PositionI(1, -1),
-                new PositionI(1, 0),
-                new PositionI(0, 1),
-                new PositionI(-1, 0),
-                new PositionI(-1, -1)
-            };
+        {
+            new PositionI(0, -1),
+            new PositionI(1, -1),
+            new PositionI(1, 0),
+            new PositionI(0, 1),
+            new PositionI(-1, 0),
+            new PositionI(-1, -1)
+        };
 
         /// <summary>
         /// Gets the surrounded fields.
@@ -64,15 +64,15 @@
         /// Surrounded Regions from top left clockwise
         /// </summary>
         public static readonly RegionPosition[] SurroundRegions =
-            {
-                new RegionPosition(-1, -1),
-                new RegionPosition(-1,  0),
-                new RegionPosition(-1, +1),
-                new RegionPosition(0, +1),
-                new RegionPosition(+1, +1),
-                new RegionPosition(+1,  0),
-                new RegionPosition(+1, -1),
-                new RegionPosition(0, -1)
-            };
+        {
+            new RegionPosition(-1, -1),
+            new RegionPosition(-1,  0),
+            new RegionPosition(-1, +1),
+            new RegionPosition(0, +1),
+            new RegionPosition(+1, +1),
+            new RegionPosition(+1,  0),
+            new RegionPosition(+1, -1),
+            new RegionPosition(0, -1)
+        };
     }        
 }

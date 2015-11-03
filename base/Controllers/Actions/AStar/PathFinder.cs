@@ -137,8 +137,7 @@
                             newNode.ParentNode = fromNode;
                             walkableNodes.Add(newNode);
                             m_nodes[newPosition] = newNode;
-                        }
-                            
+                        }                            
                     }
                     else if (unit != null && newPosition == searchParameters.EndLocation && unit.OwnerID != searchParameters.AccountID)                        
                     {

@@ -67,6 +67,7 @@
         public void DeveloperFunction()
         {
             var pos = Models.Geolocation.Instance.CurrentGamePosition;
+
             var posI = new Core.Models.PositionI(pos);
             var actionCreate = Helper.ActionHelper.CreateEntity(
                                    new Core.Models.PositionI(pos),
@@ -82,6 +83,7 @@
 
             var actionMove = Helper.ActionHelper.MoveUnit(Core.Models.LogicRules.GetSurroundedFields(new Core.Models.PositionI(pos))[0], newPosI);
             m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionMove);
+
         }
 
         /// <summary>

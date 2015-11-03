@@ -17,6 +17,7 @@
         /// <param name="definition">Entity Type Definition.</param>
         /// <param name="owner">Entity Owner.</param>
         /// <param name="position">Entity Position.</param>
+        /// <param name="health">Entity Health.</param>
         public Entity(int id, Definition definition, Account owner, PositionI position, int health)
             : base()
         {
@@ -51,7 +52,6 @@
             set
             {
                 Definition = World.Instance.DefinitionManager.GetDefinition((EntityType)value);
-
             }
         }
 

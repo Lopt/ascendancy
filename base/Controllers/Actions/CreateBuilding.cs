@@ -61,10 +61,13 @@
             var action = (Core.Models.Action)Model;
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
 
-            var td = (TerrainDefinition)regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition);
-
-            // entity and terrain check 
-            return td.Buildable;         
+            if (regionManagerC.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition) == null)
+            {
+                // entity and terrain check
+                var td = (TerrainDefinition)regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition);
+                return td.Buildable;  
+            }
+            return false;         
         }
 
         /// <summary>

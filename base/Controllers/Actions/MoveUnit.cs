@@ -102,20 +102,17 @@
 
                 if (endLocationUnit != null && endLocationUnit.OwnerID != action.AccountID)
                 {
-                    //TODO: add Attack range to entity
                     if (((UnitDefinition)unit.Definition).AttackRange <= Path.Count)
                     {
                         m_fight = true;
                         Path.Clear();
-                        return true;
+                        return true;         
                     }
                     else
                     {
                         return false;
-                    }
-                   
+                    }                   
                 }
-
                 return Path.Count != 0;
             }
             return false;           
