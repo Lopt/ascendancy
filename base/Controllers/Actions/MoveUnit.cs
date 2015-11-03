@@ -88,16 +88,33 @@
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
             var unit = Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
-
+            var endLocationUnit = Controller.Instance.RegionManagerController.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
+                
             if (startPosition == endPosition)
             {
                 return false;
-            }
-        
+            }        
+
             if (unit != null && action.Account != null && action.Account.ID == unit.Owner.ID)
             {
                 var pathfinder = new PathFinder(new SearchParameters(startPosition, endPosition, action.Account.ID));
                 Path = pathfinder.FindPath(((UnitDefinition)unit.Definition).Moves);
+
+                if (endLocationUnit != null && endLocationUnit.OwnerID != action.AccountID)
+                {
+                    //TODO: add Attack range to entity
+                    if (1 == Path.Count)
+                    {
+                        m_fight = true;
+                        Path.Clear();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                   
+                }
 
                 return Path.Count != 0;
             }
@@ -119,11 +136,24 @@
 
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
-            
             var entity = regionManagerC.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
-            regionManagerC.GetRegion(startPosition.RegionPosition).RemoveEntity(action.ActionTime, entity);
-            regionManagerC.GetRegion(endPosition.RegionPosition).AddEntity(action.ActionTime, entity);   
-            entity.Position = endPosition;
+
+            if (m_fight)
+            {
+                var enemyEntity = regionManagerC.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
+                ((UnitDefinition)enemyEntity.Definition).Health = ((UnitDefinition)enemyEntity.Definition).Health - ((UnitDefinition)entity.Definition).Attack;
+
+                if (((UnitDefinition)enemyEntity.Definition).Health <= 0)
+                {
+                    regionManagerC.GetRegion(endPosition.RegionPosition).RemoveEntity(action.ActionTime, enemyEntity);
+                }               
+            }
+            else
+            {                
+                regionManagerC.GetRegion(startPosition.RegionPosition).RemoveEntity(action.ActionTime, entity);
+                regionManagerC.GetRegion(endPosition.RegionPosition).AddEntity(action.ActionTime, entity);   
+                entity.Position = endPosition;
+            }
 
             bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
 
@@ -233,10 +263,5 @@
         /// The m fight.
         /// </summary>
         private bool m_fight;
-
-        /// <summary>
-        /// The m fight position.
-        /// </summary>
-        private PositionI m_fightPos;
     }
 }

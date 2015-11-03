@@ -21,6 +21,7 @@
             EntityType unitType,
             string[] actions,
             int attack,
+            //int attackRange,
             int defense,
             int health,
             int moves)
@@ -28,6 +29,7 @@
         {
             Actions = actions;
             Attack = attack;
+           // AttackRange = attackRange;
             Defense = defense;
             Health = health;
             Moves = moves;
@@ -66,6 +68,16 @@
         }
 
         /// <summary>
+        /// Gets the attack range.
+        /// </summary>
+        /// <value>The attack range.</value>
+        //public int AttackRange
+        //{
+            //            get;
+//            private set;
+//        }
+
+        /// <summary>
         /// Gets the defense value.
         /// </summary>
         /// <value>The defense value.</value>
@@ -82,7 +94,7 @@
         public int Health
         {
             get;
-            private set;
+            set;
         }
 
         /// <summary>
