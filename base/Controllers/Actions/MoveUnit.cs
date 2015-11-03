@@ -105,6 +105,7 @@
                     if (((UnitDefinition)unit.Definition).AttackRange <= Path.Count)
                     {
                         m_fight = true;
+                        m_fightDistance = Path.Count;
                         Path.Clear();
                         return true;         
                     }
@@ -261,5 +262,10 @@
         /// The m fight.
         /// </summary>
         private bool m_fight;
+
+        /// <summary>
+        /// The m fight distance.
+        /// </summary>
+        private int m_fightDistance;
     }
 }
