@@ -100,12 +100,12 @@
         {
             AddToList(m_cancelledNodes, node, action);
         }
-            
+
         /// <summary>
         /// Initialize the specified scene.
         /// </summary>
         /// <param name="scene">the Scene.</param>
-        public void Init(GameScene scene)
+        public void Init(CCLayer sceneLayer)
         {
             m_touchListener = new CCEventListenerTouchAllAtOnce();
             m_touchListener.OnTouchesBegan = OnTouchesBegan;
@@ -113,7 +113,7 @@
             m_touchListener.OnTouchesEnded = OnTouchesEnded;
             m_touchListener.OnTouchesMoved = OnTouchesMoved;
 
-            scene.WorldLayer.AddEventListener(m_touchListener);
+            sceneLayer.AddEventListener(m_touchListener);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@
         {
             list.RemoveAll((x) => x.Node == node && x.Action == action);
         }
-            
+
         /// <summary>
         /// Prevents a default instance of the <see cref="TouchHandler"/> class from being created.
         /// </summary>
@@ -263,7 +263,7 @@
         /// The singleton instance.
         /// </summary>
         private static readonly Lazy<TouchHandler> Singleton =
-            new Lazy<TouchHandler>(() => new TouchHandler());        
+            new Lazy<TouchHandler>(() => new TouchHandler());
 
         /// <summary>
         /// Struct that contains a Node with a related action.

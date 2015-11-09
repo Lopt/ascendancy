@@ -17,25 +17,28 @@
         public GameScene(CCWindow mainWindow)
             : base(mainWindow)
         {
-            WorldLayer = new WorldLayer(this);
-            AddChild(WorldLayer);
-            m_touchHandler = new TileTouchHandler(this);
 
-            HUD = new Client.Common.Views.HUD.HUDLayer(this);
-            AddChild(HUD);
+            WorldLayerHex = new WorldLayerHex(this);
+            AddChild(WorldLayerHex);
 
-            DebugLayer = new DebugLayer();
-            AddChild(DebugLayer);
+//            m_touchHandler = new TileTouchHandler(this);
 
-            TouchHandler.Instance.Init(this);
+//            HUD = new Client.Common.Views.HUD.HUDLayer(this);
+//            AddChild(HUD);
+
+//            DebugLayer = new DebugLayer();
+//            AddChild(DebugLayer);
+
+            TouchHandler.Instance.Init(WorldLayerHex);
         }
-            
+
         #region Properties
 
+
         /// <summary>
-        /// The world (whole game field).
+        /// The world in hex (whole game field).
         /// </summary>
-        public WorldLayer WorldLayer;
+        public WorldLayerHex WorldLayerHex;
 
         /// <summary>
         /// The debug layer (shows logging information).
@@ -45,12 +48,12 @@
         /// <summary>
         /// The HUD with all player output information.
         /// </summary>
-        public HUD.HUDLayer HUD;
+        //public HUD.HUDLayer HUD;
 
         /// <summary>
         /// The m_touch handler.
         /// </summary>
-        private TileTouchHandler m_touchHandler;
+        //        private TileTouchHandler m_touchHandler;
 
         #endregion
     }

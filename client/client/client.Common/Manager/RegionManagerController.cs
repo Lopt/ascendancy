@@ -58,14 +58,6 @@
             return region;
         }
 
-        /// <summary>
-        /// Loads the regions async around the current region position by the geo locator.
-        /// </summary>
-        /// <returns>The task async.</returns>
-        public async Task LoadRegionsAsync()
-        {
-            await LoadRegionsAsync(Geolocation.Instance.CurrentRegionPosition);
-        }
 
         /// <summary>
         /// Loads the regions async around the surrender region position.
@@ -113,9 +105,9 @@
         public RegionPosition[,] GetWorldNearRegionPositions(RegionPosition regionPosition)
         {
             int halfX = Common.Constants.ClientConstants.DRAW_REGIONS_X / 2;
-            int halfY = Common.Constants.ClientConstants.DRAW_REGIONS_X / 2;
+            int halfY = Common.Constants.ClientConstants.DRAW_REGIONS_Y / 2;
 
-            RegionPosition[,] worldRegion = new RegionPosition[5, 5];
+            RegionPosition[,] worldRegion = new RegionPosition[Common.Constants.ClientConstants.DRAW_REGIONS_X, Common.Constants.ClientConstants.DRAW_REGIONS_Y];
             for (int x = -halfX; x <= halfX; x++)
             {
                 for (int y = -halfY; y <= halfY; y++)

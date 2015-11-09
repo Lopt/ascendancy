@@ -12,10 +12,10 @@
         /// </summary>
         /// <param name="model">Model of the unit.</param>
         /// <param name="worldLayer">World layer.</param>
-        public CreateUnit(Core.Models.ModelEntity model, WorldLayer worldLayer)
+        public CreateUnit(Core.Models.ModelEntity model, RegionViewHex regionViewHex)
             : base(model)
         {
-            WorldLayer = worldLayer;
+            RegionViewHex = regionViewHex;
         }
 
         /// <summary>
@@ -37,12 +37,10 @@
             var action = (Core.Models.Action)Model;
             var actionC = (Core.Controllers.Actions.CreateUnit)Model.Control;
 
-            var position = actionC.RealCreatePosition; // (@base.model.PositionI)action.Parameters [@base.control.action.CreateUnit.CREATE_POSITION];
-            // var mapCoordinat = WorldLayer.RegionView.GetCurrentTileInMap(new @base.model.Position(position.X, position.Y));
-            var mapCoordinat = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, position);
+            var position = actionC.RealCreatePosition; 
             var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
-            WorldLayer.RegionView.SetUnit(mapCoordinat, entity); // positionI.Get, CCTileMapCoordinates mapCoordinat, position.RegionPosition);
-            WorldLayer.UglyDraw();
+            RegionViewHex.SetUnit(new CocosSharp.CCTileMapCoordinates(position.CellPosition.CellX, position.CellPosition.CellY), entity);
+            //WorldLayer.UglyDraw();
 
             return true;
         }
@@ -51,7 +49,7 @@
         /// Gets the world layer.
         /// </summary>
         /// <value>The world layer.</value>
-        public WorldLayer WorldLayer
+        public RegionViewHex RegionViewHex
         {
             get;
             private set;

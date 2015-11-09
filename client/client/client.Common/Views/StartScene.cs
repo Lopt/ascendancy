@@ -1,4 +1,6 @@
-﻿namespace Client.Common.Views
+﻿using Client.Common.Models;
+
+namespace Client.Common.Views
 {
     using System;
     using System.Threading.Tasks;
@@ -75,7 +77,7 @@
                 Phase = Phases.EntitiesLoaded;
 
                 var regionManagerController = controller.RegionManagerController as Client.Common.Manager.RegionManagerController;
-                await regionManagerController.LoadRegionsAsync();
+                await regionManagerController.LoadRegionsAsync(Geolocation.Instance.CurrentGamePosition.RegionPosition);
                 Phase = Phases.RegionLoaded;
                 // do something in the future
                 Phase = Phases.Done;
