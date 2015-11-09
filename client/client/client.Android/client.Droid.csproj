@@ -199,6 +199,12 @@
     <AndroidAsset Include="Assets\Content\images\ld\question-touched.png" />
     <AndroidAsset Include="Assets\Content\images\hd\question-standard.png" />
     <AndroidAsset Include="Assets\Content\images\hd\question-touched.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\healthbarenemy.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\healthbar.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\healthbar.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\healthbarenemy.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\healthbartest.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\healthbartest.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />
