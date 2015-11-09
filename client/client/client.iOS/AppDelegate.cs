@@ -21,7 +21,7 @@
     /// <summary>
     /// App delegate.
     /// </summary>
-    [Register("AppDelegate")]
+    [Register("GameAppDelegate")]
     public partial class AppDelegate : UIApplicationDelegate
     {
         // This method is invoked when the application has loaded and is ready to run. In this
@@ -43,6 +43,9 @@
             // aktivating Xamarin.Forms
             global::Xamarin.Forms.Forms.Init();
 
+            // activating tcp connection for iOS
+            TcpConnection.Connector = new TcpConnection();
+
             DependencyService.Register<Geolocator>();
 
             CCApplication application = new CCApplication();
@@ -57,7 +60,7 @@
         /// <param name="args">The command-line arguments.</param>
         public static void Main(string[] args)
         {
-            UIApplication.Main(args, null, "AppDelegate");
+            UIApplication.Main(args, null, "GameAppDelegate");
         }
 
         /// <summary>

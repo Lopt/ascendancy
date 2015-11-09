@@ -106,24 +106,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="CocosSharp">
-      <HintPath>..\..\..\packages\CocosSharp.iOS.1.4.0.0\lib\Xamarin.iOS10\CocosSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\packages\CocosSharp.iOS.1.4.0.0\lib\Xamarin.iOS10\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Lidgren.Network">
-      <HintPath>..\..\..\packages\CocosSharp.iOS.1.4.0.0\lib\Xamarin.iOS10\Lidgren.Network.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework.Net">
-      <HintPath>..\..\..\packages\CocosSharp.iOS.1.4.0.0\lib\Xamarin.iOS10\MonoGame.Framework.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\packages\CocosSharp.iOS.1.4.0.0\lib\Xamarin.iOS10\MonoGame.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="box2d">
-      <HintPath>..\..\..\packages\CocosSharp.iOS.1.4.0.0\lib\Xamarin.iOS10\box2d.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Platform.iOS">
       <HintPath>..\..\..\packages\Xamarin.Forms.1.4.2.6359\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
     </Reference>
@@ -169,6 +151,21 @@
     <Reference Include="Xamarin.Forms.Core, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\packages\Xamarin.Forms.1.4.2.6359\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
+    <Reference Include="box2d">
+      <HintPath>..\..\..\packages\CocosSharp.PCL.Shared.1.6.2.0\lib\Xamarin.iOS10\box2d.dll</HintPath>
+    </Reference>
+    <Reference Include="CocosSharp">
+      <HintPath>..\..\..\packages\CocosSharp.PCL.Shared.1.6.2.0\lib\Xamarin.iOS10\CocosSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\..\..\packages\CocosSharp.PCL.Shared.1.6.2.0\lib\Xamarin.iOS10\Lidgren.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\..\packages\CocosSharp.PCL.Shared.1.6.2.0\lib\Xamarin.iOS10\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework.Net">
+      <HintPath>..\..\..\packages\CocosSharp.PCL.Shared.1.6.2.0\lib\Xamarin.iOS10\MonoGame.Framework.Net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\client.Common\client.Common.csproj">
@@ -202,6 +199,24 @@
     <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <BundleResource Include="Content\images\hd\logo.png" />
     <BundleResource Include="Content\images\ld\logo.png" />
+    <BundleResource Include="Content\tiles\Spritesheet_20151027.png" />
+    <BundleResource Include="Content\tiles\Worldmap-32x32-Hexa-20151027.tmx" />
+    <BundleResource Include="Content\images\hd\debug-standard.png" />
+    <BundleResource Include="Content\images\hd\debug-touched.png" />
+    <BundleResource Include="Content\images\hd\EnergyRessource1.png" />
+    <BundleResource Include="Content\images\hd\EnergyRessource2.png" />
+    <BundleResource Include="Content\images\hd\question-standard.png" />
+    <BundleResource Include="Content\images\hd\question-touched.png" />
+    <BundleResource Include="Content\images\hd\radars2-standard.png" />
+    <BundleResource Include="Content\images\hd\radars2-touched.png" />
+    <BundleResource Include="Content\images\ld\debug-standard.png" />
+    <BundleResource Include="Content\images\ld\debug-touched.png" />
+    <BundleResource Include="Content\images\ld\EnergyRessource1.png" />
+    <BundleResource Include="Content\images\ld\EnergyRessource2.png" />
+    <BundleResource Include="Content\images\ld\question-standard.png" />
+    <BundleResource Include="Content\images\ld\question-touched.png" />
+    <BundleResource Include="Content\images\ld\radars2-standard.png" />
+    <BundleResource Include="Content\images\ld\radars2-touched.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -210,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="TcpConnection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\Xamarin.iOS10\SQLitePCL.raw_basic.targets" Condition="Exists('..\..\..\packages\SQLitePCL.raw_basic.0.8.0\build\Xamarin.iOS10\SQLitePCL.raw_basic.targets')" />
