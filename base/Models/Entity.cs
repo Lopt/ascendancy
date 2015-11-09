@@ -18,7 +18,7 @@
         /// <param name="owner">Entity Owner.</param>
         /// <param name="position">Entity Position.</param>
         /// <param name="health">Entity Health.</param>
-        public Entity(int id, Definition definition, Account owner, PositionI position, int health)
+        public Entity(int id, Definition definition, Account owner, PositionI position, int health, int move)
             : base()
         {
             ID = id; 
@@ -26,6 +26,7 @@
             Position = position;
             Owner = owner;
             Health = health;
+            Move = move;
         }
 
         /// <summary>
@@ -112,6 +113,16 @@
         {
             get;
             set;                
+        }
+
+        /// <summary>
+        /// Gets or sets the move.
+        /// </summary>
+        /// <value>The move.</value>
+        public int Move
+        {
+            get;
+            set;
         }
     }
 }
