@@ -11,7 +11,7 @@
     /// A part of the world. Contains a RegionPosition which determinates where (in the world) the region is.
     /// Also contains all entities to a specific time and all actions which were executed on the region.
     /// </summary>
-    public class Region
+    public class Region : ModelEntity
     {
         /// <summary>
         /// Actions and an date when the last action was executed.
@@ -268,7 +268,7 @@
         public void ReleaseReader()
         {
             m_mutex.ExitReadLock();
-        } 
+        }
 
         /// <summary>
         /// An Action was executed and affected this region, then it should be added with AddCompletedAction.
