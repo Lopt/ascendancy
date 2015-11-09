@@ -58,24 +58,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="CocosSharp">
-      <HintPath>..\..\..\packages\CocosSharp.Android.1.4.0.0\lib\MonoAndroid10\CocosSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\packages\CocosSharp.Android.1.4.0.0\lib\MonoAndroid10\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Lidgren.Network">
-      <HintPath>..\..\..\packages\CocosSharp.Android.1.4.0.0\lib\MonoAndroid10\Lidgren.Network.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\packages\CocosSharp.Android.1.4.0.0\lib\MonoAndroid10\MonoGame.Framework.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="box2d">
-      <HintPath>..\..\..\packages\CocosSharp.Android.1.4.0.0\lib\MonoAndroid10\box2d.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="SQLite.Net">
       <HintPath>..\..\..\packages\SQLite.Net-PCL.3.0.5\lib\MonoAndroid\SQLite.Net.dll</HintPath>
     </Reference>
@@ -141,6 +123,21 @@
     <Reference Include="Xamarin.Android.Support.v4">
       <HintPath>..\..\..\packages\Xamarin.Android.Support.v4.23.0.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="box2d">
+      <HintPath>..\..\..\packages\CocosSharp.PCL.Shared.1.6.2.0\lib\MonoAndroid10\box2d.dll</HintPath>
+    </Reference>
+    <Reference Include="CocosSharp">
+      <HintPath>..\..\..\packages\CocosSharp.PCL.Shared.1.6.2.0\lib\MonoAndroid10\CocosSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\..\..\packages\CocosSharp.PCL.Shared.1.6.2.0\lib\MonoAndroid10\Lidgren.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\..\packages\CocosSharp.PCL.Shared.1.6.2.0\lib\MonoAndroid10\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework.Net">
+      <HintPath>..\..\..\packages\CocosSharp.PCL.Shared.1.6.2.0\lib\MonoAndroid10\MonoGame.Framework.Net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
