@@ -24,6 +24,9 @@
             HUD = new Client.Common.Views.HUD.HUDLayer(this);
             AddChild(HUD);
 
+            Test = new Client.Common.Views.Effects.EffectLayer(this);
+            AddChild(Test);
+
             DebugLayer = new DebugLayer();
             AddChild(DebugLayer);
 
@@ -46,6 +49,8 @@
         /// The HUD with all player output information.
         /// </summary>
         public HUD.HUDLayer HUD;
+
+        public Effects.EffectLayer Test;
 
         /// <summary>
         /// The m_touch handler.
