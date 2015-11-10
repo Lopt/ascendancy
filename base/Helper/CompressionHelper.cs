@@ -1,14 +1,19 @@
-﻿namespace Core.Helper
+﻿using System.ServiceModel.Channels;
+
+namespace Core.Helper
 {
     using System;
     using System.IO;
     using System.IO.Compression;
+    using Ionic.Zlib;
 
     /// <summary>
     /// Compresses or decompresses byte arrays using GZipStream
     /// </summary>
     public static class CompressionHelper
     {
+        const int MAX_PACKET_SIZE = 4096 * 4;
+
         /// <summary>
         /// Compress the specified inputData.
         /// </summary>
@@ -16,14 +21,19 @@
         /// <returns>compressed byte array</returns>
         public static byte[] Compress(byte[] inputData)
         {
-            using (var compressIntoMs = new MemoryStream())
-            {
-                using (var gzs = new GZipStream(compressIntoMs, CompressionMode.Compress))
-                {
-                    gzs.Write(inputData, 0, inputData.Length);
-                }
-                return compressIntoMs.ToArray(); 
-            }
+            var zlib = new ZlibCodec(Ionic.Zlib.CompressionMode.Compress);
+            zlib.CompressLevel = Ionic.Zlib.CompressionLevel.BestCompression;
+            zlib.InputBuffer = inputData;
+            zlib.OutputBuffer = new byte[MAX_PACKET_SIZE];
+            zlib.NextIn = 0;
+            zlib.AvailableBytesIn = inputData.Length;
+            zlib.NextOut = 0;
+            zlib.AvailableBytesOut = MAX_PACKET_SIZE;
+            zlib.Deflate(FlushType.Finish);
+            var output = new byte[zlib.TotalBytesOut];
+            Array.Copy(zlib.OutputBuffer, output, (int)zlib.TotalBytesOut);
+            return output;
+
         }
 
         /// <summary>
@@ -33,17 +43,17 @@
         /// <returns>decompressed byte array</returns>
         public static byte[] Decompress(byte[] inputData)
         {
-            using (var compressedMs = new MemoryStream(inputData))
-            {
-                using (var decompressedMs = new MemoryStream())
-                {
-                    using (var gzs = new GZipStream(compressedMs, CompressionMode.Decompress))
-                    {
-                        gzs.CopyTo(decompressedMs);
-                    }
-                    return decompressedMs.ToArray(); 
-                }
-            }
+            var zlib = new ZlibCodec(Ionic.Zlib.CompressionMode.Decompress);
+            zlib.InputBuffer = inputData;
+            zlib.OutputBuffer = new byte[MAX_PACKET_SIZE];
+            zlib.NextIn = 0;
+            zlib.AvailableBytesIn = inputData.Length;
+            zlib.NextOut = 0;
+            zlib.AvailableBytesOut = MAX_PACKET_SIZE;
+            zlib.Inflate(FlushType.Finish);
+            var output = new byte[zlib.TotalBytesOut];
+            Array.Copy(zlib.OutputBuffer, output, (int)zlib.TotalBytesOut);
+            return output;
         }
     }
 }

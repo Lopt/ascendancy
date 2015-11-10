@@ -12,6 +12,11 @@
     public class LogicRules
     {
         /// <summary>
+        /// The ranged in meele malus.
+        /// </summary>
+        public static readonly int RangedInMeeleMalus = 10;
+
+        /// <summary>
         /// The surround tiles on even x positions.
         /// From North to NorthEast in clockwise
         /// </summary>
@@ -40,6 +45,21 @@
         };
 
         /// <summary>
+        /// Surrounded Regions from top left clockwise
+        /// </summary>
+        public static readonly RegionPosition[] SurroundRegions =
+        {
+                new RegionPosition(-1, -1),
+                new RegionPosition(-1,  0),
+                new RegionPosition(-1, +1),
+                new RegionPosition(0, +1),
+                new RegionPosition(+1, +1),
+                new RegionPosition(+1,  0),
+                new RegionPosition(+1, -1),
+                new RegionPosition(0, -1)
+        };
+
+        /// <summary>
         /// Gets the surrounded fields.
         /// </summary>
         /// <returns>The surrounded fields.</returns>
@@ -60,19 +80,12 @@
             return surrounded;
         }
 
-        /// <summary>
-        /// Surrounded Regions from top left clockwise
-        /// </summary>
-        public static readonly RegionPosition[] SurroundRegions =
+
+        public static double Dice(Entity entity)
         {
-            new RegionPosition(-1, -1),
-            new RegionPosition(-1,  0),
-            new RegionPosition(-1, +1),
-            new RegionPosition(0, +1),
-            new RegionPosition(+1, +1),
-            new RegionPosition(+1,  0),
-            new RegionPosition(+1, -1),
-            new RegionPosition(0, -1)
-        };
+            var rand = new Random(entity.ID + entity.OwnerID + entity.Position.GetHashCode());
+            return rand.NextDouble() * (2);
+        }
+
     }        
 }

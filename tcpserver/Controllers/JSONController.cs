@@ -21,6 +21,7 @@
         /// <param name="json">Login Request as serialized JSON.</param>
         public static string Login(string json)
         {
+            System.Console.WriteLine(json);
             var loginRequest = JsonConvert.DeserializeObject<Core.Connections.LoginRequest>(json);
 
             var response = new Core.Connections.LoginResponse();

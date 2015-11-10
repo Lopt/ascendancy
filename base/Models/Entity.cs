@@ -124,5 +124,33 @@
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets the modfifed attack value.
+        /// </summary>
+        /// <value>The modfifed attack value.</value>
+        public int ModfifedAttackValue
+        {
+            get
+            {
+                // TODO: Add Weather, clocktime and terrain modifier 
+                var ModAttack = ((UnitDefinition)Definition).Attack;
+                return ModAttack /* Weather + CLocktime + Terrain */; 
+            }                
+        }
+
+        /// <summary>
+        /// Gets the modified defense value.
+        /// </summary>
+        /// <value>The modified defense value.</value>
+        public int ModifiedDefenseValue
+        {
+            get
+            {
+                var ModDefense = World.Instance.RegionManager.GetRegion(Position.RegionPosition).GetTerrain(Position.CellPosition).DefenseModifier;
+                var UnitDefense = ((UnitDefinition)Definition).Defense;
+                return UnitDefense + ModDefense;
+            }
+        }
     }
 }
