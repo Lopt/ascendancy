@@ -12,6 +12,8 @@ namespace Core.Helper
     /// </summary>
     public static class CompressionHelper
     {
+        const int MAX_PACKET_SIZE = 4096;
+
         /// <summary>
         /// Compress the specified inputData.
         /// </summary>
@@ -20,9 +22,9 @@ namespace Core.Helper
         public static byte[] Compress(byte[] inputData)
         {
             var zlib = new ZlibCodec(Ionic.Zlib.CompressionMode.Compress);
-            zlib.CompressLevel = Ionic.Zlib.CompressionLevel.None;
+            zlib.CompressLevel = Ionic.Zlib.CompressionLevel.BestCompression;
             zlib.InputBuffer = inputData;
-            zlib.OutputBuffer = new byte[2000];
+            zlib.OutputBuffer = new byte[MAX_PACKET_SIZE];
             zlib.NextIn = 0;
             zlib.AvailableBytesIn = inputData.Length;
             zlib.NextOut = 0;
@@ -42,9 +44,8 @@ namespace Core.Helper
         public static byte[] Decompress(byte[] inputData)
         {
             var zlib = new ZlibCodec(Ionic.Zlib.CompressionMode.Decompress);
-            zlib.CompressLevel = Ionic.Zlib.CompressionLevel.None;
             zlib.InputBuffer = inputData;
-            zlib.OutputBuffer = new byte[2000];
+            zlib.OutputBuffer = new byte[MAX_PACKET_SIZE];
             zlib.NextIn = 0;
             zlib.AvailableBytesIn = inputData.Length;
             zlib.NextOut = 0;
