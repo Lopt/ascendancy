@@ -183,7 +183,7 @@
                     if (def != null)
                     {
                         var oldPositionI2 = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
-                        var action2 = ActionHelper.CreateEntity(oldPositionI2, def);
+                        var action2 = ActionHelper.CreateEntity(oldPositionI2, def, GameAppDelegate.Account);
                         var actionC2 = (Core.Controllers.Actions.Action)action2.Control;
                         if (actionC2.Possible())
                         {

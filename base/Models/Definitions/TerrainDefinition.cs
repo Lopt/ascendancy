@@ -20,13 +20,15 @@
             int[] resources,
             bool buildable = true,
             bool walkable = true,
-            int travelCost = 1)
+            int travelCost = 1,
+            int defenseModfier = 1)
             : base((int)terrainType)
         {
             Resources = resources;
             Buildable = buildable;
             Walkable = walkable;
             TravelCost = travelCost;
+            DefenseModifier = 1;
         }
 
         /// <summary>
@@ -64,6 +66,16 @@
         /// </summary>
         /// <value>The travel cost.</value>
         public int TravelCost
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Gets the defense modifier.
+        /// </summary>
+        /// <value>The defense modifier.</value>
+        public int DefenseModifier
         {
             get;
             private set;

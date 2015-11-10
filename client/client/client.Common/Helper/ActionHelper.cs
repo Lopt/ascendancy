@@ -29,14 +29,14 @@
         /// <returns>The entity create action.</returns>
         /// <param name="positionI">Position where the entity should be created.</param>
         /// <param name="definition">Definition which entity should be created.</param>
-        public static Core.Models.Action CreateEntity(PositionI positionI, Core.Models.Definitions.Definition definition)
+        public static Core.Models.Action CreateEntity(PositionI positionI, Core.Models.Definitions.Definition definition, Account account)
         {
             switch (definition.Category)
             {
                 case Category.Building:
-                    return CreateBuilding(positionI, definition);
+                    return CreateBuilding(positionI, definition, account);
                 case Category.Unit:
-                    return CreateUnit(positionI, definition);
+                    return CreateUnit(positionI, definition, account);
             }
             return null;
         }
@@ -47,12 +47,12 @@
         /// <returns>The create unit action.</returns>
         /// <param name="positionI">Position where the unit should be created.</param>
         /// <param name="definition">Definition which unit should be created.</param>
-        private static Core.Models.Action CreateUnit(PositionI positionI, Definition definition)
+        private static Core.Models.Action CreateUnit(PositionI positionI, Definition definition, Account account)
         {
             var dictParam = new System.Collections.Generic.Dictionary<string, object>();
             dictParam[Core.Controllers.Actions.CreateUnit.CREATE_POSITION] = positionI; 
             dictParam[Core.Controllers.Actions.CreateUnit.CREATION_TYPE] = (long)definition.SubType;
-            return new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.CreateUnit, dictParam);
+            return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateUnit, dictParam);
         }
 
         /// <summary>
@@ -61,12 +61,12 @@
         /// <returns>The create building action.</returns>
         /// <param name="positionI">Position where the unit should be created.</param>
         /// <param name="definition">Definition which unit should be created.</param>
-        private static Core.Models.Action CreateBuilding(PositionI positionI, Definition definition)
+        private static Core.Models.Action CreateBuilding(PositionI positionI, Definition definition, Account account)
         {
             var dictParam = new System.Collections.Generic.Dictionary<string, object>();
             dictParam[Core.Controllers.Actions.CreateBuilding.CREATE_POSITION] = positionI; 
             dictParam[Core.Controllers.Actions.CreateBuilding.CREATION_TYPE] = (long)definition.SubType;
-            return new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.CreateBuilding, dictParam);
+            return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateBuilding, dictParam);
         }
     }
 }
