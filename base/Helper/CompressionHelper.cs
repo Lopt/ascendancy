@@ -12,7 +12,7 @@ namespace Core.Helper
     /// </summary>
     public static class CompressionHelper
     {
-        const int MAX_PACKET_SIZE = 4096;
+        const int MAX_PACKET_SIZE = 4096 * 4;
 
         /// <summary>
         /// Compress the specified inputData.
@@ -28,7 +28,7 @@ namespace Core.Helper
             zlib.NextIn = 0;
             zlib.AvailableBytesIn = inputData.Length;
             zlib.NextOut = 0;
-            zlib.AvailableBytesOut = inputData.Length;
+            zlib.AvailableBytesOut = MAX_PACKET_SIZE;
             zlib.Deflate(FlushType.Finish);
             var output = new byte[zlib.TotalBytesOut];
             Array.Copy(zlib.OutputBuffer, output, (int)zlib.TotalBytesOut);
@@ -49,7 +49,7 @@ namespace Core.Helper
             zlib.NextIn = 0;
             zlib.AvailableBytesIn = inputData.Length;
             zlib.NextOut = 0;
-            zlib.AvailableBytesOut = inputData.Length;
+            zlib.AvailableBytesOut = MAX_PACKET_SIZE;
             zlib.Inflate(FlushType.Finish);
             var output = new byte[zlib.TotalBytesOut];
             Array.Copy(zlib.OutputBuffer, output, (int)zlib.TotalBytesOut);
