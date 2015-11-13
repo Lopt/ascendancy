@@ -66,7 +66,7 @@
         /// </summary>
         public void DeveloperFunction()
         {
-            var account = new Core.Models.Account(2);
+            var account = new Core.Models.Account(5);
             new Core.Models.AccountManager().AddAccount(account);
 
             var pos = Models.Geolocation.Instance.CurrentGamePosition;

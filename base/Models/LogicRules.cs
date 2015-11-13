@@ -14,7 +14,52 @@
         /// <summary>
         /// The ranged in meele malus.
         /// </summary>
-        public static readonly int RangedInMeeleMalus = 10;
+        public static int RangedInMeeleMalus(Entity entity)
+        {
+            entity.ModfifedAttackValue -= 10;
+            return 0;
+        }
+
+        /// <summary>
+        /// Alls the attack modifier.
+        /// </summary>
+        /// <returns>The attack modifier.</returns>
+        /// <param name="entity">Entity.</param>
+        public static IList AllAttackModifier(Entity entity)
+        {
+            List<int> AllMod = new List<int>();
+            // Dice should be the last method in the list !
+            AllMod.Add(TerrainAttackModifier(entity));
+            AllMod.Add(Dice(entity));
+            return AllMod;
+        }
+
+        /// <summary>
+        /// Alls the attack modifier.
+        /// </summary>
+        /// <returns>The attack modifier.</returns>
+        /// <param name="entity">Entity.</param>
+        public static IList AllAttackModifierRangedInMeele(Entity entity)
+        {
+            List<int> AllMod = new List<int>();
+            // Dice should be the last method in the list !
+            AllMod.Add(RangedInMeeleMalus(entity));
+            AllMod.Add(TerrainAttackModifier(entity));
+            AllMod.Add(Dice(entity));
+            return AllMod;
+        }
+
+        /// <summary>
+        /// Alls the defense modifier.
+        /// </summary>
+        /// <returns>The defense modifier.</returns>
+        /// <param name="entity">Entity.</param>
+       public static IList AllDefenseModifier(Entity entity)
+       {
+            List<int> AllMod = new List<int>();
+            AllMod.Add(TerrainDefenseModifier(entity));
+            return AllMod;
+       }
 
         /// <summary>
         /// The surround tiles on even x positions.
@@ -80,11 +125,40 @@
             return surrounded;
         }
 
-
-        public static double Dice(Entity entity)
+        /// <summary>
+        /// Dice the specified attack damage for the entity.
+        /// </summary>
+        /// <param name="entity">Entity.</param>
+        public static int Dice(Entity entity)
         {
             var rand = new Random(entity.ID + entity.OwnerID + entity.Position.GetHashCode());
-            return rand.NextDouble() * (2);
+            double test = entity.ModfifedAttackValue;
+            var bla = rand.NextDouble() * (2);    
+            test *= bla;
+            entity.ModfifedAttackValue = (int)test;
+            return 0;
+        }
+
+        /// <summary>
+        /// Gets the defense modifier.
+        /// </summary>
+        /// <value>The defense modifier.</value>
+        public static int  TerrainDefenseModifier(Entity entitiy)
+        {
+            entitiy.ModfifedAttackValue = ((Definitions.UnitDefinition)entitiy.Definition).Defense * World.Instance.RegionManager.GetRegion(entitiy.Position.RegionPosition)
+                                                                                                     .GetTerrain(entitiy.Position.CellPosition).DefenseModifier;
+            return 0;
+        }
+
+        /// <summary>
+        /// Attacks the modifier.
+        /// </summary>
+        /// <param name="entity">Entity.</param>
+        public static int TerrainAttackModifier(Entity entity)
+        {
+            entity.ModfifedAttackValue = ((Definitions.UnitDefinition)entity.Definition).Attack * World.Instance.RegionManager.GetRegion(entity.Position.RegionPosition)
+                                                                                                  .GetTerrain(entity.Position.CellPosition).AttackModifier;
+            return 0;
         }
 
     }        
