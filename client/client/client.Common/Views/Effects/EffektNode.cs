@@ -25,7 +25,6 @@
                     child.AnchorPoint = value;
                 }
             }
-
         }
     }
 }

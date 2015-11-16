@@ -102,7 +102,7 @@
         /// <summary>
         /// Tile Map file name
         /// </summary>
-        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20150704";
+        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20151116";
 
         /// <summary>
         /// name of terrain layer
@@ -123,6 +123,11 @@
         /// unit of menu layer
         /// </summary>
         public const string LAYER_MENU = "Layer 3";
+
+        /// <summary>
+        /// name of the indicator layer
+        /// </summary>
+        public const string LAYER_INDICATOR = "Layer 4";
 
         /// <summary>
         /// size of a tile (width)

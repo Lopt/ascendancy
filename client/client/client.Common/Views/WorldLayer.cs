@@ -84,6 +84,7 @@
             BuildingLayer = WorldTileMap.LayerNamed(Common.Constants.ClientConstants.LAYER_BUILDING);
             UnitLayer = WorldTileMap.LayerNamed(Common.Constants.ClientConstants.LAYER_UNIT);
             MenuLayer = WorldTileMap.LayerNamed(Common.Constants.ClientConstants.LAYER_MENU);
+            IndicatorLayer = WorldTileMap.LayerNamed(Common.Constants.ClientConstants.LAYER_INDICATOR);
 
             ClearLayers();
 
@@ -91,6 +92,7 @@
             RegionView.BuildingLayer = BuildingLayer;
             RegionView.UnitLayer = UnitLayer;
             RegionView.MenuLayer = MenuLayer;
+            RegionView.IndicatorLayer = IndicatorLayer;
                        
             this.AddChild(WorldTileMap);
 
@@ -380,6 +382,12 @@
         /// </summary>
         /// <value>The menu layer.</value>
         public CCTileMapLayer MenuLayer
+        {
+            get;
+            private set;
+        }
+
+        public CCTileMapLayer IndicatorLayer
         {
             get;
             private set;

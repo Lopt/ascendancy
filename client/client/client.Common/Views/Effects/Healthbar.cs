@@ -3,7 +3,7 @@
     using CocosSharp;
     using Client.Common.Constants;
 
-    public class Healthbar : EffectNode
+    public class Healthbar : HUD.HUDNode
     {
         public Healthbar (/*Core.Models.Entity model, CCTileMapCoordinates coord*/)
             : base()
@@ -46,7 +46,7 @@
         private int m_max;
         private int m_current;
         private float m_percent;
-        private CCNode m_healthbar;
+        public CCNode m_healthbar;
     }
 
 

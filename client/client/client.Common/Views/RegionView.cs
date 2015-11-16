@@ -250,6 +250,11 @@
         public CCTileMapLayer MenuLayer;
 
         /// <summary>
+        /// The indicator layer.
+        /// </summary>
+        public CCTileMapLayer IndicatorLayer;
+
+        /// <summary>
         /// Gets the world layer.
         /// </summary>
         /// <value>The world layer.</value>
