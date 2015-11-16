@@ -60,10 +60,24 @@
             var regionManagerC = Controller.Instance.RegionManagerController;
             var action = (Core.Models.Action)Model;
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+            var type = (long)action.Parameters[CREATION_TYPE];
+            var entitydef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
 
-            if (regionManagerC.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition) == null)
+            if (action.Account.Headquarters.Count == 0 && 
+                entitydef.ID == (long)Models.Definitions.EntityType.Headquarter &&
+                regionManagerC.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition) == null)
             {
-                // entity and terrain check
+                // terrain check
+                var td = (TerrainDefinition)regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition);
+                m_HeadquarterFlag = true;
+                return td.Buildable; 
+            }
+            // check for free tile and the terrain is possesed from the current player
+            else if (regionManagerC.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition) == null && 
+                     entitydef.ID != (long)Models.Definitions.EntityType.Headquarter &&
+                     regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition).Ownership == action.AccountID)
+            {
+                // terrain check
                 var td = (TerrainDefinition)regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition);
                 return td.Buildable;  
             }
@@ -85,6 +99,7 @@
             var entityDef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
             var entityHealth = ((UnitDefinition)entityDef).Health; 
             var entityMoves = ((UnitDefinition)entityDef).Moves;
+            var entityOwnershipRadius = ((UnitDefinition)entityDef).OwnershipRadius;
 
             // create the new entity and link to the correct account
             var entity = new Core.Models.Entity(
@@ -98,10 +113,18 @@
             entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);
 
-            if (action.Account != null)
+
+            if (m_HeadquarterFlag && 
+                action.Account != null)
+            {
+                action.Account.Headquarters.AddLast(entity.Position);
+                LogicRules.ClaimTerritory(regionManagerC, entity);
+            }
+            else if (action.Account != null)
             {
                 action.Account.Buildings.AddLast(entity.Position);
             }
+
             return new ConcurrentBag<Core.Models.Region>() { region };
         }
 
@@ -124,5 +147,7 @@
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             return positionI.RegionPosition;
         }
+
+        private bool m_HeadquarterFlag = false;
     }
 }
