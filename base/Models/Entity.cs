@@ -25,8 +25,10 @@
             Definition = definition;
             Position = position;
             Owner = owner;
-            Health = health;
+            Health = health;           
             Move = move;
+            ModifiedDefenseValue = ((UnitDefinition)Definition).Defense;
+            ModfifedAttackValue = ((UnitDefinition)Definition).Attack;
         }
 
         /// <summary>
@@ -131,12 +133,14 @@
         /// <value>The modfifed attack value.</value>
         public int ModfifedAttackValue
         {
-            get
-            {
+            get;
+            //{
                 // TODO: Add Weather, clocktime and terrain modifier 
-                var ModAttack = ((UnitDefinition)Definition).Attack;
-                return ModAttack /* Weather + CLocktime + Terrain */; 
-            }                
+                //var ModAttack = ((UnitDefinition)Definition).Attack;
+                //return ModAttack /* Weather + CLocktime + Terrain */; 
+            //}
+            set;
+            //{}
         }
 
         /// <summary>
@@ -145,12 +149,14 @@
         /// <value>The modified defense value.</value>
         public int ModifiedDefenseValue
         {
-            get
-            {
-                var ModDefense = World.Instance.RegionManager.GetRegion(Position.RegionPosition).GetTerrain(Position.CellPosition).DefenseModifier;
-                var UnitDefense = ((UnitDefinition)Definition).Defense;
-                return UnitDefense + ModDefense;
-            }
+            get;
+            //{
+                //var ModDefense = World.Instance.RegionManager.GetRegion(Position.RegionPosition).GetTerrain(Position.CellPosition).DefenseModifier;
+                //var UnitDefense = ((UnitDefinition)Definition).Defense;
+                //return UnitDefense * ModDefense;
+            //}
+            set;
+            //{}
         }
     }
 }

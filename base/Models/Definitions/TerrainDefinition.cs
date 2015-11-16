@@ -21,7 +21,8 @@
             bool buildable = true,
             bool walkable = true,
             int travelCost = 1,
-            int defenseModfier = 1)
+            int defenseModifier = 1,
+            int attackModifier = 1)
             : base((int)terrainType)
         {
             Resources = resources;
@@ -29,6 +30,7 @@
             Walkable = walkable;
             TravelCost = travelCost;
             DefenseModifier = 1;
+            AttackModifier = 1;
         }
 
         /// <summary>
@@ -66,6 +68,16 @@
         /// </summary>
         /// <value>The travel cost.</value>
         public int TravelCost
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Gets the attack modifier.
+        /// </summary>
+        /// <value>The attack modifier.</value>
+        public int AttackModifier
         {
             get;
             private set;

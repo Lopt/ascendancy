@@ -140,8 +140,6 @@
             {
                 var enemyEntity = regionManagerC.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
 
-                    var test = LogicRules.Dice(enemyEntity);
-
                 // Ranged attack units deal only 1 dmg to buildings
                 if (((UnitDefinition)entity.Definition).AttackRange >= 1 && enemyEntity.Definition.Category == Category.Building)
                 {                    
@@ -149,16 +147,23 @@
                 }
                 else if (m_fightDistance - ((UnitDefinition)entity.Definition).AttackRange < 0)
                 {
-                    enemyEntity.Health -= (int)((entity.ModfifedAttackValue * LogicRules.Dice(entity)) - LogicRules.RangedInMeeleMalus - enemyEntity.ModifiedDefenseValue);
+                    // iterate trough all methods to modifie the attack
+                    LogicRules.AllAttackModifierRangedInMeele(entity);
+
+                    enemyEntity.Health -= entity.ModfifedAttackValue - enemyEntity.ModifiedDefenseValue;
+                    entity.Health -= enemyEntity.ModfifedAttackValue - entity.ModifiedDefenseValue;
                 }
                 else
                 {
-                    enemyEntity.Health -= (int)((entity.ModfifedAttackValue * LogicRules.Dice(entity)) - enemyEntity.ModifiedDefenseValue); 
+                    // iterate trough all methods to modifie the attack
+                    LogicRules.AllAttackModifier(entity);
+
+                    enemyEntity.Health -= entity.ModfifedAttackValue - enemyEntity.ModifiedDefenseValue;
+                    entity.Health -= enemyEntity.ModfifedAttackValue - entity.ModifiedDefenseValue; 
                 }
 
                 if (enemyEntity.Health <= 0)
-                {
-                    // Health unter 0 bekommt dennoch der angreifer schaden
+                {                    
                     regionManagerC.GetRegion(endPosition.RegionPosition).RemoveEntity(action.ActionTime, enemyEntity);
                 }
                 else if (entity.Health <= 0)
