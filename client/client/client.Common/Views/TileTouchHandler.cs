@@ -151,6 +151,8 @@
 
             m_startLocation = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
             var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
+            //var Indicator = new Client.Common.Views.Effects.IndicatorView(coord, m_worldLayer.IndicatorLayer);
+            //Indicator.ShowIndicator(coord, 3, m_worldLayer.IndicatorLayer);
 
             switch (m_touchGesture)
             {

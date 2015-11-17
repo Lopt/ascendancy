@@ -391,5 +391,20 @@
         /// GID for the tile with the trait cross.
         /// </summary>
         public const short CROSS = 67;
+
+        /// <summary>
+        /// GID for the green indicator.
+        /// </summary>
+        public const short GREENINDICATOR = 74;
+
+        /// <summary>
+        /// GID for the red indicator.
+        /// </summary>
+        public const short REDINDICATOR = 75;
+
+        /// <summary>
+        /// GID for the white indicator.
+        /// </summary>
+        public const short WHITEINDICATOR = 76;
     }
 }
