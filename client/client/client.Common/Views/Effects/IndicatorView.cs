@@ -148,6 +148,7 @@
             {
                 m_layer.SetTileGID(gid,tile);
             }
+                
         }
 
         public void removeIndicator()

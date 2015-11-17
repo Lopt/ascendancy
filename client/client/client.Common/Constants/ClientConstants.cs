@@ -110,24 +110,24 @@
         public const string LAYER_TERRAIN = "Layer 0";
 
         /// <summary>
+        /// name of the indicator layer
+        /// </summary>
+        public const string LAYER_INDICATOR = "Layer 1";
+
+        /// <summary>
         /// name of building layer
         /// </summary>
-        public const string LAYER_BUILDING = "Layer 1";
+        public const string LAYER_BUILDING = "Layer 2";
 
         /// <summary>
         /// name of unit layer
         /// </summary>
-        public const string LAYER_UNIT = "Layer 2";
+        public const string LAYER_UNIT = "Layer 3";
 
         /// <summary>
         /// unit of menu layer
         /// </summary>
-        public const string LAYER_MENU = "Layer 3";
-
-        /// <summary>
-        /// name of the indicator layer
-        /// </summary>
-        public const string LAYER_INDICATOR = "Layer 4";
+        public const string LAYER_MENU = "Layer 4";
 
         /// <summary>
         /// size of a tile (width)

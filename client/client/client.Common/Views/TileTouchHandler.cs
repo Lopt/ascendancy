@@ -6,6 +6,7 @@
     using System.Diagnostics;
     using System.Threading.Tasks;
     using Client.Common.Helper;
+    using Client.Common.Views.Effects;
     using CocosSharp;
     using Core.Models.Definitions;
 
@@ -62,6 +63,8 @@
         /// The m_menu view.
         /// </summary>
         private MenuView m_menuView;
+
+        private IndicatorView m_Indicator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.TileTouchHandler"/> class.
@@ -151,8 +154,6 @@
 
             m_startLocation = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
             var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
-            //var Indicator = new Client.Common.Views.Effects.IndicatorView(coord, m_worldLayer.IndicatorLayer);
-            //Indicator.ShowIndicator(coord, 3, m_worldLayer.IndicatorLayer);
 
             switch (m_touchGesture)
             {
@@ -177,6 +178,7 @@
                     {
                         m_worldLayer.DoAction(action);
                     }
+                    m_Indicator.removeIndicator();
                     m_touchGesture = TouchGesture.None;
                     break;
 
@@ -239,6 +241,12 @@
                     if (m_worldLayer.UnitLayer.TileGIDAndFlags(coord).Gid != 0)
                     {
                         m_touchGesture = TouchGesture.MoveUnit;
+                        var MapCellPosition = new Client.Common.Models.MapCellPosition(coord);
+                        var Position = m_worldLayer.RegionView.GetCurrentGamePosition(MapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
+                        var PositionI = new Core.Models.PositionI((int)Position.X, (int)Position.Y);
+                        var move = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(PositionI.RegionPosition).GetEntity(PositionI.CellPosition).Move;                       
+                        m_Indicator = new IndicatorView(coord, m_worldLayer.IndicatorLayer);
+                        m_Indicator.ShowIndicator(coord, move, m_worldLayer.IndicatorLayer, 3);
                     }
                     else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid != 0 && m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid <= 67)
                     {
