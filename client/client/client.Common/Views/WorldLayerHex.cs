@@ -22,7 +22,7 @@ namespace Client.Common.Views
     /// <summary>
     /// The World layer with hexagonal Tilemaps.
     /// </summary>
-    public class WorldLayerHex : CCLayerColor
+    public class WorldLayerHex : CCLayer
     {
         /// <summary>
         /// Load phases.
@@ -69,7 +69,6 @@ namespace Client.Common.Views
             foreach (RegionViewHex regionViewHex in m_regionViewHexDic.Values)
             {
                 this.AddChild(regionViewHex.GetTileMap());
-                break;
             }
 
             this.AddChild(m_currentPositionNode);
@@ -123,7 +122,6 @@ namespace Client.Common.Views
         protected override void AddedToScene()
         {
             base.AddedToScene();
-            this.AnchorPoint = new CCPoint(0.5f, 0.5f);
             SetRegionViewsHexIntoTheWorld();
         }
 
@@ -135,27 +133,26 @@ namespace Client.Common.Views
             foreach (var pair in m_regionViewHexDic)
             {
                 var tileMap = pair.Value.GetTileMap();
+
+                offsetX = tileMap.TileLayersContainer.ScaledContentSize.Width;
+                offsetY = tileMap.TileLayersContainer.ScaledContentSize.Height;
+
                 //tileMap.AnchorPoint = new CCPoint(0.0f, 1.0f);
-                tileMap.PositionX = (tileMap.ContentSize.Width / 2.0f) * -1.0f;
-                //tileMap.PositionY = offsetY;
-                tileMap.Scale = 0.5f;
-                break;
+                tileMap.TileLayersContainer.PositionX = pair.Key.RegionX * offsetX;
+                tileMap.TileLayersContainer.PositionY = pair.Key.RegionY * offsetY;
 
-
-                //offsetX += tileMap.ScaledContentSize.Width * 3.2f;//.LayerSizeInPixels.Width;
-                //offsetY += tileMap.LayerSizeInPixels.Height;
 
             }
 
-//            this.PositionX = (offsetX / 25.0f) * 5;
-//            this.PositionY = (offsetY / 25.0f) * 5;
+            //this.PositionX = (float)m_currentPosition.RegionPosition.RegionX * offsetX;
+            // this.PositionY = (float)m_currentPosition.RegionPosition.RegionY * offsetY;
 
-//            var cameraVisibleBounds = new CCSize(1000, 500);
-//            var cameraTarget = new CCPoint3(offsetX / 5.0f, offsetY / 5.0f
-//                                   , 3.0f);
-            //                var cameraPosition = new CCPoint3((float)m_currentPosition.RegionPosition.RegionX,
-            //                                         (float)m_currentPosition.RegionPosition.RegionY, 100.0f);
-            //this.Camera = new CCCamera(CCCameraProjection.Projection2D, cameraVisibleBounds, cameraTarget);
+            var cameraTarget = new CCPoint3((float)m_currentPosition.RegionPosition.RegionX * offsetX,
+                                   (float)m_currentPosition.RegionPosition.RegionY * offsetY, 3.0f);
+            var cameraPosition = new CCPoint3((float)m_currentPosition.RegionPosition.RegionX * offsetX,
+                                     (float)m_currentPosition.RegionPosition.RegionY * offsetY, 100.0f);
+//            this.Camera = new CCCamera(80.0f, 16.0f / 9.0f, cameraPosition, cameraTarget);
+            int help = 1;
         }
 
         private void CheckGeolocation(float frameTimesInSecond)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="hexagonal" renderorder="left-up" width="32" height="32" tilewidth="84" tileheight="72" hexsidelength="46" staggeraxis="x" staggerindex="odd" nextobjectid="1">
+<map version="1.0" orientation="hexagonal" renderorder="left-up" width="32" height="32" tilewidth="62" tileheight="72" hexsidelength="46" staggeraxis="x" staggerindex="odd" nextobjectid="1">
  <tileset firstgid="1" name="Spritesheet_20151027" tilewidth="84" tileheight="72">
   <image source="Spritesheet_20151027.png" width="520" height="936"/>
  </tileset>
