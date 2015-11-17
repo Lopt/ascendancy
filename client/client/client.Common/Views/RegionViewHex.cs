@@ -31,16 +31,7 @@
             m_buildingLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_BUILDING);
             m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
 
-            Update();
-        }
-
-        /// <summary>
-        /// Update this instance.
-        /// </summary>
-        public void Update()
-        {
-            ClearLayers();
-            SetTilesInMap32();
+            Init();
         }
 
         /// <summary>
@@ -96,6 +87,15 @@
                 var gid = ViewDefinitions.Instance.DefinitionToTileGid(building.Definition, sort);
                 m_buildingLayer.SetTileGID(gid, mapCoordinat);
             }
+        }
+
+        /// <summary>
+        /// Update this instance.
+        /// </summary>
+        private void Init()
+        {
+            ClearLayers();
+            SetTilesInMap32();
         }
 
         /// <summary>

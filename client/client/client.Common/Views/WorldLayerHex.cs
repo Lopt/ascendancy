@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using Xamarin.Forms;
 
 namespace Client.Common.Views
 {
@@ -68,6 +69,7 @@ namespace Client.Common.Views
             foreach (RegionViewHex regionViewHex in m_regionViewHexDic.Values)
             {
                 this.AddChild(regionViewHex.GetTileMap());
+                break;
             }
 
             this.AddChild(m_currentPositionNode);
@@ -121,22 +123,39 @@ namespace Client.Common.Views
         protected override void AddedToScene()
         {
             base.AddedToScene();
-            //SetRegionViewsHexIntoTheWorld();
+            this.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            SetRegionViewsHexIntoTheWorld();
         }
 
         private void SetRegionViewsHexIntoTheWorld()
         {
-            foreach (var regionPosition in m_regionViewHexDic.Keys)
+            var offsetX = 0.0f;
+            var offsetY = 0.0f;
+
+            foreach (var pair in m_regionViewHexDic)
             {
-                RegionViewHex regionViewHex;
-                m_regionViewHexDic.TryGetValue(regionPosition, out regionViewHex);
-                regionViewHex.GetTileMap().PositionX = 100.0f;
-                regionViewHex.GetTileMap().PositionY = 0.0f;//regionPosition.RegionY;
-//                this.Camera = new CCCamera(CCCameraProjection.Projection2D, new CCSize(ClientConstants.TILE_HEX_IMAGE_WIDTH * ClientConstants.TILEMAP_HEX_WIDTH,
-//                        ClientConstants.TILE_HEX_IMAGE_HEIGHT * ClientConstants.TILEMAP_HEX_HEIGHT));
-//                this.Camera.TargetInWorldspace = new CCPoint3(ClientConstants.TILE_HEX_IMAGE_WIDTH * ClientConstants.TILEMAP_HEX_WIDTH,
-//                    ClientConstants.TILE_HEX_IMAGE_HEIGHT * ClientConstants.TILEMAP_HEX_HEIGHT, 0.0f);
+                var tileMap = pair.Value.GetTileMap();
+                //tileMap.AnchorPoint = new CCPoint(0.0f, 1.0f);
+                tileMap.PositionX = (tileMap.ContentSize.Width / 2.0f) * -1.0f;
+                //tileMap.PositionY = offsetY;
+                tileMap.Scale = 0.5f;
+                break;
+
+
+                //offsetX += tileMap.ScaledContentSize.Width * 3.2f;//.LayerSizeInPixels.Width;
+                //offsetY += tileMap.LayerSizeInPixels.Height;
+
             }
+
+//            this.PositionX = (offsetX / 25.0f) * 5;
+//            this.PositionY = (offsetY / 25.0f) * 5;
+
+//            var cameraVisibleBounds = new CCSize(1000, 500);
+//            var cameraTarget = new CCPoint3(offsetX / 5.0f, offsetY / 5.0f
+//                                   , 3.0f);
+            //                var cameraPosition = new CCPoint3((float)m_currentPosition.RegionPosition.RegionX,
+            //                                         (float)m_currentPosition.RegionPosition.RegionY, 100.0f);
+            //this.Camera = new CCCamera(CCCameraProjection.Projection2D, cameraVisibleBounds, cameraTarget);
         }
 
         private void CheckGeolocation(float frameTimesInSecond)
@@ -148,6 +167,7 @@ namespace Client.Common.Views
 
                 LoadRegionViewHexDicAsync();
             }
+                
         }
 
         /// <summary>
@@ -168,12 +188,13 @@ namespace Client.Common.Views
             var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
             Phase = Phases.Start;
             Phase = Phases.LoadTerrain;
-            await regionManagerController.LoadRegionsAsync(m_currentPosition.RegionPosition);
+            await regionManagerController.LoadTerrainsAsync(m_currentPosition.RegionPosition);
             Phase = Phases.LoadEntities;
             await EntityManagerController.Instance.LoadEntitiesAsync(m_currentPosition, m_currentPosition.RegionPosition);
             Phase = Phases.Idle;
 
             LoadRegionViewHexDic();
+
         }
 
         private void LoadRegionViewHexDic()
@@ -182,14 +203,38 @@ namespace Client.Common.Views
             m_regionViewHexDic.Clear();
             foreach (var regionPosition in regionManagerController.GetWorldNearRegionPositions(m_currentPosition.RegionPosition))
             {
-                if (regionPosition.Equals(m_currentPosition.RegionPosition))
-                {
-                    var region = regionManagerController.GetRegion(regionPosition);
-                    m_regionViewHexDic.Add(regionPosition, new RegionViewHex(region));
-                }
+                var region = regionManagerController.GetRegion(regionPosition);
+                m_regionViewHexDic.Add(regionPosition, new RegionViewHex(region));
+
             }
         }
 
+        private void testInfos()
+        {
+            RegionViewHex regionViewHex;
+            m_regionViewHexDic.TryGetValue(m_currentPosition.RegionPosition, out regionViewHex);
+            var tilemap = regionViewHex.GetTileMap();
+            var mapDimensions = tilemap.MapDimensions;
+            int numberOfColumns = (int)mapDimensions.Size.Width;
+            int numberOfRows = (int)mapDimensions.Size.Height;
+
+            var tileMapUnitLayer = tilemap.LayerNamed(ClientConstants.LAYER_UNIT);
+            var LayerSize = tileMapUnitLayer.LayerSize;
+             
+            int tileWidth = (int)tilemap.TileTexelSize.Width;
+            int tileHeight = (int)tilemap.TileTexelSize.Height;
+
+            int worldx = tileWidth * numberOfColumns + tileWidth / 2;
+            int worldy = tileHeight * numberOfRows + tileHeight / 2;
+            var cord = tileMapUnitLayer.ClosestTileCoordAtNodePosition(new CCPoint(worldx, worldy));
+
+
+            var size = this.ContentSize;
+            var layersize = this.Layer.LayerSizeInPixels;
+
+            int test = 1;
+
+        }
 
         #region Properties
 

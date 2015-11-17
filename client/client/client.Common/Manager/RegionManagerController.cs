@@ -53,7 +53,7 @@
 
             if (!region.Exist)
             {
-                LoadRegionAsync(region);
+                LoadTerainAsync(region);
             }
             return region;
         }
@@ -64,7 +64,7 @@
         /// </summary>
         /// <returns>The task async.</returns>
         /// <param name="centerRegionPosition">Region position which is in the center.</param>
-        public async Task LoadRegionsAsync(RegionPosition centerRegionPosition)
+        public async Task LoadTerrainsAsync(RegionPosition centerRegionPosition)
         {
             var worldRegions = GetWorldNearRegionPositions(centerRegionPosition);
 
@@ -74,7 +74,7 @@
 
                 if (!region.Exist)
                 {
-                    await LoadRegionAsync(region);
+                    await LoadTerainAsync(region);
                 }
             }
         }
@@ -125,7 +125,7 @@
         /// </summary>
         /// <returns>The function as task.</returns>
         /// <param name="region">Region which should be loaded.</param>
-        private async Task LoadRegionAsync(Region region)
+        private async Task LoadTerainAsync(Region region)
         {
             TerrainDefinition[,] terrain = await NetworkController.Instance.LoadTerrainsAsync(region.RegionPosition);
 
