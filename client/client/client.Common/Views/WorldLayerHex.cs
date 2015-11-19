@@ -58,8 +58,7 @@ namespace Client.Common.Views
             m_lastPosition = m_currentPosition;
             m_worker = new Views.Worker(this);
             EntityManagerController.Instance.Worker = m_worker;
-            // m_menuLayer = TODO
-            // ClearLayers();
+  
             m_regionViewHexDic = new Dictionary<RegionPosition, RegionViewHex>();
 
             m_currentPositionNode = new DrawNode();
@@ -68,7 +67,7 @@ namespace Client.Common.Views
 
             foreach (RegionViewHex regionViewHex in m_regionViewHexDic.Values)
             {
-                this.AddChild(regionViewHex.GetTileMap());
+                this.AddChild(regionViewHex.GetTileMap().TileLayersContainer);
             }
 
             this.AddChild(m_currentPositionNode);
@@ -92,18 +91,16 @@ namespace Client.Common.Views
                 newScale < Common.Constants.ClientConstants.TILEMAP_MAX_SCALE)
             {
                 m_scale = newScale;
-                this.Scale = m_scale;
+                var size = this.Camera.OrthographicViewSizeWorldspace;
+                this.Camera.OrthographicViewSizeWorldspace = new CCSize(size.Width * m_scale, size.Height * m_scale);
             }
         }
 
         public void MoveWorld(CCPoint diff)
         {
-            var anchor = this.AnchorPoint;
-            diff.X = diff.X / this.ScaledContentSize.Width;
-            diff.Y = diff.Y / this.ScaledContentSize.Height;
-            anchor.X -= diff.X;
-            anchor.Y -= diff.Y;
-            this.AnchorPoint = anchor;
+            var oldTargetPoint = this.Camera.TargetInWorldspace;
+            var newTargetPoint = new CCPoint3(oldTargetPoint.X - diff.X, oldTargetPoint.Y - diff.Y, oldTargetPoint.Z);
+            this.Camera.TargetInWorldspace = newTargetPoint;
         }
 
         public RegionViewHex GetRegionViewHex(RegionPosition regionPosition)
@@ -122,37 +119,32 @@ namespace Client.Common.Views
         protected override void AddedToScene()
         {
             base.AddedToScene();
-            SetRegionViewsHexIntoTheWorld();
+            SetCamera();
+            ScaleWorld(ClientConstants.TILEMAP_NORM_SCALE);
         }
 
-        private void SetRegionViewsHexIntoTheWorld()
+        private void SetCamera()
         {
-            var offsetX = 0.0f;
-            var offsetY = 0.0f;
+            SetCamera(m_currentPosition.RegionPosition);
+        }
 
-            foreach (var pair in m_regionViewHexDic)
-            {
-                var tileMap = pair.Value.GetTileMap();
+        private void SetCamera(RegionPosition regionPosition)
+        {
+            RegionViewHex regionViewHex;
+            m_regionViewHexDic.TryGetValue(regionPosition, out regionViewHex);
+            var cameraTargetPoint = PositionHelper.RegionViewHexToWorldPosition(regionViewHex);
+            SetCamera(cameraTargetPoint);
+        }
 
-                offsetX = tileMap.TileLayersContainer.ScaledContentSize.Width;
-                offsetY = tileMap.TileLayersContainer.ScaledContentSize.Height;
+        private void SetCamera(CCPoint cameraTargetPoint)
+        {
+            var cameraWidth = m_gameScene.VisibleBoundsScreenspace.MaxX;
+            var cameraHeight = m_gameScene.VisibleBoundsScreenspace.MaxY; 
 
-                //tileMap.AnchorPoint = new CCPoint(0.0f, 1.0f);
-                tileMap.TileLayersContainer.PositionX = pair.Key.RegionX * offsetX;
-                tileMap.TileLayersContainer.PositionY = pair.Key.RegionY * offsetY;
-
-
-            }
-
-            //this.PositionX = (float)m_currentPosition.RegionPosition.RegionX * offsetX;
-            // this.PositionY = (float)m_currentPosition.RegionPosition.RegionY * offsetY;
-
-            var cameraTarget = new CCPoint3((float)m_currentPosition.RegionPosition.RegionX * offsetX,
-                                   (float)m_currentPosition.RegionPosition.RegionY * offsetY, 3.0f);
-            var cameraPosition = new CCPoint3((float)m_currentPosition.RegionPosition.RegionX * offsetX,
-                                     (float)m_currentPosition.RegionPosition.RegionY * offsetY, 100.0f);
-//            this.Camera = new CCCamera(80.0f, 16.0f / 9.0f, cameraPosition, cameraTarget);
-            int help = 1;
+            this.Camera = new CCCamera(CCCameraProjection.Projection2D, 
+                new CCRect(cameraTargetPoint.X, cameraTargetPoint.Y,
+                    cameraWidth,
+                    cameraHeight));
         }
 
         private void CheckGeolocation(float frameTimesInSecond)
@@ -167,14 +159,6 @@ namespace Client.Common.Views
                 
         }
 
-        /// <summary>
-        /// Clears the Layers for initialization.
-        /// </summary>
-        private void ClearLayers()
-        {
-            var coordHelper = new CCTileMapCoordinates(0, 0);
-            m_menuLayer.RemoveTile(coordHelper);
-        }
 
         /// <summary>
         /// Loads the region view hex dictionary with all regions (5x5) arround the currentPosition.
@@ -204,33 +188,6 @@ namespace Client.Common.Views
                 m_regionViewHexDic.Add(regionPosition, new RegionViewHex(region));
 
             }
-        }
-
-        private void testInfos()
-        {
-            RegionViewHex regionViewHex;
-            m_regionViewHexDic.TryGetValue(m_currentPosition.RegionPosition, out regionViewHex);
-            var tilemap = regionViewHex.GetTileMap();
-            var mapDimensions = tilemap.MapDimensions;
-            int numberOfColumns = (int)mapDimensions.Size.Width;
-            int numberOfRows = (int)mapDimensions.Size.Height;
-
-            var tileMapUnitLayer = tilemap.LayerNamed(ClientConstants.LAYER_UNIT);
-            var LayerSize = tileMapUnitLayer.LayerSize;
-             
-            int tileWidth = (int)tilemap.TileTexelSize.Width;
-            int tileHeight = (int)tilemap.TileTexelSize.Height;
-
-            int worldx = tileWidth * numberOfColumns + tileWidth / 2;
-            int worldy = tileHeight * numberOfRows + tileHeight / 2;
-            var cord = tileMapUnitLayer.ClosestTileCoordAtNodePosition(new CCPoint(worldx, worldy));
-
-
-            var size = this.ContentSize;
-            var layersize = this.Layer.LayerSizeInPixels;
-
-            int test = 1;
-
         }
 
         #region Properties

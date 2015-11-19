@@ -96,6 +96,13 @@
         {
             ClearLayers();
             SetTilesInMap32();
+            SetWorldPosition();
+        }
+
+        public void SetWorldPosition()
+        {
+            var position = PositionHelper.RegionViewHexToWorldPosition(this);
+            m_tileMap.TileLayersContainer.Position = position;
         }
 
         /// <summary>

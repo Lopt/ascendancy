@@ -172,12 +172,12 @@
         /// <summary>
         /// default scaling of tile map
         /// </summary>
-        public const float TILEMAP_NORM_SCALE = 0.5f;
+        public const float TILEMAP_NORM_SCALE = 1.0f;
 
         /// <summary>
         /// maximum scaling of tile map
         /// </summary>
-        public const float TILEMAP_MAX_SCALE = 3.0f;
+        public const float TILEMAP_MAX_SCALE = 6.0f;
 
         /// <summary>
         /// number of regions which should be drawn (X)
