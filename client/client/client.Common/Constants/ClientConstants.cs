@@ -167,17 +167,27 @@
         /// <summary>
         /// minimum scaling of tile map
         /// </summary>
-        public const float TILEMAP_MIN_SCALE = 0.3f;
+        public const float TILEMAP_MIN_ZOOM = 0.3f;
 
         /// <summary>
         /// default scaling of tile map
         /// </summary>
-        public const float TILEMAP_NORM_SCALE = 1.0f;
+        public const float TILEMAP_NORM_ZOOM = 1.0f;
 
         /// <summary>
         /// maximum scaling of tile map
         /// </summary>
-        public const float TILEMAP_MAX_SCALE = 6.0f;
+        public const float TILEMAP_MAX_ZOOM = 6.0f;
+
+        /// <summary>
+        /// The heigth of the tile map hex content size.
+        /// </summary>
+        public const float TILEMAP_HEX_CONTENTSIZE_HEIGTH = 2304;
+
+        /// <summary>
+        /// The width of the tile map hex content size.
+        /// </summary>
+        public const float TILEMAP_HEX_CONTENTSIZE_WIDTH = 1984;
 
         /// <summary>
         /// number of regions which should be drawn (X)
