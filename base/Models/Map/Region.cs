@@ -64,6 +64,7 @@
             m_regionPosition = region.m_regionPosition;
             m_terrains = region.m_terrains;
             m_entities = region.m_entities;
+            m_territory = region.m_territory;
             m_actions = new DatedActions();
             m_actions.Actions = new LinkedList<Core.Models.Action>();
             m_exist = region.m_exist;
@@ -81,6 +82,7 @@
             m_terrains = new TerrainDefinition[Constants.REGION_SIZE_X, Constants.REGION_SIZE_Y];
             m_entities = new DatedEntities();
             m_entities.Entities = new LinkedList<Entity>();
+            m_territory = new Dictionary<CellPosition, Account>();
             m_actions = new DatedActions();
             m_actions.Actions = new LinkedList<Core.Models.Action>();
             m_exist = false;
@@ -97,6 +99,8 @@
             m_regionPosition = regionPosition;
             m_terrains = terrains;
             m_entities = new DatedEntities();
+            m_territory = new Dictionary<CellPosition, Account>();
+            throw new Exception("Territory need to be load");
             m_actions = new DatedActions();
             m_exist = true;
             m_mutex = new ReaderWriterLockSlim();
@@ -181,6 +185,53 @@
         public DatedEntities GetEntities()
         {
             return m_entities;
+        }
+
+        /// <summary>
+        /// Claims the territory.
+        /// </summary>
+        /// <param name="territoryList">Territory list.</param>
+        /// <param name="account">Account.</param>
+        public void ClaimTerritory(List<PositionI> territoryList, Account account)
+        {   
+            foreach (var position in territoryList)
+            {
+                if (!m_territory.ContainsKey(position.CellPosition))
+                {
+                    m_territory.Add(position.CellPosition, account);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the claimed territory.
+        /// </summary>
+        /// <returns>The claimed territory.</returns>
+        /// <param name="position">Position.</param>
+        public Account GetClaimedTerritory(CellPosition position)
+        {
+            Account result;
+            if (m_territory.TryGetValue(position, out result))
+            {
+                return result;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Frees the claimed territory.
+        /// </summary>
+        /// <param name="territoryList">Territory list.</param>
+        /// <param name="account">Account.</param>
+        public void FreeClaimedTerritory(List<PositionI> territoryList, Account account)
+        {
+            foreach (var position in territoryList)
+            {
+                if (m_territory.ContainsKey(position.CellPosition))
+                {
+                    m_territory.Remove(position.CellPosition);
+                }                        
+            }
         }
 
         /// <summary>
@@ -299,6 +350,11 @@
         /// Current active entities of the region
         /// </summary>
         private DatedEntities m_entities;
+
+        /// <summary>
+        /// Current owned territory from user.
+        /// </summary>
+        private Dictionary<CellPosition, Account> m_territory;
 
         /// <summary>
         /// already executed action in this region

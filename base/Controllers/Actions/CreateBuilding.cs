@@ -47,6 +47,24 @@
             var regionManagerC = Controller.Instance.RegionManagerController;
             var action = (Core.Models.Action)Model;
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+            var type = (long)action.Parameters[CREATION_TYPE];
+            var test = regionManagerC.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition);
+
+            if (type == (long)Models.Definitions.EntityType.Headquarter)
+            {
+                ConcurrentBag<Core.Models.Region> bag = new ConcurrentBag<Core.Models.Region>();
+                var region = regionManagerC.GetRegion(positionI.RegionPosition);
+                bag.Add(region);
+
+                var adjacentRegions = GetAdjacentRegions(regionManagerC, region.RegionPosition, positionI);
+
+                foreach (var adjRegions in adjacentRegions)
+                {
+                    bag.Add(regionManagerC.GetRegion(adjRegions));
+                }
+
+                return bag;
+            }
 
             return new ConcurrentBag<Core.Models.Region>() { regionManagerC.GetRegion(positionI.RegionPosition) };
         }
@@ -56,15 +74,43 @@
         /// </summary>
         /// <returns> True if the Building is buildable at the current position, otherwise false.</returns>
         public override bool Possible()
-        {
-            var regionManagerC = Controller.Instance.RegionManagerController;
+        {          
             var action = (Core.Models.Action)Model;
-            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+            var entityPosition = ((PositionI)action.Parameters[CREATE_POSITION]);
+            var entityCellPostion = entityPosition.CellPosition;
+            var region = Controller.Instance.RegionManagerController.GetRegion(entityPosition.RegionPosition);
+            var type = (long)action.Parameters[CREATION_TYPE];
 
-            if (regionManagerC.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition) == null)
+            if (action.Account.Headquarters.Count == 0 && 
+                type == (long)Models.Definitions.EntityType.Headquarter &&
+                region.GetEntity(entityCellPostion) == null &&
+                region.GetClaimedTerritory(entityCellPostion) == null)
             {
-                // entity and terrain check
-                var td = (TerrainDefinition)regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition);
+                // terrain check
+                var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
+                var list = LogicRules.GetSurroundedTerritory(entityPosition);
+                bool territoryFlag = true;
+                // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
+                foreach (var position in list)
+                {
+                    if (region.GetClaimedTerritory(position.CellPosition) != null)
+                    {
+                        territoryFlag = false;
+                    }                  
+                }
+                if (territoryFlag)
+                {
+                    m_HeadquarterFlag = true;
+                    return td.Buildable; 
+                }
+            }
+            // check for free tile and the terrain is possesed from the current player
+            else if (region.GetEntity(entityCellPostion) == null && 
+                     type != (long)Models.Definitions.EntityType.Headquarter &&
+                     region.GetClaimedTerritory(entityCellPostion) == action.Account)
+            {
+                // terrain check
+                var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
                 return td.Buildable;  
             }
             return false;         
@@ -76,12 +122,12 @@
         /// <returns> Returns <see cref="System.Collections.Concurrent.ConcurrentBag"/> class with the affected region./></returns>
         public override ConcurrentBag<Core.Models.Region> Do()
         {
-            var regionManagerC = Controller.Instance.RegionManagerController;
             var action = (Core.Models.Action)Model;
-            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+            var entityPosition = (PositionI)action.Parameters[CREATE_POSITION];
+            var region = Controller.Instance.RegionManagerController.GetRegion(entityPosition.RegionPosition);
+            var entityCellPostion = entityPosition.CellPosition;
             var type = (long)action.Parameters[CREATION_TYPE];
 
-            var region = regionManagerC.GetRegion(positionI.RegionPosition);
             var entityDef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
             var entityHealth = ((UnitDefinition)entityDef).Health; 
             var entityMoves = ((UnitDefinition)entityDef).Moves;
@@ -91,17 +137,25 @@
                 IdGenerator.GetId(),               
                 entityDef,  
                 action.Account,
-                positionI,
+                entityPosition,
                 entityHealth,
                 entityMoves);
 
-            entity.Position = positionI;
+            entity.Position = entityPosition;
             region.AddEntity(action.ActionTime, entity);
 
-            if (action.Account != null)
+
+            if (m_HeadquarterFlag && 
+                action.Account != null)
+            {
+                action.Account.Headquarters.AddLast(entity.Position);
+                region.ClaimTerritory(LogicRules.GetSurroundedTerritory(entityPosition),action.Account);
+            }
+            else if (action.Account != null)
             {
                 action.Account.Buildings.AddLast(entity.Position);
             }
+
             return new ConcurrentBag<Core.Models.Region>() { region };
         }
 
@@ -124,5 +178,88 @@
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             return positionI.RegionPosition;
         }
+
+        /// <summary>
+        /// Gets the adjacent regions, which can be affected.
+        /// </summary>
+        /// <returns>The adjacent regions.</returns>
+        /// <param name="regionManagerC">Region manager c.</param>
+        /// <param name="position">Current Position od the selected building.</param>
+        /// <param name="buildpoint">PositionI from the new unit.</param>
+        private ConcurrentBag<RegionPosition> GetAdjacentRegions(RegionManagerController regionManagerC, RegionPosition position, PositionI buildpoint)
+        {
+            var list = new ConcurrentBag<RegionPosition>();
+            var surlist = LogicRules.SurroundRegions;
+            var regionSizeX = Constants.REGION_SIZE_X;
+            var regionSizeY = Constants.REGION_SIZE_Y;
+
+            if (buildpoint.CellPosition.CellX == 0)
+            {
+                var tempReg = position + surlist[LogicRules.SurroundRegions.Length];
+                if (regionManagerC.GetRegion(tempReg).Exist)
+                {
+                    list.Add(tempReg);
+                }
+
+                for (int index = 0; index < 4; ++index)
+                {
+                    tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+            }
+            else if (buildpoint.CellPosition.CellY == 0)
+            {
+                for (int index = 5; index <= LogicRules.SurroundRegions.Length; ++index)
+                {
+                    var tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+
+                var reg = position + surlist[0];
+                if (regionManagerC.GetRegion(reg).Exist)
+                {
+                    list.Add(reg);
+                }
+                reg = position + surlist[1];
+                if (regionManagerC.GetRegion(reg).Exist)
+                {
+                    list.Add(reg);
+                }
+            }
+            else if (buildpoint.CellPosition.CellX == regionSizeX)
+            {
+                for (int index = 1; index < 6; ++index)
+                {
+                    var tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+            }
+            else if (buildpoint.CellPosition.CellY == regionSizeY)
+            {
+                for (int index = 3; index <= LogicRules.SurroundRegions.Length; ++index)
+                {
+                    var tempReg = position + surlist[index];
+                    if (regionManagerC.GetRegion(tempReg).Exist)
+                    {
+                        list.Add(tempReg);
+                    }
+                }
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// The m headquarter flag.
+        /// </summary>
+        private bool m_HeadquarterFlag = false;
     }
 }

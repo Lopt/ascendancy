@@ -14,6 +14,7 @@
         /// <param name="unitType">Unit type.</param>
         /// <param name="actions">The actions which can be used by this kind of units.</param>
         /// <param name="attack">Attack value.</param>
+        /// <param name="attackRange">AttackRange value.</param>
         /// <param name="defense">Defense value.</param>
         /// <param name="health">Maximum Health.</param>
         /// <param name="moves">Moves per turn.</param>
@@ -29,7 +30,7 @@
         {
             Actions = actions;
             Attack = attack;
-            AttackRange = 2;
+            AttackRange = attackRange;
             Defense = defense;
             Health = health;
             Moves = moves;
@@ -68,16 +69,6 @@
         }
 
         /// <summary>
-        /// Gets the attack range.
-        /// </summary>
-        /// <value>The attack range.</value>
-        public int AttackRange
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
         /// Gets the defense value.
         /// </summary>
         /// <value>The defense value.</value>
@@ -105,6 +96,16 @@
         {
             get;
             private set;
-        }   
+        } 
+
+        /// <summary>
+        /// Gets the attack range.
+        /// </summary>
+        /// <value>The attack range.</value>
+        public int AttackRange
+        {
+            get;
+            private set;
+        }
     }
 }

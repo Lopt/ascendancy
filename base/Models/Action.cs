@@ -59,10 +59,7 @@
             ActionTime = DateTime.Now;
 
             switch (type)
-            {
-                case ActionType.CreateHeadquarter:
-                    Control = new Controllers.Actions.CreateHeadquarter(this);
-                    break;    
+            {   
                 case ActionType.CreateUnit:
                     Control = new Controllers.Actions.CreateUnit(this);
                     break;
