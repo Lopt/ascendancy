@@ -68,7 +68,6 @@
     <Compile Include="Controllers\Actions\AStar\PathFinder.cs" />
     <Compile Include="Controllers\Actions\AStar\SearchParameters.cs" />
     <Compile Include="Controllers\Actions\CreateUnit.cs" />
-    <Compile Include="Controllers\Actions\CreateHeadquarter.cs" />
     <Compile Include="Controllers\Actions\Action.cs" />
     <Compile Include="Controllers\Actions\MoveUnit.cs" />
     <Compile Include="Connection\Packet.cs" />

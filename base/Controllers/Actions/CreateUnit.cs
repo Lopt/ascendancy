@@ -90,8 +90,9 @@
 
         /// <summary>
         /// Apply action-related changes to the world.
+        /// Returns set of changed Regions if everything worked, otherwise null
         /// </summary>
-        /// <returns> Returns <see cref="System.Collections.Concurrent.ConcurrentBag"/> class with the affected region./></returns>
+        /// <returns>all affected (changed) regions</returns>
         public override ConcurrentBag<Core.Models.Region> Do()
         {   
             var regionManagerC = Controller.Instance.RegionManagerController;
