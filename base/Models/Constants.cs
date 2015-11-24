@@ -67,5 +67,15 @@
         /// wait time for region writer lock
         /// </summary>
         public const int REGION_LOCK_WAIT_TIME = 0;
+
+        /// <summary>
+        /// The malus for range units in meele combat.
+        /// </summary>
+        public const int RANGE_IN_MEELE_MALUS = 10;
+
+        /// <summary>
+        /// Get the Range from the Ownership radius for the headquarter.
+        /// </summary>
+        public const int HEADQUARTER_TERRITORY_RANGE = 4;
     }
 }

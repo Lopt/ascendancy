@@ -56,29 +56,44 @@
         /// </summary>
         /// <returns> True if the Building is buildable at the current position, otherwise false.</returns>
         public override bool Possible()
-        {
-            var regionManagerC = Controller.Instance.RegionManagerController;
+        {          
             var action = (Core.Models.Action)Model;
-            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+            var entityPosition = ((PositionI)action.Parameters[CREATE_POSITION]);
+            var entityCellPostion = entityPosition.CellPosition;
+            var region = Controller.Instance.RegionManagerController.GetRegion(entityPosition.RegionPosition);
             var type = (long)action.Parameters[CREATION_TYPE];
-            var entitydef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
+            var entityDef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
 
             if (action.Account.Headquarters.Count == 0 && 
-                entitydef.ID == (long)Models.Definitions.EntityType.Headquarter &&
-                regionManagerC.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition) == null)
+                entityDef.ID == (long)Models.Definitions.EntityType.Headquarter &&
+                region.GetEntity(entityCellPostion) == null &&
+                region.GetClaimedTerritory(entityCellPostion) == null)
             {
                 // terrain check
-                var td = (TerrainDefinition)regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition);
-                m_HeadquarterFlag = true;
-                return td.Buildable; 
+                var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
+                var list = LogicRules.GetSurroundedTerritory(entityPosition);
+                bool territoryFlag = true;
+                // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
+                foreach (var position in list)
+                {
+                    if (region.GetClaimedTerritory(position.CellPosition) != null)
+                    {
+                        territoryFlag = false;
+                    }                  
+                }
+                if (territoryFlag)
+                {
+                    m_HeadquarterFlag = true;
+                    return td.Buildable; 
+                }
             }
             // check for free tile and the terrain is possesed from the current player
-            else if (regionManagerC.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition) == null && 
-                     entitydef.ID != (long)Models.Definitions.EntityType.Headquarter &&
-                     regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition).Ownership == action.AccountID)
+            else if (region.GetEntity(entityCellPostion) == null && 
+                     entityDef.ID != (long)Models.Definitions.EntityType.Headquarter &&
+                     region.GetClaimedTerritory(entityCellPostion) == action.Account)
             {
                 // terrain check
-                var td = (TerrainDefinition)regionManagerC.GetRegion(positionI.RegionPosition).GetTerrain(positionI.CellPosition);
+                var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
                 return td.Buildable;  
             }
             return false;         
@@ -90,27 +105,26 @@
         /// <returns> Returns <see cref="System.Collections.Concurrent.ConcurrentBag"/> class with the affected region./></returns>
         public override ConcurrentBag<Core.Models.Region> Do()
         {
-            var regionManagerC = Controller.Instance.RegionManagerController;
             var action = (Core.Models.Action)Model;
-            var positionI = (PositionI)action.Parameters[CREATE_POSITION];
+            var entityPosition = (PositionI)action.Parameters[CREATE_POSITION];
+            var region = Controller.Instance.RegionManagerController.GetRegion(entityPosition.RegionPosition);
+            var entityCellPostion = entityPosition.CellPosition;
             var type = (long)action.Parameters[CREATION_TYPE];
 
-            var region = regionManagerC.GetRegion(positionI.RegionPosition);
             var entityDef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
             var entityHealth = ((UnitDefinition)entityDef).Health; 
             var entityMoves = ((UnitDefinition)entityDef).Moves;
-            var entityOwnershipRadius = ((UnitDefinition)entityDef).OwnershipRadius;
 
             // create the new entity and link to the correct account
             var entity = new Core.Models.Entity(
                 IdGenerator.GetId(),               
                 entityDef,  
                 action.Account,
-                positionI,
+                entityPosition,
                 entityHealth,
                 entityMoves);
 
-            entity.Position = positionI;
+            entity.Position = entityPosition;
             region.AddEntity(action.ActionTime, entity);
 
 
@@ -118,7 +132,7 @@
                 action.Account != null)
             {
                 action.Account.Headquarters.AddLast(entity.Position);
-                LogicRules.ClaimTerritory(regionManagerC, entity);
+                region.ClaimTerritory(LogicRules.GetSurroundedTerritory(entityPosition),action.Account);
             }
             else if (action.Account != null)
             {

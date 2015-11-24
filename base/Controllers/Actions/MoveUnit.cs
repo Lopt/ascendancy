@@ -126,19 +126,22 @@
         /// <returns>all affected (changed) regions</returns>
         public override ConcurrentBag<Core.Models.Region> Do()
         {
-            var regionManagerC = Controller.Instance.RegionManagerController;
-
-            var bag = new ConcurrentBag<Core.Models.Region>();
-
             var action = (Core.Models.Action)Model;
-
             var startPosition = (PositionI)action.Parameters[START_POSITION];
             var endPosition = (PositionI)action.Parameters[END_POSITION];
-            var entity = regionManagerC.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
+
+            var regionStartPos = Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition);
+            var regionEndPos = Controller.Instance.RegionManagerController.GetRegion(endPosition.RegionPosition);
+            var bag = new ConcurrentBag<Core.Models.Region>();
+
+            var entity = regionStartPos.GetEntity(startPosition.CellPosition);
+           
+            var debugpSta = regionStartPos.GetClaimedTerritory(startPosition.CellPosition);
+            var debugpEnd = regionEndPos.GetClaimedTerritory(endPosition.CellPosition);
 
             if (m_fight)
             {
-                var enemyEntity = regionManagerC.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
+                var enemyEntity = regionEndPos.GetEntity(endPosition.CellPosition);
 
                 // Ranged attack units deal only 1 dmg to buildings
                 if (((UnitDefinition)entity.Definition).AttackRange >= 1 && enemyEntity.Definition.Category == Category.Building)
@@ -163,26 +166,37 @@
                 }
 
                 if (enemyEntity.Health <= 0)
-                {                    
-                    regionManagerC.GetRegion(endPosition.RegionPosition).RemoveEntity(action.ActionTime, enemyEntity);
+                {      
+                    // Remove a headquarter and free the territory
+                    if (enemyEntity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
+                    {  
+                        regionEndPos.FreeClaimedTerritory(LogicRules.GetSurroundedTerritory(enemyEntity.Position), enemyEntity.Owner);
+                        regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
+                    }
+                    regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
                 }
                 else if (entity.Health <= 0)
                 {
-                    regionManagerC.GetRegion(endPosition.RegionPosition).RemoveEntity(action.ActionTime, entity);
+                    if (entity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
+                    {  
+                        regionStartPos.FreeClaimedTerritory(LogicRules.GetSurroundedTerritory(enemyEntity.Position), entity.Owner);
+                        regionStartPos.RemoveEntity(action.ActionTime, entity);
+                    }
+                    regionStartPos.RemoveEntity(action.ActionTime, entity);
                 }
             }
             else
             {                
-                regionManagerC.GetRegion(startPosition.RegionPosition).RemoveEntity(action.ActionTime, entity);
-                regionManagerC.GetRegion(endPosition.RegionPosition).AddEntity(action.ActionTime, entity);   
+                regionStartPos.RemoveEntity(action.ActionTime, entity);
+                regionEndPos.AddEntity(action.ActionTime, entity);   
                 entity.Position = endPosition;
             }
 
-            bag.Add(regionManagerC.GetRegion(startPosition.RegionPosition));
+            bag.Add(regionStartPos);
 
             if (startPosition.RegionPosition != endPosition.RegionPosition)
             {
-                bag.Add(regionManagerC.GetRegion(endPosition.RegionPosition));
+                bag.Add(regionEndPos);
             }
 
             action.Parameters[CLIENT_UNIT_INFOS] = entity;
@@ -276,7 +290,7 @@
             }
             return list;
         }
-
+               
         /// <summary>
         /// The path.
         /// </summary>

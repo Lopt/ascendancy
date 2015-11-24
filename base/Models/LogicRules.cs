@@ -16,7 +16,7 @@
         /// </summary>
         public static int RangedInMeeleMalus(Entity entity)
         {
-            entity.ModfifedAttackValue -= 10;
+            entity.ModfifedAttackValue -= Constants.RANGE_IN_MEELE_MALUS;
             return 0;
         }
 
@@ -96,12 +96,12 @@
         {
                 new RegionPosition(-1, -1),
                 new RegionPosition(-1,  0),
-                new RegionPosition(-1, +1),
-                new RegionPosition(0, +1),
-                new RegionPosition(+1, +1),
-                new RegionPosition(+1,  0),
-                new RegionPosition(+1, -1),
-                new RegionPosition(0, -1)
+                new RegionPosition(-1,  1),
+                new RegionPosition( 0,  1),
+                new RegionPosition( 1,  1),
+                new RegionPosition( 1,  0),
+                new RegionPosition( 1, -1),
+                new RegionPosition( 0, -1)
         };
 
         /// <summary>
@@ -126,16 +126,48 @@
         }
 
         /// <summary>
+        /// Gets the surrounded territory arround the building.
+        /// </summary>
+        /// <param name="entity">Entity.</param>
+        public static List<PositionI> GetSurroundedTerritory(PositionI entity)
+        {
+            var tilelist = new List<PositionI>();
+
+            tilelist.Add(entity);
+           
+            for (int i = 0; i != Constants.HEADQUARTER_TERRITORY_RANGE; i++)
+            {
+                List<PositionI> result = new List<PositionI>(tilelist);
+
+                foreach (var item in tilelist)
+                {
+                    var currentPosition = GetSurroundedFields(item);
+                    foreach (var tile in currentPosition)
+                    {
+                        if (!result.Contains(tile))
+                        {
+                            result.Add(tile);
+                        }
+                    }
+                }
+
+                tilelist = result;
+            }
+
+           return tilelist;
+        }
+
+        /// <summary>
         /// Dice the specified attack damage for the entity.
         /// </summary>
         /// <param name="entity">Entity.</param>
         public static int Dice(Entity entity)
         {
             var rand = new Random(entity.ID + entity.OwnerID + entity.Position.GetHashCode());
-            double test = entity.ModfifedAttackValue;
-            var bla = rand.NextDouble() * (2);    
-            test *= bla;
-            entity.ModfifedAttackValue = (int)test;
+            double result = entity.ModfifedAttackValue;
+            var randomValue = rand.NextDouble() * (2);    
+            result *= randomValue;
+            entity.ModfifedAttackValue = (int)result;
             return 0;
         }
 
@@ -145,8 +177,8 @@
         /// <value>The defense modifier.</value>
         public static int  TerrainDefenseModifier(Entity entitiy)
         {
-            entitiy.ModfifedAttackValue = ((Definitions.UnitDefinition)entitiy.Definition).Defense * World.Instance.RegionManager.GetRegion(entitiy.Position.RegionPosition)
-                                                                                                     .GetTerrain(entitiy.Position.CellPosition).DefenseModifier;
+            entitiy.ModfifedAttackValue = ((Definitions.UnitDefinition)entitiy.Definition).Defense * 
+                                            World.Instance.RegionManager.GetRegion(entitiy.Position.RegionPosition).GetTerrain(entitiy.Position.CellPosition).DefenseModifier;
             return 0;
         }
 
@@ -156,8 +188,8 @@
         /// <param name="entity">Entity.</param>
         public static int TerrainAttackModifier(Entity entity)
         {
-            entity.ModfifedAttackValue = ((Definitions.UnitDefinition)entity.Definition).Attack * World.Instance.RegionManager.GetRegion(entity.Position.RegionPosition)
-                                                                                                  .GetTerrain(entity.Position.CellPosition).AttackModifier;
+            entity.ModfifedAttackValue = ((Definitions.UnitDefinition)entity.Definition).Attack * 
+                                           World.Instance.RegionManager.GetRegion(entity.Position.RegionPosition).GetTerrain(entity.Position.CellPosition).AttackModifier;
             return 0;
         }
 
