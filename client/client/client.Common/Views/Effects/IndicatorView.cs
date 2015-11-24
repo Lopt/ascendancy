@@ -44,39 +44,64 @@
             return coordHelper;   
         }
 
-        public List<CCTileMapCoordinates> GetSurroundedTilesinRange(CCTileMapCoordinates center, int range)
+        public HashSet<CCTileMapCoordinates> GetSurroundedTilesinRange(CCTileMapCoordinates center, int range)
         {
-            Tilelist = new List<CCTileMapCoordinates>();
+            var TileSet = new HashSet<CCTileMapCoordinates>();
+            var TileSetHelper = new HashSet<CCTileMapCoordinates>();
 
-            Tilelist.Add(center);
-            //var SurroudedTiles = GetSurroundedTiles(center);
+            TileSet.Add(center);
+            TileSetHelper.Add(center);
 
-            //foreach (var node in SurroudedTiles)
-            //{
-            //    Testlist.Add(node);
-            //}
-
-            for (int i = 0; i != range; i++)
+            for (int i = 0; i != range; ++i)
             {
-                //Tiles = GetSurtiles(Tiles);
-                List<CCTileMapCoordinates> result = new List<CCTileMapCoordinates>(Tilelist);
-
-                foreach (var item in Tilelist)
+                var temptileset = new HashSet<CCTileMapCoordinates>();
+                foreach (var item in TileSetHelper)
                 {
-                    var test = GetSurroundedTiles(item);
-                    foreach (var tile in test)
+                    var surroundedTiles = GetSurroundedTiles(item);
+                    foreach (var tile in surroundedTiles)
                     {
-                        if (!result.Contains(tile))
+                        if (!TileSet.Contains(tile))
                         {
-                            result.Add(tile);
+                            TileSet.Add(tile);
+                            temptileset.Add(tile);
                         }
                     }
                 }
-
-                Tilelist = result;
+                TileSetHelper = temptileset;
             }
-            return Tilelist;
+            return TileSet;
         }
+//
+//            Tilelist = new List<CCTileMapCoordinates>();
+//
+//            Tilelist.Add(center);
+//            //var SurroudedTiles = GetSurroundedTiles(center);
+//
+//            //foreach (var node in SurroudedTiles)
+//            //{
+//            //    Testlist.Add(node);
+//            //}
+//
+//            for (int i = 0; i != range; i++)
+//            {
+//                //Tiles = GetSurtiles(Tiles);
+//                List<CCTileMapCoordinates> result = new List<CCTileMapCoordinates>(Tilelist);
+//
+//                foreach (var item in Tilelist)
+//                {
+//                    var test = GetSurroundedTiles(item);
+//                    foreach (var tile in test)
+//                    {
+//                        if (!result.Contains(tile))
+//                        {
+//                            result.Add(tile);
+//                        }
+//                    }
+//                }
+//
+//                Tilelist = result;
+//            }
+//            return Tilelist;
 
         /*List<CCTileMapCoordinates> GetSurtiles (List<CCTileMapCoordinates> list)
         {
@@ -99,31 +124,6 @@
 
         public void ShowIndicator(CCTileMapCoordinates center, int range, CCTileMapLayer layer, int type)
         {
-           /* CCColor4F color = new CCColor4F(255,255,255,0); 
-            switch (type)
-            {
-                //walking range
-                case 1:
-                    color.R = 255;
-                    color.G = 255;
-                    color.B = 255;
-                    color.A = 125;
-                    break;
-                //combat range
-                case 2:
-                    color.R = 255;
-                    color.G = 0;
-                    color.B = 0;
-                    color.A = 125;
-                    break;
-                //terrain range
-                case 3:
-                    color.R = 124;
-                    color.G = 252;
-                    color.B = 0;
-                    color.A = 125;
-                    break;
-            }*/
             var gid = new CCTileGidAndFlags(74);
             switch (type)
             {
@@ -141,10 +141,10 @@
                     break;
             }
 
-            var surroundedTiles = GetSurroundedTilesinRange(center, range);
+            surroundedTileSet = GetSurroundedTilesinRange(center, range);
 
 
-            foreach (var tile in surroundedTiles)
+            foreach (var tile in surroundedTileSet)
             {
                 m_layer.SetTileGID(gid,tile);
             }
@@ -153,7 +153,7 @@
 
         public void removeIndicator()
         {
-            foreach (var item in Tilelist)
+            foreach (var item in surroundedTileSet)
             {
                 m_layer.RemoveTile(item); 
             }
@@ -169,6 +169,6 @@
         /// </summary>
         private CCTileMapLayer m_layer;
 
-        private List<CCTileMapCoordinates> Tilelist;
+        private HashSet<CCTileMapCoordinates> surroundedTileSet;
     }
 }
