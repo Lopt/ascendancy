@@ -297,6 +297,7 @@
             BuildingLayer.RemoveTile(coordHelper);
             UnitLayer.RemoveTile(coordHelper);
             MenuLayer.RemoveTile(coordHelper);
+            IndicatorLayer.RemoveTile(coordHelper);
         }
 
         /// <summary>
