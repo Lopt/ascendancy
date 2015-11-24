@@ -21,10 +21,10 @@
             WorldLayerHex = new WorldLayerHex(this);
             AddChild(WorldLayerHex);
 
-            // m_touchHandler = new TileTouchHandler(this);
+            m_touchHandler = new TileTouchHandler(this);
 
 //            HUD = new Client.Common.Views.HUD.HUDLayer(this);
-//            AddChild(HUD);
+            //          AddChild(HUD);
 
 //            DebugLayer = new DebugLayer();
 //            AddChild(DebugLayer);
@@ -53,7 +53,7 @@
         /// <summary>
         /// The m_touch handler.
         /// </summary>
-        // private TileTouchHandler m_touchHandler;
+        private TileTouchHandler m_touchHandler;
 
         #endregion
     }

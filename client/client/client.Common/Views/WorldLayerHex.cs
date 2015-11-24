@@ -63,6 +63,7 @@ namespace Client.Common.Views
 
             m_currentPositionNode = new DrawNode();
 
+
             LoadRegionViewHexDic();
 
             foreach (RegionViewHex regionViewHex in m_regionViewHexDic.Values)
@@ -82,25 +83,28 @@ namespace Client.Common.Views
         /// <returns>The scale factor.</returns>
         public float GetScale()
         {
-            return m_scale;
+            return m_zoom;
         }
 
-        public void ScaleWorld(float newScale)
+        public void ZoomWorld(float newZoom)
         {
-            if (Common.Constants.ClientConstants.TILEMAP_MIN_SCALE < newScale &&
-                newScale < Common.Constants.ClientConstants.TILEMAP_MAX_SCALE)
+            if (Common.Constants.ClientConstants.TILEMAP_MIN_ZOOM < newZoom &&
+                newZoom < Common.Constants.ClientConstants.TILEMAP_MAX_ZOOM)
             {
-                m_scale = newScale;
-                var size = this.Camera.OrthographicViewSizeWorldspace;
-                this.Camera.OrthographicViewSizeWorldspace = new CCSize(size.Width * m_scale, size.Height * m_scale);
+                m_zoom = newZoom;
+                var size = m_gameScene.VisibleBoundsScreenspace.Size;
+                this.Camera.OrthographicViewSizeWorldspace = new CCSize(size.Width * m_zoom, size.Height * m_zoom);
             }
         }
 
-        public void MoveWorld(CCPoint diff)
+        public void MoveCamera(CCPoint diff)
         {
             var oldTargetPoint = this.Camera.TargetInWorldspace;
+            var oldCameraPoint = this.Camera.CenterInWorldspace;
             var newTargetPoint = new CCPoint3(oldTargetPoint.X - diff.X, oldTargetPoint.Y - diff.Y, oldTargetPoint.Z);
+            var newCameraPoint = new CCPoint3(oldCameraPoint.X - diff.X, oldCameraPoint.Y - diff.Y, oldCameraPoint.Z);
             this.Camera.TargetInWorldspace = newTargetPoint;
+            this.Camera.CenterInWorldspace = newCameraPoint;
         }
 
         public RegionViewHex GetRegionViewHex(RegionPosition regionPosition)
@@ -120,7 +124,7 @@ namespace Client.Common.Views
         {
             base.AddedToScene();
             SetCamera();
-            ScaleWorld(ClientConstants.TILEMAP_NORM_SCALE);
+            ZoomWorld(ClientConstants.TILEMAP_NORM_ZOOM);
         }
 
         private void SetCamera()
@@ -226,12 +230,13 @@ namespace Client.Common.Views
         /// <summary>
         /// The m scale.
         /// </summary>
-        private float m_scale;
+        private float m_zoom;
 
         /// <summary>
         /// The m_game scene.
         /// </summary>
         private GameScene m_gameScene;
+
 
         #endregion
     }
