@@ -30,7 +30,7 @@
             m_terrainLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_TERRAIN);
             m_buildingLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_BUILDING);
             m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
-
+            m_menueLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_MENU);
             Init();
         }
 
@@ -113,6 +113,7 @@
             var coordHelper = new CCTileMapCoordinates(0, 0);
             m_buildingLayer.RemoveTile(coordHelper);
             m_unitLayer.RemoveTile(coordHelper);
+            m_menueLayer.RemoveTile(coordHelper);
         }
 
         /// <summary>
@@ -186,6 +187,11 @@
         /// The unit layer.
         /// </summary>
         private CCTileMapLayer m_unitLayer;
+
+        /// <summary>
+        /// The menue layer.
+        /// </summary>
+        private CCTileMapLayer m_menueLayer;
 
         /// <summary>
         /// The tile map.
