@@ -124,7 +124,7 @@
             }
             return surrounded;
         }
-
+            
         /// <summary>
         /// Gets the surrounded territory arround the building.
         /// </summary>
@@ -193,5 +193,56 @@
             return 0;
         }
 
+        /// <summary>
+        /// Enables the headquarter build options headquarter = 276.
+        /// </summary>
+        /// <returns>The headquarter build options.</returns>
+        public static List<long> EnableHeadquarterBuildOptions()
+        {
+            var List = new List<long>();
+            List.Add(288);
+            List.Add(294);
+            List.Add(300);
+            List.Add(306);
+            List.Add(312);
+            return List;
+        }
+
+        /// <summary>
+        /// Enables the barracks build options barracks = 282.
+        /// </summary>
+        /// <returns>The barracks build options.</returns>
+        public static List<long> EnableBarracksBuildOptions()
+        {
+            var List = new List<long>();           
+            List.Add(60);
+            List.Add(66);
+            List.Add(72);
+            List.Add(78);
+            List.Add(84);
+            List.Add(90);
+            return List;
+        }
+
+        /// <summary>
+        /// Enables the build options.
+        /// </summary>
+        /// <param name="containedList">Contained list.</param>
+        /// <param name="entityType">Entity type.</param>
+        /// <param name="account">Account.</param>
+        public static void EnableBuildOptions(long entityType, Account account)
+        {
+            if (!account.BuildableBuildings.ContainsKey(entityType))
+            {
+               if (entityType == (long)Models.Definitions.EntityType.Headquarter)
+               {
+                   account.BuildableBuildings.Add(276, EnableHeadquarterBuildOptions());
+               }
+               else if (entityType == (long)Models.Definitions.EntityType.Barracks)
+               {
+                   account.BuildableBuildings.Add(282, EnableBarracksBuildOptions());
+               }
+            }
+        }
     }        
 }

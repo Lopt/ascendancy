@@ -81,6 +81,7 @@
      
      
      {
+        "Name": "Headquarter",
         "UnitType": 276,
         "Actions": ["CreateBuilding"],
         "Attack": 0,
@@ -91,6 +92,7 @@
      },
 
      {
+        "Name": "Barracks",
         "UnitType": 282,
         "Actions": ["CreateBuilding"],
         "Attack": 0,
@@ -102,6 +104,7 @@
      },
 
      {
+        "Name": "Factory",
         "UnitType": 288,
         "Actions": ["CreateBuilding"],
         "Attack": 0,
@@ -113,6 +116,7 @@
      },
      
      {
+        "Name": "Attachment",
         "UnitType": 294,
         "Actions": ["CreateBuilding"],
         "Attack": 0,
@@ -124,6 +128,7 @@
      },
 
      {
+        "Name": "GuardTower",
         "UnitType": 300,
         "Actions": ["CreateBuilding"],
         "Attack": 0,
@@ -135,6 +140,7 @@
      },
 
      {
+        "Name": "Hospital",
         "UnitType": 306,
         "Actions": ["CreateBuilding"],
         "Attack": 0,
@@ -143,5 +149,19 @@
         "Moves": 0,
 
 
-     }
+     },
+
+     {
+        "Name": "TradingPost",
+        "UnitType": 312,
+        "Actions": ["CreateBuilding"],
+        "Attack": 0,
+        "Defense": 0,
+        "Health": 100,
+        "Moves": 0,
+
+
+     } 
+   
+
 ]

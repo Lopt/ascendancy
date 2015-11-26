@@ -21,6 +21,7 @@
             Headquarters = new LinkedList<PositionI>();
             Buildings = new LinkedList<PositionI>();
             Units = new LinkedList<PositionI>();
+            BuildableBuildings = new Dictionary<long, List<long>>();
 
             Scrap = new Scrap();
             Population = new Population();
@@ -41,6 +42,7 @@
             Headquarters = new LinkedList<PositionI>();
             Units = new LinkedList<PositionI>();
             Buildings = new LinkedList<PositionI>();
+            BuildableBuildings = new Dictionary<long, List<long>>();
 
             Scrap = new Scrap();
             Population = new Population();
@@ -80,6 +82,16 @@
         }
 
         /// <summary>
+        /// Gets the buildings.
+        /// </summary>
+        /// <value>The buildings.</value>
+        public LinkedList<PositionI> Buildings
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// Gets the units.
         /// </summary>
         /// <value>The units.</value>
@@ -90,14 +102,10 @@
         }
 
         /// <summary>
-        /// Gets the buildings.
+        /// Gets the buildable buildings.
         /// </summary>
-        /// <value>The buildings.</value>
-        public LinkedList<PositionI> Buildings
-        {
-            get;
-            private set;
-        }
+        /// <value>The buildable buildings.</value>
+        public Dictionary<long, List<long>> BuildableBuildings;
 
         public Scrap Scrap;
         public Plutonium Plutonium;

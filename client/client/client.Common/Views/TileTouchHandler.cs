@@ -270,7 +270,7 @@
                         var defM = Core.Models.World.Instance.DefinitionManager;
 
                         types[0] = defM.GetDefinition(EntityType.Headquarter);
-                        types[1] = defM.GetDefinition(EntityType.Headquarter);
+                        types[1] = defM.GetDefinition(EntityType.Barracks);
                         types[2] = defM.GetDefinition(EntityType.Headquarter);
                         types[3] = defM.GetDefinition(EntityType.Headquarter);
                         types[4] = defM.GetDefinition(EntityType.Headquarter);
