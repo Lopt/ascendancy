@@ -201,11 +201,12 @@
         public static List<long> EnableHeadquarterBuildOptions()
         {
             var List = new List<long>();
-            List.Add(288);
-            List.Add(294);
-            List.Add(300);
-            List.Add(306);
-            List.Add(312);
+            List.Add((long)Models.Definitions.EntityType.Barracks);
+            List.Add((long)Models.Definitions.EntityType.Factory);
+            List.Add((long)Models.Definitions.EntityType.Attachment);
+            List.Add((long)Models.Definitions.EntityType.GuardTower);
+            List.Add((long)Models.Definitions.EntityType.Hospital);
+            List.Add((long)Models.Definitions.EntityType.TradingPost);
             return List;
         }
 
@@ -216,12 +217,12 @@
         public static List<long> EnableBarracksBuildOptions()
         {
             var List = new List<long>();           
-            List.Add(60);
-            List.Add(66);
-            List.Add(72);
-            List.Add(78);
-            List.Add(84);
-            List.Add(90);
+            List.Add((long)Models.Definitions.EntityType.Hero);
+            List.Add((long)Models.Definitions.EntityType.Mage);
+            List.Add((long)Models.Definitions.EntityType.Warrior);
+            List.Add((long)Models.Definitions.EntityType.Archer);
+            List.Add((long)Models.Definitions.EntityType.Scout);
+            List.Add((long)Models.Definitions.EntityType.Unknown3);
             return List;
         }
 
@@ -237,11 +238,11 @@
             {
                if (entityType == (long)Models.Definitions.EntityType.Headquarter)
                {
-                   account.BuildableBuildings.Add(276, EnableHeadquarterBuildOptions());
+                    account.BuildableBuildings.Add((long)Models.Definitions.EntityType.Headquarter, EnableHeadquarterBuildOptions());
                }
                else if (entityType == (long)Models.Definitions.EntityType.Barracks)
                {
-                   account.BuildableBuildings.Add(282, EnableBarracksBuildOptions());
+                    account.BuildableBuildings.Add((long)Models.Definitions.EntityType.Barracks, EnableBarracksBuildOptions());
                }
             }
         }
