@@ -126,35 +126,36 @@
         }
 
         /// <summary>
-        /// Gets the surrounded territory arround the building.
+        /// Gets the surrounded territory arround a given Position.
         /// </summary>
         /// <param name="entity">Entity.</param>
-        public static List<PositionI> GetSurroundedTerritory(PositionI entity)
+        /// <param name="range">The range of an entity.</param>
+        public static HashSet<PositionI> GetSurroundedPositions(PositionI entity, int range)
         {
-            var tilelist = new List<PositionI>();
+            var fieldSet = new HashSet<PositionI>();
+            var fieldSetHelper = new HashSet<PositionI>();
 
-            tilelist.Add(entity);
-           
-            for (int i = 0; i != Constants.HEADQUARTER_TERRITORY_RANGE; i++)
+            fieldSet.Add(entity);
+            fieldSetHelper.Add(entity);
+
+            for (int i = 0; i != range; ++i)
             {
-                List<PositionI> result = new List<PositionI>(tilelist);
-
-                foreach (var item in tilelist)
+                var tempfieldSet = new HashSet<PositionI>();
+                foreach (var item in fieldSetHelper)
                 {
-                    var currentPosition = GetSurroundedFields(item);
-                    foreach (var tile in currentPosition)
+                    var surroundedTiles = GetSurroundedFields(item);
+                    foreach (var tile in surroundedTiles)
                     {
-                        if (!result.Contains(tile))
+                        if (!fieldSet.Contains(tile))
                         {
-                            result.Add(tile);
+                            fieldSet.Add(tile);
+                            tempfieldSet.Add(tile);
                         }
                     }
                 }
-
-                tilelist = result;
+                fieldSetHelper = tempfieldSet;
             }
-
-           return tilelist;
+            return fieldSet;
         }
 
         /// <summary>

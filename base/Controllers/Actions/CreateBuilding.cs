@@ -88,7 +88,7 @@
             {
                 // terrain check
                 var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
-                var list = LogicRules.GetSurroundedTerritory(entityPosition);
+                var list = LogicRules.GetSurroundedPositions(entityPosition, Constants.HEADQUARTER_TERRITORY_RANGE);
                 bool territoryFlag = true;
                 // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
                 foreach (var position in list)
@@ -149,7 +149,7 @@
                 action.Account != null)
             {
                 action.Account.Headquarters.AddLast(entity.Position);
-                region.ClaimTerritory(LogicRules.GetSurroundedTerritory(entityPosition),action.Account);
+                region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, Constants.HEADQUARTER_TERRITORY_RANGE),action.Account);
             }
             else if (action.Account != null)
             {

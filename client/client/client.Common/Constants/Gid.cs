@@ -261,27 +261,27 @@
         /// <summary>
         /// GID for the enemy unit tile with the trait archer.
         /// </summary>
-        public const short BOWMAN = 68;
+        public const short BOWMAN = 78;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait hero.
         /// </summary>
-        public const short HERO = 69;
+        public const short HERO = 79;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait warrior.
         /// </summary>
-        public const short WARRIOR = 70;
+        public const short WARRIOR = 80;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait mage.
         /// </summary>
-        public const short MAGE = 71;
+        public const short MAGE = 81;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait scout.
         /// </summary>
-        public const short SCOUT = 72;
+        public const short SCOUT = 82;
     }
 
     /// <summary>
@@ -292,7 +292,7 @@
         /// <summary>
         /// GID for the enemy building tile with the trait headquarter.
         /// </summary>
-        public const short HEADQUARTER = 73;
+        public const short HEADQUARTER = 83;
     }
 
     /// <summary>
@@ -300,45 +300,65 @@
     /// </summary>
     public class BuildingMenuGid
     {
+        public const short MILITARY = 52;
+
+        public const short STORAGE = 53;
+
+        public const short ZIVIL = 54;
+
+        public const short RESOURCES = 55;
+
+        public const short CANCLE = 56;
+
+        public const short UPGRADE = 57;
+
         /// <summary>
         /// GID for the building menu tile with the trait earth.
         /// </summary>
-        public const short EARTH = 52;
+        public const short EARTH = 58;
 
         /// <summary>
         /// GID for the building menu tile with the trait fire.
         /// </summary>
-        public const short FIRE = 53;
+        public const short FIRE = 59;
 
         /// <summary>
         /// GID for the building menu tile with the trait gold.
         /// </summary>
-        public const short GOLD = 54;
+        public const short GOLD = 60;
 
         /// <summary>
         /// GID for the building menu tile with the trait air.
         /// </summary>
-        public const short AIR = 55;
+        public const short AIR = 61;
 
         /// <summary>
         /// GID for the building menu tile with the trait magic.
         /// </summary>
-        public const short MANA = 56;
+        public const short MANA = 62;
 
         /// <summary>
         /// GID for the building menu tile with the trait water.
         /// </summary>
-        public const short WATER = 57;
+        public const short WATER = 63;
 
         /// <summary>
         /// GID for the building menu tile with the trait placeholder.
         /// </summary>
-        public const short BUILDINGPLACEHOLDER = 58;
+        public const short BUILDINGPLACEHOLDER = 64;
 
         /// <summary>
         /// GID for the building menu tile with the trait headquarter.
         /// </summary>
-        public const short HEADQUARTER = 59;
+        public const short HEADQUARTER = 65;
+
+        public const short BARAKE = 66;
+
+        public const short FABRIK = 67;
+
+        public const short TURM = 68;
+
+        public const short ZAUN = 69;
     }
 
     /// <summary>
@@ -349,32 +369,32 @@
         /// <summary>
         /// GID for the unit menu tiles with the trait archer.
         /// </summary>
-        public const short BOWMAN = 60;
+        public const short BOWMAN = 70;
 
         /// <summary>
         /// GID for the unit menu tiles with the trait hero.
         /// </summary>
-        public const short HERO = 61;
+        public const short HERO = 71;
 
         /// <summary>
         /// GID for the unit menu tiles with the trait warrior.
         /// </summary>
-        public const short WARRIOR = 62;
+        public const short WARRIOR = 72;
 
         /// <summary>
         /// GID for the unit menu tiles with the trait mage.
         /// </summary>
-        public const short MAGE = 63;
+        public const short MAGE = 73;
 
         /// <summary>
         /// GID for the unit menu tiles with the trait scout.
         /// </summary>
-        public const short SCOUT = 64;
+        public const short SCOUT = 74;
 
         /// <summary>
         /// GID for the unit menu tiles with the trait unknown.
         /// </summary>
-        public const short UNKNOWN = 65;
+        public const short UNKNOWN = 75;
     }
 
     /// <summary>
@@ -385,26 +405,26 @@
         /// <summary>
         /// GID for the tile with the trait dot.
         /// </summary>
-        public const short DOT = 66;
+        public const short DOT = 76;
 
         /// <summary>
         /// GID for the tile with the trait cross.
         /// </summary>
-        public const short CROSS = 67;
+        public const short CROSS = 77;
 
         /// <summary>
         /// GID for the green indicator.
         /// </summary>
-        public const short GREENINDICATOR = 74;
+        public const short GREENINDICATOR = 84;
 
         /// <summary>
         /// GID for the red indicator.
         /// </summary>
-        public const short REDINDICATOR = 75;
+        public const short REDINDICATOR = 85;
 
         /// <summary>
         /// GID for the white indicator.
         /// </summary>
-        public const short WHITEINDICATOR = 76;
+        public const short WHITEINDICATOR = 86;
     }
 }

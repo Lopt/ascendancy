@@ -1,174 +1,80 @@
 ﻿namespace Client.Common.Views.Effects
 {
-    using CocosSharp;
     using System;
     using System.Collections.Generic;
+    using CocosSharp;
+    using Core.Models;
+
     /// <summary>
     /// Indicator view.
     /// </summary>
     public class IndicatorView
-    {
-        public IndicatorView(CCTileMapCoordinates center, CCTileMapLayer layer)
+    {   
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.Effects.IndicatorView"/> class.
+        /// </summary>
+        /// <param name="worldlayer">The Worldlayer.</param>
+        public IndicatorView(WorldLayer worldlayer)
         {
-            m_center = center;
-            m_layer = layer;
-
+            m_worldLayer = worldlayer;
         }
-
-        public CCTileMapCoordinates[] GetSurroundedTiles(CCTileMapCoordinates center)
-        {
-            var coordHelper = new CCTileMapCoordinates[6];
-            coordHelper[0] = new CCTileMapCoordinates(
-                center.Column + (center.Row % 2),
-                center.Row - 1);
-
-            coordHelper[1] = new CCTileMapCoordinates(
-                center.Column + (center.Row % 2),
-                center.Row + 1);
-
-            coordHelper[2] = new CCTileMapCoordinates(
-                center.Column,
-                center.Row + 2);
-
-            coordHelper[3] = new CCTileMapCoordinates(
-                center.Column - ((center.Row + 1) % 2),
-                center.Row + 1);
-
-            coordHelper[4] = new CCTileMapCoordinates(
-                center.Column - ((center.Row + 1) % 2),
-                center.Row - 1);
-
-            coordHelper[5] = new CCTileMapCoordinates(
-                center.Column,
-                center.Row - 2);
-            return coordHelper;   
-        }
-
-        public HashSet<CCTileMapCoordinates> GetSurroundedTilesinRange(CCTileMapCoordinates center, int range)
-        {
-            var TileSet = new HashSet<CCTileMapCoordinates>();
-            var TileSetHelper = new HashSet<CCTileMapCoordinates>();
-
-            TileSet.Add(center);
-            TileSetHelper.Add(center);
-
-            for (int i = 0; i != range; ++i)
-            {
-                var temptileset = new HashSet<CCTileMapCoordinates>();
-                foreach (var item in TileSetHelper)
-                {
-                    var surroundedTiles = GetSurroundedTiles(item);
-                    foreach (var tile in surroundedTiles)
-                    {
-                        if (!TileSet.Contains(tile))
-                        {
-                            TileSet.Add(tile);
-                            temptileset.Add(tile);
-                        }
-                    }
-                }
-                TileSetHelper = temptileset;
-            }
-            return TileSet;
-        }
-//
-//            Tilelist = new List<CCTileMapCoordinates>();
-//
-//            Tilelist.Add(center);
-//            //var SurroudedTiles = GetSurroundedTiles(center);
-//
-//            //foreach (var node in SurroudedTiles)
-//            //{
-//            //    Testlist.Add(node);
-//            //}
-//
-//            for (int i = 0; i != range; i++)
-//            {
-//                //Tiles = GetSurtiles(Tiles);
-//                List<CCTileMapCoordinates> result = new List<CCTileMapCoordinates>(Tilelist);
-//
-//                foreach (var item in Tilelist)
-//                {
-//                    var test = GetSurroundedTiles(item);
-//                    foreach (var tile in test)
-//                    {
-//                        if (!result.Contains(tile))
-//                        {
-//                            result.Add(tile);
-//                        }
-//                    }
-//                }
-//
-//                Tilelist = result;
-//            }
-//            return Tilelist;
-
-        /*List<CCTileMapCoordinates> GetSurtiles (List<CCTileMapCoordinates> list)
-        {
-            List<CCTileMapCoordinates> result = new List<CCTileMapCoordinates>(list);
-
-            foreach (var item in list)
-            {
-                var test = GetSurroundedTiles(item);
-                foreach (var tile in test)
-                {
-                    if (!result.Contains(tile))
-                    {
-                        result.Add(tile);
-                    }
-                }
-            }
             
-            return result;
-        }*/
-
-        public void ShowIndicator(CCTileMapCoordinates center, int range, CCTileMapLayer layer, int type)
+        /// <summary>
+        /// Draws the indicator on the Map
+        /// </summary>
+        /// <param name="coord">The Center Position.</param>
+        /// <param name="range">The Range.</param>
+        /// <param name="type">The Indicator Type.</param>
+        public void ShowIndicator(PositionI coord, int range, int type)
         {
             var gid = new CCTileGidAndFlags(74);
             switch (type)
             {
-                //influence range
+                // influence range
                 case 1:
-                    gid = new CCTileGidAndFlags(74);
+                    gid = new CCTileGidAndFlags(84);
                     break;
-                //attack range
+
+                // attack range
                 case 2:
-                    gid = new CCTileGidAndFlags(75);
+                    gid = new CCTileGidAndFlags(85);
                     break;
-                //movement range
+
+                // movement range
                 case 3:
-                    gid = new CCTileGidAndFlags(76);
+                    gid = new CCTileGidAndFlags(86);
                     break;
             }
 
-            surroundedTileSet = GetSurroundedTilesinRange(center, range);
+            m_surroundedPositions = LogicRules.GetSurroundedPositions(coord, range);
 
-
-            foreach (var tile in surroundedTileSet)
+            foreach (var tile in m_surroundedPositions)
             {
-                m_layer.SetTileGID(gid,tile);
+                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, tile);
+                m_worldLayer.IndicatorLayer.SetTileGID(gid, mapCoordinate);
             }
-                
         }
 
-        public void removeIndicator()
+        /// <summary>
+        /// Removes the indicator.
+        /// </summary>
+        public void RemoveIndicator()
         {
-            foreach (var item in surroundedTileSet)
+            foreach (var item in m_surroundedPositions)
             {
-                m_layer.RemoveTile(item); 
+                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, item);
+                m_worldLayer.IndicatorLayer.RemoveTile(mapCoordinate); 
             }
         }
 
         /// <summary>
-        /// The center point for the indicator
+        /// The m world layer.
         /// </summary>
-        private CCTileMapCoordinates m_center;
+        private WorldLayer m_worldLayer;
 
         /// <summary>
-        /// The layer which should be colored as indicator.
+        /// The surrounded tile set.
         /// </summary>
-        private CCTileMapLayer m_layer;
-
-        private HashSet<CCTileMapCoordinates> surroundedTileSet;
+        private HashSet<PositionI> m_surroundedPositions;
     }
 }
