@@ -178,7 +178,7 @@
                     {
                         m_worldLayer.DoAction(action);
                     }
-                    m_Indicator.removeIndicator();
+                    m_Indicator.RemoveIndicator();
                     m_touchGesture = TouchGesture.None;
                     break;
 
@@ -244,14 +244,16 @@
                         var MapCellPosition = new Client.Common.Models.MapCellPosition(coord);
                         var Position = m_worldLayer.RegionView.GetCurrentGamePosition(MapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
                         var PositionI = new Core.Models.PositionI((int)Position.X, (int)Position.Y);
-                        var move = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(PositionI.RegionPosition).GetEntity(PositionI.CellPosition).Move;                       
-                        m_Indicator = new IndicatorView(coord, m_worldLayer.IndicatorLayer);
-                        m_Indicator.ShowIndicator(coord, move, m_worldLayer.IndicatorLayer, 3);
+                        var range = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(PositionI.RegionPosition).GetEntity(PositionI.CellPosition).Move;                       
+                        m_Indicator = new IndicatorView(m_worldLayer);
+                        m_Indicator.ShowIndicator(PositionI, range, 1);
                     }
-                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid != 0 && m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid <= 67)
+                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid != 0 && m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid <= 77)
                     {
                         var types = new Core.Models.Definitions.Definition[6];
                         var defM = Core.Models.World.Instance.DefinitionManager;
+
+                        //var types = CanBuild()
 
                         types[0] = defM.GetDefinition(EntityType.Archer);
                         types[1] = defM.GetDefinition(EntityType.Hero);
@@ -259,6 +261,7 @@
                         types[3] = defM.GetDefinition(EntityType.Mage);
                         types[4] = defM.GetDefinition(EntityType.Archer);
                         types[5] = defM.GetDefinition(EntityType.Archer);
+                        //types[] = defM.GetDefinition(alle einheitentypen die gebaut werden können);
 
                         m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
                         m_menuView.DrawMenu();
@@ -268,7 +271,7 @@
                     {
                         var types = new Core.Models.Definitions.Definition[6];
                         var defM = Core.Models.World.Instance.DefinitionManager;
-
+                        //if(!account headquarter exists && gebiet ungeclaimed)
                         types[0] = defM.GetDefinition(EntityType.Headquarter);
                         types[1] = defM.GetDefinition(EntityType.Barracks);
                         types[2] = defM.GetDefinition(EntityType.Headquarter);
@@ -276,6 +279,17 @@
                         types[4] = defM.GetDefinition(EntityType.Headquarter);
                         types[5] = defM.GetDefinition(EntityType.Headquarter);
 
+                        /*elseif(eigenes gebiet) 
+                         * {
+                            types[0] = defM.GetDefinition(EntityType.Militaer);
+                            types[1] = defM.GetDefinition(EntityType.Zivil);
+                            types[2] = defM.GetDefinition(EntityType.Resourcen);
+                            types[3] = defM.GetDefinition(EntityType.Storage);
+                            types[4] = defM.GetDefinition(EntityType.Cancle);
+                            types[5] = defM.GetDefinition(EntityType.Cancle); 
+                         * }
+                         * 
+                        */    
                         m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
                         m_menuView.DrawMenu();
                         m_touchGesture = TouchGesture.Menu;

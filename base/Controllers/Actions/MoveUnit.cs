@@ -170,7 +170,7 @@
                     // Remove a headquarter and free the territory
                     if (enemyEntity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
                     {  
-                        regionEndPos.FreeClaimedTerritory(LogicRules.GetSurroundedTerritory(enemyEntity.Position), enemyEntity.Owner);
+                        regionEndPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(enemyEntity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), enemyEntity.Owner);
                         regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
                     }
                     regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
@@ -179,7 +179,7 @@
                 {
                     if (entity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
                     {  
-                        regionStartPos.FreeClaimedTerritory(LogicRules.GetSurroundedTerritory(enemyEntity.Position), entity.Owner);
+                        regionStartPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(enemyEntity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);
                         regionStartPos.RemoveEntity(action.ActionTime, entity);
                     }
                     regionStartPos.RemoveEntity(action.ActionTime, entity);

@@ -192,7 +192,7 @@
         /// </summary>
         /// <param name="territoryList">Territory list.</param>
         /// <param name="account">Account.</param>
-        public void ClaimTerritory(List<PositionI> territoryList, Account account)
+        public void ClaimTerritory(HashSet<PositionI> territoryList, Account account)
         {   
             foreach (var position in territoryList)
             {
@@ -223,7 +223,7 @@
         /// </summary>
         /// <param name="territoryList">Territory list.</param>
         /// <param name="account">Account.</param>
-        public void FreeClaimedTerritory(List<PositionI> territoryList, Account account)
+        public void FreeClaimedTerritory(HashSet<PositionI> territoryList, Account account)
         {
             foreach (var position in territoryList)
             {

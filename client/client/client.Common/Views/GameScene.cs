@@ -50,6 +50,7 @@
         /// </summary>
         public HUD.HUDLayer HUD;
 
+        //healthbar
         public Effects.EffectLayer Test;
 
         /// <summary>
