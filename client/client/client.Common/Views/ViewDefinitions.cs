@@ -122,11 +122,11 @@
             m_entitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.UnitGid.BOWMAN));
             m_entitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(Common.Constants.UnitGid.UNKNOWN));
             m_entitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Common.Constants.BuildingGid.HEADQUARTER));
-            m_entitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Common.Constants.BuildingGid.HEADQUARTER));
-            m_entitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(Common.Constants.BuildingGid.HOUSE));
-            m_entitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(Common.Constants.BuildingGid.WALL1));
+            //m_entitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Common.Constants.BuildingGid.HEADQUARTER));
+            //m_entitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(Common.Constants.BuildingGid.HOUSE));
+            //m_entitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(Common.Constants.BuildingGid.WALL1));
             m_entitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Common.Constants.BuildingGid.GARNISION));
-            m_entitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(Common.Constants.BuildingGid.FARM));
+            //m_entitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(Common.Constants.BuildingGid.FARM));
         }
 
         /// <summary>
@@ -143,7 +143,7 @@
             m_enemyEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.BOWMAN));
             // m_EnemyEntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(ClientConstants.ENEMYUNKNOWN_GID));
             m_enemyEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.HEADQUARTER));
-            m_enemyEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.HEADQUARTER));
+            //m_enemyEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.HEADQUARTER));
             // m_EnemyEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(ClientConstants.ENEMYHOUSE_GID));
             // m_EnemyEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(ClientConstants.ENEMYWALL1_GID));
             // m_EnemyEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(ClientConstants.ENEMYGARNISION_GID));
@@ -169,18 +169,17 @@
 
             //Buildings -> Militaer
             m_menuEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.HEADQUARTER));
-            m_menuEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.HEADQUARTER));
-            m_menuEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.WALL));
+            //m_menuEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.HEADQUARTER));
+            //m_menuEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.WALL));
             m_menuEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.BARRACKS));
 
             //Buildings -> Zivil
-            m_menuEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.FIRE));
+            //m_menuEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.FIRE));
 
             //Buildings -> Storage
 
             //Buildings -> Resourcen
-            m_menuEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.AIR));
-
+            //m_menuEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.AIR));
 
         }
 

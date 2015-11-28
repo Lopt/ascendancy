@@ -124,7 +124,7 @@
             }
             return surrounded;
         }
-
+            
         /// <summary>
         /// Gets the surrounded territory arround a given Position.
         /// </summary>
@@ -194,5 +194,57 @@
             return 0;
         }
 
+        /// <summary>
+        /// Enables the headquarter build options headquarter = 276.
+        /// </summary>
+        /// <returns>The headquarter build options.</returns>
+        public static List<long> EnableHeadquarterBuildOptions()
+        {
+            var List = new List<long>();
+            List.Add((long)Models.Definitions.EntityType.Barracks);
+            List.Add((long)Models.Definitions.EntityType.Factory);
+            List.Add((long)Models.Definitions.EntityType.Attachment);
+            List.Add((long)Models.Definitions.EntityType.GuardTower);
+            List.Add((long)Models.Definitions.EntityType.Hospital);
+            List.Add((long)Models.Definitions.EntityType.TradingPost);
+            return List;
+        }
+
+        /// <summary>
+        /// Enables the barracks build options barracks = 282.
+        /// </summary>
+        /// <returns>The barracks build options.</returns>
+        public static List<long> EnableBarracksBuildOptions()
+        {
+            var List = new List<long>();           
+            List.Add((long)Models.Definitions.EntityType.Hero);
+            List.Add((long)Models.Definitions.EntityType.Mage);
+            List.Add((long)Models.Definitions.EntityType.Warrior);
+            List.Add((long)Models.Definitions.EntityType.Archer);
+            List.Add((long)Models.Definitions.EntityType.Scout);
+            List.Add((long)Models.Definitions.EntityType.Unknown3);
+            return List;
+        }
+
+        /// <summary>
+        /// Enables the build options.
+        /// </summary>
+        /// <param name="containedList">Contained list.</param>
+        /// <param name="entityType">Entity type.</param>
+        /// <param name="account">Account.</param>
+        public static void EnableBuildOptions(long entityType, Account account)
+        {
+            if (!account.BuildableBuildings.ContainsKey(entityType))
+            {
+               if (entityType == (long)Models.Definitions.EntityType.Headquarter)
+               {
+                    account.BuildableBuildings.Add((long)Models.Definitions.EntityType.Headquarter, EnableHeadquarterBuildOptions());
+               }
+               else if (entityType == (long)Models.Definitions.EntityType.Barracks)
+               {
+                    account.BuildableBuildings.Add((long)Models.Definitions.EntityType.Barracks, EnableBarracksBuildOptions());
+               }
+            }
+        }
     }        
 }

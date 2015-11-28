@@ -78,11 +78,19 @@
             account);
             m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate);
 
+            var test = new Core.Models.PositionI( (int)pos.X + 2, (int)pos.Y + 2);
+
             var actionCreate2 = Helper.ActionHelper.CreateEntity(
-                                    new Core.Models.PositionI(pos),
-                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Archer),
+                test,
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Barracks),
                 account);
             m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate2);
+
+            var actionCreate3 = Helper.ActionHelper.CreateEntity(
+                test,
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Archer),
+                account);
+            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate3);
 
             //var newPosI = new Core.Models.PositionI(posI.X + 10, posI.Y + 0);
 

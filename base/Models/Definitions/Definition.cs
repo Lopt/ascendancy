@@ -45,11 +45,20 @@
 
         // Buildings Range 276-491 Id's
         Headquarter = 276,
-        Outposts = 282,
-        Houses = 288,
-        Wall = 294,
-        Barracks = 300,
-        RessourceHarvester = 306
+        Barracks = 282,
+        Factory = 288,
+        Attachment = 294,
+        GuardTower = 300,
+        Hospital = 306,
+        TradingPost = 312,
+
+        // ressource buildings
+        //Lab = 300,
+        //Furnace = 282,
+        //Transformer = 306,
+        //Scrapyard = 312,
+        //Tent = ,
+
     }
 
     /// <summary>

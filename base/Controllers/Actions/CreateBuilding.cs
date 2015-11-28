@@ -144,16 +144,18 @@
             entity.Position = entityPosition;
             region.AddEntity(action.ActionTime, entity);
 
-
+            // link the headquarter to the current account and claim territory, enable build options
             if (m_HeadquarterFlag && 
                 action.Account != null)
             {
-                action.Account.Headquarters.AddLast(entity.Position);
+                action.Account.Headquarters.AddLast(entity.Position);             
+                LogicRules.EnableBuildOptions(type, action.Account);
                 region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, Constants.HEADQUARTER_TERRITORY_RANGE),action.Account);
             }
             else if (action.Account != null)
             {
                 action.Account.Buildings.AddLast(entity.Position);
+                LogicRules.EnableBuildOptions(type, action.Account);
             }
 
             return new ConcurrentBag<Core.Models.Region>() { region };

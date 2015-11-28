@@ -2,10 +2,11 @@
 {
     using System;
     using System.Collections.Concurrent;
-
+    using System.Collections.Generic;
     using Core.Controllers.Actions;
     using Core.Models;
     using Core.Models.Definitions;
+
 
     /// <summary>
     /// Create unit.
@@ -75,9 +76,13 @@
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             var type = (long)action.Parameters[CREATION_TYPE];
             var entity = Controller.Instance.RegionManagerController.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition);
-           
-            if (action.AccountID == entity.OwnerID)
-            {
+            var list = new List<long>(); 
+
+            action.Account.BuildableBuildings.TryGetValue(entity.DefinitionID, out list);
+
+            // TODO: send selected position on the client
+            if (action.AccountID == entity.OwnerID && list.Contains(type))
+            {                
                 RealCreatePosition = GetFreeField(positionI, regionManagerC);
 
                 return RealCreatePosition != null;
