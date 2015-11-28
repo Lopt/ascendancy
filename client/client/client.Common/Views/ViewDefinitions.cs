@@ -157,19 +157,31 @@
         {
             m_menuEntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
 
+            //units -> Melee
             m_menuEntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.HERO));
             m_menuEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.WARRIOR));
             m_menuEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.MAGE));
             m_menuEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.SCOUT));
-            m_menuEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.BOWMAN));
             m_menuEntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.UNKNOWN));
 
+            //units -> Range
+            m_menuEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.BOWMAN));
+
+            //Buildings -> Militaer
             m_menuEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.HEADQUARTER));
             m_menuEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.HEADQUARTER));
+            m_menuEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.WALL));
+            m_menuEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.BARRACKS));
+
+            //Buildings -> Zivil
             m_menuEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.FIRE));
-            m_menuEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.EARTH));
-            m_menuEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.GOLD));
+
+            //Buildings -> Storage
+
+            //Buildings -> Resourcen
             m_menuEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.AIR));
+
+
         }
 
         #region Fields

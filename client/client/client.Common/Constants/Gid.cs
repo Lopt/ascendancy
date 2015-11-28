@@ -352,13 +352,13 @@
         /// </summary>
         public const short HEADQUARTER = 65;
 
-        public const short BARAKE = 66;
+        public const short BARRACKS = 66;
 
         public const short FABRIK = 67;
 
-        public const short TURM = 68;
+        public const short TOWER = 68;
 
-        public const short ZAUN = 69;
+        public const short WALL = 69;
     }
 
     /// <summary>
