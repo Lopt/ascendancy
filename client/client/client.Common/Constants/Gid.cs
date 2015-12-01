@@ -82,7 +82,7 @@
         public const short FARM = 12;
 
         /// <summary>
-        /// GID for tiles where a building tile with the trait garrison is placed.
+        /// GID for tiles where a building tile with the trait garnision is placed.
         /// </summary>
         public const short GARNISION = 13;
 
@@ -308,7 +308,7 @@
 
         public const short RESOURCES = 55;
 
-        public const short CANCLE = 56;
+        public const short CANCEL = 56;
 
         public const short UPGRADE = 57;
 
