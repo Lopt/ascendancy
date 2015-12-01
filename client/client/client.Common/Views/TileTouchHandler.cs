@@ -197,15 +197,15 @@
                     }
                     if (m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid < 57 && 51 < m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid)
                     {
-                        var types = new Core.Models.Definitions.Definition[6];
+                        var types = new Core.Models.Definitions.Definition[4];
                         var defM = Core.Models.World.Instance.DefinitionManager;
                         types[0] = defM.GetDefinition(EntityType.Barracks);
-                        types[1] = defM.GetDefinition(EntityType.Hero);
-                        types[2] = defM.GetDefinition(EntityType.Warrior);
-                        types[3] = defM.GetDefinition(EntityType.Mage);
-                        types[4] = defM.GetDefinition(EntityType.Archer);
-                        types[5] = defM.GetDefinition(EntityType.Archer);
+                        types[1] = defM.GetDefinition(EntityType.Attachment);
+                        types[2] = defM.GetDefinition(EntityType.Factory);
+                        types[3] = defM.GetDefinition(EntityType.GuardTower);
 
+                        //add set types
+                        m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
 
                         m_menuView.ExtendMenu(m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid);
                     }
@@ -288,7 +288,7 @@
                         bool cont = false;
                         var types = new Core.Models.Definitions.Definition[6];
                         var defM = Core.Models.World.Instance.DefinitionManager;
-                        if (GameAppDelegate.Account.BuildableBuildings.Count < 1)
+                        if (!GameAppDelegate.Account.TerritoryBuildings.ContainsKey((long)EntityType.Headquarter))
                         {
                             types[0] = defM.GetDefinition(EntityType.Headquarter);
                             types[1] = defM.GetDefinition(EntityType.Headquarter);
@@ -300,12 +300,6 @@
                         else
                         {   
                             cont = true;
-//                            types[0] = defM.GetDefinition(EntityType.Militaer);
-//                            types[1] = defM.GetDefinition(EntityType.Zivil);
-//                            types[2] = defM.GetDefinition(EntityType.Storage);
-//                            types[3] = defM.GetDefinition(EntityType.Ressource);
-//                            types[4] = defM.GetDefinition(EntityType.Cancle);
-//                            types[5] = defM.GetDefinition(EntityType.Cancle);
                         }
                         m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
                         if (!cont)

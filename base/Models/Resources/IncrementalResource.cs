@@ -47,7 +47,7 @@
         public double MaximumValue
         {
             get;
-            private set;
+            set;
         }
 
         public double Increments
