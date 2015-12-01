@@ -1,15 +1,15 @@
 [
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":0,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":1,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":2,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":3,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":4,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":5,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":6,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":7,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":8,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":9,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":10,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":11,},
-    {"Ressources": [0,0,0,0,0,0],"TerrainType":12,}
+    {"Ressources": [0,0],"TerrainType":0,},
+    {"Ressources": [0,0],"TerrainType":1,},
+    {"Ressources": [0,0],"TerrainType":2,},
+    {"Ressources": [0,0],"TerrainType":3,},
+    {"Ressources": [0,0],"TerrainType":4,},
+    {"Ressources": [0,0],"TerrainType":5,},
+    {"Ressources": [0,0],"TerrainType":6,},
+    {"Ressources": [0,0],"TerrainType":7,},
+    {"Ressources": [0,0],"TerrainType":8,},
+    {"Ressources": [0,0],"TerrainType":9,},
+    {"Ressources": [0,0],"TerrainType":10,},
+    {"Ressources": [0,0],"TerrainType":11,},
+    {"Ressources": [0,0],"TerrainType":12,}
 ]

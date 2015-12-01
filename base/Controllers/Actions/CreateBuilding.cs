@@ -81,7 +81,7 @@
             var region = Controller.Instance.RegionManagerController.GetRegion(entityPosition.RegionPosition);
             var type = (long)action.Parameters[CREATION_TYPE];
 
-            if (action.Account.Headquarters.Count == 0 && 
+            if (!action.Account.TerritoryBuildings.ContainsKey((long)Core.Models.Definitions.EntityType.Headquarter) && 
                 type == (long)Models.Definitions.EntityType.Headquarter &&
                 region.GetEntity(entityCellPostion) == null &&
                 region.GetClaimedTerritory(entityCellPostion) == null)
@@ -148,14 +148,17 @@
             if (m_HeadquarterFlag && 
                 action.Account != null)
             {
-                action.Account.Headquarters.AddLast(entity.Position);             
+                action.Account.TerritoryBuildings.Add(type, entity.Position);             
                 LogicRules.EnableBuildOptions(type, action.Account);
                 region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, Constants.HEADQUARTER_TERRITORY_RANGE),action.Account);
+                LogicRules.IncreaseHoleStorage(action.Account);
+                LogicRules.GatherResources(action.Account, Controller.Instance.RegionManagerController);
             }
             else if (action.Account != null)
             {
                 action.Account.Buildings.AddLast(entity.Position);
                 LogicRules.EnableBuildOptions(type, action.Account);
+                LogicRules.IncreaseStorage(action.Account, entity);
             }
 
             return new ConcurrentBag<Core.Models.Region>() { region };

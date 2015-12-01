@@ -77,5 +77,25 @@
         /// Get the Range from the Ownership radius for the headquarter.
         /// </summary>
         public const int HEADQUARTER_TERRITORY_RANGE = 4;
+
+        /// <summary>
+        /// The HQ storage value.
+        /// </summary>
+        public const int HEADQUARTER_STORAGE_VALUE = 100;
+
+        /// <summary>
+        /// The ground population storage.
+        /// </summary>
+        public const int POPULATION_STORAGE_VALUE = 25;
+
+        /// <summary>
+        /// The ground scrap storage
+        /// </summary>
+        public const int SCRAP_STORAGE_VALUE = 25;
+
+        /// <summary>
+        /// The energy value.
+        /// </summary>
+        public const int ENERGY_VALUE = 10;
     }
 }

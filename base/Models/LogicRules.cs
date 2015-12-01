@@ -246,5 +246,106 @@
                }
             }
         }
+
+        /// <summary>
+        /// Increases the hole storage.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        public static void IncreaseHoleStorage(Account account)
+        {            
+            account.Scrap.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Population.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Technology.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Energy.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Plutonium.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
+        }
+
+        /// <summary>
+        /// Increases the population.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="entity">Entity.</param>
+        public static void IncreasePopulation(Account account, Entity entity)
+        {
+            if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Tent)
+            {
+                account.Population.MaximumValue += Constants.POPULATION_STORAGE_VALUE;
+            }
+        }
+
+        /// <summary>
+        /// Increases the scrap.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="entity">Entity.</param>
+        public static void IncreaseScrap(Account account, Entity entity)
+        {
+            if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Scrapyard)
+            {
+                account.Scrap.MaximumValue += Constants.SCRAP_STORAGE_VALUE;
+            }
+        }
+
+        /// <summary>
+        /// Increases the storage.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="entity">Entity.</param>
+        public static void IncreaseStorage(Account account, Entity entity)
+        {
+            IncreasePopulation(account, entity);
+            IncreaseScrap(account, entity);
+        }
+
+        /// <summary>
+        /// Gathers the resources.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="entity">Entity.</param>
+        /// <param name="regionManagerC">Region manager c.</param>
+        public static void GatherResources(Account account, Controllers.RegionManagerController regionManagerC)
+        {
+            if (account.TerritoryBuildings.ContainsKey((long)Core.Models.Definitions.EntityType.Headquarter))//if (account.Headquarters.Count >= 1)
+            {                 
+                    foreach (var element in account.TerritoryBuildings)
+                {
+                    var list = LogicRules.GetSurroundedPositions(element.Value, Constants.HEADQUARTER_TERRITORY_RANGE);
+                    int scrapAmount = 0;
+                    int plutoniumAmount = 0;
+
+                    foreach (var item in list)
+                    {
+                        // TODO: add ressources in Terrain
+                        var resources = regionManagerC.GetRegion(item.RegionPosition).GetTerrain(item.CellPosition).Resources;
+                        scrapAmount += 2; // resources[0];
+                        plutoniumAmount += 1; // resources[1];
+                    }
+                    account.Scrap.Set(scrapAmount, account.Scrap.Increments);
+                    account.Plutonium.Set(plutoniumAmount, account.Plutonium.Increments);
+                }                   
+            }
+
+            foreach (var element in account.Buildings)
+            {
+                switch (regionManagerC.GetRegion(element.RegionPosition).GetEntity(element.CellPosition).DefinitionID)
+                {
+                    case (int)Core.Models.Definitions.EntityType.Lab:                         
+                        account.Technology.Set(1, 1);                   
+                        break;
+
+                    case (int)Core.Models.Definitions.EntityType.Furnace:
+                        account.Scrap.Set(account.Scrap.Value, 2);
+                        break;
+
+                    case (int)Core.Models.Definitions.EntityType.Transformer:
+
+                        account.Energy.Value = Constants.ENERGY_VALUE;
+                        break;
+                }
+
+            }
+        }
+
+     
     }        
 }
