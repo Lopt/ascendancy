@@ -255,7 +255,7 @@
         {            
             account.Scrap.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
             account.Population.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
-            account.Technology.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Technology.MaximumValue += Constants.TECHNOLOGY_MAX_VALUE;
             account.Energy.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
             account.Plutonium.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
         }
@@ -307,7 +307,7 @@
         {
             if (account.TerritoryBuildings.ContainsKey((long)Core.Models.Definitions.EntityType.Headquarter))//if (account.Headquarters.Count >= 1)
             {                 
-                    foreach (var element in account.TerritoryBuildings)
+                foreach (var element in account.TerritoryBuildings)
                 {
                     var list = LogicRules.GetSurroundedPositions(element.Value, Constants.HEADQUARTER_TERRITORY_RANGE);
                     int scrapAmount = 0;
@@ -338,14 +338,10 @@
                         break;
 
                     case (int)Core.Models.Definitions.EntityType.Transformer:
-
                         account.Energy.Value = Constants.ENERGY_VALUE;
                         break;
                 }
-
             }
-        }
-
-     
+        }     
     }        
 }

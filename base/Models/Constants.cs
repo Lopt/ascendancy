@@ -97,5 +97,10 @@
         /// The energy value.
         /// </summary>
         public const int ENERGY_VALUE = 10;
+
+        /// <summary>
+        /// The technology maximum value.
+        /// </summary>
+        public const int TECHNOLOGY_MAX_VALUE = 42;
     }
 }

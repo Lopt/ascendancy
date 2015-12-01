@@ -21,17 +21,17 @@
     public enum EntityType
     {
         // Terrain Range 0-59
-        Water = 0,
-        Buildings = 1,
-        Woods = 2,
+        Water = 0,      // Plutonium at most
+        Buildings = 1,  // Scrap at most
+        Woods = 2,      // Population habitable
         Grassland = 3,
         Fields = 4,
-        Streets = 5,
+        Streets = 5,    // Scrap at most
         NotDefined = 6,
-        Forbidden = 7,
-        Town = 8,
+        Forbidden = 7,  // nothing
+        Town = 8,       // Scrap at most
         Glacier = 9,
-        Beach = 10,
+        Beach = 10,     // Plutonium medium
         Park = 11,
         Invalid = 12,
 
