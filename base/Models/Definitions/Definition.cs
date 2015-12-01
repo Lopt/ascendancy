@@ -59,6 +59,15 @@
         //Scrapyard = 312,
         //Tent = ,
 
+        //helper 492-xxx ids
+        Militaer = 492,
+        Zivil = 493,
+        Ressource = 494,
+        Storage = 495,
+        Cancle = 496,
+        Upgrade = 497,
+
+
     }
 
     /// <summary>
@@ -69,7 +78,8 @@
         Invalid = -1,
         Terrain,
         Unit,
-        Building
+        Building,
+        Menu
     }
 
     /// <summary>
@@ -114,9 +124,13 @@
                 {
                     return Category.Unit;
                 }
-                if (ID < 1000)
+                if (ID < 492)
                 {
                     return Category.Building;
+                }
+                if (ID < 1000)
+                {
+                    return Category.Menu;
                 }
                 return Category.Invalid;
             }

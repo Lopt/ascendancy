@@ -9,6 +9,7 @@
     using Client.Common.Views.Effects;
     using CocosSharp;
     using Core.Models.Definitions;
+    using Core.Models;
 
     /// <summary>
     /// Touch handler.
@@ -194,10 +195,26 @@
                             m_worldLayer.DoAction(action2);
                         }
                     }
-                    m_menuView.CloseMenu();
-                    m_menuView = null;
-                    m_touchGesture = TouchGesture.None;
+                    if (m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid < 57 && 51 < m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid)
+                    {
+                        var types = new Core.Models.Definitions.Definition[6];
+                        var defM = Core.Models.World.Instance.DefinitionManager;
+                        types[0] = defM.GetDefinition(EntityType.Barracks);
+                        types[1] = defM.GetDefinition(EntityType.Hero);
+                        types[2] = defM.GetDefinition(EntityType.Warrior);
+                        types[3] = defM.GetDefinition(EntityType.Mage);
+                        types[4] = defM.GetDefinition(EntityType.Archer);
+                        types[5] = defM.GetDefinition(EntityType.Archer);
 
+
+                        m_menuView.ExtendMenu(m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid);
+                    }
+                    else
+                    {
+                        m_menuView.CloseMenu();
+                        m_menuView = null;
+                        m_touchGesture = TouchGesture.None;
+                    }
                     return true;
 
                 case TouchGesture.None:
@@ -254,7 +271,6 @@
                         var defM = Core.Models.World.Instance.DefinitionManager;
 
                         //var types = CanBuild()
-
                         types[0] = defM.GetDefinition(EntityType.Archer);
                         types[1] = defM.GetDefinition(EntityType.Hero);
                         types[2] = defM.GetDefinition(EntityType.Warrior);
@@ -267,31 +283,39 @@
                         m_menuView.DrawMenu();
                         m_touchGesture = TouchGesture.Menu;
                     }
-                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid == 0)
+                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid == 0 )
                     {
+                        bool cont = false;
                         var types = new Core.Models.Definitions.Definition[6];
                         var defM = Core.Models.World.Instance.DefinitionManager;
-                        //if(!account headquarter exists && gebiet ungeclaimed)
-                        types[0] = defM.GetDefinition(EntityType.Headquarter);
-                        types[1] = defM.GetDefinition(EntityType.Barracks);
-                        types[2] = defM.GetDefinition(EntityType.Headquarter);
-                        types[3] = defM.GetDefinition(EntityType.Headquarter);
-                        types[4] = defM.GetDefinition(EntityType.Headquarter);
-                        types[5] = defM.GetDefinition(EntityType.Headquarter);
-
-                        /*elseif(eigenes gebiet) 
-                         * {
-                            types[0] = defM.GetDefinition(EntityType.Militaer);
-                            types[1] = defM.GetDefinition(EntityType.Zivil);
-                            types[2] = defM.GetDefinition(EntityType.Resourcen);
-                            types[3] = defM.GetDefinition(EntityType.Storage);
-                            types[4] = defM.GetDefinition(EntityType.Cancle);
-                            types[5] = defM.GetDefinition(EntityType.Cancle); 
-                         * }
-                         * 
-                        */    
+                        if (GameAppDelegate.Account.BuildableBuildings.Count < 1)
+                        {
+                            types[0] = defM.GetDefinition(EntityType.Headquarter);
+                            types[1] = defM.GetDefinition(EntityType.Headquarter);
+                            types[2] = defM.GetDefinition(EntityType.Headquarter);
+                            types[3] = defM.GetDefinition(EntityType.Headquarter);
+                            types[4] = defM.GetDefinition(EntityType.Headquarter);
+                            types[5] = defM.GetDefinition(EntityType.Headquarter);
+                        }
+                        else
+                        {   
+                            cont = true;
+//                            types[0] = defM.GetDefinition(EntityType.Militaer);
+//                            types[1] = defM.GetDefinition(EntityType.Zivil);
+//                            types[2] = defM.GetDefinition(EntityType.Storage);
+//                            types[3] = defM.GetDefinition(EntityType.Ressource);
+//                            types[4] = defM.GetDefinition(EntityType.Cancle);
+//                            types[5] = defM.GetDefinition(EntityType.Cancle);
+                        }
                         m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
-                        m_menuView.DrawMenu();
+                        if (!cont)
+                        {
+                            m_menuView.DrawMenu();
+                        }
+                        else
+                        {
+                            m_menuView.DrawMajorMenu();
+                        }
                         m_touchGesture = TouchGesture.Menu;
                     }
 

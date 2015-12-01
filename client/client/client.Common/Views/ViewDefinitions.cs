@@ -168,18 +168,26 @@
             m_menuEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.BOWMAN));
 
             //Buildings -> Militaer
+            m_menuEntitiesGid.Add(EntityType.Militaer, new CCTileGidAndFlags(Common.Constants.HelperSpritesGid.MILITARY));
             m_menuEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.HEADQUARTER));
             //m_menuEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.HEADQUARTER));
             //m_menuEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.WALL));
             m_menuEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.BARRACKS));
 
             //Buildings -> Zivil
+            m_menuEntitiesGid.Add(EntityType.Zivil, new CCTileGidAndFlags(Common.Constants.HelperSpritesGid.ZIVIL));
             //m_menuEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.FIRE));
 
             //Buildings -> Storage
+            m_menuEntitiesGid.Add(EntityType.Storage, new CCTileGidAndFlags(Common.Constants.HelperSpritesGid.STORAGE));
 
             //Buildings -> Resourcen
+            m_menuEntitiesGid.Add(EntityType.Ressource, new CCTileGidAndFlags(Common.Constants.HelperSpritesGid.RESOURCES));
             //m_menuEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.AIR));
+
+            //Helper
+            m_menuEntitiesGid.Add(EntityType.Cancle, new CCTileGidAndFlags(Common.Constants.HelperSpritesGid.CANCLE));
+            m_menuEntitiesGid.Add(EntityType.Upgrade, new CCTileGidAndFlags(Common.Constants.HelperSpritesGid.UPGRADE));
 
         }
 
