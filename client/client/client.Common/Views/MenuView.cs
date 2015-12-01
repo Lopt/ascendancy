@@ -60,6 +60,56 @@
             return coordHelper;
         }
 
+        public void DrawMajorMenu()
+        {
+            var gidhelper = new short[6];
+            gidhelper[0] = 54;
+            gidhelper[1] = 55;
+            gidhelper[2] = 56;
+            gidhelper[3] = 57;
+            gidhelper[4] = 52;
+            gidhelper[5] = 53;
+            var surroundedCoords = GetSurroundedTiles();
+            for (var index = 0; index < surroundedCoords.Length; ++index)
+            {
+                var coord = surroundedCoords[index];
+                var gid = new CCTileGidAndFlags(gidhelper[index]);
+                m_menuLayer.SetTileGID(gid, coord);
+            }
+        }
+
+        public void ExtendMenu(short gid)
+        {
+            //up vector(0, 1)
+            //upleft vector(-1, 1)
+            //upright vector(1, 1)
+            //down vector(0, -1)
+            //downleft vector(-1, -1)
+            //downright vector(1, -1)
+
+            switch(gid)
+            {
+                case 52:
+                    //getdefinition(52(militärgebäude)
+                case 53:
+                    //getdefinition(53(Zivil)
+                case 54:
+                    //getdefinition(54(Resourcen)
+                case 55:
+                    //getdefinition(55(storage)
+                    /*
+                     * case xx:
+                     *     getdefinition(meele)
+                     * case xx:
+                     *     getdefinition(range)
+                     * etc.
+                     */
+
+
+                    break;
+            }
+        }
+
         /// <summary>
         /// Draws the menu
         /// </summary>

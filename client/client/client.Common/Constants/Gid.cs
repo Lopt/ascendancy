@@ -352,13 +352,13 @@
         /// </summary>
         public const short HEADQUARTER = 65;
 
-        public const short BARAKE = 66;
+        public const short BARRACKS = 66;
 
         public const short FABRIK = 67;
 
-        public const short TURM = 68;
+        public const short TOWER = 68;
 
-        public const short ZAUN = 69;
+        public const short WALL = 69;
     }
 
     /// <summary>
@@ -426,5 +426,17 @@
         /// GID for the white indicator.
         /// </summary>
         public const short WHITEINDICATOR = 86;
+
+        public const short MILITARY = 52;
+
+        public const short STORAGE = 53;
+
+        public const short ZIVIL = 54;
+
+        public const short RESOURCES = 55;
+
+        public const short CANCLE = 56;
+
+        public const short UPGRADE = 57;
     }
 }
