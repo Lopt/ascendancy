@@ -27,6 +27,8 @@
         {
             Resources = resources;
             Buildable = true;
+            Walkable = true;
+            TravelCost = 1;
             Walkable = walkable;
             TravelCost = travelCost;
             DefenseModifier = 1;

@@ -82,7 +82,7 @@
         public const short FARM = 12;
 
         /// <summary>
-        /// GID for tiles where a building tile with the trait garrison is placed.
+        /// GID for tiles where a building tile with the trait garnision is placed.
         /// </summary>
         public const short GARNISION = 13;
 
@@ -300,6 +300,18 @@
     /// </summary>
     public class BuildingMenuGid
     {
+        public const short MILITARY = 52;
+
+        public const short STORAGE = 53;
+
+        public const short ZIVIL = 54;
+
+        public const short RESOURCES = 55;
+
+        public const short CANCEL = 56;
+
+        public const short UPGRADE = 57;
+
         /// <summary>
         /// GID for the building menu tile with the trait earth.
         /// </summary>
