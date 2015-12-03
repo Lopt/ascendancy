@@ -205,9 +205,8 @@
                         types[3] = defM.GetDefinition(EntityType.GuardTower);
 
                         //add set types
-                        m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
 
-                        m_menuView.ExtendMenu(m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid);
+                        m_menuView.ExtendMenu(m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid, types, coord);
                     }
                     else
                     {

@@ -6,6 +6,8 @@
     using Client.Common.Models;
     using CocosSharp;
     using Core.Models.Definitions;
+    using Core.Models;
+
 
     /// <summary>
     /// Menu view.
@@ -78,22 +80,37 @@
             }
         }
 
-        public void ExtendMenu(short gid)
+        public void ExtendMenu(short gid, Core.Models.Definitions.Definition[] types, CCTileMapCoordinates coord)
         {
+
+            var testcoord = new CCTileMapCoordinates();
+            testcoord.Column = -1;
+            testcoord.Row = -1;
             //up vector(0, 1)
             //upleft vector(-1, 1)
             //upright vector(1, 1)
             //down vector(0, -1)
             //downleft vector(-1, -1)
             //downright vector(1, -1)
+            var count = types.Length;
+            var menu = new CCTileMapCoordinates[count];
 
             switch(gid)
             {
                 case 52:
+//                    for (int i = 0; i < count; ++i)
+//                    {
+//                        menu[i] = new CCTileMapCoordinates(coord.Column - 1, coord.Row - 1);
+//                        var tgid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[i], ViewDefinitions.Sort.Menu);
+//                        m_menuLayer.SetTileGID(tgid, menu[i]);
+//                    }
+                    break;
                     //getdefinition(52(militärgebäude)
                 case 53:
+                    break;
                     //getdefinition(53(Zivil)
                 case 54:
+                    break;
                     //getdefinition(54(Resourcen)
                 case 55:
                     //getdefinition(55(storage)
