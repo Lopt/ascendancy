@@ -77,84 +77,114 @@
     public class BuildingGid
     {
         /// <summary>
-        /// GID for tiles where a building tile with the trait farm is placed.
+        /// GID for tiles where the building Factory is placed.
         /// </summary>
-        public const short FARM = 12;
+        public const short FACTORY = 12;
 
         /// <summary>
-        /// GID for tiles where a building tile with the trait garnision is placed.
+        /// GID for tiles where the building Farm is placed.
         /// </summary>
-        public const short GARNISION = 13;
+        public const short FARM = 13;
 
         /// <summary>
-        /// GID for tiles where a building tile with the trait headquarter is placed.
+        /// GID for tiles where the building Garnision is placed.
         /// </summary>
-        public const short HEADQUARTER = 14;
+        public const short GARNISION = 14;
 
         /// <summary>
-        /// GID for tiles where a building tile with the trait house is placed.
+        /// GID for tiles where the building Headquarter is placed.
         /// </summary>
-        public const short HOUSE = 15;
+        public const short HEADQUARTER = 15;
 
         /// <summary>
-        /// GID for tiles where a building tile with the trait tower1 is placed.
+        /// GID for tiles where the building Hause is placed.
         /// </summary>
-        public const short TOWER1 = 16;
+        public const short HOUSE = 16;
+
+        /// <summary>
+        /// GID for tiles where the building Furnace is placed.
+        /// </summary>
+        public const short FURNACE = 17;
+
+        /// <summary>
+        /// GID for tiles where the building Barracks is placed.
+        /// </summary>
+        public const short BARRACKS = 18;
+
+        /// <summary>
+        /// GID for tiles where the building Publicbuilding is placed.
+        /// </summary>
+        public const short PUBLICBUILDING = 19;
+
+        /// <summary>
+        /// GID for tiles where the building Tower1 is placed.
+        /// </summary>
+        public const short TOWER1 = 20;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait tower2 is placed.
         /// </summary>
-        public const short TOWER2 = 17;
+        public const short TOWER2 = 21;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait tower3 is placed.
         /// </summary>
-        public const short TOWER3 = 18;
+        public const short TOWER3 = 22;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait tower4 is placed.
         /// </summary>
-        public const short TOWER4 = 19;
+        public const short TOWER4 = 23;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait tower5 is placed.
         /// </summary>
-        public const short TOWER5 = 20;
+        public const short TOWER5 = 24;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait tower6 is placed.
         /// </summary>
-        public const short TOWER6 = 21;
+        public const short TOWER6 = 25;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall1 is placed.
         /// </summary>
-        public const short WALL1 = 22;
+        public const short WALL1 = 26;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall2 is placed.
         /// </summary>
-        public const short WALL2 = 23;
+        public const short WALL2 = 27;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall3 is placed.
         /// </summary>
-        public const short WALL3 = 24;
+        public const short WALL3 = 28;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall4 is placed.
         /// </summary>
-        public const short WALL4 = 25;
+        public const short WALL4 = 29;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall5 is placed.
         /// </summary>
-        public const short WALL5 = 26;
+        public const short WALL5 = 30;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall6 is placed.
         /// </summary>
-        public const short WALL6 = 27;
+        public const short WALL6 = 31;
+
+        /// <summary>
+        /// GID for tiles where the building Watertower is placed.
+        /// </summary>
+        public const short WATERTOWER = 32;
+
+        /// <summary>
+        /// GID for tiles where the building Tent is placed.
+        /// </summary>
+        public const short TENT = 33;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait Barrack which use earth as a resource is placed.
@@ -223,9 +253,9 @@
     public class UnitGid
     {
         /// <summary>
-        /// GID for the unit tile with the trait archer.
+        /// GID for the unit tile with the trait soldier.
         /// </summary>
-        public const short BOWMAN = 46;
+        public const short SOLDIER = 46;
 
         /// <summary>
         /// GID for the unit tile with the trait hero.
@@ -261,27 +291,27 @@
         /// <summary>
         /// GID for the enemy unit tile with the trait archer.
         /// </summary>
-        public const short BOWMAN = 78;
+        public const short BOWMAN = 76;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait hero.
         /// </summary>
-        public const short HERO = 79;
+        public const short HERO = 77;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait warrior.
         /// </summary>
-        public const short WARRIOR = 80;
+        public const short WARRIOR = 78;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait mage.
         /// </summary>
-        public const short MAGE = 81;
+        public const short MAGE = 79;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait scout.
         /// </summary>
-        public const short SCOUT = 82;
+        public const short SCOUT = 80;
     }
 
     /// <summary>
@@ -292,7 +322,7 @@
         /// <summary>
         /// GID for the enemy building tile with the trait headquarter.
         /// </summary>
-        public const short HEADQUARTER = 83;
+        public const short HEADQUARTER = 81;
     }
 
     /// <summary>
@@ -369,7 +399,7 @@
         /// <summary>
         /// GID for the unit menu tiles with the trait archer.
         /// </summary>
-        public const short BOWMAN = 70;
+        public const short SOLDIER = 70;
 
         /// <summary>
         /// GID for the unit menu tiles with the trait hero.
@@ -403,29 +433,19 @@
     public class HelperSpritesGid
     {
         /// <summary>
-        /// GID for the tile with the trait dot.
-        /// </summary>
-        public const short DOT = 76;
-
-        /// <summary>
-        /// GID for the tile with the trait cross.
-        /// </summary>
-        public const short CROSS = 77;
-
-        /// <summary>
         /// GID for the green indicator.
         /// </summary>
-        public const short GREENINDICATOR = 84;
+        public const short GREENINDICATOR = 82;
 
         /// <summary>
         /// GID for the red indicator.
         /// </summary>
-        public const short REDINDICATOR = 85;
+        public const short REDINDICATOR = 83;
 
         /// <summary>
         /// GID for the white indicator.
         /// </summary>
-        public const short WHITEINDICATOR = 86;
+        public const short WHITEINDICATOR = 84;
 
         public const short MILITARY = 52;
 
