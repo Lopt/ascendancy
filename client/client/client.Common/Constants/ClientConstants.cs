@@ -102,7 +102,7 @@
         /// <summary>
         /// Tile Map file name
         /// </summary>
-        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20151125";
+        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20151203";
 
         /// <summary>
         /// name of terrain layer

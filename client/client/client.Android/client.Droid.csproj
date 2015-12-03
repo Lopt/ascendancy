@@ -209,6 +209,8 @@
     <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20151116.png" />
     <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20151125.xnb" />
     <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20151125.png" />
+    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20151203.xnb" />
+    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20151203.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />
