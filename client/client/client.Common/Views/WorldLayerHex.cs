@@ -68,7 +68,7 @@ namespace Client.Common.Views
             }
         }
 
-        public void MovePosition(CCPoint worldPoint)
+        public void SetWorldPosition(CCPoint worldPoint)
         {
             m_currentWorldPoint = worldPoint;
         }

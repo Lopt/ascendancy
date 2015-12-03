@@ -110,14 +110,13 @@ namespace Client.Common.Views
             {
                 m_touchGesture = TouchGesture.Move;
 
-                m_scene.ViewMode = GameScene.ViewModes.CAMERAPOS;
+                m_scene.ViewMode = GameScene.ViewModes.CameraPosition;
 
                 var diff = touches[0].LocationOnScreen - touches[0].StartLocationOnScreen;
                 var move = new CCPoint(-diff.X, diff.Y) * m_worldLayerHex.GetZoom();
                 var cameraDiff = touches[0].StartLocationOnScreen - m_scene.VisibleBoundsScreenspace.Center;
                 var cameraMove = new CCPoint(-cameraDiff.X, cameraDiff.Y) * m_worldLayerHex.GetZoom();
-                //var cameraZero = new CCPoint(-touches[0].StartLocationOnScreen.X, touches[0].StartLocationOnScreen.Y);
-                m_worldLayerHex.MovePosition(m_startLocation + cameraMove + move);
+                m_worldLayerHex.SetWorldPosition(m_startLocation + cameraMove + move);
             }
             else if (touches.Count >= 2 &&
                      (m_touchGesture == TouchGesture.Start ||

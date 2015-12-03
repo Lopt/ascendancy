@@ -53,7 +53,8 @@
         /// <returns>true if the event was for this node</returns>
         public bool OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
-            if (m_standard.BoundingBoxTransformedToWorld.ContainsPoint(touches[0].Location))
+            var point = new CCPoint(touches[0].LocationOnScreen.X, VisibleBoundsWorldspace.MaxY - touches[0].LocationOnScreen.Y);
+            if (m_standard.BoundingBox.ContainsPoint(point))
             {
                 m_touched.Visible = true;
                 m_standard.Visible = false;
