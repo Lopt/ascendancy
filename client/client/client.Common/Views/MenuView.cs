@@ -17,51 +17,148 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.MenuView"/> class.
         /// </summary>
-        /// <param name="menuLayer">Layer where the menu should be drawn.</param>
-        /// <param name="center">TileMap Coordinates where the menu should be drawn.</param>
+        /// <param name="worldlayer">The WorldLayer.</param>
+        /// <param name="center">PositionI where the menu should be drawn.</param>
         /// <param name="types">Which menu entries should be shown.</param>
-        public MenuView(CCTileMapLayer menuLayer, CCTileMapCoordinates center, Definition[] types)
+        public MenuView(WorldLayer worldlayer, PositionI center, Definition[] types)
         {
             m_center = center;
             m_types = types;
-            m_menuLayer = menuLayer;
+            m_worldLayer = worldlayer;
         }
 
         /// <summary>
-        /// Gets the surrounded tiles.
+        /// Tiles in the Direction left Up
+        /// for an even X
         /// </summary>
-        /// <returns>The surrounded tiles.</returns>
-        public CCTileMapCoordinates[] GetSurroundedTiles()
+        public static readonly PositionI[] leftupeven =
         {
-            var coordHelper = new CCTileMapCoordinates[6];
+            new PositionI(-1,  0),
+            new PositionI(-1, -1),
+            new PositionI( 0, -1)
+        };
 
-            coordHelper[0] = new CCTileMapCoordinates(
-                m_center.Column + (m_center.Row % 2),
-                m_center.Row - 1);
+        /// <summary>
+        /// Tiles in the Direction left Up
+        /// for an odd X
+        /// </summary>
+        public static readonly PositionI[] leftupodd =
+        {
+            new PositionI(-1,  1),
+            new PositionI(-1,  0),
+            new PositionI( 0, -1)
+        };
 
-            coordHelper[1] = new CCTileMapCoordinates(
-                m_center.Column + (m_center.Row % 2),
-                m_center.Row + 1);
+        /// <summary>
+        /// Tiles in the Direction left down
+        /// for an even X
+        /// </summary>
+        public static readonly PositionI[] leftdowneven =
+        {
+            new PositionI( 0,  1),
+            new PositionI(-1,  0),
+            new PositionI(-1, -1)
+        };
 
-            coordHelper[2] = new CCTileMapCoordinates(
-                m_center.Column,
-                m_center.Row + 2);
+        /// <summary>
+        /// Tiles in the Direction left down
+        /// for an odd X
+        /// </summary>
+        public static readonly PositionI[] leftdownodd =
+        {
+            new PositionI( 0,  1),
+            new PositionI(-1,  1),
+            new PositionI(-1,  0)
+        };
 
-            coordHelper[3] = new CCTileMapCoordinates(
-                m_center.Column - ((m_center.Row + 1) % 2),
-                m_center.Row + 1);
+        /// <summary>
+        /// Tiles in the Direction Up
+        /// for an even X
+        /// </summary>
+        public static readonly PositionI[] upeven =
+        {
+            new PositionI(-1, -1),
+            new PositionI( 0, -1),
+            new PositionI( 1, -1)
+        };
 
-            coordHelper[4] = new CCTileMapCoordinates(
-                m_center.Column - ((m_center.Row + 1) % 2),
-                m_center.Row - 1);
+        /// <summary>
+        /// Tiles in the Direction Up
+        /// for an odd X
+        /// </summary>
+        public static readonly PositionI[] upodd =
+        {
+            new PositionI(-1,  0),
+            new PositionI( 0, -1),
+            new PositionI( 1,  0)
+        };
 
-            coordHelper[5] = new CCTileMapCoordinates(
-                m_center.Column,
-                m_center.Row - 2);
+        /// <summary>
+        /// Tiles in the Direction right Up
+        /// for an even X
+        /// </summary>
+        public static readonly PositionI[] rightupeven =
+        {
+            new PositionI( 0, -1),
+            new PositionI( 1, -1),
+            new PositionI( 1,  0)
+        };
+           
+        /// <summary>
+        /// Tiles in the Direction right Up
+        /// for an odd X
+        /// </summary>
+        public static readonly PositionI[] rightupodd =
+        {
+            new PositionI( 0, -1),
+            new PositionI( 1,  0),
+            new PositionI( 1,  1)
+        };
 
-            return coordHelper;
-        }
+        /// <summary>
+        /// Tiles in the Direction right down
+        /// for an even X
+        /// </summary>
+        public static readonly PositionI[] rightdowneven =
+        {
+            new PositionI( 1, -1),
+            new PositionI( 1,  0),
+            new PositionI( 0,  1)
+        };
 
+        /// <summary>
+        /// Tiles in the Direction right down
+        /// for an odd X
+        /// </summary>
+        public static readonly PositionI[] rightdownodd =
+        {
+            new PositionI( 1,  0),
+            new PositionI( 1,  1),
+            new PositionI( 0,  1)
+        };
+
+        /// <summary>
+        /// Tiles in the Direction down
+        /// for an even X
+        /// </summary>
+        public static readonly PositionI[] downeven =
+        {   
+            new PositionI( 1,  0),
+            new PositionI( 0,  1),
+            new PositionI(-1,  0)
+        };
+
+        /// <summary>
+        /// Tiles in the Direction down
+        /// for an odd X
+        /// </summary>
+        public static readonly PositionI[] downodd =
+        {
+            new PositionI( 1,  1),
+            new PositionI( 0,  1),
+            new PositionI(-1,  1)
+        };
+                
         public void DrawMajorMenu()
         {
             var gidhelper = new short[6];
@@ -71,12 +168,12 @@
             gidhelper[3] = 57;
             gidhelper[4] = 52;
             gidhelper[5] = 53;
-            var surroundedCoords = GetSurroundedTiles();
+            var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
             for (var index = 0; index < surroundedCoords.Length; ++index)
             {
-                var coord = surroundedCoords[index];
+                var coord = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
                 var gid = new CCTileGidAndFlags(gidhelper[index]);
-                m_menuLayer.SetTileGID(gid, coord);
+                m_worldLayer.MenuLayer.SetTileGID(gid, coord);
             }
         }
 
@@ -132,12 +229,12 @@
         /// </summary>
         public void DrawMenu()
         {
-            var surroundedCoords = GetSurroundedTiles();
+            var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
             for (var index = 0; index < surroundedCoords.Length; ++index)
             {
-                var coord = surroundedCoords[index];
+                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
                 var gid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[index], ViewDefinitions.Sort.Menu);
-                m_menuLayer.SetTileGID(gid, coord);
+                m_worldLayer.MenuLayer.SetTileGID(gid, mapCoordinate);
             }
         }
 
@@ -148,11 +245,12 @@
         /// <param name="coord">Coordinate which was selected.</param>
         public Core.Models.Definitions.Definition GetSelectedDefinition(CCTileMapCoordinates coord)
         {
-            var surroundedCoords = GetSurroundedTiles();
+            var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
             for (var index = 0; index < surroundedCoords.Length; ++index)
             {
-                if (coord.Column == surroundedCoords[index].Column &&
-                    coord.Row == surroundedCoords[index].Row)
+                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
+                if (coord.Column == mapCoordinate.Column &&
+                    coord.Row == mapCoordinate.Row)
                 {
                     return m_types[index];
                 }
@@ -165,17 +263,18 @@
         /// </summary>
         public void CloseMenu()
         {
-            var surroundedCoords = GetSurroundedTiles();
+            var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
             foreach (var coord in surroundedCoords)
             {
-                m_menuLayer.RemoveTile(coord);
+                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, coord);
+                m_worldLayer.MenuLayer.RemoveTile(mapCoordinate);
             }
         }
 
         /// <summary>
-        /// The m_enter.
+        /// The Center Position of the current menu.
         /// </summary>
-        private CCTileMapCoordinates m_center;
+        private PositionI m_center;
 
         /// <summary>
         /// The definition m_types.
@@ -183,8 +282,8 @@
         private Core.Models.Definitions.Definition[] m_types;
 
         /// <summary>
-        /// The m_menu layer.
+        /// The Worldlayer.
         /// </summary>
-        private CCTileMapLayer m_menuLayer;
+        private WorldLayer m_worldLayer;
     }
 }

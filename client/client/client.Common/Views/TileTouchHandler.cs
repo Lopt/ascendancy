@@ -239,7 +239,9 @@
         {
             m_timer.Stop();
             var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
-
+            var MapCellPosition = new Client.Common.Models.MapCellPosition(coord);
+            var Position = m_worldLayer.RegionView.GetCurrentGamePosition(MapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
+            var PositionI = new Core.Models.PositionI((int)Position.X, (int)Position.Y);
             switch (m_touchGesture)
             {
                 case TouchGesture.Zoom:
@@ -257,9 +259,9 @@
                     if (m_worldLayer.UnitLayer.TileGIDAndFlags(coord).Gid != 0)
                     {
                         m_touchGesture = TouchGesture.MoveUnit;
-                        var MapCellPosition = new Client.Common.Models.MapCellPosition(coord);
-                        var Position = m_worldLayer.RegionView.GetCurrentGamePosition(MapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-                        var PositionI = new Core.Models.PositionI((int)Position.X, (int)Position.Y);
+//                        var MapCellPosition = new Client.Common.Models.MapCellPosition(coord);
+//                        var Position = m_worldLayer.RegionView.GetCurrentGamePosition(MapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
+//                        var PositionI = new Core.Models.PositionI((int)Position.X, (int)Position.Y);
                         var range = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(PositionI.RegionPosition).GetEntity(PositionI.CellPosition).Move;                       
                         m_Indicator = new IndicatorView(m_worldLayer);
                         m_Indicator.ShowIndicator(PositionI, range, 1);
@@ -278,7 +280,7 @@
                         types[5] = defM.GetDefinition(EntityType.Archer);
                         //types[] = defM.GetDefinition(alle einheitentypen die gebaut werden können);
 
-                        m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
+                        m_menuView = new MenuView(m_worldLayer, PositionI, types);
                         m_menuView.DrawMenu();
                         m_touchGesture = TouchGesture.Menu;
                     }
@@ -300,7 +302,7 @@
                         {   
                             cont = true;
                         }
-                        m_menuView = new MenuView(m_worldLayer.MenuLayer, coord, types);
+                        m_menuView = new MenuView(m_worldLayer, PositionI, types);
                         if (!cont)
                         {
                             m_menuView.DrawMenu();

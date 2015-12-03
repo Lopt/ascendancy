@@ -27,22 +27,22 @@
         /// <param name="type">The Indicator Type.</param>
         public void ShowIndicator(PositionI coord, int range, int type)
         {
-            var gid = new CCTileGidAndFlags(74);
+            var gid = new CCTileGidAndFlags(82);
             switch (type)
             {
                 // influence range
                 case 1:
-                    gid = new CCTileGidAndFlags(84);
+                    gid = new CCTileGidAndFlags(82);
                     break;
 
                 // attack range
                 case 2:
-                    gid = new CCTileGidAndFlags(85);
+                    gid = new CCTileGidAndFlags(83);
                     break;
 
                 // movement range
                 case 3:
-                    gid = new CCTileGidAndFlags(86);
+                    gid = new CCTileGidAndFlags(84);
                     break;
             }
 
