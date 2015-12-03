@@ -24,27 +24,7 @@ namespace Client.Common.Views
     /// </summary>
     public class WorldLayerHex : CCLayer
     {
-        /// <summary>
-        /// Load phases.
-        /// </summary>
-        public enum Phases
-        {
-            Start,
-            LoadTerrain,
-            LoadEntities,
-            Idle,
-            Exit
-        }
-
-        /// <summary>
-        /// Gets the load phase.
-        /// </summary>
-        /// <value>The phase.</value>
-        public Phases Phase
-        {
-            get;
-            private set;
-        }
+        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.WorldLayer"/> class.
@@ -54,34 +34,25 @@ namespace Client.Common.Views
             : base()
         {
             m_gameScene = gameScene;
-            m_currentPosition = Geolocation.Instance.CurrentGamePosition;
-            m_lastPosition = m_currentPosition;
+            m_currentWorldPoint = PositionHelper.GamePositionToWorldPoint(Geolocation.Instance.CurrentGamePosition);
             m_worker = new Views.Worker(this);
             EntityManagerController.Instance.Worker = m_worker;
   
             m_regionViewHexDic = new Dictionary<RegionPosition, RegionViewHex>();
 
-            m_currentPositionNode = new DrawNode();
+            m_geolocationPositionNode = new DrawNode();
 
-
-            LoadRegionViewHexDic();
-
-            foreach (RegionViewHex regionViewHex in m_regionViewHexDic.Values)
-            {
-                this.AddChild(regionViewHex.GetTileMap().TileLayersContainer);
-            }
-
-            this.AddChild(m_currentPositionNode);
+            this.AddChild(m_geolocationPositionNode);
 
             Schedule(m_worker.Schedule);
-            Schedule(CheckGeolocation);
+            Schedule(CheckView);
         }
 
         /// <summary>
         /// Gets the scale factor.
         /// </summary>
         /// <returns>The scale factor.</returns>
-        public float GetScale()
+        public float GetZoom()
         {
             return m_zoom;
         }
@@ -97,14 +68,9 @@ namespace Client.Common.Views
             }
         }
 
-        public void MoveCamera(CCPoint diff)
+        public void MovePosition(CCPoint worldPoint)
         {
-            var oldTargetPoint = this.Camera.TargetInWorldspace;
-            var oldCameraPoint = this.Camera.CenterInWorldspace;
-            var newTargetPoint = new CCPoint3(oldTargetPoint.X - diff.X, oldTargetPoint.Y - diff.Y, oldTargetPoint.Z);
-            var newCameraPoint = new CCPoint3(oldCameraPoint.X - diff.X, oldCameraPoint.Y - diff.Y, oldCameraPoint.Z);
-            this.Camera.TargetInWorldspace = newTargetPoint;
-            this.Camera.CenterInWorldspace = newCameraPoint;
+            m_currentWorldPoint = worldPoint;
         }
 
         public RegionViewHex GetRegionViewHex(RegionPosition regionPosition)
@@ -123,25 +89,14 @@ namespace Client.Common.Views
         protected override void AddedToScene()
         {
             base.AddedToScene();
-            SetCamera();
+            InitCamera(m_currentWorldPoint);
             ZoomWorld(ClientConstants.TILEMAP_NORM_ZOOM);
+            LoadRegionViews(m_currentWorldPoint);
         }
 
-        private void SetCamera()
+        private void InitCamera(CCPoint worldPoint)
         {
-            SetCamera(m_currentPosition.RegionPosition);
-        }
-
-        private void SetCamera(RegionPosition regionPosition)
-        {
-            RegionViewHex regionViewHex;
-            m_regionViewHexDic.TryGetValue(regionPosition, out regionViewHex);
-            var cameraTargetPoint = PositionHelper.RegionViewHexToWorldPosition(regionViewHex);
-            SetCamera(cameraTargetPoint);
-        }
-
-        private void SetCamera(CCPoint cameraTargetPoint)
-        {
+            var cameraTargetPoint = worldPoint;
             var cameraWidth = m_gameScene.VisibleBoundsScreenspace.MaxX;
             var cameraHeight = m_gameScene.VisibleBoundsScreenspace.MaxY; 
 
@@ -151,48 +106,55 @@ namespace Client.Common.Views
                     cameraHeight));
         }
 
-        private void CheckGeolocation(float frameTimesInSecond)
+        private void SetCamera(CCPoint3 newTargetPoint, CCPoint3 newCameraPoint)
         {
-            if (m_currentPosition != Geolocation.Instance.CurrentGamePosition)
-            {
-                m_lastPosition = m_currentPosition;
-                m_currentPosition = Geolocation.Instance.CurrentGamePosition;
+            this.Camera.TargetInWorldspace = newTargetPoint;
+            this.Camera.CenterInWorldspace = newCameraPoint;
+        }
 
-                LoadRegionViewHexDicAsync();
+        private void CheckView(float frameTimesInSecond)
+        {
+            var oldCameraPoint = this.Camera.CenterInWorldspace;
+            var oldTargetPoint = this.Camera.TargetInWorldspace;
+           
+            LoadRegionViews(m_currentWorldPoint);
+
+            var newTargetPoint = new CCPoint3(m_currentWorldPoint.X, m_currentWorldPoint.Y, oldTargetPoint.Z);
+            var newCameraPoint = new CCPoint3(m_currentWorldPoint.X, m_currentWorldPoint.Y, oldCameraPoint.Z);
+            SetCamera(newTargetPoint, newCameraPoint); 
+              
+        }
+
+        private void LoadRegionViews(CCPoint point)
+        {
+            var position = PositionHelper.WorldPointToGamePosition(point);
+            var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
+            var newKeys = regionManagerController.GetWorldNearRegionPositions(position.RegionPosition);
+            var oldKeys = new HashSet<RegionPosition>(m_regionViewHexDic.Keys);
+            var deleteKeys = new HashSet<RegionPosition>(m_regionViewHexDic.Keys);
+            deleteKeys.ExceptWith(newKeys);
+
+            foreach (var regionPos in deleteKeys)
+            {
+                this.RemoveChild(m_regionViewHexDic[regionPos].GetTileMap().TileLayersContainer);
+                m_regionViewHexDic.Remove(regionPos);
+            }
+
+            newKeys.ExceptWith(oldKeys);
+            foreach (var regionPos in newKeys)
+            {
+                var region = regionManagerController.GetRegion(regionPos);
+                RegionViewHex regionViewHex = (RegionViewHex)region.View;
+                if (regionViewHex == null)
+                {
+                    regionViewHex = new RegionViewHex(region);
+                }
+                this.AddChild(regionViewHex.GetTileMap().TileLayersContainer);
+                m_regionViewHexDic.Add(regionPos, regionViewHex);
             }
                 
         }
 
-
-        /// <summary>
-        /// Loads the region view hex dictionary with all regions (5x5) arround the currentPosition.
-        /// </summary>
-        /// <returns>The region view hex dic.</returns>
-        private async Task LoadRegionViewHexDicAsync()
-        {
-            var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
-            Phase = Phases.Start;
-            Phase = Phases.LoadTerrain;
-            await regionManagerController.LoadTerrainsAsync(m_currentPosition.RegionPosition);
-            Phase = Phases.LoadEntities;
-            await EntityManagerController.Instance.LoadEntitiesAsync(m_currentPosition, m_currentPosition.RegionPosition);
-            Phase = Phases.Idle;
-
-            LoadRegionViewHexDic();
-
-        }
-
-        private void LoadRegionViewHexDic()
-        {
-            var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
-            m_regionViewHexDic.Clear();
-            foreach (var regionPosition in regionManagerController.GetWorldNearRegionPositions(m_currentPosition.RegionPosition))
-            {
-                var region = regionManagerController.GetRegion(regionPosition);
-                m_regionViewHexDic.Add(regionPosition, new RegionViewHex(region));
-
-            }
-        }
 
         #region Properties
 
@@ -210,12 +172,7 @@ namespace Client.Common.Views
         /// <summary>
         /// The m current position.
         /// </summary>
-        private Position m_currentPosition;
-
-        /// <summary>
-        /// The m last position.
-        /// </summary>
-        private Position m_lastPosition;
+        private CCPoint m_currentWorldPoint;
 
         /// <summary>
         /// The m menu layer.
@@ -225,7 +182,7 @@ namespace Client.Common.Views
         /// <summary>
         /// The m current position node.
         /// </summary>
-        private DrawNode m_currentPositionNode;
+        private DrawNode m_geolocationPositionNode;
 
         /// <summary>
         /// The m scale.

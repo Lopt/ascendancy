@@ -1,4 +1,5 @@
 ﻿using Client.Common.Manager;
+using System.Runtime.CompilerServices;
 
 namespace Client.Common.Views
 {
@@ -67,7 +68,7 @@ namespace Client.Common.Views
         /// </summary>
         private MenuView m_menuView;
 
-        private CCScene m_scene;
+        private GameScene m_scene;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.TileTouchHandler"/> class.
@@ -108,10 +109,15 @@ namespace Client.Common.Views
                 m_touchGesture == TouchGesture.Move))
             {
                 m_touchGesture = TouchGesture.Move;
-                var touch = touches[0];
 
-                CCPoint diff = touch.Delta;
-                m_worldLayerHex.MoveCamera(diff);
+                m_scene.ViewMode = GameScene.ViewModes.CAMERAPOS;
+
+                var diff = touches[0].LocationOnScreen - touches[0].StartLocationOnScreen;
+                var move = new CCPoint(-diff.X, diff.Y) * m_worldLayerHex.GetZoom();
+                var cameraDiff = touches[0].StartLocationOnScreen - m_scene.VisibleBoundsScreenspace.Center;
+                var cameraMove = new CCPoint(-cameraDiff.X, cameraDiff.Y) * m_worldLayerHex.GetZoom();
+                //var cameraZero = new CCPoint(-touches[0].StartLocationOnScreen.X, touches[0].StartLocationOnScreen.Y);
+                m_worldLayerHex.MovePosition(m_startLocation + cameraMove + move);
             }
             else if (touches.Count >= 2 &&
                      (m_touchGesture == TouchGesture.Start ||
@@ -151,10 +157,10 @@ namespace Client.Common.Views
         public bool OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             var oldWorldPosition = m_startLocation;
-            var oldGamePositionI = Helper.PositionHelper.WorldPositionToGamePositionI(oldWorldPosition);
+            var oldGamePositionI = Helper.PositionHelper.WorldPointToGamePositionI(oldWorldPosition);
 
             m_startLocation = m_worldLayerHex.ConvertToWorldspace(touches[0].Location);
-            var gamePositionI = Helper.PositionHelper.WorldPositionToGamePositionI(m_startLocation);
+            var gamePositionI = Helper.PositionHelper.WorldPointToGamePositionI(m_startLocation);
 
             switch (m_touchGesture)
             {
@@ -197,7 +203,7 @@ namespace Client.Common.Views
             m_timer.Reset();
             m_timer.Start();
 
-            m_zoom = m_worldLayerHex.GetScale();
+            m_zoom = m_worldLayerHex.GetZoom();
 
             return true;
         }
@@ -212,7 +218,7 @@ namespace Client.Common.Views
         {
             m_timer.Stop();
 
-            var startPositionI = Helper.PositionHelper.WorldPositionToGamePositionI(m_startLocation);
+            var startPositionI = Helper.PositionHelper.WorldPointToGamePositionI(m_startLocation);
             switch (m_touchGesture)
             {
                 case TouchGesture.Zoom:

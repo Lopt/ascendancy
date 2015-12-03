@@ -41,6 +41,12 @@ namespace Core.Models
             Y = regionPosition.RegionY * Constants.REGION_SIZE_Y + cellPosition.CellY;
         }
 
+        public Position(int regionPositionX, int regionPositionY, float cellPositionX, float cellPositionY)
+        {
+            X = regionPositionX * Constants.REGION_SIZE_X + cellPositionX;
+            Y = regionPositionY * Constants.REGION_SIZE_Y + cellPositionY;
+        }
+
         public double X
         {
             get;

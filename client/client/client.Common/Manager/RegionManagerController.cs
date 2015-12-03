@@ -1,4 +1,6 @@
-﻿namespace Client.Common.Manager
+﻿using System.Collections.Generic;
+
+namespace Client.Common.Manager
 {
     using System.Threading.Tasks;
     using Client.Common.Controllers;
@@ -89,7 +91,6 @@
         public async Task<bool> DoActionAsync(Core.Models.Position currentGamePosition, Core.Models.Action[] actions)
         {
             await NetworkController.Instance.DoActionsAsync(currentGamePosition, actions);
-            await EntityManagerController.Instance.LoadEntitiesAsync(currentGamePosition, currentGamePosition.RegionPosition);
             return true;
         }
 
@@ -102,22 +103,23 @@
         /// </summary>
         /// <returns>The regions around the positions.</returns>
         /// <param name="regionPosition">Region position.</param>
-        public RegionPosition[,] GetWorldNearRegionPositions(RegionPosition regionPosition)
+        public HashSet<RegionPosition> GetWorldNearRegionPositions(RegionPosition regionPosition)
         {
+            var regions = new HashSet<RegionPosition>();
+
             int halfX = Common.Constants.ClientConstants.DRAW_REGIONS_X / 2;
             int halfY = Common.Constants.ClientConstants.DRAW_REGIONS_Y / 2;
 
-            RegionPosition[,] worldRegion = new RegionPosition[Common.Constants.ClientConstants.DRAW_REGIONS_X, Common.Constants.ClientConstants.DRAW_REGIONS_Y];
             for (int x = -halfX; x <= halfX; x++)
             {
                 for (int y = -halfY; y <= halfY; y++)
                 {
                     var regPos = new RegionPosition(regionPosition.RegionX + x, regionPosition.RegionY + y);
-                    worldRegion[x + halfX, y + halfY] = regPos;
+                    regions.Add(regPos);
                 }
             }
 
-            return worldRegion;
+            return regions;
         }
 
         /// <summary>

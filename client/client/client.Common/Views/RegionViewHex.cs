@@ -11,12 +11,14 @@
     using Core.Models;
     using Core.Views;
     using SQLitePCL;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Region view with hexagonal tile map to set the content of the tile map.
     /// </summary>
     public class RegionViewHex : ViewEntity
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.RegionViewHex"/> class.
         /// </summary>
@@ -24,6 +26,7 @@
         public RegionViewHex(Region region)
             : base(region)
         {
+            
             var tileMapInfo = new CCTileMapInfo(Common.Constants.ClientConstants.TILEMAP_FILE_HEX);
             m_tileMap = new CCTileMap(tileMapInfo);
              
@@ -32,6 +35,8 @@
             m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
             m_menueLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_MENU);
             Init();
+            LoadRegionViewAsync();
+
         }
 
         /// <summary>
@@ -89,20 +94,38 @@
             }
         }
 
+
+        /// <summary>
+        /// Loads the region view hex dictionary with all regions (5x5) arround the currentPosition.
+        /// </summary>
+        /// <returns>The region view hex dic.</returns>
+        private async Task LoadRegionViewAsync()
+        {
+            var region = (Region)this.Model;
+            var regionPosition = region.RegionPosition;
+            var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
+ 
+            await regionManagerController.LoadTerrainsAsync(regionPosition);
+
+            await EntityManagerController.Instance.LoadEntitiesAsync(regionPosition);
+
+            SetTilesInMap32();
+        }
+
+        private void SetWorldPosition()
+        {
+            var position = PositionHelper.RegionViewHexToWorldPoint(this);
+            m_tileMap.TileLayersContainer.Position = position;
+        }
+
+
         /// <summary>
         /// Update this instance.
         /// </summary>
         private void Init()
         {
             ClearLayers();
-            SetTilesInMap32();
-            SetWorldPosition();
-        }
-
-        public void SetWorldPosition()
-        {
-            var position = PositionHelper.RegionViewHexToWorldPosition(this);
-            m_tileMap.TileLayersContainer.Position = position;
+            SetWorldPosition();           
         }
 
         /// <summary>

@@ -4,12 +4,21 @@
     using System.Collections.Generic;
     using Client.Common.Models;
     using CocosSharp;
+    using Core.Models;
 
     /// <summary>
     /// The Game scene.
     /// </summary>
     public class GameScene : CCScene
     {
+        public enum ViewModes
+        {
+            CURRENTPOS,
+            CAMERAPOS,
+            BASEPOS
+        }
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.GameScene"/> class.
         /// </summary>
@@ -17,7 +26,7 @@
         public GameScene(CCWindow mainWindow)
             : base(mainWindow)
         {
-
+            ViewMode = ViewModes.CURRENTPOS;
             WorldLayerHex = new WorldLayerHex(this);
             AddChild(WorldLayerHex);
 
@@ -34,6 +43,10 @@
 
         #region Properties
 
+        public ViewModes ViewMode;
+
+
+        public Position CurrentBasePosition;
 
         /// <summary>
         /// The world in hex (whole game field).

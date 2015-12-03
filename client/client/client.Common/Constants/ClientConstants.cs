@@ -182,12 +182,13 @@
         /// <summary>
         /// The heigth of the tile map hex content size.
         /// </summary>
-        public const float TILEMAP_HEX_CONTENTSIZE_HEIGTH = 2304;
+        public const float TILEMAP_HEX_CONTENTSIZE_HEIGHT = 2304;
 
         /// <summary>
         /// The width of the tile map hex content size.
         /// </summary>
-        public const float TILEMAP_HEX_CONTENTSIZE_WIDTH = 1984;
+        public const float TILEMAP_HEX_CONTENTSIZE_WIDTH = 1998;
+        //1984;
 
         /// <summary>
         /// number of regions which should be drawn (X)
