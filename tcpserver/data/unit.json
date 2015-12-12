@@ -70,15 +70,6 @@
 
      },
      
- 
-     
-     
-     
-     
-     
-     
-     
-     
      
      {
         "Name": "Headquarter",
@@ -161,7 +152,61 @@
         "Moves": 0,
 
 
-     } 
+     }, 
    
+     {
+        "Name": "Lab",
+        "UnitType": 318,
+        "Actions": ["CreateBuilding"],
+        "Attack": 0,
+        "Defense": 0,
+        "Health": 100,
+        "Moves": 0,
 
+
+     },
+
+     {
+        "Name": "Furnace",
+        "UnitType": 324,
+        "Actions": ["CreateBuilding"],
+        "Attack": 0,
+        "Defense": 0,
+        "Health": 100,
+        "Moves": 0,
+
+
+     },
+
+     {
+        "Name": "Transformer",
+        "UnitType": 330,
+        "Actions": ["CreateBuilding"],
+        "Attack": 0,
+        "Defense": 0,
+        "Health": 100,
+        "Moves": 0,
+
+
+     },
+
+     {
+        "Name": "Scrapyard",
+        "UnitType": 336,
+        "Actions": ["CreateBuilding"],
+        "Attack": 0,
+        "Defense": 0,
+        "Health": 100,
+        "Moves": 0,
+     },
+
+     {
+        "Name": "Tent",
+        "UnitType": 342,
+        "Actions": ["CreateBuilding"],
+        "Attack": 0,
+        "Defense": 0,
+        "Health": 100,
+        "Moves": 0,
+     } 
 ]
