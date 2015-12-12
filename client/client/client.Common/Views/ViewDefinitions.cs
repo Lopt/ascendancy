@@ -142,9 +142,9 @@
             m_entitiesGid.Add(EntityType.Scrapyard, new CCTileGidAndFlags(Common.Constants.BuildingGid.SCRAPYARD));
 
             //Buildings -> Resourcen
-            //m_entitiesGid.Add(EntityType.Lab, new CCTileGidAndFlags(Common.Constants.BuildingGid.LABORATORY));
-            //m_entitiesGid.Add(EntityType.Furnace, new CCTileGidAndFlags(Common.Constants.BuildingGid.FURNACE));
-            //m_entitiesGid.Add(EntityType.Transformer, new CCTileGidAndFlags(Common.Constants.BuildingGid.TRANSFORMER));
+            m_entitiesGid.Add(EntityType.Lab, new CCTileGidAndFlags(Common.Constants.BuildingGid.LABORATORY));
+            m_entitiesGid.Add(EntityType.Furnace, new CCTileGidAndFlags(Common.Constants.BuildingGid.FURNACE));
+            m_entitiesGid.Add(EntityType.Transformer, new CCTileGidAndFlags(Common.Constants.BuildingGid.TRANSFORMER));
         }
 
         /// <summary>
@@ -216,12 +216,12 @@
             m_menuEntitiesGid.Add(EntityType.TradingPost, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.TRADINGPOST));
 
             //Buildings -> Storage
-            //m_menuEntitiesGid.Add(EntityType.Scrapyard, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.SCRAPYARD));
+            m_menuEntitiesGid.Add(EntityType.Scrapyard, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.SCRAPYARD));
 
             //Buildings -> Resourcen
-            //m_menuEntitiesGid.Add(EntityType.Lab, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.LABORATORY));
-            //m_menuEntitiesGid.Add(EntityType.Furnace, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.FURNACE));
-            //m_menuEntitiesGid.Add(EntityType.Transformer, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.TRANSFORMER));
+            m_menuEntitiesGid.Add(EntityType.Lab, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.LABORATORY));
+            m_menuEntitiesGid.Add(EntityType.Furnace, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.FURNACE));
+            m_menuEntitiesGid.Add(EntityType.Transformer, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.TRANSFORMER));
         }
 
         #region Fields

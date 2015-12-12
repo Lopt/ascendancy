@@ -53,11 +53,11 @@
         TradingPost = 312,
 
         // ressource buildings
-        Lab = 300,
-        Furnace = 282,
-        Transformer = 306,
-        Scrapyard = 312,
-        Tent = 318,
+        Lab = 318,
+        Furnace = 324,
+        Transformer = 330,
+        Scrapyard = 336,
+        Tent = 342,
     }
 
     /// <summary>
