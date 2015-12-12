@@ -28,7 +28,7 @@ namespace Client.Common.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.WorldLayer"/> class.
         /// </summary>
-        /// <param name="gameScene">Game scene.</param>
+        /// <param name="gameScene">Ga me scene.</param>
         public WorldLayerHex(GameScene gameScene)
             : base()
         {
@@ -36,7 +36,6 @@ namespace Client.Common.Views
             m_currentWorldPoint = PositionHelper.GamePositionToWorldPoint(Geolocation.Instance.CurrentGamePosition);
             m_worker = new Views.Worker(this);
             EntityManagerController.Instance.Worker = m_worker;
-            m_menuView = new MenuView(this);
   
             m_regionViewHexDic = new Dictionary<RegionPosition, RegionViewHex>();
 
@@ -76,6 +75,15 @@ namespace Client.Common.Views
         public void SetWorldPosition(CCPoint worldPoint)
         {
             m_currentWorldPoint = worldPoint;
+        }
+
+        public void UglyDraw()
+        {
+            foreach (var region in m_regionViewHexDic)
+            {
+                region.Value.GetTileMap().TileLayersContainer.PositionX += 0.0001f;
+                region.Value.GetTileMap().TileLayersContainer.PositionX -= 0.0001f;
+            }
         }
 
         public RegionViewHex GetRegionViewHex(RegionPosition regionPosition)

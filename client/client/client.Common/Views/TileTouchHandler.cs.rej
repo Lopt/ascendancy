@@ -1,0 +1,15 @@
+diff a/client/client/client.Common/Views/TileTouchHandler.cs b/client/client/client.Common/Views/TileTouchHandler.cs	(rejected hunks)
+@@ -121,6 +121,13 @@
+             {
+                 m_touchGesture = TouchGesture.Move;
+ 
++                m_scene.ViewMode = GameScene.ViewModes.CameraPosition;
++
++                var diff = touches[0].LocationOnScreen - touches[0].StartLocationOnScreen;
++                var move = new CCPoint(-diff.X, diff.Y) * m_worldLayerHex.GetZoom();
++                var cameraDiff = touches[0].StartLocationOnScreen - m_scene.VisibleBoundsScreenspace.Center;
++                var cameraMove = new CCPoint(-cameraDiff.X, cameraDiff.Y) * m_worldLayerHex.GetZoom();
++                m_worldLayerHex.SetWorldPosition(m_startLocation + cameraMove + move);
+             }
+             else if (touches.Count >= 2 &&
+                      (m_touchGesture == TouchGesture.Start ||

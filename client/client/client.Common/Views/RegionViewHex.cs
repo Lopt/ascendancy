@@ -82,6 +82,16 @@
             }
         }
 
+        public void SetMenuTile(CellPosition cellPos, CCTileGidAndFlags definition)
+        {
+            m_menueLayer.SetTileGID(definition, new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
+        }
+
+        public void RemoveMenuTile(CellPosition cellPos)
+        {
+            m_menueLayer.RemoveTile(new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
+        }
+
         /// <summary>
         /// Sets the building in the map.
         /// </summary>

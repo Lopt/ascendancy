@@ -152,12 +152,13 @@
         /// <summary>
         /// The Start of the Enemy GIDs
         /// </summary>
-        public const short ENEMY_GIDS = 110;
+
+        public const short ENEMY_GIDS = 100;
 
         /// <summary>
         /// The Start of the Helper GIDs
         /// </summary>
-        public const short HELPER_GIDS = 120;
+        public const short HELPER_GIDS = 110;
 
         /// <summary>
         /// size of a tile (width)
