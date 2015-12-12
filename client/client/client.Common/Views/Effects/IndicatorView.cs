@@ -27,22 +27,22 @@
         /// <param name="type">The Indicator Type.</param>
         public void ShowIndicator(PositionI coord, int range, int type)
         {
-            var gid = new CCTileGidAndFlags(82);
+            var gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR);
             switch (type)
             {
                 // influence range
                 case 1:
-                    gid = new CCTileGidAndFlags(82);
+                    gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR);
                     break;
 
                 // attack range
                 case 2:
-                    gid = new CCTileGidAndFlags(83);
+                    gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.REDINDICATOR);
                     break;
 
                 // movement range
                 case 3:
-                    gid = new CCTileGidAndFlags(84);
+                    gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.WHITEINDICATOR);
                     break;
             }
 

@@ -270,47 +270,79 @@
             //}
         }
                 
-        public void DrawMajorMenu()
+        public void DrawMajorMenu(short[] majorgids)
         {
-            var gidhelper = new short[6];
-            gidhelper[0] = 54;
-            gidhelper[1] = 55;
-            gidhelper[2] = 56;
-            gidhelper[3] = 57;
-            gidhelper[4] = 52;
-            gidhelper[5] = 53;
+            var gidhelper = majorgids;
+            //var gidhelper = new short[6];
+            //gidhelper[0] = 52;
+            //gidhelper[1] = 53;
+            //gidhelper[2] = 54;
+            //gidhelper[3] = 55;
+            //gidhelper[4] = 56;
+            //gidhelper[5] = 57;
             var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
             for (var index = 0; index < surroundedCoords.Length; ++index)
             {
                 var coord = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
-                var gid = new CCTileGidAndFlags(52);
+                var gid = new CCTileGidAndFlags(gidhelper[index]);
                 m_worldLayer.MenuLayer.SetTileGID(gid, coord);
             }
         }
 
-        public void ExtendMenu(short gid, Core.Models.Definitions.Definition[] types, PositionI coord)
+        public void ExtendMenu(short gid, PositionI coord)
         {
             //clear the menu to enable a cleaner experience
             if (m_extendedMenuPositions.Count != 0)
             {
                 ClearExtendedMenu();
             }
-            var count = types.Length;
-            GetExtendedCoords(coord, count);
+            var types = new Core.Models.Definitions.Definition[0];
+            var defM = Core.Models.World.Instance.DefinitionManager;
+            var count = 0;
+
             switch(gid)
             {
-                case 52:
+                case Common.Constants.BuildingMenuGid.MILITARY:
+                    types = new Core.Models.Definitions.Definition[4];
+                    types[0] = defM.GetDefinition(EntityType.Barracks);
+                    types[1] = defM.GetDefinition(EntityType.Attachment);
+                    types[2] = defM.GetDefinition(EntityType.Factory);
+                    types[3] = defM.GetDefinition(EntityType.GuardTower);
                     break;
                     //getdefinition(52(militärgebäude)
-                case 53:
+                case Common.Constants.BuildingMenuGid.ZIVIL:
+                    types = new Core.Models.Definitions.Definition[2];
+                    types[0] = defM.GetDefinition(EntityType.Hospital);
+                    //types[1] = defM.GetDefinition(EntityType.Tent); // doesnt work right know
+                    types[1] = defM.GetDefinition(EntityType.TradingPost);
                     break;
                     //getdefinition(53(Zivil)
-                case 54:
+                case Common.Constants.BuildingMenuGid.RESOURCES:
+                    types = new Core.Models.Definitions.Definition[3];
+                    types[0] = defM.GetDefinition(EntityType.Lab);
+                    types[1] = defM.GetDefinition(EntityType.Furnace);
+                    types[2] = defM.GetDefinition(EntityType.Transformer);
                     break;
                     //getdefinition(54(Resourcen)
-                case 55:
+                case Common.Constants.BuildingMenuGid.STORAGE:
+                    types = new Core.Models.Definitions.Definition[1];
+                    types[0] = defM.GetDefinition(EntityType.Scrapyard);
                     //getdefinition(55(storage)
                     break;
+            }
+            count = types.Length;
+            GetExtendedCoords(coord, count);
+            DrawExtendedMenu(types);
+            //draw extmenu
+        }
+
+        public void DrawExtendedMenu(Core.Models.Definitions.Definition[] types)
+        {
+            for (var index = 0; index < types.Length; ++index)
+            {
+                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, m_extendedMenuPositions[index]);
+                var gid = ViewDefinitions.Instance.DefinitionToTileGid(types[index], ViewDefinitions.Sort.Menu);
+                m_worldLayer.MenuLayer.SetTileGID(gid, mapCoordinate);
             }
         }
 

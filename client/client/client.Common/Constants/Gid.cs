@@ -79,172 +79,172 @@
         /// <summary>
         /// GID for tiles where the building Factory is placed.
         /// </summary>
-        public const short FACTORY = 12;// to be replaced with BUILDING_GID + 1 etc
+        public const short FACTORY = ClientConstants.BUILDING_GIDS + 1;// to be replaced with BUILDING_GID + 1 etc
 
         /// <summary>
         /// GID for tiles where the building Farm is placed.
         /// </summary>
-        public const short FARM = 13;
+        public const short FARM = ClientConstants.BUILDING_GIDS + 2;
 
         /// <summary>
         /// GID for tiles where the building Garnision is placed.
         /// </summary>
-        public const short GARNISION = 14;
+        public const short GARNISION = ClientConstants.BUILDING_GIDS + 3;
 
         /// <summary>
         /// GID for tiles where the building Headquarter is placed.
         /// </summary>
-        public const short HEADQUARTER = 15;
+        public const short HEADQUARTER = ClientConstants.BUILDING_GIDS + 4;
 
         /// <summary>
         /// GID for tiles where the building Hause is placed.
         /// </summary>
-        public const short HOUSE = 16;
+        public const short HOUSE = ClientConstants.BUILDING_GIDS + 5;
 
         /// <summary>
         /// GID for tiles where the building Furnace is placed.
         /// </summary>
-        public const short FURNACE = 17;
+        public const short FURNACE = ClientConstants.BUILDING_GIDS + 6;
 
         /// <summary>
         /// GID for tiles where the building Barracks is placed.
         /// </summary>
-        public const short BARRACKS = 18;
+        public const short BARRACKS = ClientConstants.BUILDING_GIDS + 7;
 
         /// <summary>
         /// GID for tiles where the building Publicbuilding is placed.
         /// </summary>
-        public const short PUBLICBUILDING = 19;
+        public const short LABORATORY = ClientConstants.BUILDING_GIDS + 8;
 
         /// <summary>
         /// GID for tiles where the building Tower1 is placed.
         /// </summary>
-        public const short TOWER1 = 20;
-
-        /// <summary>
-        /// GID for tiles where a building tile with the trait tower2 is placed.
-        /// </summary>
-        public const short TOWER2 = 21;
-
-        /// <summary>
-        /// GID for tiles where a building tile with the trait tower3 is placed.
-        /// </summary>
-        public const short TOWER3 = 22;
+        public const short TOWER1 = ClientConstants.BUILDING_GIDS + 9;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait tower4 is placed.
         /// </summary>
-        public const short TOWER4 = 23;
+        public const short HOSPITAL = ClientConstants.BUILDING_GIDS + 10;
+
+        /// <summary>
+        /// GID for tiles where a building tile with the trait Scrapyard is placed.
+        /// </summary>
+        public const short SCRAPYARD = ClientConstants.BUILDING_GIDS + 11;
+
+        /// <summary>
+        /// GID for tiles where a building tile with the trait tower3 is placed.
+        /// </summary>
+        public const short TRADINGPOST = ClientConstants.BUILDING_GIDS + 12;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait tower5 is placed.
         /// </summary>
-        public const short TOWER5 = 24;
+        public const short TRANSFORMER = ClientConstants.BUILDING_GIDS + 13;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait tower6 is placed.
         /// </summary>
-        public const short TOWER6 = 25;
+        public const short TOWER6 = ClientConstants.BUILDING_GIDS + 14;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall1 is placed.
         /// </summary>
-        public const short WALL1 = 26;
+        public const short WALL1 = ClientConstants.BUILDING_GIDS + 15;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall2 is placed.
         /// </summary>
-        public const short WALL2 = 27;
+        public const short WALL2 = ClientConstants.BUILDING_GIDS + 16;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall3 is placed.
         /// </summary>
-        public const short WALL3 = 28;
+        public const short WALL3 = ClientConstants.BUILDING_GIDS + 17;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall4 is placed.
         /// </summary>
-        public const short WALL4 = 29;
+        public const short WALL4 = ClientConstants.BUILDING_GIDS + 18;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall5 is placed.
         /// </summary>
-        public const short WALL5 = 30;
+        public const short WALL5 = ClientConstants.BUILDING_GIDS + 19;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait wall6 is placed.
         /// </summary>
-        public const short WALL6 = 31;
+        public const short WALL6 = ClientConstants.BUILDING_GIDS + 20;
 
         /// <summary>
         /// GID for tiles where the building Watertower is placed.
         /// </summary>
-        public const short WATERTOWER = 32;
+        public const short WATERTOWER = ClientConstants.BUILDING_GIDS + 21;
 
         /// <summary>
         /// GID for tiles where the building Tent is placed.
         /// </summary>
-        public const short TENT = 33;
+        public const short TENT = ClientConstants.BUILDING_GIDS + 22;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait Barrack which use earth as a resource is placed.
         /// </summary>
-        public const short BARRACKSEARTH = 34;
+        public const short BARRACKSEARTH = ClientConstants.BUILDING_GIDS + 23;
 
         /// <summary>
         /// GID for tiles where a building tile with trait Barrack which use fire as a resource is placed.
         /// </summary>
-        public const short BARRACKSFIRE = 35;
+        public const short BARRACKSFIRE = ClientConstants.BUILDING_GIDS + 24;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait Barrack which use gold as a resource is placed.
         /// </summary>
-        public const short BARRACKSGOLD = 36;
+        public const short BARRACKSGOLD = ClientConstants.BUILDING_GIDS + 25;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait Barrack which use air as a resource is placed.
         /// </summary>
-        public const short BARRACKSAIR = 37;
+        public const short BARRACKSAIR = ClientConstants.BUILDING_GIDS + 26;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait Barrack which use magic as a resource is placed.
         /// </summary>
-        public const short BARRACKSMAGIC = 38;
+        public const short BARRACKSMAGIC = ClientConstants.BUILDING_GIDS + 27;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait Barrack which use water as resource is placed.
         /// </summary>
-        public const short BARRACKSWATER = 39;
+        public const short BARRACKSWATER = 28;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait mine which produce earth as a resource is placed.
         /// </summary>
-        public const short MINEEARTH = 40;
+        public const short MINEEARTH = ClientConstants.BUILDING_GIDS + 29;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait mine which produce fire as a resource is placed.
         /// </summary>
-        public const short MINEFIRE = 41;
+        public const short MINEFIRE = ClientConstants.BUILDING_GIDS + 30;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait mine which produce gold as a resource is placed.
         /// </summary>
-        public const short MINEGOLD = 42;
+        public const short MINEGOLD = ClientConstants.BUILDING_GIDS + 31;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait mine which produce air as a resource is placed.
         /// </summary>
-        public const short MINEAIR = 43;
+        public const short MINEAIR = ClientConstants.BUILDING_GIDS + 32;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait mine which produce magic as a resource is placed.
         /// </summary>
-        public const short MINEMANA = 44;
+        public const short MINEMANA = ClientConstants.BUILDING_GIDS + 33;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait mine which produce water as a resource is placed.
         /// </summary>
-        public const short MINEWATER = 45;
+        public const short MINEWATER = ClientConstants.BUILDING_GIDS + 34;
     }
 
     /// <summary>
@@ -255,32 +255,32 @@
         /// <summary>
         /// GID for the unit tile with the trait soldier.
         /// </summary>
-        public const short SOLDIER = 46;// to be replaced with UNIT_GID + 3
+        public const short SOLDIER = ClientConstants.UNIT_GIDS + 1;// to be replaced with UNIT_GID + 3
 
         /// <summary>
         /// GID for the unit tile with the trait hero.
         /// </summary>
-        public const short HERO = 47;
+        public const short HERO = ClientConstants.UNIT_GIDS + 2;
 
         /// <summary>
         /// GID for the unit tile with the trait warrior.
         /// </summary>
-        public const short WARRIOR = 48;
+        public const short WARRIOR = ClientConstants.UNIT_GIDS + 3;
 
         /// <summary>
         /// GID for the unit tile with the trait mage.
         /// </summary>
-        public const short MAGE = 49;
+        public const short MAGE = ClientConstants.UNIT_GIDS + 4;
 
         /// <summary>
         /// GID for the unit tile with the trait scout.
         /// </summary>
-        public const short SCOUT = 50;
+        public const short SCOUT = ClientConstants.UNIT_GIDS + 5;
 
         /// <summary>
         /// GID for the unit tile with the trait unknown.
         /// </summary>
-        public const short UNKNOWN = 51;
+        public const short UNKNOWN = ClientConstants.UNIT_GIDS + 6;
     }
 
     /// <summary>
@@ -291,27 +291,27 @@
         /// <summary>
         /// GID for the enemy unit tile with the trait archer.
         /// </summary>
-        public const short BOWMAN = 76;// to be replaced with ENEMY_GID + 1 etc
+        public const short SOLDIER = ClientConstants.ENEMY_GIDS + 1;// to be replaced with ENEMY_GID + 1 etc
 
         /// <summary>
         /// GID for the enemy unit tile with the trait hero.
         /// </summary>
-        public const short HERO = 77;
+        public const short HERO = ClientConstants.ENEMY_GIDS + 2;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait warrior.
         /// </summary>
-        public const short WARRIOR = 78;
+        public const short WARRIOR = ClientConstants.ENEMY_GIDS + 3;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait mage.
         /// </summary>
-        public const short MAGE = 79;
+        public const short MAGE = ClientConstants.ENEMY_GIDS + 4;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait scout.
         /// </summary>
-        public const short SCOUT = 80;
+        public const short SCOUT = ClientConstants.ENEMY_GIDS + 5;
     }
 
     /// <summary>
@@ -322,7 +322,7 @@
         /// <summary>
         /// GID for the enemy building tile with the trait headquarter.
         /// </summary>
-        public const short HEADQUARTER = 81;// to be replaced with ENEMY_GID + ENEMYOFFSET + 3
+        public const short HEADQUARTER = ClientConstants.ENEMY_GIDS + 6;// to be replaced with ENEMY_GID + ENEMYOFFSET + 3
     }
 
     /// <summary>
@@ -330,65 +330,81 @@
     /// </summary>
     public class BuildingMenuGid
     {
-        public const short MILITARY = 52; // to be replaced with MENU_GID + 3
+        public const short MILITARY = ClientConstants.MENU_GIDS + 1; // to be replaced with MENU_GID + 3
 
-        public const short STORAGE = 53;
+        public const short STORAGE = ClientConstants.MENU_GIDS + 2;
 
-        public const short ZIVIL = 54;
+        public const short ZIVIL = ClientConstants.MENU_GIDS + 3;
 
-        public const short RESOURCES = 55;
+        public const short RESOURCES = ClientConstants.MENU_GIDS + 4;
 
-        public const short CANCEL = 56;
+        public const short CANCEL = ClientConstants.MENU_GIDS + 5;
 
-        public const short UPGRADE = 57;
+        public const short UPGRADE = ClientConstants.MENU_GIDS + 6;
 
         /// <summary>
         /// GID for the building menu tile with the trait earth.
         /// </summary>
-        public const short EARTH = 58;
+        public const short EARTH = ClientConstants.MENU_GIDS + 7;
 
         /// <summary>
         /// GID for the building menu tile with the trait fire.
         /// </summary>
-        public const short FIRE = 59;
+        public const short FIRE = ClientConstants.MENU_GIDS + 8;
 
         /// <summary>
         /// GID for the building menu tile with the trait gold.
         /// </summary>
-        public const short GOLD = 60;
+        public const short GOLD = ClientConstants.MENU_GIDS + 9;
 
         /// <summary>
         /// GID for the building menu tile with the trait air.
         /// </summary>
-        public const short AIR = 61;
+        public const short AIR = ClientConstants.MENU_GIDS + 10;
 
         /// <summary>
         /// GID for the building menu tile with the trait magic.
         /// </summary>
-        public const short MANA = 62;
+        public const short MANA = ClientConstants.MENU_GIDS + 11;
 
         /// <summary>
         /// GID for the building menu tile with the trait water.
         /// </summary>
-        public const short WATER = 63;
+        public const short WATER = ClientConstants.MENU_GIDS + 12;
 
         /// <summary>
         /// GID for the building menu tile with the trait placeholder.
         /// </summary>
-        public const short BUILDINGPLACEHOLDER = 64;
+        public const short BUILDINGPLACEHOLDER = ClientConstants.MENU_GIDS + 13;
 
         /// <summary>
         /// GID for the building menu tile with the trait headquarter.
         /// </summary>
-        public const short HEADQUARTER = 65;
+        public const short HEADQUARTER = ClientConstants.MENU_GIDS + 14;
 
-        public const short BARRACKS = 66;
+        public const short BARRACKS = ClientConstants.MENU_GIDS + 15;
 
-        public const short FABRIK = 67;
+        public const short FACTORY = ClientConstants.MENU_GIDS + 16;
 
-        public const short TOWER = 68;
+        public const short TOWER = ClientConstants.MENU_GIDS + 17;
 
-        public const short WALL = 69;
+        public const short WALL = ClientConstants.MENU_GIDS + 18;
+
+        public const short LABORATORY = ClientConstants.MENU_GIDS + 19;
+
+        public const short HOSPITAL = ClientConstants.MENU_GIDS + 20;
+
+        public const short SCRAPYARD = ClientConstants.MENU_GIDS + 21;
+
+        public const short TRADINGPOST = ClientConstants.MENU_GIDS + 22;
+
+        public const short FURNACE = ClientConstants.MENU_GIDS + 23;
+
+        public const short TRANSFORMER = ClientConstants.MENU_GIDS + 24;
+
+        public const short TENT = ClientConstants.MENU_GIDS + 25;
+
+
     }
 
     /// <summary>
@@ -399,32 +415,32 @@
         /// <summary>
         /// GID for the unit menu tiles with the trait archer.
         /// </summary>
-        public const short SOLDIER = 70;// to be replaced with MENU_GID + UNITOFFSET + 1
+        public const short SOLDIER = ClientConstants.MENU_GIDS + 26;//TODO: separate Units form building 
 
         /// <summary>
         /// GID for the unit menu tiles with the trait hero.
         /// </summary>
-        public const short HERO = 71;
+        public const short HERO = ClientConstants.MENU_GIDS + 27;
 
         /// <summary>
         /// GID for the unit menu tiles with the trait warrior.
         /// </summary>
-        public const short WARRIOR = 72;
+        public const short WARRIOR = ClientConstants.MENU_GIDS + 28;
 
         /// <summary>
         /// GID for the unit menu tiles with the trait mage.
         /// </summary>
-        public const short MAGE = 73;
+        public const short MAGE = ClientConstants.MENU_GIDS + 29;
 
         /// <summary>
         /// GID for the unit menu tiles with the trait scout.
         /// </summary>
-        public const short SCOUT = 74;
+        public const short SCOUT = ClientConstants.MENU_GIDS + 30;
 
         /// <summary>
         /// GID for the unit menu tiles with the trait unknown.
         /// </summary>
-        public const short UNKNOWN = 75;
+        public const short UNKNOWN = ClientConstants.MENU_GIDS + 31;
     }
 
     /// <summary>
@@ -435,16 +451,16 @@
         /// <summary>
         /// GID for the green indicator.
         /// </summary>
-        public const short GREENINDICATOR = 82;// to be replaced with HELPER_GID + 1
+        public const short GREENINDICATOR = ClientConstants.HELPER_GIDS + 1;
 
         /// <summary>
         /// GID for the red indicator.
         /// </summary>
-        public const short REDINDICATOR = 83;// to be replaced with HELPER_GID + 2
+        public const short REDINDICATOR = ClientConstants.HELPER_GIDS + 2;
 
         /// <summary>
         /// GID for the white indicator.
         /// </summary>
-        public const short WHITEINDICATOR = 84;// to be replaced with HELPER_GID + 3
+        public const short WHITEINDICATOR = ClientConstants.HELPER_GIDS + 3;
     }
 }

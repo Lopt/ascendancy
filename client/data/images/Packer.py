@@ -29,7 +29,7 @@ def Spritesheet(TMPPATH, COUNT, height):
         offsetx = 0
         offsety = 0
         new_image = Image.open(EMPTY_IMG)
-        new_image = new_image.resize((WIDTH, newheight),1)
+        new_image = new_image.resize((WIDTH, height),1)
         for pic in range(1, COUNT+1):
                 template = Image.open(TMPPATH+"00"+str(pic)+".png")
                 new_image.paste(template, (offsetx, offsety, (offsetx + IMAGEWIDTH), (offsety + IMAGEHEIGHT)))

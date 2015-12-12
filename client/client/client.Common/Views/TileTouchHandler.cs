@@ -166,13 +166,6 @@
                     var startPosition = m_worldLayer.RegionView.GetCurrentGamePosition(startMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
                     var startPositionI = new Core.Models.PositionI((int)startPosition.X, (int)startPosition.Y);
 
-                    //var location = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
-                    //var endCoord = m_worldLayer.ClosestTileCoordAtNodePosition(location);
-
-                    //var endMapCellPosition = new Client.Common.Models.MapCellPosition(endCoord);
-                    //var endPosition = m_worldLayer.RegionView.GetCurrentGamePosition(endMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-                    //var endPositionI = new Core.Models.PositionI((int)endPosition.X, (int)endPosition.Y);
-
                     var oldPositionI = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
                     var action = ActionHelper.MoveUnit(oldPositionI, endPositionI);
 
@@ -198,7 +191,7 @@
                             m_worldLayer.DoAction(action2);
                         }
                     }
-                    if (m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid < 57 && 51 < m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid)
+                    if (m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid < Client.Common.Constants.BuildingMenuGid.CANCEL && Client.Common.Constants.BuildingMenuGid.MILITARY <= m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid)
                     {
                         var types = new Core.Models.Definitions.Definition[4];
                         var defM = Core.Models.World.Instance.DefinitionManager;
@@ -209,7 +202,7 @@
 
                         //add set types
 
-                        m_menuView.ExtendMenu(m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid, types, endPositionI);
+                        m_menuView.ExtendMenu(m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid, endPositionI);
                     }
                     else
                     {
@@ -312,7 +305,14 @@
                         }
                         else
                         {
-                            m_menuView.DrawMajorMenu();
+                            var Gids = new short[6];
+                            Gids[5] = Client.Common.Constants.BuildingMenuGid.MILITARY;
+                            Gids[0] = Client.Common.Constants.BuildingMenuGid.RESOURCES;
+                            Gids[1] = Client.Common.Constants.BuildingMenuGid.STORAGE;
+                            Gids[2] = Client.Common.Constants.BuildingMenuGid.ZIVIL;
+                            Gids[3] = Client.Common.Constants.BuildingMenuGid.BUILDINGPLACEHOLDER;
+                            Gids[4] = Client.Common.Constants.BuildingMenuGid.CANCEL;
+                            m_menuView.DrawMajorMenu(Gids);
                         }
                         m_touchGesture = TouchGesture.Menu;
                     }

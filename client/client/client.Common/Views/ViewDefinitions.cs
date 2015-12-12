@@ -120,15 +120,31 @@
             m_entitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Common.Constants.UnitGid.WARRIOR));
             m_entitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Common.Constants.UnitGid.MAGE));
             m_entitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Common.Constants.UnitGid.SCOUT));
-            m_entitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.UnitGid.SOLDIER));
             m_entitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(Common.Constants.UnitGid.UNKNOWN));
+
+            //units -> range
+            m_entitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.UnitGid.SOLDIER));
 
             //build -> Military
             m_entitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Common.Constants.BuildingGid.HEADQUARTER));
-            m_entitiesGid.Add(EntityType.Attachment, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.WALL));
-            m_entitiesGid.Add(EntityType.GuardTower, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.TOWER));
-            m_entitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.BARRACKS));
-            m_entitiesGid.Add(EntityType.Factory, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.FABRIK));
+            m_entitiesGid.Add(EntityType.Attachment, new CCTileGidAndFlags(Common.Constants.BuildingGid.WALL1));
+            m_entitiesGid.Add(EntityType.GuardTower, new CCTileGidAndFlags(Common.Constants.BuildingGid.TOWER1));
+            m_entitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Common.Constants.BuildingGid.BARRACKS));
+            m_entitiesGid.Add(EntityType.Factory, new CCTileGidAndFlags(Common.Constants.BuildingGid.FACTORY));
+
+            //Buildings -> Zivil
+            m_entitiesGid.Add(EntityType.Tent, new CCTileGidAndFlags(Common.Constants.BuildingGid.TENT));
+            m_entitiesGid.Add(EntityType.Hospital, new CCTileGidAndFlags(Common.Constants.BuildingGid.HOSPITAL));
+            m_entitiesGid.Add(EntityType.TradingPost, new CCTileGidAndFlags(Common.Constants.BuildingGid.TRADINGPOST));
+
+            //TODO: find out why we only can add 14 entrys in a dictionary
+            //Buildings -> Storage
+            m_entitiesGid.Add(EntityType.Scrapyard, new CCTileGidAndFlags(Common.Constants.BuildingGid.SCRAPYARD));
+
+            //Buildings -> Resourcen
+            //m_entitiesGid.Add(EntityType.Lab, new CCTileGidAndFlags(Common.Constants.BuildingGid.LABORATORY));
+            //m_entitiesGid.Add(EntityType.Furnace, new CCTileGidAndFlags(Common.Constants.BuildingGid.FURNACE));
+            //m_entitiesGid.Add(EntityType.Transformer, new CCTileGidAndFlags(Common.Constants.BuildingGid.TRANSFORMER));
         }
 
         /// <summary>
@@ -138,19 +154,36 @@
         {
             m_enemyEntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
 
+            //units
             m_enemyEntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.HERO));
             m_enemyEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.WARRIOR));
             m_enemyEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.MAGE));
             m_enemyEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.SCOUT));
-            m_enemyEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.BOWMAN));
 
-            // m_EnemyEntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(ClientConstants.ENEMYUNKNOWN_GID));
+            //units -> range
+            m_enemyEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.SOLDIER));
+
+            //Buildings -> Military
             m_enemyEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.HEADQUARTER));
-            //m_enemyEntitiesGid.Add(EntityType.Outposts, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.HEADQUARTER));
-            // m_EnemyEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(ClientConstants.ENEMYHOUSE_GID));
-            // m_EnemyEntitiesGid.Add(EntityType.Wall, new CCTileGidAndFlags(ClientConstants.ENEMYWALL1_GID));
-            // m_EnemyEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(ClientConstants.ENEMYGARNISION_GID));
-            // m_EnemyEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(ClientConstants.ENEMYFARM_GID));
+            /* //TODO: create enemy tiles
+            m_enemyEntitiesGid.Add(EntityType.Attachment, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.WALL));
+            m_enemyEntitiesGid.Add(EntityType.GuardTower, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.TOWER));
+            m_enemyEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.BARRACKS));
+            m_enemyEntitiesGid.Add(EntityType.Factory, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.FACTORY));
+
+            //Buildings -> Zivil
+            m_enemyEntitiesGid.Add(EntityType.Tent, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.TENT));
+            m_enemyEntitiesGid.Add(EntityType.Hospital, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.HOSPITAL));
+            m_enemyEntitiesGid.Add(EntityType.TradingPost, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.TRADINGPOST));
+
+            //Buildings -> Storage
+            m_enemyEntitiesGid.Add(EntityType.Scrapyard, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.SCRAPYARD));
+
+            //Buildings -> Resourcen
+            m_enemyEntitiesGid.Add(EntityType.Lab, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.LABORATORY));
+            m_enemyEntitiesGid.Add(EntityType.Furnace, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.FURNACE));
+            m_enemyEntitiesGid.Add(EntityType.Transformer, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.TRANSFORMER));
+            */
         }
 
         /// <summary>
@@ -175,16 +208,20 @@
             m_menuEntitiesGid.Add(EntityType.Attachment, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.WALL));
             m_menuEntitiesGid.Add(EntityType.GuardTower, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.TOWER));
             m_menuEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.BARRACKS));
-            m_menuEntitiesGid.Add(EntityType.Factory, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.FABRIK));
+            m_menuEntitiesGid.Add(EntityType.Factory, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.FACTORY));
 
             //Buildings -> Zivil
-            //m_menuEntitiesGid.Add(EntityType.Houses, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.FIRE));
+            m_menuEntitiesGid.Add(EntityType.Tent, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.TENT));
+            m_menuEntitiesGid.Add(EntityType.Hospital, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.HOSPITAL));
+            m_menuEntitiesGid.Add(EntityType.TradingPost, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.TRADINGPOST));
 
             //Buildings -> Storage
-
+            //m_menuEntitiesGid.Add(EntityType.Scrapyard, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.SCRAPYARD));
 
             //Buildings -> Resourcen
-            //m_menuEntitiesGid.Add(EntityType.RessourceHarvester, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.AIR));
+            //m_menuEntitiesGid.Add(EntityType.Lab, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.LABORATORY));
+            //m_menuEntitiesGid.Add(EntityType.Furnace, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.FURNACE));
+            //m_menuEntitiesGid.Add(EntityType.Transformer, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.TRANSFORMER));
         }
 
         #region Fields
