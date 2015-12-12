@@ -8,7 +8,7 @@
         /// <summary>
         /// GID for tiles with the trait water.
         /// </summary>
-        public const short WATER = 10;// to be replaced with TERRAIN_GID + 10 etc
+        public const short WATER = 10; // to be replaced with TERRAIN_GID + 10 etc
 
         /// <summary>
         /// GID for tiles with the trait building.
@@ -79,7 +79,7 @@
         /// <summary>
         /// GID for tiles where the building Factory is placed.
         /// </summary>
-        public const short FACTORY = ClientConstants.BUILDING_GIDS + 1;// to be replaced with BUILDING_GID + 1 etc
+        public const short FACTORY = ClientConstants.BUILDING_GIDS + 1; 
 
         /// <summary>
         /// GID for tiles where the building Farm is placed.
@@ -87,9 +87,9 @@
         public const short FARM = ClientConstants.BUILDING_GIDS + 2;
 
         /// <summary>
-        /// GID for tiles where the building Garnision is placed.
+        /// GID for tiles where the building Garrison is placed.
         /// </summary>
-        public const short GARNISION = ClientConstants.BUILDING_GIDS + 3;
+        public const short GARRISON = ClientConstants.BUILDING_GIDS + 3;
 
         /// <summary>
         /// GID for tiles where the building Headquarter is placed.
@@ -97,7 +97,7 @@
         public const short HEADQUARTER = ClientConstants.BUILDING_GIDS + 4;
 
         /// <summary>
-        /// GID for tiles where the building Hause is placed.
+        /// GID for tiles where the building House is placed.
         /// </summary>
         public const short HOUSE = ClientConstants.BUILDING_GIDS + 5;
 
@@ -112,7 +112,7 @@
         public const short BARRACKS = ClientConstants.BUILDING_GIDS + 7;
 
         /// <summary>
-        /// GID for tiles where the building Publicbuilding is placed.
+        /// GID for tiles where the building Public building is placed.
         /// </summary>
         public const short LABORATORY = ClientConstants.BUILDING_GIDS + 8;
 
@@ -177,7 +177,7 @@
         public const short WALL6 = ClientConstants.BUILDING_GIDS + 20;
 
         /// <summary>
-        /// GID for tiles where the building Watertower is placed.
+        /// GID for tiles where the building Water tower is placed.
         /// </summary>
         public const short WATERTOWER = ClientConstants.BUILDING_GIDS + 21;
 
@@ -255,7 +255,7 @@
         /// <summary>
         /// GID for the unit tile with the trait soldier.
         /// </summary>
-        public const short SOLDIER = ClientConstants.UNIT_GIDS + 1;// to be replaced with UNIT_GID + 3
+        public const short SOLDIER = ClientConstants.UNIT_GIDS + 1;
 
         /// <summary>
         /// GID for the unit tile with the trait hero.
@@ -291,7 +291,7 @@
         /// <summary>
         /// GID for the enemy unit tile with the trait archer.
         /// </summary>
-        public const short SOLDIER = ClientConstants.ENEMY_GIDS + 1;// to be replaced with ENEMY_GID + 1 etc
+        public const short SOLDIER = ClientConstants.ENEMY_GIDS + 1;
 
         /// <summary>
         /// GID for the enemy unit tile with the trait hero.
@@ -322,7 +322,7 @@
         /// <summary>
         /// GID for the enemy building tile with the trait headquarter.
         /// </summary>
-        public const short HEADQUARTER = ClientConstants.ENEMY_GIDS + 6;// to be replaced with ENEMY_GID + ENEMYOFFSET + 3
+        public const short HEADQUARTER = ClientConstants.ENEMY_GIDS + 6;
     }
 
     /// <summary>
@@ -330,16 +330,34 @@
     /// </summary>
     public class BuildingMenuGid
     {
-        public const short MILITARY = ClientConstants.MENU_GIDS + 1; // to be replaced with MENU_GID + 3
+        /// <summary>
+        /// The MILITARY GID.
+        /// </summary>
+        public const short MILITARY = ClientConstants.MENU_GIDS + 1;
 
+        /// <summary>
+        /// The STORAGE GID.
+        /// </summary>
         public const short STORAGE = ClientConstants.MENU_GIDS + 2;
 
+        /// <summary>
+        /// The ZIVIL GID.
+        /// </summary>
         public const short ZIVIL = ClientConstants.MENU_GIDS + 3;
 
+        /// <summary>
+        /// The RESOURCE GID.
+        /// </summary>
         public const short RESOURCES = ClientConstants.MENU_GIDS + 4;
 
+        /// <summary>
+        /// The CANCEL GID.
+        /// </summary>
         public const short CANCEL = ClientConstants.MENU_GIDS + 5;
 
+        /// <summary>
+        /// The UPGRADE GID.
+        /// </summary>
         public const short UPGRADE = ClientConstants.MENU_GIDS + 6;
 
         /// <summary>
@@ -382,29 +400,60 @@
         /// </summary>
         public const short HEADQUARTER = ClientConstants.MENU_GIDS + 14;
 
+        /// <summary>
+        /// The BARRACKS GID.
+        /// </summary>
         public const short BARRACKS = ClientConstants.MENU_GIDS + 15;
 
+        /// <summary>
+        /// The FACTORY GID.
+        /// </summary>
         public const short FACTORY = ClientConstants.MENU_GIDS + 16;
 
+        /// <summary>
+        /// The TOWER GID.
+        /// </summary>
         public const short TOWER = ClientConstants.MENU_GIDS + 17;
 
+        /// <summary>
+        /// The WALL GID.
+        /// </summary>
         public const short WALL = ClientConstants.MENU_GIDS + 18;
 
+        /// <summary>
+        /// The LABORATORY GID.
+        /// </summary>
         public const short LABORATORY = ClientConstants.MENU_GIDS + 19;
 
+        /// <summary>
+        /// The HOSPITAL.
+        /// </summary>
         public const short HOSPITAL = ClientConstants.MENU_GIDS + 20;
 
+        /// <summary>
+        /// The SCRAPYARD GID.
+        /// </summary>
         public const short SCRAPYARD = ClientConstants.MENU_GIDS + 21;
 
+        /// <summary>
+        /// The TRADINGPOST GID.
+        /// </summary>
         public const short TRADINGPOST = ClientConstants.MENU_GIDS + 22;
 
+        /// <summary>
+        /// The FURNACE GID.
+        /// </summary>
         public const short FURNACE = ClientConstants.MENU_GIDS + 23;
 
+        /// <summary>
+        /// The TRANSFORMER GID.
+        /// </summary>
         public const short TRANSFORMER = ClientConstants.MENU_GIDS + 24;
 
+        /// <summary>
+        /// The TENT GID.
+        /// </summary>
         public const short TENT = ClientConstants.MENU_GIDS + 25;
-
-
     }
 
     /// <summary>
@@ -415,7 +464,7 @@
         /// <summary>
         /// GID for the unit menu tiles with the trait archer.
         /// </summary>
-        public const short SOLDIER = ClientConstants.MENU_GIDS + 26;//TODO: separate Units form building 
+        public const short SOLDIER = ClientConstants.MENU_GIDS + 26; // TODO: separate Units form building 
 
         /// <summary>
         /// GID for the unit menu tiles with the trait hero.

@@ -5,9 +5,8 @@
     using System.Collections.Generic;
     using Client.Common.Models;
     using CocosSharp;
-    using Core.Models.Definitions;
     using Core.Models;
-
+    using Core.Models.Definitions;
 
     /// <summary>
     /// Menu view.
@@ -32,31 +31,31 @@
         /// Tiles in the Direction left Up
         /// for an even X
         /// </summary>
-        public static readonly PositionI[] leftupeven =
+        public static readonly PositionI[] Leftupeven =
         {
             new PositionI(-1,  0),
             new PositionI(-1, -1),
-            new PositionI( 0, -1)
+            new PositionI(0, -1)
         };
 
         /// <summary>
         /// Tiles in the Direction left Up
         /// for an odd X
         /// </summary>
-        public static readonly PositionI[] leftupodd =
+        public static readonly PositionI[] Leftupodd =
         {
             new PositionI(-1,  1),
             new PositionI(-1,  0),
-            new PositionI( 0, -1)
+            new PositionI(0, -1)
         };
 
         /// <summary>
         /// Tiles in the Direction left down
         /// for an even X
         /// </summary>
-        public static readonly PositionI[] leftdowneven =
+        public static readonly PositionI[] Leftdowneven =
         {
-            new PositionI( 0,  1),
+            new PositionI(0,  1),
             new PositionI(-1,  0),
             new PositionI(-1, -1)
         };
@@ -65,9 +64,9 @@
         /// Tiles in the Direction left down
         /// for an odd X
         /// </summary>
-        public static readonly PositionI[] leftdownodd =
+        public static readonly PositionI[] Leftdownodd =
         {
-            new PositionI( 0,  1),
+            new PositionI(0,  1),
             new PositionI(-1,  1),
             new PositionI(-1,  0)
         };
@@ -76,76 +75,76 @@
         /// Tiles in the Direction Up
         /// for an even X
         /// </summary>
-        public static readonly PositionI[] upeven =
+        public static readonly PositionI[] Upeven =
         {
             new PositionI(-1, -1),
-            new PositionI( 0, -1),
-            new PositionI( 1, -1)
+            new PositionI(0, -1),
+            new PositionI(1, -1)
         };
 
         /// <summary>
         /// Tiles in the Direction Up
         /// for an odd X
         /// </summary>
-        public static readonly PositionI[] upodd =
+        public static readonly PositionI[] Upodd =
         {
             new PositionI(-1,  0),
-            new PositionI( 0, -1),
-            new PositionI( 1,  0)
+            new PositionI(0, -1),
+            new PositionI(1,  0)
         };
 
         /// <summary>
         /// Tiles in the Direction right Up
         /// for an even X
         /// </summary>
-        public static readonly PositionI[] rightupeven =
+        public static readonly PositionI[] Rightupeven =
         {
-            new PositionI( 0, -1),
-            new PositionI( 1, -1),
-            new PositionI( 1,  0)
+            new PositionI(0, -1),
+            new PositionI(1, -1),
+            new PositionI(1,  0)
         };
            
         /// <summary>
         /// Tiles in the Direction right Up
         /// for an odd X
         /// </summary>
-        public static readonly PositionI[] rightupodd =
+        public static readonly PositionI[] Rightupodd =
         {
-            new PositionI( 0, -1),
-            new PositionI( 1,  0),
-            new PositionI( 1,  1)
+            new PositionI(0, -1),
+            new PositionI(1,  0),
+            new PositionI(1,  1)
         };
 
         /// <summary>
         /// Tiles in the Direction right down
         /// for an even X
         /// </summary>
-        public static readonly PositionI[] rightdowneven =
+        public static readonly PositionI[] Rightdowneven =
         {
-            new PositionI( 1, -1),
-            new PositionI( 1,  0),
-            new PositionI( 0,  1)
+            new PositionI(1, -1),
+            new PositionI(1,  0),
+            new PositionI(0,  1)
         };
 
         /// <summary>
         /// Tiles in the Direction right down
         /// for an odd X
         /// </summary>
-        public static readonly PositionI[] rightdownodd =
+        public static readonly PositionI[] Rightdownodd =
         {
-            new PositionI( 1,  0),
-            new PositionI( 1,  1),
-            new PositionI( 0,  1)
+            new PositionI(1,  0),
+            new PositionI(1,  1),
+            new PositionI(0,  1)
         };
 
         /// <summary>
         /// Tiles in the Direction down
         /// for an even X
         /// </summary>
-        public static readonly PositionI[] downeven =
+        public static readonly PositionI[] Downeven =
         {   
-            new PositionI( 1,  0),
-            new PositionI( 0,  1),
+            new PositionI(1,  0),
+            new PositionI(0,  1),
             new PositionI(-1,  0)
         };
 
@@ -153,55 +152,54 @@
         /// Tiles in the Direction down
         /// for an odd X
         /// </summary>
-        public static readonly PositionI[] downodd =
+        public static readonly PositionI[] Downodd =
         {
-            new PositionI( 1,  1),
-            new PositionI( 0,  1),
+            new PositionI(1,  1),
+            new PositionI(0,  1),
             new PositionI(-1,  1)
         };
 
         /// <summary>
         /// The odd coordinates.
         /// </summary>
-        public static readonly PositionI[][] odd =
+        public static readonly PositionI[][] Odd =
         {
-            upodd,
-            downodd,
-            leftupodd,
-            rightupodd,
-            leftdownodd,
-            rightdownodd
+            Upodd,
+            Downodd,
+            Leftupodd,
+            Rightupodd,
+            Leftdownodd,
+            Rightdownodd
         };
 
         /// <summary>
         /// The even coordinates.
         /// </summary>
-        public static readonly PositionI[][] even =
+        public static readonly PositionI[][] Even =
         {
-            upeven,
-            downeven,
-            leftupeven,
-            rightupeven,
-            leftdowneven,
-            rightdowneven
-
+            Upeven,
+            Downeven,
+            Leftupeven,
+            Rightupeven,
+            Leftdowneven,
+            Rightdowneven
         };
 
         /// <summary>
-        /// Gets one iteration of the expanding menu with coord and oldcoord as needed parameters to calculate the direction.
+        /// Gets one iteration of the expanding menu with the coordinate and the old coordinate as needed parameters to calculate the direction.
         /// </summary>
         /// <param name="coord">The new Coordinate.</param>
         /// <param name="oldcoord">The old Coordinate.</param>
-        /// <returns>Returns the middel coordinate of the expanding menu.</returns>
+        /// <returns>Returns the second coordinate of the expanding menu.</returns>
         public Core.Models.PositionI Gettiles(PositionI coord, PositionI oldcoord)
         {
-            var extMenu = even[0];
-            var tmp = odd;
+            var extMenu = Even[0];
+            var tmp = Odd;
             if (coord.X % 2 == 0)
             {
-                tmp = even;
+                tmp = Even;
             }
-            var vector = new PositionI( coord.X - oldcoord.X, coord.Y - oldcoord.Y );
+            var vector = new PositionI(coord.X - oldcoord.X, coord.Y - oldcoord.Y);
             if (vector.X == 0)
             {
                 if (vector.Y == -1)
@@ -213,7 +211,7 @@
                     extMenu = tmp[1];
                 } 
             }
-            //right
+            // right
             if (vector.X == 1)
             {
                 if ((vector.Y > 0) || (coord.X % 2 != 0 && vector.Y == 0))
@@ -238,15 +236,15 @@
             }
             foreach (var item in extMenu)
             {
-                m_extendedMenuPositions.Add(coord+item);
+                m_extendedMenuPositions.Add(coord + item);
             }
             return extMenu[1];
         }
 
         /// <summary>
-        /// Gets all extended coords for a given needed tilecount.
+        /// Gets all extended coordinates for a given needed count.
         /// </summary>
-        /// <param name="coord">The pressed Coordinate to know in wich direction the menu will expand.</param>
+        /// <param name="coord">The pressed Coordinate to know in which direction the menu will expand.</param>
         /// <param name="count">The count of needed Tiles.</param>
         public void GetExtendedCoords(PositionI coord, int count)
         {
@@ -262,24 +260,21 @@
             }
 
             // Testdraw to make sure it works properly
-            //foreach (var item in m_extendedMenuPositions)
-            //{
+            // foreach (var item in m_extendedMenuPositions)
+            // {
             //    var coordt = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, item);
             //    var gid = new CCTileGidAndFlags(53);
             //    m_worldLayer.MenuLayer.SetTileGID(gid, coordt);
-            //}
+            // }
         }
                 
+        /// <summary>
+        /// Draws the major menu.
+        /// </summary>
+        /// <param name="majorgids">The GIDs.</param>
         public void DrawMajorMenu(short[] majorgids)
         {
             var gidhelper = majorgids;
-            //var gidhelper = new short[6];
-            //gidhelper[0] = 52;
-            //gidhelper[1] = 53;
-            //gidhelper[2] = 54;
-            //gidhelper[3] = 55;
-            //gidhelper[4] = 56;
-            //gidhelper[5] = 57;
             var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
             for (var index = 0; index < surroundedCoords.Length; ++index)
             {
@@ -289,9 +284,14 @@
             }
         }
 
+        /// <summary>
+        /// Extends the menu.
+        /// </summary>
+        /// <param name="gid">GID to switch between Military, Storage buildings etc..</param>
+        /// <param name="coord">Coordinate to get the direction.</param>
         public void ExtendMenu(short gid, PositionI coord)
         {
-            //clear the menu to enable a cleaner experience
+            // clear the menu to enable a cleaner experience
             if (m_extendedMenuPositions.Count != 0)
             {
                 ClearExtendedMenu();
@@ -299,8 +299,7 @@
             var types = new Core.Models.Definitions.Definition[0];
             var defM = Core.Models.World.Instance.DefinitionManager;
             var count = 0;
-
-            switch(gid)
+            switch (gid)
             {
                 case Common.Constants.BuildingMenuGid.MILITARY:
                     types = new Core.Models.Definitions.Definition[4];
@@ -309,33 +308,32 @@
                     types[2] = defM.GetDefinition(EntityType.Factory);
                     types[3] = defM.GetDefinition(EntityType.GuardTower);
                     break;
-                    //getdefinition(52(militärgebäude)
                 case Common.Constants.BuildingMenuGid.ZIVIL:
                     types = new Core.Models.Definitions.Definition[2];
                     types[0] = defM.GetDefinition(EntityType.Hospital);
-                    //types[1] = defM.GetDefinition(EntityType.Tent); // doesnt work right know
-                    types[1] = defM.GetDefinition(EntityType.TradingPost);
+                    types[1] = defM.GetDefinition(EntityType.Tent); 
+                    types[2] = defM.GetDefinition(EntityType.TradingPost);
                     break;
-                    //getdefinition(53(Zivil)
                 case Common.Constants.BuildingMenuGid.RESOURCES:
                     types = new Core.Models.Definitions.Definition[3];
                     types[0] = defM.GetDefinition(EntityType.Lab);
                     types[1] = defM.GetDefinition(EntityType.Furnace);
                     types[2] = defM.GetDefinition(EntityType.Transformer);
                     break;
-                    //getdefinition(54(Resourcen)
                 case Common.Constants.BuildingMenuGid.STORAGE:
                     types = new Core.Models.Definitions.Definition[1];
                     types[0] = defM.GetDefinition(EntityType.Scrapyard);
-                    //getdefinition(55(storage)
                     break;
             }
             count = types.Length;
             GetExtendedCoords(coord, count);
             DrawExtendedMenu(types);
-            //draw extmenu
         }
 
+        /// <summary>
+        /// Draws the extended menu.
+        /// </summary>
+        /// <param name="types">The definition Types.</param>
         public void DrawExtendedMenu(Core.Models.Definitions.Definition[] types)
         {
             for (var index = 0; index < types.Length; ++index)
@@ -385,7 +383,7 @@
         /// </summary>
         public void ClearExtendedMenu()
         {
-            foreach( var coord in m_extendedMenuPositions)
+            foreach (var coord in m_extendedMenuPositions)
             {
                 var ecoord = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, coord);
                 m_worldLayer.MenuLayer.RemoveTile(ecoord);
@@ -421,7 +419,7 @@
         private Core.Models.Definitions.Definition[] m_types;
 
         /// <summary>
-        /// The Worldlayer.
+        /// The world layer.
         /// </summary>
         private WorldLayer m_worldLayer;
 

@@ -8,8 +8,8 @@
     using Client.Common.Helper;
     using Client.Common.Views.Effects;
     using CocosSharp;
-    using Core.Models.Definitions;
     using Core.Models;
+    using Core.Models.Definitions;
 
     /// <summary>
     /// Touch handler.
@@ -65,7 +65,10 @@
         /// </summary>
         private MenuView m_menuView;
 
-        private IndicatorView m_Indicator;
+        /// <summary>
+        /// The indicator view.
+        /// </summary>
+        private IndicatorView m_indicator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.TileTouchHandler"/> class.
@@ -175,7 +178,7 @@
                     {
                         m_worldLayer.DoAction(action);
                     }
-                    m_Indicator.RemoveIndicator();
+                    m_indicator.RemoveIndicator();
                     m_touchGesture = TouchGesture.None;
                     break;
 
@@ -193,15 +196,6 @@
                     }
                     if (m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid < Client.Common.Constants.BuildingMenuGid.CANCEL && Client.Common.Constants.BuildingMenuGid.MILITARY <= m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid)
                     {
-                        var types = new Core.Models.Definitions.Definition[4];
-                        var defM = Core.Models.World.Instance.DefinitionManager;
-                        types[0] = defM.GetDefinition(EntityType.Barracks);
-                        types[1] = defM.GetDefinition(EntityType.Attachment);
-                        types[2] = defM.GetDefinition(EntityType.Factory);
-                        types[3] = defM.GetDefinition(EntityType.GuardTower);
-
-                        //add set types
-
                         m_menuView.ExtendMenu(m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid, endPositionI);
                     }
                     else
@@ -235,9 +229,9 @@
         {
             m_timer.Stop();
             var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
-            var MapCellPosition = new Client.Common.Models.MapCellPosition(coord);
-            var Position = m_worldLayer.RegionView.GetCurrentGamePosition(MapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-            var PositionI = new Core.Models.PositionI((int)Position.X, (int)Position.Y);
+            var mapCellPosition = new Client.Common.Models.MapCellPosition(coord);
+            var position = m_worldLayer.RegionView.GetCurrentGamePosition(mapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
+            var positionI = new Core.Models.PositionI((int)position.X, (int)position.Y);
             switch (m_touchGesture)
             {
                 case TouchGesture.Zoom:
@@ -255,32 +249,27 @@
                     if (m_worldLayer.UnitLayer.TileGIDAndFlags(coord).Gid != 0)
                     {
                         m_touchGesture = TouchGesture.MoveUnit;
-//                        var MapCellPosition = new Client.Common.Models.MapCellPosition(coord);
-//                        var Position = m_worldLayer.RegionView.GetCurrentGamePosition(MapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-//                        var PositionI = new Core.Models.PositionI((int)Position.X, (int)Position.Y);
-                        var range = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(PositionI.RegionPosition).GetEntity(PositionI.CellPosition).Move;                       
-                        m_Indicator = new IndicatorView(m_worldLayer);
-                        m_Indicator.ShowIndicator(PositionI, range, 1);
+                        var range = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition).Move;                       
+                        m_indicator = new IndicatorView(m_worldLayer);
+                        m_indicator.ShowIndicator(positionI, range, 1);
                     }
                     else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid != 0 && m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid <= 77)
                     {
                         var types = new Core.Models.Definitions.Definition[6];
                         var defM = Core.Models.World.Instance.DefinitionManager;
 
-                        //var types = CanBuild()
                         types[0] = defM.GetDefinition(EntityType.Archer);
                         types[1] = defM.GetDefinition(EntityType.Hero);
                         types[2] = defM.GetDefinition(EntityType.Warrior);
                         types[3] = defM.GetDefinition(EntityType.Mage);
                         types[4] = defM.GetDefinition(EntityType.Archer);
                         types[5] = defM.GetDefinition(EntityType.Archer);
-                        //types[] = defM.GetDefinition(alle einheitentypen die gebaut werden können);
 
-                        m_menuView = new MenuView(m_worldLayer, PositionI, types);
+                        m_menuView = new MenuView(m_worldLayer, positionI, types);
                         m_menuView.DrawMenu();
                         m_touchGesture = TouchGesture.Menu;
                     }
-                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid == 0 )
+                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid == 0)
                     {
                         bool cont = false;
                         var types = new Core.Models.Definitions.Definition[6];
@@ -298,7 +287,7 @@
                         {   
                             cont = true;
                         }
-                        m_menuView = new MenuView(m_worldLayer, PositionI, types);
+                        m_menuView = new MenuView(m_worldLayer, positionI, types);
                         if (!cont)
                         {
                             m_menuView.DrawMenu();

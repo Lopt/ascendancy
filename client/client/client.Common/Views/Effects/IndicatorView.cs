@@ -13,7 +13,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.Effects.IndicatorView"/> class.
         /// </summary>
-        /// <param name="worldlayer">The Worldlayer.</param>
+        /// <param name="worldlayer">The world layer.</param>
         public IndicatorView(WorldLayer worldlayer)
         {
             m_worldLayer = worldlayer;
@@ -68,7 +68,7 @@
         }
 
         /// <summary>
-        /// The m world layer.
+        /// The world layer.
         /// </summary>
         private WorldLayer m_worldLayer;
 
