@@ -8,7 +8,7 @@
         /// <summary>
         /// GID for tiles with the trait water.
         /// </summary>
-        public const short WATER = 10;
+        public const short WATER = 10;// to be replaced with TERRAIN_GID + 10 etc
 
         /// <summary>
         /// GID for tiles with the trait building.
@@ -79,7 +79,7 @@
         /// <summary>
         /// GID for tiles where the building Factory is placed.
         /// </summary>
-        public const short FACTORY = 12;
+        public const short FACTORY = 12;// to be replaced with BUILDING_GID + 1 etc
 
         /// <summary>
         /// GID for tiles where the building Farm is placed.
@@ -255,7 +255,7 @@
         /// <summary>
         /// GID for the unit tile with the trait soldier.
         /// </summary>
-        public const short SOLDIER = 46;
+        public const short SOLDIER = 46;// to be replaced with UNIT_GID + 3
 
         /// <summary>
         /// GID for the unit tile with the trait hero.
@@ -291,7 +291,7 @@
         /// <summary>
         /// GID for the enemy unit tile with the trait archer.
         /// </summary>
-        public const short BOWMAN = 76;
+        public const short BOWMAN = 76;// to be replaced with ENEMY_GID + 1 etc
 
         /// <summary>
         /// GID for the enemy unit tile with the trait hero.
@@ -322,7 +322,7 @@
         /// <summary>
         /// GID for the enemy building tile with the trait headquarter.
         /// </summary>
-        public const short HEADQUARTER = 81;
+        public const short HEADQUARTER = 81;// to be replaced with ENEMY_GID + ENEMYOFFSET + 3
     }
 
     /// <summary>
@@ -330,7 +330,7 @@
     /// </summary>
     public class BuildingMenuGid
     {
-        public const short MILITARY = 52;
+        public const short MILITARY = 52; // to be replaced with MENU_GID + 3
 
         public const short STORAGE = 53;
 
@@ -399,7 +399,7 @@
         /// <summary>
         /// GID for the unit menu tiles with the trait archer.
         /// </summary>
-        public const short SOLDIER = 70;
+        public const short SOLDIER = 70;// to be replaced with MENU_GID + UNITOFFSET + 1
 
         /// <summary>
         /// GID for the unit menu tiles with the trait hero.
@@ -435,28 +435,16 @@
         /// <summary>
         /// GID for the green indicator.
         /// </summary>
-        public const short GREENINDICATOR = 82;
+        public const short GREENINDICATOR = 82;// to be replaced with HELPER_GID + 1
 
         /// <summary>
         /// GID for the red indicator.
         /// </summary>
-        public const short REDINDICATOR = 83;
+        public const short REDINDICATOR = 83;// to be replaced with HELPER_GID + 2
 
         /// <summary>
         /// GID for the white indicator.
         /// </summary>
-        public const short WHITEINDICATOR = 84;
-
-        public const short MILITARY = 52;
-
-        public const short STORAGE = 53;
-
-        public const short ZIVIL = 54;
-
-        public const short RESOURCES = 55;
-
-        public const short CANCLE = 56;
-
-        public const short UPGRADE = 57;
+        public const short WHITEINDICATOR = 84;// to be replaced with HELPER_GID + 3
     }
 }

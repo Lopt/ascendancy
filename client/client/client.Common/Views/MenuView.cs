@@ -25,6 +25,7 @@
             m_center = center;
             m_types = types;
             m_worldLayer = worldlayer;
+            m_extendedMenuPositions = new List<PositionI>();
         }
 
         /// <summary>
@@ -158,6 +159,116 @@
             new PositionI( 0,  1),
             new PositionI(-1,  1)
         };
+
+        /// <summary>
+        /// The odd coordinates.
+        /// </summary>
+        public static readonly PositionI[][] odd =
+        {
+            upodd,
+            downodd,
+            leftupodd,
+            rightupodd,
+            leftdownodd,
+            rightdownodd
+        };
+
+        /// <summary>
+        /// The even coordinates.
+        /// </summary>
+        public static readonly PositionI[][] even =
+        {
+            upeven,
+            downeven,
+            leftupeven,
+            rightupeven,
+            leftdowneven,
+            rightdowneven
+
+        };
+
+        /// <summary>
+        /// Gets one iteration of the expanding menu with coord and oldcoord as needed parameters to calculate the direction.
+        /// </summary>
+        /// <param name="coord">The new Coordinate.</param>
+        /// <param name="oldcoord">The old Coordinate.</param>
+        /// <returns>Returns the middel coordinate of the expanding menu.</returns>
+        public Core.Models.PositionI Gettiles(PositionI coord, PositionI oldcoord)
+        {
+            var extMenu = even[0];
+            var tmp = odd;
+            if (coord.X % 2 == 0)
+            {
+                tmp = even;
+            }
+            var vector = new PositionI( coord.X - oldcoord.X, coord.Y - oldcoord.Y );
+            if (vector.X == 0)
+            {
+                if (vector.Y == -1)
+                {
+                    extMenu = tmp[0];
+                }
+                else
+                {
+                    extMenu = tmp[1];
+                } 
+            }
+            //right
+            if (vector.X == 1)
+            {
+                if ((vector.Y > 0) || (coord.X % 2 != 0 && vector.Y == 0))
+                {
+                    extMenu = tmp[5]; // down
+                }
+                else
+                {
+                    extMenu = tmp[3]; // up
+                }
+            }
+            if (vector.X == -1)
+            {
+                if ((vector.Y > 0) || (coord.X % 2 != 0 && vector.Y == 0))
+                {
+                    extMenu = tmp[4]; // down
+                }
+                else
+                {
+                    extMenu = tmp[2]; // up
+                }
+            }
+            foreach (var item in extMenu)
+            {
+                m_extendedMenuPositions.Add(coord+item);
+            }
+            return extMenu[1];
+        }
+
+        /// <summary>
+        /// Gets all extended coords for a given needed tilecount.
+        /// </summary>
+        /// <param name="coord">The pressed Coordinate to know in wich direction the menu will expand.</param>
+        /// <param name="count">The count of needed Tiles.</param>
+        public void GetExtendedCoords(PositionI coord, int count)
+        {
+            var tmpcoord1 = coord;
+            var tmpcoord2 = m_center;
+            var counter = count;
+            while (counter > 0)
+            {
+                var test = Gettiles(tmpcoord1, tmpcoord2);
+                tmpcoord2 = tmpcoord1;
+                tmpcoord1 = tmpcoord1 + test;
+                counter -= 3;
+            }
+
+            // Testdraw to make sure it works properly
+            //foreach (var item in m_extendedMenuPositions)
+            //{
+            //    var coordt = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, item);
+            //    var gid = new CCTileGidAndFlags(53);
+            //    m_worldLayer.MenuLayer.SetTileGID(gid, coordt);
+            //}
+        }
                 
         public void DrawMajorMenu()
         {
@@ -172,35 +283,23 @@
             for (var index = 0; index < surroundedCoords.Length; ++index)
             {
                 var coord = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
-                var gid = new CCTileGidAndFlags(gidhelper[index]);
+                var gid = new CCTileGidAndFlags(52);
                 m_worldLayer.MenuLayer.SetTileGID(gid, coord);
             }
         }
 
-        public void ExtendMenu(short gid, Core.Models.Definitions.Definition[] types, CCTileMapCoordinates coord)
+        public void ExtendMenu(short gid, Core.Models.Definitions.Definition[] types, PositionI coord)
         {
-
-            var testcoord = new CCTileMapCoordinates();
-            testcoord.Column = -1;
-            testcoord.Row = -1;
-            //up vector(0, 1)
-            //upleft vector(-1, 1)
-            //upright vector(1, 1)
-            //down vector(0, -1)
-            //downleft vector(-1, -1)
-            //downright vector(1, -1)
+            //clear the menu to enable a cleaner experience
+            if (m_extendedMenuPositions.Count != 0)
+            {
+                ClearExtendedMenu();
+            }
             var count = types.Length;
-            var menu = new CCTileMapCoordinates[count];
-
+            GetExtendedCoords(coord, count);
             switch(gid)
             {
                 case 52:
-//                    for (int i = 0; i < count; ++i)
-//                    {
-//                        menu[i] = new CCTileMapCoordinates(coord.Column - 1, coord.Row - 1);
-//                        var tgid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[i], ViewDefinitions.Sort.Menu);
-//                        m_menuLayer.SetTileGID(tgid, menu[i]);
-//                    }
                     break;
                     //getdefinition(52(militärgebäude)
                 case 53:
@@ -211,15 +310,6 @@
                     //getdefinition(54(Resourcen)
                 case 55:
                     //getdefinition(55(storage)
-                    /*
-                     * case xx:
-                     *     getdefinition(meele)
-                     * case xx:
-                     *     getdefinition(range)
-                     * etc.
-                     */
-
-
                     break;
             }
         }
@@ -257,6 +347,19 @@
             }
             return null;
         }
+            
+        /// <summary>
+        /// Clears the extended menu Tiles.
+        /// </summary>
+        public void ClearExtendedMenu()
+        {
+            foreach( var coord in m_extendedMenuPositions)
+            {
+                var ecoord = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, coord);
+                m_worldLayer.MenuLayer.RemoveTile(ecoord);
+            }
+            m_extendedMenuPositions.Clear();
+        }
 
         /// <summary>
         /// Closes the menu.
@@ -268,6 +371,10 @@
             {
                 var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, coord);
                 m_worldLayer.MenuLayer.RemoveTile(mapCoordinate);
+            }
+            if (m_extendedMenuPositions.Count != 0)
+            {
+                ClearExtendedMenu();
             }
         }
 
@@ -285,5 +392,10 @@
         /// The Worldlayer.
         /// </summary>
         private WorldLayer m_worldLayer;
+
+        /// <summary>
+        /// A list to hold all the additional Tile Positions.
+        /// </summary>
+        private List<PositionI> m_extendedMenuPositions;
     }
 }

@@ -155,6 +155,9 @@
 
             m_startLocation = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
             var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
+            var newMapCellPosition = new Client.Common.Models.MapCellPosition(coord);
+            var newPosition = m_worldLayer.RegionView.GetCurrentGamePosition(newMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
+            var endPositionI = new Core.Models.PositionI((int)newPosition.X, (int)newPosition.Y);
 
             switch (m_touchGesture)
             {
@@ -163,12 +166,12 @@
                     var startPosition = m_worldLayer.RegionView.GetCurrentGamePosition(startMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
                     var startPositionI = new Core.Models.PositionI((int)startPosition.X, (int)startPosition.Y);
 
-                    var location = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
-                    var endCoord = m_worldLayer.ClosestTileCoordAtNodePosition(location);
+                    //var location = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
+                    //var endCoord = m_worldLayer.ClosestTileCoordAtNodePosition(location);
 
-                    var endMapCellPosition = new Client.Common.Models.MapCellPosition(endCoord);
-                    var endPosition = m_worldLayer.RegionView.GetCurrentGamePosition(endMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-                    var endPositionI = new Core.Models.PositionI((int)endPosition.X, (int)endPosition.Y);
+                    //var endMapCellPosition = new Client.Common.Models.MapCellPosition(endCoord);
+                    //var endPosition = m_worldLayer.RegionView.GetCurrentGamePosition(endMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
+                    //var endPositionI = new Core.Models.PositionI((int)endPosition.X, (int)endPosition.Y);
 
                     var oldPositionI = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
                     var action = ActionHelper.MoveUnit(oldPositionI, endPositionI);
@@ -206,7 +209,7 @@
 
                         //add set types
 
-                        m_menuView.ExtendMenu(m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid, types, coord);
+                        m_menuView.ExtendMenu(m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid, types, endPositionI);
                     }
                     else
                     {

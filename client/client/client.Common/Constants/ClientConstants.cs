@@ -130,6 +130,36 @@
         public const string LAYER_MENU = "Layer 4";
 
         /// <summary>
+        /// The Start of the Terrain GIDs
+        /// </summary>
+        public const short TERRAIN_GIDS = 0;
+
+        /// <summary>
+        /// The Start of the Building GIDs
+        /// </summary>
+        public const short BUILDING_GIDS = 20;
+
+        /// <summary>
+        /// The Start of the Unit GIDs
+        /// </summary>
+        public const short UNIT_GIDS = 60;
+
+        /// <summary>
+        /// The Start of the Menu GIDs
+        /// </summary>
+        public const short MENU_GIDS = 70;
+
+        /// <summary>
+        /// The Start of the Enemy GIDs
+        /// </summary>
+        public const short ENEMY_GIDS = 100;
+
+        /// <summary>
+        /// The Start of the Helper GIDs
+        /// </summary>
+        public const short HELPER_GIDS = 110;
+
+        /// <summary>
         /// size of a tile (width)
         /// </summary>
         public const float TILE_IMAGE_WIDTH = 83.0f;
