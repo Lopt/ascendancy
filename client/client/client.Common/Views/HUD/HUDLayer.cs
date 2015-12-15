@@ -41,7 +41,7 @@
                 "question-standard",
                 "question-touched",
                 new Action(DeveloperFunction));
-            m_question.AnchorPoint = CCPoint.AnchorLowerRight;
+            m_question.AnchorPoint = CCPoint.AnchorLowerLeft;
             AddChild(m_question);
         }
 
@@ -84,7 +84,7 @@
             m_energyRessource.PositionX = VisibleBoundsWorldspace.MinX;
             m_energyRessource.PositionY = VisibleBoundsWorldspace.MaxY;
 
-            m_question.PositionX = VisibleBoundsWorldspace.MaxX;
+            m_question.PositionX = VisibleBoundsWorldspace.MaxX - m_question.Size.Width;
             m_question.PositionY = VisibleBoundsWorldspace.MinY;
         }
 
