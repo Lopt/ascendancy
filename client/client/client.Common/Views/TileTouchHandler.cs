@@ -195,7 +195,6 @@
                         {
                             oldPositionI2 = new Core.Models.PositionI((int)m_initialPosition.X, (int)m_initialPosition.Y);                            
                         }
-
                         var action2 = ActionHelper.CreateEntity(oldPositionI2, def, GameAppDelegate.Account);
                         var actionC2 = (Core.Controllers.Actions.Action)action2.Control;
                         if (actionC2.Possible())
@@ -266,7 +265,7 @@
                         m_indicator = new IndicatorView(m_worldLayer);
                         m_indicator.ShowIndicator(positionI, range, 1);
                     }
-                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid != 0 && m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid <= 77)
+                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid == Client.Common.Constants.BuildingGid.BARRACKS )//&& m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid <= 77)
                     {
                         var types = new Core.Models.Definitions.Definition[6];
                         var defM = Core.Models.World.Instance.DefinitionManager;

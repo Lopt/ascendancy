@@ -63,6 +63,13 @@
 
                 m_currentPosition = nextPosition;
             }
+            // didnt work
+            if (m_runTime >= m_path.Count && m_entity.Health <= 0)
+            {
+                var nextPosition = m_entity.Position;
+                var mapCoordinatNext = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, nextPosition);
+                WorldLayer.RegionView.SetUnit(mapCoordinatNext, null);
+            }
             WorldLayer.UglyDraw();
             return m_runTime >= m_path.Count;
         }

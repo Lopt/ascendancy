@@ -148,21 +148,22 @@
                 {                    
                     enemyEntity.Health -= 1;
                 }
-                else if (m_fightDistance - ((UnitDefinition)entity.Definition).AttackRange < 0)
+                else if (((UnitDefinition)entity.Definition).AttackRange - m_fightDistance < 0)
                 {
                     // iterate trough all methods to modifie the attack
                     LogicRules.AllAttackModifierRangedInMeele(entity);
 
-                    enemyEntity.Health -= entity.ModfifedAttackValue - enemyEntity.ModifiedDefenseValue;
-                    entity.Health -= enemyEntity.ModfifedAttackValue - entity.ModifiedDefenseValue;
+                    enemyEntity.Health += entity.ModfifedAttackValue - enemyEntity.ModifiedDefenseValue;
+                    entity.Health += enemyEntity.ModfifedAttackValue - entity.ModifiedDefenseValue;
                 }
                 else
                 {
                     // iterate trough all methods to modifie the attack
                     LogicRules.AllAttackModifier(entity);
+                    LogicRules.AllDefenseModifier(enemyEntity);
 
-                    enemyEntity.Health -= entity.ModfifedAttackValue - enemyEntity.ModifiedDefenseValue;
-                    entity.Health -= enemyEntity.ModfifedAttackValue - entity.ModifiedDefenseValue; 
+                    enemyEntity.Health += entity.ModfifedAttackValue - enemyEntity.ModifiedDefenseValue;
+                    entity.Health += enemyEntity.ModfifedAttackValue - entity.ModifiedDefenseValue; 
                 }
 
                 if (enemyEntity.Health <= 0)
@@ -175,7 +176,7 @@
                     }
                     regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
                 }
-                else if (entity.Health <= 0)
+                if (entity.Health <= 0)
                 {
                     if (entity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
                     {  

@@ -81,7 +81,7 @@
         {
             if (unit == null)
             {
-                UnitLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);
+                UnitLayer.RemoveTile(mapCoordinat);
             }
             else
             {
