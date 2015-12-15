@@ -80,12 +80,15 @@
 
             action.Account.BuildableBuildings.TryGetValue(entity.DefinitionID, out list);
 
-            // TODO: send selected position on the client
-            if (action.AccountID == entity.OwnerID && list.Contains(type))
-            {                
-                RealCreatePosition = GetFreeField(positionI, regionManagerC);
+            if (list != null)
+            {
+                if (action.AccountID == entity.OwnerID && list.Contains(type))
+                {                
+                    RealCreatePosition = GetFreeField(positionI, regionManagerC);
 
-                return RealCreatePosition != null;
+                    return RealCreatePosition != null;
+                }
+                return false;
             }
             else
             {

@@ -17,22 +17,20 @@
         /// <param name="travelCost">Travel cost.</param>
         public TerrainDefinition(
             EntityType terrainType,
-            int[] resources,
-            bool buildable = true,
-            bool walkable = true,
-            int travelCost = 1,
-            int defenseModifier = 1,
-            int attackModifier = 1)
+            //int[] resources,
+            bool buildable,
+            bool walkable,
+            int travelCost,
+            int defenseModifier,
+            int attackModifier)
             : base((int)terrainType)
         {
-            Resources = resources;
+            //Resources = resources;
             Buildable = true;
             Walkable = true;
             TravelCost = 1;
-            Walkable = walkable;
-            TravelCost = travelCost;
-            DefenseModifier = 1;
-            AttackModifier = 1;
+            DefenseModifier = defenseModifier;
+            AttackModifier = attackModifier;
         }
 
         /// <summary>

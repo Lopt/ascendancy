@@ -70,6 +70,10 @@
         /// </summary>
         private IndicatorView m_indicator;
 
+        private Position m_initialPosition;
+
+        private bool m_extMenuFlag = false;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.TileTouchHandler"/> class.
         /// </summary>
@@ -183,10 +187,15 @@
                     break;
 
                 case TouchGesture.Menu:
-                    var def = m_menuView.GetSelectedDefinition(coord);
+                    var def = m_menuView.GetSelectedDefinition(coord);                  
                     if (def != null)
                     {
                         var oldPositionI2 = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
+                        if (m_extMenuFlag)
+                        {
+                            oldPositionI2 = new Core.Models.PositionI((int)m_initialPosition.X, (int)m_initialPosition.Y);                            
+                        }
+
                         var action2 = ActionHelper.CreateEntity(oldPositionI2, def, GameAppDelegate.Account);
                         var actionC2 = (Core.Controllers.Actions.Action)action2.Control;
                         if (actionC2.Possible())
@@ -197,12 +206,16 @@
                     if (m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid < Client.Common.Constants.BuildingMenuGid.CANCEL && Client.Common.Constants.BuildingMenuGid.MILITARY <= m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid)
                     {
                         m_menuView.ExtendMenu(m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid, endPositionI);
+                        m_initialPosition = oldPosition;
+                        m_extMenuFlag = true;
                     }
                     else
                     {
                         m_menuView.CloseMenu();
                         m_menuView = null;
                         m_touchGesture = TouchGesture.None;
+                        m_initialPosition = null;
+                        m_extMenuFlag = false;
                     }
                     return true;
 

@@ -25,6 +25,7 @@
             m_types = types;
             m_worldLayer = worldlayer;
             m_extendedMenuPositions = new List<PositionI>();
+            m_shownTypes = new Dictionary<CCTileMapCoordinates, Definition>();
         }
 
         /// <summary>
@@ -309,7 +310,7 @@
                     types[3] = defM.GetDefinition(EntityType.GuardTower);
                     break;
                 case Common.Constants.BuildingMenuGid.ZIVIL:
-                    types = new Core.Models.Definitions.Definition[2];
+                    types = new Core.Models.Definitions.Definition[3];
                     types[0] = defM.GetDefinition(EntityType.Hospital);
                     types[1] = defM.GetDefinition(EntityType.Tent); 
                     types[2] = defM.GetDefinition(EntityType.TradingPost);
@@ -336,11 +337,13 @@
         /// <param name="types">The definition Types.</param>
         public void DrawExtendedMenu(Core.Models.Definitions.Definition[] types)
         {
+            m_shownTypes.Clear();
             for (var index = 0; index < types.Length; ++index)
             {
                 var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, m_extendedMenuPositions[index]);
                 var gid = ViewDefinitions.Instance.DefinitionToTileGid(types[index], ViewDefinitions.Sort.Menu);
                 m_worldLayer.MenuLayer.SetTileGID(gid, mapCoordinate);
+                m_shownTypes[mapCoordinate] = types[index];
             }
         }
 
@@ -355,6 +358,7 @@
                 var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
                 var gid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[index], ViewDefinitions.Sort.Menu);
                 m_worldLayer.MenuLayer.SetTileGID(gid, mapCoordinate);
+                m_shownTypes[mapCoordinate] = m_types[index];
             }
         }
 
@@ -365,17 +369,9 @@
         /// <param name="coord">Coordinate which was selected.</param>
         public Core.Models.Definitions.Definition GetSelectedDefinition(CCTileMapCoordinates coord)
         {
-            var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
-            for (var index = 0; index < surroundedCoords.Length; ++index)
-            {
-                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
-                if (coord.Column == mapCoordinate.Column &&
-                    coord.Row == mapCoordinate.Row)
-                {
-                    return m_types[index];
-                }
-            }
-            return null;
+            Core.Models.Definitions.Definition def;
+            m_shownTypes.TryGetValue(coord, out def);
+            return def;
         }
             
         /// <summary>
@@ -412,6 +408,11 @@
         /// The Center Position of the current menu.
         /// </summary>
         private PositionI m_center;
+
+        /// <summary>
+        /// The definition m_types.
+        /// </summary>
+        private Dictionary<CCTileMapCoordinates, Core.Models.Definitions.Definition> m_shownTypes;
 
         /// <summary>
         /// The definition m_types.
