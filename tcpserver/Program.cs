@@ -24,6 +24,7 @@
             world.AccountManager = new Server.Controllers.AccountManagerController();
             controller.RegionManagerController = new Server.Controllers.RegionManagerController();
 
+
             for (int threadNr = 0; threadNr < Server.Models.ServerConstants.ACTION_THREADS; ++threadNr)
             {
                 var t = new Thread(new ParameterizedThreadStart(Server.Controllers.APIController.Instance.Worker));

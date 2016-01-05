@@ -7,7 +7,6 @@
     using Core.Models;
     using Core.Models.Definitions;
 
-
     /// <summary>
     /// Create unit.
     /// </summary>

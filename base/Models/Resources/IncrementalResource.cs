@@ -2,11 +2,17 @@
 {
     using System;
 
+    /// <summary>
+    /// Incremental resource.
+    /// </summary>
     public class IncrementalResource
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Core.Models.Resource"/> class.
+        /// Initializes a new instance of the <see cref="Core.Models.Resources.IncrementalResource"/> class.
         /// </summary>
+        /// <param name="value">Value of the resource.</param>
+        /// <param name="maximumValue">Maximum value.</param>
+        /// <param name="increments">Increments value.</param>
         public IncrementalResource(double value, double maximumValue, double increments)
         {
             m_realValue = value;
@@ -16,7 +22,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Core.Models.Resource"/> class.
+        /// Initializes a new instance of the <see cref="Core.Models.Resources.IncrementalResource"/> class.
         /// </summary>
         public IncrementalResource()
         {
@@ -38,33 +44,53 @@
             Increments = increments;
         }
 
+        /// <summary>
+        /// Gets the last state.
+        /// </summary>
+        /// <value>The last state.</value>
         public DateTime LastState
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets or sets the maximum value.
+        /// </summary>
+        /// <value>The maximum value.</value>
         public double MaximumValue
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets the increments.
+        /// </summary>
+        /// <value>The increments.</value>
         public double Increments
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets the value.
+        /// </summary>
+        /// <value>The value.</value>
         public double Value
         {
             get
             {
                 var diff = DateTime.Now - LastState;
-                return Math.Min(Math.Max(m_realValue + Increments * diff.Seconds, 0), MaximumValue);
+                return Math.Min(Math.Max((m_realValue + Increments) * diff.Seconds, 0), MaximumValue);
             }
         }
 
+        /// <summary>
+        /// Gets the value percent.
+        /// </summary>
+        /// <value>The value percent.</value>
         public double ValuePercent
         {
             get
@@ -73,7 +99,9 @@
             }
         }
 
+        /// <summary>
+        /// The m real value.
+        /// </summary>
         private double m_realValue;
     }
 }
-

@@ -13,6 +13,19 @@
         /// </summary>
         public RegionManagerController()
         {
+            m_regionManager = World.Instance.RegionManager;
+        }
+
+        /// <summary>
+        /// Gets the region manager.
+        /// </summary>
+        /// <value>The region manager.</value>
+        public RegionManager RegionManager
+        {
+            get
+            {
+                return m_regionManager;
+            }
         }
 
         /// <summary>
@@ -24,5 +37,10 @@
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// The m region manager.
+        /// </summary>
+        private RegionManager m_regionManager;
     }
 }

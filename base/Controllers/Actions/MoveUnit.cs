@@ -153,8 +153,8 @@
                     // iterate trough all methods to modifie the attack
                     LogicRules.AllAttackModifierRangedInMeele(entity);
 
-                    enemyEntity.Health += entity.ModfifedAttackValue - enemyEntity.ModifiedDefenseValue;
-                    entity.Health += enemyEntity.ModfifedAttackValue - entity.ModifiedDefenseValue;
+                    enemyEntity.Health += entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
+                    entity.Health += enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
                 }
                 else
                 {
@@ -162,16 +162,17 @@
                     LogicRules.AllAttackModifier(entity);
                     LogicRules.AllDefenseModifier(enemyEntity);
 
-                    enemyEntity.Health += entity.ModfifedAttackValue - enemyEntity.ModifiedDefenseValue;
-                    entity.Health += enemyEntity.ModfifedAttackValue - entity.ModifiedDefenseValue; 
+                    enemyEntity.Health += entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
+                    entity.Health += enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue; 
                 }
 
                 if (enemyEntity.Health <= 0)
                 {      
-                    // Remove a headquarter and free the territory
+                    // Remove a headquarter and free the territory, Decrease Storage 
                     if (enemyEntity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
                     {  
                         regionEndPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(enemyEntity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), enemyEntity.Owner);
+                        LogicRules.DecreaseHoleStorage(enemyEntity.Owner);
                         regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
                     }
                     regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);

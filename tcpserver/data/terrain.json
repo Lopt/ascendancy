@@ -1,15 +1,16 @@
 [
-    {"Ressources": [0,0,0,0,0], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 999, "AttackModifier": 999, "TerrainType":0,},
-    {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 4, "DefenseModifier": 1.4, "AttackModifier": 1,"TerrainType":1,},
+    {"Ressources": [0,2,0,0,0], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 999, "AttackModifier": 999, "TerrainType":0,},
+    {"Ressources": [2,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 4, "DefenseModifier": 1.4, "AttackModifier": 1,"TerrainType":1,},
     {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 3, "DefenseModifier": 1.2, "AttackModifier": 1,"TerrainType":2,},
     {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":3,},
-    {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":4,},
+    {"Ressources": [2,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":4,},
     {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 1, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":5,},
     {"Ressources": [0,0,0,0,0], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":6,},
     {"Ressources": [0,0,0,0,0], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":7,},
-    {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1.1, "AttackModifier": 1,"TerrainType":8,},
+    {"Ressources": [2,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1.1, "AttackModifier": 1,"TerrainType":8,},
     {"Ressources": [0,0,0,0,0], "Buildable": false, "Walkable": true, "TravelCost": 1, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":9,},
-    {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":10,},
+    {"Ressources": [0,10,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":10,},
     {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":11,},
     {"Ressources": [0,0,0,0,0], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":12,}
 ]
+
