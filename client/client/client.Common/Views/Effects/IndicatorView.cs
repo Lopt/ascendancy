@@ -14,7 +14,7 @@
         /// Initializes a new instance of the <see cref="Client.Common.Views.Effects.IndicatorView"/> class.
         /// </summary>
         /// <param name="worldlayer">The world layer.</param>
-        public IndicatorView(WorldLayer worldlayer)
+        public IndicatorView(WorldLayerHex worldlayer)
         {
             m_worldLayer = worldlayer;
         }
@@ -48,11 +48,13 @@
 
             m_surroundedPositions = LogicRules.GetSurroundedPositions(coord, range);
 
+            /*
             foreach (var tile in m_surroundedPositions)
             {
                 var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, tile);
                 m_worldLayer.IndicatorLayer.SetTileGID(gid, mapCoordinate);
             }
+            */
         }
 
         /// <summary>
@@ -60,17 +62,19 @@
         /// </summary>
         public void RemoveIndicator()
         {
+            /*
             foreach (var item in m_surroundedPositions)
             {
                 var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, item);
                 m_worldLayer.IndicatorLayer.RemoveTile(mapCoordinate); 
             }
+            */
         }
 
         /// <summary>
         /// The world layer.
         /// </summary>
-        private WorldLayer m_worldLayer;
+        private WorldLayerHex m_worldLayer;
 
         /// <summary>
         /// The surrounded tile set.

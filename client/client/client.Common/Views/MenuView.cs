@@ -19,7 +19,7 @@
         /// <param name="worldlayer">The WorldLayer.</param>
         /// <param name="center">PositionI where the menu should be drawn.</param>
         /// <param name="types">Which menu entries should be shown.</param>
-        public MenuView(WorldLayer worldlayer, PositionI center, Definition[] types)
+        public MenuView(WorldLayerHex worldlayer, PositionI center, Definition[] types)
         {
             m_center = center;
             m_types = types;
@@ -279,9 +279,9 @@
             var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
             for (var index = 0; index < surroundedCoords.Length; ++index)
             {
-                var coord = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
-                var gid = new CCTileGidAndFlags(gidhelper[index]);
-                m_worldLayer.MenuLayer.SetTileGID(gid, coord);
+                //var coord = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
+                //var gid = new CCTileGidAndFlags(gidhelper[index]);
+                //m_worldLayer.MenuLayer.SetTileGID(gid, coord);
             }
         }
 
@@ -340,10 +340,10 @@
             m_shownTypes.Clear();
             for (var index = 0; index < types.Length; ++index)
             {
-                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, m_extendedMenuPositions[index]);
-                var gid = ViewDefinitions.Instance.DefinitionToTileGid(types[index], ViewDefinitions.Sort.Menu);
-                m_worldLayer.MenuLayer.SetTileGID(gid, mapCoordinate);
-                m_shownTypes[mapCoordinate] = types[index];
+                //var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, m_extendedMenuPositions[index]);
+                //var gid = ViewDefinitions.Instance.DefinitionToTileGid(types[index], ViewDefinitions.Sort.Menu);
+                //m_worldLayer.MenuLayer.SetTileGID(gid, mapCoordinate);
+                //m_shownTypes[mapCoordinate] = types[index];
             }
         }
 
@@ -355,10 +355,10 @@
             var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
             for (var index = 0; index < surroundedCoords.Length; ++index)
             {
-                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
-                var gid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[index], ViewDefinitions.Sort.Menu);
-                m_worldLayer.MenuLayer.SetTileGID(gid, mapCoordinate);
-                m_shownTypes[mapCoordinate] = m_types[index];
+                //var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
+                //var gid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[index], ViewDefinitions.Sort.Menu);
+                //m_worldLayer.MenuLayer.SetTileGID(gid, mapCoordinate);
+                //m_shownTypes[mapCoordinate] = m_types[index];
             }
         }
 
@@ -381,8 +381,8 @@
         {
             foreach (var coord in m_extendedMenuPositions)
             {
-                var ecoord = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, coord);
-                m_worldLayer.MenuLayer.RemoveTile(ecoord);
+                // var ecoord = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, coord);
+                // m_worldLayer.MenuLayer.RemoveTile(ecoord);
             }
             m_extendedMenuPositions.Clear();
         }
@@ -395,8 +395,8 @@
             var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
             foreach (var coord in surroundedCoords)
             {
-                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, coord);
-                m_worldLayer.MenuLayer.RemoveTile(mapCoordinate);
+                // var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, coord);
+                // m_worldLayer.MenuLayer.RemoveTile(mapCoordinate);
             }
             if (m_extendedMenuPositions.Count != 0)
             {
@@ -422,7 +422,7 @@
         /// <summary>
         /// The world layer.
         /// </summary>
-        private WorldLayer m_worldLayer;
+        private WorldLayerHex m_worldLayer;
 
         /// <summary>
         /// A list to hold all the additional Tile Positions.

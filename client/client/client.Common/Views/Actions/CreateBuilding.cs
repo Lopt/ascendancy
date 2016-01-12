@@ -12,10 +12,10 @@
         /// </summary>
         /// <param name="model">Model of the Building</param>
         /// <param name="worldLayer">World layer.</param>
-        public CreateBuilding(Core.Models.ModelEntity model, WorldLayer worldLayer)
+        public CreateBuilding(Core.Models.ModelEntity model, RegionViewHex regionViewHex)
             : base(model)
         {
-            WorldLayer = worldLayer;
+            RegionViewHex = regionViewHex;
         }
 
         /// <summary>
@@ -37,10 +37,9 @@
             var action = (Core.Models.Action)Model;
 
             var position = (Core.Models.PositionI)action.Parameters[Core.Controllers.Actions.CreateBuilding.CREATE_POSITION];
-            var mapCoordinat = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, position);
             var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
-            WorldLayer.RegionView.SetBuilding(mapCoordinat, entity);
-            WorldLayer.UglyDraw();
+            RegionViewHex.SetBuilding(new CocosSharp.CCTileMapCoordinates(position.CellPosition.CellX, position.CellPosition.CellY), entity);
+            //WorldLayerHex.UglyDraw();
             return true;
         }
 
@@ -48,7 +47,7 @@
         /// Gets the world layer.
         /// </summary>
         /// <value>The world layer.</value>
-        public WorldLayer WorldLayer
+        public RegionViewHex RegionViewHex
         {
             get;
             private set;

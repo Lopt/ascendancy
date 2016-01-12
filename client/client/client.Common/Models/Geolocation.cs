@@ -47,8 +47,7 @@
             position.Longitude = 11.04233265; // standardPosition
             CurrentPosition = position;
             LastPosition = new Position();
-
-            IsPositionChanged = true;
+            FirstGamePosition = null;
         }
 
         /// <summary>
@@ -76,15 +75,6 @@
         /// </summary>
         private readonly TaskScheduler m_scheduler = null;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance is position changed.
-        /// </summary>
-        /// <value><c>true</c> if this instance is position changed; otherwise, <c>false</c>.</value>
-        public bool IsPositionChanged
-        {
-            get; 
-            set; 
-        }
 
         /// <summary>
         /// Gets a value indicating whether this instance is geolocation available.
@@ -147,9 +137,12 @@
         /// <param name="e">E the event data. If there is no event data, this parameter will be null.</param>
         private async void OnPositionChanged(object sender, PositionEventArgs e)
         {
-            await GetPosition();
-            IsPositionChanged = true;
             LastPosition = CurrentPosition;
+            await GetPosition();
+            if (FirstGamePosition == null)
+            {
+                FirstGamePosition = new Core.Models.Position(new Core.Models.LatLon(CurrentPosition.Latitude, CurrentPosition.Longitude));
+            }
         }
 
         /// <summary>
@@ -191,6 +184,13 @@
         /// </summary>
         /// <value>The current position.</value>
         public Position CurrentPosition
+        {
+            get;
+
+            private set;
+        }
+
+        public Core.Models.Position FirstGamePosition
         {
             get;
 

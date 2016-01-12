@@ -193,10 +193,11 @@
         /// <param name="url">Which URL should be called</param>
         private async Task<string> RequestAsync(string url)
         {
+            // doesn't work in IOS 9
             try
             {
                 Helper.Logging.Info("URL load: " + url);
-                HttpResponseMessage response = await m_client.GetAsync(new Uri(url));
+                var response = await m_client.GetAsync(new Uri(url));
 
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync();
@@ -206,6 +207,7 @@
                 Helper.Logging.Error("URL load failed: " + exception.Message);
                 throw exception;
             }
+
         }
 
         #endregion

@@ -1,15 +1,26 @@
-﻿namespace Client.Common.Views
+﻿using Client.Common.Helper;
+
+namespace Client.Common.Views
 {
     using System;
     using System.Collections.Generic;
     using Client.Common.Models;
     using CocosSharp;
+    using Core.Models;
 
     /// <summary>
     /// The Game scene.
     /// </summary>
     public class GameScene : CCScene
     {
+        public enum ViewModes
+        {
+            CurrentGPSPosition,
+            CameraPosition,
+            HeadquarterPosition
+        }
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.GameScene"/> class.
         /// </summary>
@@ -17,8 +28,10 @@
         public GameScene(CCWindow mainWindow)
             : base(mainWindow)
         {
-            WorldLayer = new WorldLayer(this);
-            AddChild(WorldLayer);
+            ViewMode = ViewModes.CurrentGPSPosition;
+            WorldLayerHex = new WorldLayerHex(this);
+            AddChild(WorldLayerHex);
+
             m_touchHandler = new TileTouchHandler(this);
 
             HUD = new Client.Common.Views.HUD.HUDLayer(this);
@@ -30,15 +43,31 @@
             DebugLayer = new DebugLayer();
             AddChild(DebugLayer);
 
-            TouchHandler.Instance.Init(this);
+            TouchHandler.Instance.Init(WorldLayerHex);
+
+            Schedule(CheckGPS);
         }
-            
+
+        void CheckGPS(float elapsedTime)
+        {
+            if (ViewMode == ViewModes.CurrentGPSPosition)
+            {
+                var cameraPoint = PositionHelper.GamePositionToWorldPoint(Geolocation.Instance.CurrentGamePosition);
+                WorldLayerHex.SetWorldPosition(cameraPoint);
+            }
+        }
+
         #region Properties
 
+        public ViewModes ViewMode;
+
+
+        public Position CurrentBasePosition;
+
         /// <summary>
-        /// The world (whole game field).
+        /// The world in hex (whole game field).
         /// </summary>
-        public WorldLayer WorldLayer;
+        public WorldLayerHex WorldLayerHex;
 
         /// <summary>
         /// The debug layer (shows logging information).

@@ -1,4 +1,7 @@
-﻿namespace Client.Common.Views
+﻿using Client.Common.Manager;
+using System.Runtime.CompilerServices;
+
+namespace Client.Common.Views
 {
     using System;
     using System.Collections;
@@ -43,17 +46,19 @@
         /// <summary>
         /// The m_world layer.
         /// </summary>
-        private WorldLayer m_worldLayer;
+        private WorldLayerHex m_worldLayerHex;
+
+        private RegionManagerController m_regionManagerController;
 
         /// <summary>
         /// The m_new scale.
         /// </summary>
-        private float m_newScale = Common.Constants.ClientConstants.TILEMAP_NORM_SCALE;
+        private float m_newZoom = Common.Constants.ClientConstants.TILEMAP_NORM_ZOOM;
 
         /// <summary>
         /// The m_scale.
         /// </summary>
-        private float m_scale = Common.Constants.ClientConstants.TILEMAP_NORM_SCALE;
+        private float m_zoom = Common.Constants.ClientConstants.TILEMAP_NORM_ZOOM;
 
         /// <summary>
         /// The m_start location.
@@ -64,6 +69,8 @@
         /// The m_menu view.
         /// </summary>
         private MenuView m_menuView;
+
+        private GameScene m_scene;
 
         /// <summary>
         /// The indicator view.
@@ -82,12 +89,13 @@
         {
             m_timer = new Stopwatch();
             m_touchGesture = TouchGesture.None;
-            m_worldLayer = scene.WorldLayer;
+            m_worldLayerHex = scene.WorldLayerHex;
+            m_scene = scene;
             m_startLocation = new CCPoint(1, 1);
-
-            TouchHandler.Instance.ListenBegan(m_worldLayer, OnTouchesBegan);
-            TouchHandler.Instance.ListenEnded(m_worldLayer, OnTouchesEnded);
-            TouchHandler.Instance.ListenMoved(m_worldLayer, OnTouchesMoved);
+            m_regionManagerController = (RegionManagerController)Core.Controllers.Controller.Instance.RegionManagerController;
+            TouchHandler.Instance.ListenBegan(m_worldLayerHex, OnTouchesBegan);
+            TouchHandler.Instance.ListenEnded(m_worldLayerHex, OnTouchesEnded);
+            TouchHandler.Instance.ListenMoved(m_worldLayerHex, OnTouchesMoved);
         }
 
         /// <summary>
@@ -112,10 +120,14 @@
                 m_touchGesture == TouchGesture.Move))
             {
                 m_touchGesture = TouchGesture.Move;
-                var touch = touches[0];
 
-                CCPoint diff = touch.Delta;
-                m_worldLayer.MoveWorld(diff);
+                m_scene.ViewMode = GameScene.ViewModes.CameraPosition;
+
+                var diff = touches[0].LocationOnScreen - touches[0].StartLocationOnScreen;
+                var move = new CCPoint(-diff.X, diff.Y) * m_worldLayerHex.GetZoom();
+                var cameraDiff = touches[0].StartLocationOnScreen - m_scene.VisibleBoundsScreenspace.Center;
+                var cameraMove = new CCPoint(-cameraDiff.X, cameraDiff.Y) * m_worldLayerHex.GetZoom();
+                m_worldLayerHex.SetWorldPosition(m_startLocation + cameraMove + move);
             }
             else if (touches.Count >= 2 &&
                      (m_touchGesture == TouchGesture.Start ||
@@ -131,8 +143,8 @@
                 CCPoint currentPoint1 = touches[1].LocationOnScreen;
 
                 var screen = new CCPoint(
-                                 m_worldLayer.VisibleBoundsWorldspace.MaxX,
-                                 m_worldLayer.VisibleBoundsWorldspace.MaxY); 
+                                 m_scene.VisibleBoundsScreenspace.MaxX,
+                                 m_scene.VisibleBoundsScreenspace.MaxY); 
 
                 float startDistance = screenStart0.DistanceSquared(ref screenStart1);
                 float currentDistance = currentPoint0.DistanceSquared(ref currentPoint1);
@@ -140,8 +152,8 @@
 
                 float relation = (currentDistance - startDistance) / screenDistance;
 
-                m_newScale = m_scale + (relation * m_newScale);
-                m_worldLayer.ScaleWorld(m_newScale);
+                m_newZoom = m_zoom + (relation * m_newZoom);
+                m_worldLayerHex.ZoomWorld(m_newZoom);
             }
             return true;
         }
@@ -154,68 +166,29 @@
         /// <returns> Returns true after processing the touches.</returns>
         public bool OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
-            var oldStart = m_startLocation;
-            var oldCoord = m_worldLayer.ClosestTileCoordAtNodePosition(oldStart);
+            var oldWorldPosition = m_startLocation;
+            var oldGamePositionI = Helper.PositionHelper.WorldPointToGamePositionI(oldWorldPosition);
 
-            var oldMapCell = new Models.MapCellPosition(oldCoord);
-            var oldPosition = m_worldLayer.RegionView.GetCurrentGamePosition(oldMapCell, m_worldLayer.CenterPosition.RegionPosition);
-
-            m_startLocation = m_worldLayer.LayerWorldToParentspace(touches[0].Location);
-            var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
-            var newMapCellPosition = new Client.Common.Models.MapCellPosition(coord);
-            var newPosition = m_worldLayer.RegionView.GetCurrentGamePosition(newMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-            var endPositionI = new Core.Models.PositionI((int)newPosition.X, (int)newPosition.Y);
+            m_startLocation = m_worldLayerHex.ConvertToWorldspace(touches[0].Location);
+            var gamePositionI = Helper.PositionHelper.WorldPointToGamePositionI(m_startLocation);
 
             switch (m_touchGesture)
             {
                 case TouchGesture.MoveUnit:
-                    var startMapCellPosition = new Client.Common.Models.MapCellPosition(oldCoord);
-                    var startPosition = m_worldLayer.RegionView.GetCurrentGamePosition(startMapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-                    var startPositionI = new Core.Models.PositionI((int)startPosition.X, (int)startPosition.Y);
-
-                    var oldPositionI = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
-                    var action = ActionHelper.MoveUnit(oldPositionI, endPositionI);
+                    
+                    var action = ActionHelper.MoveUnit(oldGamePositionI, gamePositionI);
 
                     var actionC = (Core.Controllers.Actions.Action)action.Control;
                     var possible = actionC.Possible();
                     if (possible)
                     {
-                        m_worldLayer.DoAction(action);
+                        m_worldLayerHex.DoAction(action);
                     }
                     m_indicator.RemoveIndicator();
                     m_touchGesture = TouchGesture.None;
                     break;
 
                 case TouchGesture.Menu:
-                    var def = m_menuView.GetSelectedDefinition(coord);                  
-                    if (def != null)
-                    {
-                        var oldPositionI2 = new Core.Models.PositionI((int)oldPosition.X, (int)oldPosition.Y);
-                        if (m_extMenuFlag)
-                        {
-                            oldPositionI2 = new Core.Models.PositionI((int)m_initialPosition.X, (int)m_initialPosition.Y);                            
-                        }
-                        var action2 = ActionHelper.CreateEntity(oldPositionI2, def, GameAppDelegate.Account);
-                        var actionC2 = (Core.Controllers.Actions.Action)action2.Control;
-                        if (actionC2.Possible())
-                        {
-                            m_worldLayer.DoAction(action2);
-                        }
-                    }
-                    if (m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid < Client.Common.Constants.BuildingMenuGid.CANCEL && Client.Common.Constants.BuildingMenuGid.MILITARY <= m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid)
-                    {
-                        m_menuView.ExtendMenu(m_worldLayer.MenuLayer.TileGIDAndFlags(coord).Gid, endPositionI);
-                        m_initialPosition = oldPosition;
-                        m_extMenuFlag = true;
-                    }
-                    else
-                    {
-                        m_menuView.CloseMenu();
-                        m_menuView = null;
-                        m_touchGesture = TouchGesture.None;
-                        m_initialPosition = null;
-                        m_extMenuFlag = false;
-                    }
                     return true;
 
                 case TouchGesture.None:
@@ -226,7 +199,7 @@
             m_timer.Reset();
             m_timer.Start();
 
-            m_scale = m_worldLayer.GetScale();
+            m_zoom = m_worldLayerHex.GetZoom();
 
             return true;
         }
@@ -240,32 +213,45 @@
         public bool OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             m_timer.Stop();
-            var coord = m_worldLayer.ClosestTileCoordAtNodePosition(m_startLocation);
-            var mapCellPosition = new Client.Common.Models.MapCellPosition(coord);
-            var position = m_worldLayer.RegionView.GetCurrentGamePosition(mapCellPosition, m_worldLayer.CenterPosition.RegionPosition);
-            var positionI = new Core.Models.PositionI((int)position.X, (int)position.Y);
+            var startPositionI = Helper.PositionHelper.WorldPointToGamePositionI(m_startLocation);
             switch (m_touchGesture)
             {
                 case TouchGesture.Zoom:
-                    // Set Current Scale
-                    m_worldLayer.ScaleWorld(m_newScale);
+                    // Set Current Zoom
+                    m_worldLayerHex.ZoomWorld(m_newZoom);
                     m_touchGesture = TouchGesture.None;
                     break;
 
                 case TouchGesture.Move:
-                    m_worldLayer.CheckCenterRegion();
                     m_touchGesture = TouchGesture.None;
                     break;
 
                 case TouchGesture.Start:
-                    if (m_worldLayer.UnitLayer.TileGIDAndFlags(coord).Gid != 0)
+                    var entity = m_regionManagerController.GetRegion(startPositionI.RegionPosition).GetEntity(startPositionI.CellPosition);
+                    if (entity == null)
+                    {
+                        var types = new Core.Models.Definitions.Definition[6];
+                        var defM = Core.Models.World.Instance.DefinitionManager;
+
+                        types[0] = defM.GetDefinition(EntityType.Headquarter);
+                        types[1] = defM.GetDefinition(EntityType.Headquarter);
+                        types[2] = defM.GetDefinition(EntityType.Headquarter);
+                        types[3] = defM.GetDefinition(EntityType.Headquarter);
+                        types[4] = defM.GetDefinition(EntityType.Headquarter);
+                        types[5] = defM.GetDefinition(EntityType.Headquarter);
+
+                        //                        m_menuView = new MenuView(m_worldLayerHex.MenuLayer, coord, types);
+                        //                        m_menuView.DrawMenu();
+                        //                        m_touchGesture = TouchGesture.Menu;
+                    }
+                    else if (entity.Definition.Category == Category.Unit)
                     {
                         m_touchGesture = TouchGesture.MoveUnit;
-                        var range = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition).Move;                       
-                        m_indicator = new IndicatorView(m_worldLayer);
-                        m_indicator.ShowIndicator(positionI, range, 1);
+                        //var range = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition).Move;                       
+                        //m_indicator = new IndicatorView(m_worldLayer);
+                        //m_indicator.ShowIndicator(positionI, range, 1);
                     }
-                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid == Client.Common.Constants.BuildingGid.BARRACKS )//&& m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid <= 77)
+                    else if (entity.Definition.Category == Category.Building)
                     {
                         var types = new Core.Models.Definitions.Definition[6];
                         var defM = Core.Models.World.Instance.DefinitionManager;
@@ -277,51 +263,11 @@
                         types[4] = defM.GetDefinition(EntityType.Archer);
                         types[5] = defM.GetDefinition(EntityType.Archer);
 
-                        m_menuView = new MenuView(m_worldLayer, positionI, types);
-                        m_menuView.DrawMenu();
-                        m_touchGesture = TouchGesture.Menu;
-                    }
-                    else if (m_worldLayer.BuildingLayer.TileGIDAndFlags(coord).Gid == 0)
-                    {
-                        bool cont = false;
-                        var types = new Core.Models.Definitions.Definition[6];
-                        var defM = Core.Models.World.Instance.DefinitionManager;
-                        if (!GameAppDelegate.Account.TerritoryBuildings.ContainsKey((long)EntityType.Headquarter))
-                        {
-                            types[0] = defM.GetDefinition(EntityType.Headquarter);
-                            types[1] = defM.GetDefinition(EntityType.Headquarter);
-                            types[2] = defM.GetDefinition(EntityType.Headquarter);
-                            types[3] = defM.GetDefinition(EntityType.Headquarter);
-                            types[4] = defM.GetDefinition(EntityType.Headquarter);
-                            types[5] = defM.GetDefinition(EntityType.Headquarter);
-                        }
-                        else
-                        {   
-                            cont = true;
-                        }
-                        m_menuView = new MenuView(m_worldLayer, positionI, types);
-                        if (!cont)
-                        {
-                            m_menuView.DrawMenu();
-                        }
-                        else
-                        {
-                            var Gids = new short[6];
-                            Gids[5] = Client.Common.Constants.BuildingMenuGid.MILITARY;
-                            Gids[0] = Client.Common.Constants.BuildingMenuGid.RESOURCES;
-                            Gids[1] = Client.Common.Constants.BuildingMenuGid.STORAGE;
-                            Gids[2] = Client.Common.Constants.BuildingMenuGid.ZIVIL;
-                            Gids[3] = Client.Common.Constants.BuildingMenuGid.BUILDINGPLACEHOLDER;
-                            Gids[4] = Client.Common.Constants.BuildingMenuGid.CANCEL;
-                            m_menuView.DrawMajorMenu(Gids);
-                        }
-                        m_touchGesture = TouchGesture.Menu;
                     }
 
                     break;
             }
-                    
-            m_worldLayer.UglyDraw();
+
             return true;
         }
     }

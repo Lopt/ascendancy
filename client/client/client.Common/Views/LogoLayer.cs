@@ -62,7 +62,7 @@
         /// <param name="frameTimesInSecond">Frame times in second.</param>
         private void LoadingProgress(float frameTimesInSecond)
         {
-            if (m_startScene.Phase >= StartScene.Phases.TerrainTypeLoaded)
+            if (m_startScene.Phase >= StartScene.Phases.TerrainsLoaded)
             {
                 m_loadedSprite.Visible = true;
             }

@@ -105,6 +105,11 @@
         public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20151212";
 
         /// <summary>
+        /// Tile Map file hex name
+        /// </summary>
+        public const string TILEMAP_FILE_HEX = "Worldmap-32x32-Hexa-20151027.tmx";
+
+        /// <summary>
         /// name of terrain layer
         /// </summary>
         public const string LAYER_TERRAIN = "Layer 0";
@@ -165,9 +170,24 @@
         public const float TILE_IMAGE_WIDTH = 83.0f;
 
         /// <summary>
+        /// size of a hex tile (width)
+        /// </summary>
+        public const float TILE_HEX_IMAGE_WIDTH = 84.0f;
+
+        /// <summary>
+        /// size of a hex tile (height)
+        /// </summary>
+        public const float TILE_HEX_IMAGE_HEIGHT = 72.0f;
+
+        /// <summary>
         /// size of the tile map (width)
         /// </summary>
         public const int TILEMAP_WIDTH = 80;
+
+        /// <summary>
+        /// size of the hex tile map (width)
+        /// </summary>
+        public const int TILEMAP_HEX_WIDTH = 32;
 
         /// <summary>
         /// size of the tile map (height)
@@ -175,19 +195,35 @@
         public const int TILEMAP_HEIGHT = 320;
 
         /// <summary>
+        /// size of the hex tile map (height)
+        /// </summary>
+        public const int TILEMAP_HEX_HEIGHT = 32;
+
+        /// <summary>
         /// minimum scaling of tile map
         /// </summary>
-        public const float TILEMAP_MIN_SCALE = 0.3f;
+        public const float TILEMAP_MIN_ZOOM = 0.3f;
 
         /// <summary>
         /// default scaling of tile map
         /// </summary>
-        public const float TILEMAP_NORM_SCALE = 0.5f;
+        public const float TILEMAP_NORM_ZOOM = 1.0f;
 
         /// <summary>
         /// maximum scaling of tile map
         /// </summary>
-        public const float TILEMAP_MAX_SCALE = 3.0f;
+        public const float TILEMAP_MAX_ZOOM = 6.0f;
+
+        /// <summary>
+        /// The heigth of the tile map hex content size.
+        /// </summary>
+        public const float TILEMAP_HEX_CONTENTSIZE_HEIGHT = 2304;
+
+        /// <summary>
+        /// The width of the tile map hex content size.
+        /// </summary>
+        public const float TILEMAP_HEX_CONTENTSIZE_WIDTH = 1998;
+        //1984;
 
         /// <summary>
         /// number of regions which should be drawn (X)

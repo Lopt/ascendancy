@@ -14,10 +14,10 @@
         /// </summary>
         /// <param name="model">The action Model.</param>
         /// <param name="worldLayer">World layer.</param>
-        public MoveUnit(Core.Models.ModelEntity model, WorldLayer worldLayer)
+        public MoveUnit(Core.Models.ModelEntity model, RegionViewHex regionViewHex)
             : base(model)
         {
-            WorldLayer = worldLayer;
+            RegionViewHex = regionViewHex;
         }
 
         /// <summary>
@@ -55,20 +55,20 @@
             {
                 var nextPosition = (Core.Models.PositionI)m_path[(int)m_runTime];
 
-                var mapCoordinatCurrent = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, m_currentPosition);
-                WorldLayer.RegionView.SetUnit(mapCoordinatCurrent, null);
+                RegionViewHex.SetUnit(new CocosSharp.CCTileMapCoordinates(m_currentPosition.CellPosition.CellX, m_currentPosition.CellPosition.CellY), null);
 
-                var mapCoordinatNext = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, nextPosition);
-                WorldLayer.RegionView.SetUnit(mapCoordinatNext, m_entity);
+                RegionViewHex.SetUnit(new CocosSharp.CCTileMapCoordinates(nextPosition.CellPosition.CellX, nextPosition.CellPosition.CellY), m_entity);
 
                 m_currentPosition = nextPosition;
             }
+
             if (m_runTime >= m_path.Count && m_entity.Health <= 0)
             {
-                var mapCoordinatNext = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, m_entity.Position);
-                WorldLayer.RegionView.SetUnit(mapCoordinatNext, null);
+//                var mapCoordinatNext = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, m_entity.Position);
+//                WorldLayer.RegionView.SetUnit(mapCoordinatNext, null);
             }
-            WorldLayer.UglyDraw();
+//            WorldLayer.UglyDraw();
+            //WorldLayer.UglyDraw();
             return m_runTime >= m_path.Count;
         }
 
@@ -76,7 +76,7 @@
         /// Gets the world layer.
         /// </summary>
         /// <value>The world layer.</value>
-        public WorldLayer WorldLayer
+        public RegionViewHex RegionViewHex
         {
             get;
             private set;

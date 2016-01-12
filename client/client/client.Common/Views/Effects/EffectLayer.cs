@@ -10,7 +10,7 @@
             : base ()
         {
             m_gameScene = gameScene;
-            Position = m_gameScene.WorldLayer.Position;
+            Position = m_gameScene.WorldLayerHex.Position;
             Schedule(testupdate);
             AddHealthbar();
             //m_healthbar = new Healthbar();
