@@ -1,4 +1,6 @@
-﻿namespace Client.Common.Views
+﻿using Core.Models;
+
+namespace Client.Common.Views
 {
     using System;
     using System.Collections;
@@ -18,60 +20,32 @@
         /// <param name="menuLayer">Layer where the menu should be drawn.</param>
         /// <param name="center">TileMap Coordinates where the menu should be drawn.</param>
         /// <param name="types">Which menu entries should be shown.</param>
-        public MenuView(CCTileMapLayer menuLayer, CCTileMapCoordinates center, Definition[] types)
+        /// regionmanager übergeben
+        public MenuView(WorldLayerHex worldLayerHex)
         {
-            m_center = center;
-            m_types = types;
-            m_menuLayer = menuLayer;
+            m_worldLayerHex = worldLayerHex; 
+            m_definitions = new Dictionary<PositionI, Definition>();
         }
 
-        /// <summary>
-        /// Gets the surrounded tiles.
-        /// </summary>
-        /// <returns>The surrounded tiles.</returns>
-        public CCTileMapCoordinates[] GetSurroundedTiles()
-        {
-            var coordHelper = new CCTileMapCoordinates[6];
-
-            coordHelper[0] = new CCTileMapCoordinates(
-                m_center.Column + (m_center.Row % 2),
-                m_center.Row - 1);
-
-            coordHelper[1] = new CCTileMapCoordinates(
-                m_center.Column + (m_center.Row % 2),
-                m_center.Row + 1);
-
-            coordHelper[2] = new CCTileMapCoordinates(
-                m_center.Column,
-                m_center.Row + 2);
-
-            coordHelper[3] = new CCTileMapCoordinates(
-                m_center.Column - ((m_center.Row + 1) % 2),
-                m_center.Row + 1);
-
-            coordHelper[4] = new CCTileMapCoordinates(
-                m_center.Column - ((m_center.Row + 1) % 2),
-                m_center.Row - 1);
-
-            coordHelper[5] = new CCTileMapCoordinates(
-                m_center.Column,
-                m_center.Row - 2);
-
-            return coordHelper;
-        }
 
         /// <summary>
         /// Draws the menu
         /// </summary>
-        public void DrawMenu()
+        public void DrawMenu(PositionI positionI, Definition[] types)
         {
-            var surroundedCoords = GetSurroundedTiles();
-            for (var index = 0; index < surroundedCoords.Length; ++index)
+            m_definitions.Clear();
+            var surroundedFields = Core.Models.LogicRules.GetSurroundedFields(positionI);
+            for (var index = 0; index < surroundedFields.Length; ++index)
             {
-                var coord = surroundedCoords[index];
-                var gid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[index], ViewDefinitions.Sort.Menu);
-                m_menuLayer.SetTileGID(gid, coord);
+                var field = surroundedFields[index];
+                var gid = ViewDefinitions.Instance.DefinitionToTileGid(types[index], ViewDefinitions.Sort.Menu);
+                var regionViewHex = m_worldLayerHex.GetRegionViewHex(field.RegionPosition);
+                var menueLayer = regionViewHex.GetTileMap().LayerNamed(Constants.ClientConstants.LAYER_MENU);
+                var cell = field.CellPosition;
+                menueLayer.SetTileGID(gid, new CCTileMapCoordinates(cell.CellX, cell.CellY));
+                m_definitions.Add(field, types[index]);
             }
+            m_worldLayerHex.GetRegionViewHex(positionI.RegionPosition).UglyDraw();
         }
 
         /// <summary>
@@ -79,45 +53,33 @@
         /// </summary>
         /// <returns>The selected definition.</returns>
         /// <param name="coord">Coordinate which was selected.</param>
-        public Core.Models.Definitions.Definition GetSelectedDefinition(CCTileMapCoordinates coord)
+        public Core.Models.Definitions.Definition GetSelectedDefinition(PositionI positionI)
         {
-            var surroundedCoords = GetSurroundedTiles();
-            for (var index = 0; index < surroundedCoords.Length; ++index)
-            {
-                if (coord.Column == surroundedCoords[index].Column &&
-                    coord.Row == surroundedCoords[index].Row)
-                {
-                    return m_types[index];
-                }
-            }
-            return null;
+            Definition def;
+            m_definitions.TryGetValue(positionI, out def);
+            return def;
         }
 
         /// <summary>
         /// Closes the menu.
         /// </summary>
-        public void CloseMenu()
+        public void CloseMenu(PositionI positionI)
         {
-            var surroundedCoords = GetSurroundedTiles();
-            foreach (var coord in surroundedCoords)
+            var regionViewHex = m_worldLayerHex.GetRegionViewHex(positionI.RegionPosition);
+            var menueLayer = regionViewHex.GetTileMap().LayerNamed(Constants.ClientConstants.LAYER_MENU);
+
+            foreach (var field in m_definitions.Keys)
             {
-                m_menuLayer.RemoveTile(coord);
+                var cell = field.CellPosition;
+                menueLayer.RemoveTile(new CCTileMapCoordinates(cell.CellX, cell.CellY));
             }
         }
 
         /// <summary>
-        /// The m_enter.
-        /// </summary>
-        private CCTileMapCoordinates m_center;
-
-        /// <summary>
-        /// The definition m_types.
-        /// </summary>
-        private Core.Models.Definitions.Definition[] m_types;
-
-        /// <summary>
         /// The m_menu layer.
         /// </summary>
-        private CCTileMapLayer m_menuLayer;
+        private WorldLayerHex m_worldLayerHex;
+
+        private Dictionary<PositionI,Definition> m_definitions;
     }
 }
