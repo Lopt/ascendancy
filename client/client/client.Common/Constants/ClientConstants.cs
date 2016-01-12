@@ -172,7 +172,7 @@
         /// <summary>
         /// default scaling of tile map
         /// </summary>
-        public const float TILEMAP_NORM_ZOOM = 1.0f;
+        public const float TILEMAP_NORM_ZOOM = 3.0f;
 
         /// <summary>
         /// maximum scaling of tile map
