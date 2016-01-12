@@ -191,14 +191,23 @@
         /// Claims the territory.
         /// </summary>
         /// <param name="territoryList">Territory list.</param>
-        /// <param name="account">Account.</param>
-        public void ClaimTerritory(HashSet<PositionI> territoryList, Account account)
-        {   
+        /// <param name="account">Current Account.</param>
+        /// <param name="entityRegionPos">Entity region position.</param>
+        /// <param name="regionMan">Region man.</param>
+        public void ClaimTerritory(HashSet<PositionI> territoryList, Account account, RegionPosition entityRegionPos, RegionManager regionMan)
+        { 
             foreach (var position in territoryList)
-            {
+            {   
                 if (!m_territory.ContainsKey(position.CellPosition))
                 {
-                    m_territory.Add(position.CellPosition, account);
+                    if (position.RegionPosition == entityRegionPos)
+                    {
+                        m_territory.Add(position.CellPosition, account);
+                    }
+                    else
+                    {
+                        regionMan.GetRegion(position.RegionPosition).m_territory.Add(position.CellPosition, account);
+                    }                   
                 }
             }
         }
@@ -207,7 +216,7 @@
         /// Gets the claimed territory.
         /// </summary>
         /// <returns>The claimed territory.</returns>
-        /// <param name="position">Position.</param>
+        /// <param name="position">Current Position.</param>
         public Account GetClaimedTerritory(CellPosition position)
         {
             Account result;
@@ -222,7 +231,7 @@
         /// Frees the claimed territory.
         /// </summary>
         /// <param name="territoryList">Territory list.</param>
-        /// <param name="account">Account.</param>
+        /// <param name="account">Current Account.</param>
         public void FreeClaimedTerritory(HashSet<PositionI> territoryList, Account account)
         {
             foreach (var position in territoryList)

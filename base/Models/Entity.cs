@@ -13,11 +13,12 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Core.Models.Entity"/> class.
         /// </summary>
-        /// <param name="id">Identifier of entity.</param>
-        /// <param name="definition">Entity Type Definition.</param>
-        /// <param name="owner">Entity Owner.</param>
-        /// <param name="position">Entity Position.</param>
-        /// <param name="health">Entity Health.</param>
+        /// <param name="id">Identifier of the entity.</param>
+        /// <param name="definition">Definition of the entity.</param>
+        /// <param name="owner">Owner of the entity.</param>
+        /// <param name="position">Position of the entity.</param>
+        /// <param name="health">Health of the entity.</param>
+        /// <param name="move">Move of the entity.</param>
         public Entity(int id, Definition definition, Account owner, PositionI position, int health, int move)
             : base()
         {
@@ -28,7 +29,7 @@
             Health = health;           
             Move = move;
             ModifiedDefenseValue = ((UnitDefinition)Definition).Defense;
-            ModfifedAttackValue = ((UnitDefinition)Definition).Attack;
+            ModfiedAttackValue = ((UnitDefinition)Definition).Attack;
         }
 
         /// <summary>
@@ -128,35 +129,23 @@
         }
 
         /// <summary>
-        /// Gets the modfifed attack value.
+        /// Gets or sets the modified attack value.
         /// </summary>
-        /// <value>The modfifed attack value.</value>
-        public int ModfifedAttackValue
+        /// <value>The modified attack value.</value>
+        public int ModfiedAttackValue
         {
             get;
-            //{
-                // TODO: Add Weather, clocktime and terrain modifier 
-                //var ModAttack = ((UnitDefinition)Definition).Attack;
-                //return ModAttack /* Weather + CLocktime + Terrain */; 
-            //}
             set;
-            //{}
         }
 
         /// <summary>
-        /// Gets the modified defense value.
+        /// Gets or sets the modified defense value.
         /// </summary>
         /// <value>The modified defense value.</value>
         public int ModifiedDefenseValue
         {
             get;
-            //{
-                //var ModDefense = World.Instance.RegionManager.GetRegion(Position.RegionPosition).GetTerrain(Position.CellPosition).DefenseModifier;
-                //var UnitDefense = ((UnitDefinition)Definition).Defense;
-                //return UnitDefense * ModDefense;
-            //}
             set;
-            //{}
         }
     }
 }

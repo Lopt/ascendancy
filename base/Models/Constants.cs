@@ -69,7 +69,7 @@
         public const int REGION_LOCK_WAIT_TIME = 0;
 
         /// <summary>
-        /// The malus for range units in meele combat.
+        /// The minus point for range units in melee combat.
         /// </summary>
         public const int RANGE_IN_MEELE_MALUS = 10;
 
@@ -101,6 +101,6 @@
         /// <summary>
         /// The technology maximum value.
         /// </summary>
-        public const int TECHNOLOGY_MAX_VALUE = 42;
+        public const int TECHNOLOGY_MAX_VALUE = 7;
     }
 }

@@ -2,8 +2,14 @@
 {
     using System;
 
+    /// <summary>
+    /// State resource.
+    /// </summary>
     public class StateResource
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Core.Models.Resources.StateResource"/> class.
+        /// </summary>
         public StateResource()
         {
             m_realValue = 0;
@@ -12,25 +18,37 @@
             MaximumValue = 1;
         }
 
-
+        /// <summary>
+        /// Gets the last state.
+        /// </summary>
+        /// <value>The last state.</value>
         public DateTime LastState
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets or sets the maximum value.
+        /// </summary>
+        /// <value>The maximum value.</value>
         public double MaximumValue
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>The value.</value>
         public double Value
         {
             get
             {
                 return m_realValue;
             }
+
             set
             {
                 LastState = DateTime.Now;
@@ -38,6 +56,10 @@
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="Core.Models.Resources.StateResource"/> is valid.
+        /// </summary>
+        /// <value><c>true</c> if valid; otherwise, <c>false</c>.</value>
         public bool Valid
         {
             get
@@ -46,6 +68,10 @@
             }
         }
 
+        /// <summary>
+        /// Gets the value percent.
+        /// </summary>
+        /// <value>The value percent.</value>
         public double ValuePercent
         {
             get
@@ -54,9 +80,14 @@
             }
         }
 
+        /// <summary>
+        /// The valid until.
+        /// </summary>
         public DateTime ValidUntil = DateTime.Now;
 
+        /// <summary>
+        /// The m real value.
+        /// </summary>
         private double m_realValue;
-
     }
 }

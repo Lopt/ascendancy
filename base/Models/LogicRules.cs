@@ -12,53 +12,55 @@
     public class LogicRules
     {
         /// <summary>
-        /// The ranged in meele malus.
+        /// The ranged in melee minus point.
         /// </summary>
+        /// <returns>The in melee minus point.</returns>
+        /// <param name="entity">Current Entity.</param>
         public static int RangedInMeeleMalus(Entity entity)
         {
-            entity.ModfifedAttackValue -= Constants.RANGE_IN_MEELE_MALUS;
+            entity.ModfiedAttackValue -= Constants.RANGE_IN_MEELE_MALUS;
             return 0;
         }
 
         /// <summary>
-        /// Alls the attack modifier.
+        /// All the attack modifier.
         /// </summary>
         /// <returns>The attack modifier.</returns>
-        /// <param name="entity">Entity.</param>
+        /// <param name="entity">Current Entity.</param>
         public static IList AllAttackModifier(Entity entity)
         {
-            List<int> AllMod = new List<int>();
+            List<int> allMod = new List<int>();
             // Dice should be the last method in the list !
-            AllMod.Add(TerrainAttackModifier(entity));
-            AllMod.Add(Dice(entity));
-            return AllMod;
+            allMod.Add(TerrainAttackModifier(entity));
+            allMod.Add(Dice(entity));
+            return allMod;
         }
 
         /// <summary>
-        /// Alls the attack modifier.
+        /// All the attack modifier.
         /// </summary>
         /// <returns>The attack modifier.</returns>
-        /// <param name="entity">Entity.</param>
+        /// <param name="entity">Current Entity.</param>
         public static IList AllAttackModifierRangedInMeele(Entity entity)
         {
-            List<int> AllMod = new List<int>();
+            List<int> allMod = new List<int>();
             // Dice should be the last method in the list !
-            AllMod.Add(RangedInMeeleMalus(entity));
-            AllMod.Add(TerrainAttackModifier(entity));
-            AllMod.Add(Dice(entity));
-            return AllMod;
+            allMod.Add(RangedInMeeleMalus(entity));
+            allMod.Add(TerrainAttackModifier(entity));
+            allMod.Add(Dice(entity));
+            return allMod;
         }
 
         /// <summary>
-        /// Alls the defense modifier.
+        /// All the defense modifier.
         /// </summary>
         /// <returns>The defense modifier.</returns>
-        /// <param name="entity">Entity.</param>
+        /// <param name="entity">Current Entity.</param>
        public static IList AllDefenseModifier(Entity entity)
        {
-            List<int> AllMod = new List<int>();
-            AllMod.Add(TerrainDefenseModifier(entity));
-            return AllMod;
+            List<int> allMod = new List<int>();
+            allMod.Add(TerrainDefenseModifier(entity));
+            return allMod;
        }
 
         /// <summary>
@@ -97,11 +99,11 @@
                 new RegionPosition(-1, -1),
                 new RegionPosition(-1,  0),
                 new RegionPosition(-1,  1),
-                new RegionPosition( 0,  1),
-                new RegionPosition( 1,  1),
-                new RegionPosition( 1,  0),
-                new RegionPosition( 1, -1),
-                new RegionPosition( 0, -1)
+                new RegionPosition(0,  1),
+                new RegionPosition(1,  1),
+                new RegionPosition(1,  0),
+                new RegionPosition(1, -1),
+                new RegionPosition(0, -1)
         };
 
         /// <summary>
@@ -126,10 +128,11 @@
         }
             
         /// <summary>
-        /// Gets the surrounded territory arround a given Position.
+        /// Gets the surrounded territory around a given Position.
         /// </summary>
-        /// <param name="entity">Entity.</param>
-        /// <param name="range">The range of an entity.</param>
+        /// <returns>The surrounded positions.</returns>
+        /// <param name="entity">Current Entity.</param>
+        /// <param name="range">Range around the position.</param>
         public static HashSet<PositionI> GetSurroundedPositions(PositionI entity, int range)
         {
             var fieldSet = new HashSet<PositionI>();
@@ -138,7 +141,7 @@
             fieldSet.Add(entity);
             fieldSetHelper.Add(entity);
 
-            for (int i = 0; i != range; ++i)
+            for (int index = 0; index != range; ++index)
             {
                 var tempfieldSet = new HashSet<PositionI>();
                 foreach (var item in fieldSetHelper)
@@ -161,35 +164,39 @@
         /// <summary>
         /// Dice the specified attack damage for the entity.
         /// </summary>
-        /// <param name="entity">Entity.</param>
+        /// <returns>0 instead it change the value via pointer.</returns>
+        /// <param name="entity">Current Entity.</param>
         public static int Dice(Entity entity)
         {
             var rand = new Random(entity.ID + entity.OwnerID + entity.Position.GetHashCode());
-            double result = entity.ModfifedAttackValue;
-            var randomValue = rand.NextDouble() * (2);    
+            double result = entity.ModfiedAttackValue;
+            var randomValue = rand.NextDouble() * 2;    
             result *= randomValue;
-            entity.ModfifedAttackValue = (int)result;
+            entity.ModfiedAttackValue = (int)result;
             return 0;
         }
 
         /// <summary>
-        /// Gets the defense modifier.
+        /// Terrains the defense modifier.
         /// </summary>
-        /// <value>The defense modifier.</value>
-        public static int  TerrainDefenseModifier(Entity entitiy)
+        /// <returns>0 instead it change the value via pointer.</returns>
+        /// <param name="entity">Current entity.</param>
+        public static int TerrainDefenseModifier(Entity entity)
         {
-            entitiy.ModfifedAttackValue = ((Definitions.UnitDefinition)entitiy.Definition).Defense * 
-                                            World.Instance.RegionManager.GetRegion(entitiy.Position.RegionPosition).GetTerrain(entitiy.Position.CellPosition).DefenseModifier;
+            entity.ModfiedAttackValue = ((Definitions.UnitDefinition)entity.Definition).Defense * 
+                                            World.Instance.RegionManager.GetRegion(entity.Position.RegionPosition).GetTerrain(entity.Position.CellPosition).DefenseModifier;
             return 0;
         }
 
         /// <summary>
-        /// Attacks the modifier.
+        /// Terrains the attack modifier.
         /// </summary>
-        /// <param name="entity">Entity.</param>
+        /// <returns>0 instead it change the value via pointer.</returns>
+        /// <returns>The attack modifier.</returns>
+        /// <param name="entity">Current Entity.</param>
         public static int TerrainAttackModifier(Entity entity)
         {
-            entity.ModfifedAttackValue = ((Definitions.UnitDefinition)entity.Definition).Attack * 
+            entity.ModfiedAttackValue = ((Definitions.UnitDefinition)entity.Definition).Attack * 
                                            World.Instance.RegionManager.GetRegion(entity.Position.RegionPosition).GetTerrain(entity.Position.CellPosition).AttackModifier;
             return 0;
         }
@@ -200,14 +207,14 @@
         /// <returns>The headquarter build options.</returns>
         public static List<long> EnableHeadquarterBuildOptions()
         {
-            var List = new List<long>();
-            List.Add((long)Models.Definitions.EntityType.Barracks);
-            List.Add((long)Models.Definitions.EntityType.Factory);
-            List.Add((long)Models.Definitions.EntityType.Attachment);
-            List.Add((long)Models.Definitions.EntityType.GuardTower);
-            List.Add((long)Models.Definitions.EntityType.Hospital);
-            List.Add((long)Models.Definitions.EntityType.TradingPost);
-            return List;
+            var list = new List<long>();
+            list.Add((long)Models.Definitions.EntityType.Barracks);
+            list.Add((long)Models.Definitions.EntityType.Factory);
+            list.Add((long)Models.Definitions.EntityType.Attachment);
+            list.Add((long)Models.Definitions.EntityType.GuardTower);
+            list.Add((long)Models.Definitions.EntityType.Hospital);
+            list.Add((long)Models.Definitions.EntityType.TradingPost);
+            return list;
         }
 
         /// <summary>
@@ -216,22 +223,21 @@
         /// <returns>The barracks build options.</returns>
         public static List<long> EnableBarracksBuildOptions()
         {
-            var List = new List<long>();           
-            List.Add((long)Models.Definitions.EntityType.Hero);
-            List.Add((long)Models.Definitions.EntityType.Mage);
-            List.Add((long)Models.Definitions.EntityType.Warrior);
-            List.Add((long)Models.Definitions.EntityType.Archer);
-            List.Add((long)Models.Definitions.EntityType.Scout);
-            List.Add((long)Models.Definitions.EntityType.Unknown3);
-            return List;
+            var list = new List<long>();           
+            list.Add((long)Models.Definitions.EntityType.Mage);
+            list.Add((long)Models.Definitions.EntityType.Warrior);
+            list.Add((long)Models.Definitions.EntityType.Archer);
+            list.Add((long)Models.Definitions.EntityType.Scout);
+            list.Add((long)Models.Definitions.EntityType.Unknown3);
+            list.Add((long)Models.Definitions.EntityType.Hero);
+            return list;
         }
 
         /// <summary>
         /// Enables the build options.
         /// </summary>
-        /// <param name="containedList">Contained list.</param>
         /// <param name="entityType">Entity type.</param>
-        /// <param name="account">Account.</param>
+        /// <param name="account">Current Account.</param>
         public static void EnableBuildOptions(long entityType, Account account)
         {
             if (!account.BuildableBuildings.ContainsKey(entityType))
@@ -250,7 +256,7 @@
         /// <summary>
         /// Increases the hole storage.
         /// </summary>
-        /// <param name="account">Account.</param>
+        /// <param name="account">Current Account.</param>
         public static void IncreaseHoleStorage(Account account)
         {            
             account.Scrap.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
@@ -261,10 +267,23 @@
         }
 
         /// <summary>
+        /// Decreases the hole storage.
+        /// </summary>
+        /// <param name="account">Current Account.</param>
+        public static void DecreaseHoleStorage(Account account)
+        {
+            account.Scrap.MaximumValue -= Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Population.MaximumValue -= Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Technology.MaximumValue -= Constants.TECHNOLOGY_MAX_VALUE;
+            account.Energy.MaximumValue -= Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Plutonium.MaximumValue -= Constants.HEADQUARTER_STORAGE_VALUE;
+        }
+
+        /// <summary>
         /// Increases the population.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="entity">Entity.</param>
+        /// <param name="account">Current Account.</param>
+        /// <param name="entity">Current Entity.</param>
         public static void IncreasePopulation(Account account, Entity entity)
         {
             if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Tent)
@@ -276,8 +295,8 @@
         /// <summary>
         /// Increases the scrap.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="entity">Entity.</param>
+        /// <param name="account">Current Account.</param>
+        /// <param name="entity">Current Entity.</param>
         public static void IncreaseScrap(Account account, Entity entity)
         {
             if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Scrapyard)
@@ -289,8 +308,8 @@
         /// <summary>
         /// Increases the storage.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="entity">Entity.</param>
+        /// <param name="account">Current Account.</param>
+        /// <param name="entity">Current Entity.</param>
         public static void IncreaseStorage(Account account, Entity entity)
         {
             IncreasePopulation(account, entity);
@@ -300,12 +319,11 @@
         /// <summary>
         /// Gathers the resources.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="entity">Entity.</param>
+        /// <param name="account">Current Account.</param>
         /// <param name="regionManagerC">Region manager c.</param>
         public static void GatherResources(Account account, Controllers.RegionManagerController regionManagerC)
         {
-            if (account.TerritoryBuildings.ContainsKey((long)Core.Models.Definitions.EntityType.Headquarter))//if (account.Headquarters.Count >= 1)
+            if (account.TerritoryBuildings.ContainsKey((long)Core.Models.Definitions.EntityType.Headquarter))
             {                 
                 foreach (var element in account.TerritoryBuildings)
                 {

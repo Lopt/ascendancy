@@ -76,7 +76,7 @@
         public override bool Possible()
         {          
             var action = (Core.Models.Action)Model;
-            var entityPosition = ((PositionI)action.Parameters[CREATE_POSITION]);
+            var entityPosition = (PositionI)action.Parameters[CREATE_POSITION];
             var entityCellPostion = entityPosition.CellPosition;
             var region = Controller.Instance.RegionManagerController.GetRegion(entityPosition.RegionPosition);
             var type = (long)action.Parameters[CREATION_TYPE];
@@ -100,15 +100,15 @@
                 }
                 if (territoryFlag)
                 {
-                    m_HeadquarterFlag = true;
+                    m_headquarterFlag = true;
                     return td.Buildable; 
                 }
-            }
-            // check for free tile and the terrain is possesed from the current player
+            }           
             else if (region.GetEntity(entityCellPostion) == null && 
                      type != (long)Models.Definitions.EntityType.Headquarter &&
                      region.GetClaimedTerritory(entityCellPostion) == action.Account)
             {
+                // check for free tile and the terrain is possesed from the current player
                 // terrain check
                 var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
                 return td.Buildable;  
@@ -145,12 +145,12 @@
             region.AddEntity(action.ActionTime, entity);
 
             // link the headquarter to the current account and claim territory, enable build options
-            if (m_HeadquarterFlag && 
+            if (m_headquarterFlag && 
                 action.Account != null)
             {
                 action.Account.TerritoryBuildings.Add(type, entity.Position);             
                 LogicRules.EnableBuildOptions(type, action.Account);
-                region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, Constants.HEADQUARTER_TERRITORY_RANGE),action.Account);
+                region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, Constants.HEADQUARTER_TERRITORY_RANGE), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
                 LogicRules.IncreaseHoleStorage(action.Account);
                 LogicRules.GatherResources(action.Account, Controller.Instance.RegionManagerController);
             }
@@ -198,7 +198,7 @@
             var regionSizeX = Constants.REGION_SIZE_X;
             var regionSizeY = Constants.REGION_SIZE_Y;
 
-            if (buildpoint.CellPosition.CellX == 0)
+            if (buildpoint.CellPosition.CellX <= Constants.HEADQUARTER_TERRITORY_RANGE)
             {
                 var tempReg = position + surlist[LogicRules.SurroundRegions.Length];
                 if (regionManagerC.GetRegion(tempReg).Exist)
@@ -215,9 +215,9 @@
                     }
                 }
             }
-            else if (buildpoint.CellPosition.CellY == 0)
+            else if (buildpoint.CellPosition.CellY <= Constants.HEADQUARTER_TERRITORY_RANGE)
             {
-                for (int index = 5; index <= LogicRules.SurroundRegions.Length; ++index)
+                for (int index = 5; index < LogicRules.SurroundRegions.Length; ++index)
                 {
                     var tempReg = position + surlist[index];
                     if (regionManagerC.GetRegion(tempReg).Exist)
@@ -237,7 +237,7 @@
                     list.Add(reg);
                 }
             }
-            else if (buildpoint.CellPosition.CellX == regionSizeX)
+            else if (buildpoint.CellPosition.CellX >= regionSizeX - Constants.HEADQUARTER_TERRITORY_RANGE)
             {
                 for (int index = 1; index < 6; ++index)
                 {
@@ -248,9 +248,9 @@
                     }
                 }
             }
-            else if (buildpoint.CellPosition.CellY == regionSizeY)
+            else if (buildpoint.CellPosition.CellY >= regionSizeY - Constants.HEADQUARTER_TERRITORY_RANGE)
             {
-                for (int index = 3; index <= LogicRules.SurroundRegions.Length; ++index)
+                for (int index = 3; index < LogicRules.SurroundRegions.Length; ++index)
                 {
                     var tempReg = position + surlist[index];
                     if (regionManagerC.GetRegion(tempReg).Exist)
@@ -265,6 +265,6 @@
         /// <summary>
         /// The m headquarter flag.
         /// </summary>
-        private bool m_HeadquarterFlag = false;
+        private bool m_headquarterFlag = false;
     }
 }

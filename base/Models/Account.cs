@@ -107,10 +107,29 @@
         /// <value>The buildable buildings.</value>
         public Dictionary<long, List<long>> BuildableBuildings;
 
+        /// <summary>
+        /// The scrap.
+        /// </summary>
         public Scrap Scrap;
+
+        /// <summary>
+        /// The plutonium.
+        /// </summary>
         public Plutonium Plutonium;
+
+        /// <summary>
+        /// The energy.
+        /// </summary>
         public Energy Energy;
+
+        /// <summary>
+        /// The technology.
+        /// </summary>
         public Technology Technology;
+
+        /// <summary>
+        /// The population.
+        /// </summary>
         public Population Population;
     }
 }
