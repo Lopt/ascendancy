@@ -33,7 +33,6 @@ namespace Client.Common.Views
         /// </summary>
         public void DrawMenu(PositionI positionI, Definition[] types)
         {
-            m_definitions.Clear();
             var surroundedFields = Core.Models.LogicRules.GetSurroundedFields(positionI);
             for (var index = 0; index < surroundedFields.Length; ++index)
             {
@@ -44,8 +43,8 @@ namespace Client.Common.Views
                 var cell = field.CellPosition;
                 menueLayer.SetTileGID(gid, new CCTileMapCoordinates(cell.CellX, cell.CellY));
                 m_definitions.Add(field, types[index]);
+                m_worldLayerHex.GetRegionViewHex(field.RegionPosition).UglyDraw();
             }
-            m_worldLayerHex.GetRegionViewHex(positionI.RegionPosition).UglyDraw();
         }
 
         /// <summary>
@@ -65,20 +64,20 @@ namespace Client.Common.Views
         /// </summary>
         public void CloseMenu(PositionI positionI)
         {
-            var regionViewHex = m_worldLayerHex.GetRegionViewHex(positionI.RegionPosition);
-            var menueLayer = regionViewHex.GetTileMap().LayerNamed(Client.Common.Constants.ClientConstants.LAYER_MENU);
-
             foreach (var field in m_definitions.Keys)
             {
+                var regionViewHex = m_worldLayerHex.GetRegionViewHex(field.RegionPosition);
+                var menueLayer = regionViewHex.GetTileMap().LayerNamed(Client.Common.Constants.ClientConstants.LAYER_MENU);
                 var cell = field.CellPosition;
                 menueLayer.RemoveTile(new CCTileMapCoordinates(cell.CellX, cell.CellY));
             }
+            m_definitions.Clear();
         }
 
         /// The m_menu layer.
         /// </summary>
         private WorldLayerHex m_worldLayerHex;
 
-        private Dictionary<PositionI,Definition> m_definitions;
+        private Dictionary<PositionI, Definition> m_definitions;
     }
 }

@@ -39,7 +39,7 @@ namespace Client.Common.Helper
 
             if ((positionX % 2) == 1)
             {
-                point.Y -= ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2;
+                //point.Y -= ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2;
             }
 
             var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
