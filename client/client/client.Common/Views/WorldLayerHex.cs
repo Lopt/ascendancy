@@ -24,7 +24,6 @@ namespace Client.Common.Views
     /// </summary>
     public class WorldLayerHex : CCLayer
     {
-        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.WorldLayer"/> class.
@@ -37,6 +36,7 @@ namespace Client.Common.Views
             m_currentWorldPoint = PositionHelper.GamePositionToWorldPoint(Geolocation.Instance.CurrentGamePosition);
             m_worker = new Views.Worker(this);
             EntityManagerController.Instance.Worker = m_worker;
+            m_menuView = new MenuView(this);
   
             m_regionViewHexDic = new Dictionary<RegionPosition, RegionViewHex>();
 
@@ -55,6 +55,11 @@ namespace Client.Common.Views
         public float GetZoom()
         {
             return m_zoom;
+        }
+
+        public MenuView GetMenuView()
+        {
+            return m_menuView;
         }
 
         public void ZoomWorld(float newZoom)
@@ -177,7 +182,7 @@ namespace Client.Common.Views
         /// <summary>
         /// The m menu layer.
         /// </summary>
-        private CCTileMapLayer m_menuLayer;
+        private MenuView m_menuView;
 
         /// <summary>
         /// The m current position node.

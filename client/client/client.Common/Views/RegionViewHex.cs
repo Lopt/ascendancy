@@ -48,6 +48,16 @@
             return m_tileMap;
         }
 
+        public void UglyDraw()
+        {
+            var container = m_tileMap.TileLayersContainer;
+            float offset = 0.001f;
+            CCPoint position1 = new CCPoint(container.Position.X + offset, container.Position.Y + offset);
+            container.Position = position1;
+            CCPoint position2 = new CCPoint(container.Position.X - offset, container.Position.Y - offset);
+            container.Position = position2;
+        }
+
         /// <summary>
         /// Sets the unit in the map.
         /// </summary>
@@ -93,7 +103,6 @@
                 m_buildingLayer.SetTileGID(gid, mapCoordinat);
             }
         }
-
 
         /// <summary>
         /// Loads the region view hex dictionary with all regions (5x5) arround the currentPosition.
@@ -193,6 +202,7 @@
                 m_buildingLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);
             }
         }
+
 
         #region Fields
 

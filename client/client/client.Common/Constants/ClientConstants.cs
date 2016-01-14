@@ -100,11 +100,6 @@
         public const int CELLMAP_160x160_SIZE = 160;
 
         /// <summary>
-        /// Tile Map file name
-        /// </summary>
-        public const string TILEMAP_FILE = "Worldmap-160x160(80x320)_20151212";
-
-        /// <summary>
         /// Tile Map file hex name
         /// </summary>
         public const string TILEMAP_FILE_HEX = "Worldmap-32x32-Hexa-20151027.tmx";
@@ -207,7 +202,7 @@
         /// <summary>
         /// default scaling of tile map
         /// </summary>
-        public const float TILEMAP_NORM_ZOOM = 1.0f;
+        public const float TILEMAP_NORM_ZOOM = 3.0f;
 
         /// <summary>
         /// maximum scaling of tile map

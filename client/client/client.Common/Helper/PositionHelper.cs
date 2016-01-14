@@ -42,17 +42,20 @@ namespace Client.Common.Helper
                 point.Y -= ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2;
             }
 
+            var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
             var positionY = (int)-point.Y / ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT;
-            var regionPos = new RegionPosition((int)positionX, (int)positionY);
-            var cellPos = new CellPosition((int)((positionX - (int)positionX) * (ClientConstants.TILEMAP_HEX_WIDTH - 1)),
-                              (int)((positionY - (int)positionY) * (ClientConstants.TILEMAP_HEX_HEIGHT - 1)));
+            var regionPos = new RegionPosition((int)positionX + firstRegion.RegionX, (int)positionY + firstRegion.RegionY);
+            var cellPos = new CellPosition((int)(((positionX - (int)positionX) * (ClientConstants.TILEMAP_HEX_WIDTH - 1))),
+                              (int)(((positionY - (int)positionY) * (ClientConstants.TILEMAP_HEX_HEIGHT - 1))));
             return new PositionI(regionPos, cellPos);
         }
 
         public static CCPoint GamePositionIToWorldPoint(PositionI positionI)
         {
-            var pointX = (float)positionI.RegionPosition.RegionX * ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH;
-            var pointY = (float)positionI.RegionPosition.RegionY * ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT;
+            var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
+
+            var pointX = ((float)positionI.RegionPosition.RegionX - firstRegion.RegionX) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH;
+            var pointY = ((float)positionI.RegionPosition.RegionY - firstRegion.RegionY) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT;
             pointX += (float)positionI.CellPosition.CellX / (ClientConstants.TILEMAP_HEX_WIDTH - 1) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH;
             pointY += (float)positionI.CellPosition.CellY / (ClientConstants.TILEMAP_HEX_HEIGHT - 1) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT;
             if ((positionI.X % 2) == 1)

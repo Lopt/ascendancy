@@ -93,6 +93,7 @@ namespace Client.Common.Views
             m_scene = scene;
             m_startLocation = new CCPoint(1, 1);
             m_regionManagerController = (RegionManagerController)Core.Controllers.Controller.Instance.RegionManagerController;
+            m_menuView = m_worldLayerHex.GetMenuView();
             TouchHandler.Instance.ListenBegan(m_worldLayerHex, OnTouchesBegan);
             TouchHandler.Instance.ListenEnded(m_worldLayerHex, OnTouchesEnded);
             TouchHandler.Instance.ListenMoved(m_worldLayerHex, OnTouchesMoved);
@@ -177,7 +178,6 @@ namespace Client.Common.Views
                 case TouchGesture.MoveUnit:
                     
                     var action = ActionHelper.MoveUnit(oldGamePositionI, gamePositionI);
-
                     var actionC = (Core.Controllers.Actions.Action)action.Control;
                     var possible = actionC.Possible();
                     if (possible)
@@ -189,6 +189,20 @@ namespace Client.Common.Views
                     break;
 
                 case TouchGesture.Menu:
+                    
+                    var def = m_menuView.GetSelectedDefinition(gamePositionI);
+                    if (def != null)
+                    {
+                        var action2 = ActionHelper.CreateEntity(gamePositionI, def, GameAppDelegate.Account);
+                        var actionC2 = (Core.Controllers.Actions.Action)action2.Control;
+                        if (actionC2.Possible())
+                        {
+                            m_worldLayerHex.DoAction(action2);
+                        }
+                    }
+
+                    m_menuView.CloseMenu(gamePositionI);
+                    m_touchGesture = TouchGesture.None;
                     return true;
 
                 case TouchGesture.None:
@@ -240,9 +254,8 @@ namespace Client.Common.Views
                         types[4] = defM.GetDefinition(EntityType.Headquarter);
                         types[5] = defM.GetDefinition(EntityType.Headquarter);
 
-                        //                        m_menuView = new MenuView(m_worldLayerHex.MenuLayer, coord, types);
-                        //                        m_menuView.DrawMenu();
-                        //                        m_touchGesture = TouchGesture.Menu;
+                        m_menuView.DrawMenu(startPositionI, types);
+                        m_touchGesture = TouchGesture.Menu;
                     }
                     else if (entity.Definition.Category == Category.Unit)
                     {
@@ -263,8 +276,9 @@ namespace Client.Common.Views
                         types[4] = defM.GetDefinition(EntityType.Archer);
                         types[5] = defM.GetDefinition(EntityType.Archer);
 
+                        m_menuView.DrawMenu(startPositionI, types);
+                        m_touchGesture = TouchGesture.Menu;
                     }
-
                     break;
             }
 
