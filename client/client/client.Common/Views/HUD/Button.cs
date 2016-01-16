@@ -45,6 +45,14 @@
             }
         }
 
+        public CCSprite Sprite
+        {
+            get
+            {
+                return m_standard;
+            }                
+        }
+
         /// <summary>
         /// Raises the touches began event.
         /// </summary>

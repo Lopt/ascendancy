@@ -14,7 +14,7 @@
         public EnergyResource()
             : base()
         {
-            m_background = new Button(
+            m_background = new Button(               
                 Constants.HUD.Energy.DISPLAY,
                 Constants.HUD.Energy.DISPLAY,
                 OnTouched);
@@ -36,6 +36,18 @@
         public void OnTouched()
         {
             var energy = GameAppDelegate.Account.Energy;
+        }
+
+        /// <summary>
+        /// Gets the size of the standard sprite.
+        /// </summary>
+        /// <value>The size.</value>
+        public CCSize Size
+        {
+            get
+            {
+                return m_background.Size;
+            }
         }
            
         /// <summary>

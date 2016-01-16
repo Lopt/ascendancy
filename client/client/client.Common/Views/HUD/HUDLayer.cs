@@ -21,8 +21,7 @@
             m_gps = new Button(
                 "radars2-standard",
                 "radars2-touched",
-                new Action(BackToGPS));
-            
+                new Action(BackToGPS));            
             m_gps.AnchorPoint = CCPoint.AnchorLowerLeft;
             AddChild(m_gps);
 
@@ -36,6 +35,10 @@
             m_energyRessource = new EnergyResource();
             m_energyRessource.AnchorPoint = CCPoint.AnchorUpperLeft;
             AddChild(m_energyRessource);
+
+            m_scrapResource = new ScrapResource();
+            m_scrapResource.AnchorPoint = CCPoint.AnchorUpperLeft;
+            AddChild(m_scrapResource);
 
             m_question = new Button(
                 "question-standard",
@@ -115,6 +118,9 @@
             m_energyRessource.PositionX = VisibleBoundsWorldspace.MinX;
             m_energyRessource.PositionY = VisibleBoundsWorldspace.MaxY;
 
+            m_scrapResource.PositionX = VisibleBoundsWorldspace.MinX + m_energyRessource.Size.Width;
+            m_scrapResource.PositionY = VisibleBoundsWorldspace.MaxY;
+
             m_question.PositionX = VisibleBoundsWorldspace.MaxX;
             m_question.PositionY = VisibleBoundsWorldspace.MinY;
         }
@@ -138,6 +144,11 @@
         /// The energy ressource hud element.
         /// </summary>
         private EnergyResource m_energyRessource;
+
+        /// <summary>
+        /// The scrap resource hud element.
+        /// </summary>
+        private ScrapResource m_scrapResource;
 
         /// <summary>
         /// The game scene.
