@@ -168,10 +168,10 @@ namespace Client.Common.Views
         public bool OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             var oldWorldPosition = m_startLocation;
-            var oldGamePositionI = Helper.PositionHelper.WorldPointToGamePositionI(oldWorldPosition);
+            var oldGamePositionI = Helper.PositionHelper.WorldPointToGamePositionI(oldWorldPosition, m_worldLayerHex);
 
             m_startLocation = m_worldLayerHex.ConvertToWorldspace(touches[0].Location);
-            var gamePositionI = Helper.PositionHelper.WorldPointToGamePositionI(m_startLocation);
+            var gamePositionI = Helper.PositionHelper.WorldPointToGamePositionI(m_startLocation, m_worldLayerHex);
 
             switch (m_touchGesture)
             {
@@ -227,7 +227,7 @@ namespace Client.Common.Views
         public bool OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             m_timer.Stop();
-            var startPositionI = Helper.PositionHelper.WorldPointToGamePositionI(m_startLocation);
+            var startPositionI = Helper.PositionHelper.WorldPointToGamePositionI(m_startLocation, m_worldLayerHex);
             switch (m_touchGesture)
             {
                 case TouchGesture.Zoom:

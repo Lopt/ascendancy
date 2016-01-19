@@ -132,6 +132,7 @@ namespace Client.Common.Views
 
         private void LoadRegionViews(CCPoint point)
         {
+//            for m_wor
             var position = PositionHelper.WorldPointToGamePosition(point);
             var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
             var newKeys = regionManagerController.GetWorldNearRegionPositions(position.RegionPosition);

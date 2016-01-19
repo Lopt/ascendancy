@@ -1,4 +1,5 @@
 ﻿using Client.Common.Constants;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace Client.Common.Helper
@@ -33,13 +34,23 @@ namespace Client.Common.Helper
                 (int)(-point.Y / ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT) + firstRegion.RegionY);
         }
 
-        public static PositionI WorldPointToGamePositionI(CCPoint point)
+        public static PositionI WorldPointToGamePositionI(CCPoint point, WorldLayerHex worldLayer)
         {
-            var positionX = (int)point.X / ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH;
+            var regionPosition = WorldPointToRegionPosition(point);
+            var regionView = worldLayer.GetRegionViewHex(regionPosition);
 
+            if (regionView != null)
+            {
+                var tileCoord = regionView.GetTileMap().LayerNamed(ClientConstants.LAYER_TERRAIN).ClosestTileCoordAtNodePosition(point);
+                return new PositionI(regionPosition, new CellPosition(tileCoord.Column, tileCoord.Row));
+            }
+            return null;
+
+            /*
+            var positionX = (int)point.X / ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH;
             if ((positionX % 2) == 1)
             {
-                //point.Y -= ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2;
+                point.Y -= ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2;
             }
 
             var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
@@ -47,11 +58,13 @@ namespace Client.Common.Helper
             var regionPos = new RegionPosition((int)positionX + firstRegion.RegionX, (int)positionY + firstRegion.RegionY);
             var cellPos = new CellPosition((int)(((positionX - (int)positionX) * (ClientConstants.TILEMAP_HEX_WIDTH - 1))),
                               (int)(((positionY - (int)positionY) * (ClientConstants.TILEMAP_HEX_HEIGHT - 1))));
-            return new PositionI(regionPos, cellPos);
+
+            return new PositionI(regionPos, cellPos);*/
         }
 
         public static CCPoint GamePositionIToWorldPoint(PositionI positionI)
         {
+            throw new Exception();
             var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
 
             var pointX = ((float)positionI.RegionPosition.RegionX - firstRegion.RegionX) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH;
