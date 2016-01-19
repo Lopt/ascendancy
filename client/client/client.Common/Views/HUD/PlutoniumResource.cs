@@ -20,7 +20,7 @@
                 OnTouched);
 
             AddChild(m_background);
-            m_background.Sprite.Opacity = 100;
+            m_background.Sprite.Opacity = 100;           
 
             // picture source
             // <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a>
@@ -31,6 +31,9 @@
 
             m_progress = new CCProgressTimer("Plutonium");;
             m_progress.Color = CCColor3B.Green;
+            m_progress.Type = CCProgressTimerType.Bar;
+            m_progress.BarChangeRate = new CCPoint(0.0f, 1.0f);
+            m_progress.Midpoint = new CCPoint(0.0f, 0.0f);
 
             m_progress.PositionX = m_background.AnchorPoint.X;
             m_progress.PositionY = m_background.AnchorPoint.Y;

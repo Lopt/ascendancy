@@ -31,6 +31,9 @@
             m_progress = new CCProgressTimer("Scrap");
             //bla.BarChangeRate = new CCPoint(123.2f, 123.2f);
             m_progress.Color = CCColor3B.Orange;
+            m_progress.Type = CCProgressTimerType.Bar;
+            m_progress.BarChangeRate = new CCPoint(0.0f, 1.0f);
+            m_progress.Midpoint = new CCPoint(0.0f, 0.0f);
 
             //bla.AnchorPoint = new CCPoint(0.5f, 0.5f);
             //bla.PositionX = m_background.Sprite.Position.X;

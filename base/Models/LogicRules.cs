@@ -364,7 +364,7 @@
                         scrapAmount += 0.1f;//resources[0];
                         plutoniumAmount +=  0.1f;//resources[1];
                     }
-                    account.Scrap.Set(account.Scrap.Value, 0.8);
+                    account.Scrap.Set(account.Scrap.Value, 4);
                     account.Plutonium.Set(account.Plutonium.Value, 0.3);
                 }                   
             }
