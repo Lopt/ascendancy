@@ -190,67 +190,17 @@
             var regionSizeX = Constants.REGION_SIZE_X;
             var regionSizeY = Constants.REGION_SIZE_Y;
 
-            if (buildpoint.CellPosition.CellX == 0)
-            {
-                var tempReg = position + surlist[LogicRules.SurroundRegions.Length - 1];
-                if (regionManagerC.GetRegion(tempReg).Exist)
-                {
-                    list.Add(tempReg);
-                }
+            var currentpos = LogicRules.GetSurroundedFields(buildpoint);
+            var currentregion = regionManagerC.RegionManager.GetRegion(buildpoint.RegionPosition);
 
-                for (int index = 0; index < 4; ++index)
+            foreach (var checkingpos in currentpos)
+            {
+                if (regionManagerC.GetRegion(checkingpos.RegionPosition) != currentregion)
                 {
-                    tempReg = position + surlist[index];
-                    if (regionManagerC.GetRegion(tempReg).Exist)
-                    {
-                        list.Add(tempReg);
-                    }
+                    list.Add(regionManagerC.RegionManager.GetRegion(buildpoint.RegionPosition).RegionPosition);
                 }
             }
-            else if (buildpoint.CellPosition.CellY == 0)
-            {
-                for (int index = 5; index <= LogicRules.SurroundRegions.Length; ++index)
-                {
-                    var tempReg = position + surlist[index];
-                    if (regionManagerC.GetRegion(tempReg).Exist)
-                    {
-                        list.Add(tempReg);
-                    }
-                }
 
-                var reg = position + surlist[0];
-                if (regionManagerC.GetRegion(reg).Exist)
-                {
-                    list.Add(reg);
-                }
-                reg = position + surlist[1];
-                if (regionManagerC.GetRegion(reg).Exist)
-                {
-                    list.Add(reg);
-                }
-            }
-            else if (buildpoint.CellPosition.CellX == regionSizeX)
-            {
-                for (int index = 1; index < 6; ++index)
-                {
-                    var tempReg = position + surlist[index];
-                    if (regionManagerC.GetRegion(tempReg).Exist)
-                    {
-                        list.Add(tempReg);
-                    }
-                }
-            }
-            else if (buildpoint.CellPosition.CellY == regionSizeY)
-            {
-                for (int index = 3; index <= LogicRules.SurroundRegions.Length; ++index)
-                {
-                    var tempReg = position + surlist[index];
-                    if (regionManagerC.GetRegion(tempReg).Exist)
-                    {
-                        list.Add(tempReg);
-                    }
-                }
-            }
             return list;
         }
 
