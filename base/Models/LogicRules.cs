@@ -306,6 +306,32 @@
         }
 
         /// <summary>
+        /// Decreases the population.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="entity">Entity.</param>
+        public static void DecreasePopulation(Account account, Entity entity)
+        {
+            if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Tent)
+            {
+                account.Population.MaximumValue -= Constants.POPULATION_STORAGE_VALUE;
+            } 
+        }
+
+        /// <summary>
+        /// Decreases the population.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="entity">Entity.</param>
+        public static void DecreaseScrap(Account account, Entity entity)
+        {
+            if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Scrapyard)
+            {
+                account.Scrap.MaximumValue -= Constants.SCRAP_STORAGE_VALUE;
+            }
+        }
+
+        /// <summary>
         /// Increases the storage.
         /// </summary>
         /// <param name="account">Current Account.</param>
@@ -328,18 +354,18 @@
                 foreach (var element in account.TerritoryBuildings)
                 {
                     var list = LogicRules.GetSurroundedPositions(element.Value, Constants.HEADQUARTER_TERRITORY_RANGE);
-                    int scrapAmount = 0;
-                    int plutoniumAmount = 0;
+                    float scrapAmount = 0;
+                    float plutoniumAmount = 0;
 
                     foreach (var item in list)
                     {
                         // TODO: add ressources in Terrain
                         var resources = regionManagerC.GetRegion(item.RegionPosition).GetTerrain(item.CellPosition).Resources;
-                        scrapAmount += 2; // resources[0];
-                        plutoniumAmount += 1; // resources[1];
+                        scrapAmount += 0.1f;//resources[0];
+                        plutoniumAmount +=  0.1f;//resources[1];
                     }
-                    account.Scrap.Set(scrapAmount, account.Scrap.Increments);
-                    account.Plutonium.Set(plutoniumAmount, account.Plutonium.Increments);
+                    account.Scrap.Set(account.Scrap.Value, 0.8);
+                    account.Plutonium.Set(account.Plutonium.Value, 0.3);
                 }                   
             }
 

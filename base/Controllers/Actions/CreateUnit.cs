@@ -87,12 +87,9 @@
 
                     return RealCreatePosition != null;
                 }
-                return false;
             }
-            else
-            {
-                return false;
-            }
+            return false;
+            
         }
 
         /// <summary>

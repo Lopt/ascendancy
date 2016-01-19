@@ -40,6 +40,11 @@
             m_scrapResource.AnchorPoint = CCPoint.AnchorUpperLeft;
             AddChild(m_scrapResource);
 
+            m_plutoniumResource = new PlutoniumResource();
+            m_plutoniumResource.AnchorPoint = CCPoint.AnchorUpperLeft;
+            AddChild(m_plutoniumResource);
+
+
             m_question = new Button(
                 "question-standard",
                 "question-touched",
@@ -121,6 +126,9 @@
             m_scrapResource.PositionX = VisibleBoundsWorldspace.MinX + m_energyRessource.Size.Width;
             m_scrapResource.PositionY = VisibleBoundsWorldspace.MaxY;
 
+            m_plutoniumResource.PositionX = VisibleBoundsWorldspace.MinX + m_scrapResource.Size.Width * 2;
+            m_plutoniumResource.PositionY = VisibleBoundsWorldspace.MaxY;
+
             m_question.PositionX = VisibleBoundsWorldspace.MaxX;
             m_question.PositionY = VisibleBoundsWorldspace.MinY;
         }
@@ -151,9 +159,14 @@
         private ScrapResource m_scrapResource;
 
         /// <summary>
+        /// The plutonium resource hud element.
+        /// </summary>
+        private PlutoniumResource m_plutoniumResource;
+
+        /// <summary>
         /// The game scene.
         /// </summary>
-        private GameScene m_gameScene;
+        private GameScene m_gameScene;    
     }
 }
 

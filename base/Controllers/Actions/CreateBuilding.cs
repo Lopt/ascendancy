@@ -145,8 +145,7 @@
             region.AddEntity(action.ActionTime, entity);
 
             // link the headquarter to the current account and claim territory, enable build options
-            if (m_headquarterFlag && 
-                action.Account != null)
+            if (m_headquarterFlag && action.Account != null)
             {
                 action.Account.TerritoryBuildings.Add(type, entity.Position);             
                 LogicRules.EnableBuildOptions(type, action.Account);

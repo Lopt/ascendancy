@@ -215,6 +215,8 @@
     <AndroidAsset Include="Assets\Content\tiles\spritesheet20151212.png" />
     <AndroidAsset Include="Assets\Content\images\hd\Scrap.png" />
     <AndroidAsset Include="Assets\Content\images\ld\Scrap.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\Plutonium.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\Plutonium.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />

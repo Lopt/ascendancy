@@ -45,6 +45,10 @@
             }
         }
 
+        /// <summary>
+        /// Gets the sprite.
+        /// </summary>
+        /// <value>The sprite.</value>
         public CCSprite Sprite
         {
             get
