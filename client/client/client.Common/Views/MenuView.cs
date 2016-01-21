@@ -315,7 +315,7 @@
                     types[3] = defM.GetDefinition(EntityType.GuardTower);
                     break;
                 case Common.Constants.BuildingMenuGid.CIVIL:
-                    types = new Core.Models.Definitions.Definition[2];
+                    types = new Core.Models.Definitions.Definition[3];
                     types[0] = defM.GetDefinition(EntityType.Hospital);
                     types[1] = defM.GetDefinition(EntityType.Tent); 
                     types[2] = defM.GetDefinition(EntityType.TradingPost);
@@ -344,8 +344,11 @@
             foreach (var pair in m_extendedMenuPositions)
             {
                 var pos = pair.Key;
-                var gid = ViewDefinitions.Instance.DefinitionToTileGid(pair.Value, ViewDefinitions.Sort.Menu);
-                m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos.CellPosition, gid);
+                if (pair.Value != null)
+                {
+                    var gid = ViewDefinitions.Instance.DefinitionToTileGid(pair.Value, ViewDefinitions.Sort.Menu);
+                    m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos.CellPosition, gid);
+                }
             }
         }
 

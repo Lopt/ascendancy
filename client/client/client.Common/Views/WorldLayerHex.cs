@@ -81,8 +81,9 @@ namespace Client.Common.Views
         {
             foreach (var region in m_regionViewHexDic)
             {
-                region.Value.GetTileMap().TileLayersContainer.PositionX += 0.0001f;
-                region.Value.GetTileMap().TileLayersContainer.PositionX -= 0.0001f;
+                region.Value.GetTileMap().TileLayersContainer.PositionX += 0.001f;
+                region.Value.GetTileMap().TileLayersContainer.PositionY += 0.001f;
+//                region.Value.GetTileMap().TileLayersContainer.PositionX -= 0.0001f;
             }
         }
 

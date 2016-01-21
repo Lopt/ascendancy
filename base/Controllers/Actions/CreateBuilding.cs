@@ -200,7 +200,7 @@
 
             if (buildpoint.CellPosition.CellX <= Constants.HEADQUARTER_TERRITORY_RANGE)
             {
-                var tempReg = position + surlist[LogicRules.SurroundRegions.Length];
+                var tempReg = position + surlist[LogicRules.SurroundRegions.Length - 1];
                 if (regionManagerC.GetRegion(tempReg).Exist)
                 {
                     list.Add(tempReg);

@@ -123,7 +123,7 @@
                 CCPoint realStartLocationOnScreen = CCPoint.Zero;
                 foreach (var touch in touches)
                 {
-                    realLocationOnScreen += touch.LocationOnScreen ;
+                    realLocationOnScreen += touch.LocationOnScreen;
                     realStartLocationOnScreen += touch.StartLocationOnScreen;
                 }
                 realLocationOnScreen /= touches.Count;
@@ -157,9 +157,9 @@
                 float currentDistance = currentPoint0.DistanceSquared(ref currentPoint1);
                 float screenDistance = screen.LengthSquared;
 
-                float relation = (currentDistance - startDistance) / screenDistance;
+                float relation = (startDistance -currentDistance ) / screenDistance;
 
-                m_newZoom = m_zoom - (relation * m_newZoom);
+                m_newZoom = m_zoom + (relation * m_newZoom);
                 m_worldLayer.ZoomWorld(m_newZoom);
             }
             return true;
@@ -221,10 +221,17 @@
                                 break;
                             default:
                                 m_menuView.CloseMenu();
+                                m_worldLayer.UglyDraw();
                                 m_menuView = null;
                                 m_touchGesture = TouchGesture.None;
                                 break;
                         }
+                    }
+                    else
+                    {
+                        m_menuView.CloseMenu(); 
+                        m_worldLayer.UglyDraw();
+                        m_touchGesture = TouchGesture.None;
                     }
                     return true;
 
@@ -289,9 +296,9 @@
                         var defM = Core.Models.World.Instance.DefinitionManager;
                         var action = ActionHelper.CreateEntity(startPosI, defM.GetDefinition(EntityType.Headquarter), GameAppDelegate.Account);
                         var actionC = (Core.Controllers.Actions.CreateBuilding)action.Control;
-                        var types = new Core.Models.Definitions.Definition[6];
                         if (actionC.Possible())
                         {
+                            var types = new Core.Models.Definitions.Definition[6];
                             types[0] = defM.GetDefinition(EntityType.Headquarter);
                             types[1] = defM.GetDefinition(EntityType.Headquarter);
                             types[2] = defM.GetDefinition(EntityType.Headquarter);
@@ -303,6 +310,7 @@
                         }
                         else
                         {
+                            var types = new Core.Models.Definitions.Definition[0];
                             var Gids = new short[6];
                             Gids[5] = Client.Common.Constants.BuildingMenuGid.MILITARY;
                             Gids[0] = Client.Common.Constants.BuildingMenuGid.RESOURCES;
