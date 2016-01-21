@@ -217,6 +217,10 @@
     <AndroidAsset Include="Assets\Content\images\ld\Scrap.png" />
     <AndroidAsset Include="Assets\Content\images\hd\Plutonium.png" />
     <AndroidAsset Include="Assets\Content\images\ld\Plutonium.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\Population.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\Population.png" />
+    <AndroidAsset Include="Assets\Content\images\hd\Tech.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\Tech.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />

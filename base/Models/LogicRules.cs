@@ -260,9 +260,9 @@
         public static void IncreaseHoleStorage(Account account)
         {            
             account.Scrap.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
-            account.Population.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Population.MaximumValue += Constants.POPULATION_STORAGE_VALUE;
             account.Technology.MaximumValue += Constants.TECHNOLOGY_MAX_VALUE;
-            account.Energy.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Energy.MaximumValue += Constants.ENERGY_MAX_VALUE;
             account.Plutonium.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
         }
 
@@ -273,9 +273,9 @@
         public static void DecreaseHoleStorage(Account account)
         {
             account.Scrap.MaximumValue -= Constants.HEADQUARTER_STORAGE_VALUE;
-            account.Population.MaximumValue -= Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Population.MaximumValue -= Constants.POPULATION_STORAGE_VALUE;
             account.Technology.MaximumValue -= Constants.TECHNOLOGY_MAX_VALUE;
-            account.Energy.MaximumValue -= Constants.HEADQUARTER_STORAGE_VALUE;
+            account.Energy.MaximumValue -= Constants.ENERGY_MAX_VALUE;
             account.Plutonium.MaximumValue -= Constants.HEADQUARTER_STORAGE_VALUE;
         }
 
@@ -284,12 +284,45 @@
         /// </summary>
         /// <param name="account">Current Account.</param>
         /// <param name="entity">Current Entity.</param>
-        public static void IncreasePopulation(Account account, Entity entity)
+        public static void IncreaseMaxPopulation(Account account, Entity entity)
         {
             if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Tent)
             {
                 account.Population.MaximumValue += Constants.POPULATION_STORAGE_VALUE;
+                account.Population.Value += Constants.POPULATION_STORAGE_VALUE;
             }
+        }
+
+        /// <summary>
+        /// Increases the max energy.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="entity">Entity.</param>
+        public static void IncreaseMaxEnergy(Account account, Entity entity)
+        {
+            if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Transformer)
+            {
+                account.Energy.MaximumValue += Constants.ENERGY_MAX_VALUE;
+                account.Energy.Value += Constants.ENERGY_MAX_VALUE;
+            }
+        }
+
+        /// <summary>
+        /// Sets the current max popultion.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        public static void SetCurrentMaxPopultion(Account account)
+        {
+            account.Population.Value = account.Population.MaximumValue;
+        }
+
+        /// <summary>
+        /// Sets the current energy.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        public static void SetCurrentMaxEnergy(Account account)
+        {
+            account.Energy.Value = account.Energy.MaximumValue;
         }
 
         /// <summary>
@@ -310,12 +343,27 @@
         /// </summary>
         /// <param name="account">Account.</param>
         /// <param name="entity">Entity.</param>
-        public static void DecreasePopulation(Account account, Entity entity)
+        public static void DecreaseMaxPopulation(Account account, Entity entity)
         {
             if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Tent)
             {
                 account.Population.MaximumValue -= Constants.POPULATION_STORAGE_VALUE;
+                account.Population.Value -= Constants.POPULATION_STORAGE_VALUE;
             } 
+        }
+
+        /// <summary>
+        /// Decreases the max energy.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="entity">Entity.</param>
+        public static void DecreaseMaxEnergy(Account account, Entity entity)
+        {
+            if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Transformer)
+            {
+                account.Energy.MaximumValue -= Constants.ENERGY_MAX_VALUE;
+                account.Energy.Value -= Constants.ENERGY_MAX_VALUE;
+            }
         }
 
         /// <summary>
@@ -338,8 +386,9 @@
         /// <param name="entity">Current Entity.</param>
         public static void IncreaseStorage(Account account, Entity entity)
         {
-            IncreasePopulation(account, entity);
+            IncreaseMaxPopulation(account, entity);
             IncreaseScrap(account, entity);
+            IncreaseMaxEnergy(account, entity);
         }
 
         /// <summary>
@@ -362,30 +411,31 @@
                         // TODO: add ressources in Terrain
                         var resources = regionManagerC.GetRegion(item.RegionPosition).GetTerrain(item.CellPosition).Resources;
                         scrapAmount += 0.1f;//resources[0];
-                        plutoniumAmount +=  0.1f;//resources[1];
+                        plutoniumAmount += 0.1f;//resources[1];
                     }
                     account.Scrap.Set(account.Scrap.Value, 4);
                     account.Plutonium.Set(account.Plutonium.Value, 0.3);
                 }                   
             }
+        }
 
-            foreach (var element in account.Buildings)
-            {
-                switch (regionManagerC.GetRegion(element.RegionPosition).GetEntity(element.CellPosition).DefinitionID)
-                {
-                    case (int)Core.Models.Definitions.EntityType.Lab:                         
-                        account.Technology.Set(1, 1);                   
-                        break;
-
-                    case (int)Core.Models.Definitions.EntityType.Furnace:
-                        account.Scrap.Set(account.Scrap.Value, 2);
-                        break;
-
-                    case (int)Core.Models.Definitions.EntityType.Transformer:
-                        account.Energy.Value = Constants.ENERGY_VALUE;
-                        break;
-                }
-            }
+        /// <summary>
+        /// Resources that can generated.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="regionManagerC">Region manager c.</param>
+        public static void ResourceGeneration(Account account,PositionI entitypos, Controllers.RegionManagerController regionManagerC)
+        {
+            switch (regionManagerC.GetRegion(entitypos.RegionPosition).GetEntity(entitypos.CellPosition).DefinitionID)
+          {
+              case (int)Core.Models.Definitions.EntityType.Lab:                         
+                    account.Technology.Set(account.Technology.Value, 0.1);                   
+                  break;
+    
+              case (int)Core.Models.Definitions.EntityType.Furnace:
+                    account.Scrap.Set(account.Scrap.Value, 2);
+                  break;
+          }
         }     
     }        
 }

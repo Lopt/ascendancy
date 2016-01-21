@@ -11,12 +11,13 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.HUD.ScrapResource"/> class.
         /// </summary>
-        public ScrapResource()
+        public ScrapResource(String fileName, CCColor3B color)
             : base()
         {
+            Constants.HUD.Resource.SetDISPLAY(fileName);
             m_background = new Button(
-                Constants.HUD.Scrap.DISPLAY,
-                Constants.HUD.Scrap.DISPLAY,
+                Constants.HUD.Resource.GetDISPLAY(),
+                Constants.HUD.Resource.GetDISPLAY(),
                 OnTouched);
 
             AddChild(m_background);
@@ -28,20 +29,13 @@
             // is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 
             // title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 
-            m_progress = new CCProgressTimer("Scrap");
-            //bla.BarChangeRate = new CCPoint(123.2f, 123.2f);
-            m_progress.Color = CCColor3B.Orange;
+            m_progress = new CCProgressTimer(fileName);
+            m_progress.Color = color;
             m_progress.Type = CCProgressTimerType.Bar;
             m_progress.BarChangeRate = new CCPoint(0.0f, 1.0f);
             m_progress.Midpoint = new CCPoint(0.0f, 0.0f);
-
-            //bla.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            //bla.PositionX = m_background.Sprite.Position.X;
-            //bla.PositionY = m_background.Sprite.Position.Y;
             m_progress.PositionX = m_background.AnchorPoint.X;
             m_progress.PositionY = m_background.AnchorPoint.Y;
-
-            //bla.BarChangeRate = faktor;
 
             m_background.AddChild(m_progress); 
 

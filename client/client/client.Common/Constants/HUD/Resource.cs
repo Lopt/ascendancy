@@ -1,30 +1,28 @@
-﻿using System;
-
-namespace client.Common.Constants.HUD
+﻿namespace Client.Common.Constants.HUD
 {
-    public enum Category
-    {
-        Scrap,
-        Population,
-        Technology,       
-        Plutonium 
-    }
+    using System;
+    using CocosSharp;
 
+    /// <summary>
+    /// All scrap HUD constants.
+    /// </summary>
     public class Resource
     {
-        public Resource(int resource)
+
+        public static void SetDISPLAY(String filename)
         {
-            ID = resource;
+            m_DISPLAY = filename;    
         }
 
-
-        public int ID
+        public static String GetDISPLAY()
         {
-            get;
-            private set;
+            return m_DISPLAY;
         }
+
+        //public static string DISPLAY = "Resource";
+        public static readonly CCPoint DISPLAY_CENTER = new CCPoint(0.50f, -0.66f);
+
+        private static string m_DISPLAY;
     }
 }
-
-
 

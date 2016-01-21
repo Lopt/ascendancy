@@ -41,7 +41,7 @@
         {
             LastState = DateTime.Now;
             m_realValue = value;
-            Increments = increments;
+            Increments += increments;
         }
 
         /// <summary>

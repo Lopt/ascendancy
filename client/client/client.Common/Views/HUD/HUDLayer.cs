@@ -36,14 +36,21 @@
             m_energyRessource.AnchorPoint = CCPoint.AnchorUpperLeft;
             AddChild(m_energyRessource);
 
-            m_scrapResource = new ScrapResource();
+            m_scrapResource = new ScrapResource("Scrap", CCColor3B.Orange);
             m_scrapResource.AnchorPoint = CCPoint.AnchorUpperLeft;
             AddChild(m_scrapResource);
 
-            m_plutoniumResource = new PlutoniumResource();
+            m_plutoniumResource = new PlutoniumResource("Plutonium", CCColor3B.Green);
             m_plutoniumResource.AnchorPoint = CCPoint.AnchorUpperLeft;
             AddChild(m_plutoniumResource);
 
+            m_populationResource = new PopulationResource("Population", CCColor3B.White);
+            m_populationResource.AnchorPoint = CCPoint.AnchorUpperLeft;
+            AddChild(m_populationResource);
+
+            m_techologyResource = new TechnologyResource("Tech", CCColor3B.Blue);
+            m_techologyResource.AnchorPoint = CCPoint.AnchorUpperLeft;
+            AddChild(m_techologyResource);
 
             m_question = new Button(
                 "question-standard",
@@ -129,6 +136,12 @@
             m_plutoniumResource.PositionX = VisibleBoundsWorldspace.MinX + m_scrapResource.Size.Width * 2;
             m_plutoniumResource.PositionY = VisibleBoundsWorldspace.MaxY;
 
+            m_populationResource.PositionX = VisibleBoundsWorldspace.MinX + m_plutoniumResource.Size.Width * 3;
+            m_populationResource.PositionY = VisibleBoundsWorldspace.MaxY;
+
+            m_techologyResource.PositionX = VisibleBoundsWorldspace.MinX + m_populationResource.Size.Width * 4;
+            m_techologyResource.PositionY = VisibleBoundsWorldspace.MaxY;
+
             m_question.PositionX = VisibleBoundsWorldspace.MaxX;
             m_question.PositionY = VisibleBoundsWorldspace.MinY;
         }
@@ -162,6 +175,16 @@
         /// The plutonium resource hud element.
         /// </summary>
         private PlutoniumResource m_plutoniumResource;
+
+        /// <summary>
+        /// The population hud resource.
+        /// </summary>
+        private PopulationResource m_populationResource;
+
+        /// <summary>
+        /// The techology hud resource.
+        /// </summary>
+        private TechnologyResource m_techologyResource;
 
         /// <summary>
         /// The game scene.

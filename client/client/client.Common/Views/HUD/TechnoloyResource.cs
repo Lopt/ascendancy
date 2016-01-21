@@ -6,12 +6,12 @@
     /// <summary>
     /// Scrap resource display. Shows the for the resource "scrap".
     /// </summary>
-    public class PlutoniumResource : HUDNode
+    public class TechnologyResource : HUDNode
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.HUD.ScrapResource"/> class.
         /// </summary>
-        public PlutoniumResource(String fileName, CCColor3B color)
+        public TechnologyResource(String fileName, CCColor3B color)
             : base()
         {
             Constants.HUD.Resource.SetDISPLAY(fileName);
@@ -21,25 +21,23 @@
                 OnTouched);
 
             AddChild(m_background);
-            m_background.Sprite.Opacity = 100;           
+            m_background.Sprite.Opacity = 100;
 
             // picture source
-            // <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a>
-            // from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>         
+            // <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> 
+            // from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>    
             // is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 
             // title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-
 
             m_progress = new CCProgressTimer(fileName);
             m_progress.Color = color;
             m_progress.Type = CCProgressTimerType.Bar;
             m_progress.BarChangeRate = new CCPoint(0.0f, 1.0f);
             m_progress.Midpoint = new CCPoint(0.0f, 0.0f);
-
             m_progress.PositionX = m_background.AnchorPoint.X;
             m_progress.PositionY = m_background.AnchorPoint.Y;
 
-            m_background.AddChild(m_progress);                                                                                          
+            m_background.AddChild(m_progress); 
 
             Schedule(ShowRessource);
         }
@@ -49,7 +47,7 @@
         /// </summary>
         public void OnTouched()
         {
-            var plutonium = GameAppDelegate.Account.Plutonium;
+            var technology = GameAppDelegate.Account.Technology;
         }
 
         /// <summary>
@@ -67,9 +65,9 @@
         /// <param name="time">time since the last call.</param>
         private void ShowRessource(float time)
         {
-            var plutonium = GameAppDelegate.Account.Plutonium;
+            var technology = GameAppDelegate.Account.Technology;
 
-            m_progress.Percentage = (float)plutonium.ValuePercent * 100;
+            m_progress.Percentage = (float)technology.ValuePercent * 100;
 
             // Wege die Farbe zu ändern
             //m_background.Sprite.Color = CCColor3B.Black;  
@@ -101,7 +99,6 @@
             }                
         }
 
-
         /// <summary>
         /// The background sprite/button.
         /// </summary>
@@ -111,5 +108,7 @@
         /// The fill of the resource.
         /// </summary>
         private CCProgressTimer m_progress;
+
+
     }
 }

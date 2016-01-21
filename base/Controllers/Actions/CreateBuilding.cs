@@ -152,10 +152,13 @@
                 region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, Constants.HEADQUARTER_TERRITORY_RANGE), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
                 LogicRules.IncreaseHoleStorage(action.Account);
                 LogicRules.GatherResources(action.Account, Controller.Instance.RegionManagerController);
+                LogicRules.SetCurrentMaxPopultion(action.Account);
+                LogicRules.SetCurrentMaxEnergy(action.Account);
             }
             else if (action.Account != null)
             {
                 action.Account.Buildings.AddLast(entity.Position);
+                LogicRules.ResourceGeneration(action.Account, entity.Position, Controller.Instance.RegionManagerController);
                 LogicRules.EnableBuildOptions(type, action.Account);
                 LogicRules.IncreaseStorage(action.Account, entity);
             }
