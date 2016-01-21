@@ -31,8 +31,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Can I track your location</string>
 	<key>CFBundleDisplayName</key>
 	<string>Ascendancy</string>
 	<key>CFBundleIconFiles</key>
@@ -51,5 +49,7 @@
 		<string>Icon-Small-40</string>
 		<string>Icon-Small-40@2x</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>New Entry</string>
 </dict>
 </plist>

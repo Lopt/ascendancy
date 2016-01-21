@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Concurrent;
-
     using Core.Controllers.Actions;
     using Core.Models;
     using Core.Models.Definitions;
@@ -202,7 +201,7 @@
 
             if (buildpoint.CellPosition.CellX <= Constants.HEADQUARTER_TERRITORY_RANGE)
             {
-                var tempReg = position + surlist[LogicRules.SurroundRegions.Length -1];
+                var tempReg = position + surlist[LogicRules.SurroundRegions.Length - 1];
                 if (regionManagerC.GetRegion(tempReg).Exist)
                 {
                     list.Add(tempReg);

@@ -1,4 +1,6 @@
-﻿namespace Client.Common.Manager
+﻿using Client.Common.Models;
+
+namespace Client.Common.Manager
 {
     using System;
     using System.Collections.Generic;
@@ -48,20 +50,12 @@
         /// <returns>The task async.</returns>
         /// <param name="currentGamePosition">Current game position.</param>
         /// <param name="centerRegionPosition">Center region position.</param>
-        public async Task LoadEntitiesAsync(Position currentGamePosition, RegionPosition centerRegionPosition)
+        public async Task LoadEntitiesAsync(RegionPosition regionPosition)
         {
-            var regionManagerC = (Manager.RegionManagerController)Core.Controllers.Controller.Instance.RegionManagerController;
-
-            var worldRegions = regionManagerC.GetWorldNearRegionPositions(centerRegionPosition);
-            var listRegions = new RegionPosition[25];
-            int index = 0;
-            foreach (var regionPosition in worldRegions)
-            {
-                listRegions[index] = regionPosition;
-                ++index;
-            }
-
-            await LoadEntitiesAsync(currentGamePosition, listRegions);
+            var listRegions = new RegionPosition[1];
+            listRegions[0] = regionPosition;
+           
+            await LoadEntitiesAsync(listRegions);
         }
 
         /// <summary>
@@ -71,9 +65,9 @@
         /// <returns>The task async.</returns>
         /// <param name="currentGamePosition">Current game position.</param>
         /// <param name="listRegions">List regions.</param>
-        public async Task LoadEntitiesAsync(Position currentGamePosition, RegionPosition[] listRegions)
+        public async Task LoadEntitiesAsync(RegionPosition[] listRegions)
         {
-            var response = await NetworkController.Instance.LoadEntitiesAsync(currentGamePosition, listRegions);
+            var response = await NetworkController.Instance.LoadEntitiesAsync(Geolocation.Instance.CurrentGamePosition, listRegions);
             var entities = response.Entities;
             if (entities != null)
             {

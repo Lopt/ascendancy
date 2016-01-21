@@ -56,7 +56,7 @@
                 "question-standard",
                 "question-touched",
                 new Action(DeveloperFunction));
-            m_question.AnchorPoint = CCPoint.AnchorLowerRight;
+            m_question.AnchorPoint = CCPoint.AnchorLowerLeft;
             AddChild(m_question);
         }
 
@@ -65,7 +65,7 @@
         /// </summary>
         public void BackToGPS()
         {
-            m_gameScene.WorldLayer.DrawRegionsAsync();
+            m_gameScene.ViewMode = GameScene.ViewModes.CurrentGPSPosition;
         }
 
         /// <summary>
@@ -81,37 +81,6 @@
         /// </summary>
         public void DeveloperFunction()
         {
-            var account = new Core.Models.Account(5);
-            new Core.Models.AccountManager().AddAccount(account);
-
-            var pos = Models.Geolocation.Instance.CurrentGamePosition;
-
-            var posI = new Core.Models.PositionI(pos);
-            var actionCreate = Helper.ActionHelper.CreateEntity(
-                                   new Core.Models.PositionI(pos),
-                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Headquarter),
-            account);
-            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate);
-
-            var test = new Core.Models.PositionI( (int)pos.X + 2, (int)pos.Y + 2);
-
-            var actionCreate2 = Helper.ActionHelper.CreateEntity(
-                test,
-                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Barracks),
-                account);
-            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate2);
-
-            var actionCreate3 = Helper.ActionHelper.CreateEntity(
-                test,
-                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Archer),
-                account);
-            m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionCreate3);
-
-            //var newPosI = new Core.Models.PositionI(posI.X + 10, posI.Y + 0);
-
-            //var actionMove = Helper.ActionHelper.MoveUnit(Core.Models.LogicRules.GetSurroundedFields(new Core.Models.PositionI(pos))[0], newPosI);
-            //m_gameScene.WorldLayer.Worker.Queue.Enqueue(actionMove);
-
         }
 
         /// <summary>
@@ -143,6 +112,8 @@
             m_techologyResource.PositionY = VisibleBoundsWorldspace.MaxY;
 
             m_question.PositionX = VisibleBoundsWorldspace.MaxX;
+            m_question.PositionX = VisibleBoundsWorldspace.MaxX - m_question.Size.Width;
+            
             m_question.PositionY = VisibleBoundsWorldspace.MinY;
         }
 

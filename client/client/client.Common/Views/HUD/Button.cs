@@ -1,4 +1,6 @@
-﻿namespace Client.Common.Views.HUD
+﻿using Microsoft.Xna.Framework;
+
+namespace Client.Common.Views.HUD
 {
     using System;
     using System.Collections.Generic;
@@ -65,12 +67,18 @@
         /// <returns>true if the event was for this node</returns>
         public bool OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
-            if (m_standard.BoundingBoxTransformedToWorld.ContainsPoint(touches[0].Location))
+            if (Visible)
             {
-                m_touched.Visible = true;
-                m_standard.Visible = false;
-                return true;
+                var point = new CCPoint(touches[0].LocationOnScreen.X, VisibleBoundsWorldspace.MaxY - touches[0].LocationOnScreen.Y);
+                if (m_standard.BoundingBoxTransformedToWorld.ContainsPoint(point))
+                {
+                    m_touched.Visible = true;
+                    m_standard.Visible = false;
+                    return true;
+                }
+
             }
+
             return false;
         }
 
@@ -82,7 +90,8 @@
         /// <returns>true if the event was for this node</returns>
         public bool OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
-            if (m_touched.BoundingBoxTransformedToWorld.ContainsPoint(touches[0].Location) &&
+            var point = new CCPoint(touches[0].LocationOnScreen.X, VisibleBoundsWorldspace.MaxY - touches[0].LocationOnScreen.Y);
+            if (m_standard.BoundingBoxTransformedToWorld.ContainsPoint(point) &&
                 m_touched.Visible)
             {
                 m_callback();

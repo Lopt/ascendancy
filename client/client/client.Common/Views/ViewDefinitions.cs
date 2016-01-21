@@ -158,7 +158,7 @@
             m_enemyEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.WARRIOR));
             m_enemyEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.MAGE));
             m_enemyEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.SCOUT));
-
+             
             // units -> range
             m_enemyEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.SOLDIER));
 
