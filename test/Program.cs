@@ -1,5 +1,4 @@
 ﻿using System;
-using Server.DB;
 using Newtonsoft.Json;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -168,9 +167,11 @@ namespace test
 
         public static void Main(string[] args)
         {
-            var json = "{\"Status\":0,\"Actions\":[[],[],[],[],[],[],[],[],[],[],[],[],[{\"Parameters\":{\"CreatePosition\":{\"X\":5316345,\"Y\":3354734},\"CreateBuilding\":276},\"Type\":2}],[],[],[],[],[],[],[],[],[],[],[],[]],\"Entities\":[]}";
+            //Tests.TcpConnectionTest.
+
+            //var json = "{\"Status\":0,\"Actions\":[[],[],[],[],[],[],[],[],[],[],[],[],[{\"Parameters\":{\"CreatePosition\":{\"X\":5316345,\"Y\":3354734},\"CreateBuilding\":276},\"Type\":2}],[],[],[],[],[],[],[],[],[],[],[],[]],\"Entities\":[]}";
             //var entitiesResponse = JsonConvert.DeserializeObject<core.connection.Response>(json);
-            throw new Exception();
+            //throw new Exception();
             //var app = new server.MvcApplication ();
             //app.Application_Start ();
 
