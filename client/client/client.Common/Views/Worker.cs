@@ -1,4 +1,6 @@
-﻿namespace Client.Common.Views
+﻿using Core.Models;
+
+namespace Client.Common.Views
 {
     using System;
     using System.Collections.Concurrent;
@@ -11,10 +13,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.Worker"/> class.
         /// </summary>
-        /// <param name="worldLayer">World layer.</param>
-        public Worker(Views.WorldLayer worldLayer)
+        /// <param name="worldLayerHex">World layer hex.</param>
+        public Worker(WorldLayerHex worldLayerHex)
         {
-            WorldLayer = worldLayer;
+            WorldLayerHex = worldLayerHex;
             Queue = new ConcurrentQueue<Core.Models.Action>();
         }
 
@@ -37,7 +39,7 @@
             {   
                 var regionC = Core.Controllers.Controller.Instance.RegionManagerController;
                 var actionC = (Core.Controllers.Actions.Action)Action.Control;
-                var actionV = CreateActionView(Action);
+                var actionV = CreateActionView(Action, actionC.GetRegionPosition());
                 var affectedRegions = actionC.GetAffectedRegions();
                 actionC.Possible();
                 actionV.BeforeDo();
@@ -50,21 +52,21 @@
         /// </summary>
         /// <returns>The action view.</returns>
         /// <param name="action">Action without action view.</param>
-        private Client.Common.Views.Actions.Action CreateActionView(Core.Models.Action action)
+        private Client.Common.Views.Actions.Action CreateActionView(Core.Models.Action action, RegionPosition regionPosition)
         {
             switch (action.Type)
             {
                 case Core.Models.Action.ActionType.CreateUnit:
-                    return new Client.Common.Views.Actions.CreateUnit(action, WorldLayer);
+                    return new Client.Common.Views.Actions.CreateUnit(action, WorldLayerHex.GetRegionViewHex(regionPosition));
 
                 case Core.Models.Action.ActionType.MoveUnit:
-                    return new Client.Common.Views.Actions.MoveUnit(action, WorldLayer);
+                    return new Client.Common.Views.Actions.MoveUnit(action, WorldLayerHex.GetRegionViewHex(regionPosition));
 
                 case Core.Models.Action.ActionType.CreateHeadquarter:
                     throw new NotImplementedException();
 
                 case Core.Models.Action.ActionType.CreateBuilding:
-                    return new Client.Common.Views.Actions.CreateBuilding(action, WorldLayer);
+                    return new Client.Common.Views.Actions.CreateBuilding(action, WorldLayerHex.GetRegionViewHex(regionPosition));
             }
             return new Client.Common.Views.Actions.Action(action);
         }
@@ -80,8 +82,8 @@
         public Core.Models.Action Action = null;
 
         /// <summary>
-        /// The world layer.
+        /// The world layer hex.
         /// </summary>
-        public Views.WorldLayer WorldLayer;
+        public WorldLayerHex WorldLayerHex;
     }
 }

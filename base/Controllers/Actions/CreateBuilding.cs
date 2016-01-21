@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Concurrent;
-
     using Core.Controllers.Actions;
     using Core.Models;
     using Core.Models.Definitions;
@@ -145,18 +144,20 @@
             region.AddEntity(action.ActionTime, entity);
 
             // link the headquarter to the current account and claim territory, enable build options
-            if (m_headquarterFlag && 
-                action.Account != null)
+            if (m_headquarterFlag && action.Account != null)
             {
                 action.Account.TerritoryBuildings.Add(type, entity.Position);             
                 LogicRules.EnableBuildOptions(type, action.Account);
                 region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, Constants.HEADQUARTER_TERRITORY_RANGE), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
                 LogicRules.IncreaseHoleStorage(action.Account);
                 LogicRules.GatherResources(action.Account, Controller.Instance.RegionManagerController);
+                LogicRules.SetCurrentMaxPopultion(action.Account);
+                LogicRules.SetCurrentMaxEnergy(action.Account);
             }
             else if (action.Account != null)
             {
                 action.Account.Buildings.AddLast(entity.Position);
+                LogicRules.ResourceGeneration(action.Account, entity.Position, Controller.Instance.RegionManagerController);
                 LogicRules.EnableBuildOptions(type, action.Account);
                 LogicRules.IncreaseStorage(action.Account, entity);
             }
@@ -200,7 +201,7 @@
 
             if (buildpoint.CellPosition.CellX <= Constants.HEADQUARTER_TERRITORY_RANGE)
             {
-                var tempReg = position + surlist[LogicRules.SurroundRegions.Length];
+                var tempReg = position + surlist[LogicRules.SurroundRegions.Length - 1];
                 if (regionManagerC.GetRegion(tempReg).Exist)
                 {
                     list.Add(tempReg);

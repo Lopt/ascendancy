@@ -68,5 +68,6 @@
             dictParam[Core.Controllers.Actions.CreateBuilding.CREATION_TYPE] = (long)definition.SubType;
             return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateBuilding, dictParam);
         }
+
     }
 }

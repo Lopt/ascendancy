@@ -27,7 +27,7 @@
         AlwaysRetainTaskState = true,
         Icon = "@drawable/Icon",
         Theme = "@android:style/Theme.NoTitleBar",
-        ScreenOrientation = ScreenOrientation.Portrait | ScreenOrientation.ReversePortrait,
+        ScreenOrientation = ScreenOrientation.Portrait,
         LaunchMode = LaunchMode.SingleInstance,
         MainLauncher = true,
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden)

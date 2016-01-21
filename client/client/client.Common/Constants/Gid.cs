@@ -8,7 +8,7 @@
         /// <summary>
         /// GID for tiles with the trait water.
         /// </summary>
-        public const short WATER = 10; // to be replaced with TERRAIN_GID + 10 etc
+        public const short WATER = 10;// to be replaced with TERRAIN_GID + 10 etc
 
         /// <summary>
         /// GID for tiles with the trait building.
@@ -79,7 +79,7 @@
         /// <summary>
         /// GID for tiles where the building Factory is placed.
         /// </summary>
-        public const short FACTORY = ClientConstants.BUILDING_GIDS + 1; 
+        public const short FACTORY = ClientConstants.BUILDING_GIDS + 1;// to be replaced with BUILDING_GID + 1 etc
 
         /// <summary>
         /// GID for tiles where the building Farm is placed.
@@ -214,7 +214,7 @@
         /// <summary>
         /// GID for tiles where a building tile with the trait Barrack which use water as resource is placed.
         /// </summary>
-        public const short BARRACKSWATER = 28;
+        public const short BARRACKSWATER = ClientConstants.BUILDING_GIDS + 28;
 
         /// <summary>
         /// GID for tiles where a building tile with the trait mine which produce earth as a resource is placed.
@@ -255,7 +255,7 @@
         /// <summary>
         /// GID for the unit tile with the trait soldier.
         /// </summary>
-        public const short SOLDIER = ClientConstants.UNIT_GIDS + 1;
+        public const short SOLDIER = ClientConstants.UNIT_GIDS + 1;// to be replaced with UNIT_GID + 3
 
         /// <summary>
         /// GID for the unit tile with the trait hero.
@@ -322,7 +322,7 @@
         /// <summary>
         /// GID for the enemy building tile with the trait headquarter.
         /// </summary>
-        public const short HEADQUARTER = ClientConstants.ENEMY_GIDS + 6;
+        public const short HEADQUARTER = ClientConstants.ENEMY_GIDS + 6;// to be replaced with ENEMY_GID + ENEMYOFFSET + 3
     }
 
     /// <summary>
@@ -330,10 +330,7 @@
     /// </summary>
     public class BuildingMenuGid
     {
-        /// <summary>
-        /// The MILITARY GID.
-        /// </summary>
-        public const short MILITARY = ClientConstants.MENU_GIDS + 1;
+        public const short MILITARY = ClientConstants.MENU_GIDS + 1; // to be replaced with MENU_GID + 3
 
         /// <summary>
         /// The STORAGE GID.
@@ -343,7 +340,7 @@
         /// <summary>
         /// The ZIVIL GID.
         /// </summary>
-        public const short ZIVIL = ClientConstants.MENU_GIDS + 3;
+        public const short CIVIL = ClientConstants.MENU_GIDS + 3;
 
         /// <summary>
         /// The RESOURCE GID.
@@ -464,7 +461,7 @@
         /// <summary>
         /// GID for the unit menu tiles with the trait archer.
         /// </summary>
-        public const short SOLDIER = ClientConstants.MENU_GIDS + 26; // TODO: separate Units form building 
+        public const short SOLDIER = ClientConstants.MENU_GIDS + 26;// to be replaced with MENU_GID + UNITOFFSET + 1
 
         /// <summary>
         /// GID for the unit menu tiles with the trait hero.
@@ -500,16 +497,16 @@
         /// <summary>
         /// GID for the green indicator.
         /// </summary>
-        public const short GREENINDICATOR = ClientConstants.HELPER_GIDS + 1;
+        public const short GREENINDICATOR = ClientConstants.HELPER_GIDS + 1;// to be replaced with HELPER_GID + 1
 
         /// <summary>
         /// GID for the red indicator.
         /// </summary>
-        public const short REDINDICATOR = ClientConstants.HELPER_GIDS + 2;
+        public const short REDINDICATOR = ClientConstants.HELPER_GIDS + 2;// to be replaced with HELPER_GID + 2
 
         /// <summary>
         /// GID for the white indicator.
         /// </summary>
-        public const short WHITEINDICATOR = ClientConstants.HELPER_GIDS + 3;
+        public const short WHITEINDICATOR = ClientConstants.HELPER_GIDS + 3;// to be replaced with HELPER_GID + 3
     }
 }

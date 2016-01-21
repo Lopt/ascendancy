@@ -67,6 +67,12 @@
         /// Gets the x.
         /// </summary>
         /// <value>The x.</value>
+        public Position(int regionPositionX, int regionPositionY, float cellPositionX, float cellPositionY)
+        {
+            X = regionPositionX * Constants.REGION_SIZE_X + cellPositionX;
+            Y = regionPositionY * Constants.REGION_SIZE_Y + cellPositionY;
+        }
+
         public double X
         {
             get;

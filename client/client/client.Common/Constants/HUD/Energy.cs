@@ -15,8 +15,8 @@
         public static readonly CCPoint POINTER_CENTER = new CCPoint(0.12f, -0.55f);
 
         public const float POINTER_SPEED = 7.0f;
-        public const float MAX_POINTER = 200;
-        public const float DIFF_POINTER = -10;
+        public const float MAX_POINTER = 200.0f;
+        public const float DIFF_POINTER = -10.0f;
 
         public const int NOISE_FACTOR  = 12;
         public const int NOISE_DIV = 128;

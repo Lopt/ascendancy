@@ -1,4 +1,6 @@
-﻿namespace Client.Common.Manager
+﻿using System.Collections.Generic;
+
+namespace Client.Common.Manager
 {
     using System.Threading.Tasks;
     using Client.Common.Controllers;
@@ -53,26 +55,18 @@
 
             if (!region.Exist)
             {
-                LoadRegionAsync(region);
+                LoadTerainAsync(region);
             }
             return region;
         }
 
-        /// <summary>
-        /// Loads the regions async around the current region position by the geo locator.
-        /// </summary>
-        /// <returns>The task async.</returns>
-        public async Task LoadRegionsAsync()
-        {
-            await LoadRegionsAsync(Geolocation.Instance.CurrentRegionPosition);
-        }
 
         /// <summary>
         /// Loads the regions async around the surrender region position.
         /// </summary>
         /// <returns>The task async.</returns>
         /// <param name="centerRegionPosition">Region position which is in the center.</param>
-        public async Task LoadRegionsAsync(RegionPosition centerRegionPosition)
+        public async Task LoadTerrainsAsync(RegionPosition centerRegionPosition)
         {
             var worldRegions = GetWorldNearRegionPositions(centerRegionPosition);
 
@@ -82,7 +76,7 @@
 
                 if (!region.Exist)
                 {
-                    await LoadRegionAsync(region);
+                    await LoadTerainAsync(region);
                 }
             }
         }
@@ -97,7 +91,6 @@
         public async Task<bool> DoActionAsync(Core.Models.Position currentGamePosition, Core.Models.Action[] actions)
         {
             await NetworkController.Instance.DoActionsAsync(currentGamePosition, actions);
-            await EntityManagerController.Instance.LoadEntitiesAsync(currentGamePosition, currentGamePosition.RegionPosition);
             return true;
         }
 
@@ -110,22 +103,23 @@
         /// </summary>
         /// <returns>The regions around the positions.</returns>
         /// <param name="regionPosition">Region position.</param>
-        public RegionPosition[,] GetWorldNearRegionPositions(RegionPosition regionPosition)
+        public HashSet<RegionPosition> GetWorldNearRegionPositions(RegionPosition regionPosition)
         {
-            int halfX = Common.Constants.ClientConstants.DRAW_REGIONS_X / 2;
-            int halfY = Common.Constants.ClientConstants.DRAW_REGIONS_X / 2;
+            var regions = new HashSet<RegionPosition>();
 
-            RegionPosition[,] worldRegion = new RegionPosition[5, 5];
+            int halfX = Common.Constants.ClientConstants.DRAW_REGIONS_X / 2;
+            int halfY = Common.Constants.ClientConstants.DRAW_REGIONS_Y / 2;
+
             for (int x = -halfX; x <= halfX; x++)
             {
                 for (int y = -halfY; y <= halfY; y++)
                 {
                     var regPos = new RegionPosition(regionPosition.RegionX + x, regionPosition.RegionY + y);
-                    worldRegion[x + halfX, y + halfY] = regPos;
+                    regions.Add(regPos);
                 }
             }
 
-            return worldRegion;
+            return regions;
         }
 
         /// <summary>
@@ -133,7 +127,7 @@
         /// </summary>
         /// <returns>The function as task.</returns>
         /// <param name="region">Region which should be loaded.</param>
-        private async Task LoadRegionAsync(Region region)
+        private async Task LoadTerainAsync(Region region)
         {
             TerrainDefinition[,] terrain = await NetworkController.Instance.LoadTerrainsAsync(region.RegionPosition);
 

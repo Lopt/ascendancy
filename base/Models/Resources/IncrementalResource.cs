@@ -41,7 +41,7 @@
         {
             LastState = DateTime.Now;
             m_realValue = value;
-            Increments = increments;
+            Increments += increments;
         }
 
         /// <summary>
@@ -83,7 +83,7 @@
             get
             {
                 var diff = DateTime.Now - LastState;
-                return Math.Min(Math.Max((m_realValue + Increments) * diff.Seconds, 0), MaximumValue);
+                return Math.Min(Math.Max(m_realValue + Increments * diff.TotalSeconds, 0), MaximumValue);
             }
         }
 

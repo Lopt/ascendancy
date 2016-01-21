@@ -167,11 +167,55 @@ namespace test
 
         public static void Main(string[] args)
         {
+
             //Tests.TcpConnectionTest.
 
             //var json = "{\"Status\":0,\"Actions\":[[],[],[],[],[],[],[],[],[],[],[],[],[{\"Parameters\":{\"CreatePosition\":{\"X\":5316345,\"Y\":3354734},\"CreateBuilding\":276},\"Type\":2}],[],[],[],[],[],[],[],[],[],[],[],[]],\"Entities\":[]}";
             //var entitiesResponse = JsonConvert.DeserializeObject<core.connection.Response>(json);
             //throw new Exception();
+
+            var request1 = new Core.Connections.LoginRequest(
+                new Core.Models.Position(1337, 42), // take the current location from the geolocator
+                "Max",
+                "Musterpassword");
+            var json1 = JsonConvert.SerializeObject(request1);
+            System.Console.WriteLine(json1);
+
+            var response2 = new Core.Connections.LoginResponse();
+            response2.AccountId = 13;
+            response2.SessionID = Guid.NewGuid();
+            response2.Status = Core.Connections.LoginResponse.ReponseStatus.OK;
+            var json2 = JsonConvert.SerializeObject(response2);
+            System.Console.WriteLine(json2);
+
+
+var response5 = new Core.Connections.Response();
+response5.Actions = new LinkedList<LinkedList<Core.Models.Action>>();
+response5.Entities = new LinkedList<LinkedList<Core.Models.Entity>>();
+response5.Status = Core.Connections.Response.ReponseStatus.OK;
+var json5 = JsonConvert.SerializeObject(response5);
+System.Console.WriteLine(json5);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            System.Console.Read();
+
+
+
+            //var entitiesResponse = JsonConvert.DeserializeObject<core.connection.Response>(json);
             //var app = new server.MvcApplication ();
             //app.Application_Start ();
 

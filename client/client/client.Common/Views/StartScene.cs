@@ -1,4 +1,7 @@
-﻿namespace Client.Common.Views
+﻿using Client.Common.Models;
+using Client.Common.Manager;
+
+namespace Client.Common.Views
 {
     using System;
     using System.Threading.Tasks;
@@ -18,7 +21,7 @@
             LoggedIn,
             TerrainTypeLoaded,
             EntityTypeLoaded,
-            RegionLoaded,
+            TerrainsLoaded,
             EntitiesLoaded,
             Done,
             Failure,
@@ -72,11 +75,17 @@
                 Phase = Phases.TerrainTypeLoaded;
 
                 await entityManagerController.LoadUnitDefinitionsAsync();
-                Phase = Phases.EntitiesLoaded;
+                Phase = Phases.EntityTypeLoaded;
+
+                var geolocationPosition = Geolocation.Instance.CurrentGamePosition;
+                var geolocationRegionPosition = geolocationPosition.RegionPosition;
 
                 var regionManagerController = controller.RegionManagerController as Client.Common.Manager.RegionManagerController;
-                await regionManagerController.LoadRegionsAsync();
-                Phase = Phases.RegionLoaded;
+                await regionManagerController.LoadTerrainsAsync(geolocationRegionPosition);
+                Phase = Phases.TerrainsLoaded;
+
+//                await EntityManagerController.Instance.LoadEntitiesAsync( geolocationRegionPosition);
+//                Phase = Phases.EntitiesLoaded;
                 // do something in the future
                 Phase = Phases.Done;
             }

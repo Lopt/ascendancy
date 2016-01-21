@@ -19,13 +19,13 @@
         /// <param name="worldlayer">The WorldLayer.</param>
         /// <param name="center">PositionI where the menu should be drawn.</param>
         /// <param name="types">Which menu entries should be shown.</param>
-        public MenuView(WorldLayer worldlayer, PositionI center, Definition[] types)
+        public MenuView(WorldLayerHex worldlayer, PositionI center, Definition[] types)
         {
             m_center = center;
             m_types = types;
             m_worldLayer = worldlayer;
-            m_extendedMenuPositions = new List<PositionI>();
-            m_shownTypes = new Dictionary<CCTileMapCoordinates, Definition>();
+            m_extendedMenuPositions = new Dictionary<PositionI, Core.Models.Definitions.Definition>();
+            m_baseMenuPositions = new Dictionary<PositionI, CCTileGidAndFlags>();
         }
 
         /// <summary>
@@ -192,7 +192,7 @@
         /// <param name="coord">The new Coordinate.</param>
         /// <param name="oldcoord">The old Coordinate.</param>
         /// <returns>Returns the second coordinate of the expanding menu.</returns>
-        public Core.Models.PositionI Gettiles(PositionI coord, PositionI oldcoord)
+        public Core.Models.PositionI GetTiles(PositionI coord, PositionI oldcoord)
         {
             var extMenu = Even[0];
             var tmp = Odd;
@@ -237,7 +237,7 @@
             }
             foreach (var item in extMenu)
             {
-                m_extendedMenuPositions.Add(coord + item);
+                m_extendedMenuPositions[coord + item] = null;
             }
             return extMenu[1];
         }
@@ -247,17 +247,23 @@
         /// </summary>
         /// <param name="coord">The pressed Coordinate to know in which direction the menu will expand.</param>
         /// <param name="count">The count of needed Tiles.</param>
-        public void GetExtendedCoords(PositionI coord, int count)
+        public void GetExtendedCoords(PositionI coord, Core.Models.Definitions.Definition[] definitions)
         {
             var tmpcoord1 = coord;
             var tmpcoord2 = m_center;
-            var counter = count;
+            var counter = definitions.Length;
             while (counter > 0)
             {
-                var test = Gettiles(tmpcoord1, tmpcoord2);
+                var newCenterAdd = GetTiles(tmpcoord1, tmpcoord2);
                 tmpcoord2 = tmpcoord1;
-                tmpcoord1 = tmpcoord1 + test;
+                tmpcoord1 = tmpcoord1 + newCenterAdd;
                 counter -= 3;
+            }
+
+            var keys = new List<PositionI>(m_extendedMenuPositions.Keys);
+            for (var index = 0; index < definitions.Length; ++ index)
+            {
+                m_extendedMenuPositions[keys[index]] = definitions[index];
             }
 
             // Testdraw to make sure it works properly
@@ -275,13 +281,13 @@
         /// <param name="majorgids">The GIDs.</param>
         public void DrawMajorMenu(short[] majorgids)
         {
-            var gidhelper = majorgids;
-            var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
-            for (var index = 0; index < surroundedCoords.Length; ++index)
+            var surroundedPos = LogicRules.GetSurroundedFields(m_center);
+            for (var index = 0; index < surroundedPos.Length; ++index)
             {
-                var coord = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
-                var gid = new CCTileGidAndFlags(gidhelper[index]);
-                m_worldLayer.MenuLayer.SetTileGID(gid, coord);
+                var pos = surroundedPos[index];
+                var gid = new CCTileGidAndFlags(majorgids[index]);
+                m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos.CellPosition, gid);
+                m_baseMenuPositions[pos] = gid;
             }
         }
 
@@ -299,7 +305,6 @@
             }
             var types = new Core.Models.Definitions.Definition[0];
             var defM = Core.Models.World.Instance.DefinitionManager;
-            var count = 0;
             switch (gid)
             {
                 case Common.Constants.BuildingMenuGid.MILITARY:
@@ -309,7 +314,7 @@
                     types[2] = defM.GetDefinition(EntityType.Factory);
                     types[3] = defM.GetDefinition(EntityType.GuardTower);
                     break;
-                case Common.Constants.BuildingMenuGid.ZIVIL:
+                case Common.Constants.BuildingMenuGid.CIVIL:
                     types = new Core.Models.Definitions.Definition[3];
                     types[0] = defM.GetDefinition(EntityType.Hospital);
                     types[1] = defM.GetDefinition(EntityType.Tent); 
@@ -326,24 +331,24 @@
                     types[0] = defM.GetDefinition(EntityType.Scrapyard);
                     break;
             }
-            count = types.Length;
-            GetExtendedCoords(coord, count);
-            DrawExtendedMenu(types);
+            GetExtendedCoords(coord, types);
+            DrawExtendedMenu();
         }
 
         /// <summary>
         /// Draws the extended menu.
         /// </summary>
         /// <param name="types">The definition Types.</param>
-        public void DrawExtendedMenu(Core.Models.Definitions.Definition[] types)
+        public void DrawExtendedMenu()
         {
-            m_shownTypes.Clear();
-            for (var index = 0; index < types.Length; ++index)
+            foreach (var pair in m_extendedMenuPositions)
             {
-                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, m_extendedMenuPositions[index]);
-                var gid = ViewDefinitions.Instance.DefinitionToTileGid(types[index], ViewDefinitions.Sort.Menu);
-                m_worldLayer.MenuLayer.SetTileGID(gid, mapCoordinate);
-                m_shownTypes[mapCoordinate] = types[index];
+                var pos = pair.Key;
+                if (pair.Value != null)
+                {
+                    var gid = ViewDefinitions.Instance.DefinitionToTileGid(pair.Value, ViewDefinitions.Sort.Menu);
+                    m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos.CellPosition, gid);
+                }
             }
         }
 
@@ -355,10 +360,10 @@
             var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
             for (var index = 0; index < surroundedCoords.Length; ++index)
             {
-                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, surroundedCoords[index]);
+                var pos = surroundedCoords[index];
                 var gid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[index], ViewDefinitions.Sort.Menu);
-                m_worldLayer.MenuLayer.SetTileGID(gid, mapCoordinate);
-                m_shownTypes[mapCoordinate] = m_types[index];
+                m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos.CellPosition, gid);
+                m_extendedMenuPositions[pos] = m_types[index];
             }
         }
 
@@ -367,11 +372,23 @@
         /// </summary>
         /// <returns>The selected definition.</returns>
         /// <param name="coord">Coordinate which was selected.</param>
-        public Core.Models.Definitions.Definition GetSelectedDefinition(CCTileMapCoordinates coord)
+        public Core.Models.Definitions.Definition GetSelectedDefinition(PositionI pos)
         {
-            Core.Models.Definitions.Definition def;
-            m_shownTypes.TryGetValue(coord, out def);
+            Core.Models.Definitions.Definition def = null;
+            m_extendedMenuPositions.TryGetValue(pos, out def);
             return def;
+        }
+
+        /// <summary>
+        /// Gets the selected definition.
+        /// </summary>
+        /// <returns>The selected definition.</returns>
+        /// <param name="coord">Coordinate which was selected.</param>
+        public CCTileGidAndFlags GetSelectedKategory(PositionI pos)
+        {
+            CCTileGidAndFlags gid = CCTileGidAndFlags.EmptyTile;
+            m_baseMenuPositions.TryGetValue(pos, out gid);
+            return gid;
         }
             
         /// <summary>
@@ -381,8 +398,8 @@
         {
             foreach (var coord in m_extendedMenuPositions)
             {
-                var ecoord = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, coord);
-                m_worldLayer.MenuLayer.RemoveTile(ecoord);
+                var regionView = m_worldLayer.GetRegionViewHex(coord.Key.RegionPosition);
+                regionView.RemoveMenuTile(coord.Key.CellPosition);
             }
             m_extendedMenuPositions.Clear();
         }
@@ -393,15 +410,20 @@
         public void CloseMenu()
         {
             var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
-            foreach (var coord in surroundedCoords)
+            foreach (var pos in surroundedCoords)
             {
-                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, coord);
-                m_worldLayer.MenuLayer.RemoveTile(mapCoordinate);
+                var regionView = m_worldLayer.GetRegionViewHex(pos.RegionPosition);
+                regionView.RemoveMenuTile(pos.CellPosition);
             }
             if (m_extendedMenuPositions.Count != 0)
             {
                 ClearExtendedMenu();
             }
+        }
+
+        public bool IsExtended()
+        {
+            return m_types.Length == 0;
         }
 
         /// <summary>
@@ -412,21 +434,18 @@
         /// <summary>
         /// The definition m_types.
         /// </summary>
-        private Dictionary<CCTileMapCoordinates, Core.Models.Definitions.Definition> m_shownTypes;
-
-        /// <summary>
-        /// The definition m_types.
-        /// </summary>
         private Core.Models.Definitions.Definition[] m_types;
 
         /// <summary>
         /// The world layer.
         /// </summary>
-        private WorldLayer m_worldLayer;
+        private WorldLayerHex m_worldLayer;
 
         /// <summary>
         /// A list to hold all the additional Tile Positions.
         /// </summary>
-        private List<PositionI> m_extendedMenuPositions;
+        private Dictionary<PositionI, Core.Models.Definitions.Definition> m_extendedMenuPositions;
+
+        private Dictionary<PositionI, CCTileGidAndFlags> m_baseMenuPositions;
     }
 }
