@@ -66,13 +66,7 @@
         private void ShowRessource(float time)
         {
             var population = GameAppDelegate.Account.Population;
-
             m_progress.Percentage = (float)population.ValuePercent * 100;
-
-            // Wege die Farbe zu ändern
-            //m_background.Sprite.Color = CCColor3B.Black;  
-            //m_background.Sprite.UpdateDisplayedColor(CCColor3B.Red);
-
         }
 
         /// <summary>

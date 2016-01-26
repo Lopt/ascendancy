@@ -100,7 +100,6 @@ namespace Client.Common.Views
             base.AddedToScene();
             InitCamera(m_currentWorldPoint);
             ZoomWorld(ClientConstants.TILEMAP_NORM_ZOOM);
-            LoadRegionViews(m_currentWorldPoint);
         }
 
         private void InitCamera(CCPoint worldPoint)
@@ -136,7 +135,6 @@ namespace Client.Common.Views
 
         private void LoadRegionViews(CCPoint point)
         {
-//            for m_wor
             var position = PositionHelper.WorldPointToGamePosition(point);
             var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
             var newKeys = regionManagerController.GetWorldNearRegionPositions(position.RegionPosition);

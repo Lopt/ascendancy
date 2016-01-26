@@ -68,13 +68,7 @@
         private void ShowRessource(float time)
         {
             var plutonium = GameAppDelegate.Account.Plutonium;
-
             m_progress.Percentage = (float)plutonium.ValuePercent * 100;
-
-            // Wege die Farbe zu ändern
-            //m_background.Sprite.Color = CCColor3B.Black;  
-            //m_background.Sprite.UpdateDisplayedColor(CCColor3B.Red);
-
         }
 
         /// <summary>

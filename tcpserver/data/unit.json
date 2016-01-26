@@ -2,24 +2,31 @@
     {
         "UnitType": 60,
         "Actions": ["Move"],
-        "Attack": 50,
+        "Attack": 150,
         "AttackRange": 1,
-        "Defense": 25,
-        "Health": 100,
+        "Defense": 50,
+        "Health": 150,
         "Moves": 10,
-
+        "Population": 8,
+        "Scrapcost": 50,
+        "Energycost": 0,
+        "Plutoniumcost": 50,
+        "Techcost": 2,
      },
 
     {
         "UnitType": 66,
         "Actions": ["Move"],
-        "Attack": 150,
+        "Attack": 125,
         "AttackRange": 2,
         "Defense": 25,
         "Health": 50,
-        "Moves": 8,
-
-
+        "Moves": 8,        
+        "Population": 4,
+        "Scrapcost": 40,
+        "Energycost": 0,
+        "Plutoniumcost": 40,
+        "Techcost": 1,
      },
 
     {
@@ -29,9 +36,12 @@
         "AttackRange": 1,
         "Defense": 25,
         "Health": 100,
-        "Moves": 15,
-
-
+        "Moves": 15,        
+        "Population": 5,
+        "Scrapcost": 30,
+        "Energycost": 0,
+        "Plutoniumcost": 10,
+        "Techcost": 0,
      },
      
     {
@@ -42,20 +52,11 @@
         "Defense": 25,
         "Health": 100,
         "Moves": 16,
-
-
-     },
-     
-    {
-        "UnitType": 78,
-        "Actions": ["Move"],
-        "Attack": 50,
-        "AttackRange": 3,
-        "Defense": 25,
-        "Health": 100,
-        "Moves": 16,
-
-
+        "Population": 4,
+        "Scrapcost": 25,
+        "Energycost": 0,
+        "Plutoniumcost": 25,
+        "Techcost": 0,
      },
      
      {
@@ -66,10 +67,12 @@
         "Defense": 25,
         "Health": 100,
         "Moves": 14,
-
-
-     },
-     
+        "Population": 2,
+        "Scrapcost": 25,
+        "Energycost": 0,
+        "Plutoniumcost": 0,
+        "Techcost": 0,
+     },     
      
      {
         "Name": "Headquarter",
@@ -79,7 +82,11 @@
         "Defense": 0,
         "Health": 100,
         "Moves": 0,
-
+        "Population": 0,
+        "Scrapcost": 0,
+        "Energycost": 0,
+        "Plutoniumcost": 0,
+        "Techcost": 0,
      },
 
      {
@@ -90,6 +97,11 @@
         "Defense": 0,
         "Health": 100,
         "Moves": 0,
+        "Population": 0,
+        "Scrapcost": 40,
+        "Energycost": 4,
+        "Plutoniumcost": 10,
+        "Techcost": 0,
 
 
      },
@@ -102,8 +114,11 @@
         "Defense": 0,
         "Health": 100,
         "Moves": 0,
-
-
+        "Population": 0,
+        "Scrapcost": 50,
+        "Energycost": 5,
+        "Plutoniumcost": 50,
+        "Techcost": 1,
      },
      
      {
@@ -114,8 +129,11 @@
         "Defense": 0,
         "Health": 100,
         "Moves": 0,
-
-
+        "Population": 0,
+        "Scrapcost": 25,
+        "Energycost": 0,
+        "Plutoniumcost": 0,
+        "Techcost": 0,
      },
 
      {
@@ -126,8 +144,11 @@
         "Defense": 0,
         "Health": 100,
         "Moves": 0,
-
-
+        "Population": 0,
+        "Scrapcost": 35,
+        "Energycost": 2,
+        "Plutoniumcost": 25,
+        "Techcost": 1,
      },
 
      {
@@ -138,8 +159,11 @@
         "Defense": 0,
         "Health": 100,
         "Moves": 0,
-
-
+        "Population": 0,
+        "Scrapcost": 40,
+        "Energycost": 5,
+        "Plutoniumcost": 65,
+        "Techcost": 3,
      },
 
      {
@@ -150,8 +174,11 @@
         "Defense": 0,
         "Health": 100,
         "Moves": 0,
-
-
+        "Population": 0,
+        "Scrapcost": 50,
+        "Energycost": 3,
+        "Plutoniumcost": 50,
+        "Techcost": 1,
      }, 
    
      {
@@ -161,9 +188,12 @@
         "Attack": 0,
         "Defense": 0,
         "Health": 100,
-        "Moves": 0,
-
-
+        "Moves": 0,        
+        "Population": 0,
+        "Scrapcost": 100,
+        "Energycost": 10,
+        "Plutoniumcost": 50,
+        "Techcost": 0,
      },
 
      {
@@ -174,8 +204,11 @@
         "Defense": 0,
         "Health": 100,
         "Moves": 0,
-
-
+        "Population": 0,
+        "Scrapcost": 150,
+        "Energycost": 5,
+        "Plutoniumcost": 40,
+        "Techcost": 4,
      },
 
      {
@@ -186,8 +219,11 @@
         "Defense": 0,
         "Health": 100,
         "Moves": 0,
-
-
+        "Population": 0,
+        "Scrapcost": 40,
+        "Energycost": 0,
+        "Plutoniumcost": 60,
+        "Techcost": 1,
      },
 
      {
@@ -198,6 +234,11 @@
         "Defense": 0,
         "Health": 100,
         "Moves": 0,
+        "Population": 0,
+        "Scrapcost": 55,
+        "Energycost": 0,
+        "Plutoniumcost": 0,
+        "Techcost": 0,
      },
 
      {
@@ -208,5 +249,10 @@
         "Defense": 0,
         "Health": 100,
         "Moves": 0,
+        "Population": 0,
+        "Scrapcost": 30,
+        "Energycost": 0,
+        "Plutoniumcost": 0,
+        "Techcost": 0,
      } 
 ]
