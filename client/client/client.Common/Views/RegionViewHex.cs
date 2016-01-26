@@ -114,7 +114,9 @@
                 }
                 var gid = ViewDefinitions.Instance.DefinitionToTileGid(building.Definition, sort);
                 m_buildingLayer.SetTileGID(gid, mapCoordinat);
+
             }
+                
         }
 
         public CCSprite SetIndicatorGid(CellPosition cellPos, CCTileGidAndFlags gid)
@@ -224,6 +226,7 @@
                 if (entity.Definition.Category == Core.Models.Definitions.Category.Building)
                 {
                     SetBuilding(mapCoordinat, entity);
+
                 }
             }
             else

@@ -27,7 +27,8 @@
             MenuDrawn,
             Move,
             MoveUnit,
-            Zoom
+            Zoom,
+            Area
         }
 
         public enum Area
@@ -189,6 +190,10 @@
 
             switch (m_touchGesture)
             {
+                case TouchGesture.Area:
+                    m_indicator.RemoveIndicator();
+                    m_touchGesture = TouchGesture.None;
+                    break;
                 case TouchGesture.MoveUnit:
                     var action = ActionHelper.MoveUnit(oldGamePositionI, gamePositionI);
 
@@ -281,13 +286,27 @@
                 case TouchGesture.Start:
                     var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosI.RegionPosition);
                     var entity = region.GetEntity(startPosI.CellPosition);
+                    int range = 0;
+                    Area area = Area.Movement;
+                    m_indicator = new IndicatorView(m_worldLayer);
 
                     if (entity != null && entity.Definition.Category == Category.Unit)
                     {
                         m_touchGesture = TouchGesture.MoveUnit;
-                        var range = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosI.RegionPosition).GetEntity(startPosI.CellPosition).Move;                       
-                        m_indicator = new IndicatorView(m_worldLayer);
-                        m_indicator.ShowIndicator(startPosI, range, Area.Movement);
+                        range = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosI.RegionPosition).GetEntity(startPosI.CellPosition).Move;
+                        m_indicator.ShowIndicator(startPosI, range, area);
+                    }
+                    else if (entity != null && entity.Definition.SubType == EntityType.Headquarter)
+                    {
+                        m_touchGesture = TouchGesture.Area;
+                        range = Core.Models.Constants.HEADQUARTER_TERRITORY_RANGE;
+                        var owner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosI.RegionPosition).GetEntity(startPosI.CellPosition).Owner;
+                        area = Area.OwnTerritory;
+                        if (owner != GameAppDelegate.Account)
+                        {
+                            area = Area.EnemyTerritory;
+                        }
+                        m_indicator.ShowIndicator(startPosI, range, area);
                     }
                     else if (entity != null && entity.DefinitionID == (long)EntityType.Barracks)
                     {
