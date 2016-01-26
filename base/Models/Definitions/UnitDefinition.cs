@@ -25,27 +25,25 @@
             int defense,
             int health,
             int moves,
-            int attackRange)
+            int attackRange,
+            int population,
+            int scrapecost,
+            int energycost,
+            int plutoniumcost,
+            int techcost)
             : base((int)unitType)
         {
             Actions = actions;
             Attack = attack;
-            AttackRange = attackRange;
             Defense = defense;
             Health = health;
             Moves = moves;
-        }
-
-        /// <summary>
-        /// Gets the main resource of the unit (fire, gold, etc.) .
-        /// </summary>
-        /// <value>The resource.</value>
-        public Resources Resource
-        {
-            get
-            {
-                return (Resources)(ID % 6);
-            }
+            AttackRange = attackRange;
+            Population = population;
+            Scrapecost = scrapecost;
+            Energycost = energycost;
+            Plutoniumcost = plutoniumcost;
+            Techcost = techcost;
         }
 
         /// <summary>
@@ -103,6 +101,56 @@
         /// </summary>
         /// <value>The attack range.</value>
         public int AttackRange
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Gets the population.
+        /// </summary>
+        /// <value>The population.</value>
+        public int Population
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Gets the scrapecost.
+        /// </summary>
+        /// <value>The scrapecost.</value>
+        public int Scrapecost
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Gets the energycost.
+        /// </summary>
+        /// <value>The energycost.</value>
+        public int Energycost
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Gets the plutoniumcost.
+        /// </summary>
+        /// <value>The plutoniumcost.</value>
+        public int Plutoniumcost
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Gets the techcost.
+        /// </summary>
+        /// <value>The techcost.</value>
+        public int Techcost
         {
             get;
             private set;

@@ -276,5 +276,7 @@
         /// The Server Port
         /// </summary>
         public static readonly int TCP_PORT = 13000;
+
+        public static readonly int GPS_GET_POSITION_TIMEOUT = 5;
     }
 }

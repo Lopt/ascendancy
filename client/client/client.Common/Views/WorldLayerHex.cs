@@ -55,12 +55,7 @@ namespace Client.Common.Views
         {
             return m_zoom;
         }
-
-        public MenuView GetMenuView()
-        {
-            return m_menuView;
-        }
-
+            
         public void ZoomWorld(float newZoom)
         {
             if (Common.Constants.ClientConstants.TILEMAP_MIN_ZOOM < newZoom &&
@@ -105,7 +100,6 @@ namespace Client.Common.Views
             base.AddedToScene();
             InitCamera(m_currentWorldPoint);
             ZoomWorld(ClientConstants.TILEMAP_NORM_ZOOM);
-            LoadRegionViews(m_currentWorldPoint);
         }
 
         private void InitCamera(CCPoint worldPoint)
@@ -141,7 +135,6 @@ namespace Client.Common.Views
 
         private void LoadRegionViews(CCPoint point)
         {
-//            for m_wor
             var position = PositionHelper.WorldPointToGamePosition(point);
             var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
             var newKeys = regionManagerController.GetWorldNearRegionPositions(position.RegionPosition);
@@ -188,11 +181,6 @@ namespace Client.Common.Views
         /// The m current position.
         /// </summary>
         private CCPoint m_currentWorldPoint;
-
-        /// <summary>
-        /// The m menu layer.
-        /// </summary>
-        private MenuView m_menuView;
 
         /// <summary>
         /// The m current position node.
