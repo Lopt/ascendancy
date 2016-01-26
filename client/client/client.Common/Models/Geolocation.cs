@@ -39,14 +39,7 @@
             m_geolocator.DesiredAccuracy = 1.0;
             m_geolocator.PositionChanged += OnPositionChanged;
 
-            m_tokensource = new CancellationTokenSource();
-            m_scheduler = TaskScheduler.FromCurrentSynchronizationContext();
-
-            Position position = new Position();
-            position.Latitude = 50.98520741; // standardPosition
-            position.Longitude = 11.04233265; // standardPosition
-            CurrentPosition = position;
-            LastPosition = new Position();
+            CurrentGamePosition = null;
             FirstGamePosition = null;
         }
 
@@ -64,16 +57,6 @@
         /// The m_geolocator.
         /// </summary>
         private readonly IGeolocator m_geolocator = null;
-
-        /// <summary>
-        /// The m_tokensource.
-        /// </summary>
-        private CancellationTokenSource m_tokensource = null;
-
-        /// <summary>
-        /// The m_scheduler.
-        /// </summary>
-        private readonly TaskScheduler m_scheduler = null;
 
 
         /// <summary>
@@ -135,44 +118,19 @@
         /// </summary>
         /// <param name="sender">Sender is the event source.</param>
         /// <param name="e">E the event data. If there is no event data, this parameter will be null.</param>
-        private async void OnPositionChanged(object sender, PositionEventArgs e)
+        private async void OnPositionChanged(object sender, PositionEventArgs eventPos)
         {
-            LastPosition = CurrentPosition;
-            await GetPosition();
+            CurrentGamePosition = new Core.Models.Position(new Core.Models.LatLon(eventPos.Position.Latitude, eventPos.Position.Longitude));
             if (FirstGamePosition == null)
             {
-                FirstGamePosition = new Core.Models.Position(new Core.Models.LatLon(CurrentPosition.Latitude, CurrentPosition.Longitude));
+                FirstGamePosition = CurrentGamePosition;
             }
         }
 
-        /// <summary>
-        /// Gets the position.
-        /// </summary>
-        /// <returns>The position.</returns>
-        private async Task GetPosition()
-        {  
-            if (m_geolocator == null)
-            {
-                return;
-            }
-
-            await m_geolocator.GetPositionAsync(timeout: 4000, cancelToken: m_tokensource.Token, includeHeading: true).ContinueWith(
-                t =>
-                {
-                    if (t.IsFaulted)
-                    {
-                        Helper.Logging.Error(((GeolocationException)t.Exception.InnerException).Error.ToString());
-                    }
-                    else if (t.IsCanceled)
-                    {
-                        Helper.Logging.Warning("Geolocation get position async is Canceled");
-                    }
-                    else
-                    {
-                        CurrentPosition = t.Result as Position;                
-                    }
-                },
-                m_scheduler);
+        public async Task<Core.Models.Position> GetPositionAsync()
+        {
+            var latlon = await m_geolocator.GetPositionAsync(Constants.ClientConstants.GPS_GET_POSITION_TIMEOUT);
+            return new Core.Models.Position(latlon.Latitude, latlon.Longitude);
         }
 
         #endregion
@@ -183,101 +141,16 @@
         /// Gets the current position.
         /// </summary>
         /// <value>The current position.</value>
-        public Position CurrentPosition
+        public Core.Models.Position CurrentGamePosition
         {
             get;
-
             private set;
         }
 
         public Core.Models.Position FirstGamePosition
         {
             get;
-
             private set;
-        }
-
-        /// <summary>
-        /// Gets the current game position.
-        /// </summary>
-        /// <value>The current game position.</value>
-        public Core.Models.Position CurrentGamePosition
-        { 
-            get
-            {
-                return new Core.Models.Position(new Core.Models.LatLon(CurrentPosition.Latitude, CurrentPosition.Longitude)); 
-            }
-        }
-
-        /// <summary>
-        /// Gets the current region position.
-        /// </summary>
-        /// <value>The current region position.</value>
-        public Core.Models.RegionPosition CurrentRegionPosition
-        { 
-            get
-            {
-                return new Core.Models.RegionPosition(CurrentGamePosition); 
-            }
-        }
-
-        /// <summary>
-        /// Gets the current cell position.
-        /// </summary>
-        /// <value>The current cell position.</value>
-        public Core.Models.CellPosition CurrentCellPosition
-        { 
-            get
-            { 
-                return new Core.Models.CellPosition(CurrentGamePosition); 
-            }
-        }
-
-        /// <summary>
-        /// Gets the last position.
-        /// </summary>
-        /// <value>The last position.</value>
-        public Position LastPosition
-        { 
-            get;
-
-            private set;
-        }
-
-        /// <summary>
-        /// Gets the last game position.
-        /// </summary>
-        /// <value>The last game position.</value>
-        public Core.Models.Position LastGamePosition
-        { 
-            get
-            { 
-                return new Core.Models.Position(new Core.Models.LatLon(LastPosition.Latitude, LastPosition.Longitude)); 
-            }
-        }
-
-        /// <summary>
-        /// Gets the last region position.
-        /// </summary>
-        /// <value>The last region position.</value>
-        public Core.Models.RegionPosition LastRegionPosition
-        { 
-            get
-            {
-                return new Core.Models.RegionPosition(LastGamePosition); 
-            }
-        }
-
-        /// <summary>
-        /// Gets the last cell position.
-        /// </summary>
-        /// <value>The last cell position.</value>
-        public Core.Models.CellPosition LastCellPosition
-        { 
-            get
-            { 
-                return new Core.Models.CellPosition(LastGamePosition); 
-            }
         }
 
         #endregion

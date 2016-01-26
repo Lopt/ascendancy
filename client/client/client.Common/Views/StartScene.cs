@@ -18,11 +18,10 @@ namespace Client.Common.Views
         public enum Phases
         {
             Start,
+            PositionAquired,
             LoggedIn,
             TerrainTypeLoaded,
             EntityTypeLoaded,
-            TerrainsLoaded,
-            EntitiesLoaded,
             Done,
             Failure,
         }
@@ -61,6 +60,10 @@ namespace Client.Common.Views
         /// <returns>The account async.</returns>
         public async Task<Core.Models.Account> InitLoadingAsync()
         {
+            // wait until there is an known position
+            await Geolocation.Instance.GetPositionAsync();
+            Phase = Phases.PositionAquired;
+
             var account = await LoginAsync(); 
             if (account != null)
             {
