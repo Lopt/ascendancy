@@ -446,7 +446,6 @@
         public static void ConsumeResource(Account account, Definitions.Definition entityDef)
         {
             var definition = (Definitions.UnitDefinition)entityDef;
-            //var definition = (Definitions.UnitDefinition)entity.Definition;
             account.Scrap.Set(-definition.Scrapecost, 0);
             account.Plutonium.Set(-definition.Plutoniumcost, 0);
             account.Technology.Set(-definition.Techcost, 0);
