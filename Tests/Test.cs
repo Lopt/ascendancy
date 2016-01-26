@@ -40,7 +40,13 @@ namespace Tests
 
             var testPackageIn = Core.Connection.Packet.Receive(stream);
 
-            Assert.AreEqual(testPackageOut.GetHashCode(), testPackageIn.GetHashCode());
+            Assert.AreNotEqual(testPackageOut.GetHashCode(), testPackageIn.GetHashCode());
+        }
+
+        [Test]
+        public void http()
+        {
+            
         }
     }
 }

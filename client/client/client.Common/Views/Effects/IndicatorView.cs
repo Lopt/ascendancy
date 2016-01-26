@@ -1,4 +1,5 @@
-﻿namespace Client.Common.Views.Effects
+﻿
+namespace Client.Common.Views.Effects
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +10,7 @@
     /// Indicator view.
     /// </summary>
     public class IndicatorView
-    {   
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.Effects.IndicatorView"/> class.
         /// </summary>
@@ -17,64 +18,69 @@
         public IndicatorView(WorldLayerHex worldlayer)
         {
             m_worldLayer = worldlayer;
+            m_sprites = new List<CCSprite>();
+            m_areaIndicators = new Dictionary<TileTouchHandler.Area, CCTileGidAndFlags>();
+            m_areaIndicators.Add(TileTouchHandler.Area.Movement, new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.WHITEINDICATOR));
+            m_areaIndicators.Add(TileTouchHandler.Area.OwnTerritory, new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR));
+            m_areaIndicators.Add(TileTouchHandler.Area.EnemyTerritory, new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.REDINDICATOR));
+            m_areaIndicators.Add(TileTouchHandler.Area.AllyTerritory, new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.BLUEINDICATOR));
         }
-            
+
+        ~IndicatorView()
+        {
+            m_areaIndicators.Clear();
+            RemoveIndicator();
+        }
+
+
         /// <summary>
         /// Draws the indicator on the Map
         /// </summary>
         /// <param name="coord">The Center Position.</param>
         /// <param name="range">The Range.</param>
-        /// <param name="type">The Indicator Type.</param>
-        public void ShowIndicator(PositionI coord, int range, int type)
+        /// <param name="area">The Area Type.</param>
+        public void ShowIndicator(PositionI coord, int range, TileTouchHandler.Area area)
         {
+
             var gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR);
-            switch (type)
-            {
-                // influence range
-                case 1:
-                    gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR);
-                    break;
 
-                // attack range
-                case 2:
-                    gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.REDINDICATOR);
-                    break;
-
-                // movement range
-                case 3:
-                    gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.WHITEINDICATOR);
-                    break;
-            }
+            m_areaIndicators.TryGetValue(area, out gid);
 
             m_surroundedPositions = LogicRules.GetSurroundedPositions(coord, range);
 
-            /*
             foreach (var tile in m_surroundedPositions)
             {
-                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, tile);
-                m_worldLayer.IndicatorLayer.SetTileGID(gid, mapCoordinate);
+                m_sprites.Add(m_worldLayer.GetRegionViewHex(tile.RegionPosition).SetIndicatorGid(tile.CellPosition, gid));
             }
-            */
+
         }
 
         /// <summary>
         /// Removes the indicator.
         /// </summary>
         public void RemoveIndicator()
-        {
-            /*
-            foreach (var item in m_surroundedPositions)
+        {     
+            foreach (var sprite in m_sprites)
             {
-                var mapCoordinate = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, item);
-                m_worldLayer.IndicatorLayer.RemoveTile(mapCoordinate); 
+                sprite.Parent.RemoveChild(sprite);
             }
-            */
+            m_sprites.Clear();
         }
 
         /// <summary>
         /// The world layer.
         /// </summary>
         private WorldLayerHex m_worldLayer;
+
+        /// <summary>
+        /// The sprites.
+        /// </summary>
+        private List<CCSprite> m_sprites;
+
+        /// <summary>
+        /// The area indicators.
+        /// </summary>
+        private Dictionary<TileTouchHandler.Area,CCTileGidAndFlags> m_areaIndicators;
 
         /// <summary>
         /// The surrounded tile set.
