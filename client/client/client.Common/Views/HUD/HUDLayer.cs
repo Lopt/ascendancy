@@ -81,6 +81,11 @@
         /// </summary>
         public void DeveloperFunction()
         {
+            GameAppDelegate.Account.Scrap.Set(GameAppDelegate.Account.Scrap.MaximumValue, 0);
+            GameAppDelegate.Account.Plutonium.Set(GameAppDelegate.Account.Plutonium.MaximumValue, 0);
+            GameAppDelegate.Account.Population.Value = GameAppDelegate.Account.Population.MaximumValue;
+            GameAppDelegate.Account.Technology.Set(GameAppDelegate.Account.Technology.MaximumValue, 0);
+            GameAppDelegate.Account.Energy.Value = GameAppDelegate.Account.Energy.MaximumValue;
         }
 
         /// <summary>

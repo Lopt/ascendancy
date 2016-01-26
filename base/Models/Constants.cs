@@ -102,5 +102,20 @@
         /// The technology maximum value.
         /// </summary>
         public const int TECHNOLOGY_MAX_VALUE = 7;
+
+        /// <summary>
+        /// The increment valiue for technology resource.
+        /// </summary>
+        public const float TECHNOLOGY_INCREMENT_VALUE = 0.1;
+
+        /// <summary>
+        /// The increment valiue for scrap resource.
+        /// </summary>
+        public const int SCRAP_INCREMENT_VALUE = 2;
+
+        /// <summary>
+        /// The increment valiue for plutonium resource.
+        /// </summary>
+        public const float PLUTONIUM_INCREMENT_VALUE = 0.3;
     }
 }

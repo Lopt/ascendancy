@@ -1,16 +1,16 @@
 [
-    {"Ressources": [0,2,0,0,0], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 999, "AttackModifier": 999, "TerrainType":0,},
-    {"Ressources": [2,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 4, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":1,},
-    {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 3, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":2,},
-    {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":3,},
-    {"Ressources": [2,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":4,},
-    {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 1, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":5,},
-    {"Ressources": [0,0,0,0,0], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":6,},
-    {"Ressources": [0,0,0,0,0], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":7,},
-    {"Ressources": [2,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":8,},
-    {"Ressources": [0,0,0,0,0], "Buildable": false, "Walkable": true, "TravelCost": 1, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":9,},
-    {"Ressources": [0,10,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":10,},
-    {"Ressources": [0,0,0,0,0], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":11,},
-    {"Ressources": [0,0,0,0,0], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":12,}
+    {"Ressources": [{"Scrap": 0},{"Plutonium":2},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 999, "AttackModifier": 999, "TerrainType":0,},
+    {"Ressources": [{"Scrap": 2},{"Plutonium":1},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": true, "Walkable": true, "TravelCost": 4, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":1,},
+    {"Ressources": [{"Scrap": 0},{"Plutonium":0},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": true, "Walkable": true, "TravelCost": 3, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":2,},
+    {"Ressources": [{"Scrap": 0},{"Plutonium":0},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":3,},
+    {"Ressources": [{"Scrap": 2},{"Plutonium":1},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":4,},
+    {"Ressources": [{"Scrap": 0},{"Plutonium":0},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": true, "Walkable": true, "TravelCost": 1, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":5,},
+    {"Ressources": [{"Scrap": 0},{"Plutonium":0},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":6,},
+    {"Ressources": [{"Scrap": 0},{"Plutonium":0},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":7,},
+    {"Ressources": [{"Scrap": 2},{"Plutonium":1},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":8,},
+    {"Ressources": [{"Scrap": 0},{"Plutonium":0},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": false, "Walkable": true, "TravelCost": 1, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":9,},
+    {"Ressources": [{"Scrap": 0},{"Plutonium":10},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":10,},
+    {"Ressources": [{"Scrap": 0},{"Plutonium":0},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": true, "Walkable": true, "TravelCost": 2, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":11,},
+    {"Ressources": [{"Scrap": 0},{"Plutonium":0},{"Population":0},{"Technology":0},{"Energy":0}], "Buildable": false, "Walkable": false, "TravelCost": 999, "DefenseModifier": 1, "AttackModifier": 1,"TerrainType":12,}
 ]
 

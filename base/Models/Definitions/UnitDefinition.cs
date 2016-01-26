@@ -27,7 +27,7 @@
             int moves,
             int attackRange,
             int population,
-            int scrapecost,
+            int scrapcost,
             int energycost,
             int plutoniumcost,
             int techcost)
@@ -40,7 +40,7 @@
             Moves = moves;
             AttackRange = attackRange;
             Population = population;
-            Scrapecost = scrapecost;
+            Scrapecost = scrapcost;
             Energycost = energycost;
             Plutoniumcost = plutoniumcost;
             Techcost = techcost;
