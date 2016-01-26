@@ -35,6 +35,7 @@
             m_buildingLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_BUILDING);
             m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
             m_menueLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_MENU);
+            m_indicatorLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_INDICATOR);
             Init();
             LoadRegionViewAsync();
 
@@ -156,7 +157,8 @@
             var coordHelper = new CCTileMapCoordinates(0, 0);
             m_buildingLayer.RemoveTile(coordHelper);
             m_unitLayer.RemoveTile(coordHelper);
-//            m_menueLayer.RemoveTile(coordHelper);
+            m_menueLayer.RemoveTile(coordHelper);
+            m_indicatorLayer.RemoveTile(coordHelper);
         }
 
         /// <summary>
@@ -221,6 +223,11 @@
         /// The terrain layer.
         /// </summary>
         private CCTileMapLayer m_terrainLayer;
+
+        /// <summary>
+        /// The terrain layer.
+        /// </summary>
+        private CCTileMapLayer m_indicatorLayer;
 
         /// <summary>
         /// The building layer.
