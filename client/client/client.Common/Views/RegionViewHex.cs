@@ -126,9 +126,11 @@
             var regionPosition = region.RegionPosition;
             var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
  
-            await regionManagerController.LoadTerrainsAsync(regionPosition);
+            var taskTerrain = regionManagerController.LoadTerrainAsync(region);
+            var taskEntities = EntityManagerController.Instance.LoadEntitiesAsync(regionPosition);
 
-            await EntityManagerController.Instance.LoadEntitiesAsync(regionPosition);
+            await taskTerrain;
+            await taskEntities;
 
             SetTilesInMap32();
         }

@@ -100,7 +100,6 @@ namespace Client.Common.Views
             base.AddedToScene();
             InitCamera(m_currentWorldPoint);
             ZoomWorld(ClientConstants.TILEMAP_NORM_ZOOM);
-            LoadRegionViews(m_currentWorldPoint);
         }
 
         private void InitCamera(CCPoint worldPoint)
