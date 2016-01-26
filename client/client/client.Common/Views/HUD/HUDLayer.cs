@@ -99,16 +99,16 @@
             m_energyRessource.PositionX = VisibleBoundsWorldspace.MinX;
             m_energyRessource.PositionY = VisibleBoundsWorldspace.MaxY;
 
-            m_scrapResource.PositionX = VisibleBoundsWorldspace.MinX + m_energyRessource.Size.Width;
+            m_scrapResource.PositionX = m_energyRessource.PositionX + m_energyRessource.Size.Width;
             m_scrapResource.PositionY = VisibleBoundsWorldspace.MaxY;
 
-            m_plutoniumResource.PositionX = VisibleBoundsWorldspace.MinX + m_scrapResource.Size.Width * 2;
+            m_plutoniumResource.PositionX = m_scrapResource.PositionX + m_scrapResource.Size.Width;
             m_plutoniumResource.PositionY = VisibleBoundsWorldspace.MaxY;
 
-            m_populationResource.PositionX = VisibleBoundsWorldspace.MinX + m_plutoniumResource.Size.Width * 3;
+            m_populationResource.PositionX = m_plutoniumResource.PositionX + m_plutoniumResource.Size.Width;
             m_populationResource.PositionY = VisibleBoundsWorldspace.MaxY;
 
-            m_techologyResource.PositionX = VisibleBoundsWorldspace.MinX + m_populationResource.Size.Width * 4;
+            m_techologyResource.PositionX = m_populationResource.PositionX + m_populationResource.Size.Width;
             m_techologyResource.PositionY = VisibleBoundsWorldspace.MaxY;
 
             m_question.PositionX = VisibleBoundsWorldspace.MaxX;
