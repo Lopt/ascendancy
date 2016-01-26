@@ -40,7 +40,7 @@ namespace Tests
 
             var testPackageIn = Core.Connection.Packet.Receive(stream);
 
-            Assert.IsNotNullOrEmpty(testPackageIn.Content);
+            Assert.AreNotEqual(testPackageOut.GetHashCode(), testPackageIn.GetHashCode());
         }
 
         [Test]
