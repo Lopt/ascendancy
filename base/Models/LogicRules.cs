@@ -409,9 +409,9 @@
                     foreach (var item in list)
                     {
                         // TODO: add ressources in Terrain
-                        var resources = regionManagerC.GetRegion(item.RegionPosition).GetTerrain(item.CellPosition).Resources;
-                        scrapAmount += 0.1f;//resources[0];
-                        plutoniumAmount += 0.1f;//resources[1];
+                        var resources = regionManagerC.GetRegion(item.RegionPosition).GetTerrain(item.CellPosition);
+                        scrapAmount += 0.5f;//resources[0];
+                        plutoniumAmount += 0.3f;//resources[1];
                     }
                     account.Scrap.Set(account.Scrap.Value, 4);
                     account.Plutonium.Set(account.Plutonium.Value, 0.3);
@@ -443,14 +443,27 @@
         /// </summary>
         /// <param name="account">Account.</param>
         /// <param name="entity">Entity.</param>
-        public static void ConsumeResource(Account account, Definitions.Definition entityDef)
+        public static bool ConsumeResource(Account account, Definitions.Definition entityDef)
         {
             var definition = (Definitions.UnitDefinition)entityDef;
-            account.Scrap.Set(-definition.Scrapecost, 0);
-            account.Plutonium.Set(-definition.Plutoniumcost, 0);
-            account.Technology.Set(-definition.Techcost, 0);
-            account.Population.Value -= definition.Population;
-            account.Energy.Value -= definition.Energycost;
+
+            if (account.Scrap.Value >= definition.Scrapecost &&
+                account.Plutonium.Value >= definition.Plutoniumcost &&
+                account.Technology.Value >= definition.Techcost &&
+                account.Population.Value >= definition.Population &&
+                account.Energy.Value >= definition.Energycost)
+            {
+                account.Scrap.Set(account.Scrap.Value - definition.Scrapecost, 0);           
+                account.Plutonium.Set(account.Plutonium.Value - definition.Plutoniumcost, 0);            
+                account.Technology.Set(account.Technology.Value - definition.Techcost, 0);            
+                account.Population.Value -= definition.Population;
+                account.Energy.Value -= definition.Energycost;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }        
 }
