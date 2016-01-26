@@ -77,15 +77,6 @@ namespace Client.Common.Views
                 await entityManagerController.LoadUnitDefinitionsAsync();
                 Phase = Phases.EntityTypeLoaded;
 
-                var geolocationPosition = Geolocation.Instance.CurrentGamePosition;
-                var geolocationRegionPosition = geolocationPosition.RegionPosition;
-
-                var regionManagerController = controller.RegionManagerController as Client.Common.Manager.RegionManagerController;
-                await regionManagerController.LoadTerrainsAsync(geolocationRegionPosition);
-                Phase = Phases.TerrainsLoaded;
-
-//                await EntityManagerController.Instance.LoadEntitiesAsync( geolocationRegionPosition);
-//                Phase = Phases.EntitiesLoaded;
                 // do something in the future
                 Phase = Phases.Done;
             }
