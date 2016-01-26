@@ -55,12 +55,7 @@ namespace Client.Common.Views
         {
             return m_zoom;
         }
-
-        public MenuView GetMenuView()
-        {
-            return m_menuView;
-        }
-
+            
         public void ZoomWorld(float newZoom)
         {
             if (Common.Constants.ClientConstants.TILEMAP_MIN_ZOOM < newZoom &&
