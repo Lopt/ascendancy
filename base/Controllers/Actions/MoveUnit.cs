@@ -135,9 +135,6 @@
             var bag = new ConcurrentBag<Core.Models.Region>();
 
             var entity = regionStartPos.GetEntity(startPosition.CellPosition);
-           
-            var debugpSta = regionStartPos.GetClaimedTerritory(startPosition.CellPosition);
-            var debugpEnd = regionEndPos.GetClaimedTerritory(endPosition.CellPosition);
 
             if (m_fight)
             {
@@ -189,7 +186,8 @@
                 {
                     if (entity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
                     {  
-                        regionStartPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(enemyEntity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);
+                        regionStartPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);
+                        LogicRules.DecreaseHoleStorage(entity.Owner);
                         regionStartPos.RemoveEntity(action.ActionTime, entity);
                     }
                     regionStartPos.RemoveEntity(action.ActionTime, entity);

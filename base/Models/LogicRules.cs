@@ -413,8 +413,8 @@
                         scrapAmount += 0.5f;//resources[0];
                         plutoniumAmount += 0.3f;//resources[1];
                     }
-                    account.Scrap.Set(account.Scrap.Value, 4);
-                    account.Plutonium.Set(account.Plutonium.Value, 0.3);
+                    account.Scrap.Set(account.Scrap.Value, Constants.SCRAP_INCREMENT_VALUE);
+                    account.Plutonium.Set(account.Plutonium.Value, Constants.PLUTONIUM_INCREMENT_VALUE);
                 }                   
             }
         }
@@ -429,11 +429,11 @@
             switch (regionManagerC.GetRegion(entitypos.RegionPosition).GetEntity(entitypos.CellPosition).DefinitionID)
           {
               case (int)Core.Models.Definitions.EntityType.Lab:                         
-                    account.Technology.Set(account.Technology.Value, 0.1);                   
+                    account.Technology.Set(account.Technology.Value, Constants.TECHNOLOGY_INCREMENT_VALUE);                   
                   break;
     
               case (int)Core.Models.Definitions.EntityType.Furnace:
-                    account.Scrap.Set(account.Scrap.Value, 2);
+                    account.Scrap.Set(account.Scrap.Value, Constants.SCRAP_INCREMENT_VALUE);
                   break;
           }
         }
