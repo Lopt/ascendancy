@@ -12,7 +12,7 @@
             m_gameScene = gameScene;
             Position = m_gameScene.WorldLayerHex.Position;
             Schedule(testupdate);
-            AddHealthbar();
+            //AddHealthbar();
             //m_healthbar = new Healthbar();
             //m_healthbar.AnchorPoint = CCPoint.AnchorMiddle;
             //AddChild(m_healthbar);
