@@ -436,6 +436,22 @@
                     account.Scrap.Set(account.Scrap.Value, 2);
                   break;
           }
-        }     
+        }
+
+        /// <summary>
+        /// Consumes the resources for creating an entity.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="entity">Entity.</param>
+        public static void ConsumeResource(Account account, Definitions.Definition entityDef)
+        {
+            var definition = (Definitions.UnitDefinition)entityDef;
+            //var definition = (Definitions.UnitDefinition)entity.Definition;
+            account.Scrap.Set(-definition.Scrapecost, 0);
+            account.Plutonium.Set(-definition.Plutoniumcost, 0);
+            account.Technology.Set(-definition.Techcost, 0);
+            account.Population.Value -= definition.Population;
+            account.Energy.Value -= definition.Energycost;
+        }
     }        
 }
