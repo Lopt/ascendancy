@@ -207,7 +207,6 @@
                 Helper.Logging.Error("URL load failed: " + exception.Message);
                 throw exception;
             }
-
         }
 
         #endregion

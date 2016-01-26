@@ -55,32 +55,11 @@ namespace Client.Common.Manager
 
             if (!region.Exist)
             {
-                LoadTerainAsync(region);
+                LoadTerrainAsync(region);
             }
             return region;
         }
-
-
-        /// <summary>
-        /// Loads the regions async around the surrender region position.
-        /// </summary>
-        /// <returns>The task async.</returns>
-        /// <param name="centerRegionPosition">Region position which is in the center.</param>
-        public async Task LoadTerrainsAsync(RegionPosition centerRegionPosition)
-        {
-            var worldRegions = GetWorldNearRegionPositions(centerRegionPosition);
-
-            foreach (var regionPosition in worldRegions)
-            {
-                var region = World.Instance.RegionManager.GetRegion(regionPosition);
-
-                if (!region.Exist)
-                {
-                    await LoadTerainAsync(region);
-                }
-            }
-        }
-
+            
         /// <summary>
         /// Dos the action async.
         /// Send the actions to the server and load the response.
@@ -127,7 +106,7 @@ namespace Client.Common.Manager
         /// </summary>
         /// <returns>The function as task.</returns>
         /// <param name="region">Region which should be loaded.</param>
-        private async Task LoadTerainAsync(Region region)
+        public async Task LoadTerrainAsync(Region region)
         {
             TerrainDefinition[,] terrain = await NetworkController.Instance.LoadTerrainsAsync(region.RegionPosition);
 
