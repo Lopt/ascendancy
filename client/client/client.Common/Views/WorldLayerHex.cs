@@ -190,11 +190,6 @@ namespace Client.Common.Views
         private CCPoint m_currentWorldPoint;
 
         /// <summary>
-        /// The m menu layer.
-        /// </summary>
-        private MenuView m_menuView;
-
-        /// <summary>
         /// The m current position node.
         /// </summary>
         private DrawNode m_geolocationPositionNode;
