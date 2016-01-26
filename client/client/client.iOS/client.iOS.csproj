@@ -217,6 +217,8 @@
     <BundleResource Include="Content\images\ld\question-touched.png" />
     <BundleResource Include="Content\images\ld\radars2-standard.png" />
     <BundleResource Include="Content\images\ld\radars2-touched.png" />
+    <BundleResource Include="Content\tiles\spritesheet2016112.png" />
+    <BundleResource Include="Content\tiles\Worldmap-2016112.tmx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />

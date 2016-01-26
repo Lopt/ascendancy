@@ -10,6 +10,8 @@ server/obj
 server/bin
 test/obj
 test/bin
+Tests/bin
+Tests/obj
 base/bin
 base/obj
 ascendancy.sln

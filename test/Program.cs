@@ -167,6 +167,13 @@ namespace test
 
         public static void Main(string[] args)
         {
+
+            //Tests.TcpConnectionTest.
+
+            //var json = "{\"Status\":0,\"Actions\":[[],[],[],[],[],[],[],[],[],[],[],[],[{\"Parameters\":{\"CreatePosition\":{\"X\":5316345,\"Y\":3354734},\"CreateBuilding\":276},\"Type\":2}],[],[],[],[],[],[],[],[],[],[],[],[]],\"Entities\":[]}";
+            //var entitiesResponse = JsonConvert.DeserializeObject<core.connection.Response>(json);
+            //throw new Exception();
+
             var request1 = new Core.Connections.LoginRequest(
                 new Core.Models.Position(1337, 42), // take the current location from the geolocator
                 "Max",
