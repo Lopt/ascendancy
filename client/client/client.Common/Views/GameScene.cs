@@ -37,9 +37,6 @@ namespace Client.Common.Views
             HUD = new Client.Common.Views.HUD.HUDLayer(this);
             AddChild(HUD);
 
-            Test = new Client.Common.Views.Effects.EffectLayer(this);
-            AddChild(Test);
-
             DebugLayer = new DebugLayer();
             AddChild(DebugLayer);
 
