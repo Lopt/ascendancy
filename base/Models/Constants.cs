@@ -91,7 +91,7 @@
         /// <summary>
         /// The ground scrap storage
         /// </summary>
-        public const int SCRAP_STORAGE_VALUE = 25;
+        public const int SCRAP_STORAGE_VALUE = 50;
 
         /// <summary>
         /// The energy value.

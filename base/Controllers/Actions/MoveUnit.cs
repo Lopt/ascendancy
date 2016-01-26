@@ -154,7 +154,11 @@
                     LogicRules.AllAttackModifierRangedInMeele(entity);
 
                     enemyEntity.Health += entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
-                    entity.Health += enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
+
+                    if (((UnitDefinition)enemyEntity.Definition).AttackRange >= m_fightDistance)
+                    {
+                        entity.Health += enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
+                    }
                 }
                 else
                 {
@@ -163,7 +167,11 @@
                     LogicRules.AllDefenseModifier(enemyEntity);
 
                     enemyEntity.Health += entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
-                    entity.Health += enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue; 
+
+                    if (((UnitDefinition)enemyEntity.Definition).AttackRange >= m_fightDistance)
+                    {
+                        entity.Health += enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
+                    }
                 }
 
                 if (enemyEntity.Health <= 0)

@@ -79,6 +79,8 @@
             var entityCellPostion = entityPosition.CellPosition;
             var region = Controller.Instance.RegionManagerController.GetRegion(entityPosition.RegionPosition);
             var type = (long)action.Parameters[CREATION_TYPE];
+            var entityDef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
+            var account = action.Account;
 
             if (!action.Account.TerritoryBuildings.ContainsKey((long)Core.Models.Definitions.EntityType.Headquarter) && 
                 type == (long)Models.Definitions.EntityType.Headquarter &&
@@ -99,17 +101,19 @@
                 }
                 if (territoryFlag)
                 {
-                    m_headquarterFlag = true;
+                    m_headquarterFlag = true;                  
+                    LogicRules.ConsumeResource(account, entityDef);
                     return td.Buildable; 
                 }
             }           
             else if (region.GetEntity(entityCellPostion) == null && 
                      type != (long)Models.Definitions.EntityType.Headquarter &&
-                     region.GetClaimedTerritory(entityCellPostion) == action.Account)
+                     region.GetClaimedTerritory(entityCellPostion) == account)
             {
                 // check for free tile and the terrain is possesed from the current player
                 // terrain check
                 var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
+                LogicRules.ConsumeResource(account, entityDef);
                 return td.Buildable;  
             }
             return false;         
