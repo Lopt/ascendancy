@@ -36,6 +36,7 @@
             m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
             m_menueLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_MENU);
             m_indicatorLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_INDICATOR);
+
             Init();
             LoadRegionViewAsync();
 
@@ -115,6 +116,20 @@
                 m_buildingLayer.SetTileGID(gid, mapCoordinat);
             }
         }
+
+        public CCSprite SetIndicatorGid(CellPosition cellPos, CCTileGidAndFlags gid)
+        {            
+            m_indicatorLayer.SetTileGID(gid, new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
+            var sprite = m_indicatorLayer.ExtractTile(new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY), true);
+            sprite.Opacity = 30;
+            return sprite;
+        }
+
+        //        public void RemoveIndicatorGid(CellPosition cellPos)
+        //        {
+        //            m_indicatorLayer.RemoveTile(new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
+        //        }
+
 
         /// <summary>
         /// Loads the region view hex dictionary with all regions (5x5) arround the currentPosition.

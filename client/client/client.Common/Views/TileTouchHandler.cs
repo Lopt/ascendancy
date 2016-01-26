@@ -30,6 +30,14 @@
             Zoom
         }
 
+        public enum Area
+        {
+            Movement,
+            OwnTerritory,
+            EnemyTerritory,
+            AllyTerritory
+        }
+
         /// <summary>
         /// The m_touch gesture.
         /// </summary>
@@ -135,7 +143,7 @@
                 var cameraDiff = realLocationOnScreen - m_scene.VisibleBoundsScreenspace.Center;
                 var cameraMove = new CCPoint(-cameraDiff.X, cameraDiff.Y) * m_worldLayer.GetZoom();
                 m_worldLayer.SetWorldPosition(m_startLocation + cameraMove + move);
-            } 
+            }
             else if (touches.Count >= 2 &&
                      (m_touchGesture == TouchGesture.Start ||
                      m_touchGesture == TouchGesture.Zoom))
@@ -150,14 +158,14 @@
                 CCPoint currentPoint1 = touches[1].LocationOnScreen;
 
                 var screen = new CCPoint(
-                    m_scene.VisibleBoundsScreenspace.MaxX,
-                    m_scene.VisibleBoundsScreenspace.MaxY); 
+                                 m_scene.VisibleBoundsScreenspace.MaxX,
+                                 m_scene.VisibleBoundsScreenspace.MaxY); 
 
                 float startDistance = screenStart0.DistanceSquared(ref screenStart1);
                 float currentDistance = currentPoint0.DistanceSquared(ref currentPoint1);
                 float screenDistance = screen.LengthSquared;
 
-                float relation = (startDistance -currentDistance ) / screenDistance;
+                float relation = (startDistance - currentDistance) / screenDistance;
 
                 m_newZoom = m_zoom + (relation * m_newZoom);
                 m_worldLayer.ZoomWorld(m_newZoom);
@@ -221,7 +229,6 @@
                                 break;
                             default:
                                 m_menuView.CloseMenu();
-                                m_worldLayer.UglyDraw();
                                 m_menuView = null;
                                 m_touchGesture = TouchGesture.None;
                                 break;
@@ -230,9 +237,10 @@
                     else
                     {
                         m_menuView.CloseMenu(); 
-                        m_worldLayer.UglyDraw();
                         m_touchGesture = TouchGesture.None;
                     }
+
+                    m_worldLayer.UglyDraw();
                     return true;
 
                 case TouchGesture.None:
@@ -244,7 +252,7 @@
             m_timer.Start();
 
             m_zoom = m_worldLayer.GetZoom();
-
+            m_worldLayer.UglyDraw();
             return true;
         }
 
@@ -279,7 +287,7 @@
                         m_touchGesture = TouchGesture.MoveUnit;
                         var range = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosI.RegionPosition).GetEntity(startPosI.CellPosition).Move;                       
                         m_indicator = new IndicatorView(m_worldLayer);
-                        m_indicator.ShowIndicator(startPosI, range, 1);
+                        m_indicator.ShowIndicator(startPosI, range, Area.Movement);
                     }
                     else if (entity != null && entity.DefinitionID == (long)EntityType.Barracks)
                     {
