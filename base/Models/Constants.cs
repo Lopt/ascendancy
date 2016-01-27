@@ -106,7 +106,7 @@
         /// <summary>
         /// The increment valiue for technology resource.
         /// </summary>
-        public const float TECHNOLOGY_INCREMENT_VALUE = 0.1;
+        public const float TECHNOLOGY_INCREMENT_VALUE = 0.1f;
 
         /// <summary>
         /// The increment valiue for scrap resource.
@@ -116,6 +116,6 @@
         /// <summary>
         /// The increment valiue for plutonium resource.
         /// </summary>
-        public const float PLUTONIUM_INCREMENT_VALUE = 0.3;
+        public const float PLUTONIUM_INCREMENT_VALUE = 0.3f;
     }
 }
