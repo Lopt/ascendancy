@@ -1,4 +1,5 @@
 ﻿using CocosSharp;
+using Core.Controllers;
 
 namespace Client.Common.Views.Actions
 {
@@ -57,19 +58,32 @@ namespace Client.Common.Views.Actions
             {
                 var nextPosition = (Core.Models.PositionI)m_path[(int)m_runTime];
 
+
                 RegionViewHex.SetUnit(new CocosSharp.CCTileMapCoordinates(m_currentPosition.CellPosition.CellX, m_currentPosition.CellPosition.CellY), null);
+                RegionViewHex.UglyDraw();
 
-                RegionViewHex.SetUnit(new CocosSharp.CCTileMapCoordinates(nextPosition.CellPosition.CellX, nextPosition.CellPosition.CellY), m_entity);
-
+                var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(nextPosition.RegionPosition);
+                RegionViewHex = (RegionViewHex)region.View;
+                if (RegionViewHex != null)
+                {
+                    RegionViewHex.SetUnit(new CocosSharp.CCTileMapCoordinates(nextPosition.CellPosition.CellX, nextPosition.CellPosition.CellY), m_entity);
+                }
+                RegionViewHex.UglyDraw();
                 m_currentPosition = nextPosition;
             }
 
             if (m_runTime >= m_path.Count && m_entity.Health <= 0)
             {
-                RegionViewHex.SetUnit(new CCTileMapCoordinates(m_currentPosition.CellPosition.CellX, m_currentPosition.CellPosition.CellY), null);
+                var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
+                RegionViewHex = (RegionViewHex)region.View;
+                if (RegionViewHex != null)
+                {
+                    RegionViewHex.SetUnit(new CCTileMapCoordinates(m_entity.Position.CellPosition.CellX, m_entity.Position.CellPosition.CellY), null);
+                    RegionViewHex.WorldLayer.BorderView.RemoveBorder(m_entity);
+                }
+
             }
 
-            RegionViewHex.UglyDraw();
             return m_runTime >= m_path.Count;
         }
 
