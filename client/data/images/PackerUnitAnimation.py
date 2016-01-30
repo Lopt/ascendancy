@@ -9,7 +9,7 @@ EMPTY_IMG = "__empty.png"
 PATHS = {"unit_72": os.path.join("animations", "unit_warrior"),
          }
 #Outputfolder
-OUTPUT_PATH = "OUTPUT"
+OUTPUT_PATH = os.path.join("OUTPUT", "animations")
 
 #needed variables
 MAX_COLUMNS = 10.0
