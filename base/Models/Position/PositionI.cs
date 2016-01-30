@@ -108,19 +108,7 @@ namespace Core.Models
 
         public static bool operator !=(PositionI first, PositionI second)
         {
-            if (System.Object.ReferenceEquals(first, second))
-            {
-                return false;
-            }
-
-            // If one is null, but not both, return false.
-            if (((object)first == null) || ((object)second == null))
-            {
-                return true;
-            }
-
-
-            return (first.X != second.X || first.Y != second.Y);
+            return !(first == second);
         }
 
 
