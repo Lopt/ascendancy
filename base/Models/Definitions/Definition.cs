@@ -77,7 +77,7 @@
     /// In which Category they belong and their id.
     /// Will be used as base-class for other definitions.
     /// </summary>
-    public class Definition
+    public class Definition : ModelEntity
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Core.Models.Definitions.Definition"/> class.
