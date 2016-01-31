@@ -1,6 +1,7 @@
 ﻿using Client.Common.Constants;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace Client.Common.Helper
 {
@@ -34,6 +35,26 @@ namespace Client.Common.Helper
                 (int)(-point.Y / ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT) + firstRegion.RegionY);
         }
 
+        public static CCPoint CellToTile(CellPosition cell)
+        {
+            var regionSize = new CCSize(
+                                 ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH,
+                                 ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT);
+            var tilePercent = new CCPoint(
+                                  ((float)cell.CellX / (Core.Models.Constants.REGION_SIZE_X)),
+                                  ((Core.Models.Constants.REGION_SIZE_Y - (float)cell.CellY) / (Core.Models.Constants.REGION_SIZE_Y)));
+
+            var tileCoord = tilePercent * regionSize;
+            // if it is an odd tile, it is an half tile below the even tiles
+            if ((cell.CellX % 2) == 1)
+            {
+                var tileHeight = regionSize.Height / ClientConstants.TILEMAP_HEX_HEIGHT;
+                tileCoord.Y -= tileHeight / 2;   
+            }
+
+            return tileCoord;
+        }
+
         public static PositionI WorldPointToGamePositionI(CCPoint point, WorldLayerHex worldLayer)
         {
             var regionPosition = WorldPointToRegionPosition(point);
@@ -45,37 +66,11 @@ namespace Client.Common.Helper
                 return new PositionI(regionPosition, new CellPosition(tileCoord.Column, tileCoord.Row));
             }
             return null;
-
-            /*
-            var positionX = (int)point.X / ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH;
-            if ((positionX % 2) == 1)
-            {
-                point.Y -= ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2;
-            }
-
-            var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
-            var positionY = (int)-point.Y / ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT;
-            var regionPos = new RegionPosition((int)positionX + firstRegion.RegionX, (int)positionY + firstRegion.RegionY);
-            var cellPos = new CellPosition((int)(((positionX - (int)positionX) * (ClientConstants.TILEMAP_HEX_WIDTH - 1))),
-                              (int)(((positionY - (int)positionY) * (ClientConstants.TILEMAP_HEX_HEIGHT - 1))));
-
-            return new PositionI(regionPos, cellPos);*/
         }
 
         public static CCPoint GamePositionIToWorldPoint(PositionI positionI)
         {
             throw new Exception();
-            var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
-
-            var pointX = ((float)positionI.RegionPosition.RegionX - firstRegion.RegionX) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH;
-            var pointY = ((float)positionI.RegionPosition.RegionY - firstRegion.RegionY) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT;
-            pointX += (float)positionI.CellPosition.CellX / (ClientConstants.TILEMAP_HEX_WIDTH - 1) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH;
-            pointY += (float)positionI.CellPosition.CellY / (ClientConstants.TILEMAP_HEX_HEIGHT - 1) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT;
-            if ((positionI.X % 2) == 1)
-            {
-                pointY += ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2;   
-            }
-            return new CCPoint(pointX, -pointY);
         }
 
         public static Position WorldPointToGamePosition(CCPoint point)

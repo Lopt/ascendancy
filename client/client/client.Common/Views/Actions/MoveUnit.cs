@@ -14,10 +14,9 @@
         /// </summary>
         /// <param name="model">The action Model.</param>
         /// <param name="worldLayer">World layer.</param>
-        public MoveUnit(Core.Models.ModelEntity model, RegionViewHex regionViewHex)
+        public MoveUnit(Core.Models.ModelEntity model)
             : base(model)
         {
-            RegionViewHex = regionViewHex;
         }
 
         /// <summary>
@@ -35,6 +34,8 @@
             m_entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
             m_path = actionC.Path;
             m_currentPosition = startPosition;
+
+            var entityView = (UnitView)m_entity.View;
         }
 
         /// <summary>
@@ -54,12 +55,26 @@
             if (m_runTime < m_path.Count)
             {
                 var nextPosition = (Core.Models.PositionI)m_path[(int)m_runTime];
+                if (m_currentPosition != nextPosition)
+                {
+                    var originalPosition = m_entity.Position;
+                    m_entity.Position = nextPosition;
+                    var currRegion = Core.Models.World.Instance.RegionManager.GetRegion(m_currentPosition.RegionPosition);
+                    var nextRegion = Core.Models.World.Instance.RegionManager.GetRegion(nextPosition.RegionPosition);
+                    if (currRegion != null && currRegion.View != null)
+                    {
+                        var regionV1 = (RegionViewHex)currRegion.View;
+                        regionV1.DrawUnit(m_entity);
+                    }
+                    if (nextRegion != null && nextRegion.View != null)
+                    {
+                        var regionV2 = (RegionViewHex)nextRegion.View;
+                        regionV2.DrawUnit(m_entity);
+                    }
 
-                RegionViewHex.SetUnit(new CocosSharp.CCTileMapCoordinates(m_currentPosition.CellPosition.CellX, m_currentPosition.CellPosition.CellY), null);
-
-                RegionViewHex.SetUnit(new CocosSharp.CCTileMapCoordinates(nextPosition.CellPosition.CellX, nextPosition.CellPosition.CellY), m_entity);
-
-                m_currentPosition = nextPosition;
+                    m_currentPosition = nextPosition;
+                    m_entity.Position = originalPosition;
+                }
             }
 
             if (m_runTime >= m_path.Count && m_entity.Health <= 0)
@@ -70,16 +85,6 @@
 //            WorldLayer.UglyDraw();
             //WorldLayer.UglyDraw();
             return m_runTime >= m_path.Count;
-        }
-
-        /// <summary>
-        /// Gets the world layer.
-        /// </summary>
-        /// <value>The world layer.</value>
-        public RegionViewHex RegionViewHex
-        {
-            get;
-            private set;
         }
 
         /// <summary>

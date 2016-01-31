@@ -39,7 +39,7 @@
 
             var position = actionC.RealCreatePosition; 
             var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
-            RegionViewHex.SetUnit(new CocosSharp.CCTileMapCoordinates(position.CellPosition.CellX, position.CellPosition.CellY), entity);
+            RegionViewHex.DrawUnit(entity);
             //WorldLayer.UglyDraw();
 
             return true;
