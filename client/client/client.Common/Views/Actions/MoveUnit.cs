@@ -1,4 +1,7 @@
-﻿namespace Client.Common.Views.Actions
+﻿using CocosSharp;
+using Core.Controllers;
+
+namespace Client.Common.Views.Actions
 {
     using System;
     using System.Collections;
@@ -54,6 +57,7 @@
 
             if (m_runTime < m_path.Count - 1)
             {
+
                 var currPos = (Core.Models.PositionI)m_path[(int)m_runTime];
                 var nextPos = (Core.Models.PositionI)m_path[(int)m_runTime + 1];
                 //if (m_currentPosition != nextPosition)
@@ -79,11 +83,16 @@
 
             if (m_runTime >= m_path.Count && m_entity.Health <= 0)
             {
-//                var mapCoordinatNext = Helper.PositionHelper.PositionToTileMapCoordinates(WorldLayer.CenterPosition, m_entity.Position);
-//                WorldLayer.RegionView.SetUnit(mapCoordinatNext, null);
+                var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
+                RegionViewHex = (RegionViewHex)region.View;
+                if (RegionViewHex != null)
+                {
+                    RegionViewHex.SetUnit(new CCTileMapCoordinates(m_entity.Position.CellPosition.CellX, m_entity.Position.CellPosition.CellY), null);
+                    RegionViewHex.WorldLayer.BorderView.RemoveBorder(m_entity);
+                }
+
             }
-//            WorldLayer.UglyDraw();
-            //WorldLayer.UglyDraw();
+
             return m_runTime >= m_path.Count;
         }
 
