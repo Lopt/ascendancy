@@ -8,15 +8,6 @@
     /// Terrain Range 0-59 Id's (6 * 10 = 60)
     /// Unit Range 60-275 Id's (6 * 6 * 6 = 216)
     /// Buildings Range 276-491 Id's (6 * 6 * 6 = 216)
-    /// <para></para>
-    /// ID modulo 6 = 0 -> Gold
-    /// ID modulo 6 = 1 -> Fire
-    /// ID modulo 6 = 2 -> Water
-    /// ID modulo 6 = 3 -> Earth
-    /// ID modulo 6 = 4 -> Air
-    /// ID modulo 6 = 5 -> Magic
-    /// example: Hero ID 60 is Gold, 61 is Hero-Fire,
-    /// 62 is Hero-Water...
     /// </summary>
     public enum EntityType
     {
@@ -36,7 +27,7 @@
         Invalid = 12,
 
         // Unit Range 60-275 Id's
-        Hero = 60,
+        Fencer = 60,
         Mage = 66,
         Warrior = 72,
         Archer = 78,

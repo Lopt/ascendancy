@@ -229,7 +229,7 @@
             list.Add((long)Models.Definitions.EntityType.Archer);
             list.Add((long)Models.Definitions.EntityType.Scout);
             list.Add((long)Models.Definitions.EntityType.Unknown3);
-            list.Add((long)Models.Definitions.EntityType.Hero);
+            list.Add((long)Models.Definitions.EntityType.Fencer);
             return list;
         }
 

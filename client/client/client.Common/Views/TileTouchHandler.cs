@@ -286,7 +286,7 @@
                         var types = new Core.Models.Definitions.Definition[6];
                         var defM = Core.Models.World.Instance.DefinitionManager;
                         types[0] = defM.GetDefinition(EntityType.Mage);
-                        types[1] = defM.GetDefinition(EntityType.Hero);
+                        types[1] = defM.GetDefinition(EntityType.Fencer);
                         types[2] = defM.GetDefinition(EntityType.Warrior);
                         types[3] = defM.GetDefinition(EntityType.Mage);
                         types[4] = defM.GetDefinition(EntityType.Archer);

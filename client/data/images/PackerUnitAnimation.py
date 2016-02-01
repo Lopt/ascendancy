@@ -7,6 +7,10 @@ EMPTY_IMG = "__empty.png"
 
 #Folders that containing spritesheets
 PATHS = {"unit_72": os.path.join("animations", "unit_warrior"),
+         "unit_66": os.path.join("animations", "unit_mage"),
+         "unit_60": os.path.join("animations", "unit_fencer"),
+         "unit_78": os.path.join("animations", "unit_archer"),
+         "unit_84": os.path.join("animations", "unit_scout"),
          }
 #Outputfolder
 OUTPUT_PATH = os.path.join("OUTPUT", "animations")
@@ -56,12 +60,12 @@ def CreatePlist(output_file, image_name, plist):
             </dict>
 """
     sprites = []
-    for spritename in plist:
-        pos = plist[spritename]
+    for spritename, values in plist:
+        pos = values
         sprites.append(sprite_template % (spritename, pos[2], pos[3], pos[2], pos[3], pos[0], pos[1], pos[2], pos[3])) 
 
-    max_x = max([size_x for x, y, size_x, size_y in plist.values()])
-    max_y = max([size_y for x, y, size_x, size_y in plist.values()])
+    max_x = max([size_x for spritename, (x, y, size_x, size_y) in plist])
+    max_y = max([size_y for spritename, (x, y, size_x, size_y) in plist])
     metadata = """<key>format</key>
             <integer>3</integer>
             <key>realTextureFileName</key>
@@ -78,7 +82,7 @@ def CreatePlist(output_file, image_name, plist):
 #Creates a Spritesheet
 def CreateSpritesheet(name, path):
     print '#'*10, path, '#'*10
-    plist = {}
+    plist = []
     sheet = Image.open(EMPTY_IMG)
 
     size_x = 0
@@ -105,7 +109,7 @@ def CreateSpritesheet(name, path):
             sheet = sheet.crop((0, 0, size_x, size_y))
             sheet.paste(sprite, (offset_x, offset_y, new_offset_x, new_offset_y))
             
-            plist[filename] = (offset_x, offset_y, sprite_size_x, sprite_size_y,)
+            plist.append((filename, (offset_x, offset_y, sprite_size_x, sprite_size_y,)))
             offset_x = new_offset_x
             print filename
 

@@ -33,7 +33,7 @@
 
             m_entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
             m_path = actionC.Path;
-            m_currentPosition = startPosition;
+            m_path.Insert(0, startPosition);
 
             var entityView = (UnitView)m_entity.View;
         }
@@ -52,28 +52,28 @@
 
             m_runTime += frameTimesInSecond;
 
-            if (m_runTime < m_path.Count)
+            if (m_runTime < m_path.Count - 1)
             {
-                var nextPosition = (Core.Models.PositionI)m_path[(int)m_runTime];
-                if (m_currentPosition != nextPosition)
+                var currPos = (Core.Models.PositionI)m_path[(int)m_runTime];
+                var nextPos = (Core.Models.PositionI)m_path[(int)m_runTime + 1];
+                //if (m_currentPosition != nextPosition)
                 {
-                    var originalPosition = m_entity.Position;
-                    m_entity.Position = nextPosition;
-                    var currRegion = Core.Models.World.Instance.RegionManager.GetRegion(m_currentPosition.RegionPosition);
-                    var nextRegion = Core.Models.World.Instance.RegionManager.GetRegion(nextPosition.RegionPosition);
+                    var currRegion = Core.Models.World.Instance.RegionManager.GetRegion(currPos.RegionPosition);
+                    var nextRegion = Core.Models.World.Instance.RegionManager.GetRegion(nextPos.RegionPosition);
+                    var nextPoint = Helper.PositionHelper.CellToTile(nextPos.CellPosition); 
+                    var currPoint = Helper.PositionHelper.CellToTile(currPos.CellPosition); 
+                    var point = currPoint + (nextPoint - currPoint) * ((float)m_runTime - (float)(int)m_runTime);
+                        
                     if (currRegion != null && currRegion.View != null)
                     {
                         var regionV1 = (RegionViewHex)currRegion.View;
-                        regionV1.DrawUnit(m_entity);
+                        regionV1.DrawUnit(m_entity, point);
                     }
                     if (nextRegion != null && nextRegion.View != null)
                     {
                         var regionV2 = (RegionViewHex)nextRegion.View;
-                        regionV2.DrawUnit(m_entity);
+                        regionV2.DrawUnit(m_entity, point);
                     }
-
-                    m_currentPosition = nextPosition;
-                    m_entity.Position = originalPosition;
                 }
             }
 

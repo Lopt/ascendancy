@@ -66,7 +66,7 @@
         /// </summary>
         /// <param name="mapCoordinat">Map coordinate.</param>
         /// <param name="unit">Unit which should be drawn (or null if it should be erased).</param>
-        public void DrawUnit(Entity unit)
+        public void DrawUnit(Entity unit, CCPoint point)
         {
             var regionM = (Region)Model;
             var unitV = (UnitView)unit.View;
@@ -79,7 +79,7 @@
 
                 unitV.Node.RemoveFromParent();
                 m_tileMap.TileLayersContainer.AddChild(unitV.Node);
-                unitV.Node.Position = Helper.PositionHelper.CellToTile(unit.Position.CellPosition);
+                unitV.Node.Position = point;
             }
             else if (unitV != null)
             {
@@ -204,7 +204,8 @@
             var regionM = (Region)Model;
             foreach (var unit in regionM.GetEntities().Entities)
             {
-                DrawUnit(unit);
+                var nextPoint = Helper.PositionHelper.CellToTile(unit.Position.CellPosition); 
+                DrawUnit(unit, nextPoint);
             }
         }
 
