@@ -26,7 +26,7 @@ namespace Client.Common.Views
                 m_spritesheet = new CCSpriteSheet("unit_" + filename + ".plist", "unit_" + filename + ".png");
 
                 var idle = m_spritesheet.Frames.FindAll((x) => x.TextureFilename.Contains("idle"));
-                var fight = m_spritesheet.Frames.FindAll((x) => x.TextureFilename.Contains("fight"));
+                var fight = m_spritesheet.Frames.FindAll((x) => x.TextureFilename.Contains("attack"));
                 idle.Add(m_spritesheet.Frames[0]);
                 fight.Add(m_spritesheet.Frames[0]);
 

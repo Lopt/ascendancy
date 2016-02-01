@@ -66,13 +66,13 @@
                         
                     if (currRegion != null && currRegion.View != null)
                     {
-                        var regionV1 = (RegionViewHex)currRegion.View;
-                        regionV1.DrawUnit(m_entity, point);
+                        var regionV = (RegionViewHex)currRegion.View;
+                        regionV.DrawUnit(m_entity, point);
                     }
                     if (nextRegion != null && nextRegion.View != null)
                     {
-                        var regionV2 = (RegionViewHex)nextRegion.View;
-                        regionV2.DrawUnit(m_entity, point);
+                        var regionV = (RegionViewHex)nextRegion.View;
+                        regionV.DrawUnit(m_entity, point);
                     }
                 }
             }
