@@ -84,11 +84,11 @@ namespace Client.Common.Views.Actions
             if (m_runTime >= m_path.Count && m_entity.Health <= 0)
             {
                 var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
-                RegionViewHex = (RegionViewHex)region.View;
-                if (RegionViewHex != null)
+                var regionViewHex = (RegionViewHex)region.View;
+                if (regionViewHex != null)
                 {
-                    RegionViewHex.SetUnit(new CCTileMapCoordinates(m_entity.Position.CellPosition.CellX, m_entity.Position.CellPosition.CellY), null);
-                    RegionViewHex.WorldLayer.BorderView.RemoveBorder(m_entity);
+                    //regionViewHex.SetUnit(new CCTileMapCoordinates(m_entity.Position.CellPosition.CellX, m_entity.Position.CellPosition.CellY), null);
+                    //regionViewHex.WorldLayer.BorderView.RemoveBorder(m_entity);
                 }
 
             }
