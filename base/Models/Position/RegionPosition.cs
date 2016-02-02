@@ -112,7 +112,28 @@
         public override bool Equals(object obj)
         {
             var regionPosition = (RegionPosition)obj;
-            return regionPosition.RegionX == RegionX && regionPosition.RegionY == RegionY;
+            return this == regionPosition;
+        }
+
+        public static bool operator ==(RegionPosition first, RegionPosition second)
+        {
+            if (System.Object.ReferenceEquals(first, second))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)first == null) || ((object)second == null))
+            {
+                return first == second;
+            }
+
+            return (first.RegionX == second.RegionX && first.RegionY == second.RegionY);
+        }
+
+        public static bool operator !=(RegionPosition first, RegionPosition second)
+        {
+            return !(first == second);
         }
 
         /// <summary>

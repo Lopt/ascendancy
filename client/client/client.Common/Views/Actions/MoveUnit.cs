@@ -1,4 +1,5 @@
 ﻿using CocosSharp;
+using Core.Controllers;
 
 namespace Client.Common.Views.Actions
 {
@@ -16,10 +17,9 @@ namespace Client.Common.Views.Actions
         /// </summary>
         /// <param name="model">The action Model.</param>
         /// <param name="worldLayer">World layer.</param>
-        public MoveUnit(Core.Models.ModelEntity model, RegionViewHex regionViewHex)
+        public MoveUnit(Core.Models.ModelEntity model)
             : base(model)
         {
-            RegionViewHex = regionViewHex;
         }
 
         /// <summary>
@@ -36,7 +36,9 @@ namespace Client.Common.Views.Actions
 
             m_entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
             m_path = actionC.Path;
-            m_currentPosition = startPosition;
+            m_path.Insert(0, startPosition);
+
+            var entityView = (UnitView)m_entity.View;
         }
 
         /// <summary>
@@ -53,34 +55,45 @@ namespace Client.Common.Views.Actions
 
             m_runTime += frameTimesInSecond;
 
-            if (m_runTime < m_path.Count)
+            if (m_runTime < m_path.Count - 1)
             {
-                var nextPosition = (Core.Models.PositionI)m_path[(int)m_runTime];
 
-                RegionViewHex.SetUnit(new CocosSharp.CCTileMapCoordinates(m_currentPosition.CellPosition.CellX, m_currentPosition.CellPosition.CellY), null);
-
-                RegionViewHex.SetUnit(new CocosSharp.CCTileMapCoordinates(nextPosition.CellPosition.CellX, nextPosition.CellPosition.CellY), m_entity);
-
-                m_currentPosition = nextPosition;
+                var currPos = (Core.Models.PositionI)m_path[(int)m_runTime];
+                var nextPos = (Core.Models.PositionI)m_path[(int)m_runTime + 1];
+                //if (m_currentPosition != nextPosition)
+                {
+                    var currRegion = Core.Models.World.Instance.RegionManager.GetRegion(currPos.RegionPosition);
+                    var nextRegion = Core.Models.World.Instance.RegionManager.GetRegion(nextPos.RegionPosition);
+                    var nextPoint = Helper.PositionHelper.CellToTile(nextPos.CellPosition); 
+                    var currPoint = Helper.PositionHelper.CellToTile(currPos.CellPosition); 
+                    var point = currPoint + (nextPoint - currPoint) * ((float)m_runTime - (float)(int)m_runTime);
+                        
+                    if (currRegion != null && currRegion.View != null)
+                    {
+                        var regionV = (RegionViewHex)currRegion.View;
+                        regionV.DrawUnit(m_entity, point);
+                    }
+                    if (nextRegion != null && nextRegion.View != null)
+                    {
+                        var regionV = (RegionViewHex)nextRegion.View;
+                        regionV.DrawUnit(m_entity, point);
+                    }
+                }
             }
 
             if (m_runTime >= m_path.Count && m_entity.Health <= 0)
             {
-                RegionViewHex.SetUnit(new CCTileMapCoordinates(m_currentPosition.CellPosition.CellX, m_currentPosition.CellPosition.CellY), null);
+                var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
+                var regionViewHex = (RegionViewHex)region.View;
+                if (regionViewHex != null)
+                {
+                    //regionViewHex.SetUnit(new CCTileMapCoordinates(m_entity.Position.CellPosition.CellX, m_entity.Position.CellPosition.CellY), null);
+                    //regionViewHex.WorldLayer.BorderView.RemoveBorder(m_entity);
+                }
+
             }
 
-            RegionViewHex.UglyDraw();
             return m_runTime >= m_path.Count;
-        }
-
-        /// <summary>
-        /// Gets the world layer.
-        /// </summary>
-        /// <value>The world layer.</value>
-        public RegionViewHex RegionViewHex
-        {
-            get;
-            private set;
         }
 
         /// <summary>

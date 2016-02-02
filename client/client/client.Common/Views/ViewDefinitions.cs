@@ -116,7 +116,7 @@
             m_entitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
 
             // units
-            m_entitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(Common.Constants.UnitGid.HERO));
+            m_entitiesGid.Add(EntityType.Fencer, new CCTileGidAndFlags(Common.Constants.UnitGid.HERO));
             m_entitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Common.Constants.UnitGid.WARRIOR));
             m_entitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Common.Constants.UnitGid.MAGE));
             m_entitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Common.Constants.UnitGid.SCOUT));
@@ -154,7 +154,7 @@
             m_enemyEntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
 
             // units
-            m_enemyEntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.HERO));
+            m_enemyEntitiesGid.Add(EntityType.Fencer, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.HERO));
             m_enemyEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.WARRIOR));
             m_enemyEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.MAGE));
             m_enemyEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.SCOUT));
@@ -193,7 +193,7 @@
             m_menuEntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
 
             // units -> Melee
-            m_menuEntitiesGid.Add(EntityType.Hero, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.HERO));
+            m_menuEntitiesGid.Add(EntityType.Fencer, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.HERO));
             m_menuEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.WARRIOR));
             m_menuEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.MAGE));
             m_menuEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.SCOUT));

@@ -48,6 +48,7 @@
             foreach (var unitType in unitDefinitions)
             {
                 DefinitionManager.AddDefinition(unitType);
+                new Views.UnitDefinitionView(unitType);
             }
         }
 
