@@ -235,6 +235,16 @@
     <AndroidAsset Include="Assets\Content\images\hd\unit_78.png" />
     <AndroidAsset Include="Assets\Content\images\hd\unit_84.plist" />
     <AndroidAsset Include="Assets\Content\images\hd\unit_84.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\unit_60.plist" />
+    <AndroidAsset Include="Assets\Content\images\ld\unit_60.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\unit_66.plist" />
+    <AndroidAsset Include="Assets\Content\images\ld\unit_66.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\unit_72.plist" />
+    <AndroidAsset Include="Assets\Content\images\ld\unit_72.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\unit_78.plist" />
+    <AndroidAsset Include="Assets\Content\images\ld\unit_78.png" />
+    <AndroidAsset Include="Assets\Content\images\ld\unit_84.plist" />
+    <AndroidAsset Include="Assets\Content\images\ld\unit_84.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />
