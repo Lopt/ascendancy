@@ -44,7 +44,6 @@
                     path.Add(node.Location);
                     node = node.ParentNode;
                 }
-
                 // Reverse the list so it's in the correct order when returned
                 path.Reverse();
             }

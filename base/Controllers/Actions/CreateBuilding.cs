@@ -102,8 +102,7 @@
                 if (territoryFlag)
                 {
                     m_headquarterFlag = true;                  
-                    LogicRules.ConsumeResource(account, entityDef);
-                    return td.Buildable; 
+                    return td.Buildable && LogicRules.ConsumeResource(account, entityDef); 
                 }
             }           
             else if (region.GetEntity(entityCellPostion) == null && 
@@ -113,8 +112,7 @@
                 // check for free tile and the terrain is possesed from the current player
                 // terrain check
                 var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
-                LogicRules.ConsumeResource(account, entityDef);
-                return td.Buildable;  
+                return td.Buildable && LogicRules.ConsumeResource(account, entityDef);  
             }
             return false;         
         }

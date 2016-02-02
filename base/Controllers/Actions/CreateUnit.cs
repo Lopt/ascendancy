@@ -81,12 +81,11 @@
 
             if (list != null)
             {
-                // TODO: Units sollten wirklich was kosten
-                if (action.AccountID == entity.OwnerID && list.Contains(type) && action.Account.Population.Value >= 5)
+                if (action.AccountID == entity.OwnerID && list.Contains(type))
                 {                
                     RealCreatePosition = GetFreeField(positionI, regionManagerC);
 
-                    return RealCreatePosition != null;
+                    return RealCreatePosition != null && LogicRules.ConsumeResource(action.Account, Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type));
                 }
             }
             return false;
@@ -127,8 +126,6 @@
             if (action.Account != null)
             {
                 action.Account.Units.AddLast(entity.Position);
-                // TODO: Kosten verbrauch eintragen
-                action.Account.Population.Value += -6;
             }
 
             return new ConcurrentBag<Core.Models.Region>() { region };

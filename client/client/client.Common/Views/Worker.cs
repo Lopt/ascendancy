@@ -60,7 +60,7 @@ namespace Client.Common.Views
                     return new Client.Common.Views.Actions.CreateUnit(action, WorldLayerHex.GetRegionViewHex(regionPosition));
 
                 case Core.Models.Action.ActionType.MoveUnit:
-                    return new Client.Common.Views.Actions.MoveUnit(action, WorldLayerHex.GetRegionViewHex(regionPosition));
+                    return new Client.Common.Views.Actions.MoveUnit(action);
 
                 case Core.Models.Action.ActionType.CreateHeadquarter:
                     throw new NotImplementedException();

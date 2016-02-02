@@ -40,6 +40,7 @@
             Init();
             LoadRegionViewAsync();
 
+
         }
 
         /// <summary>
@@ -66,21 +67,24 @@
         /// </summary>
         /// <param name="mapCoordinat">Map coordinate.</param>
         /// <param name="unit">Unit which should be drawn (or null if it should be erased).</param>
-        public void SetUnit(CCTileMapCoordinates mapCoordinat, Entity unit)
+        public void DrawUnit(Entity unit, CCPoint point)
         {
-            if (unit == null)
+            var regionM = (Region)Model;
+            var unitV = (UnitView)unit.View;
+            if (unit.Position.RegionPosition == regionM.RegionPosition)
             {
-                m_unitLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);
-            }
-            else
-            {
-                var sort = ViewDefinitions.Sort.Normal;
-                if (GameAppDelegate.Account != unit.Owner)
+                if (unitV == null)
                 {
-                    sort = ViewDefinitions.Sort.Enemy;
+                    unitV = new UnitView(unit);
                 }
-                var gid = ViewDefinitions.Instance.DefinitionToTileGid(unit.Definition, sort);
-                m_unitLayer.SetTileGID(gid, mapCoordinat);
+
+                unitV.Node.RemoveFromParent();
+                m_tileMap.TileLayersContainer.AddChild(unitV.Node);
+                unitV.Node.Position = point;
+            }
+            else if (unitV != null)
+            {
+                m_tileMap.RemoveChild(unitV.Node);
             }
         }
 
@@ -114,7 +118,9 @@
                 }
                 var gid = ViewDefinitions.Instance.DefinitionToTileGid(building.Definition, sort);
                 m_buildingLayer.SetTileGID(gid, mapCoordinat);
+
             }
+                
         }
 
         public CCSprite SetIndicatorGid(CellPosition cellPos, CCTileGidAndFlags gid)
@@ -183,6 +189,8 @@
         /// </summary>
         private void SetTilesInMap32()
         {
+            LoadEntities(); 
+
             for (int y = 0; y < Constants.REGION_SIZE_Y; y++)
             {
                 for (int x = 0; x < Constants.REGION_SIZE_X; x++)
@@ -190,7 +198,6 @@
                     var newCellPosition = new CellPosition(x, y);
 
                     SetTerrainTileInMap(newCellPosition); 
-                    SetEntityTileInMap(newCellPosition); 
                 }
             }
         }
@@ -209,27 +216,14 @@
         /// <summary>
         /// Sets the entity tile in in the map.
         /// </summary>
-        /// <param name="cellPosition">Cell position.</param>
-        private void SetEntityTileInMap(CellPosition cellPosition)
-        {   
-            var region = (Region)this.Model;
-            var entity = region.GetEntity(cellPosition);
-            var mapCoordinat = new CCTileMapCoordinates(cellPosition.CellX, cellPosition.CellY);
-            if (entity != null)
+
+        private void LoadEntities()
+        {
+            var regionM = (Region)Model;
+            foreach (var unit in regionM.GetEntities().Entities)
             {
-                if (entity.Definition.Category == Core.Models.Definitions.Category.Unit)
-                {
-                    SetUnit(mapCoordinat, entity);
-                }
-                if (entity.Definition.Category == Core.Models.Definitions.Category.Building)
-                {
-                    SetBuilding(mapCoordinat, entity);
-                }
-            }
-            else
-            {
-                m_unitLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);
-                m_buildingLayer.SetTileGID(CCTileGidAndFlags.EmptyTile, mapCoordinat);
+                var nextPoint = Helper.PositionHelper.CellToTile(unit.Position.CellPosition); 
+                DrawUnit(unit, nextPoint);
             }
         }
 
