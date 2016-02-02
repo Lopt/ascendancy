@@ -33,7 +33,7 @@ namespace Client.Common.Views
             : base()
         {
             m_gameScene = gameScene;
-            m_currentWorldPoint = PositionHelper.GamePositionToWorldPoint(Geolocation.Instance.CurrentGamePosition);
+            m_currentWorldPoint = PositionHelper.PositionToWorldspace(Geolocation.Instance.CurrentGamePosition);
             m_worker = new Views.Worker(this);
             EntityManagerController.Instance.Worker = m_worker;
   
@@ -133,7 +133,7 @@ namespace Client.Common.Views
 
         private void LoadRegionViews(CCPoint point)
         {
-            var position = PositionHelper.WorldPointToGamePosition(point);
+            var position = PositionHelper.WorldspaceToPosition(point);
             var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
             var newKeys = regionManagerController.GetWorldNearRegionPositions(position.RegionPosition);
             var oldKeys = new HashSet<RegionPosition>(m_regionViewHexDic.Keys);

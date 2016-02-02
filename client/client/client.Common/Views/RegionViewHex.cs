@@ -158,7 +158,7 @@
 
         private void SetWorldPosition()
         {
-            var position = PositionHelper.RegionViewHexToWorldPoint(this);
+            var position = PositionHelper.RegionToWorldspace(this);
             m_tileMap.TileLayersContainer.Position = position;
         }
 

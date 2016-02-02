@@ -16,24 +16,29 @@ namespace Client.Common.Helper
     /// </summary>
     public class PositionHelper
     {
-        public static CCPoint RegionViewHexToWorldPoint(RegionViewHex regionViewHex)
+
+        public static CCPoint RegionToWorldspace(RegionViewHex regionViewHex)
         {
-            return RegionPositionToWorldPoint(((Region)regionViewHex.Model).RegionPosition);
+            return RegionToWorldspace(((Region)regionViewHex.Model).RegionPosition);
         }
 
-        public static CCPoint RegionPositionToWorldPoint(RegionPosition regionPosition)
+        public static CCPoint RegionToWorldspace(RegionPosition regionPosition)
         {
             var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
             return new CCPoint((regionPosition.RegionX - firstRegion.RegionX) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH,
                 -(regionPosition.RegionY - firstRegion.RegionY) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT);
         }
 
-        public static RegionPosition WorldPointToRegionPosition(CCPoint point)
+        public static RegionPosition WorldspaceToRegion(CCPoint point)
         {
             var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
             return new RegionPosition((int)(point.X / ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH) + firstRegion.RegionX,
                 (int)(-point.Y / ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT) + firstRegion.RegionY);
         }
+
+
+
+
 
         public static CCPoint CellToTile(CellPosition cell)
         {
@@ -55,9 +60,14 @@ namespace Client.Common.Helper
             return tileCoord;
         }
 
-        public static PositionI WorldPointToGamePositionI(CCPoint point, WorldLayerHex worldLayer)
+
+
+
+
+
+        public static PositionI WorldspaceToPositionI(CCPoint point, WorldLayerHex worldLayer)
         {
-            var regionPosition = WorldPointToRegionPosition(point);
+            var regionPosition = WorldspaceToRegion(point);
             var regionView = worldLayer.GetRegionViewHex(regionPosition);
 
             if (regionView != null)
@@ -67,13 +77,17 @@ namespace Client.Common.Helper
             }
             return null;
         }
+            
 
-        public static CCPoint GamePositionIToWorldPoint(PositionI positionI)
-        {
-            throw new Exception();
-        }
 
-        public static Position WorldPointToGamePosition(CCPoint point)
+
+
+
+
+
+
+
+        public static Position WorldspaceToPosition(CCPoint point)
         {
             var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
 
@@ -85,7 +99,7 @@ namespace Client.Common.Helper
             return new Position(regionPos.RegionX, regionPos.RegionY, cellPosX, cellPosY);
         }
 
-        public static CCPoint GamePositionToWorldPoint(Position position)
+        public static CCPoint PositionToWorldspace(Position position)
         {
             var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
             

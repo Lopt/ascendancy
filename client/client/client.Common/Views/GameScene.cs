@@ -49,7 +49,7 @@ namespace Client.Common.Views
         {
             if (ViewMode == ViewModes.CurrentGPSPosition)
             {
-                var cameraPoint = PositionHelper.GamePositionToWorldPoint(Geolocation.Instance.CurrentGamePosition);
+                var cameraPoint = PositionHelper.PositionToWorldspace(Geolocation.Instance.CurrentGamePosition);
                 WorldLayerHex.SetWorldPosition(cameraPoint);
             }
         }

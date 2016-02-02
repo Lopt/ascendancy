@@ -183,10 +183,10 @@
         public bool OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             var oldWorldPosition = m_startLocation;
-            var oldGamePositionI = Helper.PositionHelper.WorldPointToGamePositionI(oldWorldPosition, m_worldLayer);
+            var oldGamePositionI = Helper.PositionHelper.WorldspaceToPositionI(oldWorldPosition, m_worldLayer);
 
             m_startLocation = m_worldLayer.ConvertToWorldspace(touches[0].Location);
-            var gamePositionI = Helper.PositionHelper.WorldPointToGamePositionI(m_startLocation, m_worldLayer);
+            var gamePositionI = Helper.PositionHelper.WorldspaceToPositionI(m_startLocation, m_worldLayer);
 
             switch (m_touchGesture)
             {
@@ -270,7 +270,7 @@
         public bool OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             m_timer.Stop();
-            var startPosI = Helper.PositionHelper.WorldPointToGamePositionI(m_startLocation, m_worldLayer);
+            var startPosI = Helper.PositionHelper.WorldspaceToPositionI(m_startLocation, m_worldLayer);
             switch (m_touchGesture)
             {
                 case TouchGesture.Zoom:
