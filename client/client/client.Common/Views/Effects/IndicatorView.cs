@@ -5,6 +5,7 @@ namespace Client.Common.Views.Effects
     using System.Collections.Generic;
     using CocosSharp;
     using Core.Models;
+    using System.Collections;
 
     /// <summary>
     /// Indicator view.
@@ -45,8 +46,16 @@ namespace Client.Common.Views.Effects
             var gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR);
 
             m_areaIndicators.TryGetValue(area, out gid);
-
-            m_surroundedPositions = LogicRules.GetSurroundedPositions(coord, range);
+         
+            if (area == TileTouchHandler.Area.Movement)
+            {
+                var indi = new Core.Controllers.AStar_Indicator.Indicator(coord, range, GameAppDelegate.Account.ID); 
+                m_surroundedPositions = indi.FindPossiblePositions();
+            }
+            else
+            {
+                m_surroundedPositions = LogicRules.GetSurroundedPositions(coord, range);
+            }
 
             foreach (var tile in m_surroundedPositions)
             {

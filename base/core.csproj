@@ -77,6 +77,7 @@
     <Compile Include="Models\Resources\IncrementalResource.cs" />
     <Compile Include="Models\Resources\StateResource.cs" />
     <Compile Include="Models\Constants.cs" />
+    <Compile Include="Controllers\Actions\AStar_Indicator\Indicator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -178,5 +179,6 @@
   <ItemGroup>
     <Folder Include="Models\Resources\" />
     <Folder Include="Constants\" />
+    <Folder Include="Controllers\Actions\AStar_Indicator\" />
   </ItemGroup>
 </Project>
