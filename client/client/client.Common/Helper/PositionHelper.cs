@@ -70,7 +70,20 @@ namespace Client.Common.Helper
 
         public static CCPoint GamePositionIToWorldPoint(PositionI positionI)
         {
+
             throw new Exception();
+//			var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
+//
+//			var pointX = ((float)positionI.RegionPosition.RegionX - firstRegion.RegionX) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH;
+//			var pointY = ((float)positionI.RegionPosition.RegionY - firstRegion.RegionY) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT;
+//			pointX += (float)positionI.CellPosition.CellX / (ClientConstants.TILEMAP_HEX_WIDTH - 1) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH;
+//			pointY += (float)positionI.CellPosition.CellY / (ClientConstants.TILEMAP_HEX_HEIGHT - 1) * ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT;
+//			if ((positionI.X % 2) == 1)
+//			{
+//				pointY += ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2;   
+//			}
+//			return new CCPoint(pointX, -pointY);
+
         }
 
         public static Position WorldPointToGamePosition(CCPoint point)

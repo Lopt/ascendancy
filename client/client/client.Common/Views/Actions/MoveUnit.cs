@@ -1,7 +1,4 @@
-﻿using CocosSharp;
-using Core.Controllers;
-
-namespace Client.Common.Views.Actions
+﻿namespace Client.Common.Views.Actions
 {
     using System;
     using System.Collections;
@@ -88,7 +85,7 @@ namespace Client.Common.Views.Actions
                 if (regionViewHex != null)
                 {
                     //regionViewHex.SetUnit(new CCTileMapCoordinates(m_entity.Position.CellPosition.CellX, m_entity.Position.CellPosition.CellY), null);
-                    //regionViewHex.WorldLayer.BorderView.RemoveBorder(m_entity);
+                    regionViewHex.RemoveBorder(m_entity);
                 }
 
             }

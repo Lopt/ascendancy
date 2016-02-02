@@ -1,7 +1,4 @@
-﻿using System.Linq.Expressions;
-using Xamarin.Forms;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
     using System;
     using System.Collections.Concurrent;
@@ -40,7 +37,7 @@ namespace Client.Common.Views
             m_regionViewHexDic = new Dictionary<RegionPosition, RegionViewHex>();
 
             m_geolocationPositionNode = new DrawNode();
-
+                
             this.AddChild(m_geolocationPositionNode);
 
             Schedule(m_worker.Schedule);
@@ -161,9 +158,7 @@ namespace Client.Common.Views
                 
         }
 
-
         #region Properties
-
 
         /// <summary>
         /// The m worker.
@@ -194,7 +189,6 @@ namespace Client.Common.Views
         /// The m_game scene.
         /// </summary>
         private GameScene m_gameScene;
-
 
         #endregion
     }
