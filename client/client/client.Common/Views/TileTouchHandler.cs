@@ -211,7 +211,7 @@
                     var def = m_menuView.GetSelectedDefinition(gamePositionI);
                     if (def != null)
                     {
-                        var action2 = ActionHelper.CreateEntity(oldGamePositionI, def, GameAppDelegate.Account);
+                        var action2 = ActionHelper.CreateEntity(m_menuView.GetCenterPosition(), def, GameAppDelegate.Account);
                         var actionC2 = (Core.Controllers.Actions.Action)action2.Control;
                         if (actionC2.Possible())
                         {
