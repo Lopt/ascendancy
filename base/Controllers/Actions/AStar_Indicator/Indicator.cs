@@ -8,7 +8,7 @@
     using Core.Models;
 
     /// <summary>
-    /// Indicator.
+    /// Indicator class.
     /// </summary>
     public class Indicator
     {
@@ -16,8 +16,8 @@
         /// Initializes a new instance of the <see cref="Core.Controllers.AStar_Indicator.Indicator"/> class.
         /// </summary>
         /// <param name="startPosition">Start position.</param>
-        /// <param name="moves">Moves.</param>
-        /// <param name="accountID">Account I.</param>
+        /// <param name="moves">Moves of the entity.</param>
+        /// <param name="accountID">Account ID.</param>
         public Indicator(PositionI startPosition, int moves, int accountID)
         {
             m_startPoint = startPosition;
@@ -44,7 +44,14 @@
             m_indicatorPoints = GetSurroundedPositions(m_startPoint, m_accountID, m_moves);           
         }
 
-        private static HashSet<PositionI> GetSurroundedPositions(PositionI startPoint, int accountID, int moves)
+        /// <summary>
+        /// Gets the surrounded positions.
+        /// </summary>
+        /// <returns>The surrounded positions.</returns>
+        /// <param name="startPoint">Start point.</param>
+        /// <param name="accountID">Account ID.</param>
+        /// <param name="moves">Moves of the entity.</param>
+        private HashSet<PositionI> GetSurroundedPositions(PositionI startPoint, int accountID, int moves)
         {
             var fieldSet = new HashSet<PositionI>();
             var fieldSetHelper = new HashSet<PositionI>();
@@ -87,7 +94,7 @@
         private HashSet<PositionI> m_indicatorPoints;
 
         /// <summary>
-        /// The movepoints from a unit.
+        /// The move points from a unit.
         /// </summary>
         private int m_moves;
 
