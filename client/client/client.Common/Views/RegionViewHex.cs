@@ -67,25 +67,36 @@
         /// </summary>
         /// <param name="mapCoordinat">Map coordinate.</param>
         /// <param name="unit">Unit which should be drawn (or null if it should be erased).</param>
-        public void DrawUnit(Entity unit, CCPoint point)
+        public void DrawUnit(Entity unit)
         {
             var regionM = (Region)Model;
             var unitV = (UnitView)unit.View;
-            if (unit.Position.RegionPosition == regionM.RegionPosition)
-            {
-                if (unitV == null)
-                {
-                    unitV = new UnitView(unit);
-                }
 
-                unitV.Node.RemoveFromParent();
-                m_tileMap.TileLayersContainer.AddChild(unitV.Node);
-                unitV.Node.Position = point;
+            if (unitV == null)
+            {
+                unitV = new UnitView(unit);
             }
-            else if (unitV != null)
+
+            if (unitV.DrawRegion == regionM.RegionPosition)
+            {
+                
+                unitV.Node.RemoveFromParent();
+                m_tileMap.TileLayersContainer.AddChild(unitV.Node, 1001);
+                unitV.Node.Position = unitV.DrawPoint;
+                unitV.Node.VertexZ = 1001;
+                unitV.Node.ZOrder = 1001;
+                //unitV.Node.ZOrder = 100000;
+            }
+            else
             {
                 m_tileMap.RemoveChild(unitV.Node);
             }
+        }
+
+        public void RemoveUnit(Entity unit)
+        {
+            var unitV = (UnitView)unit.View;
+            m_tileMap.RemoveChild(unitV.Node);
         }
 
         public void SetMenuTile(CellPosition cellPos, CCTileGidAndFlags definition)
@@ -223,7 +234,7 @@
             foreach (var unit in regionM.GetEntities().Entities)
             {
                 var nextPoint = Helper.PositionHelper.CellToTile(unit.Position.CellPosition); 
-                DrawUnit(unit, nextPoint);
+                DrawUnit(unit);
             }
         }
 

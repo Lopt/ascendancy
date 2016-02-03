@@ -161,7 +161,6 @@ namespace Client.Common.Views
                 
         }
 
-
         #region Properties
 
 

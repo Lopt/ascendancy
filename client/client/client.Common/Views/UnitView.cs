@@ -19,6 +19,8 @@ namespace Client.Common.Views
                 sprite.Scale = 1.35f;
                 sprite.AnchorPoint = new CCPoint(0.0f, 0.8f);
                 Node = sprite;
+                Node.Position = Helper.PositionHelper.CellToTile(model.Position.CellPosition);
+                DrawRegion = model.Position.RegionPosition;
 
                 Animate(UnitAnimation.Idle);
             }
@@ -45,6 +47,25 @@ namespace Client.Common.Views
         public void StopAnimation()
         {
             Node.StopAllActions();
+        }
+
+        public Core.Models.RegionPosition DrawRegion
+        {
+            get;
+            set;
+        }
+
+        public CCPoint DrawPoint
+        {
+            get
+            {
+                return Node.Position;
+            }
+
+            set
+            {
+                Node.Position = value;
+            }
         }
 
         public CCNode Node

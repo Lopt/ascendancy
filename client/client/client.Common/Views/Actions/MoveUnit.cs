@@ -62,21 +62,25 @@ namespace Client.Common.Views.Actions
                 var nextPos = (Core.Models.PositionI)m_path[(int)m_runTime + 1];
                 //if (m_currentPosition != nextPosition)
                 {
+                    var unitV = (UnitView)m_entity.View;
                     var currRegion = Core.Models.World.Instance.RegionManager.GetRegion(currPos.RegionPosition);
-                    var nextRegion = Core.Models.World.Instance.RegionManager.GetRegion(nextPos.RegionPosition);
-                    var nextPoint = Helper.PositionHelper.CellToTile(nextPos.CellPosition); 
+
+                    var currRegionPoint = Helper.PositionHelper.RegionToWorldspace(currPos.RegionPosition);
+                    var nextRegionPoint = Helper.PositionHelper.RegionToWorldspace(nextPos.RegionPosition);
                     var currPoint = Helper.PositionHelper.CellToTile(currPos.CellPosition); 
-                    var point = currPoint + (nextPoint - currPoint) * ((float)m_runTime - (float)(int)m_runTime);
+                    var nextPoint = Helper.PositionHelper.CellToTile(nextPos.CellPosition); 
+
+
+                    var diff = (nextRegionPoint + nextPoint) - (currRegionPoint + currPoint);
+                    var point = currPoint + diff * ((float)m_runTime - (float)(int)m_runTime);
+
+                    unitV.DrawPoint = point;
+                    unitV.DrawRegion = currPos.RegionPosition;
                         
                     if (currRegion != null && currRegion.View != null)
                     {
                         var regionV = (RegionViewHex)currRegion.View;
-                        regionV.DrawUnit(m_entity, point);
-                    }
-                    if (nextRegion != null && nextRegion.View != null)
-                    {
-                        var regionV = (RegionViewHex)nextRegion.View;
-                        regionV.DrawUnit(m_entity, point);
+                        regionV.DrawUnit(m_entity);
                     }
                 }
             }

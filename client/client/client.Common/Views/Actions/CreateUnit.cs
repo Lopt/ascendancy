@@ -41,7 +41,7 @@
             var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
 
             var nextPoint = Helper.PositionHelper.CellToTile(entity.Position.CellPosition); 
-            RegionViewHex.DrawUnit(entity, nextPoint);
+            RegionViewHex.DrawUnit(entity);
             //WorldLayer.UglyDraw();
 
             return true;
