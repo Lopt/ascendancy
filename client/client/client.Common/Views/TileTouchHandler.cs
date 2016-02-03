@@ -42,7 +42,7 @@
         /// <summary>
         /// The m_touch gesture.
         /// </summary>
-        private TouchGesture m_touchGesture;
+        public TouchGesture Gesture;
 
         /// <summary>
         /// The m_timer.
@@ -86,7 +86,7 @@
         public TileTouchHandler(WorldLayerHex worldLayer)
         {
             m_timer = new Stopwatch();
-            m_touchGesture = TouchGesture.None;
+            Gesture = TouchGesture.None;
             m_worldLayer = worldLayer;
             m_startLocation = new CCPoint(1, 1);
 
@@ -109,17 +109,17 @@
                 m_touchGesture = TouchGesture.Move;
             }
             */
-            if (touches.Count >= 2 && m_touchGesture == TouchGesture.Move)
+            if (touches.Count >= 2 && Gesture == TouchGesture.Move)
             {
-                m_touchGesture = TouchGesture.Zoom;
+                Gesture = TouchGesture.Zoom;
             }
 
             if (touches.Count == 1 &&
-                (m_touchGesture == TouchGesture.Start ||
-                m_touchGesture == TouchGesture.Move))
+                (Gesture == TouchGesture.Start ||
+                Gesture == TouchGesture.Move))
             {
 
-                m_touchGesture = TouchGesture.Move;
+                Gesture = TouchGesture.Move;
 
                 m_worldLayer.ViewMode = WorldLayerHex.ViewModes.CameraPosition;
 
@@ -143,10 +143,10 @@
                 m_worldLayer.SetWorldPosition(m_startLocation + cameraMove + move);
             }
             else if (touches.Count >= 2 &&
-                     (m_touchGesture == TouchGesture.Start ||
-                     m_touchGesture == TouchGesture.Zoom))
+                     (Gesture == TouchGesture.Start ||
+                     Gesture == TouchGesture.Zoom))
             {
-                m_touchGesture = TouchGesture.Zoom;
+                Gesture = TouchGesture.Zoom;
 
                 CCPoint screenStart0 = touches[0].StartLocationOnScreen;
                 CCPoint screenStart1 = touches[1].StartLocationOnScreen;
@@ -185,11 +185,11 @@
             m_startLocation = m_worldLayer.ConvertToWorldspace(touches[0].Location);
             var gamePositionI = Helper.PositionHelper.WorldspaceToPositionI(m_startLocation, m_worldLayer);
 
-            switch (m_touchGesture)
+            switch (Gesture)
             {
                 case TouchGesture.Area:
                     m_indicator.RemoveIndicator();
-                    m_touchGesture = TouchGesture.None;
+                    Gesture = TouchGesture.None;
                     break;
                 case TouchGesture.MoveUnit:
                     var action = ActionHelper.MoveUnit(oldGamePositionI, gamePositionI);
@@ -201,7 +201,7 @@
                         m_worldLayer.DoAction(action);
                     }
                     m_indicator.RemoveIndicator();
-                    m_touchGesture = TouchGesture.None;
+                    Gesture = TouchGesture.None;
                     break;
 
                 case TouchGesture.Menu:
@@ -232,21 +232,21 @@
                             default:
                                 m_menuView.CloseMenu();
                                 m_menuView = null;
-                                m_touchGesture = TouchGesture.None;
+                                Gesture = TouchGesture.None;
                                 break;
                         }
                     }
                     else
                     {
                         m_menuView.CloseMenu(); 
-                        m_touchGesture = TouchGesture.None;
+                        Gesture = TouchGesture.None;
                     }
 
                     m_worldLayer.UglyDraw();
                     return true;
 
                 case TouchGesture.None:
-                    m_touchGesture = TouchGesture.Start;
+                    Gesture = TouchGesture.Start;
                     break;
             }
 
@@ -268,16 +268,16 @@
         {
             m_timer.Stop();
             var startPosI = Helper.PositionHelper.WorldspaceToPositionI(m_startLocation, m_worldLayer);
-            switch (m_touchGesture)
+            switch (Gesture)
             {
                 case TouchGesture.Zoom:
                     // Set Current Scale
                     m_worldLayer.ZoomWorld(m_newZoom);
-                    m_touchGesture = TouchGesture.None;
+                    Gesture = TouchGesture.None;
                     break;
 
                 case TouchGesture.Move:
-                    m_touchGesture = TouchGesture.None;
+                    Gesture = TouchGesture.None;
                     break;
 
                 case TouchGesture.Start:
@@ -289,13 +289,13 @@
 
                     if (entity != null && entity.Definition.Category == Category.Unit)
                     {
-                        m_touchGesture = TouchGesture.MoveUnit;
+                        Gesture = TouchGesture.MoveUnit;
                         range = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosI.RegionPosition).GetEntity(startPosI.CellPosition).Move;
                         m_indicator.ShowIndicator(startPosI, range, area);
                     }
                     else if (entity != null && entity.Definition.SubType == EntityType.Headquarter)
                     {
-                        m_touchGesture = TouchGesture.Area;
+                        Gesture = TouchGesture.Area;
                         range = Core.Models.Constants.HEADQUARTER_TERRITORY_RANGE;
                         var owner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosI.RegionPosition).GetEntity(startPosI.CellPosition).Owner;
                         area = Area.OwnTerritory;
@@ -318,7 +318,7 @@
 
                         m_menuView = new MenuView(m_worldLayer, startPosI, types);
                         m_menuView.DrawMenu();
-                        m_touchGesture = TouchGesture.Menu;
+                        Gesture = TouchGesture.Menu;
                     }
                     else if (entity == null)
                     {
@@ -350,7 +350,7 @@
                             m_menuView = new MenuView(m_worldLayer, startPosI, types);
                             m_menuView.DrawMajorMenu(Gids);
                         }
-                        m_touchGesture = TouchGesture.Menu;
+                        Gesture = TouchGesture.Menu;
                     }
 
                     break;
