@@ -6,6 +6,7 @@ client/client/client.Common/bin
 client/client/client.Common/obj
 client/client/client.iOS/bin
 client/client/client.iOS/obj
+client/client/client.Android/Resources/Resource.designer.cs
 server/obj
 server/bin
 test/obj

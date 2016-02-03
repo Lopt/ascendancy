@@ -33,18 +33,18 @@
         /// for an even X
         /// </summary>
         public static readonly PositionI[] Leftupeven =
-        {
-            new PositionI(-1,  0),
-            new PositionI(-1, -1),
-            new PositionI(0, -1)
-        };
+            {
+                new PositionI(-1, 0),
+                new PositionI(-1, -1),
+                new PositionI(0, -1)
+            };
 
         /// <summary>
         /// Tiles in the Direction left Up
         /// for an odd X
         /// </summary>
         public static readonly PositionI[] Leftupodd =
-        {
+            {
             new PositionI(-1,  1),
             new PositionI(-1,  0),
             new PositionI(0, -1)
@@ -424,6 +424,11 @@
         public bool IsExtended()
         {
             return m_types.Length == 0;
+        }
+
+        public PositionI GetCenterPosition()
+        {
+            return new PositionI(m_center.X, m_center.Y);
         }
 
         /// <summary>

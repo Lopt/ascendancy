@@ -1,6 +1,7 @@
 ﻿namespace Client.Common.Views
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using System.Threading;
     using Client.Common.Constants;
@@ -26,7 +27,6 @@
         public RegionViewHex(Region region)
             : base(region)
         {
-            
             var tileMapInfo = new CCTileMapInfo(Common.Constants.ClientConstants.TILEMAP_FILE_HEX);
             m_tileMap = new CCTileMap(tileMapInfo);
             m_tileMap.TileLayersContainer.AnchorPoint = new CCPoint(0.0f, 1.0f);
@@ -36,6 +36,8 @@
             m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
             m_menueLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_MENU);
             m_indicatorLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_INDICATOR);
+
+            m_drawNodes = new Dictionary<Core.Models.Entity, CCDrawNode>();
 
             Init();
             LoadRegionViewAsync();
@@ -79,17 +81,13 @@
 
             if (unitV.DrawRegion == regionM.RegionPosition)
             {
-                
                 unitV.Node.RemoveFromParent();
-                m_tileMap.TileLayersContainer.AddChild(unitV.Node, 1001);
+                m_tileMap.TileLayersContainer.AddChild(unitV.Node);
                 unitV.Node.Position = unitV.DrawPoint;
-                unitV.Node.VertexZ = 1001;
-                unitV.Node.ZOrder = 1001;
-                //unitV.Node.ZOrder = 100000;
             }
             else
             {
-                m_tileMap.RemoveChild(unitV.Node);
+                m_tileMap.TileLayersContainer.RemoveChild(unitV.Node);
             }
         }
 
@@ -142,11 +140,35 @@
             return sprite;
         }
 
-        //        public void RemoveIndicatorGid(CellPosition cellPos)
-        //        {
-        //            m_indicatorLayer.RemoveTile(new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
-        //        }
+        public void DrawBorder(Core.Models.Entity entity)
+        {
+            if (entity != null)
+            {
+                if (entity.Definition.SubType == Core.Models.Definitions.EntityType.Headquarter)
+                {
+                    if (entity.Owner != GameAppDelegate.Account)
+                    {
+                        DrawBorder(entity, Core.Models.Constants.HEADQUARTER_TERRITORY_RANGE, CCColor4B.Red);
+                    }
+                    else
+                    {
+                        DrawBorder(entity, Core.Models.Constants.HEADQUARTER_TERRITORY_RANGE, CCColor4B.Green);
+                    }
+                }
+            }
 
+        }
+
+        public void RemoveBorder(Core.Models.Entity entity)
+        {
+            if (entity != null)
+            {
+                CCDrawNode Border;
+                m_drawNodes.TryGetValue(entity, out Border);
+                m_tileMap.TileLayersContainer.RemoveChild(Border);
+                m_drawNodes.Remove(entity);
+            }
+        }
 
         /// <summary>
         /// Loads the region view hex dictionary with all regions (5x5) arround the currentPosition.
@@ -238,6 +260,57 @@
             }
         }
 
+        private void DrawBorder(Core.Models.Entity entity, int range, CCColor4B color)
+        {
+            var Border = new CCDrawNode();
+            m_tileMap.TileLayersContainer.AddChild(Border);
+
+            var width = ClientConstants.TILE_HEX_IMAGE_WIDTH;
+            var hight = ClientConstants.TILE_HEX_IMAGE_HEIGHT;
+            var halfwidth = ClientConstants.TILE_HEX_IMAGE_WIDTH / 2.0f;
+            var halfhight = ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2.0f;
+            var quarterwidth = ClientConstants.TILE_HEX_IMAGE_WIDTH / 4.0f;
+
+            var centerPos = PositionHelper.CellToTile(entity.Position.CellPosition);
+            centerPos.X += halfwidth;
+            centerPos.Y -= halfhight;
+
+            var top = new CCPoint(centerPos);
+            top.Y += hight * range + halfhight;
+
+            var down = new CCPoint(centerPos);
+            down.Y -= hight * range + halfhight;
+
+            var right = new CCPoint(centerPos);
+            right.X += width * range - halfwidth;
+
+            var rightTop = new CCPoint(right);
+            rightTop.Y += hight * range / 2;
+
+            var rightDown = new CCPoint(right);
+            rightDown.Y -= hight * range / 2;
+
+            var left = new CCPoint(centerPos);
+            left.X -= width * range - halfwidth;
+
+            var leftTop = new CCPoint(left);
+            leftTop.Y += hight * range / 2;
+
+            var leftDown = new CCPoint(left);
+            leftDown.Y -= hight * range / 2;
+
+            var points = new List<CCPoint>();
+            points.Add(top);
+            points.Add(rightTop);
+            points.Add(rightDown);
+            points.Add(down);
+            points.Add(leftDown);
+            points.Add(leftTop);
+ 
+            Border.DrawPolygon(points.ToArray(), points.ToArray().Length, CCColor4B.Transparent, 1.5f, color);
+
+            m_drawNodes.Add(entity, Border);
+        }
 
         #region Fields
 
@@ -270,6 +343,8 @@
         /// The tile map.
         /// </summary>
         private CCTileMap m_tileMap;
+
+        private Dictionary<Core.Models.Entity,CCDrawNode> m_drawNodes;
 
         #endregion
     }

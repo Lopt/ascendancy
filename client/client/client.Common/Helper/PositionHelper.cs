@@ -77,15 +77,6 @@ namespace Client.Common.Helper
             }
             return null;
         }
-            
-
-
-
-
-
-
-
-
 
         public static Position WorldspaceToPosition(CCPoint point)
         {

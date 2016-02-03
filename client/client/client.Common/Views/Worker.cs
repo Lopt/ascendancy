@@ -1,9 +1,9 @@
-﻿using Core.Models;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
     using System;
     using System.Collections.Concurrent;
+
+    using Core.Models;
 
     /// <summary>
     /// The Worker do the actions on the view.
