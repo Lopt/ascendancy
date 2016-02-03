@@ -22,6 +22,13 @@
     public class WorldLayerHex : CCLayer
     {
 
+        public enum ViewModes
+        {
+            CurrentGPSPosition,
+            CameraPosition,
+            HeadquarterPosition
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.WorldLayer"/> class.
         /// </summary>
@@ -30,6 +37,9 @@
             : base()
         {
             m_gameScene = gameScene;
+
+            ViewMode = ViewModes.CurrentGPSPosition;
+
             m_currentWorldPoint = PositionHelper.PositionToWorldspace(Geolocation.Instance.CurrentGamePosition);
             m_worker = new Views.Worker(this);
             EntityManagerController.Instance.Worker = m_worker;
@@ -37,7 +47,9 @@
             m_regionViewHexDic = new Dictionary<RegionPosition, RegionViewHex>();
 
             m_geolocationPositionNode = new DrawNode();
-                
+
+            m_touchHandler = new TileTouchHandler(this);
+
             this.AddChild(m_geolocationPositionNode);
 
             Schedule(m_worker.Schedule);
@@ -189,6 +201,11 @@
         /// The m_game scene.
         /// </summary>
         private GameScene m_gameScene;
+
+
+        public ViewModes ViewMode;
+
+        private TileTouchHandler m_touchHandler;
 
         #endregion
     }

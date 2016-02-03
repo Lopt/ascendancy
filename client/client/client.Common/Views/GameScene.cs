@@ -13,12 +13,6 @@ namespace Client.Common.Views
     /// </summary>
     public class GameScene : CCScene
     {
-        public enum ViewModes
-        {
-            CurrentGPSPosition,
-            CameraPosition,
-            HeadquarterPosition
-        }
 
 
         /// <summary>
@@ -28,11 +22,9 @@ namespace Client.Common.Views
         public GameScene(CCWindow mainWindow)
             : base(mainWindow)
         {
-            ViewMode = ViewModes.CurrentGPSPosition;
             WorldLayerHex = new WorldLayerHex(this);
             AddChild(WorldLayerHex);
 
-            m_touchHandler = new TileTouchHandler(this);
 
             HUD = new Client.Common.Views.HUD.HUDLayer(this);
             AddChild(HUD);
@@ -47,7 +39,7 @@ namespace Client.Common.Views
 
         void CheckGPS(float elapsedTime)
         {
-            if (ViewMode == ViewModes.CurrentGPSPosition)
+            if (WorldLayerHex.ViewMode == WorldLayerHex.ViewModes.CurrentGPSPosition)
             {
                 var cameraPoint = PositionHelper.PositionToWorldspace(Geolocation.Instance.CurrentGamePosition);
                 WorldLayerHex.SetWorldPosition(cameraPoint);
@@ -56,7 +48,6 @@ namespace Client.Common.Views
 
         #region Properties
 
-        public ViewModes ViewMode;
 
 
         public Position CurrentBasePosition;
@@ -79,10 +70,6 @@ namespace Client.Common.Views
         //healthbar
         public Effects.EffectLayer Test;
 
-        /// <summary>
-        /// The m_touch handler.
-        /// </summary>
-        private TileTouchHandler m_touchHandler;
 
         #endregion
     }

@@ -54,8 +54,6 @@
         /// </summary>
         private WorldLayerHex m_worldLayer;
 
-        private GameScene m_scene;
-
         /// <summary>
         /// The m_new scale.
         /// </summary>
@@ -85,12 +83,11 @@
         /// Initializes a new instance of the <see cref="Client.Common.Views.TileTouchHandler"/> class.
         /// </summary>
         /// <param name="scene">The entire scene.</param>
-        public TileTouchHandler(GameScene scene)
+        public TileTouchHandler(WorldLayerHex worldLayer)
         {
             m_timer = new Stopwatch();
             m_touchGesture = TouchGesture.None;
-            m_worldLayer = scene.WorldLayerHex;
-            m_scene = scene;
+            m_worldLayer = worldLayer;
             m_startLocation = new CCPoint(1, 1);
 
             TouchHandler.Instance.ListenBegan(m_worldLayer, OnTouchesBegan);
@@ -124,7 +121,7 @@
 
                 m_touchGesture = TouchGesture.Move;
 
-                m_scene.ViewMode = GameScene.ViewModes.CameraPosition;
+                m_worldLayer.ViewMode = WorldLayerHex.ViewModes.CameraPosition;
 
 
                 // if there is more than one click (as example at zooming) then take the average for moving
@@ -141,7 +138,7 @@
                 var diff = realLocationOnScreen - realStartLocationOnScreen;
                 
                 var move = new CCPoint(-diff.X, diff.Y) * m_worldLayer.GetZoom();
-                var cameraDiff = realLocationOnScreen - m_scene.VisibleBoundsScreenspace.Center;
+                var cameraDiff = realLocationOnScreen - m_worldLayer.VisibleBoundsWorldspace.Center;
                 var cameraMove = new CCPoint(-cameraDiff.X, cameraDiff.Y) * m_worldLayer.GetZoom();
                 m_worldLayer.SetWorldPosition(m_startLocation + cameraMove + move);
             }
@@ -159,8 +156,8 @@
                 CCPoint currentPoint1 = touches[1].LocationOnScreen;
 
                 var screen = new CCPoint(
-                                 m_scene.VisibleBoundsScreenspace.MaxX,
-                                 m_scene.VisibleBoundsScreenspace.MaxY); 
+                    m_worldLayer.VisibleBoundsWorldspace.MaxX,
+                    m_worldLayer.VisibleBoundsWorldspace.MaxY); 
 
                 float startDistance = screenStart0.DistanceSquared(ref screenStart1);
                 float currentDistance = currentPoint0.DistanceSquared(ref currentPoint1);
