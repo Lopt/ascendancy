@@ -26,9 +26,9 @@
             : base((int)terrainType)
         {
             //Resources = resources;
-            Buildable = true;
-            Walkable = true;
-            TravelCost = 1;
+            Buildable = buildable;
+            Walkable = walkable;
+            TravelCost = travelCost;
             DefenseModifier = defenseModifier;
             AttackModifier = attackModifier;
         }
