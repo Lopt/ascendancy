@@ -138,7 +138,7 @@
                 var diff = realLocationOnScreen - realStartLocationOnScreen;
                 
                 var move = new CCPoint(-diff.X, diff.Y) * m_worldLayer.GetZoom();
-                var cameraDiff = realLocationOnScreen - m_worldLayer.VisibleBoundsWorldspace.Center;
+                var cameraDiff = realLocationOnScreen - m_worldLayer.Scene.VisibleBoundsScreenspace.Center;
                 var cameraMove = new CCPoint(-cameraDiff.X, cameraDiff.Y) * m_worldLayer.GetZoom();
                 m_worldLayer.SetWorldPosition(m_startLocation + cameraMove + move);
             }
@@ -156,8 +156,8 @@
                 CCPoint currentPoint1 = touches[1].LocationOnScreen;
 
                 var screen = new CCPoint(
-                    m_worldLayer.VisibleBoundsWorldspace.MaxX,
-                    m_worldLayer.VisibleBoundsWorldspace.MaxY); 
+                    m_worldLayer.Scene.VisibleBoundsScreenspace.MaxX,
+                    m_worldLayer.Scene.VisibleBoundsScreenspace.MaxY); 
 
                 float startDistance = screenStart0.DistanceSquared(ref screenStart1);
                 float currentDistance = currentPoint0.DistanceSquared(ref currentPoint1);
