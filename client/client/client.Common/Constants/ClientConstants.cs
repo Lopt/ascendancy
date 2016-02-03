@@ -198,17 +198,17 @@
         /// <summary>
         /// minimum scaling of tile map
         /// </summary>
-        public const float TILEMAP_MIN_ZOOM = 0.3f;
+        public const float TILEMAP_MIN_ZOOM = 0.2f;
 
         /// <summary>
         /// default scaling of tile map
         /// </summary>
-        public const float TILEMAP_NORM_ZOOM = 3.0f;
+        public const float TILEMAP_NORM_ZOOM = 2.0f;
 
         /// <summary>
         /// maximum scaling of tile map
         /// </summary>
-        public const float TILEMAP_MAX_ZOOM = 6.0f;
+        public const float TILEMAP_MAX_ZOOM = 8.0f;
 
         /// <summary>
         /// The heigth of the tile map hex content size.

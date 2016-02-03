@@ -131,13 +131,13 @@
         {
             var oldCameraPoint = this.Camera.CenterInWorldspace;
             var oldTargetPoint = this.Camera.TargetInWorldspace;
-           
-            LoadRegionViews(m_currentWorldPoint);
-
+            if (m_touchHandler.Gesture != TileTouchHandler.TouchGesture.Move)
+            {           
+                LoadRegionViews(m_currentWorldPoint);
+            }              
             var newTargetPoint = new CCPoint3(m_currentWorldPoint.X, m_currentWorldPoint.Y, oldTargetPoint.Z);
             var newCameraPoint = new CCPoint3(m_currentWorldPoint.X, m_currentWorldPoint.Y, oldCameraPoint.Z);
             SetCamera(newTargetPoint, newCameraPoint); 
-              
         }
 
         private void LoadRegionViews(CCPoint point)
