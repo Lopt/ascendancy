@@ -32,10 +32,9 @@ namespace Client.Common.Helper
         public static RegionPosition WorldspaceToRegion(CCPoint point)
         {
             var firstRegion = Geolocation.Instance.FirstGamePosition.RegionPosition;
-            return new RegionPosition((int)(point.X / ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH) + firstRegion.RegionX,
-                (int)(-point.Y / ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT) + firstRegion.RegionY);
+            return new RegionPosition((int)Math.Floor(point.X / ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH + firstRegion.RegionX),
+                (int)Math.Floor(-point.Y / ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT + firstRegion.RegionY));
         }
-
 
 
 
@@ -67,13 +66,20 @@ namespace Client.Common.Helper
 
         public static PositionI WorldspaceToPositionI(CCPoint point, WorldLayerHex worldLayer)
         {
-            var regionPosition = WorldspaceToRegion(point);
-            var regionView = worldLayer.GetRegionViewHex(regionPosition);
+            var regionPos = WorldspaceToRegion(point);
+            var startRegionPoint = RegionToWorldspace(regionPos);
+            var regionView = worldLayer.GetRegionViewHex(regionPos);
 
             if (regionView != null)
             {
-                var tileCoord = regionView.GetTileMap().LayerNamed(ClientConstants.LAYER_TERRAIN).ClosestTileCoordAtNodePosition(point);
-                return new PositionI(regionPosition, new CellPosition(tileCoord.Column, tileCoord.Row));
+                var tileCoord = regionView.GetTileMap().LayerNamed(ClientConstants.LAYER_TERRAIN).ClosestTileCoordAtNodePosition(point - startRegionPoint);
+                tileCoord.Row = Math.Max(tileCoord.Row, -tileCoord.Row);
+                tileCoord.Column = Math.Max(tileCoord.Column, -tileCoord.Column);
+                var cellPos = new CellPosition(
+                    tileCoord.Column % Constants.REGION_SIZE_X,
+                    tileCoord.Row % Constants.REGION_SIZE_Y);
+                
+                return new PositionI(regionPos, cellPos);
             }
             return null;
         }
