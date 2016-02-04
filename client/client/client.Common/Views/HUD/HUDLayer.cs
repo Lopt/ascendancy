@@ -65,7 +65,7 @@
         /// </summary>
         public void BackToGPS()
         {
-            m_gameScene.ViewMode = GameScene.ViewModes.CurrentGPSPosition;
+            m_gameScene.WorldLayerHex.ViewMode = WorldLayerHex.ViewModes.CurrentGPSPosition;
         }
 
         /// <summary>
