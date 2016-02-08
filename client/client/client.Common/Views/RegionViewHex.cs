@@ -155,6 +155,17 @@
                         DrawBorder(entity, Core.Models.Constants.HEADQUARTER_TERRITORY_RANGE, CCColor4B.Green);
                     }
                 }
+                else if (entity.Definition.SubType == Core.Models.Definitions.EntityType.GuardTower)
+                {
+                    if (entity.Owner != GameAppDelegate.Account)
+                    {
+                        DrawBorder(entity, Core.Models.Constants.GUARDTOWER_TERRITORY_RANGE, CCColor4B.Red);
+                    }
+                    else
+                    {
+                        DrawBorder(entity, Core.Models.Constants.GUARDTOWER_TERRITORY_RANGE, CCColor4B.Green);
+                    }
+                }
             }
 
         }

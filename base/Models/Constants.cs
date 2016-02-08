@@ -74,9 +74,14 @@
         public const int RANGE_IN_MEELE_MALUS = 10;
 
         /// <summary>
-        /// Get the Range from the Ownership radius for the headquarter.
+        /// Get the range from the ownership radius for the headquarter.
         /// </summary>
         public const int HEADQUARTER_TERRITORY_RANGE = 4;
+
+        /// <summary>
+        /// Get the range from the ownership radius for the guardtower.
+        /// </summary>
+        public const int GUARDTOWER_TERRITORY_RANGE = 2;
 
         /// <summary>
         /// The HQ storage value.

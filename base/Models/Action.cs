@@ -35,7 +35,7 @@
         public enum ActionType
         {
             TestAction,
-            CreateHeadquarter,
+            CreateTerritoryBuilding,
             CreateBuilding,
             CreateUnit,
             MoveUnit,
@@ -68,6 +68,9 @@
                     break;
                 case ActionType.CreateBuilding:
                     Control = new Controllers.Actions.CreateBuilding(this);
+                    break;
+                case ActionType.CreateTerritoryBuilding:
+                    Control = new Controllers.Actions.CreateTerritoryBuilding(this);
                     break;
             }
         }

@@ -62,8 +62,8 @@
                 case Core.Models.Action.ActionType.MoveUnit:
                     return new Client.Common.Views.Actions.MoveUnit(action);
 
-                case Core.Models.Action.ActionType.CreateHeadquarter:
-                    throw new NotImplementedException();
+                case Core.Models.Action.ActionType.CreateTerritoryBuilding:
+                    return new Client.Common.Views.Actions.CreateTerritoryBuilding(action, WorldLayerHex.GetRegionViewHex(regionPosition));
 
                 case Core.Models.Action.ActionType.CreateBuilding:
                     return new Client.Common.Views.Actions.CreateBuilding(action, WorldLayerHex.GetRegionViewHex(regionPosition));

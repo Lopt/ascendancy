@@ -82,7 +82,7 @@
             m_terrains = new TerrainDefinition[Constants.REGION_SIZE_X, Constants.REGION_SIZE_Y];
             m_entities = new DatedEntities();
             m_entities.Entities = new LinkedList<Entity>();
-            m_territory = new Dictionary<CellPosition, Account>();
+            m_territory = new Dictionary<PositionI, Account>();
             m_actions = new DatedActions();
             m_actions.Actions = new LinkedList<Core.Models.Action>();
             m_exist = false;
@@ -99,7 +99,7 @@
             m_regionPosition = regionPosition;
             m_terrains = terrains;
             m_entities = new DatedEntities();
-            m_territory = new Dictionary<CellPosition, Account>();
+            m_territory = new Dictionary<PositionI, Account>();
             throw new Exception("Territory need to be load");
             m_actions = new DatedActions();
             m_exist = true;
@@ -198,16 +198,9 @@
         { 
             foreach (var position in territoryList)
             {   
-                if (!m_territory.ContainsKey(position.CellPosition))
+                if (!regionMan.GetRegion(position.RegionPosition).m_territory.ContainsKey(position))
                 {
-                    if (position.RegionPosition == entityRegionPos)
-                    {
-                        m_territory.Add(position.CellPosition, account);
-                    }
-                    else
-                    {
-                        regionMan.GetRegion(position.RegionPosition).m_territory.Add(position.CellPosition, account);
-                    }                   
+                    regionMan.GetRegion(position.RegionPosition).m_territory.Add(position, account);   
                 }
             }
         }
@@ -217,7 +210,7 @@
         /// </summary>
         /// <returns>The claimed territory.</returns>
         /// <param name="position">Current Position.</param>
-        public Account GetClaimedTerritory(CellPosition position)
+        public Account GetClaimedTerritory(PositionI position)
         {
             Account result;
             if (m_territory.TryGetValue(position, out result))
@@ -236,9 +229,9 @@
         {
             foreach (var position in territoryList)
             {
-                if (m_territory.ContainsKey(position.CellPosition))
+                if (m_territory.ContainsKey(position))
                 {
-                    m_territory.Remove(position.CellPosition);
+                    m_territory.Remove(position);
                 }                        
             }
         }
@@ -363,7 +356,7 @@
         /// <summary>
         /// Current owned territory from user.
         /// </summary>
-        private Dictionary<CellPosition, Account> m_territory;
+        private Dictionary<PositionI, Account> m_territory;
 
         /// <summary>
         /// already executed action in this region
