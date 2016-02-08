@@ -49,9 +49,9 @@
 		<string>Icon-Small-40</string>
 		<string>Icon-Small-40@2x</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>New Entry</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>New Entry</string>
+	<string>Trust me</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Trust me</string>
 </dict>
 </plist>
