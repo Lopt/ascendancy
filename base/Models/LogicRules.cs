@@ -396,27 +396,24 @@
         /// </summary>
         /// <param name="account">Current Account.</param>
         /// <param name="regionManagerC">Region manager c.</param>
-        public static void GatherResources(Account account, Controllers.RegionManagerController regionManagerC)
-        {
-            if (account.TerritoryBuildings.ContainsKey((long)Core.Models.Definitions.EntityType.Headquarter))
-            {                 
-                foreach (var element in account.TerritoryBuildings)
-                {
-                    var list = LogicRules.GetSurroundedPositions(element.Value, Constants.HEADQUARTER_TERRITORY_RANGE);
-                    float scrapAmount = 0;
-                    float plutoniumAmount = 0;
+        public static void GatherResources(Account account, Controllers.RegionManagerController regionManagerC, int range)
+        {              
+            foreach (var element in account.TerritoryBuildings)
+            {
+                var list = LogicRules.GetSurroundedPositions(element.Key, range);
+                float scrapAmount = 0;
+                float plutoniumAmount = 0;
 
-                    foreach (var item in list)
-                    {
-                        // TODO: add ressources in Terrain
-                        var resources = regionManagerC.GetRegion(item.RegionPosition).GetTerrain(item.CellPosition);
-                        scrapAmount += 0.5f;//resources[0];
-                        plutoniumAmount += 0.3f;//resources[1];
-                    }
-                    account.Scrap.Set(account.Scrap.Value, Constants.SCRAP_INCREMENT_VALUE);
-                    account.Plutonium.Set(account.Plutonium.Value, Constants.PLUTONIUM_INCREMENT_VALUE);
-                }                   
-            }
+            foreach (var item in list)
+                {
+                    // TODO: add ressources in Terrain
+                    var resources = regionManagerC.GetRegion(item.RegionPosition).GetTerrain(item.CellPosition);
+                    scrapAmount += 0.5f;//resources[0];
+                    plutoniumAmount += 0.3f;//resources[1];
+                }
+                account.Scrap.Set(account.Scrap.Value, Constants.SCRAP_INCREMENT_VALUE);
+                account.Plutonium.Set(account.Plutonium.Value, Constants.PLUTONIUM_INCREMENT_VALUE);
+            }  
         }
 
         /// <summary>

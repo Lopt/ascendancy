@@ -72,19 +72,23 @@
             var entityCellPostion = entityPosition.CellPosition;
             var region = Controller.Instance.RegionManagerController.GetRegion(entityPosition.RegionPosition);
             var type = (long)action.Parameters[CREATION_TYPE];
+            m_type = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
             var account = action.Account;
 
             // Filter for territory buildings
             if (type == (long)Models.Definitions.EntityType.Headquarter)
             {
                 m_drawArea = Constants.HEADQUARTER_TERRITORY_RANGE;
-                m_type = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
+            }
+            else if (type == (long)Models.Definitions.EntityType.GuardTower)
+            {
+                m_drawArea = Constants.GUARDTOWER_TERRITORY_RANGE;
             }
 
-            if (!action.Account.TerritoryBuildings.ContainsKey((long)Core.Models.Definitions.EntityType.Headquarter) && 
+            if (!action.Account.TerritoryBuildings.ContainsValue((long)Core.Models.Definitions.EntityType.Headquarter) && 
                 m_type.SubType == Models.Definitions.EntityType.Headquarter &&
                 region.GetEntity(entityCellPostion) == null &&
-                region.GetClaimedTerritory(entityCellPostion) == null)
+                region.GetClaimedTerritory(entityPosition) == null)
             {
                 // terrain check
                 var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
@@ -93,7 +97,7 @@
                 // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
                 foreach (var position in list)
                 {
-                    if (region.GetClaimedTerritory(position.CellPosition) != null)
+                    if (region.GetClaimedTerritory(entityPosition) != null)
                     {
                         territoryFlag = false;
                     }                  
@@ -105,7 +109,7 @@
             }           
             else if (region.GetEntity(entityCellPostion) == null && 
                      m_type.SubType != Models.Definitions.EntityType.Headquarter &&
-                     region.GetClaimedTerritory(entityCellPostion) == account)
+                region.GetClaimedTerritory(entityPosition) == account)
             {
                 // check for free tile and the terrain is possesed from the current player
                 var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
@@ -114,7 +118,7 @@
                 // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
                 foreach (var position in list)
                 {
-                    if (region.GetClaimedTerritory(position.CellPosition) != null)
+                    if (region.GetClaimedTerritory(position) != null)
                     {
                         territoryFlag = false;
                     }                  
@@ -158,19 +162,20 @@
             region.AddEntity(action.ActionTime, entity);
 
             // link the headquarter to the current account and claim territory, , enable build options
-            if (m_headquarterFlag && action.Account != null)
+            if (m_type.SubType == EntityType.Headquarter &&
+                action.Account != null)
             {
-                action.Account.TerritoryBuildings.Add(type, entity.Position);             
+                action.Account.TerritoryBuildings.Add(entity.Position, type);             
                 LogicRules.EnableBuildOptions(type, action.Account);
-                region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, Constants.HEADQUARTER_TERRITORY_RANGE), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
+                region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, m_drawArea), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
                 LogicRules.IncreaseHoleStorage(action.Account);
-                LogicRules.GatherResources(action.Account, Controller.Instance.RegionManagerController);
+                LogicRules.GatherResources(action.Account, Controller.Instance.RegionManagerController, Constants.HEADQUARTER_TERRITORY_RANGE);
                 LogicRules.SetCurrentMaxPopultion(action.Account);
                 LogicRules.SetCurrentMaxEnergy(action.Account);
             }
             else if (action.Account != null)
             {
-                action.Account.TerritoryBuildings.Add(type, entity.Position);
+                action.Account.TerritoryBuildings.Add(entity.Position, type);
                 region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, m_drawArea), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
             }
 
@@ -278,10 +283,5 @@
         private Definition m_type;
 
         private int m_drawArea;
-
-        /// <summary>
-        /// The m headquarter flag.
-        /// </summary>
-        private bool m_headquarterFlag = false;
     }
 }

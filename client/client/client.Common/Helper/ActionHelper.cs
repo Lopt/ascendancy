@@ -39,6 +39,10 @@
                     {
                         return CreatTerritoryBuilding(positionI, definition, account);                
                     }
+                    else if (definition.SubType == EntityType.GuardTower)
+                    {
+                        return CreatTerritoryBuilding(positionI, definition, account);
+                    }
                     else
                     {
                         return CreateBuilding(positionI, definition, account);

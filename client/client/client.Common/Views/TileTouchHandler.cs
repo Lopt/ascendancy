@@ -337,7 +337,7 @@
                             m_menuView = new MenuView(m_worldLayer, startPosI, types);
                             m_menuView.DrawMenu();
                         }
-                        else
+                        else 
                         {                            
                             var types = new Core.Models.Definitions.Definition[0];
                             var Gids = new short[6];

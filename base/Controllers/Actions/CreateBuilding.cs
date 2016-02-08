@@ -63,17 +63,16 @@
         {          
             var action = (Core.Models.Action)Model;
             var entityPosition = (PositionI)action.Parameters[CREATE_POSITION];
-            var entityCellPostion = entityPosition.CellPosition;
             var region = Controller.Instance.RegionManagerController.GetRegion(entityPosition.RegionPosition);
             var type = (long)action.Parameters[CREATION_TYPE];
             var entityDef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
             var account = action.Account;
                             
-            if (region.GetEntity(entityCellPostion) == null && 
-                region.GetClaimedTerritory(entityCellPostion) == account)
+            if (region.GetEntity(entityPosition.CellPosition) == null && 
+                region.GetClaimedTerritory(entityPosition) == account)
             {
                 // check for free tile and the terrain is possesed from the current player
-                var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
+                var td = (TerrainDefinition)region.GetTerrain(entityPosition.CellPosition);
                 return td.Buildable && LogicRules.ConsumeResource(account, entityDef);  
             }
             return false;         
