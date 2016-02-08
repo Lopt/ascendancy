@@ -25,6 +25,8 @@ namespace Client.Common.Views.Effects
             m_areaIndicators.Add(TileTouchHandler.Area.OwnTerritory, new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR));
             m_areaIndicators.Add(TileTouchHandler.Area.EnemyTerritory, new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.REDINDICATOR));
             m_areaIndicators.Add(TileTouchHandler.Area.AllyTerritory, new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.BLUEINDICATOR));
+
+            m_surroundedPositions = new HashSet<PositionI>();
         }
 
         ~IndicatorView()
@@ -40,7 +42,7 @@ namespace Client.Common.Views.Effects
         /// <param name="coord">The Center Position.</param>
         /// <param name="range">The Range.</param>
         /// <param name="area">The Area Type.</param>
-        public void ShowIndicator(PositionI coord, int range, TileTouchHandler.Area area)
+        public void ShowUnitIndicator(PositionI coord, int range, TileTouchHandler.Area area)
         {
 
             var gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR);
@@ -52,16 +54,40 @@ namespace Client.Common.Views.Effects
                 var indi = new Core.Controllers.AStar_Indicator.Indicator(coord, range, GameAppDelegate.Account.ID); 
                 m_surroundedPositions = indi.FindPossiblePositions();
             }
-            else
+   
+            AddSprites(gid);
+
+        }
+
+        public void ShowBuildingIndicator(PositionI coord, TileTouchHandler.Area area)
+        {
+
+            var gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR);
+
+            m_areaIndicators.TryGetValue(area, out gid);
+
+            var buildings = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(coord.RegionPosition)
+                                .GetEntity(coord.CellPosition).Owner.TerritoryBuildings.Keys;
+
+            int range;
+            foreach (var building in buildings)
             {
-                m_surroundedPositions = LogicRules.GetSurroundedPositions(coord, range);
+
+                var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(building.RegionPosition).GetEntity(building.CellPosition);
+                if (entity.Definition.SubType == Core.Models.Definitions.EntityType.Headquarter)
+                {
+                    range = Core.Models.Constants.HEADQUARTER_TERRITORY_RANGE;
+                }
+                else
+                {
+                    range = Core.Models.Constants.GUARDTOWER_TERRITORY_RANGE;
+                }
+
+                var surroundedPositions = LogicRules.GetSurroundedPositions(building, range);
+                m_surroundedPositions.UnionWith(surroundedPositions);
             }
 
-            foreach (var tile in m_surroundedPositions)
-            {
-                m_sprites.Add(m_worldLayer.GetRegionViewHex(tile.RegionPosition).SetIndicatorGid(tile.CellPosition, gid));
-            }
-
+            AddSprites(gid);
         }
 
         /// <summary>
@@ -74,6 +100,14 @@ namespace Client.Common.Views.Effects
                 sprite.Parent.RemoveChild(sprite);
             }
             m_sprites.Clear();
+        }
+
+        private void AddSprites(CCTileGidAndFlags gid)
+        {
+            foreach (var tile in m_surroundedPositions)
+            {
+                m_sprites.Add(m_worldLayer.GetRegionViewHex(tile.RegionPosition).SetIndicatorGid(tile.CellPosition, gid));
+            }
         }
 
         /// <summary>
@@ -95,5 +129,6 @@ namespace Client.Common.Views.Effects
         /// The surrounded tile set.
         /// </summary>
         private HashSet<PositionI> m_surroundedPositions;
+
     }
 }

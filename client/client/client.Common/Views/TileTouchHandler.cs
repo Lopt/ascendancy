@@ -156,8 +156,8 @@
                 CCPoint currentPoint1 = touches[1].LocationOnScreen;
 
                 var screen = new CCPoint(
-                    m_worldLayer.Scene.VisibleBoundsScreenspace.MaxX,
-                    m_worldLayer.Scene.VisibleBoundsScreenspace.MaxY); 
+                                 m_worldLayer.Scene.VisibleBoundsScreenspace.MaxX,
+                                 m_worldLayer.Scene.VisibleBoundsScreenspace.MaxY); 
 
                 float startDistance = screenStart0.DistanceSquared(ref screenStart1);
                 float currentDistance = currentPoint0.DistanceSquared(ref currentPoint1);
@@ -291,19 +291,18 @@
                     {
                         Gesture = TouchGesture.MoveUnit;
                         range = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosI.RegionPosition).GetEntity(startPosI.CellPosition).Move;
-                        m_indicator.ShowIndicator(startPosI, range, area);
+                        m_indicator.ShowUnitIndicator(startPosI, range, area);
                     }
-                    else if (entity != null && entity.Definition.SubType == EntityType.Headquarter)
+                    else if (entity != null && (entity.Definition.SubType == EntityType.Headquarter || entity.Definition.SubType == EntityType.GuardTower))
                     {
                         Gesture = TouchGesture.Area;
-                        range = Core.Models.Constants.HEADQUARTER_TERRITORY_RANGE;
                         var owner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosI.RegionPosition).GetEntity(startPosI.CellPosition).Owner;
                         area = Area.OwnTerritory;
                         if (owner != GameAppDelegate.Account)
                         {
                             area = Area.EnemyTerritory;
                         }
-                        m_indicator.ShowIndicator(startPosI, range, area);
+                        m_indicator.ShowBuildingIndicator(startPosI, area);
                     }
                     else if (entity != null && entity.DefinitionID == (long)EntityType.Barracks)
                     {
@@ -337,7 +336,7 @@
                             m_menuView = new MenuView(m_worldLayer, startPosI, types);
                             m_menuView.DrawMenu();
                         }
-                        else 
+                        else
                         {                            
                             var types = new Core.Models.Definitions.Definition[0];
                             var Gids = new short[6];
