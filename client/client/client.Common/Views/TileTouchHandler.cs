@@ -324,7 +324,7 @@
                     {
                         var defM = Core.Models.World.Instance.DefinitionManager;
                         var action = ActionHelper.CreateEntity(startPosI, defM.GetDefinition(EntityType.Headquarter), GameAppDelegate.Account);
-                        var actionC = (Core.Controllers.Actions.CreateBuilding)action.Control;
+                        var actionC = (Core.Controllers.Actions.CreateTerritoryBuilding)action.Control;
                         if (actionC.Possible())
                         {
                             var types = new Core.Models.Definitions.Definition[6];
@@ -338,7 +338,7 @@
                             m_menuView.DrawMenu();
                         }
                         else
-                        {
+                        {                            
                             var types = new Core.Models.Definitions.Definition[0];
                             var Gids = new short[6];
                             Gids[5] = Client.Common.Constants.BuildingMenuGid.MILITARY;

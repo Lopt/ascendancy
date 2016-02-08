@@ -78,6 +78,7 @@
     <Compile Include="Models\Resources\StateResource.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Controllers\Actions\AStar_Indicator\Indicator.cs" />
+    <Compile Include="Controllers\Actions\CreateTerritoryBuilding.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

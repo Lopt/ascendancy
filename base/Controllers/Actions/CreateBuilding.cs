@@ -44,28 +44,15 @@
         public override ConcurrentBag<Core.Models.Region> GetAffectedRegions()
         {
             var regionManagerC = Controller.Instance.RegionManagerController;
+
+            ConcurrentBag<Core.Models.Region> bag = new ConcurrentBag<Core.Models.Region>();
             var action = (Core.Models.Action)Model;
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
-            var type = (long)action.Parameters[CREATION_TYPE];
-            var test = regionManagerC.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition);
+            var region = regionManagerC.GetRegion(positionI.RegionPosition);
 
-            if (type == (long)Models.Definitions.EntityType.Headquarter)
-            {
-                ConcurrentBag<Core.Models.Region> bag = new ConcurrentBag<Core.Models.Region>();
-                var region = regionManagerC.GetRegion(positionI.RegionPosition);
-                bag.Add(region);
+            bag.Add(region);
 
-                var adjacentRegions = GetAdjacentRegions(regionManagerC, region.RegionPosition, positionI);
-
-                foreach (var adjRegions in adjacentRegions)
-                {
-                    bag.Add(regionManagerC.GetRegion(adjRegions));
-                }
-
-                return bag;
-            }
-
-            return new ConcurrentBag<Core.Models.Region>() { regionManagerC.GetRegion(positionI.RegionPosition) };
+            return bag;
         }
 
         /// <summary>
@@ -81,36 +68,11 @@
             var type = (long)action.Parameters[CREATION_TYPE];
             var entityDef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
             var account = action.Account;
-
-            if (!action.Account.TerritoryBuildings.ContainsKey((long)Core.Models.Definitions.EntityType.Headquarter) && 
-                type == (long)Models.Definitions.EntityType.Headquarter &&
-                region.GetEntity(entityCellPostion) == null &&
-                region.GetClaimedTerritory(entityCellPostion) == null)
-            {
-                // terrain check
-                var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
-                var list = LogicRules.GetSurroundedPositions(entityPosition, Constants.HEADQUARTER_TERRITORY_RANGE);
-                bool territoryFlag = true;
-                // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
-                foreach (var position in list)
-                {
-                    if (region.GetClaimedTerritory(position.CellPosition) != null)
-                    {
-                        territoryFlag = false;
-                    }                  
-                }
-                if (territoryFlag)
-                {
-                    m_headquarterFlag = true;                  
-                    return td.Buildable && LogicRules.ConsumeResource(account, entityDef); 
-                }
-            }           
-            else if (region.GetEntity(entityCellPostion) == null && 
-                     type != (long)Models.Definitions.EntityType.Headquarter &&
-                     region.GetClaimedTerritory(entityCellPostion) == account)
+                            
+            if (region.GetEntity(entityCellPostion) == null && 
+                region.GetClaimedTerritory(entityCellPostion) == account)
             {
                 // check for free tile and the terrain is possesed from the current player
-                // terrain check
                 var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
                 return td.Buildable && LogicRules.ConsumeResource(account, entityDef);  
             }
@@ -145,24 +107,10 @@
             entity.Position = entityPosition;
             region.AddEntity(action.ActionTime, entity);
 
-            // link the headquarter to the current account and claim territory, enable build options
-            if (m_headquarterFlag && action.Account != null)
-            {
-                action.Account.TerritoryBuildings.Add(type, entity.Position);             
-                LogicRules.EnableBuildOptions(type, action.Account);
-                region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, Constants.HEADQUARTER_TERRITORY_RANGE), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
-                LogicRules.IncreaseHoleStorage(action.Account);
-                LogicRules.GatherResources(action.Account, Controller.Instance.RegionManagerController);
-                LogicRules.SetCurrentMaxPopultion(action.Account);
-                LogicRules.SetCurrentMaxEnergy(action.Account);
-            }
-            else if (action.Account != null)
-            {
-                action.Account.Buildings.AddLast(entity.Position);
-                LogicRules.ResourceGeneration(action.Account, entity.Position, Controller.Instance.RegionManagerController);
-                LogicRules.EnableBuildOptions(type, action.Account);
-                LogicRules.IncreaseStorage(action.Account, entity);
-            }
+            action.Account.Buildings.AddLast(entity.Position);
+            LogicRules.ResourceGeneration(action.Account, entity.Position, Controller.Instance.RegionManagerController);
+            LogicRules.EnableBuildOptions(type, action.Account);
+            LogicRules.IncreaseStorage(action.Account, entity);
 
             return new ConcurrentBag<Core.Models.Region>() { region };
         }
@@ -186,88 +134,5 @@
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             return positionI.RegionPosition;
         }
-
-        /// <summary>
-        /// Gets the adjacent regions, which can be affected.
-        /// </summary>
-        /// <returns>The adjacent regions.</returns>
-        /// <param name="regionManagerC">Region manager c.</param>
-        /// <param name="position">Current Position od the selected building.</param>
-        /// <param name="buildpoint">PositionI from the new unit.</param>
-        private ConcurrentBag<RegionPosition> GetAdjacentRegions(RegionManagerController regionManagerC, RegionPosition position, PositionI buildpoint)
-        {
-            var list = new ConcurrentBag<RegionPosition>();
-            var surlist = LogicRules.SurroundRegions;
-            var regionSizeX = Constants.REGION_SIZE_X;
-            var regionSizeY = Constants.REGION_SIZE_Y;
-
-            if (buildpoint.CellPosition.CellX <= Constants.HEADQUARTER_TERRITORY_RANGE)
-            {
-                var tempReg = position + surlist[LogicRules.SurroundRegions.Length - 1];
-                if (regionManagerC.GetRegion(tempReg).Exist)
-                {
-                    list.Add(tempReg);
-                }
-
-                for (int index = 0; index < 4; ++index)
-                {
-                    tempReg = position + surlist[index];
-                    if (regionManagerC.GetRegion(tempReg).Exist)
-                    {
-                        list.Add(tempReg);
-                    }
-                }
-            }
-            else if (buildpoint.CellPosition.CellY <= Constants.HEADQUARTER_TERRITORY_RANGE)
-            {
-                for (int index = 5; index < LogicRules.SurroundRegions.Length; ++index)
-                {
-                    var tempReg = position + surlist[index];
-                    if (regionManagerC.GetRegion(tempReg).Exist)
-                    {
-                        list.Add(tempReg);
-                    }
-                }
-
-                var reg = position + surlist[0];
-                if (regionManagerC.GetRegion(reg).Exist)
-                {
-                    list.Add(reg);
-                }
-                reg = position + surlist[1];
-                if (regionManagerC.GetRegion(reg).Exist)
-                {
-                    list.Add(reg);
-                }
-            }
-            else if (buildpoint.CellPosition.CellX >= regionSizeX - Constants.HEADQUARTER_TERRITORY_RANGE)
-            {
-                for (int index = 1; index < 6; ++index)
-                {
-                    var tempReg = position + surlist[index];
-                    if (regionManagerC.GetRegion(tempReg).Exist)
-                    {
-                        list.Add(tempReg);
-                    }
-                }
-            }
-            else if (buildpoint.CellPosition.CellY >= regionSizeY - Constants.HEADQUARTER_TERRITORY_RANGE)
-            {
-                for (int index = 3; index < LogicRules.SurroundRegions.Length; ++index)
-                {
-                    var tempReg = position + surlist[index];
-                    if (regionManagerC.GetRegion(tempReg).Exist)
-                    {
-                        list.Add(tempReg);
-                    }
-                }
-            }
-            return list;
-        }
-
-        /// <summary>
-        /// The m headquarter flag.
-        /// </summary>
-        private bool m_headquarterFlag = false;
     }
 }
