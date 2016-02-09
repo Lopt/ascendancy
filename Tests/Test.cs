@@ -24,6 +24,12 @@ namespace Tests
         }
 
         [Test]
+        public void CellPositionTest()
+        {
+            //var RegionPos = new RegionPosition();
+        }
+
+        [Test]
         public void RegionPositionTest()
         {
             //var RegionPos = new RegionPosition();
@@ -32,19 +38,107 @@ namespace Tests
         [Test]
         public void PositionTest()
         {
+            //Standart Constructor
+            var Position = new Position(0,0);
+            Assert.IsNotNull(Position);
+
+            //Constructor Position out of PositionI
+            Position = new Position(new PositionI(0,0));
+            Assert.IsNotNull(Position);
+
+            //Constructor Position out of Latitude and Longitude
+            Position = new Position(new LatLon(50.97695325, 11.02396488));
+            Assert.IsNotNull(Position);
+
+            //Constructor Position out of a ReagionPosition
+            var RegionPos = new RegionPosition(0, 0);
+            Position = new Position(RegionPos);
+            Assert.IsNotNull(Position);
+
+            //Constructor Position out of a RegionPosition and a CellPosition
+            var CellPos = new CellPosition(0, 0);
+            Position = new Position(RegionPos, CellPos);
+            Assert.IsNotNull(Position);
+
+            //Constructor Position out of a RegionPositionX, a RegionPositionY, a CellPositionX and a CellPositionY
+            Position = new Position(RegionPos.RegionX, RegionPos.RegionY, CellPos.CellX, CellPos.CellY);
+            Assert.IsNotNull(Position);
+
+            //tests the + Operator
+            Position = new Position(new LatLon(50.97695325, 11.02396488));
+            var Position2 = new Position(0, 0);
+
+            Position2 += Position;
+
+            Assert.AreEqual(Position, Position2);
+
+
+            //tests the - Operator
+            Position -= Position2;
+
+            Assert.AreNotEqual(Position2, Position);
+            Assert.AreEqual(new Position(0, 0), Position);
+
+            //tests the == Operator
+            Assert.True(new Position(0, 0) == Position);
+
+            //tests the Equals function
+            Assert.True(Position.Equals(new Position(0, 0)));
+
+            //test Distance with Position
+            var dist = Position.Distance(Position2);
+            Assert.IsNotNull(dist);
+
+
+            //test Distance with PositionI
+            var dist2 = Position2.Distance(new PositionI(0, 0));
+            Assert.IsNotNull(dist2);
+            Assert.AreEqual(dist, dist2);
         }
 
         [Test]
         public void PositionITest()
         {
+            //standart Constructor
             var Position = new PositionI(0, 0);
             Assert.IsNotNull(Position);
 
-            //test constructor with region position and cellposition
-            //Position = new PositionI();
-            //Assert.IsNotNull(Position);
+            //Constructor Position out of a ReagionPosition
+            var RegionPos = new RegionPosition(0, 0);
+            var CellPos = new CellPosition(0, 0);
+            Position = new PositionI(RegionPos, CellPos);
+            Assert.IsNotNull(Position);
 
-            //test constructor with position
+            Position = new PositionI(new Position(0, 0));
+            Assert.IsNotNull(Position);
+
+            //tests the + Operator
+            Position = new PositionI(1, 1);
+            var Position2 = new PositionI(0, 0);
+            Position2 += Position;
+
+            Assert.AreEqual(Position, Position2);
+
+            //tests the - Operator
+            Position -= Position2;
+
+            Assert.AreNotEqual(Position2, Position);
+            Assert.AreEqual(new PositionI(0, 0), Position);
+
+            //tests the == Operator
+            Assert.True(new PositionI(0, 0) == Position);
+
+            //tests the Equals function
+            Assert.True(Position.Equals(new PositionI(0, 0)));
+
+            //test Distance with PositionI
+            var dist = Position.Distance(Position2);
+            Assert.IsNotNull(dist);
+
+            //test Distance with PositionI
+            var dist2 = Position2.Distance(new Position(0, 0));
+            Assert.IsNotNull(dist2);
+            Assert.AreEqual(dist, dist2);
         }
     }
 
