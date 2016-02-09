@@ -172,24 +172,13 @@
                 }
 
                 if (enemyEntity.Health <= 0)
-                {      
-                    // Remove a headquarter and free the territory, Decrease Storage 
-                    if (enemyEntity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
-                    {  
-                        regionEndPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(enemyEntity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), enemyEntity.Owner);
-                        LogicRules.DecreaseHoleStorage(enemyEntity.Owner);
-                        regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
-                    }
+                { 
+                    LogicRules.DestroyBuilding(enemyEntity, regionEndPos, action.ActionTime, Controller.Instance.RegionManagerController);
                     regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
                 }
-                if (entity.Health <= 0)
+                else 
                 {
-                    if (entity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
-                    {  
-                        regionStartPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);
-                        LogicRules.DecreaseHoleStorage(entity.Owner);
-                        regionStartPos.RemoveEntity(action.ActionTime, entity);
-                    }
+                    LogicRules.DestroyBuilding(entity, regionStartPos, action.ActionTime, Controller.Instance.RegionManagerController);
                     regionStartPos.RemoveEntity(action.ActionTime, entity);
                 }
             }
