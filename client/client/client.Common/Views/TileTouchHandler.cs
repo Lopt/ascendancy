@@ -352,11 +352,10 @@
                         }
                         else
                         {
-                            // create an empty menu but didnt show it and set the m_menuView for the next touches
+                            // create an empty menu but didnt show it and set the m_menuView for the next touche
                             var types = new Core.Models.Definitions.Definition[6];
                             m_menuView = new MenuView(m_worldLayer, startPosI, types);
                             Gesture = TouchGesture.None;
-                            //m_menuView.CloseMenu();
                             return true;
                         }
                         Gesture = TouchGesture.Menu;

@@ -177,19 +177,15 @@
                     if (enemyEntity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
                     {  
                         regionEndPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(enemyEntity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), enemyEntity.Owner);
-                        LogicRules.DecreaseHoleStorage(enemyEntity.Owner);
+                        LogicRules.DecreaseWholeStorage(enemyEntity.Owner);
                         regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
                     }
                     regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
                 }
                 if (entity.Health <= 0)
                 {
-                    if (entity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
-                    {  
-                        regionStartPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);
-                        LogicRules.DecreaseHoleStorage(entity.Owner);
-                        regionStartPos.RemoveEntity(action.ActionTime, entity);
-                    }
+                    
+
                     regionStartPos.RemoveEntity(action.ActionTime, entity);
                 }
             }
