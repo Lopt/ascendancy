@@ -33,8 +33,20 @@
         {
             switch (definition.Category)
             {
+                // TODO: add more sub categorys and better check
                 case Category.Building:
-                    return CreateBuilding(positionI, definition, account);
+                    if (definition.SubType == EntityType.Headquarter)
+                    {
+                        return CreatTerritoryBuilding(positionI, definition, account);                
+                    }
+                    else if (definition.SubType == EntityType.GuardTower)
+                    {
+                        return CreatTerritoryBuilding(positionI, definition, account);
+                    }
+                    else
+                    {
+                        return CreateBuilding(positionI, definition, account);
+                    }
                 case Category.Unit:
                     return CreateUnit(positionI, definition, account);
             }
@@ -53,6 +65,21 @@
             dictParam[Core.Controllers.Actions.CreateUnit.CREATE_POSITION] = positionI; 
             dictParam[Core.Controllers.Actions.CreateUnit.CREATION_TYPE] = (long)definition.SubType;
             return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateUnit, dictParam);
+        }
+
+        /// <summary>
+        /// Creats the action which creates a territory building.
+        /// </summary>
+        /// <returns>The territory building.</returns>
+        /// <param name="positionI">Position i.</param>
+        /// <param name="definition">Definition.</param>
+        /// <param name="account">Account.</param>
+        private static Core.Models.Action CreatTerritoryBuilding(PositionI positionI, Definition definition, Account account)
+        {
+            var dictParam = new System.Collections.Generic.Dictionary<string, object>();
+            dictParam[Core.Controllers.Actions.CreateBuilding.CREATE_POSITION] = positionI; 
+            dictParam[Core.Controllers.Actions.CreateBuilding.CREATION_TYPE] = (long)definition.SubType;
+            return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateTerritoryBuilding, dictParam);
         }
 
         /// <summary>

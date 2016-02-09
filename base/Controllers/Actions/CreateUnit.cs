@@ -197,7 +197,6 @@
                     list.Add(regionManagerC.RegionManager.GetRegion(buildpoint.RegionPosition).RegionPosition);
                 }
             }
-
             return list;
         }
 

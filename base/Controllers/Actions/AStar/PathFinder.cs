@@ -108,63 +108,63 @@
                 var terrainDefinition = region.GetTerrain(newPosition.CellPosition);
                 // check terrain for walkable and other units in the path
                 if (terrainDefinition.Walkable)
-                    {
+                {
                         var unit = region.GetEntity(newPosition.CellPosition);
                         // field is free from everything
-                    if (unit == null)
-                    {
-                        if (m_nodes.ContainsKey(newPosition))
+                        if (unit == null)
                         {
-                            // use the dictionary and get the Node at the positonI
-                            var node = m_nodes[newPosition];
-                            if (node.State == NodeState.Open)
+                            if (m_nodes.ContainsKey(newPosition))
                             {
-                                // calculate the travel cost to the next tile
-                                double traversalCost = terrainDefinition.TravelCost;
-                                double temp = node.G + traversalCost;
-                                if (temp < node.G)
+                                // use the dictionary and get the Node at the positonI
+                                var node = m_nodes[newPosition];
+                                if (node.State == NodeState.Open)
                                 {
-                                    node.ParentNode = fromNode;
-                                    walkableNodes.Add(node);
+                                    // calculate the travel cost to the next tile
+                                    double traversalCost = terrainDefinition.TravelCost;
+                                    double temp = node.G + traversalCost;
+                                    if (temp < node.G)
+                                    {
+                                        node.ParentNode = fromNode;
+                                        walkableNodes.Add(node);
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            // if the Node was not open insert a new one in the dictionary
-                            var newNode = new Node(newPosition, searchParameters.EndLocation);
-                            newNode.ParentNode = fromNode;
-                            walkableNodes.Add(newNode);
-                            m_nodes[newPosition] = newNode;
-                        }                            
-                    }
-                    else if (unit != null && newPosition == searchParameters.EndLocation && unit.OwnerID != searchParameters.AccountID)                        
-                    {
-                        if (m_nodes.ContainsKey(newPosition))
-                        {
-                            // use the dictionary and get the Node at the positonI
-                            var node = m_nodes[newPosition];
-                            if (node.State == NodeState.Open)
+                            else
                             {
-                                // calculate the travel cost to the next tile
-                                double traversalCost = terrainDefinition.TravelCost;
-                                double temp = node.G + traversalCost;
-                                if (temp < node.G)
+                                // if the Node was not open insert a new one in the dictionary
+                                var newNode = new Node(newPosition, searchParameters.EndLocation);
+                                newNode.ParentNode = fromNode;
+                                walkableNodes.Add(newNode);
+                                m_nodes[newPosition] = newNode;
+                            }                            
+                        }
+                        else if (unit != null && newPosition == searchParameters.EndLocation && unit.OwnerID != searchParameters.AccountID)                        
+                        {
+                            if (m_nodes.ContainsKey(newPosition))
+                            {
+                                // use the dictionary and get the Node at the positonI
+                                var node = m_nodes[newPosition];
+                                if (node.State == NodeState.Open)
                                 {
-                                    node.ParentNode = fromNode;
-                                    walkableNodes.Add(node);
+                                    // calculate the travel cost to the next tile
+                                    double traversalCost = terrainDefinition.TravelCost;
+                                    double temp = node.G + traversalCost;
+                                    if (temp < node.G)
+                                    {
+                                        node.ParentNode = fromNode;
+                                        walkableNodes.Add(node);
+                                    }
                                 }
                             }
+                            else
+                            {
+                                // if the Node was not open insert a new one in the dictionary
+                                var newNode = new Node(newPosition, searchParameters.EndLocation);
+                                newNode.ParentNode = fromNode;
+                                walkableNodes.Add(newNode);
+                                m_nodes[newPosition] = newNode;
+                            }
                         }
-                        else
-                        {
-                            // if the Node was not open insert a new one in the dictionary
-                            var newNode = new Node(newPosition, searchParameters.EndLocation);
-                            newNode.ParentNode = fromNode;
-                            walkableNodes.Add(newNode);
-                            m_nodes[newPosition] = newNode;
-                        }
-                    }
                 }
             }
             return walkableNodes;

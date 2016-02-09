@@ -18,7 +18,7 @@
         {
             ID = id;
             UserName = "???";
-            TerritoryBuildings = new Dictionary<long, PositionI>();
+            TerritoryBuildings = new Dictionary<PositionI, long>();
             Buildings = new LinkedList<PositionI>();
             Units = new LinkedList<PositionI>();
             BuildableBuildings = new Dictionary<long, List<long>>();
@@ -39,7 +39,7 @@
         {
             ID = id;
             UserName = userName;
-            TerritoryBuildings = new Dictionary<long, PositionI>();
+            TerritoryBuildings = new Dictionary<PositionI, long>();
             Units = new LinkedList<PositionI>();
             Buildings = new LinkedList<PositionI>();
             BuildableBuildings = new Dictionary<long, List<long>>();
@@ -75,7 +75,7 @@
         /// Gets the territory buildings.
         /// </summary>
         /// <value>The territory buildings.</value>
-        public Dictionary<long, PositionI> TerritoryBuildings
+        public Dictionary<PositionI, long> TerritoryBuildings
         {
             get;
             private set;
