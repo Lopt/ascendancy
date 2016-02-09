@@ -168,7 +168,7 @@
             var position = borderPositions.ToList<PositionI>().First();
             var fieldOwner = region.GetClaimedTerritory(position);
 
-            RemoveBorder(borderPositions);
+            RemoveBorder(fieldOwner);
             var border = new CCDrawNode();
 
             m_tileMap.TileLayersContainer.AddChild(border);
@@ -190,17 +190,14 @@
         /// <summary>
         /// Removes the border.
         /// </summary>
-        /// <param name="borderPositions">Border positions.</param>
-        public void RemoveBorder(HashSet<PositionI> borderPositions)
+        /// <param name="owner">Owner.</param>
+        public void RemoveBorder(Account owner)
         {
-            var region = (Region)this.Model;
-            var position = borderPositions.ToList<PositionI>().First();
-            var fieldOwner = region.GetClaimedTerritory(position);
             CCDrawNode border;
-            if (m_drawNodes.TryGetValue(fieldOwner, out border))
+            if (m_drawNodes.TryGetValue(owner, out border))
             {
                 m_tileMap.TileLayersContainer.RemoveChild(border);
-                m_drawNodes.Remove(fieldOwner);
+                m_drawNodes.Remove(owner);
             }
         }
 
