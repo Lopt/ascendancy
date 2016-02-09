@@ -117,7 +117,7 @@
             region.AddEntity(action.ActionTime, entity);
 
             action.Account.Buildings.AddLast(entity.Position);
-            LogicRules.ResourceGeneration(action.Account, entity.Position, Controller.Instance.RegionManagerController);
+            LogicRules.IncreaseResourceGeneration(action.Account, entity.Position, Controller.Instance.RegionManagerController);
             LogicRules.EnableBuildOptions(type, action.Account);
             LogicRules.IncreaseStorage(action.Account, entity);
 

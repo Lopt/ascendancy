@@ -460,18 +460,38 @@
         /// </summary>
         /// <param name="account">Account.</param>
         /// <param name="regionManagerC">Region manager c.</param>
-        public static void ResourceGeneration(Account account,PositionI entitypos, Controllers.RegionManagerController regionManagerC)
+        public static void IncreaseResourceGeneration(Account account,PositionI entitypos, Controllers.RegionManagerController regionManagerC)
         {
             switch (regionManagerC.GetRegion(entitypos.RegionPosition).GetEntity(entitypos.CellPosition).DefinitionID)
           {
               case (int)Core.Models.Definitions.EntityType.Lab:                         
                     account.Technology.Set(account.Technology.Value, Constants.TECHNOLOGY_INCREMENT_VALUE);                   
-                  break;
+                    break;
     
               case (int)Core.Models.Definitions.EntityType.Furnace:
                     account.Scrap.Set(account.Scrap.Value, Constants.SCRAP_INCREMENT_VALUE);
-                  break;
+                    break;
           }
+        }
+
+        /// <summary>
+        /// Decreases the ressource generation.
+        /// </summary>
+        /// <param name="account">Current account.</param>
+        /// <param name="entitypos">Entity position.</param>
+        /// <param name="regionManagerC">Region manager controller.</param>
+        public static void DecreaseRessourceGeneration(Account account,PositionI entitypos, Controllers.RegionManagerController regionManagerC)
+        {
+            switch (regionManagerC.GetRegion(entitypos.RegionPosition).GetEntity(entitypos.CellPosition).DefinitionID)
+            {
+                case (int)Core.Models.Definitions.EntityType.Lab:                         
+                    account.Technology.Set(account.Technology.Value, -Constants.TECHNOLOGY_INCREMENT_VALUE);                   
+                    break;
+
+                case (int)Core.Models.Definitions.EntityType.Furnace:
+                    account.Scrap.Set(account.Scrap.Value, -Constants.SCRAP_INCREMENT_VALUE);
+                    break;
+            }
         }
 
         /// <summary>
@@ -507,24 +527,42 @@
         /// Destroy the building.
         /// </summary>
         /// <param name="entity">Entity.</param>
-        public static void DestroyBuilding(Entity entity, Region regionPos, DateTime time)
+        public static void DestroyBuilding(Entity entity, Region regionPos, DateTime time, Controllers.RegionManagerController regionManagerC)
         {
+            // TODO: in pseudo klasse kapseln und generischer lösen
             switch((long)entity.DefinitionID)
             {
                 case (long)Models.Definitions.EntityType.Headquarter:
                     regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);
                     DecreaseWholeStorage(entity.Owner);
                     DisableBuildOptions(entity.DefinitionID, entity.Owner);
-                    regionPos.RemoveEntity(time, entity);
                     break;
                 case (long)Models.Definitions.EntityType.GuardTower:
                     regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.GUARDTOWER_TERRITORY_RANGE), entity.Owner);
-                    regionPos.RemoveEntity(time, entity);
                     break;
                 case (long)Models.Definitions.EntityType.Barracks:
                     DisableBuildOptions(entity.DefinitionID, entity.Owner);
-                    regionPos.RemoveEntity(time, entity);
-                    break;     
+                    break;
+                case (long)Models.Definitions.EntityType.Furnace:
+                    DecreaseRessourceGeneration(entity.Owner, entity.Position, regionManagerC);
+                    break;
+                case (long)Models.Definitions.EntityType.Factory:
+                    break;
+                case (long)Models.Definitions.EntityType.Attachment:
+                    break;
+                case (long)Models.Definitions.EntityType.Hospital:
+                    break;
+                case (long)Models.Definitions.EntityType.TradingPost:
+                    break;
+                case (long)Models.Definitions.EntityType.Tent:
+                    DecreaseMaxPopulation(entity.Owner, entity);
+                    break;
+                case (long)Models.Definitions.EntityType.Lab:
+                    DecreaseRessourceGeneration(entity.Owner, entity.Position, regionManagerC);
+                    break;
+                case (long)Models.Definitions.EntityType.Scrapyard:
+                    DecreaseScrap(entity.Owner, entity);
+                    break;
             }
         }
     }        
