@@ -88,12 +88,17 @@
                 var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
                 var regionViewHex = (RegionViewHex)region.View;
                 var owner = m_entity.Owner;
+                var typ = m_entity.Definition.SubType;
                 if (regionViewHex != null)
                 {
                     regionViewHex.RemoveUnit(m_entity);
                 }
                 region.RemoveEntity(DateTime.Now, m_entity);
-                WorldLayerHex.DrawBorders(owner);
+
+                if (typ == Core.Models.Definitions.EntityType.GuardTower || typ == Core.Models.Definitions.EntityType.Headquarter)
+                {
+                    WorldLayerHex.DrawBorders(owner);
+                }
             }
 
             return m_runTime >= m_path.Count;
