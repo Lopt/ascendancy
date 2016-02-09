@@ -337,7 +337,7 @@
                             m_menuView = new MenuView(m_worldLayer, startPosI, types);
                             m_menuView.DrawMenu();
                         }
-                        else 
+                        else if (region.GetClaimedTerritory(startPosI) == action.Account)
                         {                            
                             var types = new Core.Models.Definitions.Definition[0];
                             var Gids = new short[6];
@@ -349,6 +349,15 @@
                             Gids[4] = Client.Common.Constants.BuildingMenuGid.CANCEL;
                             m_menuView = new MenuView(m_worldLayer, startPosI, types);
                             m_menuView.DrawMajorMenu(Gids);
+                        }
+                        else
+                        {
+                            // create an empty menu but didnt show it and set the m_menuView for the next touches
+                            var types = new Core.Models.Definitions.Definition[6];
+                            m_menuView = new MenuView(m_worldLayer, startPosI, types);
+                            Gesture = TouchGesture.None;
+                            //m_menuView.CloseMenu();
+                            return true;
                         }
                         Gesture = TouchGesture.Menu;
                     }
