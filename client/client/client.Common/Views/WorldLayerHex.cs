@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿
 
 namespace Client.Common.Views
 {
@@ -7,13 +7,13 @@ namespace Client.Common.Views
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Diagnostics;
-    using System.Threading.Tasks;
     using System.Linq;
-
+    using System.Reflection;
+    using System.Threading.Tasks;
+    using Client.Common.Constants;
     using Client.Common.Helper;
     using Client.Common.Manager;
     using Client.Common.Models;
-    using Client.Common.Constants;
     using CocosSharp;
     using Core.Controllers.Actions;
     using Core.Models;
@@ -35,7 +35,7 @@ namespace Client.Common.Views
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Client.Common.Views.WorldLayer"/> class.
+        /// Initializes a new instance of the <see cref="Client.Common.Views.WorldLayerHex"/> class.
         /// </summary>
         /// <param name="gameScene">Game scene.</param>
         public WorldLayerHex(GameScene gameScene)
@@ -131,15 +131,14 @@ namespace Client.Common.Views
         /// Draws the borders.
         /// </summary>
         /// <param name="entity">Entity.</param>
-        public void DrawBorders(Entity entity)
+        public void DrawBorders(Account owner)
         {
             // alle Gebäude des entity owners
-            var buildings = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(entity.Position.RegionPosition)
-                .GetEntity(entity.Position.CellPosition).Owner.TerritoryBuildings.Keys;
+            var buildings = owner.TerritoryBuildings.Keys;
             
             var color = new CCColor4B();
             color = CCColor4B.Green;
-            if (GameAppDelegate.Account != entity.Owner)
+            if (GameAppDelegate.Account != owner)
             {
                 color = CCColor4B.Red;
             }
@@ -165,7 +164,7 @@ namespace Client.Common.Views
             }
 
             // alle Grenzfelder finden und nach Region sortieren
-            var regionBorders = new Dictionary<RegionPosition,HashSet<PositionI>>();
+            var regionBorders = new Dictionary<RegionPosition, HashSet<PositionI>>();
             foreach (var pos in surroundedPositionsAll)
             {
                 var posOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(pos.RegionPosition).

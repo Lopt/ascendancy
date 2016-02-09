@@ -14,9 +14,10 @@
         /// </summary>
         /// <param name="model">The action Model.</param>
         /// <param name="worldLayer">World layer.</param>
-        public MoveUnit(Core.Models.ModelEntity model)
+        public MoveUnit(Core.Models.ModelEntity model, WorldLayerHex worldLayerHex)
             : base(model)
         {
+            WorldLayerHex = worldLayerHex;
         }
 
         /// <summary>
@@ -86,17 +87,22 @@
             {
                 var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
                 var regionViewHex = (RegionViewHex)region.View;
+                var owner = m_entity.Owner;
                 if (regionViewHex != null)
                 {
-                    throw new NotImplementedException();
-                    // TODO remove Unit and Redraw border by terretory building
-                    //regionViewHex.RemoveUnit(m_entity); 
-
+                    regionViewHex.RemoveUnit(m_entity);
                 }
-
+                region.RemoveEntity(DateTime.Now, m_entity);
+                WorldLayerHex.DrawBorders(owner);
             }
 
             return m_runTime >= m_path.Count;
+        }
+
+        public WorldLayerHex WorldLayerHex
+        {
+            get;
+            private set;
         }
 
         /// <summary>
