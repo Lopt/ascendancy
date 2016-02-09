@@ -24,7 +24,9 @@ namespace Client.Common.Views
     /// </summary>
     public class WorldLayerHex : CCLayer
     {
-
+        /// <summary>
+        /// View modes.
+        /// </summary>
         public enum ViewModes
         {
             CurrentGPSPosition,
@@ -35,7 +37,7 @@ namespace Client.Common.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.WorldLayer"/> class.
         /// </summary>
-        /// <param name="gameScene">Ga me scene.</param>
+        /// <param name="gameScene">Game scene.</param>
         public WorldLayerHex(GameScene gameScene)
             : base()
         {
@@ -60,14 +62,18 @@ namespace Client.Common.Views
         }
 
         /// <summary>
-        /// Gets the scale factor.
+        /// Gets the zoom.
         /// </summary>
-        /// <returns>The scale factor.</returns>
+        /// <returns>The zoom.</returns>
         public float GetZoom()
         {
             return m_zoom;
         }
 
+        /// <summary>
+        /// Zooms the world.
+        /// </summary>
+        /// <param name="newZoom">New zoom.</param>
         public void ZoomWorld(float newZoom)
         {
             if (Common.Constants.ClientConstants.TILEMAP_MIN_ZOOM < newZoom &&
@@ -79,11 +85,18 @@ namespace Client.Common.Views
             }
         }
 
+        /// <summary>
+        /// Sets the world position.
+        /// </summary>
+        /// <param name="worldPoint">World point.</param>
         public void SetWorldPosition(CCPoint worldPoint)
         {
             m_currentWorldPoint = worldPoint;
         }
 
+        /// <summary>
+        /// Make a ugle draw (moves the tile layers container a little bit).
+        /// </summary>
         public void UglyDraw()
         {
             foreach (var region in m_regionViewHexDic)
@@ -92,6 +105,11 @@ namespace Client.Common.Views
             }
         }
 
+        /// <summary>
+        /// Gets the region view hex.
+        /// </summary>
+        /// <returns>The region view hex.</returns>
+        /// <param name="regionPosition">Region position.</param>
         public RegionViewHex GetRegionViewHex(RegionPosition regionPosition)
         {
             RegionViewHex viewRegionHex = null;
@@ -100,11 +118,19 @@ namespace Client.Common.Views
             return viewRegionHex;
         }
 
+        /// <summary>
+        /// Dos the action.
+        /// </summary>
+        /// <param name="action">Action.</param>
         public void DoAction(Core.Models.Action action)
         {
             m_worker.Queue.Enqueue(action);
         }
 
+        /// <summary>
+        /// Draws the borders.
+        /// </summary>
+        /// <param name="entity">Entity.</param>
         public void DrawBorders(Entity entity)
         {
             // alle Gebäude des entity owners
@@ -123,7 +149,6 @@ namespace Client.Common.Views
             // alle Felder finden die zu der entity gehören
             foreach (var building in buildings)
             {
-
                 var buildingEntity = Core.Controllers.Controller.Instance.RegionManagerController
                     .GetRegion(building.RegionPosition).GetEntity(building.CellPosition);
                 if (buildingEntity.Definition.SubType == Core.Models.Definitions.EntityType.Headquarter)
@@ -172,9 +197,11 @@ namespace Client.Common.Views
                 regionBorders.TryGetValue(regionPosition, out borderPositions);
                 this.GetRegionViewHex(regionPosition).DrawBorder(borderPositions, color);
             }
-
         }
 
+        /// <summary>
+        /// Addeds to scene.
+        /// </summary>
         protected override void AddedToScene()
         {
             base.AddedToScene();
@@ -182,6 +209,10 @@ namespace Client.Common.Views
             ZoomWorld(ClientConstants.TILEMAP_NORM_ZOOM);
         }
 
+        /// <summary>
+        /// Inits the camera.
+        /// </summary>
+        /// <param name="worldPoint">World point.</param>
         private void InitCamera(CCPoint worldPoint)
         {
             var cameraTargetPoint = worldPoint;
@@ -194,12 +225,21 @@ namespace Client.Common.Views
                     cameraHeight));
         }
 
+        /// <summary>
+        /// Sets the camera.
+        /// </summary>
+        /// <param name="newTargetPoint">New target point.</param>
+        /// <param name="newCameraPoint">New camera point.</param>
         private void SetCamera(CCPoint3 newTargetPoint, CCPoint3 newCameraPoint)
         {
             this.Camera.TargetInWorldspace = newTargetPoint;
             this.Camera.CenterInWorldspace = newCameraPoint;
         }
 
+        /// <summary>
+        /// Checks the view for position updats.
+        /// </summary>
+        /// <param name="frameTimesInSecond">Frame times in second.</param>
         private void CheckView(float frameTimesInSecond)
         {
             var oldCameraPoint = this.Camera.CenterInWorldspace;
@@ -213,6 +253,10 @@ namespace Client.Common.Views
             SetCamera(newTargetPoint, newCameraPoint); 
         }
 
+        /// <summary>
+        /// Loads the region views.
+        /// </summary>
+        /// <param name="point">Point.</param>
         private void LoadRegionViews(CCPoint point)
         {
             var position = PositionHelper.WorldspaceToPosition(point);
@@ -239,9 +283,13 @@ namespace Client.Common.Views
                 }
                 this.AddChild(regionViewHex.GetTileMap().TileLayersContainer);
                 m_regionViewHexDic.Add(regionPos, regionViewHex);
-            }
-                
+            }         
         }
+
+        /// <summary>
+        /// The view mode.
+        /// </summary>
+        public ViewModes ViewMode;
 
         #region Properties
 
@@ -275,9 +323,9 @@ namespace Client.Common.Views
         /// </summary>
         private GameScene m_gameScene;
 
-
-        public ViewModes ViewMode;
-
+        /// <summary>
+        /// The touch handler.
+        /// </summary>
         private TileTouchHandler m_touchHandler;
 
         #endregion

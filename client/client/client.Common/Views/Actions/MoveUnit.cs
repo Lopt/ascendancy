@@ -88,7 +88,10 @@
                 var regionViewHex = (RegionViewHex)region.View;
                 if (regionViewHex != null)
                 {
-                    //TODO remove Unit and Border  
+                    throw new NotImplementedException();
+                    // TODO remove Unit and Redraw border by terretory building
+                    //regionViewHex.RemoveUnit(m_entity); 
+
                 }
 
             }
