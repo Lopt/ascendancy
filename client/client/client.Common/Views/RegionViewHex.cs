@@ -19,6 +19,16 @@
     /// </summary>
     public class RegionViewHex : ViewEntity
     {
+        public enum Layer
+        {
+            Terrain,
+            Building,
+            Unit,
+            Border,
+            Indicator,
+            Menu
+        }
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.RegionViewHex"/> class.
@@ -31,6 +41,7 @@
             m_tileMap = new CCTileMap(tileMapInfo);
             m_tileMap.TileLayersContainer.AnchorPoint = new CCPoint(0.0f, 1.0f);
 
+
             m_terrainLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_TERRAIN);
             m_buildingLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_BUILDING);
             m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
@@ -42,8 +53,16 @@
             Init();
             LoadRegionViewAsync();
 
-            m_childs = new LinkedList<CCNode>();
-            m_childs.AddFirst(m_tileMap.TileLayersContainer);
+            m_childs = new Dictionary<Layer, LinkedList<CCNode>>();
+            m_childs[Layer.Terrain] = new LinkedList<CCNode>();
+            m_childs[Layer.Building] = new LinkedList<CCNode>();
+            m_childs[Layer.Unit] = new LinkedList<CCNode>();
+            m_childs[Layer.Border] = new LinkedList<CCNode>();
+            m_childs[Layer.Indicator] = new LinkedList<CCNode>();
+            m_childs[Layer.Menu] = new LinkedList<CCNode>();
+
+            m_childs[Layer.Terrain].AddFirst(m_tileMap.TileLayersContainer);
+            
         }
 
         /// <summary>
@@ -55,12 +74,9 @@
             return m_tileMap;
         }
 
-        public IEnumerator<CCNode> Childs
+        public IEnumerator<CCNode> GetChildrens(Layer layer)
         {
-            get
-            {
-                return m_childs.GetEnumerator();
-            }
+            return m_childs[layer].GetEnumerator();
         }
 
         public void UglyDraw()
@@ -366,7 +382,7 @@
 
         private Dictionary<Core.Models.Entity,CCDrawNode> m_drawNodes;
 
-        private LinkedList<CCNode> m_childs;
+        private Dictionary<Layer, LinkedList<CCNode>> m_childs;
 
         #endregion
     }
