@@ -109,7 +109,7 @@
             }           
             else if (region.GetEntity(entityCellPostion) == null && 
                      m_type.SubType != Models.Definitions.EntityType.Headquarter &&
-                region.GetClaimedTerritory(entityPosition) == account)
+                     region.GetClaimedTerritory(entityPosition) == account)
             {
                 // check for free tile and the terrain is possesed from the current player
                 var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
@@ -168,7 +168,7 @@
                 action.Account.TerritoryBuildings.Add(entity.Position, type);             
                 LogicRules.EnableBuildOptions(type, action.Account);
                 region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, m_drawArea), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
-                LogicRules.IncreaseHoleStorage(action.Account);
+                LogicRules.IncreaseWholeStorage(action.Account);
                 LogicRules.GatherResources(action.Account, Controller.Instance.RegionManagerController, Constants.HEADQUARTER_TERRITORY_RANGE);
                 LogicRules.SetCurrentMaxPopultion(action.Account);
                 LogicRules.SetCurrentMaxEnergy(action.Account);
