@@ -63,7 +63,7 @@
                     return new Client.Common.Views.Actions.MoveUnit(action);
 
                 case Core.Models.Action.ActionType.CreateTerritoryBuilding:
-                    return new Client.Common.Views.Actions.CreateTerritoryBuilding(action, WorldLayerHex.GetRegionViewHex(regionPosition));
+                    return new Client.Common.Views.Actions.CreateTerritoryBuilding(action, WorldLayerHex);
 
                 case Core.Models.Action.ActionType.CreateBuilding:
                     return new Client.Common.Views.Actions.CreateBuilding(action, WorldLayerHex.GetRegionViewHex(regionPosition));

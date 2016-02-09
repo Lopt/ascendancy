@@ -88,8 +88,7 @@
                 var regionViewHex = (RegionViewHex)region.View;
                 if (regionViewHex != null)
                 {
-                    //regionViewHex.SetUnit(new CCTileMapCoordinates(m_entity.Position.CellPosition.CellX, m_entity.Position.CellPosition.CellY), null);
-                    regionViewHex.RemoveBorder(m_entity);
+                    //TODO remove Unit and Border  
                 }
 
             }

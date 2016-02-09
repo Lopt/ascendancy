@@ -222,6 +222,11 @@
         //1984;
 
         /// <summary>
+        /// The thickness of the terretory building border.
+        /// </summary>
+        public const float TERRATORRY_BUILDING_BORDER_SIZE = 10.0f;
+
+        /// <summary>
         /// number of regions which should be drawn (X)
         /// </summary>
         public const short DRAW_REGIONS_X = 5;

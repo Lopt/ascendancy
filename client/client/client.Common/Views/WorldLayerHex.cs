@@ -1,4 +1,6 @@
-﻿namespace Client.Common.Views
+﻿using System.Reflection;
+
+namespace Client.Common.Views
 {
     using System;
     using System.Collections.Concurrent;
@@ -6,6 +8,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Diagnostics;
     using System.Threading.Tasks;
+    using System.Linq;
 
     using Client.Common.Helper;
     using Client.Common.Manager;
@@ -100,6 +103,76 @@
         public void DoAction(Core.Models.Action action)
         {
             m_worker.Queue.Enqueue(action);
+        }
+
+        public void DrawBorders(Entity entity)
+        {
+            // alle Gebäude des entity owners
+            var buildings = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(entity.Position.RegionPosition)
+                .GetEntity(entity.Position.CellPosition).Owner.TerritoryBuildings.Keys;
+            
+            var color = new CCColor4B();
+            color = CCColor4B.Green;
+            if (GameAppDelegate.Account != entity.Owner)
+            {
+                color = CCColor4B.Red;
+            }
+
+            var surroundedPositionsAll = new HashSet<PositionI>();
+            int range;
+            // alle Felder finden die zu der entity gehören
+            foreach (var building in buildings)
+            {
+
+                var buildingEntity = Core.Controllers.Controller.Instance.RegionManagerController
+                    .GetRegion(building.RegionPosition).GetEntity(building.CellPosition);
+                if (buildingEntity.Definition.SubType == Core.Models.Definitions.EntityType.Headquarter)
+                {
+                    range = Core.Models.Constants.HEADQUARTER_TERRITORY_RANGE;
+                }
+                else
+                {
+                    range = Core.Models.Constants.GUARDTOWER_TERRITORY_RANGE;
+                }
+                    
+                var surroundedPositionsBuilding = LogicRules.GetSurroundedPositions(building, range);
+                surroundedPositionsAll.UnionWith(surroundedPositionsBuilding);
+            }
+
+            // alle Grenzfelder finden und nach Region sortieren
+            var regionBorders = new Dictionary<RegionPosition,HashSet<PositionI>>();
+            foreach (var pos in surroundedPositionsAll)
+            {
+                var posOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(pos.RegionPosition).
+                    GetClaimedTerritory(pos);
+                
+                var surroundedFields = LogicRules.GetSurroundedFields(pos);
+                foreach (var field in surroundedFields)
+                {
+                    var fieldOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(field.RegionPosition).
+                        GetClaimedTerritory(field);
+                    if (posOwner != fieldOwner)
+                    {
+                        if (!regionBorders.ContainsKey(pos.RegionPosition))
+                        {
+                            regionBorders.Add(pos.RegionPosition, new HashSet<PositionI>());
+                        }
+                        HashSet<PositionI> position;
+                        regionBorders.TryGetValue(pos.RegionPosition, out position);
+                        position.Add(pos);
+                        break;
+                    }
+                }
+            }
+
+            // zeichne Grenzen in den regionen
+            HashSet<PositionI> borderPositions;
+            foreach (var regionPosition in regionBorders.Keys)
+            {
+                regionBorders.TryGetValue(regionPosition, out borderPositions);
+                this.GetRegionViewHex(regionPosition).DrawBorder(borderPositions, color);
+            }
+
         }
 
         protected override void AddedToScene()
