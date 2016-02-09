@@ -99,16 +99,46 @@ namespace Tests
         [Test]
         public void PositionITest()
         {
+            //standart Constructor
             var Position = new PositionI(0, 0);
             Assert.IsNotNull(Position);
 
+            //Constructor Position out of a ReagionPosition
+            var RegionPos = new RegionPosition(0, 0);
+            var CellPos = new CellPosition(0, 0);
+            Position = new PositionI(RegionPos, CellPos);
+            Assert.IsNotNull(Position);
 
+            Position = new PositionI(new Position(0, 0));
+            Assert.IsNotNull(Position);
 
-            //test constructor with region position and cellposition
-            //Position = new PositionI();
-            //Assert.IsNotNull(Position);
+            //tests the + Operator
+            Position = new PositionI(1, 1);
+            var Position2 = new PositionI(0, 0);
+            Position2 += Position;
 
-            //test constructor with position
+            Assert.AreEqual(Position, Position2);
+
+            //tests the - Operator
+            Position -= Position2;
+
+            Assert.AreNotEqual(Position2, Position);
+            Assert.AreEqual(new PositionI(0, 0), Position);
+
+            //tests the == Operator
+            Assert.True(new PositionI(0, 0) == Position);
+
+            //tests the Equals function
+            Assert.True(Position.Equals(new PositionI(0, 0)));
+
+            //test Distance with PositionI
+            var dist = Position.Distance(Position2);
+            Assert.IsNotNull(dist);
+
+            //test Distance with PositionI
+            var dist2 = Position2.Distance(new Position(0, 0));
+            Assert.IsNotNull(dist2);
+            Assert.AreEqual(dist, dist2);
         }
     }
 
