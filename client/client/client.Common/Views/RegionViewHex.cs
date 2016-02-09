@@ -30,7 +30,7 @@
             var tileMapInfo = new CCTileMapInfo(Common.Constants.ClientConstants.TILEMAP_FILE_HEX);
             m_tileMap = new CCTileMap(tileMapInfo);
             m_tileMap.TileLayersContainer.AnchorPoint = new CCPoint(0.0f, 1.0f);
-             
+
             m_terrainLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_TERRAIN);
             m_buildingLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_BUILDING);
             m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
@@ -42,7 +42,8 @@
             Init();
             LoadRegionViewAsync();
 
-
+            m_childs = new LinkedList<CCNode>();
+            m_childs.AddFirst(m_tileMap.TileLayersContainer);
         }
 
         /// <summary>
@@ -52,6 +53,14 @@
         public CCTileMap GetTileMap()
         {
             return m_tileMap;
+        }
+
+        public IEnumerator<CCNode> Childs
+        {
+            get
+            {
+                return m_childs.GetEnumerator();
+            }
         }
 
         public void UglyDraw()
@@ -356,6 +365,8 @@
         private CCTileMap m_tileMap;
 
         private Dictionary<Core.Models.Entity,CCDrawNode> m_drawNodes;
+
+        private LinkedList<CCNode> m_childs;
 
         #endregion
     }
