@@ -536,32 +536,43 @@
                     regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);
                     DecreaseWholeStorage(entity.Owner);
                     DisableBuildOptions(entity.DefinitionID, entity.Owner);
+                    entity.Owner.TerritoryBuildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.GuardTower:
                     regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.GUARDTOWER_TERRITORY_RANGE), entity.Owner);
+                    entity.Owner.TerritoryBuildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Barracks:
                     DisableBuildOptions(entity.DefinitionID, entity.Owner);
+                    entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Furnace:
                     DecreaseRessourceGeneration(entity.Owner, entity.Position, regionManagerC);
+                    entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Factory:
+                    entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Attachment:
+                    entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Hospital:
+                    entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.TradingPost:
+                    entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Tent:
                     DecreaseMaxPopulation(entity.Owner, entity);
+                    entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Lab:
                     DecreaseRessourceGeneration(entity.Owner, entity.Position, regionManagerC);
+                    entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Scrapyard:
                     DecreaseScrap(entity.Owner, entity);
+                    entity.Owner.Buildings.Remove(entity.Position);
                     break;
             }
         }
