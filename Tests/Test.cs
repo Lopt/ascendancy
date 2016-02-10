@@ -32,7 +32,32 @@ namespace Tests
         [Test]
         public void RegionPositionTest()
         {
-            //var RegionPos = new RegionPosition();
+            //standart constructor
+            var RegionPos = new RegionPosition(0, 0);
+            Assert.IsNotNull(RegionPos);
+
+            //Constructor RegionPosition out of a Position
+            var Position = new Position(0, 0);
+            RegionPos = new RegionPosition(Position);
+            Assert.IsNotNull(RegionPos);
+
+            //Constructor RegionPosition out of a PositionI
+            var PositionI = new PositionI(0, 0);
+            RegionPos = new RegionPosition(PositionI);
+            Assert.IsNotNull(RegionPos);
+
+            //Tests the + Operator
+            var RegionPos2 = new RegionPosition(1, 1);
+            RegionPos += RegionPos2;
+            Assert.AreEqual(RegionPos2, RegionPos);
+
+            //Tests the == Operator
+            Assert.True(RegionPos == RegionPos2);
+
+            //Tests the Equals funktion
+            Assert.True(RegionPos.Equals(RegionPos2));
+
+
         }
 
         [Test]
