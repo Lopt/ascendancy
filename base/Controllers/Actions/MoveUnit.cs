@@ -175,11 +175,13 @@
                 { 
                     LogicRules.DestroyBuilding(enemyEntity, regionEndPos, action.ActionTime, Controller.Instance.RegionManagerController);
                     regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
+                    enemyEntity.Owner.Units.Remove(enemyEntity.Position);
                 }
                 else 
                 {
                     LogicRules.DestroyBuilding(entity, regionStartPos, action.ActionTime, Controller.Instance.RegionManagerController);
                     regionStartPos.RemoveEntity(action.ActionTime, entity);
+                    entity.Owner.Units.Remove(entity.Position);
                 }
             }
             else

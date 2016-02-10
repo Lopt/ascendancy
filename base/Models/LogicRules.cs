@@ -543,7 +543,18 @@
                     entity.Owner.TerritoryBuildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Barracks:
-                    DisableBuildOptions(entity.DefinitionID, entity.Owner);
+                    var count = 0;
+                    foreach (var element in entity.Owner.Buildings)
+                    {
+                        if (entity.Owner.Buildings.ContainsValue(entity.DefinitionID) == element.Value)
+                        {
+                            count++;                                
+                        }    
+                    }
+                    if (count == 1)
+                    {
+                        DisableBuildOptions(entity.DefinitionID, entity.Owner);
+                    }
                     entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Furnace:
