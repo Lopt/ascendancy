@@ -58,9 +58,14 @@
         public const string DATA_SERVER = "http://derfalke.no-ip.biz";
 
         /// <summary>
+        /// The path to the game world datas.
+        /// </summary>
+        public const string ASCENDANCY_WORLD_PATH = "/ascendancy-world/world/";
+
+        /// <summary>
         /// path to region file
         /// </summary>
-        public const string REGION_SERVER_PATH = DATA_SERVER + "/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
+        public const string REGION_SERVER_PATH = DATA_SERVER + ASCENDANCY_WORLD_PATH + "$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
 
         /// <summary>
         /// path to unit definitions
