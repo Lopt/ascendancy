@@ -113,21 +113,20 @@
                 if (regionViewHex != null)
                 {
                     if (m_enemyEntity.Definition.Category == Core.Models.Definitions.Category.Building)
-                    {
+                    {                        
                         regionViewHex.RemoveBuilding(m_enemyEntity);
+
+                        if (typ == Core.Models.Definitions.EntityType.GuardTower || typ == Core.Models.Definitions.EntityType.Headquarter)
+                        {
+                            WorldLayerHex.DrawBorders(owner);
+                        }
                     }
                     else
                     {
                         regionViewHex.RemoveUnit(m_enemyEntity);
                     }                        
                 }
-
-                if (typ == Core.Models.Definitions.EntityType.GuardTower || typ == Core.Models.Definitions.EntityType.Headquarter)
-                {
-                    WorldLayerHex.DrawBorders(owner);
-                }
             }
-
             return m_runTime >= m_path.Count;
         }
 
