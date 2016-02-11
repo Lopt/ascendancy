@@ -89,11 +89,12 @@
                 var regionViewHex = (RegionViewHex)region.View;
                 var owner = m_entity.Owner;
                 var typ = m_entity.Definition.SubType;
+                region.RemoveEntity(DateTime.Now, m_entity);
+
                 if (regionViewHex != null)
                 {
                     regionViewHex.RemoveUnit(m_entity);
                 }
-                region.RemoveEntity(DateTime.Now, m_entity);
 
                 if (typ == Core.Models.Definitions.EntityType.GuardTower || typ == Core.Models.Definitions.EntityType.Headquarter)
                 {

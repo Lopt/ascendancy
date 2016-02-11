@@ -97,7 +97,7 @@
                 // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
                 foreach (var position in list)
                 {
-                    if (region.GetClaimedTerritory(entityPosition) != null)
+                    if (region.GetClaimedTerritory(position) != null)
                     {
                         territoryFlag = false;
                     }                  
@@ -118,17 +118,17 @@
                 // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
                 foreach (var position in list)
                 {
-                    if (region.GetClaimedTerritory(position) != null)
-                    {
+                    var tile = region.GetClaimedTerritory(position);
+                    if (tile != account && 
+                        tile != null)
+                    { 
                         territoryFlag = false;
-                    }                  
+                    }
                 }
                 if (territoryFlag)
                 {                
                     return td.Buildable && LogicRules.ConsumeResource(account, m_type); 
                 }
-
-                return td.Buildable && LogicRules.ConsumeResource(account, m_type);  
             }
             return false;         
         }

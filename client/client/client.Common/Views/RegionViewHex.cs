@@ -98,7 +98,7 @@
         public void RemoveUnit(Entity unit)
         {
             var unitV = (UnitView)unit.View;
-            m_tileMap.RemoveChild(unitV.Node);
+            m_tileMap.TileLayersContainer.RemoveChild(unitV.Node);
         }
 
         /// <summary>
