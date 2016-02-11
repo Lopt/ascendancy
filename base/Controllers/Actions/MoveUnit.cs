@@ -169,6 +169,8 @@
 
                     if (((UnitDefinition)enemyEntity.Definition).AttackRange >= m_fightDistance)
                     {
+                        LogicRules.AllAttackModifier(enemyEntity);
+                        LogicRules.AllDefenseModifier(entity);
                         entity.Health -= enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
                     }
                 }
