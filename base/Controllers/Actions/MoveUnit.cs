@@ -90,6 +90,8 @@
             var unit = Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
             var endLocationUnit = Controller.Instance.RegionManagerController.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
 
+                var debugp = Controller.Instance.RegionManagerController.GetRegion(endPosition.RegionPosition).GetTerrain(endPosition.CellPosition);
+
             if (startPosition == endPosition)
             {
                 return false;
