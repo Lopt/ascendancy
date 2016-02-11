@@ -60,7 +60,7 @@
         /// <summary>
         /// path to region file
         /// </summary>
-        public const string REGION_SERVER_PATH = DATA_SERVER + "/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
+        public const string REGION_SERVER_PATH = DATA_SERVER + "/ascendancy-world/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
 
         /// <summary>
         /// path to unit definitions

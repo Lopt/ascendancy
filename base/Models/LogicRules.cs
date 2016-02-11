@@ -546,7 +546,7 @@
                     var count = 0;
                     foreach (var element in entity.Owner.Buildings)
                     {
-                        if (entity.Owner.Buildings.ContainsValue(entity.DefinitionID) == element.Value)
+                        if (entity.Owner.Buildings.ContainsValue(element.Value))
                         {
                             count++;                                
                         }    
