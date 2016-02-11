@@ -102,6 +102,15 @@
         }
 
         /// <summary>
+        /// Removes the building.
+        /// </summary>
+        /// <param name="building">Building.</param>
+        public void RemoveBuilding(Entity building)
+        {
+            m_buildingLayer.RemoveTile(new CCTileMapCoordinates(building.Position.CellPosition.CellX,building.Position.CellPosition.CellY));
+        }
+
+        /// <summary>
         /// Sets the menu tile.
         /// </summary>
         /// <param name="cellPos">Cell position.</param>
