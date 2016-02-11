@@ -1,16 +1,19 @@
-﻿namespace Client.Common.Views
+﻿
+
+namespace Client.Common.Views
 {
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Diagnostics;
+    using System.Linq;
+    using System.Reflection;
     using System.Threading.Tasks;
-
+    using Client.Common.Constants;
     using Client.Common.Helper;
     using Client.Common.Manager;
     using Client.Common.Models;
-    using Client.Common.Constants;
     using CocosSharp;
     using Core.Controllers.Actions;
     using Core.Models;
@@ -21,7 +24,9 @@
     /// </summary>
     public class WorldLayerHex : CCLayer
     {
-
+        /// <summary>
+        /// View modes.
+        /// </summary>
         public enum ViewModes
         {
             CurrentGPSPosition,
@@ -30,9 +35,9 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Client.Common.Views.WorldLayer"/> class.
+        /// Initializes a new instance of the <see cref="Client.Common.Views.WorldLayerHex"/> class.
         /// </summary>
-        /// <param name="gameScene">Ga me scene.</param>
+        /// <param name="gameScene">Game scene.</param>
         public WorldLayerHex(GameScene gameScene)
             : base()
         {
@@ -57,14 +62,18 @@
         }
 
         /// <summary>
-        /// Gets the scale factor.
+        /// Gets the zoom.
         /// </summary>
-        /// <returns>The scale factor.</returns>
+        /// <returns>The zoom.</returns>
         public float GetZoom()
         {
             return m_zoom;
         }
 
+        /// <summary>
+        /// Zooms the world.
+        /// </summary>
+        /// <param name="newZoom">New zoom.</param>
         public void ZoomWorld(float newZoom)
         {
             if (Common.Constants.ClientConstants.TILEMAP_MIN_ZOOM < newZoom &&
@@ -76,11 +85,18 @@
             }
         }
 
+        /// <summary>
+        /// Sets the world position.
+        /// </summary>
+        /// <param name="worldPoint">World point.</param>
         public void SetWorldPosition(CCPoint worldPoint)
         {
             m_currentWorldPoint = worldPoint;
         }
 
+        /// <summary>
+        /// Make a ugle draw (moves the tile layers container a little bit).
+        /// </summary>
         public void UglyDraw()
         {
             foreach (var region in m_regionViewHexDic)
@@ -89,6 +105,11 @@
             }
         }
 
+        /// <summary>
+        /// Gets the region view hex.
+        /// </summary>
+        /// <returns>The region view hex.</returns>
+        /// <param name="regionPosition">Region position.</param>
         public RegionViewHex GetRegionViewHex(RegionPosition regionPosition)
         {
             RegionViewHex viewRegionHex = null;
@@ -97,11 +118,89 @@
             return viewRegionHex;
         }
 
+        /// <summary>
+        /// Dos the action.
+        /// </summary>
+        /// <param name="action">Action.</param>
         public void DoAction(Core.Models.Action action)
         {
             m_worker.Queue.Enqueue(action);
         }
 
+        /// <summary>
+        /// Draws the borders.
+        /// </summary>
+        /// <param name="entity">Entity.</param>
+        public void DrawBorders(Account owner)
+        {
+            // alle Gebäude des entity owners
+            var buildings = owner.TerritoryBuildings.Keys;
+            
+            var color = new CCColor4B();
+            color = CCColor4B.Green;
+            if (GameAppDelegate.Account != owner)
+            {
+                color = CCColor4B.Red;
+            }
+
+            var surroundedPositionsAll = new HashSet<PositionI>();
+            int range;
+            // alle Felder finden die zu der entity gehören
+            foreach (var building in buildings)
+            {
+                var buildingEntity = Core.Controllers.Controller.Instance.RegionManagerController
+                    .GetRegion(building.RegionPosition).GetEntity(building.CellPosition);
+                if (buildingEntity.Definition.SubType == Core.Models.Definitions.EntityType.Headquarter)
+                {
+                    range = Core.Models.Constants.HEADQUARTER_TERRITORY_RANGE;
+                }
+                else
+                {
+                    range = Core.Models.Constants.GUARDTOWER_TERRITORY_RANGE;
+                }
+                    
+                var surroundedPositionsBuilding = LogicRules.GetSurroundedPositions(building, range);
+                surroundedPositionsAll.UnionWith(surroundedPositionsBuilding);
+            }
+
+            // alle Grenzfelder finden und nach Region sortieren
+            var regionBorders = new Dictionary<RegionPosition, HashSet<PositionI>>();
+            foreach (var pos in surroundedPositionsAll)
+            {
+                var posOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(pos.RegionPosition).
+                    GetClaimedTerritory(pos);
+                
+                var surroundedFields = LogicRules.GetSurroundedFields(pos);
+                foreach (var field in surroundedFields)
+                {
+                    var fieldOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(field.RegionPosition).
+                        GetClaimedTerritory(field);
+                    if (posOwner != fieldOwner)
+                    {
+                        if (!regionBorders.ContainsKey(pos.RegionPosition))
+                        {
+                            regionBorders.Add(pos.RegionPosition, new HashSet<PositionI>());
+                        }
+                        HashSet<PositionI> position;
+                        regionBorders.TryGetValue(pos.RegionPosition, out position);
+                        position.Add(pos);
+                        break;
+                    }
+                }
+            }
+
+            // zeichne Grenzen in den regionen
+            HashSet<PositionI> borderPositions;
+            foreach (var regionPosition in regionBorders.Keys)
+            {
+                regionBorders.TryGetValue(regionPosition, out borderPositions);
+                this.GetRegionViewHex(regionPosition).DrawBorder(borderPositions, color);
+            }
+        }
+
+        /// <summary>
+        /// Addeds to scene.
+        /// </summary>
         protected override void AddedToScene()
         {
             base.AddedToScene();
@@ -109,6 +208,10 @@
             ZoomWorld(ClientConstants.TILEMAP_NORM_ZOOM);
         }
 
+        /// <summary>
+        /// Inits the camera.
+        /// </summary>
+        /// <param name="worldPoint">World point.</param>
         private void InitCamera(CCPoint worldPoint)
         {
             var cameraTargetPoint = worldPoint;
@@ -121,12 +224,21 @@
                     cameraHeight));
         }
 
+        /// <summary>
+        /// Sets the camera.
+        /// </summary>
+        /// <param name="newTargetPoint">New target point.</param>
+        /// <param name="newCameraPoint">New camera point.</param>
         private void SetCamera(CCPoint3 newTargetPoint, CCPoint3 newCameraPoint)
         {
             this.Camera.TargetInWorldspace = newTargetPoint;
             this.Camera.CenterInWorldspace = newCameraPoint;
         }
 
+        /// <summary>
+        /// Checks the view for position updats.
+        /// </summary>
+        /// <param name="frameTimesInSecond">Frame times in second.</param>
         private void CheckView(float frameTimesInSecond)
         {
             var oldCameraPoint = this.Camera.CenterInWorldspace;
@@ -140,6 +252,10 @@
             SetCamera(newTargetPoint, newCameraPoint); 
         }
 
+        /// <summary>
+        /// Loads the region views.
+        /// </summary>
+        /// <param name="point">Point.</param>
         private void LoadRegionViews(CCPoint point)
         {
             var position = PositionHelper.WorldspaceToPosition(point);
@@ -166,9 +282,13 @@
                 }
                 this.AddChild(regionViewHex.GetTileMap().TileLayersContainer);
                 m_regionViewHexDic.Add(regionPos, regionViewHex);
-            }
-                
+            }         
         }
+
+        /// <summary>
+        /// The view mode.
+        /// </summary>
+        public ViewModes ViewMode;
 
         #region Properties
 
@@ -202,9 +322,9 @@
         /// </summary>
         private GameScene m_gameScene;
 
-
-        public ViewModes ViewMode;
-
+        /// <summary>
+        /// The touch handler.
+        /// </summary>
         private TileTouchHandler m_touchHandler;
 
         #endregion
