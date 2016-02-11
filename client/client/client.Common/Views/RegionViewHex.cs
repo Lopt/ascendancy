@@ -107,7 +107,7 @@
         /// <param name="building">Building.</param>
         public void RemoveBuilding(Entity building)
         {
-            m_buildingLayer.RemoveTile(new CCTileMapCoordinates(building.Position.CellPosition.CellX,building.Position.CellPosition.CellY));
+            m_buildingLayer.RemoveTile(new CCTileMapCoordinates(building.Position.CellPosition.CellX, building.Position.CellPosition.CellY));
         }
 
         /// <summary>
@@ -162,7 +162,7 @@
         {            
             m_indicatorLayer.SetTileGID(gid, new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
             var sprite = m_indicatorLayer.ExtractTile(new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY), true);
-            sprite.Opacity = 30;
+            sprite.Opacity = HelperSpritesGid.INDICATOR_OPACITY;
             return sprite;
         }
 
