@@ -92,6 +92,27 @@
             GameAppDelegate.Account.Population.Value = 1000;
             GameAppDelegate.Account.Technology.Set(1000, 0);
             GameAppDelegate.Account.Energy.Value = 1000;
+
+            var account = new Core.Models.Account(GameAppDelegate.Account.ID + 1);
+            new Core.Models.AccountManager().AddAccount(account);
+
+            var pos = Models.Geolocation.Instance.CurrentGamePosition;
+            var posI = new Core.Models.PositionI(pos.RegionPosition, pos.CellPosition);
+
+            var actionCreate = Helper.ActionHelper.CreateEntity(
+                new Core.Models.PositionI(pos),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Headquarter),
+                account);
+            
+            m_gameScene.WorldLayerHex.DoAction(actionCreate);
+
+            var newPos = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X + 2, (int)pos.Y +2));  
+
+            var actioncreate2 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(newPos),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Barracks),
+                account);
+
+            m_gameScene.WorldLayerHex.DoAction(actioncreate2);
         }
 
         /// <summary>

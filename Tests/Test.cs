@@ -9,7 +9,7 @@ using Core.Models;
 namespace Tests
 {
     [TestFixture]
-    public class CoreTest
+    public class PositionTests
     {
         [Test]
         public void LatLonTest()
@@ -26,13 +26,63 @@ namespace Tests
         [Test]
         public void CellPositionTest()
         {
-            //var RegionPos = new RegionPosition();
+            //standart constructor
+            var CellPos = new CellPosition(0, 0);
+            Assert.IsNotNull(CellPos);
+
+            //Constructor CellPosition out of Position
+            var Position = new Position(0, 0);
+            CellPos = new CellPosition(Position);
+            Assert.IsNotNull(CellPos);
+
+            //Constructor CellPosition out of PositionI
+            var PositionI = new PositionI(0, 0);
+            CellPos = new CellPosition(PositionI);
+            Assert.IsNotNull(CellPos);
+
+            //Tests the == operator
+            var CellPos2 = new CellPosition(0, 0);
+            Assert.True(CellPos == CellPos2);
+
+            //Tests the Equas function
+            Assert.True(CellPos.Equals(CellPos2));
+
+            //Tests the != operator
+            CellPos2 = new CellPosition(1, 1);
+            Assert.True(CellPos != CellPos2);
+
+
         }
 
         [Test]
         public void RegionPositionTest()
         {
-            //var RegionPos = new RegionPosition();
+            //standart constructor
+            var RegionPos = new RegionPosition(0, 0);
+            Assert.IsNotNull(RegionPos);
+
+            //Constructor RegionPosition out of a Position
+            var Position = new Position(0, 0);
+            RegionPos = new RegionPosition(Position);
+            Assert.IsNotNull(RegionPos);
+
+            //Constructor RegionPosition out of a PositionI
+            var PositionI = new PositionI(0, 0);
+            RegionPos = new RegionPosition(PositionI);
+            Assert.IsNotNull(RegionPos);
+
+            //Tests the + Operator
+            var RegionPos2 = new RegionPosition(1, 1);
+            RegionPos += RegionPos2;
+            Assert.AreEqual(RegionPos2, RegionPos);
+
+            //Tests the == Operator
+            Assert.True(RegionPos == RegionPos2);
+
+            //Tests the Equals funktion
+            Assert.True(RegionPos.Equals(RegionPos2));
+
+
         }
 
         [Test]
@@ -143,7 +193,43 @@ namespace Tests
     }
 
     [TestFixture]
-    public class ConnectionTest
+    public class CompressionHelperTests
+    {
+        [Test]
+        public void test()
+        {
+        }
+    }
+
+    [TestFixture]
+    public class LoadHelperTests
+    {
+        [Test]
+        public void test()
+        {
+        }
+    }
+
+    [TestFixture]
+    public class DefinitionsTests
+    {
+        [Test]
+        public void test()
+        {
+        }
+    }
+
+    [TestFixture]
+    public class MapRegionTests
+    {
+        [Test]
+        public void test()
+        {
+        }
+    }
+
+    [TestFixture]
+    public class ConnectionTests
     {
         [Test]
         public void Connection()
@@ -380,7 +466,7 @@ namespace Tests
     }
 
     [TestFixture]
-    public class LogicTest
+    public class LogicTests
     {
         public static readonly Core.Models.PositionI[] SurroundTilesEven =
             {

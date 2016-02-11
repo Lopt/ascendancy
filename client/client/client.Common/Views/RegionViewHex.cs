@@ -98,7 +98,16 @@
         public void RemoveUnit(Entity unit)
         {
             var unitV = (UnitView)unit.View;
-            m_tileMap.RemoveChild(unitV.Node);
+            m_tileMap.TileLayersContainer.RemoveChild(unitV.Node);
+        }
+
+        /// <summary>
+        /// Removes the building.
+        /// </summary>
+        /// <param name="building">Building.</param>
+        public void RemoveBuilding(Entity building)
+        {
+            m_buildingLayer.RemoveTile(new CCTileMapCoordinates(building.Position.CellPosition.CellX,building.Position.CellPosition.CellY));
         }
 
         /// <summary>

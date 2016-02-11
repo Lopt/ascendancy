@@ -17,14 +17,6 @@ namespace Core.Views
             Model.View = this;
         }
 
-        ~ViewEntity()
-        {
-            if (Model.View == this)
-            {
-                Model.View = null;
-            }
-        }
-
         public Core.Models.ModelEntity Model
         {
             get;
