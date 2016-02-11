@@ -327,6 +327,63 @@
         /// </summary>
         public const short HEADQUARTER = ClientConstants.ENEMY_GIDS + 6;
         // to be replaced with ENEMY_GID + ENEMYOFFSET + 3
+
+        /// <summary>
+        /// GID for tiles where the building Barracks is placed.
+        /// </summary>
+        public const short BARRACKS = ClientConstants.ENEMY_GIDS + 7;
+
+        /// <summary>
+        /// GID for tiles where the building Public building is placed.
+        /// </summary>
+        public const short LABORATORY = ClientConstants.ENEMY_GIDS + 8;
+
+        /// <summary>
+        /// GID for tiles where the building Tower1 is placed.
+        /// </summary>
+        public const short TOWER1 = ClientConstants.ENEMY_GIDS + 9;
+
+        /// <summary>
+        /// GID for tiles where a building tile with the trait EnemyHospital is placed.
+        /// </summary>
+        public const short HOSPITAL = ClientConstants.ENEMY_GIDS + 10;
+
+        /// <summary>
+        /// GID for tiles where a building tile with the trait Scrapyard is placed.
+        /// </summary>
+        public const short SCRAPYARD = ClientConstants.ENEMY_GIDS + 11;
+
+        /// <summary>
+        /// GID for tiles where a building tile with the trait EnemyTradingpost is placed.
+        /// </summary>
+        public const short TRADINGPOST = ClientConstants.ENEMY_GIDS + 12;
+
+        /// <summary>
+        /// GID for tiles where a building tile with the trait EnemyTransformer is placed.
+        /// </summary>
+        public const short TRANSFORMER = ClientConstants.ENEMY_GIDS + 13;
+
+        /// <summary>
+        /// GID for tiles where a building tile with the trait EnemyWatertower is placed.
+        /// </summary>
+        public const short WATERTOWER = ClientConstants.ENEMY_GIDS + 14;
+
+        /// <summary>
+        /// GID for tiles where a building tile with the trait EnemyTent is placed.
+        /// </summary>
+        public const short TENT = ClientConstants.ENEMY_GIDS + 15;
+
+        /// <summary>
+        /// GID for tiles where the building EnemyFurnace is placed.
+        /// </summary>
+        public const short FURNACE = ClientConstants.ENEMY_GIDS + 16;
+
+        /// <summary>
+        /// GID for tiles where the building EnemyFactory is placed.
+        /// </summary>
+        public const short FACTORY = ClientConstants.ENEMY_GIDS + 17;
+
+
     }
 
     /// <summary>
