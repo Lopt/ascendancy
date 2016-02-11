@@ -245,6 +245,8 @@
     <AndroidAsset Include="Assets\Content\images\ld\unit_78.png" />
     <AndroidAsset Include="Assets\Content\images\ld\unit_84.plist" />
     <AndroidAsset Include="Assets\Content\images\ld\unit_84.png" />
+    <AndroidAsset Include="Assets\Content\tiles\spritesheet2016211.png" />
+    <AndroidAsset Include="Assets\Content\tiles\Worldmap-2016211.tmx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />

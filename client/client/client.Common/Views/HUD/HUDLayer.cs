@@ -113,6 +113,19 @@
                 account);
 
             m_gameScene.WorldLayerHex.DoAction(actioncreate2);
+
+            var bla = new Core.Models.Position(newPos.RegionPosition, new Core.Models.CellPosition((int)newPos.X, (int)newPos.Y)); 
+
+            var entityDef = Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Archer);
+
+            var entity = new Core.Models.Entity(1, entityDef, account, new Core.Models.PositionI(bla), 100, 5);
+
+            var actioncr = Helper.ActionHelper.CreateEntity(
+                               new Core.Models.PositionI(bla),
+                               new Core.Models.Definitions.Definition((int)Core.Models.Definitions.EntityType.Archer),
+                               account);
+            
+            m_gameScene.WorldLayerHex.DoAction(actioncr);
         }
 
         /// <summary>

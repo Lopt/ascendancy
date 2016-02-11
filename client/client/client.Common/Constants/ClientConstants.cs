@@ -107,7 +107,7 @@
         /// <summary>
         /// Tile Map file hex name
         /// </summary>
-        public const string TILEMAP_FILE_HEX = "Worldmap-2016112.tmx";
+        public const string TILEMAP_FILE_HEX = "Worldmap-2016211.tmx";
 
         /// <summary>
         /// name of terrain layer
@@ -163,7 +163,7 @@
         /// <summary>
         /// The Start of the Helper GIDs
         /// </summary>
-        public const short HELPER_GIDS = 120;
+        public const short HELPER_GIDS = 130;
 
         /// <summary>
         /// size of a tile (width)
