@@ -58,9 +58,14 @@
         public const string DATA_SERVER = "http://derfalke.no-ip.biz";
 
         /// <summary>
+        /// The path to the game world datas.
+        /// </summary>
+        public const string ASCENDANCY_WORLD_PATH = "/ascendancy-world/world/";
+
+        /// <summary>
         /// path to region file
         /// </summary>
-        public const string REGION_SERVER_PATH = DATA_SERVER + "/world/$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
+        public const string REGION_SERVER_PATH = DATA_SERVER + ASCENDANCY_WORLD_PATH + "$MajorRegionX/$MajorRegionY/germany-$MinorRegionX-$MinorRegionY.json";
 
         /// <summary>
         /// path to unit definitions
@@ -222,6 +227,11 @@
         //1984;
 
         /// <summary>
+        /// The thickness of the terretory building border.
+        /// </summary>
+        public const float TERRATORRY_BUILDING_BORDER_SIZE = 10.0f;
+
+        /// <summary>
         /// number of regions which should be drawn (X)
         /// </summary>
         public const short DRAW_REGIONS_X = 5;
@@ -277,6 +287,6 @@
         /// </summary>
         public static readonly int TCP_PORT = 13000;
 
-        public static readonly int GPS_GET_POSITION_TIMEOUT = 5;
+        public static readonly int GPS_GET_POSITION_TIMEOUT = 10000;
     }
 }

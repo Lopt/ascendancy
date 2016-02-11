@@ -90,6 +90,8 @@
             var unit = Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
             var endLocationUnit = Controller.Instance.RegionManagerController.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
 
+                var debugp = Controller.Instance.RegionManagerController.GetRegion(endPosition.RegionPosition).GetTerrain(endPosition.CellPosition);
+
             if (startPosition == endPosition)
             {
                 return false;
@@ -175,11 +177,13 @@
                 { 
                     LogicRules.DestroyBuilding(enemyEntity, regionEndPos, action.ActionTime, Controller.Instance.RegionManagerController);
                     regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
+                    enemyEntity.Owner.Units.Remove(enemyEntity.Position);
                 }
                 else 
                 {
                     LogicRules.DestroyBuilding(entity, regionStartPos, action.ActionTime, Controller.Instance.RegionManagerController);
                     regionStartPos.RemoveEntity(action.ActionTime, entity);
+                    entity.Owner.Units.Remove(entity.Position);
                 }
             }
             else

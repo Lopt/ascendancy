@@ -68,7 +68,7 @@
             var type = (long)action.Parameters[CREATION_TYPE];
             var entityDef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
             var account = action.Account;
-            List<long> list = new List<long>();
+            var list = new List<long>();
 
             account.BuildableBuildings.TryGetValue((long)Models.Definitions.EntityType.Headquarter, out list);
 
@@ -116,7 +116,7 @@
             entity.Position = entityPosition;
             region.AddEntity(action.ActionTime, entity);
 
-            action.Account.Buildings.AddLast(entity.Position);
+            action.Account.Buildings.Add(entity.Position, type);
             LogicRules.IncreaseResourceGeneration(action.Account, entity.Position, Controller.Instance.RegionManagerController);
             LogicRules.EnableBuildOptions(type, action.Account);
             LogicRules.IncreaseStorage(action.Account, entity);

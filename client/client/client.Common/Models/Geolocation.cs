@@ -38,7 +38,7 @@
             m_geolocator = DependencyService.Get<IGeolocator>();
             m_geolocator.DesiredAccuracy = 1.0;
             m_geolocator.PositionChanged += OnPositionChanged;
-
+           
             CurrentGamePosition = null;
             FirstGamePosition = null;
         }
@@ -102,7 +102,15 @@
         /// <param name="minDistance">Minimum distance.</param>
         public void StartListening(uint minTimeIntervallInMilliSec, double minDistance)
         {
-            m_geolocator.StartListening(minTimeIntervallInMilliSec, minDistance);
+            try
+            {
+                m_geolocator.StartListening(minTimeIntervallInMilliSec, minDistance);
+            }
+            catch (Exception ex)
+            {
+                var text = ex.Message;
+            }
+
         }
 
         /// <summary>
@@ -110,7 +118,15 @@
         /// </summary>
         public void StopListening()
         {
-            m_geolocator.StopListening();
+            try
+            {
+                m_geolocator.StopListening();
+            }
+            catch (Exception ex)
+            {
+                var text = ex.Message;
+            }
+
         }
 
         /// <summary>
@@ -120,17 +136,36 @@
         /// <param name="e">E the event data. If there is no event data, this parameter will be null.</param>
         private async void OnPositionChanged(object sender, PositionEventArgs eventPos)
         {
-            CurrentGamePosition = new Core.Models.Position(new Core.Models.LatLon(eventPos.Position.Latitude, eventPos.Position.Longitude));
-            if (FirstGamePosition == null)
+            try
             {
-                FirstGamePosition = CurrentGamePosition;
+                CurrentGamePosition = new Core.Models.Position(new Core.Models.LatLon(eventPos.Position.Latitude, eventPos.Position.Longitude));
+                if (FirstGamePosition == null)
+                {
+                    FirstGamePosition = CurrentGamePosition;
+                }
             }
+            catch (Exception ex)
+            {
+                var text = ex.Message;
+            }
+
         }
 
         public async Task<Core.Models.Position> GetPositionAsync()
         {
-            var latlon = await m_geolocator.GetPositionAsync(Constants.ClientConstants.GPS_GET_POSITION_TIMEOUT);
-            return new Core.Models.Position(latlon.Latitude, latlon.Longitude);
+            Core.Models.Position position = null;
+
+            try
+            {
+                var latlon = await m_geolocator.GetPositionAsync(Constants.ClientConstants.GPS_GET_POSITION_TIMEOUT);
+                position = new Core.Models.Position(latlon.Latitude, latlon.Longitude);
+            }
+            catch (Exception ex)
+            {
+                var text = ex.Message;
+            }
+
+            return position;
         }
 
         #endregion
