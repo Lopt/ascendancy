@@ -143,7 +143,7 @@
                 var enemyEntity = regionEndPos.GetEntity(endPosition.CellPosition);
 
                 // Ranged attack units deal only 1 dmg to buildings
-                if (((UnitDefinition)entity.Definition).AttackRange >= 1 && enemyEntity.Definition.Category == Category.Building)
+                if (((UnitDefinition)entity.Definition).AttackRange > 1 && enemyEntity.Definition.Category == Category.Building)
                 {                    
                     enemyEntity.Health -= 1;
                 }
@@ -152,11 +152,11 @@
                     // iterate trough all methods to modifie the attack
                     LogicRules.AllAttackModifierRangedInMeele(entity);
 
-                    enemyEntity.Health += entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
+                    enemyEntity.Health -= entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
 
                     if (((UnitDefinition)enemyEntity.Definition).AttackRange >= m_fightDistance)
                     {
-                        entity.Health += enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
+                        entity.Health -= enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
                     }
                 }
                 else
@@ -165,11 +165,11 @@
                     LogicRules.AllAttackModifier(entity);
                     LogicRules.AllDefenseModifier(enemyEntity);
 
-                    enemyEntity.Health += entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
+                    enemyEntity.Health -= entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
 
                     if (((UnitDefinition)enemyEntity.Definition).AttackRange >= m_fightDistance)
                     {
-                        entity.Health += enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
+                        entity.Health -= enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
                     }
                 }
 
@@ -179,7 +179,7 @@
                     regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
                     enemyEntity.Owner.Units.Remove(enemyEntity.Position);
                 }
-                else 
+                else if (entity.Health <= 0)
                 {
                     LogicRules.DestroyBuilding(entity, regionStartPos, action.ActionTime, Controller.Instance.RegionManagerController);
                     regionStartPos.RemoveEntity(action.ActionTime, entity);
