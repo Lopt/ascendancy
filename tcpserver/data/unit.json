@@ -11,7 +11,7 @@
         "Scrapcost": 50,
         "Energycost": 0,
         "Plutoniumcost": 50,
-        "Techcost": 2,
+        "Techcost": 2
      },
 
     {
@@ -26,7 +26,7 @@
         "Scrapcost": 40,
         "Energycost": 0,
         "Plutoniumcost": 40,
-        "Techcost": 1,
+        "Techcost": 1
      },
 
     {
@@ -41,7 +41,7 @@
         "Scrapcost": 30,
         "Energycost": 0,
         "Plutoniumcost": 10,
-        "Techcost": 0,
+        "Techcost": 0
      },
      
     {
@@ -56,7 +56,7 @@
         "Scrapcost": 25,
         "Energycost": 0,
         "Plutoniumcost": 25,
-        "Techcost": 0,
+        "Techcost": 0
      },
      
      {
@@ -71,7 +71,7 @@
         "Scrapcost": 25,
         "Energycost": 0,
         "Plutoniumcost": 0,
-        "Techcost": 0,
+        "Techcost": 0
      },     
      
      {
@@ -86,7 +86,7 @@
         "Scrapcost": 0,
         "Energycost": 0,
         "Plutoniumcost": 0,
-        "Techcost": 0,
+        "Techcost": 0
      },
 
      {
@@ -101,9 +101,7 @@
         "Scrapcost": 40,
         "Energycost": 4,
         "Plutoniumcost": 10,
-        "Techcost": 0,
-
-
+        "Techcost": 0
      },
 
      {
@@ -118,7 +116,7 @@
         "Scrapcost": 50,
         "Energycost": 5,
         "Plutoniumcost": 50,
-        "Techcost": 1,
+        "Techcost": 1
      },
      
      {
@@ -133,7 +131,7 @@
         "Scrapcost": 25,
         "Energycost": 0,
         "Plutoniumcost": 0,
-        "Techcost": 0,
+        "Techcost": 0
      },
 
      {
@@ -148,7 +146,7 @@
         "Scrapcost": 35,
         "Energycost": 2,
         "Plutoniumcost": 25,
-        "Techcost": 1,
+        "Techcost": 1
      },
 
      {
@@ -163,7 +161,7 @@
         "Scrapcost": 40,
         "Energycost": 5,
         "Plutoniumcost": 65,
-        "Techcost": 3,
+        "Techcost": 3
      },
 
      {
@@ -178,7 +176,7 @@
         "Scrapcost": 50,
         "Energycost": 3,
         "Plutoniumcost": 50,
-        "Techcost": 1,
+        "Techcost": 1
      }, 
    
      {
@@ -193,7 +191,7 @@
         "Scrapcost": 100,
         "Energycost": 10,
         "Plutoniumcost": 50,
-        "Techcost": 0,
+        "Techcost": 0
      },
 
      {
@@ -208,7 +206,7 @@
         "Scrapcost": 150,
         "Energycost": 5,
         "Plutoniumcost": 40,
-        "Techcost": 4,
+        "Techcost": 4
      },
 
      {
@@ -223,7 +221,7 @@
         "Scrapcost": 40,
         "Energycost": 0,
         "Plutoniumcost": 60,
-        "Techcost": 1,
+        "Techcost": 1
      },
 
      {
@@ -238,7 +236,7 @@
         "Scrapcost": 55,
         "Energycost": 0,
         "Plutoniumcost": 0,
-        "Techcost": 0,
+        "Techcost": 0
      },
 
      {
@@ -253,6 +251,6 @@
         "Scrapcost": 30,
         "Energycost": 0,
         "Plutoniumcost": 0,
-        "Techcost": 0,
+        "Techcost": 0
      } 
 ]
