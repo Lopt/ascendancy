@@ -77,19 +77,21 @@
             var entity = Controller.Instance.RegionManagerController.GetRegion(positionI.RegionPosition).GetEntity(positionI.CellPosition);
             var list = new List<long>(); 
 
-            action.Account.BuildableBuildings.TryGetValue(entity.DefinitionID, out list);
-
-            if (list != null)
+            if (entity != null)
             {
-                if (action.AccountID == entity.OwnerID && list.Contains(type))
-                {                
-                    RealCreatePosition = GetFreeField(positionI, regionManagerC);
+                action.Account.BuildableBuildings.TryGetValue(entity.DefinitionID, out list);
 
-                    return RealCreatePosition != null && LogicRules.ConsumeResource(action.Account, Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type));
+                if (list != null)
+                {
+                    if (action.AccountID == entity.OwnerID && list.Contains(type))
+                    {                
+                        RealCreatePosition = GetFreeField(positionI, regionManagerC);
+
+                        return RealCreatePosition != null && LogicRules.ConsumeResource(action.Account, Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type));
+                    }
                 }
             }
-            return false;
-            
+            return false;            
         }
 
         /// <summary>
