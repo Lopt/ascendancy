@@ -21,6 +21,17 @@ namespace Tests
             var pos = new Position(LaLo);
             var LaLo2 = new LatLon(pos);
             Assert.IsNotNull(LaLo2);
+
+            //Tests if the Latitude and Longitude are the same till the 4. digit after conversion
+            var Lat = LaLo.Lat * 10000;
+            var Lon = LaLo.Lon * 10000;
+
+            var Lat2 = LaLo2.Lat * 10000;
+            var Lon2 = LaLo2.Lon * 10000;
+
+            Assert.AreEqual((int)Lat,(int)Lat2);
+            Assert.AreEqual((int)Lon,(int)Lon2);
+
         }
 
         [Test]
