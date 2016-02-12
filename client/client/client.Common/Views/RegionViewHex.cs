@@ -171,28 +171,25 @@
         /// </summary>
         /// <param name="borderPositions">Border positions.</param>
         /// <param name="color">Color.</param>
-        public void DrawBorder(HashSet<PositionI> borderPositions, CCColor4B color)
+        public void DrawBorder(HashSet<PositionI> borderPositions, CCColor4B color, Account owner)
         {
-            var region = (Region)this.Model;
-            var position = borderPositions.ToList<PositionI>().First();
-            var fieldOwner = region.GetClaimedTerritory(position);
-
-            RemoveBorder(fieldOwner);
-            var border = new CCDrawNode();
-
-            m_tileMap.TileLayersContainer.AddChild(border);
-            m_drawNodes.Add(fieldOwner, border);
-
-            var halfwidth = ClientConstants.TILE_HEX_IMAGE_WIDTH / 2.0f;
-            var halfhight = ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2.0f;
-
-            // zentrieren der Grenzpunkte und zeichnen dieser
-            foreach (var positionI in borderPositions)
+            RemoveBorder(owner);
+            if (borderPositions != null)
             {
-                var centerPos = PositionHelper.CellToTile(positionI.CellPosition);
-                centerPos.X += halfwidth;
-                centerPos.Y -= halfhight;
-                border.DrawSolidCircle(centerPos, ClientConstants.TERRATORRY_BUILDING_BORDER_SIZE, color);
+                var border = new CCDrawNode();
+                m_tileMap.TileLayersContainer.AddChild(border);
+                m_drawNodes.Add(owner, border);
+
+                var halfwidth = ClientConstants.TILE_HEX_IMAGE_WIDTH / 2.0f;
+                var halfhight = ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2.0f;
+                // zentrieren der Grenzpunkte und zeichnen dieser
+                foreach (var positionI in borderPositions)
+                {
+                    var centerPos = PositionHelper.CellToTile(positionI.CellPosition);
+                    centerPos.X += halfwidth;
+                    centerPos.Y -= halfhight;
+                    border.DrawSolidCircle(centerPos, ClientConstants.TERRATORRY_BUILDING_BORDER_SIZE, color);
+                }
             }
         }
 

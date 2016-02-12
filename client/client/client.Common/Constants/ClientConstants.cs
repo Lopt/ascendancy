@@ -287,6 +287,9 @@
         /// </summary>
         public static readonly int TCP_PORT = 13000;
 
+        /// <summary>
+        /// The GPS position timeout.
+        /// </summary>
         public static readonly int GPS_GET_POSITION_TIMEOUT = 10000;
     }
 }

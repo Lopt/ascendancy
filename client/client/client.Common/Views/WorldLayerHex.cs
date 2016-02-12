@@ -163,38 +163,49 @@ namespace Client.Common.Views
                 surroundedPositionsAll.UnionWith(surroundedPositionsBuilding);
             }
 
-            // alle Grenzfelder finden und nach Region sortieren
-            var regionBorders = new Dictionary<RegionPosition, HashSet<PositionI>>();
-            foreach (var pos in surroundedPositionsAll)
+            if (surroundedPositionsAll.Count > 0)
             {
-                var posOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(pos.RegionPosition).
-                    GetClaimedTerritory(pos);
-                
-                var surroundedFields = LogicRules.GetSurroundedFields(pos);
-                foreach (var field in surroundedFields)
+                // alle Grenzfelder finden und nach Region sortieren
+                var regionBorders = new Dictionary<RegionPosition, HashSet<PositionI>>();
+                foreach (var pos in surroundedPositionsAll)
                 {
-                    var fieldOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(field.RegionPosition).
-                        GetClaimedTerritory(field);
-                    if (posOwner != fieldOwner)
+                    var posOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(pos.RegionPosition).
+                        GetClaimedTerritory(pos);
+
+                    var surroundedFields = LogicRules.GetSurroundedFields(pos);
+                    foreach (var field in surroundedFields)
                     {
-                        if (!regionBorders.ContainsKey(pos.RegionPosition))
+                        var fieldOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(field.RegionPosition).
+                            GetClaimedTerritory(field);
+                        if (posOwner != fieldOwner)
                         {
-                            regionBorders.Add(pos.RegionPosition, new HashSet<PositionI>());
+                            if (!regionBorders.ContainsKey(pos.RegionPosition))
+                            {
+                                regionBorders.Add(pos.RegionPosition, new HashSet<PositionI>());
+                            }
+                            HashSet<PositionI> position;
+                            regionBorders.TryGetValue(pos.RegionPosition, out position);
+                            position.Add(pos);
+                            break;
                         }
-                        HashSet<PositionI> position;
-                        regionBorders.TryGetValue(pos.RegionPosition, out position);
-                        position.Add(pos);
-                        break;
                     }
                 }
-            }
 
-            // zeichne Grenzen in den regionen
-            HashSet<PositionI> borderPositions;
-            foreach (var regionPosition in regionBorders.Keys)
+                // zeichne Grenzen in den regionen
+                HashSet<PositionI> borderPositions;
+                foreach (var regionPosition in regionBorders.Keys)
+                {
+                    regionBorders.TryGetValue(regionPosition, out borderPositions);
+                    this.GetRegionViewHex(regionPosition).DrawBorder(borderPositions, color, owner);
+                }
+
+            }
+            else
             {
-                regionBorders.TryGetValue(regionPosition, out borderPositions);
-                this.GetRegionViewHex(regionPosition).DrawBorder(borderPositions, color);
+                foreach (var regionPosition in m_regionViewHexDic.Keys)
+                {
+                    this.GetRegionViewHex(regionPosition).DrawBorder(null, color, owner);
+                }
             }
         }
 
