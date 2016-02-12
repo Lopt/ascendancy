@@ -304,7 +304,7 @@
                         }
                         m_indicator.ShowBuildingIndicator(startPosI, area);
                     }
-                    else if (entity != null && entity.DefinitionID == (long)EntityType.Barracks)
+                    else if (entity != null && entity.DefinitionID == (long)EntityType.Barracks && entity.Owner == GameAppDelegate.Account)
                     {
                         var types = new Core.Models.Definitions.Definition[6];
                         var defM = Core.Models.World.Instance.DefinitionManager;
