@@ -132,6 +132,23 @@
                                account);
             
             m_gameScene.WorldLayerHex.DoAction(actioncr);
+
+            var newBorderpos = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X - 4, (int)pos.Y)); 
+            var newBorderpos2 = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X, (int)pos.Y - 4)); 
+
+            var actioncreate3 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(
+                                    newBorderpos),
+                                    Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.GuardTower),
+                                    account);
+
+            m_gameScene.WorldLayerHex.DoAction(actioncreate3);
+
+            var actioncreate4 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(
+                newBorderpos2),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.GuardTower),
+                account);
+            
+            m_gameScene.WorldLayerHex.DoAction(actioncreate4);
         }
 
         /// <summary>
