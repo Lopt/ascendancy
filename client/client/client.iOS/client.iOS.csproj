@@ -256,6 +256,8 @@
     <BundleResource Include="Content\images\ld\unit_72.plist" />
     <BundleResource Include="Content\images\ld\unit_78.plist" />
     <BundleResource Include="Content\images\ld\unit_84.plist" />
+    <BundleResource Include="Content\tiles\spritesheet2016211.png" />
+    <BundleResource Include="Content\tiles\Worldmap-2016211.tmx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />

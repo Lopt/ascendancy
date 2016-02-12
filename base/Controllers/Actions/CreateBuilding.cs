@@ -70,18 +70,21 @@
             var account = action.Account;
             var list = new List<long>();
 
-            account.BuildableBuildings.TryGetValue((long)Models.Definitions.EntityType.Headquarter, out list);
-
-            if (list != null)
+            if (account != null)
             {
-                if (list.Contains(type))
-                {        
-                    if (region.GetEntity(entityPosition.CellPosition) == null &&
+                account.BuildableBuildings.TryGetValue((long)Models.Definitions.EntityType.Headquarter, out list);
+
+                if (list != null)
+                {
+                    if (list.Contains(type))
+                    {        
+                        if (region.GetEntity(entityPosition.CellPosition) == null &&
                         region.GetClaimedTerritory(entityPosition) == account)
-                    {
-                        // check for free tile and the terrain is possesed from the current player
-                        var td = (TerrainDefinition)region.GetTerrain(entityPosition.CellPosition);
-                        return td.Buildable && LogicRules.ConsumeResource(account, entityDef);  
+                        {
+                            // check for free tile and the terrain is possesed from the current player
+                            var td = (TerrainDefinition)region.GetTerrain(entityPosition.CellPosition);
+                            return td.Buildable && LogicRules.ConsumeResource(account, entityDef);  
+                        }
                     }
                 }
             }

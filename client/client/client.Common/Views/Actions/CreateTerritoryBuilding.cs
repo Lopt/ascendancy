@@ -40,8 +40,11 @@ namespace Client.Common.Views.Actions
 
             var position = (Core.Models.PositionI)action.Parameters[Core.Controllers.Actions.CreateBuilding.CREATE_POSITION];
             var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
-            WorldLayerHex.GetRegionViewHex(position.RegionPosition).SetBuilding(new CocosSharp.CCTileMapCoordinates(position.CellPosition.CellX, position.CellPosition.CellY), entity);
-            WorldLayerHex.DrawBorders(entity.Owner);
+            if (entity != null)
+            {
+                WorldLayerHex.GetRegionViewHex(position.RegionPosition).SetBuilding(new CocosSharp.CCTileMapCoordinates(position.CellPosition.CellX, position.CellPosition.CellY), entity);
+                WorldLayerHex.DrawBorders(entity.Owner);            
+            }
             return true;
         }
 

@@ -580,5 +580,10 @@
         /// </summary>
         public const short BLUEINDICATOR = ClientConstants.HELPER_GIDS + 4;
         // to be replaced with HELPER_GID + 4
+
+        /// <summary>
+        /// The opacity for the indicators.
+        /// </summary>
+        public const int INDICATOR_OPACITY = 40;
     }
 }

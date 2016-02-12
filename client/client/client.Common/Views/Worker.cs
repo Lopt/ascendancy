@@ -41,9 +41,11 @@
                 var actionC = (Core.Controllers.Actions.Action)Action.Control;
                 var actionV = CreateActionView(Action, actionC.GetRegionPosition());
                 var affectedRegions = actionC.GetAffectedRegions();
-                actionC.Possible();
-                actionV.BeforeDo();
-                actionC.Do();
+                if (actionC.Possible())
+                {
+                    actionV.BeforeDo();
+                    actionC.Do();
+                }
             }
         }
 

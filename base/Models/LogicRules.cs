@@ -177,7 +177,7 @@
         }
 
         /// <summary>
-        /// Terrains the defense modifier.
+        /// Terrain for the defense modifier.
         /// </summary>
         /// <returns>0 instead it change the value via pointer.</returns>
         /// <param name="entity">Current entity.</param>
@@ -189,7 +189,7 @@
         }
 
         /// <summary>
-        /// Terrains the attack modifier.
+        /// Terrain terrain for the attack modifier.
         /// </summary>
         /// <returns>0 instead it change the value via pointer.</returns>
         /// <returns>The attack modifier.</returns>

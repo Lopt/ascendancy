@@ -107,7 +107,7 @@
         /// <param name="building">Building.</param>
         public void RemoveBuilding(Entity building)
         {
-            m_buildingLayer.RemoveTile(new CCTileMapCoordinates(building.Position.CellPosition.CellX,building.Position.CellPosition.CellY));
+            m_buildingLayer.RemoveTile(new CCTileMapCoordinates(building.Position.CellPosition.CellX, building.Position.CellPosition.CellY));
         }
 
         /// <summary>
@@ -162,7 +162,7 @@
         {            
             m_indicatorLayer.SetTileGID(gid, new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
             var sprite = m_indicatorLayer.ExtractTile(new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY), true);
-            sprite.Opacity = 30;
+            sprite.Opacity = HelperSpritesGid.INDICATOR_OPACITY;
             return sprite;
         }
 
@@ -171,28 +171,25 @@
         /// </summary>
         /// <param name="borderPositions">Border positions.</param>
         /// <param name="color">Color.</param>
-        public void DrawBorder(HashSet<PositionI> borderPositions, CCColor4B color)
+        public void DrawBorder(HashSet<PositionI> borderPositions, CCColor4B color, Account owner)
         {
-            var region = (Region)this.Model;
-            var position = borderPositions.ToList<PositionI>().First();
-            var fieldOwner = region.GetClaimedTerritory(position);
-
-            RemoveBorder(fieldOwner);
-            var border = new CCDrawNode();
-
-            m_tileMap.TileLayersContainer.AddChild(border);
-            m_drawNodes.Add(fieldOwner, border);
-
-            var halfwidth = ClientConstants.TILE_HEX_IMAGE_WIDTH / 2.0f;
-            var halfhight = ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2.0f;
-
-            // zentrieren der Grenzpunkte und zeichnen dieser
-            foreach (var positionI in borderPositions)
+            RemoveBorder(owner);
+            if (borderPositions != null)
             {
-                var centerPos = PositionHelper.CellToTile(positionI.CellPosition);
-                centerPos.X += halfwidth;
-                centerPos.Y -= halfhight;
-                border.DrawSolidCircle(centerPos, ClientConstants.TERRATORRY_BUILDING_BORDER_SIZE, color);
+                var border = new CCDrawNode();
+                m_tileMap.TileLayersContainer.AddChild(border);
+                m_drawNodes.Add(owner, border);
+
+                var halfwidth = ClientConstants.TILE_HEX_IMAGE_WIDTH / 2.0f;
+                var halfhight = ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2.0f;
+                // zentrieren der Grenzpunkte und zeichnen dieser
+                foreach (var positionI in borderPositions)
+                {
+                    var centerPos = PositionHelper.CellToTile(positionI.CellPosition);
+                    centerPos.X += halfwidth;
+                    centerPos.Y -= halfhight;
+                    border.DrawSolidCircle(centerPos, ClientConstants.TERRATORRY_BUILDING_BORDER_SIZE, color);
+                }
             }
         }
 
