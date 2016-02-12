@@ -62,6 +62,14 @@ namespace Tests
             CellPos2 = new CellPosition(1, 1);
             Assert.True(CellPos != CellPos2);
 
+            //Tests if its Posible to create a cell position bigger than 31 and smaller then 0
+            CellPos = new CellPosition(32, 32);
+            Assert.AreNotEqual(32, CellPos.CellX);
+            Assert.AreNotEqual(32, CellPos.CellY);
+
+            CellPos = new CellPosition(-1, -1);
+            Assert.AreNotEqual(-1, CellPos.CellX);
+            Assert.AreNotEqual(-1, CellPos.CellY);
 
         }
 
