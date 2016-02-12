@@ -149,6 +149,14 @@
                 account);
             
             m_gameScene.WorldLayerHex.DoAction(actioncreate4);
+
+            var newLabpos = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)newBorderpos.X - 1, (int)newBorderpos.Y));
+
+            var actioncreate5 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(newLabpos),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Lab),
+                account);
+
+            m_gameScene.WorldLayerHex.DoAction(actioncreate5);
         }
 
         /// <summary>

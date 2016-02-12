@@ -528,7 +528,7 @@
         /// Destroy the building.
         /// </summary>
         /// <param name="entity">Entity.</param>
-        public static void DestroyBuilding(Entity entity, Region regionPos, DateTime time, Controllers.RegionManagerController regionManagerC)
+        public static void DestroyBuilding(Entity entity, Region regionPos, Action action, Controllers.RegionManagerController regionManagerC)
         {
             // TODO: in pseudo klasse kapseln und generischer lösen
             switch((long)entity.DefinitionID)
@@ -555,6 +555,7 @@
                         var region = building.Key.RegionPosition;
                         regionManagerC.GetRegion(region).ClaimTerritory(list, entity.Owner, region, regionManagerC.RegionManager);
                     }
+                    //DestroyAllBuildingsWithoutTerritory(entity.Owner, action, regionManagerC);
                     break;
                 case (long)Models.Definitions.EntityType.GuardTower:
                     regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.GUARDTOWER_TERRITORY_RANGE), entity.Owner);                   
@@ -576,6 +577,7 @@
                         var region = building.Key.RegionPosition;
                         regionManagerC.GetRegion(region).ClaimTerritory(list, entity.Owner, region, regionManagerC.RegionManager);
                     }
+                    //DestroyAllBuildingsWithoutTerritory(entity.Owner, action, regionManagerC); 
                     break;
                 case (long)Models.Definitions.EntityType.Barracks:
                     var count = 0;
@@ -622,5 +624,31 @@
                     break;
             }
         }
-    }        
+
+        /// <summary>
+        /// Destroys all buildings without territory.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="regionPos">Region position.</param>
+        /// <param name="regionManagerC">Region manager c.</param>
+        public static void DestroyAllBuildingsWithoutTerritory(Account account, Action action, Controllers.RegionManagerController regionManagerC)
+        {
+            Dictionary<PositionI, long> copylist = new Dictionary<PositionI, long>(account.Buildings);
+           
+            foreach (var building in copylist)
+            {
+                var region = regionManagerC.GetRegion(building.Key.RegionPosition);
+                if (region.GetClaimedTerritory(building.Key) == null)
+                {
+                    DestroyBuilding(region.GetEntity(building.Key.CellPosition), region, action, regionManagerC);
+                    region.RemoveEntity(action.ActionTime, region.GetEntity(building.Key.CellPosition));
+                }
+            }
+            account.Buildings.Clear();
+            foreach (var test in copylist)
+            {
+                account.Buildings.Add(test.Key, test.Value);
+            }
+        }
+    }
 }
