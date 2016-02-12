@@ -170,7 +170,8 @@
         {
             var rand = new Random(entity.ID + entity.OwnerID + entity.Position.GetHashCode());
             double result = entity.ModfiedAttackValue;
-            var randomValue = rand.NextDouble() * 2;    
+            // between max and minimum
+            var randomValue = rand.NextDouble() * (2 - 0.5f) + 0.5f;    
             result *= randomValue;
             entity.ModfiedAttackValue = (int)result;
             return 0;
