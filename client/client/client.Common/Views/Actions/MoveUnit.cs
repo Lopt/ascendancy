@@ -83,7 +83,7 @@
                     }
                 }
             }
-
+               
             if (m_runTime >= m_path.Count && m_entity.Health <= 0)
             {
                 var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);

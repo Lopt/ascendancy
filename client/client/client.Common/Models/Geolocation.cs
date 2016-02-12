@@ -1,4 +1,6 @@
-﻿namespace Client.Common.Models
+﻿using Core.Models;
+
+namespace Client.Common.Models
 {
     using System;
     using System.Threading;
@@ -35,7 +37,7 @@
         /// </summary>
         private Geolocation()
         {
-            m_geolocator = DependencyService.Get<IGeolocator>();
+            m_geolocator = XLabs.Ioc.Resolver.Resolve<IGeolocator>();
             m_geolocator.DesiredAccuracy = 1.0;
             m_geolocator.PositionChanged += OnPositionChanged;
            

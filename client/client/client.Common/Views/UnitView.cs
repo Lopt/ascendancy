@@ -10,7 +10,7 @@ namespace Client.Common.Views
         public UnitView(Core.Models.Entity model)
             : base(model)
         {
-            var defView = (UnitDefinitionView) model.Definition.View;
+            var defView = (UnitDefinitionView)model.Definition.View;
 
             if (defView != null)
             {

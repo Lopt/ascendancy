@@ -39,14 +39,11 @@
             {
                 this.SetIoc();
             }
-
             // aktivating Xamarin.Forms
             global::Xamarin.Forms.Forms.Init();
 
             // activating tcp connection for iOS
             TcpConnection.Connector = new TcpConnection();
-
-            DependencyService.Register<Geolocator>();
 
             CCApplication application = new CCApplication();
             application.ApplicationDelegate = new GameAppDelegate();
@@ -72,6 +69,9 @@
 
             resolverContainer.Register<IDevice>(t => AppleDevice.CurrentDevice)
                 .Register<IAccelerometer>(t => t.Resolve<IDevice>().Accelerometer)
+                .Register<IDisplay>(t => t.Resolve<IDevice>().Display)
+                .Register<INetwork>(t => t.Resolve<IDevice>().Network)
+                .Register<IGeolocator,Geolocator>()
                 .Register<IDependencyContainer>(resolverContainer);
 
             Resolver.SetResolver(resolverContainer.GetResolver());
