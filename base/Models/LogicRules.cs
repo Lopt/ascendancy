@@ -534,14 +534,48 @@
             switch((long)entity.DefinitionID)
             {
                 case (long)Models.Definitions.EntityType.Headquarter:
-                    regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);
+                    regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);                                                       
                     DecreaseWholeStorage(entity.Owner);
                     DisableBuildOptions(entity.DefinitionID, entity.Owner);
                     entity.Owner.TerritoryBuildings.Remove(entity.Position);
+                    // TODO: bessere lösung als alles neu claimen finden  
+                    foreach (var building in entity.Owner.TerritoryBuildings)
+                    {
+                        var list = new HashSet<PositionI>();
+                        var range = 0;
+                        if (building.Value == (long)Definitions.EntityType.Headquarter)
+                        {
+                            range = Constants.HEADQUARTER_TERRITORY_RANGE;
+                        }
+                        else if (building.Value == (long)Definitions.EntityType.GuardTower)
+                        {
+                            range = Constants.GUARDTOWER_TERRITORY_RANGE;
+                        }
+                        list = GetSurroundedPositions(building.Key, range);
+                        var region = building.Key.RegionPosition;
+                        regionManagerC.GetRegion(region).ClaimTerritory(list, entity.Owner, region, regionManagerC.RegionManager);
+                    }
                     break;
                 case (long)Models.Definitions.EntityType.GuardTower:
-                    regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.GUARDTOWER_TERRITORY_RANGE), entity.Owner);
+                    regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.GUARDTOWER_TERRITORY_RANGE), entity.Owner);                   
                     entity.Owner.TerritoryBuildings.Remove(entity.Position);
+                    // TODO: bessere lösung als alles neu claimen finden  
+                    foreach (var building in entity.Owner.TerritoryBuildings)
+                    {
+                        var list = new HashSet<PositionI>();
+                        var range = 0;
+                        if (building.Value == (long)Definitions.EntityType.Headquarter)
+                        {
+                            range = Constants.HEADQUARTER_TERRITORY_RANGE;
+                        }
+                        else if (building.Value == (long)Definitions.EntityType.GuardTower)
+                        {
+                            range = Constants.GUARDTOWER_TERRITORY_RANGE;
+                        }
+                        list = GetSurroundedPositions(building.Key, range);
+                        var region = building.Key.RegionPosition;
+                        regionManagerC.GetRegion(region).ClaimTerritory(list, entity.Owner, region, regionManagerC.RegionManager);
+                    }
                     break;
                 case (long)Models.Definitions.EntityType.Barracks:
                     var count = 0;
