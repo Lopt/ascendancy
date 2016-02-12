@@ -106,6 +106,18 @@
             
             m_gameScene.WorldLayerHex.DoAction(actionCreate);
 
+            account.Scrap.MaximumValue = 10000;
+            account.Plutonium.MaximumValue = 10000;
+            account.Population.MaximumValue = 10000;
+            account.Technology.MaximumValue = 10000;
+            account.Energy.MaximumValue = 10000;
+  
+            account.Scrap.Set(10000, 0);
+            account.Plutonium.Set(10000, 0);
+            account.Population.Value = 10000;
+            account.Technology.Set(10000, 0);
+            account.Energy.Value = 10000;
+
             var newPos = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X + 2, (int)pos.Y +2));  
 
             var actioncreate2 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(newPos),
@@ -114,14 +126,8 @@
 
             m_gameScene.WorldLayerHex.DoAction(actioncreate2);
 
-            var bla = new Core.Models.Position(newPos.RegionPosition, new Core.Models.CellPosition((int)newPos.X, (int)newPos.Y)); 
-
-            var entityDef = Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Archer);
-
-            var entity = new Core.Models.Entity(1, entityDef, account, new Core.Models.PositionI(bla), 100, 5);
-
             var actioncr = Helper.ActionHelper.CreateEntity(
-                               new Core.Models.PositionI(bla),
+                               new Core.Models.PositionI(newPos),
                                new Core.Models.Definitions.Definition((int)Core.Models.Definitions.EntityType.Archer),
                                account);
             
