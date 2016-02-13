@@ -10,7 +10,9 @@ namespace Client.Common.Views
     {
         None,
         Idle,
-        Fight
+        Fight,
+        Die,
+        Walk
     }
 
     public class UnitDefinitionView : Core.Views.ViewEntity
@@ -27,11 +29,14 @@ namespace Client.Common.Views
 
                 var idle = m_spritesheet.Frames.FindAll((x) => x.TextureFilename.Contains("idle"));
                 var fight = m_spritesheet.Frames.FindAll((x) => x.TextureFilename.Contains("attack"));
+                var walk = m_spritesheet.Frames.FindAll((x) => x.TextureFilename.Contains("run"));
+                var die = m_spritesheet.Frames.FindAll((x) => x.TextureFilename.Contains("die"));
                 idle.Add(m_spritesheet.Frames[0]);
                 fight.Add(m_spritesheet.Frames[0]);
 
                 m_animations[UnitAnimation.Idle] = new CCAnimate(new CCAnimation(idle, 0.25f));
                 m_animations[UnitAnimation.Fight] = new CCAnimate(new CCAnimation(fight, 0.25f));
+                m_animations[UnitAnimation.Die] = new CCAnimate(new CCAnimation(die, 0.25f));
 
             }
             catch (Exception err)

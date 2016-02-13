@@ -175,13 +175,13 @@
 
                 if (enemyEntity.Health <= 0)
                 { 
-                    LogicRules.DestroyBuilding(enemyEntity, regionEndPos, action.ActionTime, Controller.Instance.RegionManagerController);
+                    LogicRules.DestroyBuilding(enemyEntity, regionEndPos, action, Controller.Instance.RegionManagerController);
                     regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
                     enemyEntity.Owner.Units.Remove(enemyEntity.Position);
                 }
                 else if (entity.Health <= 0)
                 {
-                    LogicRules.DestroyBuilding(entity, regionStartPos, action.ActionTime, Controller.Instance.RegionManagerController);
+                    LogicRules.DestroyBuilding(entity, regionStartPos, action, Controller.Instance.RegionManagerController);
                     regionStartPos.RemoveEntity(action.ActionTime, entity);
                     entity.Owner.Units.Remove(entity.Position);
                 }
