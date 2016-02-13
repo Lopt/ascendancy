@@ -513,6 +513,11 @@
         /// The TENT GID.
         /// </summary>
         public const short TENT = ClientConstants.MENU_GIDS + 25;
+
+        /// <summary>
+        /// The opacity for the indicators.
+        /// </summary>
+        public const int BUILDING_MENU_OPACITY = 80;
     }
 
     /// <summary>
@@ -550,6 +555,11 @@
         /// GID for the unit menu tiles with the trait unknown.
         /// </summary>
         public const short UNKNOWN = ClientConstants.MENU_GIDS + 31;
+
+        /// <summary>
+        /// The opacity for the indicators.
+        /// </summary>
+        public const int UNIT_MENU_OPACITY = 80;
     }
 
     /// <summary>

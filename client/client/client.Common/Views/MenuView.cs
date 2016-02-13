@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using Client.Common.Helper;
     using Client.Common.Models;
     using CocosSharp;
     using Core.Models;
@@ -26,6 +27,7 @@
             m_worldLayer = worldlayer;
             m_extendedMenuPositions = new Dictionary<PositionI, Core.Models.Definitions.Definition>();
             m_baseMenuPositions = new Dictionary<PositionI, CCTileGidAndFlags>();
+            m_sprites = new Dictionary<PositionI, CCSprite>();
         }
 
         /// <summary>
@@ -45,146 +47,146 @@
         /// </summary>
         public static readonly PositionI[] Leftupodd =
             {
-            new PositionI(-1,  1),
-            new PositionI(-1,  0),
-            new PositionI(0, -1)
-        };
+                new PositionI(-1, 1),
+                new PositionI(-1, 0),
+                new PositionI(0, -1)
+            };
 
         /// <summary>
         /// Tiles in the Direction left down
         /// for an even X
         /// </summary>
         public static readonly PositionI[] Leftdowneven =
-        {
-            new PositionI(0,  1),
-            new PositionI(-1,  0),
-            new PositionI(-1, -1)
-        };
+            {
+                new PositionI(0, 1),
+                new PositionI(-1, 0),
+                new PositionI(-1, -1)
+            };
 
         /// <summary>
         /// Tiles in the Direction left down
         /// for an odd X
         /// </summary>
         public static readonly PositionI[] Leftdownodd =
-        {
-            new PositionI(0,  1),
-            new PositionI(-1,  1),
-            new PositionI(-1,  0)
-        };
+            {
+                new PositionI(0, 1),
+                new PositionI(-1, 1),
+                new PositionI(-1, 0)
+            };
 
         /// <summary>
         /// Tiles in the Direction Up
         /// for an even X
         /// </summary>
         public static readonly PositionI[] Upeven =
-        {
-            new PositionI(-1, -1),
-            new PositionI(0, -1),
-            new PositionI(1, -1)
-        };
+            {
+                new PositionI(-1, -1),
+                new PositionI(0, -1),
+                new PositionI(1, -1)
+            };
 
         /// <summary>
         /// Tiles in the Direction Up
         /// for an odd X
         /// </summary>
         public static readonly PositionI[] Upodd =
-        {
-            new PositionI(-1,  0),
-            new PositionI(0, -1),
-            new PositionI(1,  0)
-        };
+            {
+                new PositionI(-1, 0),
+                new PositionI(0, -1),
+                new PositionI(1, 0)
+            };
 
         /// <summary>
         /// Tiles in the Direction right Up
         /// for an even X
         /// </summary>
         public static readonly PositionI[] Rightupeven =
-        {
-            new PositionI(0, -1),
-            new PositionI(1, -1),
-            new PositionI(1,  0)
-        };
+            {
+                new PositionI(0, -1),
+                new PositionI(1, -1),
+                new PositionI(1, 0)
+            };
            
         /// <summary>
         /// Tiles in the Direction right Up
         /// for an odd X
         /// </summary>
         public static readonly PositionI[] Rightupodd =
-        {
-            new PositionI(0, -1),
-            new PositionI(1,  0),
-            new PositionI(1,  1)
-        };
+            {
+                new PositionI(0, -1),
+                new PositionI(1, 0),
+                new PositionI(1, 1)
+            };
 
         /// <summary>
         /// Tiles in the Direction right down
         /// for an even X
         /// </summary>
         public static readonly PositionI[] Rightdowneven =
-        {
-            new PositionI(1, -1),
-            new PositionI(1,  0),
-            new PositionI(0,  1)
-        };
+            {
+                new PositionI(1, -1),
+                new PositionI(1, 0),
+                new PositionI(0, 1)
+            };
 
         /// <summary>
         /// Tiles in the Direction right down
         /// for an odd X
         /// </summary>
         public static readonly PositionI[] Rightdownodd =
-        {
-            new PositionI(1,  0),
-            new PositionI(1,  1),
-            new PositionI(0,  1)
-        };
+            {
+                new PositionI(1, 0),
+                new PositionI(1, 1),
+                new PositionI(0, 1)
+            };
 
         /// <summary>
         /// Tiles in the Direction down
         /// for an even X
         /// </summary>
         public static readonly PositionI[] Downeven =
-        {   
-            new PositionI(1,  0),
-            new PositionI(0,  1),
-            new PositionI(-1,  0)
-        };
+            {   
+                new PositionI(1, 0),
+                new PositionI(0, 1),
+                new PositionI(-1, 0)
+            };
 
         /// <summary>
         /// Tiles in the Direction down
         /// for an odd X
         /// </summary>
         public static readonly PositionI[] Downodd =
-        {
-            new PositionI(1,  1),
-            new PositionI(0,  1),
-            new PositionI(-1,  1)
-        };
+            {
+                new PositionI(1, 1),
+                new PositionI(0, 1),
+                new PositionI(-1, 1)
+            };
 
         /// <summary>
         /// The odd coordinates.
         /// </summary>
         public static readonly PositionI[][] Odd =
-        {
-            Upodd,
-            Downodd,
-            Leftupodd,
-            Rightupodd,
-            Leftdownodd,
-            Rightdownodd
-        };
+            {
+                Upodd,
+                Downodd,
+                Leftupodd,
+                Rightupodd,
+                Leftdownodd,
+                Rightdownodd
+            };
 
         /// <summary>
         /// The even coordinates.
         /// </summary>
         public static readonly PositionI[][] Even =
-        {
-            Upeven,
-            Downeven,
-            Leftupeven,
-            Rightupeven,
-            Leftdowneven,
-            Rightdowneven
-        };
+            {
+                Upeven,
+                Downeven,
+                Leftupeven,
+                Rightupeven,
+                Leftdowneven,
+                Rightdowneven
+            };
 
         /// <summary>
         /// Gets one iteration of the expanding menu with the coordinate and the old coordinate as needed parameters to calculate the direction.
@@ -261,20 +263,12 @@
             }
 
             var keys = new List<PositionI>(m_extendedMenuPositions.Keys);
-            for (var index = 0; index < definitions.Length; ++ index)
+            for (var index = 0; index < definitions.Length; ++index)
             {
                 m_extendedMenuPositions[keys[index]] = definitions[index];
             }
-
-            // Testdraw to make sure it works properly
-            // foreach (var item in m_extendedMenuPositions)
-            // {
-            //    var coordt = Helper.PositionHelper.PositionToTileMapCoordinates(m_worldLayer.CenterPosition, item);
-            //    var gid = new CCTileGidAndFlags(53);
-            //    m_worldLayer.MenuLayer.SetTileGID(gid, coordt);
-            // }
         }
-                
+
         /// <summary>
         /// Draws the major menu.
         /// </summary>
@@ -286,7 +280,7 @@
             {
                 var pos = surroundedPos[index];
                 var gid = new CCTileGidAndFlags(majorgids[index]);
-                m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos.CellPosition, gid);
+                m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMajorMenuTile(pos, gid));
                 m_baseMenuPositions[pos] = gid;
             }
         }
@@ -346,8 +340,7 @@
                 var pos = pair.Key;
                 if (pair.Value != null)
                 {
-                    var gid = ViewDefinitions.Instance.DefinitionToTileGid(pair.Value, ViewDefinitions.Sort.Menu);
-                    m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos.CellPosition, gid);
+                    m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, pair.Value));
                 }
             }
         }
@@ -361,8 +354,7 @@
             for (var index = 0; index < surroundedCoords.Length; ++index)
             {
                 var pos = surroundedCoords[index];
-                var gid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[index], ViewDefinitions.Sort.Menu);
-                m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos.CellPosition, gid);
+                m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, m_types[index]));
                 m_extendedMenuPositions[pos] = m_types[index];
             }
         }
@@ -390,7 +382,7 @@
             m_baseMenuPositions.TryGetValue(pos, out gid);
             return gid;
         }
-            
+
         /// <summary>
         /// Clears the extended menu Tiles.
         /// </summary>
@@ -398,8 +390,12 @@
         {
             foreach (var coord in m_extendedMenuPositions)
             {
-                var regionView = m_worldLayer.GetRegionViewHex(coord.Key.RegionPosition);
-                regionView.RemoveMenuTile(coord.Key.CellPosition);
+                CCSprite sprite;
+                if (m_sprites.TryGetValue(coord.Key, out sprite))
+                {
+                    sprite.Parent.RemoveChild(sprite);
+                    m_sprites.Remove(coord.Key);
+                }
             }
             m_extendedMenuPositions.Clear();
         }
@@ -409,16 +405,23 @@
         /// </summary>
         public void CloseMenu()
         {
-            var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
-            foreach (var pos in surroundedCoords)
-            {
-                var regionView = m_worldLayer.GetRegionViewHex(pos.RegionPosition);
-                regionView.RemoveMenuTile(pos.CellPosition);
-            }
+            RemoveAllMenu();
             if (m_extendedMenuPositions.Count != 0)
             {
                 ClearExtendedMenu();
             }
+        }
+
+        /// <summary>
+        /// Removes the Menu.
+        /// </summary>
+        public void RemoveAllMenu()
+        {     
+            foreach (var sprite in m_sprites)
+            {
+                sprite.Value.Parent.RemoveChild(sprite.Value);
+            }
+            m_sprites.Clear();
         }
 
         public bool IsExtended()
@@ -447,10 +450,18 @@
         private WorldLayerHex m_worldLayer;
 
         /// <summary>
+        /// The sprites.
+        /// </summary>
+        private Dictionary<PositionI, CCSprite> m_sprites;
+
+        /// <summary>
         /// A list to hold all the additional Tile Positions.
         /// </summary>
         private Dictionary<PositionI, Core.Models.Definitions.Definition> m_extendedMenuPositions;
 
+        /// <summary>
+        /// The m base menu positions.
+        /// </summary>
         private Dictionary<PositionI, CCTileGidAndFlags> m_baseMenuPositions;
     }
 }

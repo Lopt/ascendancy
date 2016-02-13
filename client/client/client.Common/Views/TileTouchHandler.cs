@@ -1,4 +1,7 @@
-﻿namespace Client.Common.Views
+﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+
+namespace Client.Common.Views
 {
     using System;
     using System.Collections;
@@ -93,6 +96,7 @@
             TouchHandler.Instance.ListenBegan(m_worldLayer, OnTouchesBegan);
             TouchHandler.Instance.ListenEnded(m_worldLayer, OnTouchesEnded);
             TouchHandler.Instance.ListenMoved(m_worldLayer, OnTouchesMoved);
+
         }
 
         /// <summary>
@@ -359,7 +363,6 @@
                         }
                         Gesture = TouchGesture.Menu;
                     }
-
                     break;
             }
 

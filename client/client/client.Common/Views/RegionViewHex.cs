@@ -12,7 +12,9 @@
     using Client.Common.Models;
     using CocosSharp;
     using Core.Models;
+    using Core.Models.Definitions;
     using Core.Views;
+    using Microsoft.Xna.Framework;
     using SQLitePCL;
 
     /// <summary>
@@ -115,18 +117,29 @@
         /// </summary>
         /// <param name="cellPos">Cell position.</param>
         /// <param name="definition">Definition.</param>
-        public void SetMenuTile(CellPosition cellPos, CCTileGidAndFlags definition)
+        public CCSprite SetMenuTile(PositionI posI, Definition type)
         {
-            m_menueLayer.SetTileGID(definition, new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
+            var gid = ViewDefinitions.Instance.DefinitionToTileGid(type, ViewDefinitions.Sort.Menu);
+            m_menueLayer.SetTileGID(gid, new CCTileMapCoordinates(posI.CellPosition.CellX, posI.CellPosition.CellY));
+            var sprite = m_menueLayer.ExtractTile(new CCTileMapCoordinates(posI.CellPosition.CellX, posI.CellPosition.CellY), true);
+            if (!IsPossibleToCreate(posI, type))
+            {
+                //sprite.Opacity = BuildingMenuGid.BUILDING_MENU_OPACITY;
+                sprite.Color = CCColor3B.DarkGray;
+            }  
+            return sprite;
         }
 
         /// <summary>
-        /// Removes the menu tile.
+        /// Sets the menu tile.
         /// </summary>
         /// <param name="cellPos">Cell position.</param>
-        public void RemoveMenuTile(CellPosition cellPos)
+        /// <param name="definition">Definition.</param>
+        public CCSprite SetMajorMenuTile(PositionI posI, CCTileGidAndFlags gid)
         {
-            m_menueLayer.RemoveTile(new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
+            m_menueLayer.SetTileGID(gid, new CCTileMapCoordinates(posI.CellPosition.CellX, posI.CellPosition.CellY));
+            var sprite = m_menueLayer.ExtractTile(new CCTileMapCoordinates(posI.CellPosition.CellX, posI.CellPosition.CellY), true); 
+            return sprite;
         }
 
         /// <summary>
@@ -205,6 +218,19 @@
                 m_tileMap.TileLayersContainer.RemoveChild(border);
                 m_drawNodes.Remove(owner);
             }
+        }
+
+        /// <summary>
+        /// Determines whether this instance is possible to create the specified type on the position.
+        /// </summary>
+        /// <returns><c>true</c> if this instance is possible to create the specified type on the position; otherwise, <c>false</c>.</returns>
+        /// <param name="positionI">Position i.</param>
+        /// <param name="type">Type.</param>
+        private bool IsPossibleToCreate(PositionI positionI, Core.Models.Definitions.Definition type)
+        {
+            var action = ActionHelper.CreateEntity(positionI, type, GameAppDelegate.Account);
+            var actionC = (Core.Controllers.Actions.Action)action.Control;
+            return actionC.Possible();
         }
 
         /// <summary>
