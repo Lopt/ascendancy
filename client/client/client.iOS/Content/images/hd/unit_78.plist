@@ -5,7 +5,7 @@
         <key>frames</key>
         <dict>
         
-            <key>longbowman-bow-attack-1.png</key>
+            <key>archer+female-sword-defend.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -21,7 +21,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-bow-attack-2.png</key>
+            <key>archer-bow-attack1.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -37,7 +37,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-bow-attack-3.png</key>
+            <key>archer-bow-attack2.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -53,7 +53,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-bow-attack-4.png</key>
+            <key>archer-bow-attack3.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -69,7 +69,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-bow-defend.png</key>
+            <key>archer-bow-attack4.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -85,7 +85,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-bow.png</key>
+            <key>archer-bow-defend.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -101,7 +101,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-idle-1.png</key>
+            <key>archer-bow.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -117,7 +117,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-idle-2.png</key>
+            <key>archer-die1.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -133,7 +133,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-idle-3.png</key>
+            <key>archer-die2.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -149,7 +149,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-idle-4.png</key>
+            <key>archer-die3.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -165,7 +165,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-melee-attack-1.png</key>
+            <key>archer-die4.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -181,7 +181,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-melee-attack-2.png</key>
+            <key>archer-idle-1.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -197,7 +197,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-melee-attack-3.png</key>
+            <key>archer-idle-2.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -213,7 +213,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-melee-attack-4.png</key>
+            <key>archer-idle-3.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -229,7 +229,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-melee-defend-1.png</key>
+            <key>archer-idle-4.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -245,7 +245,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman-melee-defend-2.png</key>
+            <key>archer-idle-5.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -261,7 +261,7 @@
                 <false/>
             </dict>
 
-            <key>longbowman.png</key>
+            <key>archer-idle-6.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -273,6 +273,22 @@
                 <string>{72,72}</string>
                 <key>textureRect</key>
                 <string>{{504,72},{72,72}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+
+            <key>archer.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{72,72}</string>
+                <key>spriteSourceSize</key>
+                <string>{72,72}</string>
+                <key>textureRect</key>
+                <string>{{576,72},{72,72}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>

@@ -26,13 +26,14 @@ namespace Client.Common.Views
             }
         }
 
-        public void Animate(UnitAnimation type)
+        public float Animate(UnitAnimation type)
         {
             var model = (Core.Models.Entity)Model;
             var defView = (UnitDefinitionView)model.Definition.View;
             var animate = defView.GetAnimate(type);
 
-            Node.RunAction(animate);
+            Node.RunActionAsync(animate);
+            return animate.Duration;
         }
 
         public void AnimateForever(UnitAnimation type)
@@ -41,7 +42,7 @@ namespace Client.Common.Views
             var defView = (UnitDefinitionView)model.Definition.View;
             var animate = defView.GetAnimate(type);
 
-            Node.RunAction(new CCRepeatForever(animate));
+            Node.RunActionAsync(new CCRepeatForever(animate));
         }
 
         public void StopAnimation()
