@@ -38,8 +38,11 @@
         /// <param name="cellY">Cell Y Position.</param>
         public CellPosition(int cellX, int cellY)
         {
-            CellX = (int)cellX % Constants.REGION_SIZE_X;
-            CellY = (int)cellY % Constants.REGION_SIZE_Y;
+            // if the number is to big (>= RegionSize or to small (<= - RegionSize), normalize it
+            // if the number is negative (e.g. -1) then add the RegionSize (-1 + 32 = 31) and then normalize it again
+            // normalizing it again is needed, if the number is positive (1 + 32 = 33 -> which is cell 1) 
+            CellX = (int)(Constants.REGION_SIZE_X + (cellX % Constants.REGION_SIZE_X)) % Constants.REGION_SIZE_X;
+            CellY = (int)(Constants.REGION_SIZE_Y + (cellY % Constants.REGION_SIZE_Y)) % Constants.REGION_SIZE_Y;
         }
 
         /// <summary>
@@ -47,9 +50,9 @@
         /// </summary>
         /// <param name="position">GameWorld Position.</param>
         public CellPosition(Position position)
+            : this((int) position.X, 
+                (int) position.Y)
         {
-            CellX = (int)position.X % Constants.REGION_SIZE_X;
-            CellY = (int)position.Y % Constants.REGION_SIZE_Y;
         }
 
         /// <summary>
@@ -57,9 +60,9 @@
         /// </summary>
         /// <param name="position">GameWorld Integer Position.</param>
         public CellPosition(PositionI position)
+            : this(position.X,
+                    position.Y)
         {
-            CellX = position.X % Constants.REGION_SIZE_X;
-            CellY = position.Y % Constants.REGION_SIZE_Y;
         }
 
         /// <summary>
@@ -67,9 +70,9 @@
         /// </summary>
         /// <param name="obj">JContainer Object.</param>
         public CellPosition(JContainer obj)
+        :this((int)obj.SelectToken("CellX"),
+            (int)obj.SelectToken("CellY"))
         {
-            CellX = (int)obj.SelectToken("CellX");
-            CellY = (int)obj.SelectToken("CellY");
         }
 
         /// <summary>
