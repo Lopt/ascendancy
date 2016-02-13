@@ -151,7 +151,10 @@
 
             foreach (var regionPos in deleteKeys)
             {
-                this.RemoveChild(m_regionViewHexDic[regionPos].GetTileMap().TileLayersContainer);
+                foreach (RegionViewHex.LayerTypes layer in Enum.GetValues(typeof(RegionViewHex.LayerTypes)))
+                {
+                    this.RemoveChild(m_regionViewHexDic[regionPos].GetChildrens(layer));
+                }
                 m_regionViewHexDic.Remove(regionPos);
             }
 
@@ -164,7 +167,14 @@
                 {
                     regionViewHex = new RegionViewHex(region);
                 }
-                this.AddChild(regionViewHex.GetTileMap().TileLayersContainer);
+
+                foreach (RegionViewHex.LayerTypes layer in Enum.GetValues(typeof(RegionViewHex.LayerTypes)))
+                {
+                    if (regionViewHex.GetChildrens(layer) != null)
+                    {
+                        this.AddChild(regionViewHex.GetChildrens(layer)); // , (int)layer
+                    }
+                }
                 m_regionViewHexDic.Add(regionPos, regionViewHex);
             }
                 

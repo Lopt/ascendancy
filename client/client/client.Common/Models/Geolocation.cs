@@ -130,7 +130,7 @@
         public async Task<Core.Models.Position> GetPositionAsync()
         {
             var latlon = await m_geolocator.GetPositionAsync(Constants.ClientConstants.GPS_GET_POSITION_TIMEOUT);
-            return new Core.Models.Position(latlon.Latitude, latlon.Longitude);
+            return new Core.Models.Position(new Core.Models.LatLon(latlon.Latitude, latlon.Longitude));
         }
 
         #endregion

@@ -19,7 +19,7 @@
     /// </summary>
     public class RegionViewHex : ViewEntity
     {
-        public enum Layer
+        public enum LayerTypes
         {
             Terrain,
             Building,
@@ -39,30 +39,27 @@
         {
             var tileMapInfo = new CCTileMapInfo(Common.Constants.ClientConstants.TILEMAP_FILE_HEX);
             m_tileMap = new CCTileMap(tileMapInfo);
-            m_tileMap.TileLayersContainer.AnchorPoint = new CCPoint(0.0f, 1.0f);
 
 
             m_terrainLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_TERRAIN);
             m_buildingLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_BUILDING);
-            m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
             m_menueLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_MENU);
             m_indicatorLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_INDICATOR);
 
             m_drawNodes = new Dictionary<Core.Models.Entity, CCDrawNode>();
 
+            m_childs = new Dictionary<LayerTypes, CCNode>();
+            m_childs[LayerTypes.Terrain] = m_tileMap.TileLayersContainer;
+            m_childs[LayerTypes.Building] = null;
+            m_childs[LayerTypes.Unit] = new CCLayer();
+            m_childs[LayerTypes.Border] = null;//new CCLayer();
+            m_childs[LayerTypes.Indicator] = null;//new CCLayer();
+            m_childs[LayerTypes.Menu] = null;//new CCLayer();
+
             Init();
             LoadRegionViewAsync();
 
-            m_childs = new Dictionary<Layer, LinkedList<CCNode>>();
-            m_childs[Layer.Terrain] = new LinkedList<CCNode>();
-            m_childs[Layer.Building] = new LinkedList<CCNode>();
-            m_childs[Layer.Unit] = new LinkedList<CCNode>();
-            m_childs[Layer.Border] = new LinkedList<CCNode>();
-            m_childs[Layer.Indicator] = new LinkedList<CCNode>();
-            m_childs[Layer.Menu] = new LinkedList<CCNode>();
 
-            m_childs[Layer.Terrain].AddFirst(m_tileMap.TileLayersContainer);
-            
         }
 
         /// <summary>
@@ -74,9 +71,9 @@
             return m_tileMap;
         }
 
-        public IEnumerator<CCNode> GetChildrens(Layer layer)
+        public CCNode GetChildrens(LayerTypes layer)
         {
-            return m_childs[layer].GetEnumerator();
+            return m_childs[layer];
         }
 
         public void UglyDraw()
@@ -107,19 +104,20 @@
             if (unitV.DrawRegion == regionM.RegionPosition)
             {
                 unitV.Node.RemoveFromParent();
-                m_tileMap.TileLayersContainer.AddChild(unitV.Node);
+                m_childs[LayerTypes.Unit] .AddChild(unitV.Node);
                 unitV.Node.Position = unitV.DrawPoint;
             }
             else
             {
                 m_tileMap.TileLayersContainer.RemoveChild(unitV.Node);
             }
+
         }
 
         public void RemoveUnit(Entity unit)
         {
             var unitV = (UnitView)unit.View;
-            m_tileMap.RemoveChild(unitV.Node);
+            m_childs[LayerTypes.Unit].RemoveChild(unitV.Node);
         }
 
         public void SetMenuTile(CellPosition cellPos, CCTileGidAndFlags definition)
@@ -228,7 +226,14 @@
         private void SetWorldPosition()
         {
             var position = PositionHelper.RegionToWorldspace(this);
-            m_tileMap.TileLayersContainer.Position = position;
+            m_childs[LayerTypes.Terrain].Position = position;
+            m_childs[LayerTypes.Terrain].AnchorPoint =  new CCPoint(0.0f, 1.0f);
+ 
+            m_childs[LayerTypes.Unit].Position = position;
+            m_childs[LayerTypes.Unit].ContentSize = m_childs[LayerTypes.Terrain].ContentSize;
+            m_childs[LayerTypes.Unit].AnchorPoint =  new CCPoint(0.0f, 1.0f);
+            m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
+
         }
 
 
@@ -248,7 +253,6 @@
         {
             var coordHelper = new CCTileMapCoordinates(0, 0);
             m_buildingLayer.RemoveTile(coordHelper);
-            m_unitLayer.RemoveTile(coordHelper);
             m_menueLayer.RemoveTile(coordHelper);
             m_indicatorLayer.RemoveTile(coordHelper);
         }
@@ -366,11 +370,6 @@
         private CCTileMapLayer m_buildingLayer;
 
         /// <summary>
-        /// The unit layer.
-        /// </summary>
-        private CCTileMapLayer m_unitLayer;
-
-        /// <summary>
         /// The menue layer.
         /// </summary>
         private CCTileMapLayer m_menueLayer;
@@ -382,7 +381,7 @@
 
         private Dictionary<Core.Models.Entity,CCDrawNode> m_drawNodes;
 
-        private Dictionary<Layer, LinkedList<CCNode>> m_childs;
+        private Dictionary<LayerTypes, CCNode> m_childs;
 
         #endregion
     }
