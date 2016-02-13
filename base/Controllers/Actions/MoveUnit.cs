@@ -141,7 +141,7 @@
                 var enemyEntity = regionEndPos.GetEntity(endPosition.CellPosition);
 
                 // Ranged attack units deal only 1 dmg to buildings
-                if (((UnitDefinition)entity.Definition).AttackRange >= 1 && enemyEntity.Definition.Category == Category.Building)
+                if (((UnitDefinition)entity.Definition).AttackRange > 1 && enemyEntity.Definition.Category == Category.Building)
                 {                    
                     enemyEntity.Health -= 1;
                 }
@@ -150,11 +150,11 @@
                     // iterate trough all methods to modifie the attack
                     LogicRules.AllAttackModifierRangedInMeele(entity);
 
-                    enemyEntity.Health += entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
+                    enemyEntity.Health -= entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
 
                     if (((UnitDefinition)enemyEntity.Definition).AttackRange >= m_fightDistance)
                     {
-                        entity.Health += enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
+                        entity.Health -= enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
                     }
                 }
                 else
@@ -163,34 +163,27 @@
                     LogicRules.AllAttackModifier(entity);
                     LogicRules.AllDefenseModifier(enemyEntity);
 
-                    enemyEntity.Health += entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
+                    enemyEntity.Health -= entity.ModfiedAttackValue - enemyEntity.ModifiedDefenseValue;
 
                     if (((UnitDefinition)enemyEntity.Definition).AttackRange >= m_fightDistance)
                     {
-                        entity.Health += enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
+                        LogicRules.AllAttackModifier(enemyEntity);
+                        LogicRules.AllDefenseModifier(entity);
+                        entity.Health -= enemyEntity.ModfiedAttackValue - entity.ModifiedDefenseValue;
                     }
                 }
 
                 if (enemyEntity.Health <= 0)
-                {      
-                    // Remove a headquarter and free the territory, Decrease Storage 
-                    if (enemyEntity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
-                    {  
-                        regionEndPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(enemyEntity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), enemyEntity.Owner);
-                        LogicRules.DecreaseHoleStorage(enemyEntity.Owner);
-                        regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
-                    }
+                { 
+                    LogicRules.DestroyBuilding(enemyEntity, regionEndPos, action, Controller.Instance.RegionManagerController);
                     regionEndPos.RemoveEntity(action.ActionTime, enemyEntity);
+                    enemyEntity.Owner.Units.Remove(enemyEntity.Position);
                 }
-                if (entity.Health <= 0)
+                else if (entity.Health <= 0)
                 {
-                    if (entity.Definition.ID == (long)Models.Definitions.EntityType.Headquarter)
-                    {  
-                        regionStartPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);
-                        LogicRules.DecreaseHoleStorage(entity.Owner);
-                        regionStartPos.RemoveEntity(action.ActionTime, entity);
-                    }
+                    LogicRules.DestroyBuilding(entity, regionStartPos, action, Controller.Instance.RegionManagerController);
                     regionStartPos.RemoveEntity(action.ActionTime, entity);
+                    entity.Owner.Units.Remove(entity.Position);
                 }
             }
             else

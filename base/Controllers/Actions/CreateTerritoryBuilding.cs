@@ -75,60 +75,64 @@
             m_type = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
             var account = action.Account;
 
-            // Filter for territory buildings
-            if (type == (long)Models.Definitions.EntityType.Headquarter)
+            if (type != null || account != null)
             {
-                m_drawArea = Constants.HEADQUARTER_TERRITORY_RANGE;
-            }
-            else if (type == (long)Models.Definitions.EntityType.GuardTower)
-            {
-                m_drawArea = Constants.GUARDTOWER_TERRITORY_RANGE;
-            }
+                // Filter for territory buildings
+                if (type == (long)Models.Definitions.EntityType.Headquarter)
+                {
+                    m_drawArea = Constants.HEADQUARTER_TERRITORY_RANGE;
+                }
+                else if (type == (long)Models.Definitions.EntityType.GuardTower)
+                {
+                    m_drawArea = Constants.GUARDTOWER_TERRITORY_RANGE;
+                }
 
-            if (!action.Account.TerritoryBuildings.ContainsValue((long)Core.Models.Definitions.EntityType.Headquarter) && 
+                if (!action.Account.TerritoryBuildings.ContainsValue((long)Core.Models.Definitions.EntityType.Headquarter) &&
                 m_type.SubType == Models.Definitions.EntityType.Headquarter &&
                 region.GetEntity(entityCellPostion) == null &&
                 region.GetClaimedTerritory(entityPosition) == null)
-            {
-                // terrain check
-                var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
-                var list = LogicRules.GetSurroundedPositions(entityPosition, m_drawArea);
-                bool territoryFlag = true;
-                // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
-                foreach (var position in list)
                 {
-                    if (region.GetClaimedTerritory(entityPosition) != null)
+                    // terrain check
+                    var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
+                    var list = LogicRules.GetSurroundedPositions(entityPosition, m_drawArea);
+                    bool territoryFlag = true;
+                    // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
+                    foreach (var position in list)
                     {
-                        territoryFlag = false;
-                    }                  
+                        var tile = region.GetClaimedTerritory(position);
+                        if (tile != null)
+                        {
+                            territoryFlag = false;
+                        }                  
+                    }
+                    if (territoryFlag)
+                    {                
+                        return td.Buildable && LogicRules.ConsumeResource(account, m_type); 
+                    }
                 }
-                if (territoryFlag)
-                {                
-                    return td.Buildable && LogicRules.ConsumeResource(account, m_type); 
-                }
-            }           
-            else if (region.GetEntity(entityCellPostion) == null && 
+                else if (region.GetEntity(entityCellPostion) == null &&
                      m_type.SubType != Models.Definitions.EntityType.Headquarter &&
-                region.GetClaimedTerritory(entityPosition) == account)
-            {
-                // check for free tile and the terrain is possesed from the current player
-                var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
-                var list = LogicRules.GetSurroundedPositions(entityPosition, m_drawArea);
-                bool territoryFlag = true;
-                // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
-                foreach (var position in list)
+                     region.GetClaimedTerritory(entityPosition) == account)
                 {
-                    if (region.GetClaimedTerritory(position) != null)
+                    // check for free tile and the terrain is possesed from the current player
+                    var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
+                    var list = LogicRules.GetSurroundedPositions(entityPosition, m_drawArea);
+                    bool territoryFlag = true;
+                    // check the map for enemy territory if there is a enemy territory to close at new borders a territory building cant be build
+                    foreach (var position in list)
                     {
-                        territoryFlag = false;
-                    }                  
+                        var tile = region.GetClaimedTerritory(position);
+                        if (tile != account &&
+                        tile != null)
+                        { 
+                            territoryFlag = false;
+                        }
+                    }
+                    if (territoryFlag)
+                    {                
+                        return td.Buildable && LogicRules.ConsumeResource(account, m_type); 
+                    }
                 }
-                if (territoryFlag)
-                {                
-                    return td.Buildable && LogicRules.ConsumeResource(account, m_type); 
-                }
-
-                return td.Buildable && LogicRules.ConsumeResource(account, m_type);  
             }
             return false;         
         }
@@ -168,7 +172,7 @@
                 action.Account.TerritoryBuildings.Add(entity.Position, type);             
                 LogicRules.EnableBuildOptions(type, action.Account);
                 region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, m_drawArea), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
-                LogicRules.IncreaseHoleStorage(action.Account);
+                LogicRules.IncreaseWholeStorage(action.Account);
                 LogicRules.GatherResources(action.Account, Controller.Instance.RegionManagerController, Constants.HEADQUARTER_TERRITORY_RANGE);
                 LogicRules.SetCurrentMaxPopultion(action.Account);
                 LogicRules.SetCurrentMaxEnergy(action.Account);

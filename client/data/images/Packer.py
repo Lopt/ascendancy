@@ -19,7 +19,7 @@ OUT = "OUTPUT/"
 PATHS = (TERRAINPATH, BUILDINGSPATH, UNITSPATH, MENUPATH, ENEMYPATH, HELPERPATH)
 
 #needed variables
-IMAGEWIDTH = 107
+IMAGEWIDTH = 84
 IMAGEHEIGHT = 72
 COLLUM = 10.0
 WIDTH = int(COLLUM) * IMAGEWIDTH
@@ -34,7 +34,7 @@ def Spritesheet(TMPPATH, COUNT, height):
                 template = Image.open(TMPPATH+"00"+str(pic)+".png")
                 new_image.paste(template, (offsetx, offsety, (offsetx + IMAGEWIDTH), (offsety + IMAGEHEIGHT)))
                 offsetx = offsetx + IMAGEWIDTH
-                if(offsetx == 1070):
+                if(offsetx == (10*IMAGEWIDTH)):
                         offsetx = 0
                         offsety = offsety + IMAGEHEIGHT
         new_image.save(OUT+TMPPATH+"spritesheet.png")

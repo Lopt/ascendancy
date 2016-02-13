@@ -92,6 +92,71 @@
             GameAppDelegate.Account.Population.Value = 1000;
             GameAppDelegate.Account.Technology.Set(1000, 0);
             GameAppDelegate.Account.Energy.Value = 1000;
+
+            var account = new Core.Models.Account(GameAppDelegate.Account.ID + 1);
+            new Core.Models.AccountManager().AddAccount(account);
+
+            var pos = Models.Geolocation.Instance.CurrentGamePosition;
+            var posI = new Core.Models.PositionI(pos.RegionPosition, pos.CellPosition);
+
+            var actionCreate = Helper.ActionHelper.CreateEntity(
+                new Core.Models.PositionI(pos),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Headquarter),
+                account);
+            
+            m_gameScene.WorldLayerHex.DoAction(actionCreate);
+
+            account.Scrap.MaximumValue = 10000;
+            account.Plutonium.MaximumValue = 10000;
+            account.Population.MaximumValue = 10000;
+            account.Technology.MaximumValue = 10000;
+            account.Energy.MaximumValue = 10000;
+  
+            account.Scrap.Set(10000, 0);
+            account.Plutonium.Set(10000, 0);
+            account.Population.Value = 10000;
+            account.Technology.Set(10000, 0);
+            account.Energy.Value = 10000;
+
+            var newPos = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X + 2, (int)pos.Y +2));  
+
+            var actioncreate2 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(newPos),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Barracks),
+                account);
+
+            m_gameScene.WorldLayerHex.DoAction(actioncreate2);
+
+            var actioncr = Helper.ActionHelper.CreateEntity(
+                               new Core.Models.PositionI(newPos),
+                               new Core.Models.Definitions.Definition((int)Core.Models.Definitions.EntityType.Archer),
+                               account);
+            
+            m_gameScene.WorldLayerHex.DoAction(actioncr);
+
+            var newBorderpos = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X - 4, (int)pos.Y)); 
+            var newBorderpos2 = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X, (int)pos.Y - 4)); 
+
+            var actioncreate3 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(
+                                    newBorderpos),
+                                    Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.GuardTower),
+                                    account);
+
+            m_gameScene.WorldLayerHex.DoAction(actioncreate3);
+
+            var actioncreate4 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(
+                newBorderpos2),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.GuardTower),
+                account);
+            
+            m_gameScene.WorldLayerHex.DoAction(actioncreate4);
+
+            var newLabpos = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)newBorderpos.X - 1, (int)newBorderpos.Y));
+
+            var actioncreate5 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(newLabpos),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Lab),
+                account);
+
+            m_gameScene.WorldLayerHex.DoAction(actioncreate5);
         }
 
         /// <summary>

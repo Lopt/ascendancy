@@ -41,9 +41,11 @@
                 var actionC = (Core.Controllers.Actions.Action)Action.Control;
                 var actionV = CreateActionView(Action, actionC.GetRegionPosition());
                 var affectedRegions = actionC.GetAffectedRegions();
-                actionC.Possible();
-                actionV.BeforeDo();
-                actionC.Do();
+                if (actionC.Possible())
+                {
+                    actionV.BeforeDo();
+                    actionC.Do();
+                }
             }
         }
 
@@ -60,10 +62,10 @@
                     return new Client.Common.Views.Actions.CreateUnit(action, WorldLayerHex.GetRegionViewHex(regionPosition));
 
                 case Core.Models.Action.ActionType.MoveUnit:
-                    return new Client.Common.Views.Actions.MoveUnit(action);
+                    return new Client.Common.Views.Actions.MoveUnit(action, WorldLayerHex);
 
                 case Core.Models.Action.ActionType.CreateTerritoryBuilding:
-                    return new Client.Common.Views.Actions.CreateTerritoryBuilding(action, WorldLayerHex.GetRegionViewHex(regionPosition));
+                    return new Client.Common.Views.Actions.CreateTerritoryBuilding(action, WorldLayerHex);
 
                 case Core.Models.Action.ActionType.CreateBuilding:
                     return new Client.Common.Views.Actions.CreateBuilding(action, WorldLayerHex.GetRegionViewHex(regionPosition));

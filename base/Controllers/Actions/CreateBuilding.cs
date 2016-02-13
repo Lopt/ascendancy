@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Concurrent;
+    using System.Collections.Generic;
     using Core.Controllers.Actions;
     using Core.Models;
     using Core.Models.Definitions;
@@ -67,13 +68,25 @@
             var type = (long)action.Parameters[CREATION_TYPE];
             var entityDef = Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type);
             var account = action.Account;
-                            
-            if (region.GetEntity(entityPosition.CellPosition) == null && 
-                region.GetClaimedTerritory(entityPosition) == account)
+            var list = new List<long>();
+
+            if (account != null)
             {
-                // check for free tile and the terrain is possesed from the current player
-                var td = (TerrainDefinition)region.GetTerrain(entityPosition.CellPosition);
-                return td.Buildable && LogicRules.ConsumeResource(account, entityDef);  
+                account.BuildableBuildings.TryGetValue((long)Models.Definitions.EntityType.Headquarter, out list);
+
+                if (list != null)
+                {
+                    if (list.Contains(type))
+                    {        
+                        if (region.GetEntity(entityPosition.CellPosition) == null &&
+                        region.GetClaimedTerritory(entityPosition) == account)
+                        {
+                            // check for free tile and the terrain is possesed from the current player
+                            var td = (TerrainDefinition)region.GetTerrain(entityPosition.CellPosition);
+                            return td.Buildable && LogicRules.ConsumeResource(account, entityDef);  
+                        }
+                    }
+                }
             }
             return false;         
         }
@@ -106,8 +119,8 @@
             entity.Position = entityPosition;
             region.AddEntity(action.ActionTime, entity);
 
-            action.Account.Buildings.AddLast(entity.Position);
-            LogicRules.ResourceGeneration(action.Account, entity.Position, Controller.Instance.RegionManagerController);
+            action.Account.Buildings.Add(entity.Position, type);
+            LogicRules.IncreaseResourceGeneration(action.Account, entity.Position, Controller.Instance.RegionManagerController);
             LogicRules.EnableBuildOptions(type, action.Account);
             LogicRules.IncreaseStorage(action.Account, entity);
 

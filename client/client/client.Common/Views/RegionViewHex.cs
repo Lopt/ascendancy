@@ -2,8 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Linq.Expressions;
     using System.Threading;
+    using System.Threading.Tasks;
     using Client.Common.Constants;
     using Client.Common.Helper;
     using Client.Common.Manager;
@@ -12,7 +14,6 @@
     using Core.Models;
     using Core.Views;
     using SQLitePCL;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Region view with hexagonal tile map to set the content of the tile map.
@@ -46,7 +47,7 @@
             m_menueLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_MENU);
             m_indicatorLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_INDICATOR);
 
-            m_drawNodes = new Dictionary<Core.Models.Entity, CCDrawNode>();
+            m_drawNodes = new Dictionary<Account, CCDrawNode>();
 
             m_childs = new Dictionary<LayerTypes, CCNode>();
             m_childs[LayerTypes.Terrain] = m_tileMap.TileLayersContainer;
@@ -58,8 +59,11 @@
 
             Init();
             LoadRegionViewAsync();
+        }
 
-
+        public CCTileMap GetTileMap()
+        {
+            return m_tileMap;
         }
 
         public CCNode GetChildrens(LayerTypes layer)
@@ -67,6 +71,9 @@
             return m_childs[layer];
         }
 
+        /// <summary>
+        /// Make a ugle draw (moves the tile layers container a little bit).
+        /// </summary>
         public void UglyDraw()
         {
             var container = m_tileMap.TileLayersContainer;
@@ -78,10 +85,9 @@
         }
 
         /// <summary>
-        /// Sets the unit in the map.
+        /// Draws the unit.
         /// </summary>
-        /// <param name="mapCoordinat">Map coordinate.</param>
-        /// <param name="unit">Unit which should be drawn (or null if it should be erased).</param>
+        /// <param name="unit"> Unit </param>
         public void DrawUnit(Entity unit)
         {
             var regionM = (Region)Model;
@@ -105,17 +111,40 @@
 
         }
 
+        /// <summary>
+        /// Removes the unit.
+        /// </summary>
+        /// <param name="unit">Unit</param>
         public void RemoveUnit(Entity unit)
         {
             var unitV = (UnitView)unit.View;
             m_childs[LayerTypes.Unit].RemoveChild(unitV.Node);
+            m_tileMap.TileLayersContainer.RemoveChild(unitV.Node);
         }
 
+        /// <summary>
+        /// Removes the building.
+        /// </summary>
+        /// <param name="building">Building.</param>
+        public void RemoveBuilding(Entity building)
+        {
+            m_buildingLayer.RemoveTile(new CCTileMapCoordinates(building.Position.CellPosition.CellX, building.Position.CellPosition.CellY));
+        }
+
+        /// <summary>
+        /// Sets the menu tile.
+        /// </summary>
+        /// <param name="cellPos">Cell position.</param>
+        /// <param name="definition">Definition.</param>
         public void SetMenuTile(CellPosition cellPos, CCTileGidAndFlags definition)
         {
             m_menueLayer.SetTileGID(definition, new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
         }
 
+        /// <summary>
+        /// Removes the menu tile.
+        /// </summary>
+        /// <param name="cellPos">Cell position.</param>
         public void RemoveMenuTile(CellPosition cellPos)
         {
             m_menueLayer.RemoveTile(new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
@@ -141,57 +170,61 @@
                 }
                 var gid = ViewDefinitions.Instance.DefinitionToTileGid(building.Definition, sort);
                 m_buildingLayer.SetTileGID(gid, mapCoordinat);
-
-            }
-                
+            }                
         }
 
+        /// <summary>
+        /// Sets the indicator gid.
+        /// </summary>
+        /// <returns>The indicator gid.</returns>
+        /// <param name="cellPos">Cell position.</param>
+        /// <param name="gid">Gid.</param>
         public CCSprite SetIndicatorGid(CellPosition cellPos, CCTileGidAndFlags gid)
         {            
             m_indicatorLayer.SetTileGID(gid, new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
             var sprite = m_indicatorLayer.ExtractTile(new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY), true);
-            sprite.Opacity = 30;
+            sprite.Opacity = HelperSpritesGid.INDICATOR_OPACITY;
             return sprite;
         }
 
-        public void DrawBorder(Core.Models.Entity entity)
+        /// <summary>
+        /// Draws the border.
+        /// </summary>
+        /// <param name="borderPositions">Border positions.</param>
+        /// <param name="color">Color.</param>
+        public void DrawBorder(HashSet<PositionI> borderPositions, CCColor4B color, Account owner)
         {
-            if (entity != null)
+            RemoveBorder(owner);
+            if (borderPositions != null)
             {
-                if (entity.Definition.SubType == Core.Models.Definitions.EntityType.Headquarter)
+                var border = new CCDrawNode();
+                m_tileMap.TileLayersContainer.AddChild(border);
+                m_drawNodes.Add(owner, border);
+
+                var halfwidth = ClientConstants.TILE_HEX_IMAGE_WIDTH / 2.0f;
+                var halfhight = ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2.0f;
+                // zentrieren der Grenzpunkte und zeichnen dieser
+                foreach (var positionI in borderPositions)
                 {
-                    if (entity.Owner != GameAppDelegate.Account)
-                    {
-                        DrawBorder(entity, Core.Models.Constants.HEADQUARTER_TERRITORY_RANGE, CCColor4B.Red);
-                    }
-                    else
-                    {
-                        DrawBorder(entity, Core.Models.Constants.HEADQUARTER_TERRITORY_RANGE, CCColor4B.Green);
-                    }
-                }
-                else if (entity.Definition.SubType == Core.Models.Definitions.EntityType.GuardTower)
-                {
-                    if (entity.Owner != GameAppDelegate.Account)
-                    {
-                        DrawBorder(entity, Core.Models.Constants.GUARDTOWER_TERRITORY_RANGE, CCColor4B.Red);
-                    }
-                    else
-                    {
-                        DrawBorder(entity, Core.Models.Constants.GUARDTOWER_TERRITORY_RANGE, CCColor4B.Green);
-                    }
+                    var centerPos = PositionHelper.CellToTile(positionI.CellPosition);
+                    centerPos.X += halfwidth;
+                    centerPos.Y -= halfhight;
+                    border.DrawSolidCircle(centerPos, ClientConstants.TERRATORRY_BUILDING_BORDER_SIZE, color);
                 }
             }
-
         }
 
-        public void RemoveBorder(Core.Models.Entity entity)
+        /// <summary>
+        /// Removes the border.
+        /// </summary>
+        /// <param name="owner">Owner.</param>
+        public void RemoveBorder(Account owner)
         {
-            if (entity != null)
+            CCDrawNode border;
+            if (m_drawNodes.TryGetValue(owner, out border))
             {
-                CCDrawNode Border;
-                m_drawNodes.TryGetValue(entity, out Border);
-                m_tileMap.TileLayersContainer.RemoveChild(Border);
-                m_drawNodes.Remove(entity);
+                m_tileMap.TileLayersContainer.RemoveChild(border);
+                m_drawNodes.Remove(owner);
             }
         }
 
@@ -214,6 +247,9 @@
             SetTilesInMap32();
         }
 
+        /// <summary>
+        /// Sets the world position.
+        /// </summary>
         private void SetWorldPosition()
         {
             var position = PositionHelper.RegionToWorldspace(this);
@@ -228,7 +264,6 @@
 
 
         }
-
 
         /// <summary>
         /// Update this instance.
@@ -282,67 +317,13 @@
         /// <summary>
         /// Sets the entity tile in in the map.
         /// </summary>
-
         private void LoadEntities()
         {
             var regionM = (Region)Model;
             foreach (var unit in regionM.GetEntities().Entities)
             {
-                var nextPoint = Helper.PositionHelper.CellToTile(unit.Position.CellPosition); 
                 DrawUnit(unit);
             }
-        }
-
-        private void DrawBorder(Core.Models.Entity entity, int range, CCColor4B color)
-        {
-            var Border = new CCDrawNode();
-            m_tileMap.TileLayersContainer.AddChild(Border);
-
-            var width = ClientConstants.TILE_HEX_IMAGE_WIDTH;
-            var hight = ClientConstants.TILE_HEX_IMAGE_HEIGHT;
-            var halfwidth = ClientConstants.TILE_HEX_IMAGE_WIDTH / 2.0f;
-            var halfhight = ClientConstants.TILE_HEX_IMAGE_HEIGHT / 2.0f;
-            var quarterwidth = ClientConstants.TILE_HEX_IMAGE_WIDTH / 4.0f;
-
-            var centerPos = PositionHelper.CellToTile(entity.Position.CellPosition);
-            centerPos.X += halfwidth;
-            centerPos.Y -= halfhight;
-
-            var top = new CCPoint(centerPos);
-            top.Y += hight * range + halfhight;
-
-            var down = new CCPoint(centerPos);
-            down.Y -= hight * range + halfhight;
-
-            var right = new CCPoint(centerPos);
-            right.X += width * range - halfwidth;
-
-            var rightTop = new CCPoint(right);
-            rightTop.Y += hight * range / 2;
-
-            var rightDown = new CCPoint(right);
-            rightDown.Y -= hight * range / 2;
-
-            var left = new CCPoint(centerPos);
-            left.X -= width * range - halfwidth;
-
-            var leftTop = new CCPoint(left);
-            leftTop.Y += hight * range / 2;
-
-            var leftDown = new CCPoint(left);
-            leftDown.Y -= hight * range / 2;
-
-            var points = new List<CCPoint>();
-            points.Add(top);
-            points.Add(rightTop);
-            points.Add(rightDown);
-            points.Add(down);
-            points.Add(leftDown);
-            points.Add(leftTop);
- 
-            Border.DrawPolygon(points.ToArray(), points.ToArray().Length, CCColor4B.Transparent, 1.5f, color);
-
-            m_drawNodes.Add(entity, Border);
         }
 
         #region Fields
@@ -372,7 +353,10 @@
         /// </summary>
         private CCTileMap m_tileMap;
 
-        private Dictionary<Core.Models.Entity,CCDrawNode> m_drawNodes;
+        /// <summary>
+        /// The draw nodes.
+        /// </summary>
+        private Dictionary<Account, CCDrawNode> m_drawNodes;
 
         private Dictionary<LayerTypes, CCNode> m_childs;
 

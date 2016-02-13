@@ -38,12 +38,14 @@
             var actionC = (Core.Controllers.Actions.CreateUnit)Model.Control;
 
             var position = actionC.RealCreatePosition; 
-            var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
+            if (position != null)
+            {
+                var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
 
-            var nextPoint = Helper.PositionHelper.CellToTile(entity.Position.CellPosition); 
-            RegionViewHex.DrawUnit(entity);
-            //WorldLayer.UglyDraw();
-
+                var nextPoint = Helper.PositionHelper.CellToTile(entity.Position.CellPosition); 
+                RegionViewHex.DrawUnit(entity);
+                //WorldLayer.UglyDraw();
+            }
             return true;
         }
 

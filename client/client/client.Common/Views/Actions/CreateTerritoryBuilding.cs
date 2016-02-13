@@ -1,4 +1,6 @@
-﻿namespace Client.Common.Views.Actions
+﻿using Core.Models;
+
+namespace Client.Common.Views.Actions
 {
     using System;
 
@@ -12,10 +14,10 @@
         /// </summary>
         /// <param name="model">Model of the Building</param>
         /// <param name="worldLayer">World layer.</param>
-        public CreateTerritoryBuilding(Core.Models.ModelEntity model, RegionViewHex regionViewHex)
+        public CreateTerritoryBuilding(Core.Models.ModelEntity model, WorldLayerHex worldLayerHex)
             : base(model)
         {
-            RegionViewHex = regionViewHex;
+            WorldLayerHex = worldLayerHex;
         }
 
         /// <summary>
@@ -38,19 +40,20 @@
 
             var position = (Core.Models.PositionI)action.Parameters[Core.Controllers.Actions.CreateBuilding.CREATE_POSITION];
             var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
-            RegionViewHex.SetBuilding(new CocosSharp.CCTileMapCoordinates(position.CellPosition.CellX, position.CellPosition.CellY), entity);
-            RegionViewHex.DrawBorder(entity);
+            if (entity != null)
+            {
+                WorldLayerHex.GetRegionViewHex(position.RegionPosition).SetBuilding(new CocosSharp.CCTileMapCoordinates(position.CellPosition.CellX, position.CellPosition.CellY), entity);
+                WorldLayerHex.DrawBorders(entity.Owner);            
+            }
             return true;
         }
 
-        /// <summary>
-        /// Gets the world layer.
-        /// </summary>
-        /// <value>The world layer.</value>
-        public RegionViewHex RegionViewHex
+
+        public WorldLayerHex WorldLayerHex
         {
             get;
             private set;
         }
+
     }
 }

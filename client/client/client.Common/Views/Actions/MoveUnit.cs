@@ -14,9 +14,10 @@
         /// </summary>
         /// <param name="model">The action Model.</param>
         /// <param name="worldLayer">World layer.</param>
-        public MoveUnit(Core.Models.ModelEntity model)
+        public MoveUnit(Core.Models.ModelEntity model, WorldLayerHex worldLayerHex)
             : base(model)
         {
+            WorldLayerHex = worldLayerHex;
         }
 
         /// <summary>
@@ -31,6 +32,7 @@
             var startPosition = (Core.Models.PositionI)action.Parameters[Core.Controllers.Actions.MoveUnit.START_POSITION];
             var endPosition = (Core.Models.PositionI)action.Parameters[Core.Controllers.Actions.MoveUnit.END_POSITION];
 
+            m_enemyEntity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
             m_entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
             m_path = actionC.Path;
             m_path.Insert(0, startPosition);
@@ -81,20 +83,57 @@
                     }
                 }
             }
-
+               
             if (m_runTime >= m_path.Count && m_entity.Health <= 0)
             {
                 var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
                 var regionViewHex = (RegionViewHex)region.View;
+                var owner = m_entity.Owner;
+                var typ = m_entity.Definition.SubType;
+                region.RemoveEntity(DateTime.Now, m_entity);
+
                 if (regionViewHex != null)
                 {
-                    //regionViewHex.SetUnit(new CCTileMapCoordinates(m_entity.Position.CellPosition.CellX, m_entity.Position.CellPosition.CellY), null);
-                    regionViewHex.RemoveBorder(m_entity);
+                    regionViewHex.RemoveUnit(m_entity);
                 }
 
+                if (typ == Core.Models.Definitions.EntityType.GuardTower || typ == Core.Models.Definitions.EntityType.Headquarter)
+                {
+                    WorldLayerHex.DrawBorders(owner);
+                }
             }
+            else if (m_enemyEntity != null && m_enemyEntity.Health <= 0)
+            {
+                var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_enemyEntity.Position.RegionPosition);
+                var regionViewHex = (RegionViewHex)region.View;
+                var owner = m_enemyEntity.Owner;
+                var typ = m_enemyEntity.Definition.SubType;
+                region.RemoveEntity(DateTime.Now, m_enemyEntity);
 
+                if (regionViewHex != null)
+                {
+                    if (m_enemyEntity.Definition.Category == Core.Models.Definitions.Category.Building)
+                    {                        
+                        regionViewHex.RemoveBuilding(m_enemyEntity);
+
+                        if (typ == Core.Models.Definitions.EntityType.GuardTower || typ == Core.Models.Definitions.EntityType.Headquarter)
+                        {
+                            WorldLayerHex.DrawBorders(owner);
+                        }
+                    }
+                    else
+                    {
+                        regionViewHex.RemoveUnit(m_enemyEntity);
+                    }                        
+                }
+            }
             return m_runTime >= m_path.Count;
+        }
+
+        public WorldLayerHex WorldLayerHex
+        {
+            get;
+            private set;
         }
 
         /// <summary>
@@ -106,6 +145,11 @@
         /// The entities which should be moved.
         /// </summary>
         private Core.Models.Entity m_entity;
+
+        /// <summary>
+        /// The enemy entity.
+        /// </summary>
+        private Core.Models.Entity m_enemyEntity;
 
         /// <summary>
         /// The current position of the entity.

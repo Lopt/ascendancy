@@ -107,7 +107,7 @@
         /// <summary>
         /// Tile Map file hex name
         /// </summary>
-        public const string TILEMAP_FILE_HEX = "Worldmap-2016112.tmx";
+        public const string TILEMAP_FILE_HEX = "Worldmap-2016211.tmx";
 
         /// <summary>
         /// name of terrain layer
@@ -163,7 +163,7 @@
         /// <summary>
         /// The Start of the Helper GIDs
         /// </summary>
-        public const short HELPER_GIDS = 120;
+        public const short HELPER_GIDS = 130;
 
         /// <summary>
         /// size of a tile (width)
@@ -227,6 +227,11 @@
         //1984;
 
         /// <summary>
+        /// The thickness of the terretory building border.
+        /// </summary>
+        public const float TERRATORRY_BUILDING_BORDER_SIZE = 10.0f;
+
+        /// <summary>
         /// number of regions which should be drawn (X)
         /// </summary>
         public const short DRAW_REGIONS_X = 5;
@@ -282,6 +287,9 @@
         /// </summary>
         public static readonly int TCP_PORT = 13000;
 
-        public static readonly int GPS_GET_POSITION_TIMEOUT = 5;
+        /// <summary>
+        /// The GPS position timeout.
+        /// </summary>
+        public static readonly int GPS_GET_POSITION_TIMEOUT = 10000;
     }
 }

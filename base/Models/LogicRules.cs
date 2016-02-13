@@ -170,14 +170,15 @@
         {
             var rand = new Random(entity.ID + entity.OwnerID + entity.Position.GetHashCode());
             double result = entity.ModfiedAttackValue;
-            var randomValue = rand.NextDouble() * 2;    
+            // between max and minimum
+            var randomValue = rand.NextDouble() * (2 - 0.5f) + 0.5f;    
             result *= randomValue;
             entity.ModfiedAttackValue = (int)result;
             return 0;
         }
 
         /// <summary>
-        /// Terrains the defense modifier.
+        /// Terrain for the defense modifier.
         /// </summary>
         /// <returns>0 instead it change the value via pointer.</returns>
         /// <param name="entity">Current entity.</param>
@@ -189,7 +190,7 @@
         }
 
         /// <summary>
-        /// Terrains the attack modifier.
+        /// Terrain terrain for the attack modifier.
         /// </summary>
         /// <returns>0 instead it change the value via pointer.</returns>
         /// <returns>The attack modifier.</returns>
@@ -214,6 +215,11 @@
             list.Add((long)Models.Definitions.EntityType.GuardTower);
             list.Add((long)Models.Definitions.EntityType.Hospital);
             list.Add((long)Models.Definitions.EntityType.TradingPost);
+            list.Add((long)Models.Definitions.EntityType.Tent);
+            list.Add((long)Models.Definitions.EntityType.Lab);
+            list.Add((long)Models.Definitions.EntityType.Furnace);
+            list.Add((long)Models.Definitions.EntityType.Scrapyard);
+            list.Add((long)Models.Definitions.EntityType.Transformer);
             return list;
         }
 
@@ -242,14 +248,36 @@
         {
             if (!account.BuildableBuildings.ContainsKey(entityType))
             {
-               if (entityType == (long)Models.Definitions.EntityType.Headquarter)
-               {
-                    account.BuildableBuildings.Add((long)Models.Definitions.EntityType.Headquarter, EnableHeadquarterBuildOptions());
-               }
-               else if (entityType == (long)Models.Definitions.EntityType.Barracks)
-               {
-                    account.BuildableBuildings.Add((long)Models.Definitions.EntityType.Barracks, EnableBarracksBuildOptions());
-               }
+                switch (entityType)
+                {
+                    case (long)Models.Definitions.EntityType.Headquarter:
+                        account.BuildableBuildings.Add(entityType, EnableHeadquarterBuildOptions());
+                        break;
+                    case (long)Models.Definitions.EntityType.Barracks:
+                        account.BuildableBuildings.Add(entityType, EnableBarracksBuildOptions());
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Disables the build options.
+        /// </summary>
+        /// <param name="entityType">Entity type.</param>
+        /// <param name="account">Current account.</param>
+        public static void DisableBuildOptions(long entityType, Account account)
+        {
+            if (account.BuildableBuildings.ContainsKey(entityType))
+            {
+                switch (entityType)
+                {
+                    case (long)Models.Definitions.EntityType.Headquarter:
+                        account.BuildableBuildings.Remove(entityType);
+                        break;
+                    case (long)Models.Definitions.EntityType.Barracks:
+                        account.BuildableBuildings.Remove(entityType);
+                        break;
+                }
             }
         }
 
@@ -257,7 +285,7 @@
         /// Increases the hole storage.
         /// </summary>
         /// <param name="account">Current Account.</param>
-        public static void IncreaseHoleStorage(Account account)
+        public static void IncreaseWholeStorage(Account account)
         {            
             account.Scrap.MaximumValue += Constants.HEADQUARTER_STORAGE_VALUE;
             account.Population.MaximumValue += Constants.POPULATION_STORAGE_VALUE;
@@ -270,7 +298,7 @@
         /// Decreases the hole storage.
         /// </summary>
         /// <param name="account">Current Account.</param>
-        public static void DecreaseHoleStorage(Account account)
+        public static void DecreaseWholeStorage(Account account)
         {
             account.Scrap.MaximumValue -= Constants.HEADQUARTER_STORAGE_VALUE;
             account.Population.MaximumValue -= Constants.POPULATION_STORAGE_VALUE;
@@ -392,6 +420,18 @@
         }
 
         /// <summary>
+        /// Decreases the storage.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="entity">Entity.</param>
+        public static void DecreasStorage(Account account, Entity entity)
+        {
+            DecreaseMaxPopulation(account, entity);
+            DecreaseScrap(account, entity);
+            DecreaseMaxEnergy(account, entity);
+        }
+
+        /// <summary>
         /// Gathers the resources.
         /// </summary>
         /// <param name="account">Current Account.</param>
@@ -421,25 +461,46 @@
         /// </summary>
         /// <param name="account">Account.</param>
         /// <param name="regionManagerC">Region manager c.</param>
-        public static void ResourceGeneration(Account account,PositionI entitypos, Controllers.RegionManagerController regionManagerC)
+        public static void IncreaseResourceGeneration(Account account,PositionI entitypos, Controllers.RegionManagerController regionManagerC)
         {
             switch (regionManagerC.GetRegion(entitypos.RegionPosition).GetEntity(entitypos.CellPosition).DefinitionID)
           {
               case (int)Core.Models.Definitions.EntityType.Lab:                         
                     account.Technology.Set(account.Technology.Value, Constants.TECHNOLOGY_INCREMENT_VALUE);                   
-                  break;
+                    break;
     
               case (int)Core.Models.Definitions.EntityType.Furnace:
                     account.Scrap.Set(account.Scrap.Value, Constants.SCRAP_INCREMENT_VALUE);
-                  break;
+                    break;
           }
+        }
+
+        /// <summary>
+        /// Decreases the ressource generation.
+        /// </summary>
+        /// <param name="account">Current account.</param>
+        /// <param name="entitypos">Entity position.</param>
+        /// <param name="regionManagerC">Region manager controller.</param>
+        public static void DecreaseRessourceGeneration(Account account,PositionI entitypos, Controllers.RegionManagerController regionManagerC)
+        {
+            switch (regionManagerC.GetRegion(entitypos.RegionPosition).GetEntity(entitypos.CellPosition).DefinitionID)
+            {
+                case (int)Core.Models.Definitions.EntityType.Lab:                         
+                    account.Technology.Set(account.Technology.Value, -Constants.TECHNOLOGY_INCREMENT_VALUE);                   
+                    break;
+
+                case (int)Core.Models.Definitions.EntityType.Furnace:
+                    account.Scrap.Set(account.Scrap.Value, -Constants.SCRAP_INCREMENT_VALUE);
+                    break;
+            }
         }
 
         /// <summary>
         /// Consumes the resources for creating an entity.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="entity">Entity.</param>
+        /// <returns><c>true</c>, if resource was consumed, <c>false</c> otherwise.</returns>
+        /// <param name="account">Current account.</param>
+        /// <param name="entityDef">Entity definiton.</param>
         public static bool ConsumeResource(Account account, Definitions.Definition entityDef)
         {
             var definition = (Definitions.UnitDefinition)entityDef;
@@ -462,5 +523,132 @@
                 return false;
             }
         }
-    }        
+
+        /// <summary>
+        /// Destroy the building.
+        /// </summary>
+        /// <param name="entity">Entity.</param>
+        public static void DestroyBuilding(Entity entity, Region regionPos, Action action, Controllers.RegionManagerController regionManagerC)
+        {
+            // TODO: in pseudo klasse kapseln und generischer lösen
+            switch((long)entity.DefinitionID)
+            {
+                case (long)Models.Definitions.EntityType.Headquarter:
+                    regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);                                                       
+                    DecreaseWholeStorage(entity.Owner);
+                    DisableBuildOptions(entity.DefinitionID, entity.Owner);
+                    entity.Owner.TerritoryBuildings.Remove(entity.Position);
+                    // TODO: bessere lösung als alles neu claimen finden  
+                    foreach (var building in entity.Owner.TerritoryBuildings)
+                    {
+                        var list = new HashSet<PositionI>();
+                        var range = 0;
+                        if (building.Value == (long)Definitions.EntityType.Headquarter)
+                        {
+                            range = Constants.HEADQUARTER_TERRITORY_RANGE;
+                        }
+                        else if (building.Value == (long)Definitions.EntityType.GuardTower)
+                        {
+                            range = Constants.GUARDTOWER_TERRITORY_RANGE;
+                        }
+                        list = GetSurroundedPositions(building.Key, range);
+                        var region = building.Key.RegionPosition;
+                        regionManagerC.GetRegion(region).ClaimTerritory(list, entity.Owner, region, regionManagerC.RegionManager);
+                    }
+                    //DestroyAllBuildingsWithoutTerritory(entity.Owner, action, regionManagerC);
+                    break;
+                case (long)Models.Definitions.EntityType.GuardTower:
+                    regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.GUARDTOWER_TERRITORY_RANGE), entity.Owner);                   
+                    entity.Owner.TerritoryBuildings.Remove(entity.Position);
+                    // TODO: bessere lösung als alles neu claimen finden  
+                    foreach (var building in entity.Owner.TerritoryBuildings)
+                    {
+                        var list = new HashSet<PositionI>();
+                        var range = 0;
+                        if (building.Value == (long)Definitions.EntityType.Headquarter)
+                        {
+                            range = Constants.HEADQUARTER_TERRITORY_RANGE;
+                        }
+                        else if (building.Value == (long)Definitions.EntityType.GuardTower)
+                        {
+                            range = Constants.GUARDTOWER_TERRITORY_RANGE;
+                        }
+                        list = GetSurroundedPositions(building.Key, range);
+                        var region = building.Key.RegionPosition;
+                        regionManagerC.GetRegion(region).ClaimTerritory(list, entity.Owner, region, regionManagerC.RegionManager);
+                    }
+                    //DestroyAllBuildingsWithoutTerritory(entity.Owner, action, regionManagerC); 
+                    break;
+                case (long)Models.Definitions.EntityType.Barracks:
+                    var count = 0;
+                    foreach (var element in entity.Owner.Buildings)
+                    {
+                        if (entity.Owner.Buildings.ContainsValue(element.Value))
+                        {
+                            count++;                                
+                        }    
+                    }
+                    if (count == 1)
+                    {
+                        DisableBuildOptions(entity.DefinitionID, entity.Owner);
+                    }
+                    entity.Owner.Buildings.Remove(entity.Position);
+                    break;
+                case (long)Models.Definitions.EntityType.Furnace:
+                    DecreaseRessourceGeneration(entity.Owner, entity.Position, regionManagerC);
+                    entity.Owner.Buildings.Remove(entity.Position);
+                    break;
+                case (long)Models.Definitions.EntityType.Factory:
+                    entity.Owner.Buildings.Remove(entity.Position);
+                    break;
+                case (long)Models.Definitions.EntityType.Attachment:
+                    entity.Owner.Buildings.Remove(entity.Position);
+                    break;
+                case (long)Models.Definitions.EntityType.Hospital:
+                    entity.Owner.Buildings.Remove(entity.Position);
+                    break;
+                case (long)Models.Definitions.EntityType.TradingPost:
+                    entity.Owner.Buildings.Remove(entity.Position);
+                    break;
+                case (long)Models.Definitions.EntityType.Tent:
+                    DecreaseMaxPopulation(entity.Owner, entity);
+                    entity.Owner.Buildings.Remove(entity.Position);
+                    break;
+                case (long)Models.Definitions.EntityType.Lab:
+                    DecreaseRessourceGeneration(entity.Owner, entity.Position, regionManagerC);
+                    entity.Owner.Buildings.Remove(entity.Position);
+                    break;
+                case (long)Models.Definitions.EntityType.Scrapyard:
+                    DecreaseScrap(entity.Owner, entity);
+                    entity.Owner.Buildings.Remove(entity.Position);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Destroys all buildings without territory.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="regionPos">Region position.</param>
+        /// <param name="regionManagerC">Region manager c.</param>
+        public static void DestroyAllBuildingsWithoutTerritory(Account account, Action action, Controllers.RegionManagerController regionManagerC)
+        {
+            Dictionary<PositionI, long> copylist = new Dictionary<PositionI, long>(account.Buildings);
+           
+            foreach (var building in copylist)
+            {
+                var region = regionManagerC.GetRegion(building.Key.RegionPosition);
+                if (region.GetClaimedTerritory(building.Key) == null)
+                {
+                    DestroyBuilding(region.GetEntity(building.Key.CellPosition), region, action, regionManagerC);
+                    region.RemoveEntity(action.ActionTime, region.GetEntity(building.Key.CellPosition));
+                }
+            }
+            account.Buildings.Clear();
+            foreach (var test in copylist)
+            {
+                account.Buildings.Add(test.Key, test.Value);
+            }
+        }
+    }
 }

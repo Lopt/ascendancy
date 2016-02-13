@@ -4,11 +4,232 @@ using System.Net.Sockets;
 using Core.Connection;
 using TCPServer;
 using Newtonsoft.Json; 
+using Core.Models;
 
 namespace Tests
 {
     [TestFixture]
-    public class ConnectionTest
+    public class PositionTests
+    {
+        [Test]
+        public void LatLonTest()
+        {
+            var LaLo = new LatLon(50.97695325, 11.02396488);
+            Assert.IsNotNull(LaLo);
+
+            //Tests to get a Latitude and Longitude out of an GamePosition
+            var pos = new Position(LaLo);
+            var LaLo2 = new LatLon(pos);
+            Assert.IsNotNull(LaLo2);
+        }
+
+        [Test]
+        public void CellPositionTest()
+        {
+            //standart constructor
+            var CellPos = new CellPosition(0, 0);
+            Assert.IsNotNull(CellPos);
+
+            //Constructor CellPosition out of Position
+            var Position = new Position(0, 0);
+            CellPos = new CellPosition(Position);
+            Assert.IsNotNull(CellPos);
+
+            //Constructor CellPosition out of PositionI
+            var PositionI = new PositionI(0, 0);
+            CellPos = new CellPosition(PositionI);
+            Assert.IsNotNull(CellPos);
+
+            //Tests the == operator
+            var CellPos2 = new CellPosition(0, 0);
+            Assert.True(CellPos == CellPos2);
+
+            //Tests the Equas function
+            Assert.True(CellPos.Equals(CellPos2));
+
+            //Tests the != operator
+            CellPos2 = new CellPosition(1, 1);
+            Assert.True(CellPos != CellPos2);
+
+
+        }
+
+        [Test]
+        public void RegionPositionTest()
+        {
+            //standart constructor
+            var RegionPos = new RegionPosition(0, 0);
+            Assert.IsNotNull(RegionPos);
+
+            //Constructor RegionPosition out of a Position
+            var Position = new Position(0, 0);
+            RegionPos = new RegionPosition(Position);
+            Assert.IsNotNull(RegionPos);
+
+            //Constructor RegionPosition out of a PositionI
+            var PositionI = new PositionI(0, 0);
+            RegionPos = new RegionPosition(PositionI);
+            Assert.IsNotNull(RegionPos);
+
+            //Tests the + Operator
+            var RegionPos2 = new RegionPosition(1, 1);
+            RegionPos += RegionPos2;
+            Assert.AreEqual(RegionPos2, RegionPos);
+
+            //Tests the == Operator
+            Assert.True(RegionPos == RegionPos2);
+
+            //Tests the Equals funktion
+            Assert.True(RegionPos.Equals(RegionPos2));
+
+
+        }
+
+        [Test]
+        public void PositionTest()
+        {
+            //Standart Constructor
+            var Position = new Position(0,0);
+            Assert.IsNotNull(Position);
+
+            //Constructor Position out of PositionI
+            Position = new Position(new PositionI(0,0));
+            Assert.IsNotNull(Position);
+
+            //Constructor Position out of Latitude and Longitude
+            Position = new Position(new LatLon(50.97695325, 11.02396488));
+            Assert.IsNotNull(Position);
+
+            //Constructor Position out of a ReagionPosition
+            var RegionPos = new RegionPosition(0, 0);
+            Position = new Position(RegionPos);
+            Assert.IsNotNull(Position);
+
+            //Constructor Position out of a RegionPosition and a CellPosition
+            var CellPos = new CellPosition(0, 0);
+            Position = new Position(RegionPos, CellPos);
+            Assert.IsNotNull(Position);
+
+            //Constructor Position out of a RegionPositionX, a RegionPositionY, a CellPositionX and a CellPositionY
+            Position = new Position(RegionPos.RegionX, RegionPos.RegionY, CellPos.CellX, CellPos.CellY);
+            Assert.IsNotNull(Position);
+
+            //tests the + Operator
+            Position = new Position(new LatLon(50.97695325, 11.02396488));
+            var Position2 = new Position(0, 0);
+
+            Position2 += Position;
+
+            Assert.AreEqual(Position, Position2);
+
+
+            //tests the - Operator
+            Position -= Position2;
+
+            Assert.AreNotEqual(Position2, Position);
+            Assert.AreEqual(new Position(0, 0), Position);
+
+            //tests the == Operator
+            Assert.True(new Position(0, 0) == Position);
+
+            //tests the Equals function
+            Assert.True(Position.Equals(new Position(0, 0)));
+
+            //test Distance with Position
+            var dist = Position.Distance(Position2);
+            Assert.IsNotNull(dist);
+
+
+            //test Distance with PositionI
+            var dist2 = Position2.Distance(new PositionI(0, 0));
+            Assert.IsNotNull(dist2);
+            Assert.AreEqual(dist, dist2);
+        }
+
+        [Test]
+        public void PositionITest()
+        {
+            //standart Constructor
+            var Position = new PositionI(0, 0);
+            Assert.IsNotNull(Position);
+
+            //Constructor Position out of a ReagionPosition
+            var RegionPos = new RegionPosition(0, 0);
+            var CellPos = new CellPosition(0, 0);
+            Position = new PositionI(RegionPos, CellPos);
+            Assert.IsNotNull(Position);
+
+            Position = new PositionI(new Position(0, 0));
+            Assert.IsNotNull(Position);
+
+            //tests the + Operator
+            Position = new PositionI(1, 1);
+            var Position2 = new PositionI(0, 0);
+            Position2 += Position;
+
+            Assert.AreEqual(Position, Position2);
+
+            //tests the - Operator
+            Position -= Position2;
+
+            Assert.AreNotEqual(Position2, Position);
+            Assert.AreEqual(new PositionI(0, 0), Position);
+
+            //tests the == Operator
+            Assert.True(new PositionI(0, 0) == Position);
+
+            //tests the Equals function
+            Assert.True(Position.Equals(new PositionI(0, 0)));
+
+            //test Distance with PositionI
+            var dist = Position.Distance(Position2);
+            Assert.IsNotNull(dist);
+
+            //test Distance with PositionI
+            var dist2 = Position2.Distance(new Position(0, 0));
+            Assert.IsNotNull(dist2);
+            Assert.AreEqual(dist, dist2);
+        }
+    }
+
+    [TestFixture]
+    public class CompressionHelperTests
+    {
+        [Test]
+        public void test()
+        {
+        }
+    }
+
+    [TestFixture]
+    public class LoadHelperTests
+    {
+        [Test]
+        public void test()
+        {
+        }
+    }
+
+    [TestFixture]
+    public class DefinitionsTests
+    {
+        [Test]
+        public void test()
+        {
+        }
+    }
+
+    [TestFixture]
+    public class MapRegionTests
+    {
+        [Test]
+        public void test()
+        {
+        }
+    }
+
+    [TestFixture]
+    public class ConnectionTests
     {
         [Test]
         public void Connection()
@@ -81,6 +302,28 @@ namespace Tests
             Assert.AreEqual(Core.Connections.LoginResponse.ReponseStatus.OK, data.Status);
             Assert.IsNotNull(data.Status);
             Assert.IsNotNull(data.AccountId);
+
+            ///False login
+
+            testLoginRequest = new Core.Connections.LoginRequest(
+                new Core.Models.Position(8108, 15),
+                "Maria",
+                "Musterfrauxxx");
+            testJson = JsonConvert.SerializeObject(testLoginRequest);
+
+            testPackage = new Packet();
+
+            testPackage.Content = testJson;
+            testPackage.MethodType = MethodType.Login;
+
+            testStream = this.getStream();
+
+            testPackage.Send(testStream);
+
+            data = JsonConvert.DeserializeObject<Core.Connections.LoginResponse>(Packet.Receive(testStream).Content);
+
+            Assert.AreNotEqual(Core.Connections.LoginResponse.ReponseStatus.OK, data.Status);
+
         }
 
         [Test]
@@ -173,11 +416,6 @@ namespace Tests
             Assert.AreEqual(Core.Connections.Response.ReponseStatus.OK, data.Status);
         }
 
-        [Test]
-        public void test()
-        {
-        }
-
         /// <summary>
         /// Gets a login instance.
         /// </summary>
@@ -226,4 +464,111 @@ namespace Tests
             return new Core.Models.Position(new Core.Models.LatLon(50.97695325, 11.02396488));
         }
     }
+
+    [TestFixture]
+    public class LogicTests
+    {
+        public static readonly Core.Models.PositionI[] SurroundTilesEven =
+            {
+                new Core.Models.PositionI(0, -1),
+                new Core.Models.PositionI(1, 0),
+                new Core.Models.PositionI(1, 1),
+                new Core.Models.PositionI(0, 1),
+                new Core.Models.PositionI(-1, 1),
+                new Core.Models.PositionI(-1, 0)
+            };
+
+        /// <summary>
+        /// The surround tiles on odd x positions.
+        /// From North to NorthEast in clockwise
+        /// </summary>
+        public static readonly Core.Models.PositionI[] SurroundTilesOdd =
+            {
+                new Core.Models.PositionI(0, -1),
+                new Core.Models.PositionI(1, -1),
+                new Core.Models.PositionI(1, 0),
+                new Core.Models.PositionI(0, 1),
+                new Core.Models.PositionI(-1, 0),
+                new Core.Models.PositionI(-1, -1)
+            };
+    
+        [Test]
+        public void GetSurroundedFields()
+        {
+            // Test for Even x Coordinate
+            var StartPosition = new Core.Models.PositionI(0, 0);
+            var Positions = Core.Models.LogicRules.GetSurroundedFields(StartPosition);
+
+
+            var expectedPos = new Core.Models.PositionI[]
+            {
+                StartPosition + SurroundTilesOdd[0],
+                StartPosition + SurroundTilesOdd[1],
+                StartPosition + SurroundTilesOdd[2],
+                StartPosition + SurroundTilesOdd[3],
+                StartPosition + SurroundTilesOdd[4],
+                StartPosition + SurroundTilesOdd[5]
+            };
+
+            Assert.IsNotEmpty(Positions);
+            Assert.AreEqual(6, Positions.Length);
+            Assert.AreEqual(Positions, expectedPos);
+
+            // Test For uneven x Coordinate
+            StartPosition = new Core.Models.PositionI(1, 0);
+            Positions = Core.Models.LogicRules.GetSurroundedFields(StartPosition);
+
+
+            expectedPos = new Core.Models.PositionI[]
+                {
+                    StartPosition + SurroundTilesEven[0],
+                    StartPosition + SurroundTilesEven[1],
+                    StartPosition + SurroundTilesEven[2],
+                    StartPosition + SurroundTilesEven[3],
+                    StartPosition + SurroundTilesEven[4],
+                    StartPosition + SurroundTilesEven[5]
+                };
+            
+            Assert.AreEqual(Positions, expectedPos);
+        }
+
+        [Test]
+        public void GetSurroundedPositions()
+        {
+            var StartPosition = new Core.Models.PositionI(0, 0);
+            int Range = 1;
+            var Positions = Core.Models.LogicRules.GetSurroundedPositions(StartPosition, Range);
+
+            Assert.AreEqual(Positions.Count, 7);
+
+            Range = 2;
+            Positions = Core.Models.LogicRules.GetSurroundedPositions(StartPosition, Range);
+
+            Assert.AreEqual(Positions.Count, 19);
+
+            Range = 3;
+            Positions = Core.Models.LogicRules.GetSurroundedPositions(StartPosition, Range);
+
+            Assert.AreEqual(Positions.Count, 37);
+
+            Range = 4;
+            Positions = Core.Models.LogicRules.GetSurroundedPositions(StartPosition, Range);
+
+            Assert.AreEqual(Positions.Count, 61);
+
+            Range = 5;
+            Positions = Core.Models.LogicRules.GetSurroundedPositions(StartPosition, Range);
+
+            Assert.AreEqual(Positions.Count, 91);
+        }
+
+        [Test]
+        public void Storage()
+        {
+            
+        }
+    }
+
+
+
 }
