@@ -48,7 +48,6 @@
             m_buildingLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_BUILDING);
             m_menueLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_MENU);
             m_indicatorLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_INDICATOR);
-            m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
 
             m_drawNodes = new Dictionary<Account, CCDrawNode>();
 
@@ -104,7 +103,7 @@
             if (unitV.DrawRegion == regionM.RegionPosition)
             {
                 unitV.Node.RemoveFromParent();
-                m_childs[LayerTypes.Unit].AddChild(unitV.Node);
+                m_childs[LayerTypes.Unit] .AddChild(unitV.Node);
                 unitV.Node.Position = unitV.DrawPoint;
             }
             else
@@ -137,18 +136,30 @@
         /// <summary>
         /// Sets the menu tile.
         /// </summary>
-        /// <returns>The menu tile.</returns>
-        /// <param name="posI">PositionI.</param>
-        /// <param name="gid">Gid.</param>
-        /// <param name="isPossible">If set to <c>true</c> is possible.</param>
-        public CCSprite SetMenuTile(PositionI posI, CCTileGidAndFlags gid, bool isPossible = true)
+        /// <param name="cellPos">Cell position.</param>
+        /// <param name="definition">Definition.</param>
+        public CCSprite SetMenuTile(PositionI posI, Definition type)
         {
+            var gid = ViewDefinitions.Instance.DefinitionToTileGid(type, ViewDefinitions.Sort.Menu);
             m_menueLayer.SetTileGID(gid, new CCTileMapCoordinates(posI.CellPosition.CellX, posI.CellPosition.CellY));
             var sprite = m_menueLayer.ExtractTile(new CCTileMapCoordinates(posI.CellPosition.CellX, posI.CellPosition.CellY), true);
-            if (!isPossible)
+            if (!IsPossibleToCreate(posI, type))
             {
+                //sprite.Opacity = BuildingMenuGid.BUILDING_MENU_OPACITY;
                 sprite.Color = CCColor3B.DarkGray;
-            }
+            }  
+            return sprite;
+        }
+
+        /// <summary>
+        /// Sets the menu tile.
+        /// </summary>
+        /// <param name="cellPos">Cell position.</param>
+        /// <param name="definition">Definition.</param>
+        public CCSprite SetMajorMenuTile(PositionI posI, CCTileGidAndFlags gid)
+        {
+            m_menueLayer.SetTileGID(gid, new CCTileMapCoordinates(posI.CellPosition.CellX, posI.CellPosition.CellY));
+            var sprite = m_menueLayer.ExtractTile(new CCTileMapCoordinates(posI.CellPosition.CellX, posI.CellPosition.CellY), true); 
             return sprite;
         }
 
@@ -231,6 +242,19 @@
         }
 
         /// <summary>
+        /// Determines whether this instance is possible to create the specified type on the position.
+        /// </summary>
+        /// <returns><c>true</c> if this instance is possible to create the specified type on the position; otherwise, <c>false</c>.</returns>
+        /// <param name="positionI">Position i.</param>
+        /// <param name="type">Type.</param>
+        private bool IsPossibleToCreate(PositionI positionI, Core.Models.Definitions.Definition type)
+        {
+            var action = ActionHelper.CreateEntity(positionI, type, GameAppDelegate.Account);
+            var actionC = (Core.Controllers.Actions.Action)action.Control;
+            return actionC.Possible();
+        }
+
+        /// <summary>
         /// Loads the region view hex dictionary with all regions (5x5) arround the currentPosition.
         /// </summary>
         /// <returns>The region view hex dic.</returns>
@@ -256,11 +280,11 @@
         {
             var position = PositionHelper.RegionToWorldspace(this);
             m_childs[LayerTypes.Terrain].Position = position;
-            m_childs[LayerTypes.Terrain].AnchorPoint = new CCPoint(0.0f, 1.0f);
+            m_childs[LayerTypes.Terrain].AnchorPoint =  new CCPoint(0.0f, 1.0f);
  
             m_childs[LayerTypes.Unit].Position = position;
             m_childs[LayerTypes.Unit].ContentSize = m_childs[LayerTypes.Terrain].ContentSize;
-            m_childs[LayerTypes.Unit].AnchorPoint = new CCPoint(0.0f, 1.0f);
+            m_childs[LayerTypes.Unit].AnchorPoint =  new CCPoint(0.0f, 1.0f);
             m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
             m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
 
@@ -285,7 +309,6 @@
             m_buildingLayer.RemoveTile(coordHelper);
             m_menueLayer.RemoveTile(coordHelper);
             m_indicatorLayer.RemoveTile(coordHelper);
-            m_unitLayer.RemoveTile(coordHelper);
         }
 
         /// <summary>
@@ -350,11 +373,6 @@
         /// The menue layer.
         /// </summary>
         private CCTileMapLayer m_menueLayer;
-
-        /// <summary>
-        /// The unit layer.
-        /// </summary>
-        private CCTileMapLayer m_unitLayer;
 
         /// <summary>
         /// The tile map.

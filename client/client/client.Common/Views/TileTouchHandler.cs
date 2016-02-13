@@ -310,8 +310,17 @@ namespace Client.Common.Views
                     }
                     else if (entity != null && entity.DefinitionID == (long)EntityType.Barracks && entity.Owner == GameAppDelegate.Account)
                     {
-                        m_menuView = new MenuView(m_worldLayer, startPosI, MenuView.MenuType.Unity);
-                        m_menuView.DrawMenu(MenuView.MenuType.Unity);
+                        var types = new Core.Models.Definitions.Definition[6];
+                        var defM = Core.Models.World.Instance.DefinitionManager;
+                        types[0] = defM.GetDefinition(EntityType.Mage);
+                        types[1] = defM.GetDefinition(EntityType.Fencer);
+                        types[2] = defM.GetDefinition(EntityType.Warrior);
+                        types[3] = defM.GetDefinition(EntityType.Mage);
+                        types[4] = defM.GetDefinition(EntityType.Archer);
+                        types[5] = defM.GetDefinition(EntityType.Archer);
+
+                        m_menuView = new MenuView(m_worldLayer, startPosI, types);
+                        m_menuView.DrawMenu();
                         Gesture = TouchGesture.Menu;
                     }
                     else if (entity == null)
@@ -321,18 +330,34 @@ namespace Client.Common.Views
                         var actionC = (Core.Controllers.Actions.CreateTerritoryBuilding)action.Control;
                         if (actionC.Possible())
                         {
-                            m_menuView = new MenuView(m_worldLayer, startPosI, MenuView.MenuType.Headquarter);
-                            m_menuView.DrawMenu(MenuView.MenuType.Headquarter);
+                            var types = new Core.Models.Definitions.Definition[6];
+                            types[0] = defM.GetDefinition(EntityType.Headquarter);
+                            types[1] = defM.GetDefinition(EntityType.Headquarter);
+                            types[2] = defM.GetDefinition(EntityType.Headquarter);
+                            types[3] = defM.GetDefinition(EntityType.Headquarter);
+                            types[4] = defM.GetDefinition(EntityType.Headquarter);
+                            types[5] = defM.GetDefinition(EntityType.Headquarter);
+                            m_menuView = new MenuView(m_worldLayer, startPosI, types);
+                            m_menuView.DrawMenu();
                         }
                         else if (region.GetClaimedTerritory(startPosI) == action.Account)
-                        {                             
-                            m_menuView = new MenuView(m_worldLayer, startPosI, MenuView.MenuType.Major);
-                            m_menuView.DrawMenu(MenuView.MenuType.Major);
+                        {                            
+                            var types = new Core.Models.Definitions.Definition[0];
+                            var Gids = new short[6];
+                            Gids[5] = Client.Common.Constants.BuildingMenuGid.MILITARY;
+                            Gids[0] = Client.Common.Constants.BuildingMenuGid.RESOURCES;
+                            Gids[1] = Client.Common.Constants.BuildingMenuGid.STORAGE;
+                            Gids[2] = Client.Common.Constants.BuildingMenuGid.CIVIL;
+                            Gids[3] = Client.Common.Constants.BuildingMenuGid.BUILDINGPLACEHOLDER;
+                            Gids[4] = Client.Common.Constants.BuildingMenuGid.CANCEL;
+                            m_menuView = new MenuView(m_worldLayer, startPosI, types);
+                            m_menuView.DrawMajorMenu(Gids);
                         }
                         else
                         {
                             // create an empty menu but didnt show it and set the m_menuView for the next touche
-                            m_menuView = new MenuView(m_worldLayer, startPosI, MenuView.MenuType.Empty);
+                            var types = new Core.Models.Definitions.Definition[6];
+                            m_menuView = new MenuView(m_worldLayer, startPosI, types);
                             Gesture = TouchGesture.None;
                             return true;
                         }
