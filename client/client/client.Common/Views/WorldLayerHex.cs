@@ -172,7 +172,7 @@
                 {
                     if (regionViewHex.GetChildrens(layer) != null)
                     {
-                        this.AddChild(regionViewHex.GetChildrens(layer)); // , (int)layer
+                        this.AddChild(regionViewHex.GetChildrens(layer), (int)layer);
                     }
                 }
                 m_regionViewHexDic.Add(regionPos, regionViewHex);

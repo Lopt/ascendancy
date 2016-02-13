@@ -51,24 +51,15 @@
             m_childs = new Dictionary<LayerTypes, CCNode>();
             m_childs[LayerTypes.Terrain] = m_tileMap.TileLayersContainer;
             m_childs[LayerTypes.Building] = null;
-            m_childs[LayerTypes.Unit] = new CCLayer();
-            m_childs[LayerTypes.Border] = null;//new CCLayer();
-            m_childs[LayerTypes.Indicator] = null;//new CCLayer();
-            m_childs[LayerTypes.Menu] = null;//new CCLayer();
+            m_childs[LayerTypes.Unit] = new CCNode();
+            m_childs[LayerTypes.Border] = new CCNode();
+            m_childs[LayerTypes.Indicator] = null;//new CCNode();
+            m_childs[LayerTypes.Menu] = null;//new CCNode();
 
             Init();
             LoadRegionViewAsync();
 
 
-        }
-
-        /// <summary>
-        /// Gets the tile map.
-        /// </summary>
-        /// <returns>The tile map.</returns>
-        public CCTileMap GetTileMap()
-        {
-            return m_tileMap;
         }
 
         public CCNode GetChildrens(LayerTypes layer)
@@ -233,6 +224,8 @@
             m_childs[LayerTypes.Unit].ContentSize = m_childs[LayerTypes.Terrain].ContentSize;
             m_childs[LayerTypes.Unit].AnchorPoint =  new CCPoint(0.0f, 1.0f);
             m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
+            m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
+
 
         }
 
