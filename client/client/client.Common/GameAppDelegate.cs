@@ -84,7 +84,7 @@
                 application.ContentSearchPaths.Add(Constants.ClientConstants.IMAGES_LD);
             }
 
-            SceneStartAsync(); // .RunSynchronously();
+             SceneStartAsync(); // .RunSynchronously();
         }
 
         /// <summary>

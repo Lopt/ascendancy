@@ -118,6 +118,15 @@
             set;                
         }
 
+        public float HealthPercent
+        {
+            get
+            {
+                var maxHealth = ((UnitDefinition)Definition).Health;
+                return Math.Max(Health / (float)maxHealth, 0.0f);
+            }
+        }
+
         /// <summary>
         /// Gets or sets the move.
         /// </summary>

@@ -127,11 +127,17 @@
             m_gameScene.WorldLayerHex.DoAction(actioncreate2);
 
             var actioncr = Helper.ActionHelper.CreateEntity(
-                               new Core.Models.PositionI(newPos),
-                               new Core.Models.Definitions.Definition((int)Core.Models.Definitions.EntityType.Archer),
-                               account);
+                new Core.Models.PositionI(newPos),
+                new Core.Models.Definitions.Definition((int)Core.Models.Definitions.EntityType.Archer),
+                account);
+
+            var actioncr2 = Helper.ActionHelper.CreateEntity(
+                new Core.Models.PositionI(newPos),
+                new Core.Models.Definitions.Definition((int)Core.Models.Definitions.EntityType.Fencer),
+                account);
             
             m_gameScene.WorldLayerHex.DoAction(actioncr);
+            m_gameScene.WorldLayerHex.DoAction(actioncr2);
 
             var newBorderpos = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X - 4, (int)pos.Y)); 
             var newBorderpos2 = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X, (int)pos.Y - 4)); 

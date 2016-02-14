@@ -1,52 +1,36 @@
 ﻿namespace Client.Common.Views.Effects
 {
     using CocosSharp;
+    using System;
     using Client.Common.Constants;
 
-    public class Healthbar : HUD.HUDNode
+    public class Healthbar : CCNode
     {
-        public Healthbar (/*Core.Models.Entity model, CCTileMapCoordinates coord*/)
+        public Healthbar ()
             : base()
 		{
-            //m_current = model.Health;
-            //m_max = ((Core.Models.Definitions.UnitDefinition)model.Definition).Health; 
-            //m_percent = 1;//(float)m_current / (float)m_max;
             m_healthbar = new CCSprite("healthbartest");
-
-            //m_healthbar.ScaleX = m_percent * 72; //TILE_HIGHT;
-            //m_healthbar.AnchorPoint = CCPoint.AnchorMiddle;//coord.Point;
             AddChild(m_healthbar);
-
-
 		}
-
-        public CCSize Size
-        {
-            get
-            {
-                return m_healthbar.ContentSize;
-            }
-        }
 
         protected override void AddedToScene()
         {
-            base.AddedToScene();
-
-            m_healthbar.Position = Position;
+            m_healthbar.Position = new CCPoint(
+                Constants.ViewConstants.Healthbar.POSITION_X,
+                Constants.ViewConstants.Healthbar.POSITION_Y
+            );
         }
-       
-        public void UpdateHealthbar (Core.Models.Entity model, CCTileMapCoordinates coord)
+                   
+        public void UpdateHealthbar (float newValue)
         {
-            m_percent = model.Health / ((Core.Models.Definitions.UnitDefinition)model.Definition).Health;
-            m_healthbar.ScaleX = m_percent * 72; //TILE_HIGHT;
-            m_healthbar.AnchorPoint = coord.Point;
-            return;
+            var newWidth = newValue * Constants.ViewConstants.Healthbar.MAX_WIDTH;
+            var newHeigth = newValue * Constants.ViewConstants.Healthbar.MAX_HEIGTH;
+
+            m_healthbar.ScaleX = Math.Max(Constants.ViewConstants.Healthbar.MIN_WIDTH, newWidth);
+            m_healthbar.ScaleY = Math.Max(Constants.ViewConstants.Healthbar.MIN_HEIGTH, newHeigth);                
         }
 
-        private int m_max;
-        private int m_current;
-        private float m_percent;
-        public CCNode m_healthbar;
+        private CCNode m_healthbar;
     }
 
 

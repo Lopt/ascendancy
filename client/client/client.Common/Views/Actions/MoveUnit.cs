@@ -98,15 +98,18 @@
 
             if (m_runTime >= m_path.Count + m_fightTime && m_deathTime == 0)
             {
+                ((UnitView)m_entity.View).RefreshHealth();
                 if (m_entity.Health <= 0)
                 {
                     m_deathTime = Math.Max(m_deathTime, ((UnitView)m_entity.View).Animate(UnitAnimation.Die));
                 }
 
-                if (m_enemyEntity != null && m_enemyEntity.Health <= 0)
+                if (m_enemyEntity != null && 
+                    m_enemyEntity.Definition.Category == Core.Models.Definitions.Category.Unit)
                 {
-                    if (m_enemyEntity.Definition.Category == Core.Models.Definitions.Category.Unit)
-                    {                        
+                    ((UnitView)m_enemyEntity.View).RefreshHealth();
+                    if (m_enemyEntity.Health <= 0)
+                    {
                         m_deathTime = Math.Max(m_deathTime, ((UnitView)m_enemyEntity.View).Animate(UnitAnimation.Die));
                     }
                 }
@@ -156,7 +159,7 @@
                         else
                         {
                             regionViewHex.RemoveUnit(m_enemyEntity);
-                        }                        
+                        }
                     }
                 }
 

@@ -11,7 +11,6 @@ namespace Client.Common.Views
             : base(model)
         {
             var defView = (UnitDefinitionView)model.Definition.View;
-
             if (defView != null)
             {
                 var sprite = defView.GetSpriteCopy();
@@ -21,7 +20,10 @@ namespace Client.Common.Views
                 Node = sprite;
                 Node.Position = Helper.PositionHelper.CellToTile(model.Position.CellPosition);
                 DrawRegion = model.Position.RegionPosition;
+                m_healthbar = new Effects.Healthbar();
+                Node.AddChild(m_healthbar);
 
+                RefreshHealth();
                 Animate(UnitAnimation.Idle);
             }
         }
@@ -34,6 +36,12 @@ namespace Client.Common.Views
 
             Node.RunActionAsync(animate);
             return animate.Duration;
+        }
+
+        public void RefreshHealth()
+        {
+            var model = (Core.Models.Entity)Model;
+            m_healthbar.UpdateHealthbar(model.HealthPercent);
         }
 
         public void AnimateForever(UnitAnimation type)
@@ -74,6 +82,8 @@ namespace Client.Common.Views
             get;
             private set;
         }
+
+        private Effects.Healthbar m_healthbar;
     }
 }
 
