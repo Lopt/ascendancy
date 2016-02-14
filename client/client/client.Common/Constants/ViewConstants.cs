@@ -13,6 +13,8 @@
 
         public static readonly float POSITION_X = 37;
         public static readonly float POSITION_Y = 62;
+
+        public static readonly byte OPACITY = 125;
     }
 
 }

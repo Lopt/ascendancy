@@ -197,12 +197,8 @@
     <AndroidAsset Include="Assets\Content\images\ld\question-touched.png" />
     <AndroidAsset Include="Assets\Content\images\hd\question-standard.png" />
     <AndroidAsset Include="Assets\Content\images\hd\question-touched.png" />
-    <AndroidAsset Include="Assets\Content\images\hd\healthbarenemy.png" />
     <AndroidAsset Include="Assets\Content\images\hd\healthbar.png" />
     <AndroidAsset Include="Assets\Content\images\ld\healthbar.png" />
-    <AndroidAsset Include="Assets\Content\images\ld\healthbarenemy.png" />
-    <AndroidAsset Include="Assets\Content\images\ld\healthbartest.png" />
-    <AndroidAsset Include="Assets\Content\images\hd\healthbartest.png" />
     <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20151116.xnb" />
     <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20151116.png" />
     <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20151125.xnb" />

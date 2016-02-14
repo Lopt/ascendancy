@@ -9,8 +9,11 @@
         public Healthbar ()
             : base()
 		{
-            m_healthbar = new CCSprite("healthbartest");
+            m_healthbar = new CCSprite("healthbar");
+            m_healthbarEmpty = new CCSprite("healthbar");
+            m_healthbarEmpty.Opacity = Constants.ViewConstants.Healthbar.OPACITY;
             AddChild(m_healthbar);
+            AddChild(m_healthbarEmpty);
 		}
 
         protected override void AddedToScene()
@@ -19,6 +22,9 @@
                 Constants.ViewConstants.Healthbar.POSITION_X,
                 Constants.ViewConstants.Healthbar.POSITION_Y
             );
+            m_healthbarEmpty.Position = m_healthbar.Position;
+            m_healthbarEmpty.ScaleX = Constants.ViewConstants.Healthbar.MAX_WIDTH;
+            m_healthbarEmpty.ScaleY = Constants.ViewConstants.Healthbar.MAX_HEIGTH;
         }
                    
         public void UpdateHealthbar (float newValue)
@@ -31,6 +37,7 @@
         }
 
         private CCNode m_healthbar;
+        private CCNode m_healthbarEmpty;
     }
 
 
