@@ -27,6 +27,8 @@
         /// </summary>
         public const string SOUNDS = "sounds";
 
+        public const string UNITS = "units";
+
         /// <summary>
         /// The tile images folder.
         /// </summary>

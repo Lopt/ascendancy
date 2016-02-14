@@ -15,51 +15,62 @@ namespace Client.Common.Views
         Walk
     }
 
+
     public class UnitDefinitionView : Core.Views.ViewEntity
     {
         public UnitDefinitionView(Core.Models.Definitions.UnitDefinition model)
             : base(model)
         {
-            m_animations = new Dictionary<UnitAnimation, CCAnimate>();
+            m_animations = new Dictionary<Core.Models.Diplomatic, Dictionary<UnitAnimation, CCAnimate>>();
+            m_spritesheets = new Dictionary<Core.Models.Diplomatic, CCSpriteSheet>();
             var filename = model.ID.ToString();
 
-            try
+            foreach (Core.Models.Diplomatic situation in Enum.GetValues(typeof(Core.Models.Diplomatic)))
             {
-                m_spritesheet = new CCSpriteSheet("unit_" + filename + ".plist", "unit_" + filename + ".png");
+                m_animations[situation] = new Dictionary<UnitAnimation, CCAnimate>();
+                var plist = "unit_" + filename + "-" + situation.ToString() + ".plist";
+                var png = "unit_" + filename + "-" + situation.ToString() + ".png";
 
-                var idle = m_spritesheet.Frames.FindAll((x) => x.TextureFilename.Contains("idle"));
-                var fight = m_spritesheet.Frames.FindAll((x) => x.TextureFilename.Contains("attack"));
-                var walk = m_spritesheet.Frames.FindAll((x) => x.TextureFilename.Contains("run"));
-                var die = m_spritesheet.Frames.FindAll((x) => x.TextureFilename.Contains("die"));
-                idle.Add(m_spritesheet.Frames[0]);
-                fight.Add(m_spritesheet.Frames[0]);
+                try
+                {
+                    m_spritesheets[situation] = new CCSpriteSheet(plist, png);
+                    var defaultSprite = m_spritesheets[situation].Frames.Find((x) => x.TextureFilename.Contains("default"));
 
-                m_animations[UnitAnimation.Idle] = new CCAnimate(new CCAnimation(idle, 0.25f));
-                m_animations[UnitAnimation.Fight] = new CCAnimate(new CCAnimation(fight, 0.25f));
-                m_animations[UnitAnimation.Die] = new CCAnimate(new CCAnimation(die, 0.25f));
+                    var idle = m_spritesheets[situation].Frames.FindAll((x) => x.TextureFilename.Contains("idle"));
+                    var fight = m_spritesheets[situation].Frames.FindAll((x) => x.TextureFilename.Contains("attack"));
+                    var walk = m_spritesheets[situation].Frames.FindAll((x) => x.TextureFilename.Contains("run"));
+                    var die = m_spritesheets[situation].Frames.FindAll((x) => x.TextureFilename.Contains("die"));
+                    idle.Add(defaultSprite);
+                    fight.Add(defaultSprite);
+                    walk.Add(defaultSprite);
 
-            }
-            catch (Exception err)
-            {
-                Logging.Error(err.Message);
-                Logging.Error("View.UnitDefinitionView: Couldn't load UnitDefinitionView. "+ filename + ".plist or " + filename + ".png are incorrect.");
+                    m_animations[situation][UnitAnimation.Idle] = new CCAnimate(new CCAnimation(idle, 0.25f));
+                    m_animations[situation][UnitAnimation.Fight] = new CCAnimate(new CCAnimation(fight, 0.25f));
+                    m_animations[situation][UnitAnimation.Die] = new CCAnimate(new CCAnimation(die, 0.25f));
+
+                }
+                catch (Exception err)
+                {
+                    Logging.Error(err.Message);
+                    Logging.Error("View.UnitDefinitionView: Couldn't load UnitDefinitionView. " + plist + " or " + png + " are incorrect.");
+                }
             }
         }
 
-        public CCSprite GetSpriteCopy()
+        public CCSprite GetSpriteCopy(Core.Models.Diplomatic diplomacy)
         {
-            return new CCSprite(m_spritesheet.Frames[0]);
+            return new CCSprite(m_spritesheets[diplomacy].Frames.Find((x) => x.TextureFilename.Contains("default")));
         }
 
-        public CCAnimate GetAnimate(UnitAnimation type)
+        public CCAnimate GetAnimate(Core.Models.Diplomatic diplomacy, UnitAnimation type)
         {
             CCAnimate animate = null;
-            m_animations.TryGetValue(type, out animate);
+            m_animations[diplomacy].TryGetValue(type, out animate);
             return animate;
         }
 
-        private CCSpriteSheet m_spritesheet;
-        private Dictionary<UnitAnimation, CCAnimate> m_animations;
+        private Dictionary<Core.Models.Diplomatic, CCSpriteSheet> m_spritesheets;
+        private Dictionary<Core.Models.Diplomatic, Dictionary<UnitAnimation, CCAnimate>> m_animations;
     }
 }
 

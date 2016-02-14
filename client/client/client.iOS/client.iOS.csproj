@@ -259,6 +259,36 @@
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
+    <None Include="Content\units\unit_60-allied.plist" />
+    <None Include="Content\units\unit_60-allied.png" />
+    <None Include="Content\units\unit_60-enemy.plist" />
+    <None Include="Content\units\unit_60-enemy.png" />
+    <None Include="Content\units\unit_60-own.plist" />
+    <None Include="Content\units\unit_60-own.png" />
+    <None Include="Content\units\unit_66-allied.plist" />
+    <None Include="Content\units\unit_66-allied.png" />
+    <None Include="Content\units\unit_66-enemy.plist" />
+    <None Include="Content\units\unit_66-enemy.png" />
+    <None Include="Content\units\unit_66-own.plist" />
+    <None Include="Content\units\unit_66-own.png" />
+    <None Include="Content\units\unit_72-allied.plist" />
+    <None Include="Content\units\unit_72-allied.png" />
+    <None Include="Content\units\unit_72-enemy.plist" />
+    <None Include="Content\units\unit_72-enemy.png" />
+    <None Include="Content\units\unit_72-own.plist" />
+    <None Include="Content\units\unit_72-own.png" />
+    <None Include="Content\units\unit_78-allied.plist" />
+    <None Include="Content\units\unit_78-allied.png" />
+    <None Include="Content\units\unit_78-enemy.plist" />
+    <None Include="Content\units\unit_78-enemy.png" />
+    <None Include="Content\units\unit_78-own.plist" />
+    <None Include="Content\units\unit_78-own.png" />
+    <None Include="Content\units\unit_84-allied.plist" />
+    <None Include="Content\units\unit_84-allied.png" />
+    <None Include="Content\units\unit_84-enemy.plist" />
+    <None Include="Content\units\unit_84-enemy.png" />
+    <None Include="Content\units\unit_84-own.plist" />
+    <None Include="Content\units\unit_84-own.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />

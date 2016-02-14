@@ -13,7 +13,7 @@ namespace Client.Common.Views
             var defView = (UnitDefinitionView)model.Definition.View;
             if (defView != null)
             {
-                var sprite = defView.GetSpriteCopy();
+                var sprite = defView.GetSpriteCopy(model.GetDiplomacy(GameAppDelegate.Account));
                 //                Node.Position = Helper.PositionHelper.GamePositionIToWorldPoint(model.Position);
                 sprite.Scale = 1.35f;
                 sprite.AnchorPoint = new CCPoint(0.0f, 0.8f);
@@ -32,7 +32,7 @@ namespace Client.Common.Views
         {
             var model = (Core.Models.Entity)Model;
             var defView = (UnitDefinitionView)model.Definition.View;
-            var animate = defView.GetAnimate(type);
+            var animate = defView.GetAnimate(model.GetDiplomacy(GameAppDelegate.Account), type);
 
             Node.RunActionAsync(animate);
             return animate.Duration;
@@ -48,7 +48,7 @@ namespace Client.Common.Views
         {
             var model = (Core.Models.Entity)Model;
             var defView = (UnitDefinitionView)model.Definition.View;
-            var animate = defView.GetAnimate(type);
+            var animate = defView.GetAnimate(model.GetDiplomacy(GameAppDelegate.Account), type);
 
             Node.RunActionAsync(new CCRepeatForever(animate));
         }

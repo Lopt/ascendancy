@@ -5,6 +5,14 @@
     using Core.Models.Definitions;
     using Newtonsoft.Json;
 
+
+    public enum Diplomatic
+    {
+        own,
+        allied,
+        enemy,
+    }
+
     /// <summary>
     /// Entity which represents an "object" in the game world: units, terrain, buildings... etc.
     /// </summary>
@@ -155,6 +163,15 @@
         {
             get;
             set;
+        }
+
+        public Diplomatic GetDiplomacy(Account account)
+        {
+            if (account.ID == Owner.ID)
+            {
+                return Diplomatic.allied;
+            }
+            return Diplomatic.enemy;
         }
     }
 }
