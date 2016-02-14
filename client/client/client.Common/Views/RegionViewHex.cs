@@ -48,7 +48,6 @@
             m_buildingLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_BUILDING);
             m_menueLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_MENU);
             m_indicatorLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_INDICATOR);
-            m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
 
             m_drawNodes = new Dictionary<Account, CCDrawNode>();
 
@@ -285,7 +284,6 @@
             m_buildingLayer.RemoveTile(coordHelper);
             m_menueLayer.RemoveTile(coordHelper);
             m_indicatorLayer.RemoveTile(coordHelper);
-            m_unitLayer.RemoveTile(coordHelper);
         }
 
         /// <summary>
@@ -350,11 +348,6 @@
         /// The menue layer.
         /// </summary>
         private CCTileMapLayer m_menueLayer;
-
-        /// <summary>
-        /// The unit layer.
-        /// </summary>
-        private CCTileMapLayer m_unitLayer;
 
         /// <summary>
         /// The tile map.

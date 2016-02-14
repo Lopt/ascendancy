@@ -125,11 +125,6 @@
         public const string LAYER_BUILDING = "Layer 2";
 
         /// <summary>
-        /// name of unit layer
-        /// </summary>
-        public const string LAYER_UNIT = "Layer 3";
-
-        /// <summary>
         /// unit of menu layer
         /// </summary>
         public const string LAYER_MENU = "Layer 4";
@@ -143,11 +138,6 @@
         /// The Start of the Building GIDs
         /// </summary>
         public const short BUILDING_GIDS = 20;
-
-        /// <summary>
-        /// The Start of the Unit GIDs
-        /// </summary>
-        public const short UNIT_GIDS = 60;
 
         /// <summary>
         /// The Start of the Menu GIDs
