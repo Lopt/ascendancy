@@ -221,8 +221,6 @@
     <BundleResource Include="Content\tiles\Worldmap-2016112.tmx" />
     <BundleResource Include="Content\images\hd\EnergyRessource4.png" />
     <BundleResource Include="Content\images\hd\healthbar.png" />
-    <BundleResource Include="Content\images\hd\healthbarenemy.png" />
-    <BundleResource Include="Content\images\hd\healthbartest.png" />
     <BundleResource Include="Content\images\hd\Plutonium.png" />
     <BundleResource Include="Content\images\hd\Population.png" />
     <BundleResource Include="Content\images\hd\Scrap.png" />
@@ -240,8 +238,6 @@
     <BundleResource Include="Content\images\ld\EnergyRessource3.png" />
     <BundleResource Include="Content\images\ld\EnergyRessource4.png" />
     <BundleResource Include="Content\images\ld\healthbar.png" />
-    <BundleResource Include="Content\images\ld\healthbarenemy.png" />
-    <BundleResource Include="Content\images\ld\healthbartest.png" />
     <BundleResource Include="Content\images\ld\Plutonium.png" />
     <BundleResource Include="Content\images\ld\Population.png" />
     <BundleResource Include="Content\images\ld\Scrap.png" />
