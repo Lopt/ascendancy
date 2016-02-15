@@ -177,11 +177,11 @@
             m_menuEntitiesGid.Add(EntityType.Fencer, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.HERO));
             m_menuEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.WARRIOR));
             m_menuEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.MAGE));
-            m_menuEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.SCOUT));
+            m_menuEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.CAVALIER));
             m_menuEntitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.UNKNOWN));
 
             // units -> Range
-            m_menuEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.SOLDIER));
+            m_menuEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.UnitMenuGid.ARCHER));
 
             // Buildings -> Militaer
             m_menuEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Common.Constants.BuildingMenuGid.HEADQUARTER));

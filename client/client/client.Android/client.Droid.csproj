@@ -177,8 +177,6 @@
     <AndroidAsset Include="Assets\Content\fonts\arial-22.xnb" />
     <AndroidAsset Include="Assets\Content\images\hd\Ladebalken.png" />
     <AndroidAsset Include="Assets\Content\images\ld\Ladebalken.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20150704.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20150704.xnb" />
     <AndroidAsset Include="Assets\Content\images\ld\logo.png" />
     <AndroidAsset Include="Assets\Content\images\hd\logo.png" />
     <AndroidAsset Include="Assets\Content\images\hd\radars2-touched.png" />
@@ -199,14 +197,6 @@
     <AndroidAsset Include="Assets\Content\images\hd\question-touched.png" />
     <AndroidAsset Include="Assets\Content\images\hd\healthbar.png" />
     <AndroidAsset Include="Assets\Content\images\ld\healthbar.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20151116.xnb" />
-    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20151116.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20151125.xnb" />
-    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20151125.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20151203.xnb" />
-    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20151203.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-160x160%2880x320%29_20151212.xnb" />
-    <AndroidAsset Include="Assets\Content\tiles\spritesheet20151212.png" />
     <AndroidAsset Include="Assets\Content\images\hd\Scrap.png" />
     <AndroidAsset Include="Assets\Content\images\ld\Scrap.png" />
     <AndroidAsset Include="Assets\Content\images\hd\Plutonium.png" />
@@ -215,15 +205,8 @@
     <AndroidAsset Include="Assets\Content\images\ld\Population.png" />
     <AndroidAsset Include="Assets\Content\images\hd\Tech.png" />
     <AndroidAsset Include="Assets\Content\images\ld\Tech.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Spritesheet_20151027.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-32x32-Hexa-20151027.tmx" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-2016112.tmx" />
-    <AndroidAsset Include="Assets\Content\tiles\spritesheet2016112.png" />
     <AndroidAsset Include="Assets\Content\images\hd\EnergyRessource4.png" />
     <AndroidAsset Include="Assets\Content\images\ld\EnergyRessource4.png" />
-    <AndroidAsset Include="Assets\Content\tiles\spritesheet2016211.png" />
-    <AndroidAsset Include="Assets\Content\tiles\Worldmap-2016211.tmx" />
-    <AndroidAsset Include="Assets\Content\tiles\spritesheet2016212.png" />
     <AndroidAsset Include="Assets\Content\units\unit_60-allied.plist" />
     <AndroidAsset Include="Assets\Content\units\unit_60-allied.png" />
     <AndroidAsset Include="Assets\Content\units\unit_60-enemy.plist" />
@@ -254,6 +237,8 @@
     <AndroidAsset Include="Assets\Content\units\unit_84-enemy.png" />
     <AndroidAsset Include="Assets\Content\units\unit_84-own.plist" />
     <AndroidAsset Include="Assets\Content\units\unit_84-own.png" />
+    <AndroidAsset Include="Assets\Content\tiles\spritesheet2016212.png" />
+    <AndroidAsset Include="Assets\Content\tiles\Worldmap-2016215.tmx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\tiles\" />

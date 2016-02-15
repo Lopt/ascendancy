@@ -12,10 +12,9 @@
         /// </summary>
         /// <param name="model">Model of the unit.</param>
         /// <param name="worldLayer">World layer.</param>
-        public CreateUnit(Core.Models.ModelEntity model, RegionViewHex regionViewHex)
+        public CreateUnit(Core.Models.ModelEntity model)
             : base(model)
         {
-            RegionViewHex = regionViewHex;
         }
 
         /// <summary>
@@ -40,22 +39,14 @@
             var position = actionC.RealCreatePosition; 
             if (position != null)
             {
-                var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition).GetEntity(position.CellPosition);
-                var nextPoint = Helper.PositionHelper.CellToTile(entity.Position.CellPosition); 
-                RegionViewHex.DrawUnit(entity);
+                var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(position.RegionPosition);
+                var entity = region.GetEntity(position.CellPosition);
+                var regionV = (RegionViewHex)region.View;
+                regionV.DrawUnit(entity);
                 //WorldLayer.UglyDraw();
             }
             return true;
         }
 
-        /// <summary>
-        /// Gets the world layer.
-        /// </summary>
-        /// <value>The world layer.</value>
-        public RegionViewHex RegionViewHex
-        {
-            get;
-            private set;
-        }
     }
 }
