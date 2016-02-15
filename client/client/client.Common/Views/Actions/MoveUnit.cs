@@ -94,30 +94,14 @@
                 var unitView = (UnitView)m_entity.View;
                 m_fightTime = Math.Max(m_fightTime, unitView.Animate(UnitAnimation.Fight));
             }
-               
 
-            if (m_runTime >= m_path.Count + m_fightTime && m_deathTime == 0)
+            if (m_runTime >= m_path.Count + m_fightTime)
             {
                 ((UnitView)m_entity.View).RefreshHealth();
-                if (m_entity.Health <= 0)
-                {
-                    m_deathTime = Math.Max(m_deathTime, ((UnitView)m_entity.View).Animate(UnitAnimation.Die));
-                }
-
-                if (m_enemyEntity != null && 
-                    m_enemyEntity.Definition.Category == Core.Models.Definitions.Category.Unit)
+                if (m_enemyEntity != null)
                 {
                     ((UnitView)m_enemyEntity.View).RefreshHealth();
-                    if (m_enemyEntity.Health <= 0)
-                    {
-                        m_deathTime = Math.Max(m_deathTime, ((UnitView)m_enemyEntity.View).Animate(UnitAnimation.Die));
-                    }
                 }
-            }
-
-
-            if (m_runTime >= m_path.Count + m_deathTime + m_fightTime)
-            {
                 if (m_entity.Health <= 0)
                 {
                     var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
@@ -127,14 +111,13 @@
 
                     region.RemoveEntity(DateTime.Now, m_entity);
 
-                    if (regionViewHex != null)
-                    {
-                        regionViewHex.RemoveUnit(m_entity);
-                    }
-
                     if (typ == Core.Models.Definitions.EntityType.GuardTower || typ == Core.Models.Definitions.EntityType.Headquarter)
                     {
                         WorldLayerHex.DrawBorders(owner);
+                    }
+                    if (m_entity.Definition.Category == Core.Models.Definitions.Category.Unit)
+                    {
+                        ((UnitView)m_entity.View).Die();
                     }
                 }
                 if (m_enemyEntity != null && m_enemyEntity.Health <= 0)
@@ -158,7 +141,7 @@
                         }
                         else
                         {
-                            regionViewHex.RemoveUnit(m_enemyEntity);
+                            ((UnitView)m_enemyEntity.View).Die();
                         }
                     }
                 }
@@ -167,14 +150,13 @@
             }
             return false;
         }
-
+            
         public WorldLayerHex WorldLayerHex
         {
             get;
             private set;
         }
 
-        private float m_deathTime;
         private float m_fightTime;
 
         /// <summary>

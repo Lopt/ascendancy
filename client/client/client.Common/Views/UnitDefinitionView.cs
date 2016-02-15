@@ -45,8 +45,8 @@ namespace Client.Common.Views
                     walk.Add(defaultSprite);
 
                     m_animations[situation][UnitAnimation.Idle] = new CCAnimate(new CCAnimation(idle, 0.25f));
-                    m_animations[situation][UnitAnimation.Fight] = new CCAnimate(new CCAnimation(fight, 0.3f));
-                    m_animations[situation][UnitAnimation.Die] = new CCAnimate(new CCAnimation(die, 0.35f));
+                    m_animations[situation][UnitAnimation.Fight] = new CCAnimate(new CCAnimation(fight, 0.25f));
+                    m_animations[situation][UnitAnimation.Die] = new CCAnimate(new CCAnimation(die, 0.25f));
 
                 }
                 catch (Exception err)
