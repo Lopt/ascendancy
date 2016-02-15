@@ -55,7 +55,7 @@ namespace Client.Common.Views
                 m_types[0] = defM.GetDefinition(EntityType.Mage);
                 m_types[1] = defM.GetDefinition(EntityType.Fencer);
                 m_types[2] = defM.GetDefinition(EntityType.Warrior);
-                m_types[3] = defM.GetDefinition(EntityType.Mage);
+                m_types[3] = defM.GetDefinition(EntityType.Scout);
                 m_types[4] = defM.GetDefinition(EntityType.Archer);
                 m_types[5] = defM.GetDefinition(EntityType.Archer);
             }
