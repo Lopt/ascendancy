@@ -249,73 +249,6 @@
         public const short MINEWATER = ClientConstants.BUILDING_GIDS + 34;
     }
 
-    /// <summary>
-    /// Unit GIDs assigned according to 'client/data/tiles/Tile assignment.PDF'.
-    /// </summary>
-    public class UnitGid
-    {
-        /// <summary>
-        /// GID for the unit tile with the trait soldier.
-        /// </summary>
-        public const short SOLDIER = ClientConstants.UNIT_GIDS + 1;
-        // to be replaced with UNIT_GID + 3
-
-        /// <summary>
-        /// GID for the unit tile with the trait hero.
-        /// </summary>
-        public const short HERO = ClientConstants.UNIT_GIDS + 2;
-
-        /// <summary>
-        /// GID for the unit tile with the trait warrior.
-        /// </summary>
-        public const short WARRIOR = ClientConstants.UNIT_GIDS + 3;
-
-        /// <summary>
-        /// GID for the unit tile with the trait mage.
-        /// </summary>
-        public const short MAGE = ClientConstants.UNIT_GIDS + 4;
-
-        /// <summary>
-        /// GID for the unit tile with the trait scout.
-        /// </summary>
-        public const short SCOUT = ClientConstants.UNIT_GIDS + 5;
-
-        /// <summary>
-        /// GID for the unit tile with the trait unknown.
-        /// </summary>
-        public const short UNKNOWN = ClientConstants.UNIT_GIDS + 6;
-    }
-
-    /// <summary>
-    /// Enemy Unit GIDs assigned according to 'client/data/tiles/Tile assignment.PDF'.
-    /// </summary>
-    public class EnemyUnitGid
-    {
-        /// <summary>
-        /// GID for the enemy unit tile with the trait archer.
-        /// </summary>
-        public const short SOLDIER = ClientConstants.ENEMY_GIDS + 1;
-
-        /// <summary>
-        /// GID for the enemy unit tile with the trait hero.
-        /// </summary>
-        public const short HERO = ClientConstants.ENEMY_GIDS + 2;
-
-        /// <summary>
-        /// GID for the enemy unit tile with the trait warrior.
-        /// </summary>
-        public const short WARRIOR = ClientConstants.ENEMY_GIDS + 3;
-
-        /// <summary>
-        /// GID for the enemy unit tile with the trait mage.
-        /// </summary>
-        public const short MAGE = ClientConstants.ENEMY_GIDS + 4;
-
-        /// <summary>
-        /// GID for the enemy unit tile with the trait scout.
-        /// </summary>
-        public const short SCOUT = ClientConstants.ENEMY_GIDS + 5;
-    }
 
     /// <summary>
     /// Enemy Building GIDs assigned according to 'client/data/tiles/Tile assignment.PDF'.
@@ -513,6 +446,11 @@
         /// The TENT GID.
         /// </summary>
         public const short TENT = ClientConstants.MENU_GIDS + 25;
+
+        /// <summary>
+        /// The opacity for the indicators.
+        /// </summary>
+        public const int BUILDING_MENU_OPACITY = 80;
     }
 
     /// <summary>
@@ -550,6 +488,11 @@
         /// GID for the unit menu tiles with the trait unknown.
         /// </summary>
         public const short UNKNOWN = ClientConstants.MENU_GIDS + 31;
+
+        /// <summary>
+        /// The opacity for the indicators.
+        /// </summary>
+        public const int UNIT_MENU_OPACITY = 80;
     }
 
     /// <summary>

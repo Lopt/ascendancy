@@ -127,11 +127,42 @@
             m_gameScene.WorldLayerHex.DoAction(actioncreate2);
 
             var actioncr = Helper.ActionHelper.CreateEntity(
-                               new Core.Models.PositionI(newPos),
-                               new Core.Models.Definitions.Definition((int)Core.Models.Definitions.EntityType.Archer),
-                               account);
+                new Core.Models.PositionI(newPos),
+                new Core.Models.Definitions.Definition((int)Core.Models.Definitions.EntityType.Archer),
+                account);
+
+            var actioncr2 = Helper.ActionHelper.CreateEntity(
+                new Core.Models.PositionI(newPos),
+                new Core.Models.Definitions.Definition((int)Core.Models.Definitions.EntityType.Fencer),
+                account);
             
             m_gameScene.WorldLayerHex.DoAction(actioncr);
+            m_gameScene.WorldLayerHex.DoAction(actioncr2);
+
+            var newBorderpos = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X - 4, (int)pos.Y)); 
+            var newBorderpos2 = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X, (int)pos.Y - 4)); 
+
+            var actioncreate3 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(
+                                    newBorderpos),
+                                    Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.GuardTower),
+                                    account);
+
+            m_gameScene.WorldLayerHex.DoAction(actioncreate3);
+
+            var actioncreate4 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(
+                newBorderpos2),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.GuardTower),
+                account);
+            
+            m_gameScene.WorldLayerHex.DoAction(actioncreate4);
+
+            var newLabpos = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)newBorderpos.X - 1, (int)newBorderpos.Y));
+
+            var actioncreate5 = Helper.ActionHelper.CreateEntity(new Core.Models.PositionI(newLabpos),
+                Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Lab),
+                account);
+
+            m_gameScene.WorldLayerHex.DoAction(actioncreate5);
         }
 
         /// <summary>

@@ -156,7 +156,6 @@ namespace Client.Common.Models
         public async Task<Core.Models.Position> GetPositionAsync()
         {
             Core.Models.Position position = null;
-
             try
             {
                 var latlon = await m_geolocator.GetPositionAsync(Constants.ClientConstants.GPS_GET_POSITION_TIMEOUT);

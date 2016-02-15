@@ -170,7 +170,8 @@
         {
             var rand = new Random(entity.ID + entity.OwnerID + entity.Position.GetHashCode());
             double result = entity.ModfiedAttackValue;
-            var randomValue = rand.NextDouble() * 2;    
+            // between max and minimum
+            var randomValue = rand.NextDouble() * (2 - 0.5f) + 0.5f;    
             result *= randomValue;
             entity.ModfiedAttackValue = (int)result;
             return 0;
@@ -527,20 +528,56 @@
         /// Destroy the building.
         /// </summary>
         /// <param name="entity">Entity.</param>
-        public static void DestroyBuilding(Entity entity, Region regionPos, DateTime time, Controllers.RegionManagerController regionManagerC)
+        public static void DestroyBuilding(Entity entity, Region regionPos, Action action, Controllers.RegionManagerController regionManagerC)
         {
             // TODO: in pseudo klasse kapseln und generischer lösen
             switch((long)entity.DefinitionID)
             {
                 case (long)Models.Definitions.EntityType.Headquarter:
-                    regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);
+                    regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);                                                       
                     DecreaseWholeStorage(entity.Owner);
                     DisableBuildOptions(entity.DefinitionID, entity.Owner);
                     entity.Owner.TerritoryBuildings.Remove(entity.Position);
+                    // TODO: bessere lösung als alles neu claimen finden  
+                    foreach (var building in entity.Owner.TerritoryBuildings)
+                    {
+                        var list = new HashSet<PositionI>();
+                        var range = 0;
+                        if (building.Value == (long)Definitions.EntityType.Headquarter)
+                        {
+                            range = Constants.HEADQUARTER_TERRITORY_RANGE;
+                        }
+                        else if (building.Value == (long)Definitions.EntityType.GuardTower)
+                        {
+                            range = Constants.GUARDTOWER_TERRITORY_RANGE;
+                        }
+                        list = GetSurroundedPositions(building.Key, range);
+                        var region = building.Key.RegionPosition;
+                        regionManagerC.GetRegion(region).ClaimTerritory(list, entity.Owner, region, regionManagerC.RegionManager);
+                    }
+                    //DestroyAllBuildingsWithoutTerritory(entity.Owner, action, regionManagerC);
                     break;
                 case (long)Models.Definitions.EntityType.GuardTower:
-                    regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.GUARDTOWER_TERRITORY_RANGE), entity.Owner);
+                    regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.GUARDTOWER_TERRITORY_RANGE), entity.Owner);                   
                     entity.Owner.TerritoryBuildings.Remove(entity.Position);
+                    // TODO: bessere lösung als alles neu claimen finden  
+                    foreach (var building in entity.Owner.TerritoryBuildings)
+                    {
+                        var list = new HashSet<PositionI>();
+                        var range = 0;
+                        if (building.Value == (long)Definitions.EntityType.Headquarter)
+                        {
+                            range = Constants.HEADQUARTER_TERRITORY_RANGE;
+                        }
+                        else if (building.Value == (long)Definitions.EntityType.GuardTower)
+                        {
+                            range = Constants.GUARDTOWER_TERRITORY_RANGE;
+                        }
+                        list = GetSurroundedPositions(building.Key, range);
+                        var region = building.Key.RegionPosition;
+                        regionManagerC.GetRegion(region).ClaimTerritory(list, entity.Owner, region, regionManagerC.RegionManager);
+                    }
+                    //DestroyAllBuildingsWithoutTerritory(entity.Owner, action, regionManagerC); 
                     break;
                 case (long)Models.Definitions.EntityType.Barracks:
                     var count = 0;
@@ -587,5 +624,31 @@
                     break;
             }
         }
-    }        
+
+        /// <summary>
+        /// Destroys all buildings without territory.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="regionPos">Region position.</param>
+        /// <param name="regionManagerC">Region manager c.</param>
+        public static void DestroyAllBuildingsWithoutTerritory(Account account, Action action, Controllers.RegionManagerController regionManagerC)
+        {
+            Dictionary<PositionI, long> copylist = new Dictionary<PositionI, long>(account.Buildings);
+           
+            foreach (var building in copylist)
+            {
+                var region = regionManagerC.GetRegion(building.Key.RegionPosition);
+                if (region.GetClaimedTerritory(building.Key) == null)
+                {
+                    DestroyBuilding(region.GetEntity(building.Key.CellPosition), region, action, regionManagerC);
+                    region.RemoveEntity(action.ActionTime, region.GetEntity(building.Key.CellPosition));
+                }
+            }
+            account.Buildings.Clear();
+            foreach (var test in copylist)
+            {
+                account.Buildings.Add(test.Key, test.Value);
+            }
+        }
+    }
 }

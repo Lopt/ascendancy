@@ -84,7 +84,7 @@
                 application.ContentSearchPaths.Add(Constants.ClientConstants.IMAGES_LD);
             }
 
-            SceneStartAsync(); // .RunSynchronously();
+             SceneStartAsync(); // .RunSynchronously();
         }
 
         /// <summary>
@@ -119,6 +119,7 @@
             application.ContentSearchPaths.Add(Constants.ClientConstants.SOUNDS);
             application.ContentSearchPaths.Add(Constants.ClientConstants.TILES);
             application.ContentSearchPaths.Add(Constants.ClientConstants.IMAGES);
+            application.ContentSearchPaths.Add(Constants.ClientConstants.UNITS);
         }
 
         /// <summary>

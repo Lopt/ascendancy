@@ -12,7 +12,9 @@
     using Client.Common.Models;
     using CocosSharp;
     using Core.Models;
+    using Core.Models.Definitions;
     using Core.Views;
+    using Microsoft.Xna.Framework;
     using SQLitePCL;
 
     /// <summary>
@@ -20,6 +22,17 @@
     /// </summary>
     public class RegionViewHex : ViewEntity
     {
+        public enum LayerTypes
+        {
+            Terrain,
+            Building,
+            Unit,
+            Border,
+            Indicator,
+            Menu
+        }
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.RegionViewHex"/> class.
         /// </summary>
@@ -29,27 +42,35 @@
         {
             var tileMapInfo = new CCTileMapInfo(Common.Constants.ClientConstants.TILEMAP_FILE_HEX);
             m_tileMap = new CCTileMap(tileMapInfo);
-            m_tileMap.TileLayersContainer.AnchorPoint = new CCPoint(0.0f, 1.0f);
-             
+
+
             m_terrainLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_TERRAIN);
             m_buildingLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_BUILDING);
-            m_unitLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_UNIT);
             m_menueLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_MENU);
             m_indicatorLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_INDICATOR);
 
             m_drawNodes = new Dictionary<Account, CCDrawNode>();
 
+            m_childs = new Dictionary<LayerTypes, CCNode>();
+            m_childs[LayerTypes.Terrain] = m_tileMap.TileLayersContainer;
+            m_childs[LayerTypes.Building] = null;
+            m_childs[LayerTypes.Unit] = new CCNode();
+            m_childs[LayerTypes.Border] = new CCNode();
+            m_childs[LayerTypes.Indicator] = null;//new CCNode();
+            m_childs[LayerTypes.Menu] = null;//new CCNode();
+
             Init();
             LoadRegionViewAsync();
         }
 
-        /// <summary>
-        /// Gets the tile map.
-        /// </summary>
-        /// <returns>The tile map.</returns>
         public CCTileMap GetTileMap()
         {
             return m_tileMap;
+        }
+
+        public CCNode GetChildrens(LayerTypes layer)
+        {
+            return m_childs[layer];
         }
 
         /// <summary>
@@ -82,13 +103,14 @@
             if (unitV.DrawRegion == regionM.RegionPosition)
             {
                 unitV.Node.RemoveFromParent();
-                m_tileMap.TileLayersContainer.AddChild(unitV.Node);
+                m_childs[LayerTypes.Unit].AddChild(unitV.Node);
                 unitV.Node.Position = unitV.DrawPoint;
             }
             else
             {
                 m_tileMap.TileLayersContainer.RemoveChild(unitV.Node);
             }
+
         }
 
         /// <summary>
@@ -98,6 +120,7 @@
         public void RemoveUnit(Entity unit)
         {
             var unitV = (UnitView)unit.View;
+            m_childs[LayerTypes.Unit].RemoveChild(unitV.Node);
             m_tileMap.TileLayersContainer.RemoveChild(unitV.Node);
         }
 
@@ -113,20 +136,19 @@
         /// <summary>
         /// Sets the menu tile.
         /// </summary>
-        /// <param name="cellPos">Cell position.</param>
-        /// <param name="definition">Definition.</param>
-        public void SetMenuTile(CellPosition cellPos, CCTileGidAndFlags definition)
+        /// <returns>The menu tile.</returns>
+        /// <param name="posI">PositionI.</param>
+        /// <param name="gid">Gid.</param>
+        /// <param name="isPossible">If set to <c>true</c> is possible.</param>
+        public CCSprite SetMenuTile(PositionI posI, CCTileGidAndFlags gid, bool isPossible = true)
         {
-            m_menueLayer.SetTileGID(definition, new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
-        }
-
-        /// <summary>
-        /// Removes the menu tile.
-        /// </summary>
-        /// <param name="cellPos">Cell position.</param>
-        public void RemoveMenuTile(CellPosition cellPos)
-        {
-            m_menueLayer.RemoveTile(new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
+            m_menueLayer.SetTileGID(gid, new CCTileMapCoordinates(posI.CellPosition.CellX, posI.CellPosition.CellY));
+            var sprite = m_menueLayer.ExtractTile(new CCTileMapCoordinates(posI.CellPosition.CellX, posI.CellPosition.CellY), true);
+            if (!isPossible)
+            {
+                sprite.Color = CCColor3B.DarkGray;
+            }
+            return sprite;
         }
 
         /// <summary>
@@ -232,7 +254,16 @@
         private void SetWorldPosition()
         {
             var position = PositionHelper.RegionToWorldspace(this);
-            m_tileMap.TileLayersContainer.Position = position;
+            m_childs[LayerTypes.Terrain].Position = position;
+            m_childs[LayerTypes.Terrain].AnchorPoint = new CCPoint(0.0f, 1.0f);
+ 
+            m_childs[LayerTypes.Unit].Position = position;
+            m_childs[LayerTypes.Unit].ContentSize = m_childs[LayerTypes.Terrain].ContentSize;
+            m_childs[LayerTypes.Unit].AnchorPoint = new CCPoint(0.0f, 1.0f);
+            m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
+            m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
+
+
         }
 
         /// <summary>
@@ -251,7 +282,6 @@
         {
             var coordHelper = new CCTileMapCoordinates(0, 0);
             m_buildingLayer.RemoveTile(coordHelper);
-            m_unitLayer.RemoveTile(coordHelper);
             m_menueLayer.RemoveTile(coordHelper);
             m_indicatorLayer.RemoveTile(coordHelper);
         }
@@ -315,11 +345,6 @@
         private CCTileMapLayer m_buildingLayer;
 
         /// <summary>
-        /// The unit layer.
-        /// </summary>
-        private CCTileMapLayer m_unitLayer;
-
-        /// <summary>
         /// The menue layer.
         /// </summary>
         private CCTileMapLayer m_menueLayer;
@@ -333,6 +358,8 @@
         /// The draw nodes.
         /// </summary>
         private Dictionary<Account, CCDrawNode> m_drawNodes;
+
+        private Dictionary<LayerTypes, CCNode> m_childs;
 
         #endregion
     }

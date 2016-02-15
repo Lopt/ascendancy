@@ -83,51 +83,89 @@
                     }
                 }
             }
-               
-            if (m_runTime >= m_path.Count && m_entity.Health <= 0)
-            {
-                var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
-                var regionViewHex = (RegionViewHex)region.View;
-                var owner = m_entity.Owner;
-                var typ = m_entity.Definition.SubType;
-                region.RemoveEntity(DateTime.Now, m_entity);
 
-                if (regionViewHex != null)
+            if (m_enemyEntity != null && m_fightTime == 0)
+            {
+                if (m_enemyEntity.Definition.Category == Core.Models.Definitions.Category.Unit)
                 {
-                    regionViewHex.RemoveUnit(m_entity);
+                    var enemyView = (UnitView)m_enemyEntity.View;
+                    m_fightTime = Math.Max(m_fightTime, enemyView.Animate(UnitAnimation.Fight));
+                }
+                var unitView = (UnitView)m_entity.View;
+                m_fightTime = Math.Max(m_fightTime, unitView.Animate(UnitAnimation.Fight));
+            }
+               
+
+            if (m_runTime >= m_path.Count + m_fightTime && m_deathTime == 0)
+            {
+                ((UnitView)m_entity.View).RefreshHealth();
+                if (m_entity.Health <= 0)
+                {
+                    m_deathTime = Math.Max(m_deathTime, ((UnitView)m_entity.View).Animate(UnitAnimation.Die));
                 }
 
-                if (typ == Core.Models.Definitions.EntityType.GuardTower || typ == Core.Models.Definitions.EntityType.Headquarter)
+                if (m_enemyEntity != null && 
+                    m_enemyEntity.Definition.Category == Core.Models.Definitions.Category.Unit)
                 {
-                    WorldLayerHex.DrawBorders(owner);
+                    ((UnitView)m_enemyEntity.View).RefreshHealth();
+                    if (m_enemyEntity.Health <= 0)
+                    {
+                        m_deathTime = Math.Max(m_deathTime, ((UnitView)m_enemyEntity.View).Animate(UnitAnimation.Die));
+                    }
                 }
             }
-            else if (m_enemyEntity != null && m_enemyEntity.Health <= 0)
+
+
+            if (m_runTime >= m_path.Count + m_deathTime + m_fightTime)
             {
-                var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_enemyEntity.Position.RegionPosition);
-                var regionViewHex = (RegionViewHex)region.View;
-                var owner = m_enemyEntity.Owner;
-                var typ = m_enemyEntity.Definition.SubType;
-                region.RemoveEntity(DateTime.Now, m_enemyEntity);
-
-                if (regionViewHex != null)
+                if (m_entity.Health <= 0)
                 {
-                    if (m_enemyEntity.Definition.Category == Core.Models.Definitions.Category.Building)
-                    {                        
-                        regionViewHex.RemoveBuilding(m_enemyEntity);
+                    var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
+                    var regionViewHex = (RegionViewHex)region.View;
+                    var owner = m_entity.Owner;
+                    var typ = m_entity.Definition.SubType;
 
-                        if (typ == Core.Models.Definitions.EntityType.GuardTower || typ == Core.Models.Definitions.EntityType.Headquarter)
+                    region.RemoveEntity(DateTime.Now, m_entity);
+
+                    if (regionViewHex != null)
+                    {
+                        regionViewHex.RemoveUnit(m_entity);
+                    }
+
+                    if (typ == Core.Models.Definitions.EntityType.GuardTower || typ == Core.Models.Definitions.EntityType.Headquarter)
+                    {
+                        WorldLayerHex.DrawBorders(owner);
+                    }
+                }
+                if (m_enemyEntity != null && m_enemyEntity.Health <= 0)
+                {
+                    var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_enemyEntity.Position.RegionPosition);
+                    var regionViewHex = (RegionViewHex)region.View;
+                    var owner = m_enemyEntity.Owner;
+                    var typ = m_enemyEntity.Definition.SubType;
+                    region.RemoveEntity(DateTime.Now, m_enemyEntity);
+
+                    if (regionViewHex != null)
+                    {
+                        if (m_enemyEntity.Definition.Category == Core.Models.Definitions.Category.Building)
+                        {                        
+                            regionViewHex.RemoveBuilding(m_enemyEntity);
+
+                            if (typ == Core.Models.Definitions.EntityType.GuardTower || typ == Core.Models.Definitions.EntityType.Headquarter)
+                            {
+                                WorldLayerHex.DrawBorders(owner);
+                            }
+                        }
+                        else
                         {
-                            WorldLayerHex.DrawBorders(owner);
+                            regionViewHex.RemoveUnit(m_enemyEntity);
                         }
                     }
-                    else
-                    {
-                        regionViewHex.RemoveUnit(m_enemyEntity);
-                    }                        
                 }
+
+                return true;
             }
-            return m_runTime >= m_path.Count;
+            return false;
         }
 
         public WorldLayerHex WorldLayerHex
@@ -135,6 +173,9 @@
             get;
             private set;
         }
+
+        private float m_deathTime;
+        private float m_fightTime;
 
         /// <summary>
         /// The runtime of the action.

@@ -115,16 +115,6 @@
         {
             m_entitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
 
-            // units
-            m_entitiesGid.Add(EntityType.Fencer, new CCTileGidAndFlags(Common.Constants.UnitGid.HERO));
-            m_entitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Common.Constants.UnitGid.WARRIOR));
-            m_entitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Common.Constants.UnitGid.MAGE));
-            m_entitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Common.Constants.UnitGid.SCOUT));
-            m_entitiesGid.Add(EntityType.Unknown3, new CCTileGidAndFlags(Common.Constants.UnitGid.UNKNOWN));
-
-            // units -> range
-            m_entitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.UnitGid.SOLDIER));
-
             // build -> Military
             m_entitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Common.Constants.BuildingGid.HEADQUARTER));
             m_entitiesGid.Add(EntityType.Attachment, new CCTileGidAndFlags(Common.Constants.BuildingGid.WALL1));
@@ -152,15 +142,6 @@
         private void InitEnemyEntitiesGid()
         {
             m_enemyEntitiesGid = new Dictionary<EntityType, CCTileGidAndFlags>();
-
-            // units
-            m_enemyEntitiesGid.Add(EntityType.Fencer, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.HERO));
-            m_enemyEntitiesGid.Add(EntityType.Warrior, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.WARRIOR));
-            m_enemyEntitiesGid.Add(EntityType.Mage, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.MAGE));
-            m_enemyEntitiesGid.Add(EntityType.Scout, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.SCOUT));
-             
-            // units -> range
-            m_enemyEntitiesGid.Add(EntityType.Archer, new CCTileGidAndFlags(Common.Constants.EnemyUnitGid.SOLDIER));
 
             // Buildings -> Military
             m_enemyEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.HEADQUARTER));

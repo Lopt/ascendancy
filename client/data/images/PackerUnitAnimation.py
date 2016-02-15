@@ -2,6 +2,7 @@ from PIL import Image
 import math
 import os
 from datetime import date
+import shutil
 
 EMPTY_IMG = "__empty.png"  
 
@@ -80,7 +81,7 @@ def CreatePlist(output_file, image_name, plist):
         file.write(template % (''.join(sprites), metadata))
 
 #Creates a Spritesheet
-def CreateSpritesheet(name, path):
+def CreateSpritesheet(name, path, enemy):
     print '#'*10, path, '#'*10
     plist = []
     sheet = Image.open(EMPTY_IMG)
@@ -116,10 +117,48 @@ def CreateSpritesheet(name, path):
     directory = os.path.join(OUTPUT_PATH)
     EnsureDir(OUTPUT_PATH)
     image_name = "%s.png" % name
+    sheet = convert_color(sheet, enemy)
     sheet.save(os.path.join(OUTPUT_PATH, image_name))
     CreatePlist(os.path.join(OUTPUT_PATH, "%s.plist" % name), image_name, plist);
 
+def convert_color(im, enemy):
+
+    hue = 0
+    saturation = 0.5
+    bla = 0.5
+    import colorsys
+    width, heigth = im.size
+
+    ldOrg = im.load()
+    imHSV = im.convert(mode="HSV")
+    ldHSV = imHSV.load()
+    for x in range(width):
+        for y in range(heigth):
+            if 190 < ldHSV[x,y][0]: # only magenta-purple colours
+                h,s,v = ldHSV[x,y]
+                h = [0, 85, 160]
+                ldHSV[x,y] = h[enemy], s, v
+        
+    imRGBA = imHSV.convert(mode="RGBA")
+    ldRGBA = imRGBA.load()
+    for x in range(width):
+        for y in range(heigth):
+            r,g,b,a = ldRGBA[x,y]
+            ldRGBA[x,y] = r,g,b,ldOrg[x,y][3]
+    return imRGBA
+    #imRGBA.save(filename)
+
+def copy_files_to_folder():
+    from_folder = "./OUTPUT/animations"
+    to_folders = ["../../client/client.Android/Assets/Content/units", "../../client/client.iOS/Content/units"]
+    for to in to_folders:
+        shutil.rmtree(to)
+        shutil.copytree(from_folder, to)
+
 #mainloop
 for name in PATHS:
-    CreateSpritesheet(name, PATHS[name])
+    CreateSpritesheet(name + "-own", PATHS[name], 1)
+    CreateSpritesheet(name + "-allied", PATHS[name], 2)
+    CreateSpritesheet(name + "-enemy", PATHS[name], 0)
     #break
+    copy_files_to_folder()
