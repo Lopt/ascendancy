@@ -215,8 +215,74 @@ namespace Tests
     public class CompressionHelperTests
     {
         [Test]
-        public void test()
+        public void CompressionDecompression()
         {
+            //Test for a single Word
+            string input = "Teststring";
+            var inputbytes = System.Text.Encoding.UTF8.GetBytes(input);
+            var Bytes = Core.Helper.CompressionHelper.Compress(inputbytes);
+            var Output = Core.Helper.CompressionHelper.Decompress(Bytes);
+            Assert.AreEqual(inputbytes, Output);
+            
+            //Test for an long string
+            input = "this is a long text who serves as a test for the compressionHelper class";
+            inputbytes = System.Text.Encoding.UTF8.GetBytes(input);
+            Bytes = Core.Helper.CompressionHelper.Compress(inputbytes);
+            Output = Core.Helper.CompressionHelper.Decompress(Bytes);
+            Assert.AreEqual(inputbytes, Output);
+
+            //Test vor an Very long String
+            input = "this is a long text who serves as a test for the compressionHelper class so i need to Write some cause its Something this is a long text who serves as a test for the compressionHelper class so i need to Write some cause its Something this is a long text who serves as a test for the compressionHelper class so i need to Write some cause its Something this is a long text who serves as a test for the compressionHelper class so i need to Write some cause its Something this is a long text who serves as a test for the compressionHelper class so i need to Write some cause its Something this is a long text who serves as a test for the compressionHelper class so i need to Write some cause its Something this is a long text who serves as a test for the compressionHelper class so i need to Write some cause its Something this is a long text who serves as a test for the compressionHelper class so i need to Write some cause its Something";
+            inputbytes = System.Text.Encoding.UTF8.GetBytes(input);
+            Bytes = Core.Helper.CompressionHelper.Compress(inputbytes);
+            Output = Core.Helper.CompressionHelper.Decompress(Bytes);
+            Assert.AreEqual(inputbytes, Output);
+
+            //Test for a long string with additional format comands
+            input = "this is a long text who serves as a test for the compressionHelper class\t\tthis is a long text who serves as a test for the compressionHelper class";
+            inputbytes = System.Text.Encoding.UTF8.GetBytes(input);
+            Bytes = Core.Helper.CompressionHelper.Compress(inputbytes);
+            Output = Core.Helper.CompressionHelper.Decompress(Bytes);
+            Assert.AreEqual(inputbytes, Output);
+
+            //Test for an Empty string
+            input = "";
+            inputbytes = System.Text.Encoding.UTF8.GetBytes(input);
+            Bytes = Core.Helper.CompressionHelper.Compress(inputbytes);
+            Output = Core.Helper.CompressionHelper.Decompress(Bytes);
+            Assert.AreEqual(inputbytes, Output);
+
+            //Test for own Byte data
+            byte[] Bytedata =
+                {
+                    1,
+                    2,
+                    3,
+                    15,
+                    16,
+                    189,
+                    200,
+                    255,
+                    69,
+                    89,
+                    79,
+                    69,
+                    49,
+                    59,
+                    69,
+                    39,
+                    1,
+                    159,
+                    35,
+                    57,
+                    179,
+                    123,
+                    198,
+                    169,
+                };
+            Bytes = Core.Helper.CompressionHelper.Compress(Bytedata);
+            Output = Core.Helper.CompressionHelper.Decompress(Bytes);
+            Assert.AreEqual(Bytedata, Output);
         }
     }
 
