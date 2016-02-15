@@ -496,32 +496,36 @@
         }
 
         /// <summary>
-        /// Consumes the resources for creating an entity.
+        /// Checks the resource.
         /// </summary>
-        /// <returns><c>true</c>, if resource was consumed, <c>false</c> otherwise.</returns>
-        /// <param name="account">Current account.</param>
-        /// <param name="entityDef">Entity definiton.</param>
-        public static bool ConsumeResource(Account account, Definitions.Definition entityDef)
+        /// <returns><c>true</c>, if resource was checked, <c>false</c> otherwise.</returns>
+        /// <param name="account">Account.</param>
+        /// <param name="entityDef">Entity def.</param>
+        public static bool CheckResource(Account account, Definitions.Definition entityDef)
         {
             var definition = (Definitions.UnitDefinition)entityDef;
 
-            if (account.Scrap.Value >= definition.Scrapecost &&
-                account.Plutonium.Value >= definition.Plutoniumcost &&
-                account.Technology.Value >= definition.Techcost &&
-                account.Population.Value >= definition.Population &&
-                account.Energy.Value >= definition.Energycost)
-            {
-                account.Scrap.Set(account.Scrap.Value - definition.Scrapecost, 0);           
-                account.Plutonium.Set(account.Plutonium.Value - definition.Plutoniumcost, 0);            
-                account.Technology.Set(account.Technology.Value - definition.Techcost, 0);            
-                account.Population.Value -= definition.Population;
-                account.Energy.Value -= definition.Energycost;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+           return   account.Scrap.Value >= definition.Scrapecost &&
+                    account.Plutonium.Value >= definition.Plutoniumcost &&
+                    account.Technology.Value >= definition.Techcost &&
+                    account.Population.Value >= definition.Population &&
+                    account.Energy.Value >= definition.Energycost;           
+        }
+
+        /// <summary>
+        /// Consumes the resource.
+        /// </summary>
+        /// <param name="account">Account.</param>
+        /// <param name="entityDef">Entity def.</param>
+        public static void ConsumeResource(Account account, Definitions.Definition entityDef)
+        {
+            var definition = (Definitions.UnitDefinition)entityDef;
+
+            account.Scrap.Set(account.Scrap.Value - definition.Scrapecost, 0);         
+            account.Plutonium.Set(account.Plutonium.Value - definition.Plutoniumcost, 0);
+            account.Technology.Set(account.Technology.Value - definition.Techcost, 0);
+            account.Population.Value -= definition.Population;
+            account.Energy.Value -= definition.Energycost;
         }
 
         /// <summary>
