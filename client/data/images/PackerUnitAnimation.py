@@ -2,6 +2,7 @@ from PIL import Image
 import math
 import os
 from datetime import date
+import shutil
 
 EMPTY_IMG = "__empty.png"  
 
@@ -147,10 +148,17 @@ def convert_color(im, enemy):
     return imRGBA
     #imRGBA.save(filename)
 
+def copy_files_to_folder():
+    from_folder = "./OUTPUT/animations"
+    to_folders = ["../../client/client.Android/Assets/Content/units", "../../client/client.iOS/Content/units"]
+    for to in to_folders:
+        shutil.rmtree(to)
+        shutil.copytree(from_folder, to)
 
 #mainloop
 for name in PATHS:
-    CreateSpritesheet(name + "-own", PATHS[name], 0)
-    CreateSpritesheet(name + "-allied", PATHS[name], 1)
-    CreateSpritesheet(name + "-enemy", PATHS[name], 2)
+    CreateSpritesheet(name + "-own", PATHS[name], 1)
+    CreateSpritesheet(name + "-allied", PATHS[name], 2)
+    CreateSpritesheet(name + "-enemy", PATHS[name], 0)
     #break
+    copy_files_to_folder()

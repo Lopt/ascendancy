@@ -169,7 +169,7 @@
         {
             if (account.ID == Owner.ID)
             {
-                return Diplomatic.allied;
+                return Diplomatic.own;
             }
             return Diplomatic.enemy;
         }
