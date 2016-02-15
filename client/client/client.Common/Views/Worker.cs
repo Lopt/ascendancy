@@ -59,7 +59,7 @@
             switch (action.Type)
             {
                 case Core.Models.Action.ActionType.CreateUnit:
-                    return new Client.Common.Views.Actions.CreateUnit(action, WorldLayerHex.GetRegionViewHex(regionPosition));
+                    return new Client.Common.Views.Actions.CreateUnit(action);
 
                 case Core.Models.Action.ActionType.MoveUnit:
                     return new Client.Common.Views.Actions.MoveUnit(action, WorldLayerHex);
