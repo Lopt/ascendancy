@@ -98,7 +98,7 @@
             if (m_runTime >= m_path.Count + m_fightTime)
             {
                 ((UnitView)m_entity.View).RefreshHealth();
-                if (m_enemyEntity.View != null)
+                if (m_enemyEntity != null && m_enemyEntity.View != null)
                 {
                     ((UnitView)m_enemyEntity.View).RefreshHealth();
                 }
