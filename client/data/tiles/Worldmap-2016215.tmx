@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="hexagonal" renderorder="left-up" width="32" height="32" tilewidth="84" tileheight="72" hexsidelength="46" staggeraxis="x" staggerindex="odd" nextobjectid="1">
- <tileset firstgid="1" name="spritesheet2016212" tilewidth="84" tileheight="72" tilecount="140">
-  <image source="spritesheet2016212.png" width="840" height="1008"/>
+ <tileset firstgid="1" name="spritesheet2016212" tilewidth="84" tileheight="72" tilecount="130">
+  <image source="spritesheet2016215.png" width="840" height="936"/>
  </tileset>
  <layer name="Layer 0" width="32" height="32">
   <data encoding="base64" compression="gzip">

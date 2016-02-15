@@ -144,18 +144,17 @@
         /// <summary>
         /// The Start of the Menu GIDs
         /// </summary>
-        public const short MENU_GIDS = 70;
+        public const short MENU_GIDS = 60;
 
         /// <summary>
         /// The Start of the Enemy GIDs
         /// </summary>
-
-        public const short ENEMY_GIDS = 110;
+        public const short ENEMY_GIDS = 100;
 
         /// <summary>
         /// The Start of the Helper GIDs
         /// </summary>
-        public const short HELPER_GIDS = 130;
+        public const short HELPER_GIDS = 120;
 
         /// <summary>
         /// size of a tile (width)
