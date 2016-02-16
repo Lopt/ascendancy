@@ -431,14 +431,7 @@ namespace Client.Common.Views
             {
                 var pos = surroundedCoords[index];
                 var gid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[index], ViewDefinitions.Sort.Menu);
-                if (menuType == MenuType.Headquarter)
-                {
-                    m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, gid, IsPossibleToCreate(m_center, m_types[index])));
-                }
-                else
-                {
-                    m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, gid, IsPossibleToCreate(pos, m_types[index])));
-                }
+                m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, gid, IsPossibleToCreate(m_center, m_types[index])));
                 m_extendedMenuPositions[pos] = m_types[index];
             }
         }

@@ -83,7 +83,7 @@
                         {
                             // check for free tile and the terrain is possesed from the current player
                             var td = (TerrainDefinition)region.GetTerrain(entityPosition.CellPosition);
-                            return td.Buildable && LogicRules.ConsumeResource(account, entityDef);  
+                            return td.Buildable && LogicRules.CheckResource(account, entityDef);  
                         }
                     }
                 }
@@ -123,6 +123,7 @@
             LogicRules.IncreaseResourceGeneration(action.Account, entity.Position, Controller.Instance.RegionManagerController);
             LogicRules.EnableBuildOptions(type, action.Account);
             LogicRules.IncreaseStorage(action.Account, entity);
+            LogicRules.ConsumeResource(action.Account, entityDef);
 
             return new ConcurrentBag<Core.Models.Region>() { region };
         }

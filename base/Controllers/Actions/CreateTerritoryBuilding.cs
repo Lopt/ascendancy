@@ -107,7 +107,7 @@
                     }
                     if (territoryFlag)
                     {                
-                        return td.Buildable && LogicRules.ConsumeResource(account, m_type); 
+                        return td.Buildable && LogicRules.CheckResource(account, m_type); 
                     }
                 }
                 else if (region.GetEntity(entityCellPostion) == null &&
@@ -130,7 +130,7 @@
                     }
                     if (territoryFlag)
                     {                
-                        return td.Buildable && LogicRules.ConsumeResource(account, m_type); 
+                        return td.Buildable && LogicRules.CheckResource(account, m_type); 
                     }
                 }
             }
@@ -183,6 +183,7 @@
                 region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, m_drawArea), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
             }
 
+            LogicRules.ConsumeResource(action.Account, entityDef);
             return new ConcurrentBag<Core.Models.Region>() { region };
         }
 
