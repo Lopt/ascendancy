@@ -109,7 +109,7 @@
         /// <summary>
         /// Tile Map file hex name
         /// </summary>
-        public const string TILEMAP_FILE_HEX = "Worldmap-2016215.tmx";
+        public const string TILEMAP_FILE_HEX = "Worldmap-2016216.tmx";
 
         /// <summary>
         /// name of terrain layer
