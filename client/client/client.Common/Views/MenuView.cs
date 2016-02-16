@@ -437,7 +437,7 @@ namespace Client.Common.Views
                 }
                 else
                 {
-                    m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, gid, IsPossibleToCreate(pos, m_types[index])));
+                    m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, gid, IsPossibleToCreate(m_center, m_types[index])));
                 }
                 m_extendedMenuPositions[pos] = m_types[index];
             }
