@@ -182,8 +182,6 @@
     <BundleResource Include="Content\fonts\arial-22.xnb" />
     <BundleResource Include="Content\images\hd\Ladebalken.png" />
     <BundleResource Include="Content\images\ld\Ladebalken.png" />
-    <BundleResource Include="Content\tiles\Spritesheet_20150704.png" />
-    <BundleResource Include="Content\tiles\Worldmap-160x160%2880x320%29_20150704.xnb" />
     <BundleResource Include="Resources\Icon.png" />
     <BundleResource Include="Resources\Icon%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
@@ -199,8 +197,6 @@
     <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <BundleResource Include="Content\images\hd\logo.png" />
     <BundleResource Include="Content\images\ld\logo.png" />
-    <BundleResource Include="Content\tiles\Spritesheet_20151027.png" />
-    <BundleResource Include="Content\tiles\Worldmap-32x32-Hexa-20151027.tmx" />
     <BundleResource Include="Content\images\hd\debug-standard.png" />
     <BundleResource Include="Content\images\hd\debug-touched.png" />
     <BundleResource Include="Content\images\hd\EnergyRessource1.png" />
@@ -217,24 +213,12 @@
     <BundleResource Include="Content\images\ld\question-touched.png" />
     <BundleResource Include="Content\images\ld\radars2-standard.png" />
     <BundleResource Include="Content\images\ld\radars2-touched.png" />
-    <BundleResource Include="Content\tiles\spritesheet2016112.png" />
-    <BundleResource Include="Content\tiles\Worldmap-2016112.tmx" />
     <BundleResource Include="Content\images\hd\EnergyRessource4.png" />
     <BundleResource Include="Content\images\hd\healthbar.png" />
     <BundleResource Include="Content\images\hd\Plutonium.png" />
     <BundleResource Include="Content\images\hd\Population.png" />
     <BundleResource Include="Content\images\hd\Scrap.png" />
     <BundleResource Include="Content\images\hd\Tech.png" />
-    <BundleResource Include="Content\images\hd\unit_60.plist" />
-    <BundleResource Include="Content\images\hd\unit_60.png" />
-    <BundleResource Include="Content\images\hd\unit_66.plist" />
-    <BundleResource Include="Content\images\hd\unit_66.png" />
-    <BundleResource Include="Content\images\hd\unit_72.plist" />
-    <BundleResource Include="Content\images\hd\unit_72.png" />
-    <BundleResource Include="Content\images\hd\unit_78.plist" />
-    <BundleResource Include="Content\images\hd\unit_78.png" />
-    <BundleResource Include="Content\images\hd\unit_84.plist" />
-    <BundleResource Include="Content\images\hd\unit_84.png" />
     <BundleResource Include="Content\images\ld\EnergyRessource3.png" />
     <BundleResource Include="Content\images\ld\EnergyRessource4.png" />
     <BundleResource Include="Content\images\ld\healthbar.png" />
@@ -242,18 +226,8 @@
     <BundleResource Include="Content\images\ld\Population.png" />
     <BundleResource Include="Content\images\ld\Scrap.png" />
     <BundleResource Include="Content\images\ld\Tech.png" />
-    <BundleResource Include="Content\images\ld\unit_60.png" />
-    <BundleResource Include="Content\images\ld\unit_66.png" />
-    <BundleResource Include="Content\images\ld\unit_72.png" />
-    <BundleResource Include="Content\images\ld\unit_78.png" />
-    <BundleResource Include="Content\images\ld\unit_84.png" />
-    <BundleResource Include="Content\images\ld\unit_60.plist" />
-    <BundleResource Include="Content\images\ld\unit_66.plist" />
-    <BundleResource Include="Content\images\ld\unit_72.plist" />
-    <BundleResource Include="Content\images\ld\unit_78.plist" />
-    <BundleResource Include="Content\images\ld\unit_84.plist" />
-    <BundleResource Include="Content\tiles\spritesheet2016211.png" />
-    <BundleResource Include="Content\tiles\Worldmap-2016211.tmx" />
+    <BundleResource Include="Content\tiles\spritesheet2016212.png" />
+    <BundleResource Include="Content\tiles\Worldmap-2016215.tmx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
