@@ -17,5 +17,10 @@
         public static readonly byte OPACITY = 125;
     }
 
+    public class UnitView
+    {
+        public static readonly float DEATH_LYING_AROUD_TIME = 30; // seconds
+    }
+
 }
 
