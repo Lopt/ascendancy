@@ -226,8 +226,8 @@
     <BundleResource Include="Content\images\ld\Population.png" />
     <BundleResource Include="Content\images\ld\Scrap.png" />
     <BundleResource Include="Content\images\ld\Tech.png" />
-    <BundleResource Include="Content\tiles\spritesheet2016212.png" />
-    <BundleResource Include="Content\tiles\Worldmap-2016215.tmx" />
+    <BundleResource Include="Content\tiles\spritesheet2016216.png" />
+    <BundleResource Include="Content\tiles\Worldmap-2016216.tmx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
