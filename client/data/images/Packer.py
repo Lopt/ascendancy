@@ -8,7 +8,6 @@ EMPTY_IMG = "__empty.png"
 #Folders that containing spritesheets
 TERRAINPATH = "terrain/"
 BUILDINGSPATH = "buildings/"
-UNITSPATH = "units/"
 MENUPATH = "menu/"
 ENEMYPATH = "enemy/"
 HELPERPATH = "helper/"
@@ -16,7 +15,7 @@ HELPERPATH = "helper/"
 OUT = "OUTPUT/"
 
 #array of all Spritesheetfolders
-PATHS = (TERRAINPATH, BUILDINGSPATH, UNITSPATH, MENUPATH, ENEMYPATH, HELPERPATH)
+PATHS = (TERRAINPATH, BUILDINGSPATH, MENUPATH, ENEMYPATH, HELPERPATH)
 
 #needed variables
 IMAGEWIDTH = 84
@@ -54,12 +53,11 @@ for item in PATHS:
 sheet = Image.open(EMPTY_IMG)
 tsheet = Image.open(OUT+TERRAINPATH+"spritesheet.png")
 bsheet = Image.open(OUT+BUILDINGSPATH+"spritesheet.png")
-usheet = Image.open(OUT+UNITSPATH+"spritesheet.png")
 msheet = Image.open(OUT+MENUPATH+"spritesheet.png")
 esheet = Image.open(OUT+ENEMYPATH+"spritesheet.png")
 hsheet = Image.open(OUT+HELPERPATH+"spritesheet.png")
 #gets the new Image Height
-gheight = tsheet.height + bsheet.height + usheet.height + msheet.height + esheet.height + hsheet.height
+gheight = tsheet.height + bsheet.height + msheet.height + esheet.height + hsheet.height
 
 offset = 0;
 
@@ -69,9 +67,6 @@ offset = offset + tsheet.height
 
 sheet.paste(bsheet,(0, offset, WIDTH, offset + bsheet.height))
 offset = offset + bsheet.height
-
-sheet.paste(usheet,(0, offset, WIDTH, offset + usheet.height))
-offset = offset + usheet.height
 
 sheet.paste(msheet,(0, offset, WIDTH, offset + msheet.height))
 offset = offset + msheet.height
