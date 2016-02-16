@@ -36,19 +36,19 @@
             m_energyRessource.AnchorPoint = CCPoint.AnchorUpperLeft;
             AddChild(m_energyRessource);
 
-            m_scrapResource = new ScrapResource("Scrap", CCColor3B.Orange);
+            m_scrapResource = new ScrapResource(Constants.ClientConstants.SCRAP, CCColor3B.Orange);
             m_scrapResource.AnchorPoint = CCPoint.AnchorUpperLeft;
             AddChild(m_scrapResource);
 
-            m_plutoniumResource = new PlutoniumResource("Plutonium", CCColor3B.Green);
+            m_plutoniumResource = new PlutoniumResource(Constants.ClientConstants.PLUTONIUM, CCColor3B.Green);
             m_plutoniumResource.AnchorPoint = CCPoint.AnchorUpperLeft;
             AddChild(m_plutoniumResource);
 
-            m_populationResource = new PopulationResource("Population", CCColor3B.White);
+            m_populationResource = new PopulationResource(Constants.ClientConstants.POPULATION, CCColor3B.White);
             m_populationResource.AnchorPoint = CCPoint.AnchorUpperLeft;
             AddChild(m_populationResource);
 
-            m_techologyResource = new TechnologyResource("Tech", CCColor3B.Blue);
+            m_techologyResource = new TechnologyResource(Constants.ClientConstants.TECHNOLOGY, CCColor3B.Blue);
             m_techologyResource.AnchorPoint = CCPoint.AnchorUpperLeft;
             AddChild(m_techologyResource);
 

@@ -14,10 +14,9 @@
         public TechnologyResource(String fileName, CCColor3B color)
             : base()
         {
-            Constants.HUD.Resource.SetDISPLAY(fileName);
             m_background = new Button(
-                Constants.HUD.Resource.GetDISPLAY(),
-                Constants.HUD.Resource.GetDISPLAY(),
+                fileName,
+                fileName,
                 OnTouched);
 
             AddChild(m_background);

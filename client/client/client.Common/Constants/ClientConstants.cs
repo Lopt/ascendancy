@@ -27,7 +27,30 @@
         /// </summary>
         public const string SOUNDS = "sounds";
 
+        /// <summary>
+        /// The unit folder.
+        /// </summary>
         public const string UNITS = "units";
+
+        /// <summary>
+        /// The scrap png.
+        /// </summary>
+        public const string SCRAP = "Scrap";
+
+        /// <summary>
+        /// The plutonium png.
+        /// </summary>
+        public const string PLUTONIUM = "Plutonium";
+
+        /// <summary>
+        /// The population png.
+        /// </summary>
+        public const string POPULATION = "Population";
+
+        /// <summary>
+        /// The technology png.
+        /// </summary>
+        public const string TECHNOLOGY = "Tech";
 
         /// <summary>
         /// The tile images folder.
