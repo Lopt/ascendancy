@@ -53,6 +53,18 @@ namespace Client.Common.Views
             Node.RunActionAsync(new CCRepeatForever(animate));
         }
 
+        public void Die()
+        {
+            Node.RemoveChild(this.m_healthbar);
+            Animate(UnitAnimation.Die);
+            Node.ScheduleOnce(RemoveUnit, Constants.ViewConstants.UnitView.DEATH_LYING_AROUD_TIME);
+        }
+
+        private void RemoveUnit(float time)
+        {
+            Node.RemoveFromParent();
+        }
+
         public void StopAnimation()
         {
             Node.StopAllActions();
