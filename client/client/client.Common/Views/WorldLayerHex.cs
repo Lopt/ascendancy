@@ -124,7 +124,22 @@ namespace Client.Common.Views
         /// <param name="action">Action.</param>
         public void DoAction(Core.Models.Action action)
         {
-            m_worker.Queue.Enqueue(action);
+            if (Cheats.OFFLINE_MODE)
+            {
+                m_worker.Queue.Enqueue(action);
+            }
+            else
+            {
+                Controllers.NetworkController.Instance.DoActionsAsync(Models.Geolocation.Instance.CurrentGamePosition, new Core.Models.Action[] {action});
+                ScheduleOnce(RefreshRegions, 100);
+            }
+        }
+
+        public void RefreshRegions(float time)
+        {
+            var regions =  m_regionViewHexDic.Keys.ToArray();
+            var task = Manager.EntityManagerController.Instance.LoadEntitiesAsync(regions);
+            UglyDraw();
         }
 
         /// <summary>

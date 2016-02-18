@@ -150,15 +150,23 @@
         /// <param name="regionPositions">Region positions.</param>
         public async Task<Core.Connections.Response> LoadEntitiesAsync(Core.Models.Position currentGamePosition, RegionPosition[] regionPositions)
         {            
-            var request = new Core.Connections.LoadRegionsRequest(m_sessionID, currentGamePosition, regionPositions);
-            var json = JsonConvert.SerializeObject(request);
-
-            var jsonFromServer = await TcpConnection.Connector.SendAsync(Core.Connection.MethodType.LoadEntities, json);
-            var entitiesResponse = JsonConvert.DeserializeObject<Core.Connections.Response>(jsonFromServer);
-
-            if (entitiesResponse.Status == Core.Connections.Response.ReponseStatus.OK)
+            try
             {
-                return entitiesResponse;
+                var request = new Core.Connections.LoadRegionsRequest(m_sessionID, currentGamePosition, regionPositions);
+                var json = JsonConvert.SerializeObject(request);
+
+                var jsonFromServer = await TcpConnection.Connector.SendAsync(Core.Connection.MethodType.LoadEntities, json);
+                var entitiesResponse = JsonConvert.DeserializeObject<Core.Connections.Response>(jsonFromServer);
+
+                if (entitiesResponse.Status == Core.Connections.Response.ReponseStatus.OK)
+                {
+                    return entitiesResponse;
+                }
+            }
+            catch(Exception error)
+            {
+                Logging.Error(error.StackTrace);
+                Logging.Error(error.Message);
             }
 
             return new Core.Connections.Response();
@@ -183,6 +191,7 @@
                 return true;
             }
 
+
             return false;
         }
 
@@ -193,7 +202,7 @@
         /// <param name="url">Which URL should be called</param>
         private async Task<string> RequestAsync(string url)
         {
-            // doesn't work in IOS 9
+            // TODO: doesn't work in IOS 9
             try
             {
                 Helper.Logging.Info("URL load: " + url);

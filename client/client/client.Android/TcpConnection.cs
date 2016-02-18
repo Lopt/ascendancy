@@ -26,21 +26,20 @@
         public override async Task<string> SendAsync(Core.Connection.MethodType methodType, string json)
         {
             var client = new TcpClient();
-            /* // decomment for debugging purpose
+             // decomment for debugging purpose
             try
             {
                 client.Connect(
-                    Client.Common.Helper.ClientConstants.DEBUG_TCP_SERVER,
-                    Client.Common.Helper.ClientConstants.TCP_PORT);
+                    Core.Models.Cheats.DEBUG_TCP_SERVER,
+                    Core.Models.Cheats.DEBUG_TCP_PORT);
             }
             catch (SocketException exception)
             {
-            */
-            client.Connect(
-                Common.Constants.ClientConstants.TCP_SERVER,
-                Common.Constants.ClientConstants.TCP_PORT); 
-                
-            // }
+                client.Connect(
+                    Common.Constants.ClientConstants.TCP_SERVER,
+                    Common.Constants.ClientConstants.TCP_PORT); 
+                    
+             }
             var stream = client.GetStream();
 
             var packetOut = new Core.Connection.Packet();

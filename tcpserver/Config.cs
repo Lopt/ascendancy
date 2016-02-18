@@ -21,5 +21,6 @@
         /// Maximum content size (in byte)
         /// </summary>
         public static readonly int MAX_CONTENT_SIZE = 256 * 16;
+
     }
 }

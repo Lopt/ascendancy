@@ -85,7 +85,7 @@
             m_territory = new Dictionary<PositionI, Account>();
             m_actions = new DatedActions();
             m_actions.Actions = new LinkedList<Core.Models.Action>();
-            m_exist = false;
+            m_exist = Cheats.DONT_LOAD_REGIONS_MODE;
             m_mutex = new ReaderWriterLockSlim();
         }
 

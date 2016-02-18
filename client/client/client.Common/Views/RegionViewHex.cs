@@ -291,7 +291,6 @@
         /// </summary>
         private void SetTilesInMap32()
         {
-            LoadEntities(); 
 
             for (int y = 0; y < Constants.REGION_SIZE_Y; y++)
             {
@@ -302,6 +301,7 @@
                     SetTerrainTileInMap(newCellPosition); 
                 }
             }
+            LoadEntities(); 
         }
 
         /// <summary>
@@ -323,7 +323,14 @@
             var regionM = (Region)Model;
             foreach (var unit in regionM.GetEntities().Entities)
             {
-                DrawUnit(unit);
+                if (unit.Definition.Category == Category.Unit)
+                {
+                    DrawUnit(unit);
+                }
+                else
+                {
+                    SetBuilding(new CCTileMapCoordinates(unit.Position.CellPosition.CellX, unit.Position.CellPosition.CellY), unit);
+                }
             }
         }
 

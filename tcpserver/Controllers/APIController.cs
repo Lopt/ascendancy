@@ -187,7 +187,7 @@
 
                     var status = accountC.GetRegionStatus(regionPosition);
                     var newStatus = new DateTime();
-                    // account has already loaded the region - now just load changes (actions)
+                    // account has't loaded the region
                     if (status == null)
                     {  
                         var entities = region.GetEntities();
@@ -196,7 +196,7 @@
                     }
                     else
                     {
-                        // account hasn't loaded the region
+                        // account has already loaded the region - now just load changes (actions)
                         var actions = region.GetCompletedActions(status.Value);
                         actionDict.AddFirst(actions.Actions);
                         newStatus = actions.DateTime;

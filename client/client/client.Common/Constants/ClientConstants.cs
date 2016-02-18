@@ -71,11 +71,6 @@
         /// The images folder in low definition
         /// </summary>
         public const string IMAGES_LD = "images/ld";
-  
-        /// <summary>
-        /// the server which contains game logic
-        /// </summary>
-        public const string LOGIC_SERVER = "http://derfalke.no-ip.biz:9000";
 
         /// <summary>
         /// the server which contains world data
@@ -101,21 +96,6 @@
         /// path to terrain definitions
         /// </summary>
         public const string TERRAIN_TYPES_SERVER_PATH = DATA_SERVER + "/terrain.json";
-
-        /// <summary>
-        /// login path
-        /// </summary>
-        public const string LOGIN_PATH = LOGIC_SERVER + "/Login?json=$JSON";
-
-        /// <summary>
-        /// load regions path
-        /// </summary>
-        public const string LOAD_REGIONS_PATH = LOGIC_SERVER + "/LoadRegions?json=$JSON";
-
-        /// <summary>
-        /// do actions path
-        /// </summary>
-        public const string DO_ACTIONS_PATH = LOGIC_SERVER + "/DoActions?json=$JSON";
 
         /// <summary>
         /// what must be replaced 

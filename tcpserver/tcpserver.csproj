@@ -73,5 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="data\terrain.json" />
+    <None Include="data\unit.json" />
   </ItemGroup>
 </Project>

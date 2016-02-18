@@ -3,10 +3,41 @@
     using System;
 
     /// <summary>
+    /// An Class which provides access to all stuff, which isn't allowed normally. Can be used for debugging or simplify stuff.
+    /// BUT: Cheating may cause other bugs! There is no need to fix them, unless it is essentially, nicer code or the bug could occure without the cheats
+    /// </summary>
+    public class Cheats
+    {
+        /// <summary>
+        /// an parameter for the application so it won't load regions from the server btw load the regions from the local store
+        /// should be false
+        /// </summary>
+        public const bool DONT_LOAD_REGIONS_MODE = false; // false
+
+        /// <summary>
+        /// the port of the debug server
+        /// </summary>
+        public static readonly int DEBUG_TCP_PORT = 13000;
+
+        /// <summary>
+        /// the name of the debug server
+        /// </summary>
+        public static readonly string DEBUG_TCP_SERVER = "192.168.2.6";
+
+        /// <summary>
+        /// activate or deactive offline mode. Which enables other cheats, but won't deliever stuff to the server.
+        /// </summary>
+        public static readonly bool OFFLINE_MODE = true;
+
+
+    }
+
+    /// <summary>
     /// all constants which should be known by the server and client
     /// </summary>
     public class Constants
     {
+
         /// <summary>
         /// size of a cell at the equator (in meters)
         /// </summary>

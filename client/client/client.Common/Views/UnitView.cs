@@ -13,7 +13,8 @@ namespace Client.Common.Views
             var defView = (UnitDefinitionView)model.Definition.View;
             if (defView != null)
             {
-                var sprite = defView.GetSpriteCopy(model.GetDiplomacy(GameAppDelegate.Account));
+                var diplomacy = model.GetDiplomacy(GameAppDelegate.Account);
+                var sprite = defView.GetSpriteCopy(diplomacy);
                 //                Node.Position = Helper.PositionHelper.GamePositionIToWorldPoint(model.Position);
                 sprite.Scale = 1.35f;
                 sprite.AnchorPoint = new CCPoint(0.0f, 0.8f);
