@@ -296,8 +296,26 @@ namespace Tests
     public class LoadHelperTests
     {
         [Test]
-        public void test()
+        public void ReplacePath()
         {
+            var regionPosition = new RegionPosition(new Position(new LatLon(50.97695325, 11.02396488)));
+            var newPath = Core.Helper.LoadHelper.ReplacePath(Server.Models.ServerConstants.REGION_FILE, regionPosition);
+            Assert.IsNotNull(newPath);
+        }
+
+        [Test]
+        public void JsonToTerrain()
+        {
+            var regionPosition = new RegionPosition(new Position(new LatLon(50.97695325, 11.02396488)));
+            var newPath = Core.Helper.LoadHelper.ReplacePath(Server.Models.ServerConstants.REGION_FILE, regionPosition);
+            //var json = await Core.RequestAsync(newpath);
+
+        }
+
+        [Test]
+        public void JsonToRegion()
+        {
+            
         }
     }
 
@@ -305,8 +323,26 @@ namespace Tests
     public class DefinitionsTests
     {
         [Test]
-        public void test()
+        public void TerrainDefinitions()
         {
+            
+            int[] Res = {0, 0, 0, 0 ,0};
+            var Def = new Core.Models.Definitions.TerrainDefinition(Core.Models.Definitions.EntityType.Grassland, Res, true, true, 4, 5, 6);
+            Assert.IsNotNull(Def);
+
+            var bla = Def.Category;
+            Assert.AreEqual(5, Def.Resources.Length);
+            Assert.AreEqual(true, Def.Buildable);
+            Assert.AreEqual(true, Def.Walkable);
+            Assert.AreEqual(4, Def.TravelCost);
+            Assert.AreEqual(5, Def.DefenseModifier);
+            Assert.AreEqual(6, Def.AttackModifier);
+        }
+
+        [Test]
+        public void UnitDefinitions()
+        {
+
         }
     }
 
