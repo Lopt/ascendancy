@@ -36,8 +36,8 @@
             Owner = owner;
             Health = health;           
             Move = move;
-            ModifiedDefenseValue = ((UnitDefinition)Definition).Defense;
-            ModfiedAttackValue = ((UnitDefinition)Definition).Attack;
+            ModifiedDefenseValue = 1;
+            ModfiedAttackValue = 1;
         }
 
         /// <summary>
