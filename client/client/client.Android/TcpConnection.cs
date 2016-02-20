@@ -27,13 +27,13 @@
         {
             var client = new TcpClient();
              // decomment for debugging purpose
-            try
+            /*try
             {
                 client.Connect(
                     Core.Models.Cheats.DEBUG_TCP_SERVER,
                     Core.Models.Cheats.DEBUG_TCP_PORT);
             }
-            catch (SocketException exception)
+            catch (SocketException exception)*/
             {
                 client.Connect(
                     Common.Constants.ClientConstants.TCP_SERVER,
