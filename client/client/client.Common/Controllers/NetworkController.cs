@@ -134,6 +134,7 @@
             if (loginResponse.Status == Core.Connections.LoginResponse.ReponseStatus.OK)
             {
                 m_sessionID = loginResponse.SessionID;
+                GameAppDelegate.ServerTime = loginResponse.ServerTime; // TODO: this shouldn't be set here, change it
                 return new Account(loginResponse.AccountId, user);
             }
 

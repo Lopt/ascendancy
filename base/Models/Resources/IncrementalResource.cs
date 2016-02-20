@@ -37,12 +37,13 @@
         /// </summary>
         /// <param name="value">Value of the resource.</param>
         /// <param name="increments">Increment value of the resource.</param>
-        public void Set(double value, double increments)
+        public void Set(DateTime actionTime, double value, double increments)
         {
-            LastState = DateTime.Now;
+            LastState = actionTime;
             m_realValue = value;
             Increments += increments;
         }
+
 
         /// <summary>
         /// Gets the last state.
@@ -78,25 +79,19 @@
         /// Gets the value.
         /// </summary>
         /// <value>The value.</value>
-        public double Value
+        public double GetValue(DateTime time)
         {
-            get
-            {
-                var diff = DateTime.Now - LastState;
-                return Math.Min(Math.Max(m_realValue + Increments * diff.TotalSeconds, 0), MaximumValue);
-            }
+            var diff = time - LastState;
+            return Math.Min(Math.Max(m_realValue + Increments * diff.TotalSeconds, 0), MaximumValue);
         }
 
         /// <summary>
         /// Gets the value percent.
         /// </summary>
         /// <value>The value percent.</value>
-        public double ValuePercent
+        public double GetValuePercent(DateTime time)
         {
-            get
-            {
-                return Value / MaximumValue;
-            }
+            return GetValue(time) / MaximumValue;
         }
 
         /// <summary>

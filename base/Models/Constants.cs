@@ -27,7 +27,7 @@
         /// <summary>
         /// activate or deactive offline mode. Which enables other cheats, but won't deliever stuff to the server.
         /// </summary>
-        public static readonly bool OFFLINE_MODE = true;
+        public static readonly bool OFFLINE_MODE = false;
 
 
     }

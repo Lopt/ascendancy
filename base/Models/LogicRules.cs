@@ -436,7 +436,7 @@
         /// </summary>
         /// <param name="account">Current Account.</param>
         /// <param name="regionManagerC">Region manager c.</param>
-        public static void GatherResources(Account account, Controllers.RegionManagerController regionManagerC, int range)
+        public static void GatherResources(Account account, DateTime actionTime, Controllers.RegionManagerController regionManagerC, int range)
         {              
             foreach (var element in account.TerritoryBuildings)
             {
@@ -451,8 +451,8 @@
                     scrapAmount += 0.5f;//resources[0];
                     plutoniumAmount += 0.3f;//resources[1];
                 }
-                account.Scrap.Set(account.Scrap.Value, Constants.SCRAP_INCREMENT_VALUE);
-                account.Plutonium.Set(account.Plutonium.Value, Constants.PLUTONIUM_INCREMENT_VALUE);
+                account.Scrap.Set(actionTime, account.Scrap.GetValue(actionTime), Constants.SCRAP_INCREMENT_VALUE);
+                account.Plutonium.Set(actionTime, account.Plutonium.GetValue(actionTime), Constants.PLUTONIUM_INCREMENT_VALUE);
             }  
         }
 
@@ -461,16 +461,16 @@
         /// </summary>
         /// <param name="account">Account.</param>
         /// <param name="regionManagerC">Region manager c.</param>
-        public static void IncreaseResourceGeneration(Account account,PositionI entitypos, Controllers.RegionManagerController regionManagerC)
+        public static void IncreaseResourceGeneration(Account account, DateTime actionTime, PositionI entitypos, Controllers.RegionManagerController regionManagerC)
         {
             switch (regionManagerC.GetRegion(entitypos.RegionPosition).GetEntity(entitypos.CellPosition).DefinitionID)
           {
               case (int)Core.Models.Definitions.EntityType.Lab:                         
-                    account.Technology.Set(account.Technology.Value, Constants.TECHNOLOGY_INCREMENT_VALUE);                   
+                    account.Technology.Set(actionTime, account.Technology.GetValue(actionTime), Constants.TECHNOLOGY_INCREMENT_VALUE);                   
                     break;
     
               case (int)Core.Models.Definitions.EntityType.Furnace:
-                    account.Scrap.Set(account.Scrap.Value, Constants.SCRAP_INCREMENT_VALUE);
+                    account.Scrap.Set(actionTime, account.Scrap.GetValue(actionTime), Constants.SCRAP_INCREMENT_VALUE);
                     break;
           }
         }
@@ -481,16 +481,16 @@
         /// <param name="account">Current account.</param>
         /// <param name="entitypos">Entity position.</param>
         /// <param name="regionManagerC">Region manager controller.</param>
-        public static void DecreaseRessourceGeneration(Account account,PositionI entitypos, Controllers.RegionManagerController regionManagerC)
+        public static void DecreaseRessourceGeneration(Account account, DateTime actionTime, PositionI entitypos, Controllers.RegionManagerController regionManagerC)
         {
             switch (regionManagerC.GetRegion(entitypos.RegionPosition).GetEntity(entitypos.CellPosition).DefinitionID)
             {
                 case (int)Core.Models.Definitions.EntityType.Lab:                         
-                    account.Technology.Set(account.Technology.Value, -Constants.TECHNOLOGY_INCREMENT_VALUE);                   
+                    account.Technology.Set(actionTime, account.Technology.GetValue(actionTime), -Constants.TECHNOLOGY_INCREMENT_VALUE);                   
                     break;
 
                 case (int)Core.Models.Definitions.EntityType.Furnace:
-                    account.Scrap.Set(account.Scrap.Value, -Constants.SCRAP_INCREMENT_VALUE);
+                    account.Scrap.Set(actionTime, account.Scrap.GetValue(actionTime), -Constants.SCRAP_INCREMENT_VALUE);
                     break;
             }
         }
@@ -501,14 +501,14 @@
         /// <returns><c>true</c>, if resource was checked, <c>false</c> otherwise.</returns>
         /// <param name="account">Account.</param>
         /// <param name="entityDef">Entity def.</param>
-        public static bool CheckResource(Account account, Definitions.Definition entityDef)
+        public static bool CheckResource(Account account, DateTime serverTime, Definitions.Definition entityDef)
         {
             var definition = (Definitions.UnitDefinition)entityDef;
 
-           return   account.Scrap.Value >= definition.Scrapecost &&
-                    account.Plutonium.Value >= definition.Plutoniumcost &&
-                    account.Technology.Value >= definition.Techcost &&
-                    account.Population.Value >= definition.Population &&
+            return   account.Scrap.GetValue(serverTime) >= definition.Scrapecost &&
+                account.Plutonium.GetValue(serverTime) >= definition.Plutoniumcost &&
+                account.Technology.GetValue(serverTime) >= definition.Techcost &&
+                account.Population.Value >= definition.Population &&
                     account.Energy.Value >= definition.Energycost;           
         }
 
@@ -517,13 +517,13 @@
         /// </summary>
         /// <param name="account">Account.</param>
         /// <param name="entityDef">Entity def.</param>
-        public static void ConsumeResource(Account account, Definitions.Definition entityDef)
+        public static void ConsumeResource(Account account, DateTime actionTime, Definitions.Definition entityDef)
         {
             var definition = (Definitions.UnitDefinition)entityDef;
 
-            account.Scrap.Set(account.Scrap.Value - definition.Scrapecost, 0);         
-            account.Plutonium.Set(account.Plutonium.Value - definition.Plutoniumcost, 0);
-            account.Technology.Set(account.Technology.Value - definition.Techcost, 0);
+            account.Scrap.Set(actionTime, account.Scrap.GetValue(actionTime) - definition.Scrapecost, 0);         
+            account.Plutonium.Set(actionTime, account.Plutonium.GetValue(actionTime) - definition.Plutoniumcost, 0);
+            account.Technology.Set(actionTime, account.Technology.GetValue(actionTime) - definition.Techcost, 0);
             account.Population.Value -= definition.Population;
             account.Energy.Value -= definition.Energycost;
         }
@@ -599,7 +599,7 @@
                     entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Furnace:
-                    DecreaseRessourceGeneration(entity.Owner, entity.Position, regionManagerC);
+                    DecreaseRessourceGeneration(entity.Owner, action.ActionTime, entity.Position, regionManagerC);
                     entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Factory:
@@ -619,7 +619,7 @@
                     entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Lab:
-                    DecreaseRessourceGeneration(entity.Owner, entity.Position, regionManagerC);
+                    DecreaseRessourceGeneration(entity.Owner, action.ActionTime, entity.Position, regionManagerC);
                     entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Scrapyard:

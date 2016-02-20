@@ -20,7 +20,7 @@
             var dictParam = new System.Collections.Generic.Dictionary<string, object>();
             dictParam[Core.Controllers.Actions.MoveUnit.START_POSITION] = start;
             dictParam[Core.Controllers.Actions.MoveUnit.END_POSITION] = end;
-            return new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.MoveUnit, dictParam);
+            return new Core.Models.Action(GameAppDelegate.Account, Core.Models.Action.ActionType.MoveUnit, dictParam, GameAppDelegate.ServerTime);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@
             var dictParam = new System.Collections.Generic.Dictionary<string, object>();
             dictParam[Core.Controllers.Actions.CreateUnit.CREATE_POSITION] = positionI; 
             dictParam[Core.Controllers.Actions.CreateUnit.CREATION_TYPE] = (long)definition.SubType;
-            return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateUnit, dictParam);
+            return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateUnit, dictParam, GameAppDelegate.ServerTime);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@
             var dictParam = new System.Collections.Generic.Dictionary<string, object>();
             dictParam[Core.Controllers.Actions.CreateBuilding.CREATE_POSITION] = positionI; 
             dictParam[Core.Controllers.Actions.CreateBuilding.CREATION_TYPE] = (long)definition.SubType;
-            return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateTerritoryBuilding, dictParam);
+            return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateTerritoryBuilding, dictParam, GameAppDelegate.ServerTime);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@
             var dictParam = new System.Collections.Generic.Dictionary<string, object>();
             dictParam[Core.Controllers.Actions.CreateBuilding.CREATE_POSITION] = positionI; 
             dictParam[Core.Controllers.Actions.CreateBuilding.CREATION_TYPE] = (long)definition.SubType;
-            return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateBuilding, dictParam);
+            return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateBuilding, dictParam, GameAppDelegate.ServerTime);
         }
 
     }

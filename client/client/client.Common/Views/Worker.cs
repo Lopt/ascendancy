@@ -11,12 +11,23 @@
     public class Worker
     {
         /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>The instance.</value>
+        public static Worker Instance
+        {
+            get
+            {
+                return Singleton.Value;
+            }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.Worker"/> class.
         /// </summary>
         /// <param name="worldLayerHex">World layer hex.</param>
-        public Worker(WorldLayerHex worldLayerHex)
+        private Worker()
         {
-            WorldLayerHex = worldLayerHex;
             Queue = new ConcurrentQueue<Core.Models.Action>();
         }
 
@@ -46,7 +57,9 @@
                     actionV.BeforeDo();
                     actionC.Do();
                 }
+            
             }
+            WorldLayerHex.UglyDraw();
         }
 
         /// <summary>
@@ -73,6 +86,11 @@
             return new Client.Common.Views.Actions.Action(action);
         }
 
+        public void Init(WorldLayerHex worldLayer)
+        {
+            WorldLayerHex = worldLayer;
+        }
+
         /// <summary>
         /// The action queue.
         /// </summary>
@@ -87,5 +105,12 @@
         /// The world layer hex.
         /// </summary>
         public WorldLayerHex WorldLayerHex;
+
+        /// <summary>
+        /// The singleton instance.
+        /// </summary>
+        private static readonly Lazy<Worker> Singleton =
+            new Lazy<Worker>(() => new Worker());
+     
     }
 }

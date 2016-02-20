@@ -65,7 +65,7 @@
         private void ShowRessource(float time)
         {
             var scrap = GameAppDelegate.Account.Scrap;
-            m_progress.Percentage = (float)scrap.ValuePercent * 100;          
+            m_progress.Percentage = (float)scrap.GetValuePercent(GameAppDelegate.ServerTime) * 100;          
         }
 
         /// <summary>

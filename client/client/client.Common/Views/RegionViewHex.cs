@@ -261,7 +261,6 @@
             m_childs[LayerTypes.Unit].ContentSize = m_childs[LayerTypes.Terrain].ContentSize;
             m_childs[LayerTypes.Unit].AnchorPoint = new CCPoint(0.0f, 1.0f);
             m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
-            m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
 
 
         }
