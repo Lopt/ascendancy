@@ -328,6 +328,11 @@ namespace Client.Common.Views
                 }
                 m_regionViewHexDic.Add(regionPos, regionViewHex);
             }         
+
+            if (newKeys.Count > 0)
+            {
+                ScheduleOnce(RefreshRegionsAsync, 0.3f);
+            }
         }
 
         /// <summary>
