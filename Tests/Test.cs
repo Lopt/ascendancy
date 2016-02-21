@@ -330,6 +330,8 @@ namespace Tests
             var Def = new Core.Models.Definitions.TerrainDefinition(Core.Models.Definitions.EntityType.Grassland, Res, true, true, 4, 5, 6);
             Assert.IsNotNull(Def);
 
+            Assert.IsInstanceOf<Core.Models.Definitions.TerrainDefinition>(Def);
+
             Assert.AreEqual(Core.Models.Definitions.Category.Terrain, Def.Category);
             Assert.AreEqual(Core.Models.Definitions.EntityType.Grassland, Def.SubType);
             Assert.AreEqual(3, Def.ID);
@@ -340,11 +342,53 @@ namespace Tests
             Assert.AreEqual(4, Def.TravelCost);
             Assert.AreEqual(5, Def.DefenseModifier);
             Assert.AreEqual(6, Def.AttackModifier);
+
+
+            //Test if a Wrong entity could be a TerrainDefinition
+            Def = new Core.Models.Definitions.TerrainDefinition(Core.Models.Definitions.EntityType.Archer, Res, true, true, 4, 5, 6);
+            Assert.IsNotNull(Def);
+
+            Assert.IsInstanceOf<Core.Models.Definitions.TerrainDefinition>(Def);
+
+            Assert.AreNotEqual(Core.Models.Definitions.Category.Terrain, Def.Category);
+            //Assert.AreEqual(Core.Models.Definitions.EntityType.Grassland, Def.SubType);
+            //Assert.AreEqual(78, Def.ID);
         }
 
         [Test]
         public void UnitDefinitions()
         {
+            string[] action = { };
+            var Def = new Core.Models.Definitions.UnitDefinition(Core.Models.Definitions.EntityType.Archer, action, 1, 1, 100, 10, 2, 2, 100, 50, 0, 0);
+            Assert.IsNotNull(Def);
+
+            Assert.IsInstanceOf<Core.Models.Definitions.UnitDefinition>(Def);
+
+            Assert.AreEqual(Core.Models.Definitions.Category.Unit, Def.Category);
+            Assert.AreEqual(Core.Models.Definitions.EntityType.Archer, Def.SubType);
+            Assert.AreEqual(78, Def.ID);
+
+            Assert.AreEqual(1, Def.Attack);
+            Assert.AreEqual(1, Def.Defense);
+            Assert.AreEqual(100, Def.Health);
+            Assert.AreEqual(10, Def.Moves);
+            Assert.AreEqual(2, Def.AttackRange);
+            Assert.AreEqual(2, Def.Population);
+            Assert.AreEqual(100, Def.Scrapecost);
+            Assert.AreEqual(50, Def.Energycost);
+            Assert.AreEqual(0, Def.Plutoniumcost);
+            Assert.AreEqual(0, Def.Techcost);
+
+
+
+            //Test if a Terrain Entity could be a Unit Definition
+            Def = new Core.Models.Definitions.UnitDefinition(Core.Models.Definitions.EntityType.Grassland, action, 1, 1, 100, 10, 2, 2, 100, 50, 0, 0);
+            Assert.IsNotNull(Def);
+
+            Assert.IsInstanceOf<Core.Models.Definitions.UnitDefinition>(Def);
+            Assert.AreNotEqual(Core.Models.Definitions.Category.Unit, Def.Category);
+
+
 
         }
     }
