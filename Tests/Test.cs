@@ -397,8 +397,29 @@ namespace Tests
     public class MapRegionTests
     {
         [Test]
-        public void test()
+        public void MapRegion()
         {
+            //Test with a RegionPosition as Input
+            var regionPosition = new RegionPosition(new Position(new LatLon(50.97695325, 11.02396488)));
+            var region = new Core.Models.Region(regionPosition);
+
+            Assert.IsNotNull(region);
+            Assert.IsInstanceOf<Core.Models.Region>(region);
+
+            //Test with a Region as Input
+            var region2 = new Region(region);
+
+            Assert.IsNotNull(region2);
+            Assert.IsInstanceOf<Core.Models.Region>(region2);
+            //Assert.AreEqual(region, region2);
+
+            //Test with a RegionPosition and an TerrainDefinition as Input
+            int[] Res = {0, 0, 0, 0 ,0};
+            var TerDef = new Core.Models.Definitions.TerrainDefinition(Core.Models.Definitions.EntityType.Grassland, Res, true, true, 4, 5, 6);
+            //var region3 = new Region(regionPosition, TerDef);
+
+
+                
         }
     }
 
