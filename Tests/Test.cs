@@ -296,8 +296,26 @@ namespace Tests
     public class LoadHelperTests
     {
         [Test]
-        public void test()
+        public void ReplacePath()
         {
+            var regionPosition = new RegionPosition(new Position(new LatLon(50.97695325, 11.02396488)));
+            var newPath = Core.Helper.LoadHelper.ReplacePath(Server.Models.ServerConstants.REGION_FILE, regionPosition);
+            Assert.IsNotNull(newPath);
+        }
+
+        [Test]
+        public void JsonToTerrain()
+        {
+            var regionPosition = new RegionPosition(new Position(new LatLon(50.97695325, 11.02396488)));
+            var newPath = Core.Helper.LoadHelper.ReplacePath(Server.Models.ServerConstants.REGION_FILE, regionPosition);
+            //var json = await Core.RequestAsync(newpath);
+
+        }
+
+        [Test]
+        public void JsonToRegion()
+        {
+            
         }
     }
 
@@ -305,8 +323,73 @@ namespace Tests
     public class DefinitionsTests
     {
         [Test]
-        public void test()
+        public void TerrainDefinitions()
         {
+            
+            int[] Res = {0, 0, 0, 0 ,0};
+            var Def = new Core.Models.Definitions.TerrainDefinition(Core.Models.Definitions.EntityType.Grassland, Res, true, true, 4, 5, 6);
+            Assert.IsNotNull(Def);
+
+            Assert.IsInstanceOf<Core.Models.Definitions.TerrainDefinition>(Def);
+
+            Assert.AreEqual(Core.Models.Definitions.Category.Terrain, Def.Category);
+            Assert.AreEqual(Core.Models.Definitions.EntityType.Grassland, Def.SubType);
+            Assert.AreEqual(3, Def.ID);
+
+            Assert.AreEqual(5, Def.Resources.Length);
+            Assert.AreEqual(true, Def.Buildable);
+            Assert.AreEqual(true, Def.Walkable);
+            Assert.AreEqual(4, Def.TravelCost);
+            Assert.AreEqual(5, Def.DefenseModifier);
+            Assert.AreEqual(6, Def.AttackModifier);
+
+
+            //Test if a Wrong entity could be a TerrainDefinition
+            Def = new Core.Models.Definitions.TerrainDefinition(Core.Models.Definitions.EntityType.Archer, Res, true, true, 4, 5, 6);
+            Assert.IsNotNull(Def);
+
+            Assert.IsInstanceOf<Core.Models.Definitions.TerrainDefinition>(Def);
+
+            Assert.AreNotEqual(Core.Models.Definitions.Category.Terrain, Def.Category);
+            //Assert.AreEqual(Core.Models.Definitions.EntityType.Grassland, Def.SubType);
+            //Assert.AreEqual(78, Def.ID);
+        }
+
+        [Test]
+        public void UnitDefinitions()
+        {
+            string[] action = { };
+            var Def = new Core.Models.Definitions.UnitDefinition(Core.Models.Definitions.EntityType.Archer, action, 1, 1, 100, 10, 2, 2, 100, 50, 0, 0);
+            Assert.IsNotNull(Def);
+
+            Assert.IsInstanceOf<Core.Models.Definitions.UnitDefinition>(Def);
+
+            Assert.AreEqual(Core.Models.Definitions.Category.Unit, Def.Category);
+            Assert.AreEqual(Core.Models.Definitions.EntityType.Archer, Def.SubType);
+            Assert.AreEqual(78, Def.ID);
+
+            Assert.AreEqual(1, Def.Attack);
+            Assert.AreEqual(1, Def.Defense);
+            Assert.AreEqual(100, Def.Health);
+            Assert.AreEqual(10, Def.Moves);
+            Assert.AreEqual(2, Def.AttackRange);
+            Assert.AreEqual(2, Def.Population);
+            Assert.AreEqual(100, Def.Scrapecost);
+            Assert.AreEqual(50, Def.Energycost);
+            Assert.AreEqual(0, Def.Plutoniumcost);
+            Assert.AreEqual(0, Def.Techcost);
+
+
+
+            //Test if a Terrain Entity could be a Unit Definition
+            Def = new Core.Models.Definitions.UnitDefinition(Core.Models.Definitions.EntityType.Grassland, action, 1, 1, 100, 10, 2, 2, 100, 50, 0, 0);
+            Assert.IsNotNull(Def);
+
+            Assert.IsInstanceOf<Core.Models.Definitions.UnitDefinition>(Def);
+            Assert.AreNotEqual(Core.Models.Definitions.Category.Unit, Def.Category);
+
+
+
         }
     }
 
@@ -314,8 +397,29 @@ namespace Tests
     public class MapRegionTests
     {
         [Test]
-        public void test()
+        public void MapRegion()
         {
+            //Test with a RegionPosition as Input
+            var regionPosition = new RegionPosition(new Position(new LatLon(50.97695325, 11.02396488)));
+            var region = new Core.Models.Region(regionPosition);
+
+            Assert.IsNotNull(region);
+            Assert.IsInstanceOf<Core.Models.Region>(region);
+
+            //Test with a Region as Input
+            var region2 = new Region(region);
+
+            Assert.IsNotNull(region2);
+            Assert.IsInstanceOf<Core.Models.Region>(region2);
+            //Assert.AreEqual(region, region2);
+
+            //Test with a RegionPosition and an TerrainDefinition as Input
+            int[] Res = {0, 0, 0, 0 ,0};
+            var TerDef = new Core.Models.Definitions.TerrainDefinition(Core.Models.Definitions.EntityType.Grassland, Res, true, true, 4, 5, 6);
+            //var region3 = new Region(regionPosition, TerDef);
+
+
+                
         }
     }
 
