@@ -221,8 +221,10 @@
             InitCamera(m_currentWorldPoint);
             ZoomWorld(ClientConstants.TILEMAP_NORM_ZOOM);
 
-            Schedule(CheckGPSAsync);
-            Schedule(CheckViewAsync);
+            CheckGPS(0);
+            CheckView(0);
+            Schedule(CheckGPS);
+            Schedule(CheckView);
 
             Schedule(Worker.Instance.Schedule);
         }
@@ -254,7 +256,7 @@
             this.Camera.CenterInWorldspace = newCameraPoint;
         }
 
-        void CheckGPSAsync(float elapsedTime)
+        void CheckGPS(float elapsedTime)
         {
             if (ViewMode == ViewModes.CurrentGPSPosition)
             {
@@ -267,7 +269,7 @@
         /// Checks the view for position updats.
         /// </summary>
         /// <param name="frameTimesInSecond">Frame times in second.</param>
-        private void CheckViewAsync(float frameTimesInSecond)
+        private void CheckView(float frameTimesInSecond)
         {
             var oldCameraPoint = this.Camera.CenterInWorldspace;
             var oldTargetPoint = this.Camera.TargetInWorldspace;
@@ -334,7 +336,7 @@
         public ViewModes ViewMode;
 
         #region Properties
-            
+
         /// <summary>
         /// The m region view hex dictionary.
         /// </summary>
