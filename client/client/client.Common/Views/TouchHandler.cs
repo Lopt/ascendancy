@@ -5,7 +5,9 @@
     using CocosSharp;
 
     /// <summary>
-    /// The Touch handler class.
+    /// The Touch handler class. Cocossharp Touch events can't be stopped, every CCNode gets an Touch Event, even if it's the last layer.
+    /// When using this class instead of the cocossharp Touchlistener, you just need to change one thing: the return of the callback method is bool, not void.
+    /// It is true, if the event got catched an no other should execute it - and false otherwise.
     /// </summary>
     public sealed class TouchHandler
     {

@@ -68,20 +68,7 @@ namespace Client.Common.Manager
         public async Task LoadEntitiesAsync(RegionPosition[] listRegions)
         {
             var response = await NetworkController.Instance.LoadEntitiesAsync(Geolocation.Instance.CurrentGamePosition, listRegions);
-            var entities = response.Entities;
-            if (entities != null)
-            {
-                foreach (var regionEntities in entities)
-                {
-                    foreach (var entity in regionEntities)
-                    {
-                        var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(entity.Position.RegionPosition);
-                        region.AddEntity(DateTime.Now, entity);
-                        Add(entity);
-                    }
-                }
-            }
-
+           
             if (response.Actions != null)
             {
                 var actions = new HashSet<Core.Models.Action>();
@@ -97,7 +84,7 @@ namespace Client.Common.Manager
 
                 foreach (var action in sortedActions)
                 {
-                    Worker.Queue.Enqueue(action);
+                    Views.Worker.Instance.Queue.Enqueue(action);
                 }
             }
         }
@@ -142,13 +129,5 @@ namespace Client.Common.Manager
         /// </summary>
         private Dictionary<int, Entity> m_entities;
 
-        /// <summary>
-        /// Gets or sets the worker
-        /// </summary>
-        public Views.Worker Worker
-        {
-            get;
-            set;
-        }
     }
 }

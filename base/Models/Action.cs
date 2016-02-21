@@ -50,13 +50,21 @@
         public Action(
             Account account,
             ActionType type,
-            Dictionary<string, object> parameters)
+            Dictionary<string, object> parameters,
+            DateTime? actionTime = null)
             : base()
         {
             Account = account;
             Parameters = parameters;
             Type = type;
-            ActionTime = DateTime.Now;
+            if (actionTime == null)
+            {
+                ActionTime = DateTime.Now;
+            }
+            else
+            {
+                ActionTime = actionTime.Value;
+            }
 
             switch (type)
             {   
@@ -73,6 +81,8 @@
                     Control = new Controllers.Actions.CreateTerritoryBuilding(this);
                     break;
             }
+
+
         }
 
         /// <summary>
@@ -103,7 +113,6 @@
         /// <summary>
         /// The action time.
         /// </summary>
-        [JsonIgnore]
         public DateTime ActionTime;
 
         /// <summary>

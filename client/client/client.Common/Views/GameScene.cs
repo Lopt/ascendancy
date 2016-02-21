@@ -23,34 +23,22 @@ namespace Client.Common.Views
             : base(mainWindow)
         {
             WorldLayerHex = new WorldLayerHex(this);
-            AddChild(WorldLayerHex);
-
 
             HUD = new Client.Common.Views.HUD.HUDLayer(this);
-            AddChild(HUD);
 
             DebugLayer = new DebugLayer();
-            AddChild(DebugLayer);
 
+            Worker.Instance.Init(WorldLayerHex);
             TouchHandler.Instance.Init(WorldLayerHex);
 
-            Schedule(CheckGPS);
-        }
+            AddChild(WorldLayerHex);
+            AddChild(HUD);
+            AddChild(DebugLayer);
 
-        void CheckGPS(float elapsedTime)
-        {
-            if (WorldLayerHex.ViewMode == WorldLayerHex.ViewModes.CurrentGPSPosition)
-            {
-                var cameraPoint = PositionHelper.PositionToWorldspace(Geolocation.Instance.CurrentGamePosition);
-                WorldLayerHex.SetWorldPosition(cameraPoint);
-            }
-        }
+        } 
+
 
         #region Properties
-
-
-
-        public Position CurrentBasePosition;
 
         /// <summary>
         /// The world in hex (whole game field).
@@ -66,9 +54,6 @@ namespace Client.Common.Views
         /// The HUD with all player output information.
         /// </summary>
         public HUD.HUDLayer HUD;
-
-        //healthbar
-        public Effects.EffectLayer Test;
 
 
         #endregion

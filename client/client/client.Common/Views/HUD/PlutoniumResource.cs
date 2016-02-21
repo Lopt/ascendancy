@@ -67,7 +67,7 @@
         private void ShowRessource(float time)
         {
             var plutonium = GameAppDelegate.Account.Plutonium;
-            m_progress.Percentage = (float)plutonium.ValuePercent * 100;
+            m_progress.Percentage = (float)plutonium.GetValuePercent(GameAppDelegate.ServerTime) * 100;
         }
 
         /// <summary>

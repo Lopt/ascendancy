@@ -107,7 +107,7 @@
                     }
                     if (territoryFlag)
                     {                
-                        return td.Buildable && LogicRules.CheckResource(account, m_type); 
+                        return td.Buildable && LogicRules.CheckResource(account, action.ActionTime, m_type); 
                     }
                 }
                 else if (region.GetEntity(entityCellPostion) == null &&
@@ -130,7 +130,7 @@
                     }
                     if (territoryFlag)
                     {                
-                        return td.Buildable && LogicRules.CheckResource(account, m_type); 
+                        return td.Buildable && LogicRules.CheckResource(account, action.ActionTime, m_type); 
                     }
                 }
             }
@@ -173,7 +173,7 @@
                 LogicRules.EnableBuildOptions(type, action.Account);
                 region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, m_drawArea), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
                 LogicRules.IncreaseWholeStorage(action.Account);
-                LogicRules.GatherResources(action.Account, Controller.Instance.RegionManagerController, Constants.HEADQUARTER_TERRITORY_RANGE);
+                LogicRules.GatherResources(action.Account, action.ActionTime, Controller.Instance.RegionManagerController, Constants.HEADQUARTER_TERRITORY_RANGE);
                 LogicRules.SetCurrentMaxPopultion(action.Account);
                 LogicRules.SetCurrentMaxEnergy(action.Account);
             }
@@ -183,7 +183,7 @@
                 region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, m_drawArea), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
             }
 
-            LogicRules.ConsumeResource(action.Account, entityDef);
+            LogicRules.ConsumeResource(action.Account, action.ActionTime, entityDef);
             return new ConcurrentBag<Core.Models.Region>() { region };
         }
 

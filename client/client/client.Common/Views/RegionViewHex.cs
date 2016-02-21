@@ -240,10 +240,10 @@
             var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
  
             var taskTerrain = regionManagerController.LoadTerrainAsync(region);
-            var taskEntities = EntityManagerController.Instance.LoadEntitiesAsync(regionPosition);
+            //var taskEntities = EntityManagerController.Instance.LoadEntitiesAsync(regionPosition);
 
             await taskTerrain;
-            await taskEntities;
+            //await taskEntities;
 
             SetTilesInMap32();
         }
@@ -260,7 +260,6 @@
             m_childs[LayerTypes.Unit].Position = position;
             m_childs[LayerTypes.Unit].ContentSize = m_childs[LayerTypes.Terrain].ContentSize;
             m_childs[LayerTypes.Unit].AnchorPoint = new CCPoint(0.0f, 1.0f);
-            m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
             m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
 
 

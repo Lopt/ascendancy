@@ -65,7 +65,7 @@
         private void ShowRessource(float time)
         {
             var technology = GameAppDelegate.Account.Technology;
-            m_progress.Percentage = (float)technology.ValuePercent * 100;
+            m_progress.Percentage = (float)technology.GetValuePercent(GameAppDelegate.ServerTime) * 100;
         }
 
         /// <summary>

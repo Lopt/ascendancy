@@ -45,7 +45,7 @@
             {
                 return dateTime;
             }
-            return null;
+            return DateTime.MinValue;
         }
 
         /// <summary>

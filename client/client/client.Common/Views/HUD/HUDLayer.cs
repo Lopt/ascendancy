@@ -87,10 +87,10 @@
             GameAppDelegate.Account.Technology.MaximumValue = 1000;
             GameAppDelegate.Account.Energy.MaximumValue = 1000;
 
-            GameAppDelegate.Account.Scrap.Set(1000, 0);
-            GameAppDelegate.Account.Plutonium.Set(1000, 0);
+            GameAppDelegate.Account.Scrap.Set(DateTime.Now, 1000, 0);
+            GameAppDelegate.Account.Plutonium.Set(DateTime.Now, 1000, 0);
             GameAppDelegate.Account.Population.Value = 1000;
-            GameAppDelegate.Account.Technology.Set(1000, 0);
+            GameAppDelegate.Account.Technology.Set(DateTime.Now, 1000, 0);
             GameAppDelegate.Account.Energy.Value = 1000;
 
             var account = new Core.Models.Account(GameAppDelegate.Account.ID + 1);
@@ -112,10 +112,10 @@
             account.Technology.MaximumValue = 10000;
             account.Energy.MaximumValue = 10000;
   
-            account.Scrap.Set(10000, 0);
-            account.Plutonium.Set(10000, 0);
+            account.Scrap.Set(DateTime.Now, 10000, 0);
+            account.Plutonium.Set(DateTime.Now, 10000, 0);
             account.Population.Value = 10000;
-            account.Technology.Set(10000, 0);
+            account.Technology.Set(DateTime.Now, 10000, 0);
             account.Energy.Value = 10000;
 
             var newPos = new Core.Models.Position(pos.RegionPosition, new Core.Models.CellPosition((int)pos.X + 2, (int)pos.Y +2));  

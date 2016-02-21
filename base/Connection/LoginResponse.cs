@@ -26,6 +26,7 @@
             Status = ReponseStatus.ERROR;
             SessionID = Guid.Empty;
             AccountId = 0;
+            ServerTime = DateTime.Now;
         }
 
         /// <summary>
@@ -42,5 +43,10 @@
         /// The account identifier which the user has, who logged in.
         /// </summary>
         public int AccountId;
+
+        /// <summary>
+        /// The Server time which is be used to synchronise client and server
+        /// </summary>
+        public DateTime ServerTime;
     }
 }

@@ -29,6 +29,30 @@
         }
 
         /// <summary>
+        /// To calculate resources and other stuff, the current time is needed. But not from the client, the server time is needed
+        /// But it is bad to ask the server always "how late is it?" so it gives the server time at the login
+        /// Calculates then what's the time difference the client and the server time
+        /// And adds the difference to the client time, always when asked
+        /// There is a small inaccurancy bescause the network access (login) needs time.
+        /// But this can be neglected, bescause the server is ahead of the client
+        /// (if you want to build something... the server has more resources then your client, bescause he is a few millisecondsa ahead)
+        /// </summary>
+        /// <value>The server time.</value>
+        private static TimeSpan SeverTimeDifference;
+
+        public static DateTime ServerTime
+        {
+            get
+            {
+                return DateTime.Now - SeverTimeDifference;
+            }
+            set
+            {
+                SeverTimeDifference = DateTime.Now - value;
+            }
+        }
+
+        /// <summary>
         /// Game phases.
         /// </summary>
         public enum Phases

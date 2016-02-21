@@ -87,7 +87,7 @@
                     {                
                         RealCreatePosition = GetFreeField(positionI, regionManagerC);
 
-                        return RealCreatePosition != null && LogicRules.CheckResource(action.Account, Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type));
+                        return RealCreatePosition != null && LogicRules.CheckResource(action.Account, action.ActionTime, Controller.Instance.DefinitionManagerController.DefinitionManager.GetDefinition((EntityType)type));
                     }
                 }
             }
@@ -128,7 +128,7 @@
             if (action.Account != null)
             {
                 action.Account.Units.AddLast(entity.Position);
-                LogicRules.ConsumeResource(action.Account, entityDef);
+                LogicRules.ConsumeResource(action.Account, action.ActionTime, entityDef);
             }
 
             return new ConcurrentBag<Core.Models.Region>() { region };

@@ -80,6 +80,7 @@ namespace Client.Common.Views
                 await entityManagerController.LoadUnitDefinitionsAsync();
                 Phase = Phases.EntityTypeLoaded;
 
+
                 // do something in the future
                 Phase = Phases.Done;
             }
