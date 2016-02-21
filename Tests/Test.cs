@@ -330,7 +330,10 @@ namespace Tests
             var Def = new Core.Models.Definitions.TerrainDefinition(Core.Models.Definitions.EntityType.Grassland, Res, true, true, 4, 5, 6);
             Assert.IsNotNull(Def);
 
-            var bla = Def.Category;
+            Assert.AreEqual(Core.Models.Definitions.Category.Terrain, Def.Category);
+            Assert.AreEqual(Core.Models.Definitions.EntityType.Grassland, Def.SubType);
+            Assert.AreEqual(3, Def.ID);
+
             Assert.AreEqual(5, Def.Resources.Length);
             Assert.AreEqual(true, Def.Buildable);
             Assert.AreEqual(true, Def.Walkable);
