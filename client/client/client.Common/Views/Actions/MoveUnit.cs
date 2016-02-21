@@ -56,31 +56,27 @@
 
             if (m_runTime < m_path.Count - 1)
             {
-
                 var currPos = (Core.Models.PositionI)m_path[(int)m_runTime];
                 var nextPos = (Core.Models.PositionI)m_path[(int)m_runTime + 1];
-                //if (m_currentPosition != nextPosition)
+
+                var unitV = (UnitView)m_entity.View;
+                var currRegion = Core.Models.World.Instance.RegionManager.GetRegion(currPos.RegionPosition);
+
+                var currRegionPoint = Helper.PositionHelper.RegionToWorldspace(currPos.RegionPosition);
+                var nextRegionPoint = Helper.PositionHelper.RegionToWorldspace(nextPos.RegionPosition);
+                var currPoint = Helper.PositionHelper.CellToTile(currPos.CellPosition); 
+                var nextPoint = Helper.PositionHelper.CellToTile(nextPos.CellPosition); 
+
+                var diff = (nextRegionPoint + nextPoint) - (currRegionPoint + currPoint);
+                var point = currPoint + (diff * ((float)m_runTime - (float)(int)m_runTime));
+
+                unitV.DrawPoint = point;
+                unitV.DrawRegion = currPos.RegionPosition;
+                    
+                if (currRegion != null && currRegion.View != null)
                 {
-                    var unitV = (UnitView)m_entity.View;
-                    var currRegion = Core.Models.World.Instance.RegionManager.GetRegion(currPos.RegionPosition);
-
-                    var currRegionPoint = Helper.PositionHelper.RegionToWorldspace(currPos.RegionPosition);
-                    var nextRegionPoint = Helper.PositionHelper.RegionToWorldspace(nextPos.RegionPosition);
-                    var currPoint = Helper.PositionHelper.CellToTile(currPos.CellPosition); 
-                    var nextPoint = Helper.PositionHelper.CellToTile(nextPos.CellPosition); 
-
-
-                    var diff = (nextRegionPoint + nextPoint) - (currRegionPoint + currPoint);
-                    var point = currPoint + diff * ((float)m_runTime - (float)(int)m_runTime);
-
-                    unitV.DrawPoint = point;
-                    unitV.DrawRegion = currPos.RegionPosition;
-                        
-                    if (currRegion != null && currRegion.View != null)
-                    {
-                        var regionV = (RegionViewHex)currRegion.View;
-                        regionV.DrawUnit(m_entity);
-                    }
+                    var regionV = (RegionViewHex)currRegion.View;
+                    regionV.DrawUnit(m_entity);
                 }
             }
 
@@ -151,12 +147,19 @@
             return false;
         }
             
+        /// <summary>
+        /// Gets the world layer hex.
+        /// </summary>
+        /// <value>The world layer hex.</value>
         public WorldLayerHex WorldLayerHex
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// the needed time for the fight animation, if there is an fight (otherwise it's 0)
+        /// </summary>
         private float m_fightTime;
 
         /// <summary>
@@ -173,11 +176,6 @@
         /// The enemy entity.
         /// </summary>
         private Core.Models.Entity m_enemyEntity;
-
-        /// <summary>
-        /// The current position of the entity.
-        /// </summary>
-        private Core.Models.PositionI m_currentPosition;
 
         /// <summary>
         /// The path which the enemy should go.

@@ -1,10 +1,10 @@
-﻿using System.ServiceModel.Channels;
-
+﻿
 namespace Core.Helper
 {
     using System;
     using System.IO;
     using System.IO.Compression;
+    using System.ServiceModel.Channels;
     using Ionic.Zlib;
 
     /// <summary>
@@ -12,6 +12,9 @@ namespace Core.Helper
     /// </summary>
     public static class CompressionHelper
     {
+        /// <summary>
+        /// The maximum size of an packet
+        /// </summary>
         const int MAX_PACKET_SIZE = 4096 * 4;
 
         /// <summary>
@@ -33,7 +36,6 @@ namespace Core.Helper
             var output = new byte[zlib.TotalBytesOut];
             Array.Copy(zlib.OutputBuffer, output, (int)zlib.TotalBytesOut);
             return output;
-
         }
 
         /// <summary>

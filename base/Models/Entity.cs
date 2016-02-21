@@ -5,7 +5,9 @@
     using Core.Models.Definitions;
     using Newtonsoft.Json;
 
-
+    /// <summary>
+    /// The possible diplomatic states for two players
+    /// </summary>
     public enum Diplomatic
     {
         own,
@@ -126,6 +128,10 @@
             set;                
         }
 
+        /// <summary>
+        /// Gets the current health (in percent).
+        /// </summary>
+        /// <value>health (in percent).</value>
         public float HealthPercent
         {
             get
@@ -165,6 +171,11 @@
             set;
         }
 
+        /// <summary>
+        /// Calculates and returns the diplomatic states between the owner of the unit and the given account
+        /// </summary>
+        /// <returns>The diplomacy.</returns>
+        /// <param name="account">Other Account.</param>
         public Diplomatic GetDiplomacy(Account account)
         {
             if (account.ID == Owner.ID)

@@ -47,6 +47,7 @@
         /// <param name="account">Account which wants to execute this action.</param>
         /// <param name="type">Action Type.</param>
         /// <param name="parameters">Parameters which should contain all needed data by the action control.</param>
+        /// <param name="actionTime">Time when the action was executed.</param>
         public Action(
             Account account,
             ActionType type,
@@ -81,8 +82,6 @@
                     Control = new Controllers.Actions.CreateTerritoryBuilding(this);
                     break;
             }
-
-
         }
 
         /// <summary>

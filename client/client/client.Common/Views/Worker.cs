@@ -57,7 +57,6 @@
                     actionV.BeforeDo();
                     actionC.Do();
                 }
-            
             }
             WorldLayerHex.UglyDraw();
         }

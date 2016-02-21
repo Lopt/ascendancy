@@ -38,7 +38,6 @@
     <Compile Include="Views\GameScene.cs" />
     <Compile Include="Models\DrawNode.cs" />
     <Compile Include="Views\LogoLayer.cs" />
-    <Compile Include="Models\MapCellPosition.cs" />
     <Compile Include="Manager\RegionManagerController.cs" />
     <Compile Include="Views\ViewDefinitions.cs" />
     <Compile Include="Views\Worker.cs" />

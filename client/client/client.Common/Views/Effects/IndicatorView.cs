@@ -29,12 +29,15 @@ namespace Client.Common.Views.Effects
             m_surroundedPositions = new HashSet<PositionI>();
         }
 
+        /// <summary>
+        /// Releases unmanaged resources and performs other cleanup operations before the
+        /// <see cref="Client.Common.Views.Effects.IndicatorView"/> is reclaimed by garbage collection.
+        /// </summary>
         ~IndicatorView()
         {
             m_areaIndicators.Clear();
             RemoveIndicator();
         }
-
 
         /// <summary>
         /// Draws the indicator on the Map
@@ -44,7 +47,6 @@ namespace Client.Common.Views.Effects
         /// <param name="area">The Area Type.</param>
         public void ShowUnitIndicator(PositionI coord, int range, TileTouchHandler.Area area)
         {
-
             var gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR);
 
             m_areaIndicators.TryGetValue(area, out gid);
@@ -56,12 +58,10 @@ namespace Client.Common.Views.Effects
             }
    
             AddSprites(gid);
-
         }
 
         public void ShowBuildingIndicator(PositionI coord, TileTouchHandler.Area area)
         {
-
             var gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR);
 
             m_areaIndicators.TryGetValue(area, out gid);
@@ -72,7 +72,6 @@ namespace Client.Common.Views.Effects
             int range;
             foreach (var building in buildings)
             {
-
                 var entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(building.RegionPosition).GetEntity(building.CellPosition);
                 if (entity.Definition.SubType == Core.Models.Definitions.EntityType.Headquarter)
                 {
@@ -123,12 +122,11 @@ namespace Client.Common.Views.Effects
         /// <summary>
         /// The area indicators.
         /// </summary>
-        private Dictionary<TileTouchHandler.Area,CCTileGidAndFlags> m_areaIndicators;
+        private Dictionary<TileTouchHandler.Area, CCTileGidAndFlags> m_areaIndicators;
 
         /// <summary>
         /// The surrounded tile set.
         /// </summary>
         private HashSet<PositionI> m_surroundedPositions;
-
     }
 }

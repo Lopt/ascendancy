@@ -4,7 +4,7 @@
 
     /// <summary>
     /// An Class which provides access to all stuff, which isn't allowed normally. Can be used for debugging or simplify stuff.
-    /// BUT: Cheating may cause other bugs! There is no need to fix them, unless it is essentially, nicer code or the bug could occure without the cheats
+    /// BUT: Cheating may cause other bugs! There is no need to fix them, unless it is essentially, nicer code or the bug could occur without the cheats
     /// </summary>
     public class Cheats
     {
@@ -25,11 +25,9 @@
         public static readonly string DEBUG_TCP_SERVER = "192.168.2.6";
 
         /// <summary>
-        /// activate or deactive offline mode. Which enables other cheats, but won't deliever stuff to the server.
+        /// activate or deactivates offline mode. Which enables other cheats, but won't send stuff to the server.
         /// </summary>
         public static readonly bool OFFLINE_MODE = false;
-
-
     }
 
     /// <summary>
@@ -37,7 +35,6 @@
     /// </summary>
     public class Constants
     {
-
         /// <summary>
         /// size of a cell at the equator (in meters)
         /// </summary>
@@ -110,7 +107,7 @@
         public const int HEADQUARTER_TERRITORY_RANGE = 4;
 
         /// <summary>
-        /// Get the range from the ownership radius for the guardtower.
+        /// Get the range from the ownership radius for the guard tower.
         /// </summary>
         public const int GUARDTOWER_TERRITORY_RANGE = 2;
 
@@ -140,17 +137,17 @@
         public const int TECHNOLOGY_MAX_VALUE = 7;
 
         /// <summary>
-        /// The increment valiue for technology resource.
+        /// The increment value for technology resource.
         /// </summary>
         public const float TECHNOLOGY_INCREMENT_VALUE = 0.1f;
 
         /// <summary>
-        /// The increment valiue for scrap resource.
+        /// The increment value for scrap resource.
         /// </summary>
         public const int SCRAP_INCREMENT_VALUE = 2;
 
         /// <summary>
-        /// The increment valiue for plutonium resource.
+        /// The increment value for plutonium resource.
         /// </summary>
         public const float PLUTONIUM_INCREMENT_VALUE = 0.3f;
     }

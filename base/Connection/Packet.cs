@@ -2,10 +2,10 @@
 {
     using System;
     using System.IO;
+    using System.IO.Compression;
     using System.Net;
     using System.Text;
     using System.Threading.Tasks;
-    using System.IO.Compression;
 
     /// <summary>
     /// Packet.
@@ -24,18 +24,19 @@
         {
             get
             {
-                return (MethodType)BitConverter.ToInt16(ByteMethodType, 0);
+                return (MethodType)BitConverter.ToInt16(m_byteMethodType, 0);
             }
+
             set
             {
-                ByteMethodType = BitConverter.GetBytes((short)value);
+                m_byteMethodType = BitConverter.GetBytes((short)value);
             }
         }
 
         /// <summary>
         /// The type of the method as byte array.
         /// </summary>
-        private Byte[] ByteMethodType = new byte[2];
+        private byte[] m_byteMethodType = new byte[2];
 
         /// <summary>
         /// Gets the size of the content.
@@ -53,7 +54,7 @@
         /// Gets the size of the content as byte array.
         /// </summary>
         /// <value>The size of the byte content.</value>
-        private Byte[] ByteContentSize
+        private byte[] ByteContentSize
         {
             get
             {
@@ -62,9 +63,10 @@
         }
 
         /// <summary>
-        /// The content as byte array.
+        /// Gets or sets the content of the byte.
         /// </summary>
-        private Byte[] ByteContent
+        /// <value>The content of the byte.</value>
+        private byte[] ByteContent
         {
             get
             {
@@ -79,34 +81,6 @@
         }
 
         /// <summary>
-        /// Gets or sets the content.
-        /// </summary>
-        /// <value>The content.</value>
-        public string Content;
-
-        /// <summary>
-        /// Send this packet at the specified stream.
-        /// </summary>
-        /// <param name="stream">Stream (TCP Socket Stream e.g.).</param>
-        public void Send(Stream stream)
-        {
-            stream.Write(ByteMethodType, 0, ByteMethodType.Length);
-            stream.Write(ByteContentSize, 0, ByteContentSize.Length);
-            stream.Write(ByteContent, 0, ByteContent.Length);
-        }
-
-        /// <summary>
-        /// Send this packet at the specified stream.
-        /// </summary>
-        /// <param name="stream">Stream (TCP Socket Stream e.g.).</param>
-        public async Task SendAsync(Stream stream)
-        {
-            await stream.WriteAsync(ByteMethodType, 0, ByteMethodType.Length);
-            await stream.WriteAsync(ByteContentSize, 0, ByteContentSize.Length);
-            await stream.WriteAsync(ByteContent, 0, ByteContent.Length);
-        }
-
-        /// <summary>
         /// Receives an packet from the specified stream.
         /// </summary>
         /// <param name="stream">Stream (TCP Socket Stream e.g.).</param>
@@ -114,7 +88,7 @@
         public static Packet Receive(Stream stream)
         {
             var packetOut = new Packet();
-            stream.Read(packetOut.ByteMethodType, 0, 2);
+            stream.Read(packetOut.m_byteMethodType, 0, 2);
             byte[] size = new byte[4];
             stream.Read(size, 0, size.Length);
             var buffer = new byte[BitConverter.ToInt32(size, 0)];
@@ -131,13 +105,42 @@
         public static async Task<Packet> ReceiveAsync(Stream stream)
         {
             var packetOut = new Packet();
-            await stream.ReadAsync(packetOut.ByteMethodType, 0, 2);
+            await stream.ReadAsync(packetOut.m_byteMethodType, 0, 2);
             byte[] size = new byte[4];
             await stream.ReadAsync(size, 0, size.Length);
             var buffer = new byte[BitConverter.ToInt32(size, 0)];
             await stream.ReadAsync(buffer, 0, BitConverter.ToInt32(size, 0));
             packetOut.ByteContent = buffer;
             return packetOut;
+        }
+
+        /// <summary>
+        /// Gets or sets the content.
+        /// </summary>
+        /// <value>The content.</value>
+        public string Content;
+
+        /// <summary>
+        /// Send this packet at the specified stream.
+        /// </summary>
+        /// <param name="stream">Stream (TCP Socket Stream e.g.).</param>
+        public void Send(Stream stream)
+        {
+            stream.Write(m_byteMethodType, 0, m_byteMethodType.Length);
+            stream.Write(ByteContentSize, 0, ByteContentSize.Length);
+            stream.Write(ByteContent, 0, ByteContent.Length);
+        }
+
+        /// <summary>
+        /// Send this packet at the specified stream.
+        /// </summary>
+        /// <param name="stream">Stream (TCP Socket Stream e.g.).</param>
+        /// <returns>Async Task.</returns>
+        public async Task SendAsync(Stream stream)
+        {
+            await stream.WriteAsync(m_byteMethodType, 0, m_byteMethodType.Length);
+            await stream.WriteAsync(ByteContentSize, 0, ByteContentSize.Length);
+            await stream.WriteAsync(ByteContent, 0, ByteContent.Length);
         }
 
         /// <summary>

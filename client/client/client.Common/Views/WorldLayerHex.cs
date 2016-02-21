@@ -1,6 +1,4 @@
-﻿
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
     using System;
     using System.Collections.Concurrent;
@@ -20,7 +18,7 @@ namespace Client.Common.Views
     using Microsoft.Xna.Framework;
 
     /// <summary>
-    /// The World layer with hexagonal Tilemaps.
+    /// The World layer with hexagonal Tile map.
     /// </summary>
     public class WorldLayerHex : CCLayer
     {
@@ -50,7 +48,6 @@ namespace Client.Common.Views
             m_geolocationPositionNode = new DrawNode();
             m_touchHandler = new TileTouchHandler(this);
             this.AddChild(m_geolocationPositionNode);
-
         }
 
         /// <summary>
@@ -127,10 +124,10 @@ namespace Client.Common.Views
             }
         }
 
-        public async void RefreshRegionsAsync(float time)
+        public void RefreshRegionsAsync(float time)
         {
             var regions =  m_regionViewHexDic.Keys.ToArray();
-            var task = Manager.EntityManagerController.Instance.LoadEntitiesAsync(regions);
+            Manager.EntityManagerController.Instance.LoadEntitiesAsync(regions);
             UglyDraw();
         }
 
@@ -205,7 +202,6 @@ namespace Client.Common.Views
                     regionBorders.TryGetValue(regionPosition, out borderPositions);
                     this.GetRegionViewHex(regionPosition).DrawBorder(borderPositions, color, owner);
                 }
-
             }
             else
             {
@@ -268,7 +264,6 @@ namespace Client.Common.Views
                 SetWorldPosition(cameraPoint);
             }
         }
-
 
         /// <summary>
         /// Checks the view for position updats.

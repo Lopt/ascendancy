@@ -18,6 +18,12 @@
         /// <param name="defense">Defense value.</param>
         /// <param name="health">Maximum Health.</param>
         /// <param name="moves">Moves per turn.</param>
+        /// <param name="attackRange">Attack range.</param>
+        /// <param name="population">Population.</param>
+        /// <param name="scrapcost">Scrap cost.</param>
+        /// <param name="energycost">Energy cost.</param>
+        /// <param name="plutoniumcost">Plutonium cost.</param>
+        /// <param name="techcost">Tech cost.</param>
         public UnitDefinition(
             EntityType unitType,
             string[] actions,
@@ -117,9 +123,9 @@
         }
 
         /// <summary>
-        /// Gets the scrapecost.
+        /// Gets the scrap cost.
         /// </summary>
-        /// <value>The scrapecost.</value>
+        /// <value>The scrap cost.</value>
         public int Scrapecost
         {
             get;
@@ -127,9 +133,9 @@
         }
 
         /// <summary>
-        /// Gets the energycost.
+        /// Gets the energy cost.
         /// </summary>
-        /// <value>The energycost.</value>
+        /// <value>The energy cost.</value>
         public int Energycost
         {
             get;
@@ -137,9 +143,9 @@
         }
 
         /// <summary>
-        /// Gets the plutoniumcost.
+        /// Gets the plutonium cost.
         /// </summary>
-        /// <value>The plutoniumcost.</value>
+        /// <value>The plutonium cost.</value>
         public int Plutoniumcost
         {
             get;
@@ -147,9 +153,9 @@
         }
 
         /// <summary>
-        /// Gets the techcost.
+        /// Gets the tech cost.
         /// </summary>
-        /// <value>The techcost.</value>
+        /// <value>The tech cost.</value>
         public int Techcost
         {
             get;

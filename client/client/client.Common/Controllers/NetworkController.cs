@@ -164,7 +164,7 @@
                     return entitiesResponse;
                 }
             }
-            catch(Exception error)
+            catch (Exception error)
             {
                 Logging.Error(error.StackTrace);
                 Logging.Error(error.Message);
@@ -191,7 +191,6 @@
             {
                 return true;
             }
-
 
             return false;
         }

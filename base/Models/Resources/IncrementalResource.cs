@@ -3,7 +3,8 @@
     using System;
 
     /// <summary>
-    /// Incremental resource.
+    /// An Class for all Resources which values increments over time. 
+    /// It can be calculated by the when the value was set; the current time and the increment over time.
     /// </summary>
     public class IncrementalResource
     {
@@ -35,6 +36,7 @@
         /// <summary>
         /// Set the specified value and increments.
         /// </summary>
+        /// <param name="actionTime">Time when the value or increment was set</param> 
         /// <param name="value">Value of the resource.</param>
         /// <param name="increments">Increment value of the resource.</param>
         public void Set(DateTime actionTime, double value, double increments)
@@ -43,7 +45,6 @@
             m_realValue = value;
             Increments += increments;
         }
-
 
         /// <summary>
         /// Gets the last state.
@@ -78,24 +79,26 @@
         /// <summary>
         /// Gets the value.
         /// </summary>
-        /// <value>The value.</value>
+        /// <param name="time">Current server time</param> 
+        /// <returns>The value at the given time</returns>
         public double GetValue(DateTime time)
         {
             var diff = time - LastState;
-            return Math.Min(Math.Max(m_realValue + Increments * diff.TotalSeconds, 0), MaximumValue);
+            return Math.Min(Math.Max(m_realValue + (Increments * diff.TotalSeconds), 0), MaximumValue);
         }
 
         /// <summary>
-        /// Gets the value percent.
+        /// Gets the value (in percent).
         /// </summary>
-        /// <value>The value percent.</value>
+        /// <param name="time">Current server time</param> 
+        /// <returns>The value (in percent) at the given time</returns>
         public double GetValuePercent(DateTime time)
         {
             return GetValue(time) / MaximumValue;
         }
 
         /// <summary>
-        /// The m real value.
+        /// The real value.
         /// </summary>
         private double m_realValue;
     }

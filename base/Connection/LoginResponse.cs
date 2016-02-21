@@ -45,7 +45,7 @@
         public int AccountId;
 
         /// <summary>
-        /// The Server time which is be used to synchronise client and server
+        /// The Server time which is be used to synchronize client and server
         /// </summary>
         public DateTime ServerTime;
     }
