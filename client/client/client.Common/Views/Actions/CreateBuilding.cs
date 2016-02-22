@@ -11,7 +11,7 @@
         /// Initializes a new instance of the <see cref="Client.Common.Views.Actions.CreateBuilding"/> class.
         /// </summary>
         /// <param name="model">Model of the Building</param>
-        /// <param name="worldLayer">World layer.</param>
+        /// <param name="regionViewHex">World layer.</param>
         public CreateBuilding(Core.Models.ModelEntity model, RegionViewHex regionViewHex)
             : base(model)
         {

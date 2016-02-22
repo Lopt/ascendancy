@@ -43,10 +43,8 @@
                 var entity = region.GetEntity(position.CellPosition);
                 var regionV = (RegionViewHex)region.View;
                 regionV.DrawUnit(entity);
-                //WorldLayer.UglyDraw();
             }
             return true;
         }
-
     }
 }

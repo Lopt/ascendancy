@@ -52,6 +52,11 @@
             RegionY = (int)obj.SelectToken("RegionY");
         }
 
+        /// <summary>
+        /// Adds one region position to another region position
+        /// </summary>
+        /// <param name="first">First region position.</param>
+        /// <param name="second">Second region position.</param>
         public static RegionPosition operator +(RegionPosition first, RegionPosition second)
         {
             return new RegionPosition(first.RegionX + second.RegionX, first.RegionY + second.RegionY);

@@ -33,22 +33,22 @@
         public const string UNITS = "units";
 
         /// <summary>
-        /// The scrap png.
+        /// The scrap PNG.
         /// </summary>
         public const string SCRAP = "Scrap";
 
         /// <summary>
-        /// The plutonium png.
+        /// The plutonium PNG.
         /// </summary>
         public const string PLUTONIUM = "Plutonium";
 
         /// <summary>
-        /// The population png.
+        /// The population PNG.
         /// </summary>
         public const string POPULATION = "Population";
 
         /// <summary>
-        /// The technology png.
+        /// The technology PNG.
         /// </summary>
         public const string TECHNOLOGY = "Tech";
 
@@ -78,7 +78,7 @@
         public const string DATA_SERVER = "http://derfalke.no-ip.biz";
 
         /// <summary>
-        /// The path to the game world datas.
+        /// The path to the game world data.
         /// </summary>
         public const string ASCENDANCY_WORLD_PATH = "/ascendancy-world/world/";
 
@@ -210,7 +210,7 @@
         public const float TILEMAP_MAX_ZOOM = 8.0f;
 
         /// <summary>
-        /// The heigth of the tile map hex content size.
+        /// The height of the tile map hex content size.
         /// </summary>
         public const float TILEMAP_HEX_CONTENTSIZE_HEIGHT = 2304;
 
@@ -218,10 +218,9 @@
         /// The width of the tile map hex content size.
         /// </summary>
         public const float TILEMAP_HEX_CONTENTSIZE_WIDTH = 1998;
-        //1984;
 
         /// <summary>
-        /// The thickness of the terretory building border.
+        /// The thickness of the territory building border.
         /// </summary>
         public const float TERRATORRY_BUILDING_BORDER_SIZE = 10.0f;
 

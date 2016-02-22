@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// State resource.
+    /// An class for all resources which have a state, which only changes by action.
     /// </summary>
     public class StateResource
     {

@@ -50,8 +50,9 @@
         /// </summary>
         /// <param name="position">GameWorld Position.</param>
         public CellPosition(Position position)
-            : this((int) position.X, 
-                (int) position.Y)
+            : this(
+                (int)position.X, 
+                (int)position.Y)
         {
         }
 
@@ -60,8 +61,9 @@
         /// </summary>
         /// <param name="position">GameWorld Integer Position.</param>
         public CellPosition(PositionI position)
-            : this(position.X,
-                    position.Y)
+            : this(
+                position.X,
+                position.Y)
         {
         }
 
@@ -70,7 +72,8 @@
         /// </summary>
         /// <param name="obj">JContainer Object.</param>
         public CellPosition(JContainer obj)
-        :this((int)obj.SelectToken("CellX"),
+        : this(
+            (int)obj.SelectToken("CellX"),
             (int)obj.SelectToken("CellY"))
         {
         }

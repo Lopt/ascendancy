@@ -15,6 +15,8 @@
         /// <param name="buildable">If set to <c>true</c>, it is buildable.</param>
         /// <param name="walkable">If set to <c>true</c> it is walkable.</param>
         /// <param name="travelCost">Travel cost.</param>
+        /// <param name="defenseModifier">Defense modifier.</param>
+        /// <param name="attackModifier">Attack modifier.</param>
         public TerrainDefinition(
             EntityType terrainType,
             int[] resources,

@@ -1,6 +1,4 @@
-﻿using Client.Common.Models;
-
-namespace Client.Common.Manager
+﻿namespace Client.Common.Manager
 {
     using System;
     using System.Collections.Generic;
@@ -9,6 +7,7 @@ namespace Client.Common.Manager
 
     using Client.Common.Controllers;
     using Client.Common.Helper;
+    using Client.Common.Models;
     using Core.Models;
 
     /// <summary>
@@ -48,8 +47,7 @@ namespace Client.Common.Manager
         /// Loads the entities async to the regions around the surrender center region and add the entities to these regions.
         /// </summary>
         /// <returns>The task async.</returns>
-        /// <param name="currentGamePosition">Current game position.</param>
-        /// <param name="centerRegionPosition">Center region position.</param>
+        /// <param name="regionPosition">region position.</param>
         public async Task LoadEntitiesAsync(RegionPosition regionPosition)
         {
             var listRegions = new RegionPosition[1];
@@ -63,8 +61,7 @@ namespace Client.Common.Manager
         /// Also add the loaded actions to the view worker queue.
         /// </summary>
         /// <returns>The task async.</returns>
-        /// <param name="currentGamePosition">Current game position.</param>
-        /// <param name="listRegions">List regions.</param>
+        /// <param name="listRegions">List of all regions which should be loaded.</param>
         public async Task LoadEntitiesAsync(RegionPosition[] listRegions)
         {
             var response = await NetworkController.Instance.LoadEntitiesAsync(Geolocation.Instance.CurrentGamePosition, listRegions);
@@ -128,6 +125,5 @@ namespace Client.Common.Manager
         /// The entities.
         /// </summary>
         private Dictionary<int, Entity> m_entities;
-
     }
 }

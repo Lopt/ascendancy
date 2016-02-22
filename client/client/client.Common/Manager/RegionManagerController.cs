@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace Client.Common.Manager
+﻿namespace Client.Common.Manager
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Client.Common.Controllers;
     using Client.Common.Helper;

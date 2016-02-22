@@ -315,8 +315,6 @@
         /// GID for tiles where the building EnemyFactory is placed.
         /// </summary>
         public const short FACTORY = ClientConstants.ENEMY_GIDS + 12;
-
-
     }
 
     /// <summary>

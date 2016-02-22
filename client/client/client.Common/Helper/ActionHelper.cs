@@ -29,6 +29,7 @@
         /// <returns>The entity create action.</returns>
         /// <param name="positionI">Position where the entity should be created.</param>
         /// <param name="definition">Definition which entity should be created.</param>
+        /// <param name="account">Which account creates the action.</param>
         public static Core.Models.Action CreateEntity(PositionI positionI, Core.Models.Definitions.Definition definition, Account account)
         {
             switch (definition.Category)
@@ -59,6 +60,7 @@
         /// <returns>The create unit action.</returns>
         /// <param name="positionI">Position where the unit should be created.</param>
         /// <param name="definition">Definition which unit should be created.</param>
+        /// <param name="account">Which account creates the action.</param>
         private static Core.Models.Action CreateUnit(PositionI positionI, Definition definition, Account account)
         {
             var dictParam = new System.Collections.Generic.Dictionary<string, object>();
@@ -68,12 +70,12 @@
         }
 
         /// <summary>
-        /// Creats the action which creates a territory building.
+        /// Creates the action which creates a territory building.
         /// </summary>
         /// <returns>The territory building.</returns>
-        /// <param name="positionI">Position i.</param>
-        /// <param name="definition">Definition.</param>
-        /// <param name="account">Account.</param>
+        /// <param name="positionI">Position where the building should be created.</param>
+        /// <param name="definition">Definition which building should be created.</param>
+        /// <param name="account">Which account creates the action.</param>
         private static Core.Models.Action CreatTerritoryBuilding(PositionI positionI, Definition definition, Account account)
         {
             var dictParam = new System.Collections.Generic.Dictionary<string, object>();
@@ -86,8 +88,9 @@
         /// Creates the action which creates the building.
         /// </summary>
         /// <returns>The create building action.</returns>
-        /// <param name="positionI">Position where the unit should be created.</param>
-        /// <param name="definition">Definition which unit should be created.</param>
+        /// <param name="positionI">Position where the building should be created.</param>
+        /// <param name="definition">Definition which building should be created.</param>
+        /// <param name="account">Which account creates the action.</param>
         private static Core.Models.Action CreateBuilding(PositionI positionI, Definition definition, Account account)
         {
             var dictParam = new System.Collections.Generic.Dictionary<string, object>();
@@ -95,6 +98,5 @@
             dictParam[Core.Controllers.Actions.CreateBuilding.CREATION_TYPE] = (long)definition.SubType;
             return new Core.Models.Action(account, Core.Models.Action.ActionType.CreateBuilding, dictParam, GameAppDelegate.ServerTime);
         }
-
     }
 }

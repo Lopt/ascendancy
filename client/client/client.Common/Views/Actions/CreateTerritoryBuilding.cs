@@ -1,8 +1,7 @@
-﻿using Core.Models;
-
-namespace Client.Common.Views.Actions
+﻿namespace Client.Common.Views.Actions
 {
     using System;
+    using Core.Models;
 
     /// <summary>
     /// Create a building.
@@ -48,12 +47,14 @@ namespace Client.Common.Views.Actions
             return true;
         }
 
-
+        /// <summary>
+        /// Gets the world layer hex.
+        /// </summary>
+        /// <value>The world layer hex.</value>
         public WorldLayerHex WorldLayerHex
         {
             get;
             private set;
         }
-
     }
 }

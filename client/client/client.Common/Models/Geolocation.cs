@@ -1,10 +1,9 @@
-﻿using Core.Models;
-
-namespace Client.Common.Models
+﻿namespace Client.Common.Models
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Core.Models;
     using SQLite;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
@@ -13,7 +12,7 @@ namespace Client.Common.Models
     using XLabs.Platform.Services.Geolocation;
 
     /// <summary>
-    /// The Geolocation as a singleton class for geolocation information.
+    /// The Geo location as a singleton class for geo location information.
     /// </summary>
     [Table("Geolocation")]
     public sealed class Geolocation
@@ -46,7 +45,7 @@ namespace Client.Common.Models
         }
 
         /// <summary>
-        /// The Sinleton Instance.
+        /// The Singleton Instance.
         /// </summary>
         private static readonly Lazy<Geolocation> Singleton =
             new Lazy<Geolocation>(() => new Geolocation());
@@ -56,15 +55,14 @@ namespace Client.Common.Models
         #region Devicegeolocator
 
         /// <summary>
-        /// The m_geolocator.
+        /// The geo locator.
         /// </summary>
         private readonly IGeolocator m_geolocator = null;
 
-
         /// <summary>
-        /// Gets a value indicating whether this instance is geolocation available.
+        /// Gets a value indicating whether this instance is geo location available.
         /// </summary>
-        /// <value><c>true</c> if this instance is geolocation available; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if this instance is geo location available; otherwise, <c>false</c>.</value>
         public bool IsGeolocationAvailable
         { 
             get
@@ -74,9 +72,9 @@ namespace Client.Common.Models
         }
 
         /// <summary>
-        /// Gets a value indicating whether this instance is geolocation enabled.
+        /// Gets a value indicating whether this instance is geo location enabled.
         /// </summary>
-        /// <value><c>true</c> if this instance is geolocation enabled; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if this instance is geo location enabled; otherwise, <c>false</c>.</value>
         public bool IsGeolocationEnabled
         { 
             get
@@ -86,9 +84,9 @@ namespace Client.Common.Models
         }
 
         /// <summary>
-        /// Gets a value indicating whether this instance is geolocation listening.
+        /// Gets a value indicating whether this instance is geo location listening.
         /// </summary>
-        /// <value><c>true</c> if this instance is geolocation listening; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if this instance is geo location listening; otherwise, <c>false</c>.</value>
         public bool IsGeolocationListening
         { 
             get
@@ -100,7 +98,7 @@ namespace Client.Common.Models
         /// <summary>
         /// Starts the listening.
         /// </summary>
-        /// <param name="minTimeIntervallInMilliSec">Minimum time intervall in milli sec.</param>
+        /// <param name="minTimeIntervallInMilliSec">Minimum time interval in milliseconds.</param>
         /// <param name="minDistance">Minimum distance.</param>
         public void StartListening(uint minTimeIntervallInMilliSec, double minDistance)
         {
@@ -112,7 +110,6 @@ namespace Client.Common.Models
             {
                 var text = ex.Message;
             }
-
         }
 
         /// <summary>
@@ -128,14 +125,33 @@ namespace Client.Common.Models
             {
                 var text = ex.Message;
             }
+        }
 
+        /// <summary>
+        /// Gets the position async.
+        /// </summary>
+        /// <returns>The position async.</returns>
+        public async Task<Core.Models.Position> GetPositionAsync()
+        {
+            Core.Models.Position position = null;
+            try
+            {
+                var latlon = await m_geolocator.GetPositionAsync(Client.Common.Constants.ClientConstants.GPS_GET_POSITION_TIMEOUT);
+                position = new Core.Models.Position(latlon.Latitude, latlon.Longitude);
+            }
+            catch (Exception ex)
+            {
+                var text = ex.Message;
+            }
+
+            return position;
         }
 
         /// <summary>
         /// Raises the position changed event.
         /// </summary>
         /// <param name="sender">Sender is the event source.</param>
-        /// <param name="e">E the event data. If there is no event data, this parameter will be null.</param>
+        /// <param name="eventPos">E the event data. If there is no event data, this parameter will be null.</param>
         private async void OnPositionChanged(object sender, PositionEventArgs eventPos)
         {
             try
@@ -150,23 +166,6 @@ namespace Client.Common.Models
             {
                 var text = ex.Message;
             }
-
-        }
-
-        public async Task<Core.Models.Position> GetPositionAsync()
-        {
-            Core.Models.Position position = null;
-            try
-            {
-                var latlon = await m_geolocator.GetPositionAsync(Constants.ClientConstants.GPS_GET_POSITION_TIMEOUT);
-                position = new Core.Models.Position(latlon.Latitude, latlon.Longitude);
-            }
-            catch (Exception ex)
-            {
-                var text = ex.Message;
-            }
-
-            return position;
         }
 
         #endregion
@@ -183,6 +182,10 @@ namespace Client.Common.Models
             private set;
         }
 
+        /// <summary>
+        /// Gets the first game position.
+        /// </summary>
+        /// <value>The first game position.</value>
         public Core.Models.Position FirstGamePosition
         {
             get;
