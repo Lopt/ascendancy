@@ -189,7 +189,7 @@
             else
             {                
                 regionStartPos.RemoveEntity(action.ActionTime, entity);
-                regionEndPos.AddEntity(action.ActionTime, entity);   
+                regionEndPos.AddEntity(action.ActionTime, entity);
                 entity.Position = endPosition;
             }
 
