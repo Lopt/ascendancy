@@ -52,6 +52,7 @@
                 var actionC = (Core.Controllers.Actions.Action)Action.Control;
                 var actionV = CreateActionView(Action, actionC.GetRegionPosition());
                 var affectedRegions = actionC.GetAffectedRegions();
+                World.Instance.AccountManager.AddAccount(Action.Account);
                 if (actionC.Possible())
                 {
                     actionV.BeforeDo();
@@ -59,7 +60,8 @@
                 }
                 else
                 {
-                    Action = null;
+                    throw new Exception("This should never happen");
+//                    Action = null;
                 }
             }
             WorldLayerHex.UglyDraw();
