@@ -104,9 +104,9 @@
         }
 
         /// <summary>
-        /// Initialize the specified scene.
+        /// Init the specified sceneLayer.
         /// </summary>
-        /// <param name="scene">the Scene.</param>
+        /// <param name="sceneLayer">The scene layer.</param>
         public void Init(CCLayer sceneLayer)
         {
             m_touchListener = new CCEventListenerTouchAllAtOnce();

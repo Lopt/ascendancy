@@ -151,19 +151,18 @@
             m_enemyEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.BARRACKS));
             m_enemyEntitiesGid.Add(EntityType.Factory, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.FACTORY));
 
-            //Buildings -> Zivil
+            // Buildings -> Zivil
             m_enemyEntitiesGid.Add(EntityType.Tent, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.TENT));
             m_enemyEntitiesGid.Add(EntityType.Hospital, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.HOSPITAL));
             m_enemyEntitiesGid.Add(EntityType.TradingPost, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.TRADINGPOST));
 
-            //Buildings -> Storage
+            // Buildings -> Storage
             m_enemyEntitiesGid.Add(EntityType.Scrapyard, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.SCRAPYARD));
 
-            //Buildings -> Resourcen
+            // Buildings -> Resourcen
             m_enemyEntitiesGid.Add(EntityType.Lab, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.LABORATORY));
             m_enemyEntitiesGid.Add(EntityType.Furnace, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.FURNACE));
             m_enemyEntitiesGid.Add(EntityType.Transformer, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.TRANSFORMER));
-
         }
 
         /// <summary>

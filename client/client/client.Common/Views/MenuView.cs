@@ -1,6 +1,4 @@
-﻿using Xamarin.Forms;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
     using System;
     using System.Collections;
@@ -10,12 +8,16 @@ namespace Client.Common.Views
     using CocosSharp;
     using Core.Models;
     using Core.Models.Definitions;
+    using Xamarin.Forms;
 
     /// <summary>
-    /// Menu view.
+    /// The Menu view.
     /// </summary>
     public class MenuView
     {
+        /// <summary>
+        /// The view menu type.
+        /// </summary>
         public enum MenuType
         {
             Unity,
@@ -28,9 +30,9 @@ namespace Client.Common.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.MenuView"/> class.
         /// </summary>
-        /// <param name="worldlayer">The WorldLayer.</param>
-        /// <param name="center">PositionI where the menu should be drawn.</param>
-        /// <param name="types">Which menu entries should be shown.</param>
+        /// <param name="worldlayer">The worldlayer.</param>
+        /// <param name="center">The menu center position.</param>
+        /// <param name="menuType">The menu type.</param>
         public MenuView(WorldLayerHex worldlayer, PositionI center, MenuType menuType)
         {
             m_center = center;
@@ -288,10 +290,10 @@ namespace Client.Common.Views
         }
 
         /// <summary>
-        /// Gets all extended coordinates for a given needed count.
+        /// Gets the extended coords.
         /// </summary>
-        /// <param name="coord">The pressed Coordinate to know in which direction the menu will expand.</param>
-        /// <param name="count">The count of needed Tiles.</param>
+        /// <param name="coord">The positionI.</param>
+        /// <param name="definitions">The definitions.</param>
         public void GetExtendedCoords(PositionI coord, Core.Models.Definitions.Definition[] definitions)
         {
             var tmpcoord1 = coord;
@@ -309,30 +311,6 @@ namespace Client.Common.Views
             for (var index = 0; index < definitions.Length; ++index)
             {
                 m_extendedMenuPositions[keys[index]] = definitions[index];
-            }
-        }
-
-        /// <summary>
-        /// Set the major menu.
-        /// </summary>
-        /// <param name="majorgids">The GIDs.</param>
-        private void SetMajorMenu(MenuType menuType)
-        {
-            var Gids = new short[6];
-            Gids[5] = Client.Common.Constants.BuildingMenuGid.MILITARY;
-            Gids[0] = Client.Common.Constants.BuildingMenuGid.RESOURCES;
-            Gids[1] = Client.Common.Constants.BuildingMenuGid.STORAGE;
-            Gids[2] = Client.Common.Constants.BuildingMenuGid.CIVIL;
-            Gids[3] = Client.Common.Constants.BuildingMenuGid.BUILDINGPLACEHOLDER;
-            Gids[4] = Client.Common.Constants.BuildingMenuGid.CANCEL;
-
-            var surroundedPos = LogicRules.GetSurroundedFields(m_center);
-            for (var index = 0; index < surroundedPos.Length; ++index)
-            {
-                var pos = surroundedPos[index];
-                var gid = new CCTileGidAndFlags(Gids[index]);
-                m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, gid));
-                m_baseMenuPositions[pos] = gid;
             }
         }
 
@@ -381,23 +359,6 @@ namespace Client.Common.Views
         }
 
         /// <summary>
-        /// Set the extended menu.
-        /// </summary>
-        /// <param name="types">The definition Types.</param>
-        private void SetExtendedMenu(MenuType menuType)
-        {
-            foreach (var pair in m_extendedMenuPositions)
-            {
-                var pos = pair.Key;
-                if (pair.Value != null)
-                {
-                    var gid = ViewDefinitions.Instance.DefinitionToTileGid(pair.Value, ViewDefinitions.Sort.Menu);
-                    m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, gid, IsPossibleToCreate(m_center, pair.Value)));
-                }
-            }
-        }
-
-        /// <summary>
         /// Draws the menu for each type.
         /// </summary>
         /// <param name="menuType">Menu type.</param>
@@ -421,26 +382,10 @@ namespace Client.Common.Views
         }
 
         /// <summary>
-        /// Sets the menu.
-        /// </summary>
-        /// <param name="menuType">Menu type.</param>
-        private void SetMenu(MenuType menuType)
-        {
-            var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
-            for (var index = 0; index < surroundedCoords.Length; ++index)
-            {
-                var pos = surroundedCoords[index];
-                var gid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[index], ViewDefinitions.Sort.Menu);
-                m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, gid, IsPossibleToCreate(m_center, m_types[index])));
-                m_extendedMenuPositions[pos] = m_types[index];
-            }
-        }
-
-        /// <summary>
-        /// Gets the selected definition.
+        /// Gets the selected definition on a position.
         /// </summary>
         /// <returns>The selected definition.</returns>
-        /// <param name="coord">Coordinate which was selected.</param>
+        /// <param name="pos">The positionI.</param>
         public Core.Models.Definitions.Definition GetSelectedDefinition(PositionI pos)
         {
             Core.Models.Definitions.Definition def = null;
@@ -449,10 +394,10 @@ namespace Client.Common.Views
         }
 
         /// <summary>
-        /// Gets the selected definition.
+        /// Gets the selected kategory gid on a position.
         /// </summary>
-        /// <returns>The selected definition.</returns>
-        /// <param name="coord">Coordinate which was selected.</param>
+        /// <returns>The selected CCTileGidAndFlags.</returns>
+        /// <param name="pos">The position.</param>
         public CCTileGidAndFlags GetSelectedKategory(PositionI pos)
         {
             CCTileGidAndFlags gid = CCTileGidAndFlags.EmptyTile;
@@ -520,11 +465,68 @@ namespace Client.Common.Views
         }
 
         /// <summary>
+        /// Sets the menu.
+        /// </summary>
+        /// <param name="menuType">Menu type.</param>
+        private void SetMenu(MenuType menuType)
+        {
+            var surroundedCoords = LogicRules.GetSurroundedFields(m_center);
+            for (var index = 0; index < surroundedCoords.Length; ++index)
+            {
+                var pos = surroundedCoords[index];
+                var gid = ViewDefinitions.Instance.DefinitionToTileGid(m_types[index], ViewDefinitions.Sort.Menu);
+                m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, gid, IsPossibleToCreate(m_center, m_types[index])));
+                m_extendedMenuPositions[pos] = m_types[index];
+            }
+        }
+
+        /// <summary>
+        /// Sets the major menu.
+        /// </summary>
+        /// <param name="menuType">The menu type.</param>
+        private void SetMajorMenu(MenuType menuType)
+        {
+            var gids = new short[6];
+            gids[5] = Client.Common.Constants.BuildingMenuGid.MILITARY;
+            gids[0] = Client.Common.Constants.BuildingMenuGid.RESOURCES;
+            gids[1] = Client.Common.Constants.BuildingMenuGid.STORAGE;
+            gids[2] = Client.Common.Constants.BuildingMenuGid.CIVIL;
+            gids[3] = Client.Common.Constants.BuildingMenuGid.BUILDINGPLACEHOLDER;
+            gids[4] = Client.Common.Constants.BuildingMenuGid.CANCEL;
+
+            var surroundedPos = LogicRules.GetSurroundedFields(m_center);
+            for (var index = 0; index < surroundedPos.Length; ++index)
+            {
+                var pos = surroundedPos[index];
+                var gid = new CCTileGidAndFlags(gids[index]);
+                m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, gid));
+                m_baseMenuPositions[pos] = gid;
+            }
+        }
+
+        /// <summary>
+        /// Sets the extended menu.
+        /// </summary>
+        /// <param name="menuType">The menu type.</param>
+        private void SetExtendedMenu(MenuType menuType)
+        {
+            foreach (var pair in m_extendedMenuPositions)
+            {
+                var pos = pair.Key;
+                if (pair.Value != null)
+                {
+                    var gid = ViewDefinitions.Instance.DefinitionToTileGid(pair.Value, ViewDefinitions.Sort.Menu);
+                    m_sprites.Add(pos, m_worldLayer.GetRegionViewHex(pos.RegionPosition).SetMenuTile(pos, gid, IsPossibleToCreate(m_center, pair.Value)));
+                }
+            }
+        }
+
+        /// <summary>
         /// Determines whether this instance is possible to create the specified type on the position.
         /// </summary>
         /// <returns><c>true</c> if this instance is possible to create the specified type on the position; otherwise, <c>false</c>.</returns>
-        /// <param name="positionI">Position i.</param>
-        /// <param name="type">Type.</param>
+        /// <param name="positionI">The position to create.</param>
+        /// <param name="type">The type to create.</param>
         private bool IsPossibleToCreate(PositionI positionI, Core.Models.Definitions.Definition type)
         {
             var action = ActionHelper.CreateEntity(positionI, type, GameAppDelegate.Account);
@@ -561,6 +563,5 @@ namespace Client.Common.Views
         /// The base menu positions.
         /// </summary>
         private Dictionary<PositionI, CCTileGidAndFlags> m_baseMenuPositions;
-
     }
 }
