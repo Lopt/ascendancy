@@ -110,7 +110,7 @@
         /// <summary>
         /// Dos the action.
         /// </summary>
-        /// <param name="action">Action.</param>
+        /// <param name="action">The action.</param>
         public void DoAction(Core.Models.Action action)
         {
             if (Cheats.OFFLINE_MODE)
@@ -119,14 +119,18 @@
             }
             else
             {
-                Controllers.NetworkController.Instance.DoActionsAsync(Models.Geolocation.Instance.CurrentGamePosition, new Core.Models.Action[] {action});
+                Controllers.NetworkController.Instance.DoActionsAsync(Models.Geolocation.Instance.CurrentGamePosition, new Core.Models.Action[] { action });
                 ScheduleOnce(RefreshRegionsAsync, 0.3f);
             }
         }
 
+        /// <summary>
+        /// Refreshs the regions async.
+        /// </summary>
+        /// <param name="time">The time.</param>
         public void RefreshRegionsAsync(float time)
         {
-            var regions =  m_regionViewHexDic.Keys.ToArray();
+            var regions = m_regionViewHexDic.Keys.ToArray();
             Manager.EntityManagerController.Instance.LoadEntitiesAsync(regions);
             UglyDraw();
         }
@@ -134,7 +138,7 @@
         /// <summary>
         /// Draws the borders.
         /// </summary>
-        /// <param name="entity">Entity.</param>
+        /// <param name="owner">The owner.</param>
         public void DrawBorders(Account owner)
         {
             // alle Gebäude des entity owners
@@ -173,14 +177,12 @@
                 var regionBorders = new Dictionary<RegionPosition, HashSet<PositionI>>();
                 foreach (var pos in surroundedPositionsAll)
                 {
-                    var posOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(pos.RegionPosition).
-                        GetClaimedTerritory(pos);
+                    var posOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(pos.RegionPosition).GetClaimedTerritory(pos);
 
                     var surroundedFields = LogicRules.GetSurroundedFields(pos);
                     foreach (var field in surroundedFields)
                     {
-                        var fieldOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(field.RegionPosition).
-                            GetClaimedTerritory(field);
+                        var fieldOwner = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(field.RegionPosition).GetClaimedTerritory(field);
                         if (posOwner != fieldOwner)
                         {
                             if (!regionBorders.ContainsKey(pos.RegionPosition))
@@ -239,10 +241,7 @@
             var cameraWidth = m_gameScene.VisibleBoundsScreenspace.MaxX;
             var cameraHeight = m_gameScene.VisibleBoundsScreenspace.MaxY; 
 
-            this.Camera = new CCCamera(CCCameraProjection.Projection2D, 
-                new CCRect(cameraTargetPoint.X, cameraTargetPoint.Y,
-                    cameraWidth,
-                    cameraHeight));
+            this.Camera = new CCCamera(CCCameraProjection.Projection2D, new CCRect(cameraTargetPoint.X, cameraTargetPoint.Y, cameraWidth, cameraHeight));
         }
 
         /// <summary>
@@ -256,7 +255,11 @@
             this.Camera.CenterInWorldspace = newCameraPoint;
         }
 
-        void CheckGPS(float elapsedTime)
+        /// <summary>
+        /// Checks the GPS.
+        /// </summary>
+        /// <param name="elapsedTime">Elapsed time.</param>
+        private void CheckGPS(float elapsedTime)
         {
             if (ViewMode == ViewModes.CurrentGPSPosition)
             {
@@ -285,7 +288,7 @@
         /// <summary>
         /// Loads the region views.
         /// </summary>
-        /// <param name="point">Point.</param>
+        /// <param name="point">The point.</param>
         private void LoadRegionViews(CCPoint point)
         {
             var position = PositionHelper.WorldspaceToPosition(point);

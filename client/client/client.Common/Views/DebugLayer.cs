@@ -21,7 +21,7 @@
             Position = VisibleBoundsWorldspace.LowerLeft;
             AnchorPoint = CCPoint.AnchorLowerLeft;
 
-            m_label = new CCLabel ("", "verdana", 12)
+            m_label = new CCLabel(string.Empty, "verdana", 12)
             {
                 Position = VisibleBoundsWorldspace.LowerLeft,
                 Color = CCColor3B.Black,
@@ -43,16 +43,23 @@
 
         #region overide
 
+        /// <summary>
+        /// If the touch is catched return the visbility of this layer.
+        /// </summary>
+        /// <returns><c>true</c> if this layer is visible; otherwise, <c>false</c>.</returns>
+        /// <param name="touches">The touches list.</param>
+        /// <param name="touchEvent">The touch event.</param>
         public bool OnTouchesCatch(List<CCTouch> touches, CCEvent touchEvent)
         {
             return Visible;
         }
 
         /// <summary>
-        /// Raises the touches ended event.
+        /// If the touch is ended return the visbility of this layer and reverse it.
         /// </summary>
-        /// <param name="touches">Touch Positions.</param>
-        /// <param name="touchEvent">Touch event.</param>
+        /// <returns><c>true</c> if this layer is visible; otherwise, <c>false</c>.</returns>
+        /// <param name="touches">The touches list.</param>
+        /// <param name="touchEvent">The touch event.</param>
         public bool OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             if (Visible)

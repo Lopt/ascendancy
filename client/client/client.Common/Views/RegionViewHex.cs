@@ -22,6 +22,9 @@
     /// </summary>
     public class RegionViewHex : ViewEntity
     {
+        /// <summary>
+        /// The layer types.
+        /// </summary>
         public enum LayerTypes
         {
             Terrain,
@@ -32,7 +35,6 @@
             Menu
         }
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.RegionViewHex"/> class.
         /// </summary>
@@ -42,7 +44,6 @@
         {
             var tileMapInfo = new CCTileMapInfo(Common.Constants.ClientConstants.TILEMAP_FILE_HEX);
             m_tileMap = new CCTileMap(tileMapInfo);
-
 
             m_terrainLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_TERRAIN);
             m_buildingLayer = m_tileMap.LayerNamed(ClientConstants.LAYER_BUILDING);
@@ -56,18 +57,27 @@
             m_childs[LayerTypes.Building] = null;
             m_childs[LayerTypes.Unit] = new CCNode();
             m_childs[LayerTypes.Border] = new CCNode();
-            m_childs[LayerTypes.Indicator] = null;//new CCNode();
-            m_childs[LayerTypes.Menu] = null;//new CCNode();
+            m_childs[LayerTypes.Indicator] = null; // new CCNode();
+            m_childs[LayerTypes.Menu] = null; // new CCNode();
 
             Init();
             LoadRegionViewAsync();
         }
 
+        /// <summary>
+        /// Gets the tile map.
+        /// </summary>
+        /// <returns>The tile map.</returns>
         public CCTileMap GetTileMap()
         {
             return m_tileMap;
         }
 
+        /// <summary>
+        /// Gets the layer childrens.
+        /// </summary>
+        /// <returns>The ccnode childrens.</returns>
+        /// <param name="layer">The layer.</param>
         public CCNode GetChildrens(LayerTypes layer)
         {
             return m_childs[layer];
@@ -89,7 +99,7 @@
         /// <summary>
         /// Draws the unit.
         /// </summary>
-        /// <param name="unit"> Unit </param>
+        /// <param name="unit">The unit</param>
         public void DrawUnit(Entity unit)
         {
             var regionM = (Region)Model;
@@ -110,13 +120,12 @@
             {
                 m_tileMap.TileLayersContainer.RemoveChild(unitV.Node);
             }
-
         }
 
         /// <summary>
         /// Removes the unit.
         /// </summary>
-        /// <param name="unit">Unit</param>
+        /// <param name="unit">The unit</param>
         public void RemoveUnit(Entity unit)
         {
             var unitV = (UnitView)unit.View;
@@ -127,7 +136,7 @@
         /// <summary>
         /// Removes the building.
         /// </summary>
-        /// <param name="building">Building.</param>
+        /// <param name="building">The building.</param>
         public void RemoveBuilding(Entity building)
         {
             m_buildingLayer.RemoveTile(new CCTileMapCoordinates(building.Position.CellPosition.CellX, building.Position.CellPosition.CellY));
@@ -137,8 +146,8 @@
         /// Sets the menu tile.
         /// </summary>
         /// <returns>The menu tile.</returns>
-        /// <param name="posI">PositionI.</param>
-        /// <param name="gid">Gid.</param>
+        /// <param name="posI">The positionI.</param>
+        /// <param name="gid">The gid.</param>
         /// <param name="isPossible">If set to <c>true</c> is possible.</param>
         public CCSprite SetMenuTile(PositionI posI, CCTileGidAndFlags gid, bool isPossible = true)
         {
@@ -178,8 +187,8 @@
         /// Sets the indicator gid.
         /// </summary>
         /// <returns>The indicator gid.</returns>
-        /// <param name="cellPos">Cell position.</param>
-        /// <param name="gid">Gid.</param>
+        /// <param name="cellPos">The cell position.</param>
+        /// <param name="gid">The gid.</param>
         public CCSprite SetIndicatorGid(CellPosition cellPos, CCTileGidAndFlags gid)
         {            
             m_indicatorLayer.SetTileGID(gid, new CCTileMapCoordinates(cellPos.CellX, cellPos.CellY));
@@ -191,8 +200,9 @@
         /// <summary>
         /// Draws the border.
         /// </summary>
-        /// <param name="borderPositions">Border positions.</param>
-        /// <param name="color">Color.</param>
+        /// <param name="borderPositions">The border positions.</param>
+        /// <param name="color">The border color.</param>
+        /// <param name="owner">The area owner.</param>
         public void DrawBorder(HashSet<PositionI> borderPositions, CCColor4B color, Account owner)
         {
             RemoveBorder(owner);
@@ -218,7 +228,7 @@
         /// <summary>
         /// Removes the border.
         /// </summary>
-        /// <param name="owner">Owner.</param>
+        /// <param name="owner">The area owner.</param>
         public void RemoveBorder(Account owner)
         {
             CCDrawNode border;
@@ -240,11 +250,9 @@
             var regionManagerController = Core.Controllers.Controller.Instance.RegionManagerController as Client.Common.Manager.RegionManagerController;
  
             var taskTerrain = regionManagerController.LoadTerrainAsync(region);
-            //var taskEntities = EntityManagerController.Instance.LoadEntitiesAsync(regionPosition);
-
+            // var taskEntities = EntityManagerController.Instance.LoadEntitiesAsync(regionPosition);
             await taskTerrain;
-            //await taskEntities;
-
+            // await taskEntities;
             SetTilesInMap32();
         }
 
@@ -261,8 +269,6 @@
             m_childs[LayerTypes.Unit].ContentSize = m_childs[LayerTypes.Terrain].ContentSize;
             m_childs[LayerTypes.Unit].AnchorPoint = new CCPoint(0.0f, 1.0f);
             m_childs[LayerTypes.Unit].Camera = m_childs[LayerTypes.Terrain].Camera;
-
-
         }
 
         /// <summary>
@@ -286,11 +292,10 @@
         }
 
         /// <summary>
-        /// Sets the tiles in map 32x32.
+        /// Sets the tiles in a 32x32 map.
         /// </summary>
         private void SetTilesInMap32()
         {
-
             for (int y = 0; y < Constants.REGION_SIZE_Y; y++)
             {
                 for (int x = 0; x < Constants.REGION_SIZE_X; x++)
@@ -365,6 +370,9 @@
         /// </summary>
         private Dictionary<Account, CCDrawNode> m_drawNodes;
 
+        /// <summary>
+        /// The layer ccnode childs.
+        /// </summary>
         private Dictionary<LayerTypes, CCNode> m_childs;
 
         #endregion

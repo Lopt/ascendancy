@@ -1,10 +1,9 @@
-﻿using Client.Common.Models;
-using Client.Common.Manager;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
     using System;
     using System.Threading.Tasks;
+    using Client.Common.Manager;
+    using Client.Common.Models;
     using CocosSharp;
 
     /// <summary>
@@ -79,8 +78,7 @@ namespace Client.Common.Views
 
                 await entityManagerController.LoadUnitDefinitionsAsync();
                 Phase = Phases.EntityTypeLoaded;
-
-
+       
                 // do something in the future
                 Phase = Phases.Done;
             }
