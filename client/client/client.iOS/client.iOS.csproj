@@ -258,6 +258,8 @@
     <BundleResource Include="Content\units\unit_84-enemy.png" />
     <BundleResource Include="Content\units\unit_84-own.plist" />
     <BundleResource Include="Content\units\unit_84-own.png" />
+    <BundleResource Include="Content\tiles\spritesheet2016222.png" />
+    <BundleResource Include="Content\tiles\Worldmap-2016222.tmx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
