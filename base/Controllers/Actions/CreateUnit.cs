@@ -106,6 +106,7 @@
             var action = (Core.Models.Action)Model;
             var positionI = (PositionI)action.Parameters[CREATE_POSITION];
             var type = (long)action.Parameters[CREATION_TYPE];
+            RealCreatePosition = GetFreeField(positionI, regionManagerC);
 
             positionI = RealCreatePosition;
             var region = regionManagerC.GetRegion(positionI.RegionPosition);
@@ -115,12 +116,12 @@
 
             // create the new entity and link to the correct account
             var entity = new Core.Models.Entity(
-                IdGenerator.GetId(),
-                entityDef,  
-                action.Account,
-                positionI,
-                unitHealth,
-                unitMoves);
+                             IdGenerator.GetId(),
+                             entityDef,  
+                             action.Account,
+                             positionI,
+                             unitHealth,
+                             unitMoves);
 
             entity.Position = positionI;
             region.AddEntity(action.ActionTime, entity);
@@ -130,8 +131,7 @@
                 action.Account.Units.AddLast(entity.Position);
                 LogicRules.ConsumeResource(action.Account, action.ActionTime, entityDef);
             }
-
-            return new ConcurrentBag<Core.Models.Region>() { region };
+            return new ConcurrentBag<Core.Models.Region>() { region };           
         }
 
         /// <summary>
