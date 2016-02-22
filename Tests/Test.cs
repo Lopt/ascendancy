@@ -411,7 +411,7 @@ namespace Tests
 
             Assert.IsNotNull(region2);
             Assert.IsInstanceOf<Core.Models.Region>(region2);
-            //Assert.AreEqual(region, region2);
+            Assert.AreEqual(region.RegionPosition, region2.RegionPosition);
 
             //Test with a RegionPosition and an TerrainDefinition as Input
             int[] Res = {0, 0, 0, 0 ,0};
