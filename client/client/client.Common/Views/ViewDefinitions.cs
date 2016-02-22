@@ -146,7 +146,7 @@
             // Buildings -> Military
             m_enemyEntitiesGid.Add(EntityType.Headquarter, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.HEADQUARTER));
             //TODO: create enemy tiles
-            //m_enemyEntitiesGid.Add(EntityType.Attachment, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.WALL));
+            m_enemyEntitiesGid.Add(EntityType.Attachment, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.WALL));
             m_enemyEntitiesGid.Add(EntityType.GuardTower, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.TOWER1));
             m_enemyEntitiesGid.Add(EntityType.Barracks, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.BARRACKS));
             m_enemyEntitiesGid.Add(EntityType.Factory, new CCTileGidAndFlags(Common.Constants.EnemyBuildingGid.FACTORY));

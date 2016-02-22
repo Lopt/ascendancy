@@ -34,9 +34,9 @@
 
             m_enemyEntity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(endPosition.RegionPosition).GetEntity(endPosition.CellPosition);
             m_entity = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(startPosition.RegionPosition).GetEntity(startPosition.CellPosition);
+          
             m_path = actionC.Path;
             m_path.Insert(0, startPosition);
-
             var entityView = (UnitView)m_entity.View;
         }
 
