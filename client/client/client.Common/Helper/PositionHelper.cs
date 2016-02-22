@@ -62,8 +62,8 @@
                                  ClientConstants.TILEMAP_HEX_CONTENTSIZE_WIDTH,
                                  ClientConstants.TILEMAP_HEX_CONTENTSIZE_HEIGHT);
             var tilePercent = new CCPoint(
-                                  (float)cell.CellX / Core.Models.Constants.REGION_SIZE_X,
-                                  Core.Models.Constants.REGION_SIZE_Y - (float)cell.CellY) / Core.Models.Constants.REGION_SIZE_Y;
+                (float)cell.CellX / Core.Models.Constants.REGION_SIZE_X,
+                (Core.Models.Constants.REGION_SIZE_Y - (float)cell.CellY) / Core.Models.Constants.REGION_SIZE_Y);
 
             var tileCoord = tilePercent * regionSize;
             // if it is an odd tile, it is an half tile below the even tiles
