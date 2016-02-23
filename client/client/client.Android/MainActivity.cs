@@ -55,7 +55,7 @@
 
             var application = new CCApplication();
             application.ApplicationDelegate = new GameAppDelegate();
-            SetContentView(application.AndroidContentView);
+            this.SetContentView(application.AndroidContentView);
             application.StartGame();
         }
 
@@ -70,7 +70,7 @@
                 .Register<IAccelerometer>(t => t.Resolve<IDevice>().Accelerometer)
                 .Register<IDisplay>(t => t.Resolve<IDevice>().Display)
                 .Register<INetwork>(t => t.Resolve<IDevice>().Network)
-                .Register<IGeolocator,Geolocator>()
+                .Register<IGeolocator, Geolocator>()
                 .Register<IDependencyContainer>(resolverContainer);
             
             Resolver.SetResolver(resolverContainer.GetResolver());

@@ -1,4 +1,4 @@
-﻿namespace Client.iOS
+﻿namespace Client.IOS
 {
     using System;
     using Client.Common;
@@ -30,6 +30,15 @@
         // You have 17 seconds to return from this method, or iOS will terminate your application.
 
         /// <summary>
+        /// The entry point of the program, where the program control starts and ends.
+        /// </summary>
+        /// <param name="args">The command-line arguments.</param>
+        public static void Main(string[] args)
+        {
+            UIApplication.Main(args, null, "GameAppDelegate");
+        }
+
+        /// <summary>
         /// When Finished the launching.
         /// </summary>
         /// <param name="app">The App.</param>
@@ -39,6 +48,7 @@
             {
                 this.SetIoc();
             }
+
             // aktivating Xamarin.Forms
             global::Xamarin.Forms.Forms.Init();
 
@@ -52,15 +62,6 @@
         }
 
         /// <summary>
-        /// The entry point of the program, where the program control starts and ends.
-        /// </summary>
-        /// <param name="args">The command-line arguments.</param>
-        public static void Main(string[] args)
-        {
-            UIApplication.Main(args, null, "GameAppDelegate");
-        }
-
-        /// <summary>
         /// Sets the io container.
         /// </summary>
         private void SetIoc()
@@ -71,7 +72,7 @@
                 .Register<IAccelerometer>(t => t.Resolve<IDevice>().Accelerometer)
                 .Register<IDisplay>(t => t.Resolve<IDevice>().Display)
                 .Register<INetwork>(t => t.Resolve<IDevice>().Network)
-                .Register<IGeolocator,Geolocator>()
+                .Register<IGeolocator, Geolocator>()
                 .Register<IDependencyContainer>(resolverContainer);
 
             Resolver.SetResolver(resolverContainer.GetResolver());

@@ -1,6 +1,9 @@
 namespace Tests
 {
+    using System.Net.Sockets;
     using Core.Models;
+    using Core.Connection;
+    using Newtonsoft.Json;
     using NUnit.Framework;
 
     /// <summary>
@@ -111,9 +114,51 @@ namespace Tests
             Assert.AreEqual(positions.Count, 91);
         }
 
+        /// <summary>
+        /// Tests the enabling and diabling of buildoptions
+        /// </summary>
         [Test]
-        public void Storage()
+        public void BuildOptions()
         {
+            var testLoginRequest = new Core.Connections.LoginRequest(
+                new Core.Models.Position(new LatLon(50.97695325, 11.02396488)),
+                "Maria",
+                "Musterfrau");
+            var testJson = JsonConvert.SerializeObject(testLoginRequest);
+
+            var testPackage = new Packet();
+
+            testPackage.Content = testJson;
+            testPackage.MethodType = MethodType.Login;
+
+            var client = new TcpClient();
+            client.Connect(
+                Client.Common.Constants.ClientConstants.TCP_SERVER,
+                Client.Common.Constants.ClientConstants.TCP_PORT);
+            
+            var testStream = client.GetStream();
+
+            testPackage.Send(testStream);
+
+            var testPackageIn = Packet.Receive(testStream);
+
+            client.Close();
+
+            var data = JsonConvert.DeserializeObject<Core.Connections.LoginResponse>(testPackageIn.Content);
+
+            var acc = new Account(data.AccountId);
+
+            Assert.IsNotNull(acc.BuildableBuildings);
+            var buildOpt = acc.BuildableBuildings;
+
+            LogicRules.EnableBuildOptions((long)Core.Models.Definitions.EntityType.Headquarter, acc);
+
+            Assert.AreNotEqual(buildOpt, acc.BuildableBuildings);
+            Assert.Contains((long)Core.Models.Definitions.EntityType.Headquarter, (System.Collections.ICollection)acc.BuildableBuildings);
+
+            LogicRules.DisableBuildOptions((long)Core.Models.Definitions.EntityType.Headquarter, acc);
+
+            Assert.AreEqual(buildOpt, acc.BuildableBuildings);
         }
     }
 }

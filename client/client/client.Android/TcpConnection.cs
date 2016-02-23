@@ -26,7 +26,9 @@
         public override async Task<string> SendAsync(Core.Connection.MethodType methodType, string json)
         {
             var client = new TcpClient();
-             // decomment for debugging purpose
+
+            // decomment for debugging purpose
+
             /*try
             {
                 client.Connect(
@@ -37,9 +39,9 @@
             {
                 client.Connect(
                     Common.Constants.ClientConstants.TCP_SERVER,
-                    Common.Constants.ClientConstants.TCP_PORT); 
-                    
-             }
+                    Common.Constants.ClientConstants.TCP_PORT);                     
+            }
+
             var stream = client.GetStream();
 
             var packetOut = new Core.Connection.Packet();

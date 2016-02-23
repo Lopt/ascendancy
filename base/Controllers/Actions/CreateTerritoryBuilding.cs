@@ -22,7 +22,7 @@
         public const string CREATION_TYPE = "CreateBuilding";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Core.Controllers.Actions.CreateBuilding"/> class.
+        /// Initializes a new instance of the <see cref="Core.Controllers.Actions.CreateTerritoryBuilding"/> class.
         /// </summary>
         /// <param name="model">action model.</param>
         public CreateTerritoryBuilding(Core.Models.ModelEntity model)
@@ -88,9 +88,9 @@
                 }
 
                 if (!action.Account.TerritoryBuildings.ContainsValue((long)Core.Models.Definitions.EntityType.Headquarter) &&
-                m_type.SubType == Models.Definitions.EntityType.Headquarter &&
-                region.GetEntity(entityCellPostion) == null &&
-                region.GetClaimedTerritory(entityPosition) == null)
+                    m_type.SubType == Models.Definitions.EntityType.Headquarter &&
+                    region.GetEntity(entityCellPostion) == null &&
+                    region.GetClaimedTerritory(entityPosition) == null)
                 {
                     // terrain check
                     var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
@@ -111,8 +111,8 @@
                     }
                 }
                 else if (region.GetEntity(entityCellPostion) == null &&
-                     m_type.SubType != Models.Definitions.EntityType.Headquarter &&
-                     region.GetClaimedTerritory(entityPosition) == account)
+                         m_type.SubType != Models.Definitions.EntityType.Headquarter &&
+                         region.GetClaimedTerritory(entityPosition) == account)
                 {
                     // check for free tile and the terrain is possesed from the current player
                     var td = (TerrainDefinition)region.GetTerrain(entityCellPostion);
@@ -123,7 +123,7 @@
                     {
                         var tile = region.GetClaimedTerritory(position);
                         if (tile != account &&
-                        tile != null)
+                            tile != null)
                         { 
                             territoryFlag = false;
                         }
@@ -155,12 +155,12 @@
 
             // create the new entity and link to the correct account
             var entity = new Core.Models.Entity(
-                IdGenerator.GetId(),               
-                entityDef,  
-                action.Account,
-                entityPosition,
-                entityHealth,
-                entityMoves);
+                             IdGenerator.GetId(),               
+                             entityDef,  
+                             action.Account,
+                             entityPosition,
+                             entityHealth,
+                             entityMoves);
 
             entity.Position = entityPosition;
             region.AddEntity(action.ActionTime, entity);
@@ -285,8 +285,14 @@
             return list;
         }
 
+        /// <summary>
+        /// The type of the definition.
+        /// </summary>
         private Definition m_type;
 
+        /// <summary>
+        /// The draw area value.
+        /// </summary>
         private int m_drawArea;
     }
 }
