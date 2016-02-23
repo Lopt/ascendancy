@@ -1,11 +1,10 @@
-﻿
-namespace Client.Common.Views.Effects
+﻿namespace Client.Common.Views.Effects
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using CocosSharp;
     using Core.Models;
-    using System.Collections;
 
     /// <summary>
     /// Indicator view.
@@ -30,8 +29,7 @@ namespace Client.Common.Views.Effects
         }
 
         /// <summary>
-        /// Releases unmanaged resources and performs other cleanup operations before the
-        /// <see cref="Client.Common.Views.Effects.IndicatorView"/> is reclaimed by garbage collection.
+        /// Finalizes an instance of the <see cref="IndicatorView"/> class.
         /// </summary>
         ~IndicatorView()
         {
@@ -60,6 +58,11 @@ namespace Client.Common.Views.Effects
             AddSprites(gid);
         }
 
+        /// <summary>
+        /// Shows the building indicator.
+        /// </summary>
+        /// <param name="coord">The positionI.</param>
+        /// <param name="area">The ownership of the area.</param>
         public void ShowBuildingIndicator(PositionI coord, TileTouchHandler.Area area)
         {
             var gid = new CCTileGidAndFlags(Client.Common.Constants.HelperSpritesGid.GREENINDICATOR);
@@ -101,6 +104,10 @@ namespace Client.Common.Views.Effects
             m_sprites.Clear();
         }
 
+        /// <summary>
+        /// Adds the sprites to the region view.
+        /// </summary>
+        /// <param name="gid">The Gid.</param>
         private void AddSprites(CCTileGidAndFlags gid)
         {
             foreach (var tile in m_surroundedPositions)
