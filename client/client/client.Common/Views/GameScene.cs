@@ -1,9 +1,8 @@
-﻿using Client.Common.Helper;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
     using System;
     using System.Collections.Generic;
+    using Client.Common.Helper;
     using Client.Common.Models;
     using CocosSharp;
     using Core.Models;
@@ -13,8 +12,6 @@ namespace Client.Common.Views
     /// </summary>
     public class GameScene : CCScene
     {
-
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.GameScene"/> class.
         /// </summary>
@@ -34,9 +31,7 @@ namespace Client.Common.Views
             AddChild(WorldLayerHex);
             AddChild(HUD);
             AddChild(DebugLayer);
-
-        } 
-
+        }
 
         #region Properties
 
@@ -54,7 +49,6 @@ namespace Client.Common.Views
         /// The HUD with all player output information.
         /// </summary>
         public HUD.HUDLayer HUD;
-
 
         #endregion
     }

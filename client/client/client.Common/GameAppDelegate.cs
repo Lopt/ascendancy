@@ -38,17 +38,22 @@
         /// (if you want to build something... the server has more resources then your client, bescause he is a few millisecondsa ahead)
         /// </summary>
         /// <value>The server time.</value>
-        private static TimeSpan SeverTimeDifference;
+        private static TimeSpan severTimeDifference;
 
+        /// <summary>
+        /// Gets or sets the server time.
+        /// </summary>
+        /// <value>The server time.</value>
         public static DateTime ServerTime
         {
             get
             {
-                return DateTime.Now - SeverTimeDifference;
+                return DateTime.Now - severTimeDifference;
             }
+
             set
             {
-                SeverTimeDifference = DateTime.Now - value;
+                severTimeDifference = DateTime.Now - value;
             }
         }
 
@@ -108,7 +113,7 @@
                 application.ContentSearchPaths.Add(Constants.ClientConstants.IMAGES_LD);
             }
 
-             SceneStartAsync(); // .RunSynchronously();
+            SceneStartAsync(); // .RunSynchronously();
         }
 
         /// <summary>
@@ -156,7 +161,7 @@
             Phase = Phases.StartScene;
             m_window.RunWithScene(m_currentScene);
 
-            Account = await((StartScene)m_currentScene).InitLoadingAsync();
+            Account = await ((StartScene)m_currentScene).InitLoadingAsync();
 
             m_currentScene = new GameScene(m_window);
             Phase = Phases.GameScene;

@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Concurrent;
-
     using Core.Models;
 
     /// <summary>
@@ -20,15 +19,6 @@
             {
                 return Singleton.Value;
             }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Client.Common.Views.Worker"/> class.
-        /// </summary>
-        /// <param name="worldLayerHex">World layer hex.</param>
-        private Worker()
-        {
-            Queue = new ConcurrentQueue<Core.Models.Action>();
         }
 
         /// <summary>
@@ -60,10 +50,20 @@
         }
 
         /// <summary>
-        /// Creates the action view, depending on the action.
+        /// Init the specified worldLayer.
+        /// </summary>
+        /// <param name="worldLayer">World layer.</param>
+        public void Init(WorldLayerHex worldLayer)
+        {
+            WorldLayerHex = worldLayer;
+        }
+
+        /// <summary>
+        /// Creates the action view.
         /// </summary>
         /// <returns>The action view.</returns>
-        /// <param name="action">Action without action view.</param>
+        /// <param name="action">The action.</param>
+        /// <param name="regionPosition">The regionposition.</param>
         private Client.Common.Views.Actions.Action CreateActionView(Core.Models.Action action, RegionPosition regionPosition)
         {
             switch (action.Type)
@@ -83,9 +83,12 @@
             return new Client.Common.Views.Actions.Action(action);
         }
 
-        public void Init(WorldLayerHex worldLayer)
+        /// <summary>
+        /// Prevents a default instance of the <see cref="Client.Common.Views.Worker"/> class from being created.
+        /// </summary>
+        private Worker()
         {
-            WorldLayerHex = worldLayer;
+            Queue = new ConcurrentQueue<Core.Models.Action>();
         }
 
         /// <summary>
@@ -108,6 +111,5 @@
         /// </summary>
         private static readonly Lazy<Worker> Singleton =
             new Lazy<Worker>(() => new Worker());
-     
     }
 }

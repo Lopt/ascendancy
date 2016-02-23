@@ -1,7 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
     using System;
     using System.Collections;
@@ -13,6 +10,8 @@ namespace Client.Common.Views
     using CocosSharp;
     using Core.Models;
     using Core.Models.Definitions;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     /// <summary>
     /// Touch handler.
@@ -34,6 +33,9 @@ namespace Client.Common.Views
             Area
         }
 
+        /// <summary>
+        /// The ownership area.
+        /// </summary>
         public enum Area
         {
             Movement,
@@ -85,7 +87,7 @@ namespace Client.Common.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.TileTouchHandler"/> class.
         /// </summary>
-        /// <param name="scene">The entire scene.</param>
+        /// <param name="worldLayer">World layer.</param>
         public TileTouchHandler(WorldLayerHex worldLayer)
         {
             m_timer = new Stopwatch();
@@ -96,7 +98,6 @@ namespace Client.Common.Views
             TouchHandler.Instance.ListenBegan(m_worldLayer, OnTouchesBegan);
             TouchHandler.Instance.ListenEnded(m_worldLayer, OnTouchesEnded);
             TouchHandler.Instance.ListenMoved(m_worldLayer, OnTouchesMoved);
-
         }
 
         /// <summary>
@@ -122,12 +123,10 @@ namespace Client.Common.Views
                 (Gesture == TouchGesture.Start ||
                 Gesture == TouchGesture.Move))
             {
-
                 Gesture = TouchGesture.Move;
 
                 m_worldLayer.ViewMode = WorldLayerHex.ViewModes.CameraPosition;
-
-
+               
                 // if there is more than one click (as example at zooming) then take the average for moving
                 CCPoint realLocationOnScreen = CCPoint.Zero;
                 CCPoint realStartLocationOnScreen = CCPoint.Zero;
@@ -226,11 +225,11 @@ namespace Client.Common.Views
                         var gid = m_menuView.GetSelectedKategory(gamePositionI);
                         switch (gid.Gid)
                         {
-                            case(Client.Common.Constants.BuildingMenuGid.MILITARY):
-                            case(Client.Common.Constants.BuildingMenuGid.CIVIL):
-                            case(Client.Common.Constants.BuildingMenuGid.UPGRADE):
-                            case(Client.Common.Constants.BuildingMenuGid.RESOURCES):
-                            case(Client.Common.Constants.BuildingMenuGid.STORAGE):
+                            case Client.Common.Constants.BuildingMenuGid.MILITARY:
+                            case Client.Common.Constants.BuildingMenuGid.CIVIL:
+                            case Client.Common.Constants.BuildingMenuGid.UPGRADE:
+                            case Client.Common.Constants.BuildingMenuGid.RESOURCES:
+                            case Client.Common.Constants.BuildingMenuGid.STORAGE:
                                 m_menuView.ExtendMenu((short)gid.Gid, gamePositionI);
                                 break;
                             default:
@@ -340,7 +339,6 @@ namespace Client.Common.Views
                     }
                     break;
             }
-
             m_worldLayer.UglyDraw();
             return true;
         }

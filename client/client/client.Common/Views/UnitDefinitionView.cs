@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using CocosSharp;
-
-using Client.Common.Helper;
-
-namespace Client.Common.Views
+﻿namespace Client.Common.Views
 {
+    using System;
+    using System.Collections.Generic;
+    using Client.Common.Helper;
+    using CocosSharp;
+
+    /// <summary>
+    /// Unit animation kind.
+    /// </summary>
     public enum UnitAnimation
     {
         None,
@@ -15,9 +17,15 @@ namespace Client.Common.Views
         Walk
     }
 
-
+    /// <summary>
+    /// Unit definition view.
+    /// </summary>
     public class UnitDefinitionView : Core.Views.ViewEntity
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client.Common.Views.UnitDefinitionView"/> class.
+        /// </summary>
+        /// <param name="model">The model.</param>
         public UnitDefinitionView(Core.Models.Definitions.UnitDefinition model)
             : base(model)
         {
@@ -47,7 +55,6 @@ namespace Client.Common.Views
                     m_animations[situation][UnitAnimation.Idle] = new CCAnimate(new CCAnimation(idle, 0.25f));
                     m_animations[situation][UnitAnimation.Fight] = new CCAnimate(new CCAnimation(fight, 0.25f));
                     m_animations[situation][UnitAnimation.Die] = new CCAnimate(new CCAnimation(die, 0.25f));
-
                 }
                 catch (Exception err)
                 {
@@ -57,11 +64,22 @@ namespace Client.Common.Views
             }
         }
 
+        /// <summary>
+        /// Gets the sprite copy.
+        /// </summary>
+        /// <returns>The sprite copy.</returns>
+        /// <param name="diplomacy">The diplomacy.</param>
         public CCSprite GetSpriteCopy(Core.Models.Diplomatic diplomacy)
         {
             return new CCSprite(m_spritesheets[diplomacy].Frames.Find((x) => x.TextureFilename.Contains("default")));
         }
 
+        /// <summary>
+        /// Gets the animate.
+        /// </summary>
+        /// <returns>The animate.</returns>
+        /// <param name="diplomacy">The diplomacy.</param>
+        /// <param name="type">The type.</param>
         public CCAnimate GetAnimate(Core.Models.Diplomatic diplomacy, UnitAnimation type)
         {
             CCAnimate animate = null;
@@ -69,8 +87,14 @@ namespace Client.Common.Views
             return animate;
         }
 
+        /// <summary>
+        /// The spritesheets.
+        /// </summary>
         private Dictionary<Core.Models.Diplomatic, CCSpriteSheet> m_spritesheets;
+
+        /// <summary>
+        /// The animations.
+        /// </summary>
         private Dictionary<Core.Models.Diplomatic, Dictionary<UnitAnimation, CCAnimate>> m_animations;
     }
 }
-

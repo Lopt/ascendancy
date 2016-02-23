@@ -37,7 +37,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
+    <Compile Include="PositionTests.cs" />
+    <Compile Include="ConnectionTests.cs" />
+    <Compile Include="DefinitionsTests.cs" />
+    <Compile Include="LoadHelperTests.cs" />
+    <Compile Include="MapRegion.cs" />
+    <Compile Include="CompressionHelperTests.cs" />
+    <Compile Include="LogicTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
