@@ -12,8 +12,8 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.Actions.MoveUnit"/> class.
         /// </summary>
-        /// <param name="model">The action Model.</param>
-        /// <param name="worldLayer">World layer.</param>
+        /// <param name="model">The action model.</param>
+        /// <param name="worldLayerHex">World layer.</param>
         public MoveUnit(Core.Models.ModelEntity model, WorldLayerHex worldLayerHex)
             : base(model)
         {
@@ -37,7 +37,7 @@
           
             m_path = actionC.Path;
             m_path.Insert(0, startPosition);
-            var entityView = (UnitView)m_entity.View;
+            // var entityView = (UnitView)m_entity.View;
         }
 
         /// <summary>
@@ -146,7 +146,7 @@
             }
             return false;
         }
-            
+
         /// <summary>
         /// Gets the world layer hex.
         /// </summary>
