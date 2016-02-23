@@ -1,8 +1,8 @@
 namespace Tests
 {
     using System;
-    using NUnit.Framework;
     using Core;
+    using NUnit.Framework;
 
     /// <summary>
     /// Definitions tests.

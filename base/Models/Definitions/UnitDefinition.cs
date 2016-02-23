@@ -12,14 +12,13 @@
         /// Initializes a new instance of the <see cref="Core.Models.Definitions.UnitDefinition"/> class.
         /// </summary>
         /// <param name="unitType">Unit type.</param>
-        /// <param name="actions">The actions which can be used by this kind of units.</param>
-        /// <param name="attack">Attack value.</param>
-        /// <param name="attackRange">AttackRange value.</param>
-        /// <param name="defense">Defense value.</param>
-        /// <param name="health">Maximum Health.</param>
-        /// <param name="moves">Moves per turn.</param>
+        /// <param name="actions">Actions which are possible.</param>
+        /// <param name="attack">Attack damage.</param>
+        /// <param name="defense">Defense of the entity.</param>
+        /// <param name="health">Health of the entity.</param>
+        /// <param name="moves">Move range.</param>
         /// <param name="attackRange">Attack range.</param>
-        /// <param name="population">Population.</param>
+        /// <param name="population">Population cost.</param>
         /// <param name="scrapcost">Scrap cost.</param>
         /// <param name="energycost">Energy cost.</param>
         /// <param name="plutoniumcost">Plutonium cost.</param>

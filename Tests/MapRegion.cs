@@ -31,7 +31,7 @@ namespace Tests
 
             // Test with a RegionPosition and an TerrainDefinition as Input
             int[] res = { 0, 0, 0, 0, 0 };
-            var TerDef = new Core.Models.Definitions.TerrainDefinition(Core.Models.Definitions.EntityType.Grassland, res, true, true, 4, 5, 6);
+            var terDef = new Core.Models.Definitions.TerrainDefinition(Core.Models.Definitions.EntityType.Grassland, res, true, true, 4, 5, 6);
             // var region3 = new Region(regionPosition, TerDef);
       }
     }
