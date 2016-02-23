@@ -180,7 +180,6 @@
   </ProjectExtensions>
   <ItemGroup>
     <Folder Include="Models\Resources\" />
-    <Folder Include="Constants\" />
     <Folder Include="Controllers\Actions\AStar_Indicator\" />
   </ItemGroup>
 </Project>
