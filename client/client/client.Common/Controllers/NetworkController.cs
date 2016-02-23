@@ -9,8 +9,8 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using Client.Common.Helper;
     using CocosSharp;
+    using Core.Helper;
     using Core.Models;
     using Core.Models.Definitions;
     using ModernHttpClient;
@@ -205,7 +205,7 @@
             // TODO: doesn't work in IOS 9
             try
             {
-                Helper.Logging.Info("URL load: " + url);
+                Logging.Info("URL load: " + url);
                 var response = await m_client.GetAsync(new Uri(url));
 
                 response.EnsureSuccessStatusCode();
@@ -213,7 +213,7 @@
             }
             catch (Exception exception)
             {
-                Helper.Logging.Error("URL load failed: " + exception.Message);
+                Logging.Error("URL load failed: " + exception.Message);
                 throw exception;
             }
         }

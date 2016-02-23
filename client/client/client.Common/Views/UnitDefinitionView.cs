@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using Client.Common.Helper;
+    using Core.Helper;
     using CocosSharp;
 
     /// <summary>

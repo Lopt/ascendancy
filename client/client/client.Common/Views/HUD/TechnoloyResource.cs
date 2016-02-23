@@ -4,14 +4,16 @@
     using CocosSharp;
 
     /// <summary>
-    /// Scrap resource display. Shows the for the resource "scrap".
+    /// Technology resource display. Shows the node for the resource "technology".
     /// </summary>
     public class TechnologyResource : HUDNode
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Client.Common.Views.HUD.ScrapResource"/> class.
+        /// Initializes a new instance of the <see cref="Client.Common.Views.HUD.TechnologyResource"/> class.
         /// </summary>
-        public TechnologyResource(String fileName, CCColor3B color)
+        /// <param name="fileName">PNG file name.</param>
+        /// <param name="color">Fill color.</param>
+        public TechnologyResource(string fileName, CCColor3B color)
             : base()
         {
             m_background = new Button(
@@ -21,13 +23,11 @@
 
             AddChild(m_background);
             m_background.Sprite.Opacity = 100;
-
             // picture source
             // <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> 
             // from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>    
             // is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 
             // title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-
             m_progress = new CCProgressTimer(fileName);
             m_progress.Color = color;
             m_progress.Type = CCProgressTimerType.Bar;
@@ -101,7 +101,5 @@
         /// The fill of the resource.
         /// </summary>
         private CCProgressTimer m_progress;
-
-
     }
 }

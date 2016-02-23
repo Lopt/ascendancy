@@ -1,6 +1,7 @@
 ﻿namespace Client.Common.Views.Actions
 {
     using System;
+    using Core.Helper;
 
     /// <summary>
     /// Create a unit.
@@ -10,8 +11,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.Actions.CreateUnit"/> class.
         /// </summary>
-        /// <param name="model">Model of the unit.</param>
-        /// <param name="worldLayer">World layer.</param>
+        /// <param name="model">The entity model.</param>
         public CreateUnit(Core.Models.ModelEntity model)
             : base(model)
         {
@@ -22,7 +22,7 @@
         /// </summary>
         public override void BeforeDo()
         {
-            Helper.Logging.Info("CreateUnit Executed");
+            Logging.Info("CreateUnit Executed");
         }
 
         /// <summary>

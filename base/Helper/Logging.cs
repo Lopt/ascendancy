@@ -1,4 +1,4 @@
-﻿namespace Client.Common.Helper
+﻿namespace Core.Helper
 {
     using System;
     using System.Collections.Generic;

@@ -2,17 +2,18 @@
 {
     using System;
     using Core.Models;
+    using Core.Helper;
 
     /// <summary>
-    /// Create a building.
+    /// Create a territory building.
     /// </summary>
     public class CreateTerritoryBuilding : Client.Common.Views.Actions.Action
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Client.Common.Views.Actions.CreateBuilding"/> class.
+        /// Initializes a new instance of the <see cref="Client.Common.Views.Actions.CreateTerritoryBuilding"/> class.
         /// </summary>
-        /// <param name="model">Model of the Building</param>
-        /// <param name="worldLayer">World layer.</param>
+        /// <param name="model">The entity model of the building.</param>
+        /// <param name="worldLayerHex">World layer.</param>
         public CreateTerritoryBuilding(Core.Models.ModelEntity model, WorldLayerHex worldLayerHex)
             : base(model)
         {
@@ -24,7 +25,7 @@
         /// </summary>
         public override void BeforeDo()
         {
-            Helper.Logging.Info("CreateTerritoryBuiding Executed");
+            Logging.Info("CreateTerritoryBuiding Executed");
         }
 
         /// <summary>

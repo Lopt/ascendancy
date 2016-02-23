@@ -1,6 +1,7 @@
 ﻿namespace Client.Common.Views.Actions
 {
     using System;
+    using Core.Helper;
 
     /// <summary>
     /// Create a building.
@@ -23,7 +24,7 @@
         /// </summary>
         public override void BeforeDo()
         {
-            Helper.Logging.Info("CreateBuiding Executed");
+            Logging.Info("CreateBuiding Executed");
         }
 
         /// <summary>

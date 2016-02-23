@@ -11,6 +11,46 @@
     public class RegionPosition : object
     {
         /// <summary>
+        /// Adds one region position to another region position
+        /// </summary>
+        /// <returns>Resulted Position</returns>
+        /// <param name="first">First region position.</param>
+        /// <param name="second">Second region position.</param>
+        public static RegionPosition operator +(RegionPosition first, RegionPosition second)
+        {
+            return new RegionPosition(first.RegionX + second.RegionX, first.RegionY + second.RegionY);
+        }
+
+        /// <summary>Returns weather the positions are equal or not</summary>
+        /// <returns>true if both given positions are equal, otherwise false</returns>
+        /// <param name="first">First Position.</param>
+        /// <param name="second">Second Position.</param>
+        public static bool operator ==(RegionPosition first, RegionPosition second)
+        {
+            if (object.ReferenceEquals(first, second))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)first == null) || ((object)second == null))
+            {
+                return first == second;
+            }
+
+            return first.RegionX == second.RegionX && first.RegionY == second.RegionY;
+        }
+
+        /// <summary>Returns weather the positions are equal or not</summary>
+        /// <returns>true if both given positions are NOT equal, otherwise false</returns>
+        /// <param name="first">First Position.</param>
+        /// <param name="second">Second Position.</param>
+        public static bool operator !=(RegionPosition first, RegionPosition second)
+        {
+            return !(first == second);
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Core.Models.RegionPosition"/> class.
         /// </summary>
         /// <param name="regionX">Region x.</param>
@@ -50,16 +90,6 @@
         {
             RegionX = (int)obj.SelectToken("RegionX");
             RegionY = (int)obj.SelectToken("RegionY");
-        }
-
-        /// <summary>
-        /// Adds one region position to another region position
-        /// </summary>
-        /// <param name="first">First region position.</param>
-        /// <param name="second">Second region position.</param>
-        public static RegionPosition operator +(RegionPosition first, RegionPosition second)
-        {
-            return new RegionPosition(first.RegionX + second.RegionX, first.RegionY + second.RegionY);
         }
 
         /// <summary>
@@ -120,32 +150,10 @@
             return this == regionPosition;
         }
 
-        public static bool operator ==(RegionPosition first, RegionPosition second)
-        {
-            if (System.Object.ReferenceEquals(first, second))
-            {
-                return true;
-            }
-
-            // If one is null, but not both, return false.
-            if (((object)first == null) || ((object)second == null))
-            {
-                return first == second;
-            }
-
-            return (first.RegionX == second.RegionX && first.RegionY == second.RegionY);
-        }
-
-        public static bool operator !=(RegionPosition first, RegionPosition second)
-        {
-            return !(first == second);
-        }
-
         /// <summary>
         /// standard hash function
         /// </summary>
         /// <returns>hash code.</returns>
-        /// <filterpriority>2</filterpriority>
         public override int GetHashCode()
         {
             return (RegionX * 1000000) + RegionY;

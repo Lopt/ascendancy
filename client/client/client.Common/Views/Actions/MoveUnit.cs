@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using Core.Helper;
 
     /// <summary>
     /// Move a unit.
@@ -12,8 +13,8 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Client.Common.Views.Actions.MoveUnit"/> class.
         /// </summary>
-        /// <param name="model">The action Model.</param>
-        /// <param name="worldLayer">World layer.</param>
+        /// <param name="model">The action model.</param>
+        /// <param name="worldLayerHex">World layer.</param>
         public MoveUnit(Core.Models.ModelEntity model, WorldLayerHex worldLayerHex)
             : base(model)
         {
@@ -25,7 +26,7 @@
         /// </summary>
         public override void BeforeDo()
         {
-            Helper.Logging.Info("MoveUnit Executed");
+            Logging.Info("MoveUnit Executed");
 
             var action = (Core.Models.Action)Model;
             var actionC = (Core.Controllers.Actions.MoveUnit)Model.Control;
@@ -37,7 +38,7 @@
           
             m_path = actionC.Path;
             m_path.Insert(0, startPosition);
-            var entityView = (UnitView)m_entity.View;
+            // var entityView = (UnitView)m_entity.View;
         }
 
         /// <summary>
@@ -101,7 +102,7 @@
                 if (m_entity.Health <= 0)
                 {
                     var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
-                    var regionViewHex = (RegionViewHex)region.View;
+                    // var regionViewHex = (RegionViewHex)region.View;
                     var owner = m_entity.Owner;
                     var typ = m_entity.Definition.SubType;
 
@@ -146,7 +147,7 @@
             }
             return false;
         }
-            
+
         /// <summary>
         /// Gets the world layer hex.
         /// </summary>

@@ -1,11 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace Client.Common.Views.HUD
+﻿namespace Client.Common.Views.HUD
 {
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using CocosSharp;
+    using Microsoft.Xna.Framework;
 
     /// <summary>
     /// Button element. Changes Sprite when touched
@@ -76,9 +75,7 @@ namespace Client.Common.Views.HUD
                     m_standard.Visible = false;
                     return true;
                 }
-
             }
-
             return false;
         }
 
