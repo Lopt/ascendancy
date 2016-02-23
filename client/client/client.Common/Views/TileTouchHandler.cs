@@ -221,7 +221,7 @@
 
                     if (m_menuView.IsExtended())
                     {
-                        var regionView = m_worldLayer.GetRegionViewHex(gamePositionI.RegionPosition);
+                        // var regionView = m_worldLayer.GetRegionViewHex(gamePositionI.RegionPosition);
                         var gid = m_menuView.GetSelectedKategory(gamePositionI);
                         switch (gid.Gid)
                         {

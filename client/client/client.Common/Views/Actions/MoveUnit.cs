@@ -101,7 +101,7 @@
                 if (m_entity.Health <= 0)
                 {
                     var region = Core.Controllers.Controller.Instance.RegionManagerController.GetRegion(m_entity.Position.RegionPosition);
-                    var regionViewHex = (RegionViewHex)region.View;
+                    // var regionViewHex = (RegionViewHex)region.View;
                     var owner = m_entity.Owner;
                     var typ = m_entity.Definition.SubType;
 

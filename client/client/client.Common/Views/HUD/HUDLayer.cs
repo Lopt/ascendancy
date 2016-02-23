@@ -97,8 +97,7 @@
             new Core.Models.AccountManager().AddAccount(account);
 
             var pos = Models.Geolocation.Instance.CurrentGamePosition;
-            var posI = new Core.Models.PositionI(pos.RegionPosition, pos.CellPosition);
-
+            // var posI = new Core.Models.PositionI(pos.RegionPosition, pos.CellPosition);
             var actionCreate = Helper.ActionHelper.CreateEntity(
                                    new Core.Models.PositionI(pos),
                                    Core.Models.World.Instance.DefinitionManager.GetDefinition(Core.Models.Definitions.EntityType.Headquarter),
