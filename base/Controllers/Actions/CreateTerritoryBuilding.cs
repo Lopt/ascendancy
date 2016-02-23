@@ -174,7 +174,7 @@
                 region.ClaimTerritory(LogicRules.GetSurroundedPositions(entityPosition, m_drawArea), action.Account, region.RegionPosition, Controller.Instance.RegionManagerController.RegionManager);
                 LogicRules.IncreaseWholeStorage(action.Account);
                 LogicRules.GatherResources(action.Account, action.ActionTime, Controller.Instance.RegionManagerController, Constants.HEADQUARTER_TERRITORY_RANGE);
-                LogicRules.SetCurrentMaxPopultion(action.Account);
+                LogicRules.SetCurrentMaxPopulation(action.Account);
                 LogicRules.SetCurrentMaxEnergy(action.Account);
             }
             else if (action.Account != null)

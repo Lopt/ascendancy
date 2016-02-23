@@ -171,7 +171,7 @@
             var rand = new Random(entity.ID + entity.OwnerID + entity.Position.GetHashCode());
             double result = entity.ModfiedAttackValue;
             // between max and minimum
-            var randomValue = rand.NextDouble() * (2 - 0.5f) + 0.5f;    
+            var randomValue = (rand.NextDouble() * (2 - 0.5f)) + 0.5f;    
             result *= randomValue;
             entity.ModfiedAttackValue = (int)result;
             return 0;
@@ -324,8 +324,8 @@
         /// <summary>
         /// Increases the max energy.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="entity">Entity.</param>
+        /// <param name="account">Current account.</param>
+        /// <param name="entity">Current entity.</param>
         public static void IncreaseMaxEnergy(Account account, Entity entity)
         {
             if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Transformer)
@@ -336,10 +336,10 @@
         }
 
         /// <summary>
-        /// Sets the current max popultion.
+        /// Sets the current max population.
         /// </summary>
-        /// <param name="account">Account.</param>
-        public static void SetCurrentMaxPopultion(Account account)
+        /// <param name="account">Current account.</param>
+        public static void SetCurrentMaxPopulation(Account account)
         {
             account.Population.Value = account.Population.MaximumValue;
         }
@@ -347,7 +347,7 @@
         /// <summary>
         /// Sets the current energy.
         /// </summary>
-        /// <param name="account">Account.</param>
+        /// <param name="account">Current account.</param>
         public static void SetCurrentMaxEnergy(Account account)
         {
             account.Energy.Value = account.Energy.MaximumValue;
@@ -369,8 +369,8 @@
         /// <summary>
         /// Decreases the population.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="entity">Entity.</param>
+        /// <param name="account">Current account.</param>
+        /// <param name="entity">Current entity.</param>
         public static void DecreaseMaxPopulation(Account account, Entity entity)
         {
             if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Tent)
@@ -383,8 +383,8 @@
         /// <summary>
         /// Decreases the max energy.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="entity">Entity.</param>
+        /// <param name="account">Current account.</param>
+        /// <param name="entity">Current entity.</param>
         public static void DecreaseMaxEnergy(Account account, Entity entity)
         {
             if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Transformer)
@@ -397,8 +397,8 @@
         /// <summary>
         /// Decreases the population.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="entity">Entity.</param>
+        /// <param name="account">Current account.</param>
+        /// <param name="entity">Current entity.</param>
         public static void DecreaseScrap(Account account, Entity entity)
         {
             if (entity.DefinitionID == (long)Core.Models.Definitions.EntityType.Scrapyard)
@@ -422,8 +422,8 @@
         /// <summary>
         /// Decreases the storage.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="entity">Entity.</param>
+        /// <param name="account">Current account.</param>
+        /// <param name="entity">Current entity.</param>
         public static void DecreasStorage(Account account, Entity entity)
         {
             DecreaseMaxPopulation(account, entity);
@@ -434,8 +434,10 @@
         /// <summary>
         /// Gathers the resources.
         /// </summary>
-        /// <param name="account">Current Account.</param>
-        /// <param name="regionManagerC">Region manager c.</param>
+        /// <param name="account">Current account.</param>
+        /// <param name="actionTime">Action time.</param>
+        /// <param name="regionManagerC">Region manager controller.</param>
+        /// <param name="range">Range of the building.</param>
         public static void GatherResources(Account account, DateTime actionTime, Controllers.RegionManagerController regionManagerC, int range)
         {              
             foreach (var element in account.TerritoryBuildings)
@@ -448,8 +450,8 @@
                 {
                     // TODO: add ressources in Terrain
                     var resources = regionManagerC.GetRegion(item.RegionPosition).GetTerrain(item.CellPosition);
-                    scrapAmount += 0.5f;//resources[0];
-                    plutoniumAmount += 0.3f;//resources[1];
+                    scrapAmount += 0.5f;
+                    plutoniumAmount += 0.3f;
                 }
                 account.Scrap.Set(actionTime, account.Scrap.GetValue(actionTime), Constants.SCRAP_INCREMENT_VALUE);
                 account.Plutonium.Set(actionTime, account.Plutonium.GetValue(actionTime), Constants.PLUTONIUM_INCREMENT_VALUE);
@@ -457,10 +459,12 @@
         }
 
         /// <summary>
-        /// Resources that can generated.
+        /// Increases the resource generation.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="regionManagerC">Region manager c.</param>
+        /// <param name="account">Current account.</param>
+        /// <param name="actionTime">Action time.</param>
+        /// <param name="entitypos">Entity position.</param>
+        /// <param name="regionManagerC">Region manager controller.</param>
         public static void IncreaseResourceGeneration(Account account, DateTime actionTime, PositionI entitypos, Controllers.RegionManagerController regionManagerC)
         {
             switch (regionManagerC.GetRegion(entitypos.RegionPosition).GetEntity(entitypos.CellPosition).DefinitionID)
@@ -476,12 +480,13 @@
         }
 
         /// <summary>
-        /// Decreases the ressource generation.
+        /// Decreases the resource generation.
         /// </summary>
         /// <param name="account">Current account.</param>
+        /// <param name="actionTime">Action time.</param>
         /// <param name="entitypos">Entity position.</param>
         /// <param name="regionManagerC">Region manager controller.</param>
-        public static void DecreaseRessourceGeneration(Account account, DateTime actionTime, PositionI entitypos, Controllers.RegionManagerController regionManagerC)
+        public static void DecreaseResourceGeneration(Account account, DateTime actionTime, PositionI entitypos, Controllers.RegionManagerController regionManagerC)
         {
             switch (regionManagerC.GetRegion(entitypos.RegionPosition).GetEntity(entitypos.CellPosition).DefinitionID)
             {
@@ -496,27 +501,29 @@
         }
 
         /// <summary>
-        /// Checks the resource.
+        /// Checks the resource cost of the entity.
         /// </summary>
         /// <returns><c>true</c>, if resource was checked, <c>false</c> otherwise.</returns>
-        /// <param name="account">Account.</param>
-        /// <param name="entityDef">Entity def.</param>
+        /// <param name="account">Current account.</param>
+        /// <param name="serverTime">Server time.</param>
+        /// <param name="entityDef">Entity definition.</param>
         public static bool CheckResource(Account account, DateTime serverTime, Definitions.Definition entityDef)
         {
             var definition = (Definitions.UnitDefinition)entityDef;
 
-            return   account.Scrap.GetValue(serverTime) >= definition.Scrapecost &&
-                account.Plutonium.GetValue(serverTime) >= definition.Plutoniumcost &&
-                account.Technology.GetValue(serverTime) >= definition.Techcost &&
-                account.Population.Value >= definition.Population &&
-                    account.Energy.Value >= definition.Energycost;           
+            return account.Scrap.GetValue(serverTime) >= definition.Scrapecost &&
+                   account.Plutonium.GetValue(serverTime) >= definition.Plutoniumcost &&
+                   account.Technology.GetValue(serverTime) >= definition.Techcost &&
+                   account.Population.Value >= definition.Population &&
+                   account.Energy.Value >= definition.Energycost;           
         }
 
         /// <summary>
-        /// Consumes the resource.
+        /// Consumes the resource for an entity.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="entityDef">Entity def.</param>
+        /// <param name="account">Current account.</param>
+        /// <param name="actionTime">Action time.</param>
+        /// <param name="entityDef">Entity definition.</param>
         public static void ConsumeResource(Account account, DateTime actionTime, Definitions.Definition entityDef)
         {
             var definition = (Definitions.UnitDefinition)entityDef;
@@ -529,13 +536,16 @@
         }
 
         /// <summary>
-        /// Destroy the building.
+        /// Destroy the building and undo the functionality.
         /// </summary>
-        /// <param name="entity">Entity.</param>
+        /// <param name="entity">Current entity.</param>
+        /// <param name="regionPos">Region position.</param>
+        /// <param name="action">Action which is currently done.</param>
+        /// <param name="regionManagerC">Region manager controller.</param>
         public static void DestroyBuilding(Entity entity, Region regionPos, Action action, Controllers.RegionManagerController regionManagerC)
         {
             // TODO: in pseudo klasse kapseln und generischer lösen
-            switch((long)entity.DefinitionID)
+            switch ((long)entity.DefinitionID)
             {
                 case (long)Models.Definitions.EntityType.Headquarter:
                     regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.HEADQUARTER_TERRITORY_RANGE), entity.Owner);                                                       
@@ -559,7 +569,7 @@
                         var region = building.Key.RegionPosition;
                         regionManagerC.GetRegion(region).ClaimTerritory(list, entity.Owner, region, regionManagerC.RegionManager);
                     }
-                    //DestroyAllBuildingsWithoutTerritory(entity.Owner, action, regionManagerC);
+                    // DestroyAllBuildingsWithoutTerritory(entity.Owner, action, regionManagerC);
                     break;
                 case (long)Models.Definitions.EntityType.GuardTower:
                     regionPos.FreeClaimedTerritory(LogicRules.GetSurroundedPositions(entity.Position, Constants.GUARDTOWER_TERRITORY_RANGE), entity.Owner);                   
@@ -581,7 +591,7 @@
                         var region = building.Key.RegionPosition;
                         regionManagerC.GetRegion(region).ClaimTerritory(list, entity.Owner, region, regionManagerC.RegionManager);
                     }
-                    //DestroyAllBuildingsWithoutTerritory(entity.Owner, action, regionManagerC); 
+                    // DestroyAllBuildingsWithoutTerritory(entity.Owner, action, regionManagerC); 
                     break;
                 case (long)Models.Definitions.EntityType.Barracks:
                     var count = 0;
@@ -599,7 +609,7 @@
                     entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Furnace:
-                    DecreaseRessourceGeneration(entity.Owner, action.ActionTime, entity.Position, regionManagerC);
+                    DecreaseResourceGeneration(entity.Owner, action.ActionTime, entity.Position, regionManagerC);
                     entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Factory:
@@ -619,7 +629,7 @@
                     entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Lab:
-                    DecreaseRessourceGeneration(entity.Owner, action.ActionTime, entity.Position, regionManagerC);
+                    DecreaseResourceGeneration(entity.Owner, action.ActionTime, entity.Position, regionManagerC);
                     entity.Owner.Buildings.Remove(entity.Position);
                     break;
                 case (long)Models.Definitions.EntityType.Scrapyard:
@@ -630,11 +640,11 @@
         }
 
         /// <summary>
-        /// Destroys all buildings without territory.
+        /// Destroy all buildings without territory.
         /// </summary>
-        /// <param name="account">Account.</param>
-        /// <param name="regionPos">Region position.</param>
-        /// <param name="regionManagerC">Region manager c.</param>
+        /// <param name="account">Current account.</param>
+        /// <param name="action">Action which is in use.</param>
+        /// <param name="regionManagerC">Region manager controller.</param>
         public static void DestroyAllBuildingsWithoutTerritory(Account account, Action action, Controllers.RegionManagerController regionManagerC)
         {
             Dictionary<PositionI, long> copylist = new Dictionary<PositionI, long>(account.Buildings);
