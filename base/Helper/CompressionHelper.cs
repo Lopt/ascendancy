@@ -1,5 +1,4 @@
-﻿
-namespace Core.Helper
+﻿namespace Core.Helper
 {
     using System;
     using System.IO;
@@ -12,11 +11,6 @@ namespace Core.Helper
     /// </summary>
     public static class CompressionHelper
     {
-        /// <summary>
-        /// The maximum size of an packet
-        /// </summary>
-        const int MAX_PACKET_SIZE = 4096 * 4;
-
         /// <summary>
         /// Compress the specified inputData.
         /// </summary>
@@ -57,5 +51,10 @@ namespace Core.Helper
             Array.Copy(zlib.OutputBuffer, output, (int)zlib.TotalBytesOut);
             return output;
         }
+
+        /// <summary>
+        /// The maximum size of an packet
+        /// </summary>
+        private const int MAX_PACKET_SIZE = 4096 * 4;
     }
 }
