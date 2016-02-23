@@ -4,7 +4,7 @@
     using CocosSharp;
 
     /// <summary>
-    /// The Draw node to draw polygons.
+    /// The Draw node to draw polygons.(Not in Use)
     /// </summary>
     public class DrawNode : CCDrawNode
     {
@@ -18,11 +18,11 @@
         /// <summary>
         /// Draws the hexagon for a hex map.
         /// </summary>
-        /// <param name="layer">Layer.</param>
-        /// <param name="tileCoordinates">Tilecoordinates.</param>
-        /// <param name="borderColor">Bordercolor.</param>
-        /// <param name="opacity">Opacity.</param>
-        /// <param name="borderWith">Borderwith.</param>
+        /// <param name="layer">The layer.</param>
+        /// <param name="tileCoordinates">The tilecoordinates.</param>
+        /// <param name="borderColor">The border color.</param>
+        /// <param name="opacity">The opacity.</param>
+        /// <param name="borderWith">The border with.</param>
         public void DrawHexagonForHexMap(
             CCTileMapLayer layer, 
             CCTileMapCoordinates tileCoordinates, 
@@ -89,10 +89,10 @@
         /// Draws the hexagon for a iso stag map.
         /// </summary>
         /// <param name="pngWidth">Png width.</param>
-        /// <param name="layer">Layer.</param>
+        /// <param name="layer">The layer.</param>
         /// <param name="tileCoordinates">Tile coordinates.</param>
         /// <param name="borderColor">Border color.</param>
-        /// <param name="opacity">Opacity.</param>
+        /// <param name="opacity">The opacity.</param>
         /// <param name="borderWith">Border with.</param>
         public void DrawHexagonForIsoStagMap(
             float pngWidth,
@@ -161,10 +161,10 @@
         /// Draws the ISO trapez for iso stag map.
         /// </summary>
         /// <param name="pngWidth">Png width.</param>
-        /// <param name="layer">Layer.</param>
+        /// <param name="layer">The layer.</param>
         /// <param name="tileCoordinates">Tile coordinates.</param>
         /// <param name="borderColor">Border color.</param>
-        /// <param name="opacity">Opacity.</param>
+        /// <param name="opacity">The Opacity.</param>
         /// <param name="borderWith">Border with.</param>
         public void DrawISOForIsoStagMap(
             float pngWidth,
