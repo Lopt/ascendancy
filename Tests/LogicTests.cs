@@ -1,7 +1,7 @@
 namespace Tests
 {
-    using NUnit.Framework;
     using Core.Models;
+    using NUnit.Framework;
 
     /// <summary>
     /// Logic tests.

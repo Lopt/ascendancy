@@ -3,6 +3,7 @@ namespace Tests
     using System;
     using Core.Models;
     using NUnit.Framework;
+
     /// <summary>
     /// Load helper tests.
     /// </summary>

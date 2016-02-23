@@ -4,7 +4,6 @@
     using Core.Models;
     using NUnit.Framework;
 
-
     /// <summary>
     /// Position tests.
     /// </summary>

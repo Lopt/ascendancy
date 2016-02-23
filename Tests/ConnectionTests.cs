@@ -2,10 +2,11 @@ namespace Tests
 {
     using System;
     using System.Net.Sockets;
-    using Core.Models;
     using Core.Connection;
-    using NUnit.Framework;
+    using Core.Models;
     using Newtonsoft.Json;
+    using NUnit.Framework;
+
     /// <summary>
     /// Connection tests.
     /// </summary>
