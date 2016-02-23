@@ -86,7 +86,7 @@
             X = (int)obj.SelectToken("X");
             Y = (int)obj.SelectToken("Y");
         }
-            
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Core.Models.PositionI"/> class.
         /// </summary>
