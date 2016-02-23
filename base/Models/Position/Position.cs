@@ -9,33 +9,33 @@
     public class Position
     {
         /// <summary>
-        /// Adds one position to another position.
+        /// Adds two positions.
         /// </summary>
-        /// <returns>The new position.</returns>
-        /// <param name="first">First position.</param>
-        /// <param name="second">Second position.</param>
+        /// <returns>Resulted Position</returns>
+        /// <param name="first">First Position.</param>
+        /// <param name="second">Second Position.</param>
         public static Position operator +(Position first, Position second)
         {
             return new Position(first.X + second.X, first.Y + second.Y);
         }
 
         /// <summary>
-        /// Minus one positionI to another position.
+        /// Subtract second position from first position (first-second).
         /// </summary>
-        /// <returns>The new position.</returns>
-        /// <param name="first">First position.</param>
-        /// <param name="second">Second position.</param>
+        /// <returns>Resulted Position</returns>
+        /// <param name="first">First Position.</param>
+        /// <param name="second">Second Position.</param>
         public static Position operator -(Position first, Position second)
         {
             return new Position(first.X - second.X, first.Y - second.Y);
         }
 
         /// <summary>
-        /// Tests if the first position is equal to the second position.
+        /// Tests two positions if they are the same.
         /// </summary>
-        /// <returns>true, if it is equal, otherwise false.</returns>
-        /// <param name="first">First position.</param>
-        /// <param name="second">Second position.</param>
+        /// <returns>boolean if both position are the same. Otherwise false.</returns>
+        /// <param name="first">First Position.</param>
+        /// <param name="second">Second Position.</param>
         public static bool operator ==(Position first, Position second)
         {
             if (object.ReferenceEquals(first, second))
@@ -53,9 +53,9 @@
         }
 
         /// <summary>
-        /// Tests if the first positionI is unequal to the second position.
+        /// Tests two positions if they are NOT the same.
         /// </summary>
-        /// <returns>true, if it is equal, otherwise false.</returns>
+        /// <returns>boolean if both position are NOT the same. Otherwise false.</returns>
         /// <param name="first">First position.</param>
         /// <param name="second">Second position.</param>
         public static bool operator !=(Position first, Position second)
@@ -189,11 +189,10 @@
         }
 
         /// <summary>
-        /// Bestimmt, ob das angegebene Objekt mit dem aktuellen Objekt identisch ist.
+        /// Tests two positions if they are the same.
         /// </summary>
-        /// <returns>true, wenn das angegebene Objekt und das aktuelle Objekt gleich sind, andernfalls false.</returns>
+        /// <returns>boolean if both position are the same. Otherwise false.</returns>
         /// <param name="obj">The <see cref="System.Object"/> to compare with the current <see cref="Core.Models.Position"/>.</param>
-        /// <filterpriority>2</filterpriority>
         public override bool Equals(object obj)
         {
             var pos = (Position)obj;
@@ -201,10 +200,11 @@
         }
 
         /// <summary>
-        /// Sqare distance to the specified position.
+        /// Distance from this to the specific position
+        /// Warning: NOT ROOTED.
         /// </summary>
-        /// <returns>>The Square distance</returns>
-        /// <param name="position">The position.</param>
+        /// <returns>Distance from this to the specific position.</returns>
+        /// <param name="position">Other Position.</param>
         public double Distance(Position position)
         {
             var distanceX = position.X - X;
@@ -213,10 +213,11 @@
         }
 
         /// <summary>
-        /// Sqare distance to the specified positionI.
+        /// Distance from this to the specific position
+        /// Warning: NOT ROOTED.
         /// </summary>
-        /// <returns>>The Square distance</returns>
-        /// <param name="position">The positionI.</param>
+        /// <returns>Distance from this to the specific position.</returns>
+        /// <param name="position">Other Position.</param>
         public double Distance(PositionI position)
         {
             var distanceX = position.X - X;

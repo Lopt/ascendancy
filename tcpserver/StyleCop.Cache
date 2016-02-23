@@ -31,12 +31,17 @@
     <configuration>
     </configuration>
   </project>
+<<<<<<< HEAD
   <project key="1009">
+=======
+  <project key="103556363">
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
     <configuration>
     </configuration>
   </project>
   <sourcecode name="Program.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
+<<<<<<< HEAD
       <styleCop>2015.10.20 12:58:24.000</styleCop>
       <settingsFile>2015.12.03 17:05:40.000</settingsFile>
       <sourceFile>2016.01.26 07:19:04.000</sourceFile>
@@ -44,24 +49,36 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:11.335</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
+<<<<<<< HEAD
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
         <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
         <line>1</line>
         <warning>False</warning>
       </violation>
+=======
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
         <context>The code must not contain multiple blank lines in a row.</context>
         <line>27</line>
@@ -71,6 +88,7 @@
   </sourcecode>
   <sourcecode name="Config.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
+<<<<<<< HEAD
       <styleCop>2015.10.20 12:58:24.000</styleCop>
       <settingsFile>2015.12.03 17:05:40.000</settingsFile>
       <sourceFile>2016.02.18 16:45:44.000</sourceFile>
@@ -78,24 +96,34 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.22 12:28:34.147</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
+        <context>A closing curly bracket must not be preceded by a blank line.</context>
+        <line>25</line>
         <warning>False</warning>
       </violation>
+<<<<<<< HEAD
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
         <context>A closing curly bracket must not be preceded by a blank line.</context>
         <line>25</line>
@@ -107,9 +135,36 @@
         <warning>False</warning>
       </violation>
     </violations>
+=======
+    </violations>
   </sourcecode>
   <sourcecode name="TcpServer.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.18 00:54:40.318</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations />
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+<<<<<<< HEAD
       <styleCop>2015.10.20 12:58:24.000</styleCop>
       <settingsFile>2015.12.03 17:05:40.000</settingsFile>
       <sourceFile>2015.12.03 17:05:40.000</sourceFile>
@@ -117,138 +172,28 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:11.354</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All constructors must be placed after all fields.</context>
-        <line>123</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
-        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
-        <line>48</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All methods must be placed after all properties.</context>
-        <line>64</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_listener must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>29</line>
-        <index>598</index>
-        <endIndex>607</endIndex>
-        <startLine>29</startLine>
-        <startColumn>13</startColumn>
-        <endLine>29</endLine>
-        <endColumn>22</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_listener must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>33</line>
-        <index>740</index>
-        <endIndex>749</endIndex>
-        <startLine>33</startLine>
-        <startColumn>17</startColumn>
-        <endLine>33</endLine>
-        <endColumn>26</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to Running must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>42</line>
-        <index>1127</index>
-        <endIndex>1133</endIndex>
-        <startLine>42</startLine>
-        <startColumn>13</startColumn>
-        <endLine>42</endLine>
-        <endColumn>19</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_listener must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>45</line>
-        <index>1214</index>
-        <endIndex>1223</endIndex>
-        <startLine>45</startLine>
-        <startColumn>30</startColumn>
-        <endLine>45</endLine>
-        <endColumn>39</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to StartTcpThread must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>47</line>
-        <index>1354</index>
-        <endIndex>1367</endIndex>
-        <startLine>47</startLine>
-        <startColumn>63</startColumn>
-        <endLine>47</endLine>
-        <endColumn>76</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to Running must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>43</line>
-        <index>1162</index>
-        <endIndex>1168</endIndex>
-        <startLine>43</startLine>
-        <startColumn>20</startColumn>
-        <endLine>43</endLine>
-        <endColumn>26</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to Running must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>49</line>
-        <index>1406</index>
-        <endIndex>1412</endIndex>
-        <startLine>49</startLine>
-        <startColumn>13</startColumn>
-        <endLine>49</endLine>
-        <endColumn>19</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_listener must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>57</line>
-        <index>1556</index>
-        <endIndex>1565</endIndex>
-        <startLine>57</startLine>
-        <startColumn>13</startColumn>
-        <endLine>57</endLine>
-        <endColumn>22</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
-        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
-        <line>116</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="VariableNamesMustNotBePrefixed" ruleCheckId="SA1308">
-        <context>Variable names must not start with 'm_' or 's_'.</context>
-        <line>123</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
   <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
@@ -296,6 +241,7 @@
   </sourcecode>
   <sourcecode name="AveragePositionQueue.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
+<<<<<<< HEAD
       <styleCop>2015.10.20 12:58:24.000</styleCop>
       <settingsFile>2015.12.03 17:05:40.000</settingsFile>
       <sourceFile>2015.12.03 17:05:40.000</sourceFile>
@@ -303,349 +249,32 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:11.327</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All constructors must be placed after all fields.</context>
-        <line>99</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All constructors must be placed after all fields.</context>
-        <line>104</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All constructors must be placed after all fields.</context>
-        <line>109</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_average must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>18</line>
-        <index>508</index>
-        <endIndex>516</endIndex>
-        <startLine>18</startLine>
-        <startColumn>13</startColumn>
-        <endLine>18</endLine>
-        <endColumn>21</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_lock must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>19</line>
-        <index>564</index>
-        <endIndex>569</endIndex>
-        <startLine>19</startLine>
-        <startColumn>13</startColumn>
-        <endLine>19</endLine>
-        <endColumn>18</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>21</line>
-        <index>599</index>
-        <endIndex>605</endIndex>
-        <startLine>21</startLine>
-        <startColumn>13</startColumn>
-        <endLine>21</endLine>
-        <endColumn>19</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
-        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
-        <line>45</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_lock must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>32</line>
-        <index>902</index>
-        <endIndex>907</endIndex>
-        <startLine>32</startLine>
-        <startColumn>17</startColumn>
-        <endLine>32</endLine>
-        <endColumn>22</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>34</line>
-        <index>950</index>
-        <endIndex>956</endIndex>
-        <startLine>34</startLine>
-        <startColumn>30</startColumn>
-        <endLine>34</endLine>
-        <endColumn>36</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_average must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>39</line>
-        <index>1226</index>
-        <endIndex>1234</endIndex>
-        <startLine>39</startLine>
-        <startColumn>36</startColumn>
-        <endLine>39</endLine>
-        <endColumn>44</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>39</line>
-        <index>1241</index>
-        <endIndex>1247</endIndex>
-        <startLine>39</startLine>
-        <startColumn>51</startColumn>
-        <endLine>39</endLine>
-        <endColumn>57</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_average must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>40</line>
-        <index>1317</index>
-        <endIndex>1325</endIndex>
-        <startLine>40</startLine>
-        <startColumn>36</startColumn>
-        <endLine>40</endLine>
-        <endColumn>44</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>40</line>
-        <index>1332</index>
-        <endIndex>1338</endIndex>
-        <startLine>40</startLine>
-        <startColumn>51</startColumn>
-        <endLine>40</endLine>
-        <endColumn>57</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_average must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>44</line>
-        <index>1447</index>
-        <endIndex>1455</endIndex>
-        <startLine>44</startLine>
-        <startColumn>21</startColumn>
-        <endLine>44</endLine>
-        <endColumn>29</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>44</line>
-        <index>1498</index>
-        <endIndex>1504</endIndex>
-        <startLine>44</startLine>
-        <startColumn>72</startColumn>
-        <endLine>44</endLine>
-        <endColumn>78</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>44</line>
-        <index>1527</index>
-        <endIndex>1533</endIndex>
-        <startLine>44</startLine>
-        <startColumn>101</startColumn>
-        <endLine>44</endLine>
-        <endColumn>107</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to IsEmpty must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>42</line>
-        <index>1398</index>
-        <endIndex>1404</endIndex>
-        <startLine>42</startLine>
-        <startColumn>22</startColumn>
-        <endLine>42</endLine>
-        <endColumn>28</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_lock must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>50</line>
-        <index>1656</index>
-        <endIndex>1661</endIndex>
-        <startLine>50</startLine>
-        <startColumn>17</startColumn>
-        <endLine>50</endLine>
-        <endColumn>22</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_lock must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>65</line>
-        <index>2151</index>
-        <endIndex>2156</endIndex>
-        <startLine>65</startLine>
-        <startColumn>17</startColumn>
-        <endLine>65</endLine>
-        <endColumn>22</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_average must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>66</line>
-        <index>2204</index>
-        <endIndex>2212</endIndex>
-        <startLine>66</startLine>
-        <startColumn>36</startColumn>
-        <endLine>66</endLine>
-        <endColumn>44</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>66</line>
-        <index>2218</index>
-        <endIndex>2224</endIndex>
-        <startLine>66</startLine>
-        <startColumn>50</startColumn>
-        <endLine>66</endLine>
-        <endColumn>56</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_average must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>67</line>
-        <index>2289</index>
-        <endIndex>2297</endIndex>
-        <startLine>67</startLine>
-        <startColumn>36</startColumn>
-        <endLine>67</endLine>
-        <endColumn>44</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>67</line>
-        <index>2303</index>
-        <endIndex>2309</endIndex>
-        <startLine>67</startLine>
-        <startColumn>50</startColumn>
-        <endLine>67</endLine>
-        <endColumn>56</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>68</line>
-        <index>2382</index>
-        <endIndex>2388</endIndex>
-        <startLine>68</startLine>
-        <startColumn>17</startColumn>
-        <endLine>68</endLine>
-        <endColumn>23</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_average must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>69</line>
-        <index>2425</index>
-        <endIndex>2433</endIndex>
-        <startLine>69</startLine>
-        <startColumn>17</startColumn>
-        <endLine>69</endLine>
-        <endColumn>25</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>69</line>
-        <index>2476</index>
-        <endIndex>2482</endIndex>
-        <startLine>69</startLine>
-        <startColumn>68</startColumn>
-        <endLine>69</endLine>
-        <endColumn>74</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>69</line>
-        <index>2505</index>
-        <endIndex>2511</endIndex>
-        <startLine>69</startLine>
-        <startColumn>97</startColumn>
-        <endLine>69</endLine>
-        <endColumn>103</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_lock must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>73</line>
-        <index>2585</index>
-        <endIndex>2590</endIndex>
-        <startLine>73</startLine>
-        <startColumn>17</startColumn>
-        <endLine>73</endLine>
-        <endColumn>22</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_average must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>84</line>
-        <index>2961</index>
-        <endIndex>2969</endIndex>
-        <startLine>84</startLine>
-        <startColumn>20</startColumn>
-        <endLine>84</endLine>
-        <endColumn>28</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to m_queue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>93</line>
-        <index>3256</index>
-        <endIndex>3262</endIndex>
-        <startLine>93</startLine>
-        <startColumn>20</startColumn>
-        <endLine>93</endLine>
-        <endColumn>26</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="VariableNamesMustNotBePrefixed" ruleCheckId="SA1308">
-        <context>Variable names must not start with 'm_' or 's_'.</context>
-        <line>99</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="VariableNamesMustNotBePrefixed" ruleCheckId="SA1308">
-        <context>Variable names must not start with 'm_' or 's_'.</context>
-        <line>104</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="VariableNamesMustNotBePrefixed" ruleCheckId="SA1308">
-        <context>Variable names must not start with 'm_' or 's_'.</context>
-        <line>109</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
   <sourcecode name="ServerConstants.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
+<<<<<<< HEAD
       <styleCop>2015.10.20 12:58:24.000</styleCop>
       <settingsFile>2015.12.03 17:05:40.000</settingsFile>
       <sourceFile>2015.12.03 17:05:40.000</sourceFile>
@@ -653,68 +282,32 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:11.332</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>14</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>19</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>24</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>29</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>34</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>39</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>44</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>49</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
   <sourcecode name="DBAccount.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
+<<<<<<< HEAD
       <styleCop>2015.10.20 12:58:24.000</styleCop>
       <settingsFile>2015.12.03 17:05:40.000</settingsFile>
       <sourceFile>2015.12.03 17:05:40.000</sourceFile>
@@ -722,110 +315,32 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:10.984</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All constructors must be placed after all fields.</context>
-        <line>116</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to db must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>22</line>
-        <index>549</index>
-        <endIndex>550</endIndex>
-        <startLine>22</startLine>
-        <startColumn>13</startColumn>
-        <endLine>22</endLine>
-        <endColumn>14</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to db must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>23</line>
-        <index>571</index>
-        <endIndex>572</endIndex>
-        <startLine>23</startLine>
-        <startColumn>13</startColumn>
-        <endLine>23</endLine>
-        <endColumn>14</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to GenerateSaltValue must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>33</line>
-        <index>921</index>
-        <endIndex>937</endIndex>
-        <startLine>33</startLine>
-        <startColumn>24</startColumn>
-        <endLine>33</endLine>
-        <endColumn>40</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to GenerateSaltedHash must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>34</line>
-        <index>975</index>
-        <endIndex>992</endIndex>
-        <startLine>34</startLine>
-        <startColumn>34</startColumn>
-        <endLine>34</endLine>
-        <endColumn>51</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to db must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>41</line>
-        <index>1200</index>
-        <endIndex>1201</endIndex>
-        <startLine>41</startLine>
-        <startColumn>13</startColumn>
-        <endLine>41</endLine>
-        <endColumn>14</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to db must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>52</line>
-        <index>1605</index>
-        <endIndex>1606</endIndex>
-        <startLine>52</startLine>
-        <startColumn>26</startColumn>
-        <endLine>52</endLine>
-        <endColumn>27</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to GenerateSaltedHash must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>60</line>
-        <index>1891</index>
-        <endIndex>1908</endIndex>
-        <startLine>60</startLine>
-        <startColumn>28</startColumn>
-        <endLine>60</endLine>
-        <endColumn>45</endColumn>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
   <sourcecode name="DBBuildings.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
+<<<<<<< HEAD
       <styleCop>2015.10.20 12:58:24.000</styleCop>
       <settingsFile>2015.12.03 17:05:40.000</settingsFile>
       <sourceFile>2015.12.03 17:05:40.000</sourceFile>
@@ -833,66 +348,32 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:10.988</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All constructors must be placed after all fields.</context>
-        <line>41</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to db must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>19</line>
-        <index>469</index>
-        <endIndex>470</endIndex>
-        <startLine>19</startLine>
-        <startColumn>13</startColumn>
-        <endLine>19</endLine>
-        <endColumn>14</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to db must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>20</line>
-        <index>491</index>
-        <endIndex>492</endIndex>
-        <startLine>20</startLine>
-        <startColumn>13</startColumn>
-        <endLine>20</endLine>
-        <endColumn>14</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to db must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>35</line>
-        <index>1066</index>
-        <endIndex>1067</endIndex>
-        <startLine>35</startLine>
-        <startColumn>13</startColumn>
-        <endLine>35</endLine>
-        <endColumn>14</endColumn>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
   <sourcecode name="DBHandle.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
+<<<<<<< HEAD
       <styleCop>2015.10.20 12:58:24.000</styleCop>
       <settingsFile>2015.12.03 17:05:40.000</settingsFile>
       <sourceFile>2015.12.03 17:05:40.000</sourceFile>
@@ -900,65 +381,32 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:10.992</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All properties must be placed after all fields.</context>
-        <line>258</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All properties must be placed after all constructors.</context>
-        <line>263</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
-        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
-        <line>27</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to InsertIntoUnit must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>176</line>
-        <index>6445</index>
-        <endIndex>6458</endIndex>
-        <startLine>176</startLine>
-        <startColumn>16</startColumn>
-        <endLine>176</endLine>
-        <endColumn>29</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to InsertIntoBuilding must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>189</line>
-        <index>6906</index>
-        <endIndex>6923</endIndex>
-        <startLine>189</startLine>
-        <startColumn>16</startColumn>
-        <endLine>189</endLine>
-        <endColumn>33</endColumn>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
   <sourcecode name="DBUnits.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
+<<<<<<< HEAD
       <styleCop>2015.10.20 12:58:24.000</styleCop>
       <settingsFile>2015.12.03 17:05:40.000</settingsFile>
       <sourceFile>2015.12.03 17:05:40.000</sourceFile>
@@ -966,64 +414,30 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:11.000</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All constructors must be placed after all fields.</context>
-        <line>42</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to db must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>20</line>
-        <index>489</index>
-        <endIndex>490</endIndex>
-        <startLine>20</startLine>
-        <startColumn>13</startColumn>
-        <endLine>20</endLine>
-        <endColumn>14</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to db must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>21</line>
-        <index>511</index>
-        <endIndex>512</endIndex>
-        <startLine>21</startLine>
-        <startColumn>13</startColumn>
-        <endLine>21</endLine>
-        <endColumn>14</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
-        <context>The call to db must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>36</line>
-        <index>1026</index>
-        <endIndex>1027</endIndex>
-        <startLine>36</startLine>
-        <startColumn>17</startColumn>
-        <endLine>36</endLine>
-        <endColumn>18</endColumn>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <violations />
   </sourcecode>
+<<<<<<< HEAD
   <sourcecode name="DBResource.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2015.10.20 12:58:24.000</styleCop>
@@ -1033,18 +447,53 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+  <sourcecode name="TableAccount.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:11.004</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TableBuilding.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:11.008</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+<<<<<<< HEAD
     <violations>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
         <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
@@ -1100,24 +549,101 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+    <violations />
+  </sourcecode>
+  <sourcecode name="TableData.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:11.011</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TableRessource.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:11.042</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TableUnit.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:11.305</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AccountController.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.22 12:28:34.159</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainBlankLinesAtEndOfFile" ruleCheckId="SA1518">
         <context>The code must not contain blank lines at the end of the file.</context>
         <line>89</line>
@@ -1128,86 +654,12 @@
         <line>89</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All constructors must be placed after all fields.</context>
-        <line>81</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All constructors must be placed after all fields.</context>
-        <line>86</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to m_regionStatus must begin with the 'this.', 'base.', 'object.' or 'AccountController.' or 'Core.Controllers.ControlEntity.' prefix to indicate the intended method call. </context>
-        <line>20</line>
-        <index>762</index>
-        <endIndex>775</endIndex>
-        <startLine>20</startLine>
-        <startColumn>13</startColumn>
-        <endLine>20</endLine>
-        <endColumn>26</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to m_password must begin with the 'this.', 'base.', 'object.' or 'AccountController.' or 'Core.Controllers.ControlEntity.' prefix to indicate the intended method call. </context>
-        <line>21</line>
-        <index>858</index>
-        <endIndex>867</endIndex>
-        <startLine>21</startLine>
-        <startColumn>13</startColumn>
-        <endLine>21</endLine>
-        <endColumn>22</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to SessionID must begin with the 'this.', 'base.', 'object.' or 'AccountController.' or 'Core.Controllers.ControlEntity.' prefix to indicate the intended method call. </context>
-        <line>22</line>
-        <index>893</index>
-        <endIndex>901</endIndex>
-        <startLine>22</startLine>
-        <startColumn>13</startColumn>
-        <endLine>22</endLine>
-        <endColumn>21</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All methods must be placed after all properties.</context>
-        <line>72</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to m_regionStatus must begin with the 'this.', 'base.', 'object.' or 'AccountController.' or 'Core.Controllers.ControlEntity.' prefix to indicate the intended method call. </context>
-        <line>33</line>
-        <index>1413</index>
-        <endIndex>1426</endIndex>
-        <startLine>33</startLine>
-        <startColumn>13</startColumn>
-        <endLine>33</endLine>
-        <endColumn>26</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
-        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
-        <line>47</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to m_regionStatus must begin with the 'this.', 'base.', 'object.' or 'AccountController.' or 'Core.Controllers.ControlEntity.' prefix to indicate the intended method call. </context>
-        <line>44</line>
-        <index>1972</index>
-        <endIndex>1985</endIndex>
-        <startLine>44</startLine>
-        <startColumn>17</startColumn>
-        <endLine>44</endLine>
-        <endColumn>30</endColumn>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementReturnValueMustBeDocumented" ruleCheckId="SA1615">
         <context>The documentation header must contain a returns tag since the element has a return value.</context>
         <line>56</line>
         <warning>False</warning>
       </violation>
+<<<<<<< HEAD
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
         <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
         <line>64</line>
@@ -1246,23 +698,15 @@
         <endColumn>70</endColumn>
         <warning>False</warning>
       </violation>
+=======
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
         <context>The field must have an access modifier.</context>
         <line>81</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="VariableNamesMustNotBePrefixed" ruleCheckId="SA1308">
-        <context>Variable names must not start with 'm_' or 's_'.</context>
-        <line>81</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
         <context>The field must have an access modifier.</context>
-        <line>86</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="VariableNamesMustNotBePrefixed" ruleCheckId="SA1308">
-        <context>Variable names must not start with 'm_' or 's_'.</context>
         <line>86</line>
         <warning>False</warning>
       </violation>
@@ -1270,6 +714,7 @@
   </sourcecode>
   <sourcecode name="AccountManagerController.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
+<<<<<<< HEAD
       <styleCop>2015.10.20 12:58:24.000</styleCop>
       <settingsFile>2015.12.03 17:05:40.000</settingsFile>
       <sourceFile>2015.12.03 17:05:40.000</sourceFile>
@@ -1277,24 +722,28 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:10.934</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBeOrderedAlphabeticallyByNamespace" ruleCheckId="SA1210">
         <context>Using directives must be sorted alphabetically by the namespaces.</context>
         <line>5</line>
@@ -1305,36 +754,9 @@
         <line>7</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All constructors must be placed after all fields.</context>
-        <line>86</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to m_sessions must begin with the 'this.', 'base.', 'object.' or 'AccountManagerController.' or 'Core.Models.AccountManager.' prefix to indicate the intended method call. </context>
-        <line>21</line>
-        <index>689</index>
-        <endIndex>698</endIndex>
-        <startLine>21</startLine>
-        <startColumn>13</startColumn>
-        <endLine>21</endLine>
-        <endColumn>22</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
-        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
-        <line>43</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to m_sessions must begin with the 'this.', 'base.', 'object.' or 'AccountManagerController.' or 'Core.Models.AccountManager.' prefix to indicate the intended method call. </context>
-        <line>39</line>
-        <index>1557</index>
-        <endIndex>1566</endIndex>
-        <startLine>39</startLine>
-        <startColumn>25</startColumn>
-        <endLine>39</endLine>
-        <endColumn>34</endColumn>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementDocumentationMustBeSpelledCorrectly" ruleCheckId="SA1650">
+        <context>The documentation text within the summary tag contains incorrectly spelled words: Registrate</context>
+        <line>52</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementReturnValueMustBeDocumented" ruleCheckId="SA1615">
@@ -1342,58 +764,11 @@
         <line>52</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
-        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
-        <line>60</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to Login must begin with the 'this.', 'base.', 'object.' or 'AccountManagerController.' or 'Core.Models.AccountManager.' prefix to indicate the intended method call. </context>
-        <line>58</line>
-        <index>2429</index>
-        <endIndex>2433</endIndex>
-        <startLine>58</startLine>
-        <startColumn>28</startColumn>
-        <endLine>58</endLine>
-        <endColumn>32</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to Login must begin with the 'this.', 'base.', 'object.' or 'AccountManagerController.' or 'Core.Models.AccountManager.' prefix to indicate the intended method call. </context>
-        <line>65</line>
-        <index>2723</index>
-        <endIndex>2727</endIndex>
-        <startLine>65</startLine>
-        <startColumn>20</startColumn>
-        <endLine>65</endLine>
-        <endColumn>24</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
-        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
-        <line>79</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to m_sessions must begin with the 'this.', 'base.', 'object.' or 'AccountManagerController.' or 'Core.Models.AccountManager.' prefix to indicate the intended method call. </context>
-        <line>76</line>
-        <index>3132</index>
-        <endIndex>3141</endIndex>
-        <startLine>76</startLine>
-        <startColumn>17</startColumn>
-        <endLine>76</endLine>
-        <endColumn>26</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="VariableNamesMustNotBePrefixed" ruleCheckId="SA1308">
-        <context>Variable names must not start with 'm_' or 's_'.</context>
-        <line>86</line>
-        <warning>False</warning>
-      </violation>
     </violations>
   </sourcecode>
   <sourcecode name="APIController.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
+<<<<<<< HEAD
       <styleCop>2015.10.20 12:58:24.000</styleCop>
       <settingsFile>2015.12.03 17:05:40.000</settingsFile>
       <sourceFile>2016.02.22 07:15:55.000</sourceFile>
@@ -1401,69 +776,34 @@
       <StyleCop.CSharp.DocumentationRules>2015.10.20 12:58:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2015.10.20 12:58:24.000</StyleCop.CSharp.LayoutRules>
+=======
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.22 12:28:34.154</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2015.10.20 12:58:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2015.10.20 12:58:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All enums must be placed after all fields.</context>
-        <line>22</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All enums must be placed after all constructors.</context>
-        <line>56</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All enums must be placed after all fields.</context>
-        <line>322</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
-        <context>The enumeration sub-item must have a documentation header.</context>
-        <line>24</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
-        <context>The enumeration sub-item must have a documentation header.</context>
-        <line>25</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
-        <context>The enumeration sub-item must have a documentation header.</context>
-        <line>26</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
-        <context>The enumeration sub-item must have a documentation header.</context>
-        <line>27</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="VariableNamesMustNotBePrefixed" ruleCheckId="SA1308">
-        <context>Variable names must not start with 'm_' or 's_'.</context>
-        <line>33</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.OrderingRules" rule="StaticElementsMustAppearBeforeInstanceElements" ruleCheckId="SA1204">
         <context>All static private fields must be placed before all non-static private fields.</context>
         <line>38</line>
         <warning>False</warning>
       </violation>
+<<<<<<< HEAD
       <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
         <context>All properties must be placed after all enums.</context>
         <line>68</line>
@@ -1660,10 +1000,86 @@
       <violation namespace="StyleCop.CSharp.NamingRules" rule="VariableNamesMustNotBePrefixed" ruleCheckId="SA1308">
         <context>Variable names must not start with 'm_' or 's_'.</context>
         <line>322</line>
+=======
+    </violations>
+  </sourcecode>
+  <sourcecode name="DefinitionManagerController.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:10.970</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="JSONController.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:10.975</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="RegionManagerController.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.18 00:57:58.389</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="DeclarationKeywordsMustFollowOrder" ruleCheckId="SA1206">
+        <context>The access modifier keyword must come before the 'other' keyword in the element declaration.</context>
+        <line>26</line>
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
         <warning>False</warning>
       </violation>
     </violations>
   </sourcecode>
+<<<<<<< HEAD
   <sourcecode name="DefinitionManagerController.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2015.10.20 12:58:24.000</styleCop>
@@ -1925,5 +1341,29 @@
         <warning>False</warning>
       </violation>
     </violations>
+=======
+  <sourcecode name="DBResource.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2015.08.03 17:21:23.015</styleCop>
+      <settingsFile>2016.02.03 13:19:11.357</settingsFile>
+      <sourceFile>2016.02.03 13:19:10.996</sourceFile>
+      <parser>2015.08.03 17:21:23.015</parser>
+      <StyleCop.CSharp.DocumentationRules>2015.08.03 17:21:23.015</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-987203398</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2015.08.03 17:21:23.015</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2015.08.03 17:21:23.015</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2015.08.03 17:21:23.015</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations />
+>>>>>>> 2b33dffce5d95c71af6c244a8d270d72c7042330
   </sourcecode>
 </stylecopresultscache>

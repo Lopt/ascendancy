@@ -11,11 +11,20 @@
     public class RegionPosition : object
     {
         /// <summary>
-        /// Tests if the first region position is equal to the second region position.
+        /// Adds one region position to another region position
         /// </summary>
-        /// <returns>true, if it is equal, otherwise false.</returns>
+        /// <returns>Resulted Position</returns>
         /// <param name="first">First region position.</param>
         /// <param name="second">Second region position.</param>
+        public static RegionPosition operator +(RegionPosition first, RegionPosition second)
+        {
+            return new RegionPosition(first.RegionX + second.RegionX, first.RegionY + second.RegionY);
+        }
+
+        /// <summary>Returns weather the positions are equal or not</summary>
+        /// <returns>true if both given positions are equal, otherwise false</returns>
+        /// <param name="first">First Position.</param>
+        /// <param name="second">Second Position.</param>
         public static bool operator ==(RegionPosition first, RegionPosition second)
         {
             if (object.ReferenceEquals(first, second))
@@ -32,26 +41,13 @@
             return first.RegionX == second.RegionX && first.RegionY == second.RegionY;
         }
 
-        /// <summary>
-        /// Tests if the first region position is unequal to the second region position.
-        /// </summary>
-        /// <returns>true, if it is equal, otherwise false.</returns>
-        /// <param name="first">First region position.</param>
-        /// <param name="second">Second region position.</param>
+        /// <summary>Returns weather the positions are equal or not</summary>
+        /// <returns>true if both given positions are NOT equal, otherwise false</returns>
+        /// <param name="first">First Position.</param>
+        /// <param name="second">Second Position.</param>
         public static bool operator !=(RegionPosition first, RegionPosition second)
         {
             return !(first == second);
-        }
-
-        /// <summary>
-        /// Adds one region position to another region position
-        /// </summary>
-        /// <returns>The new region position.</returns>
-        /// <param name="first">First region position.</param>
-        /// <param name="second">Second region position.</param>
-        public static RegionPosition operator +(RegionPosition first, RegionPosition second)
-        {
-            return new RegionPosition(first.RegionX + second.RegionX, first.RegionY + second.RegionY);
         }
 
         /// <summary>
@@ -158,7 +154,6 @@
         /// standard hash function
         /// </summary>
         /// <returns>hash code.</returns>
-        /// <filterpriority>2</filterpriority>
         public override int GetHashCode()
         {
             return (RegionX * 1000000) + RegionY;

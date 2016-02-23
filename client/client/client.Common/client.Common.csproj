@@ -51,7 +51,6 @@
     <Compile Include="Views\Actions\Action.cs" />
     <Compile Include="Views\Actions\MoveUnit.cs" />
     <Compile Include="Views\DebugLayer.cs" />
-    <Compile Include="Helper\Logging.cs" />
     <Compile Include="TcpConnection.cs" />
     <Compile Include="Views\HUD\Button.cs" />
     <Compile Include="Views\HUD\HUDLayer.cs" />

@@ -6,6 +6,7 @@
     using Client.Common.Helper;
     using CocosSharp;
     using Core.Controllers.Actions;
+    using Core.Helper;
 
     /// <summary>
     /// Debug layer.
@@ -79,10 +80,10 @@
 
             if (Visible)
             {
-                Helper.Logging.Info("Logging Layer opened");
+                Logging.Info("Logging Layer opened");
                 string output = string.Empty;
 
-                foreach (var text in Helper.Logging.GetLog())
+                foreach (var text in Logging.GetLog())
                 {
                     output += text + "\n";
                 }

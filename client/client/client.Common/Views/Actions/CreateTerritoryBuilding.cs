@@ -2,6 +2,7 @@
 {
     using System;
     using Core.Models;
+    using Core.Helper;
 
     /// <summary>
     /// Create a territory building.
@@ -24,7 +25,7 @@
         /// </summary>
         public override void BeforeDo()
         {
-            Helper.Logging.Info("CreateTerritoryBuiding Executed");
+            Logging.Info("CreateTerritoryBuiding Executed");
         }
 
         /// <summary>

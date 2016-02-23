@@ -5,39 +5,39 @@
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Position in the Gameworld as Integer (so it is discrete).
+    /// Position in the Game world as Integer (so it is discrete).
     /// Can be used to identify one field in the World.
     /// </summary>
     public class PositionI
     {
         /// <summary>
-        /// Adds one positionI to another positionI.
+        /// Adds two positions.
         /// </summary>
-        /// <returns>The new positionI.</returns>
-        /// <param name="first">First positionI.</param>
-        /// <param name="second">Second positionI.</param>
+        /// <returns>Resulted Position</returns>
+        /// <param name="first">First Position.</param>
+        /// <param name="second">Second Position.</param>
         public static PositionI operator +(PositionI first, PositionI second)
         {
             return new PositionI(first.X + second.X, first.Y + second.Y);
         }
 
         /// <summary>
-        /// Minus one positionI to another positionI.
+        /// Subtract second position from first position (first-second).
         /// </summary>
-        /// <returns>The new positionI.</returns>
-        /// <param name="first">First positionI.</param>
-        /// <param name="second">Second positionI.</param>
+        /// <returns>Resulted Position</returns>
+        /// <param name="first">First Position.</param>
+        /// <param name="second">Second Position.</param>
         public static PositionI operator -(PositionI first, PositionI second)
         {
             return new PositionI(first.X - second.X, first.Y - second.Y);
         }
 
         /// <summary>
-        /// Tests if the first positionI is equal to the second positionI.
+        /// Tests two positions if they are the same.
         /// </summary>
-        /// <returns>true, if it is equal, otherwise false.</returns>
-        /// <param name="first">First positionI.</param>
-        /// <param name="second">Second positionI.</param>
+        /// <returns>boolean if both position are the same. Otherwise false.</returns>
+        /// <param name="first">First Position.</param>
+        /// <param name="second">Second Position.</param>
         public static bool operator ==(PositionI first, PositionI second)
         {
             if (object.ReferenceEquals(first, second))
@@ -55,11 +55,11 @@
         }
 
         /// <summary>
-        /// Tests if the first positionI is unequal to the second positionI.
+        /// Tests two positions if they are NOT the same.
         /// </summary>
-        /// <returns>true, if it is equal, otherwise false.</returns>
-        /// <param name="first">First positionI.</param>
-        /// <param name="second">Second positionI.</param>
+        /// <returns>boolean if both position are NOT the same. Otherwise false.</returns>
+        /// <param name="first">First position.</param>
+        /// <param name="second">Second position.</param>
         public static bool operator !=(PositionI first, PositionI second)
         {
             return !(first == second);
@@ -80,7 +80,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Core.Models.PositionI"/> class.
         /// </summary>
-        /// <param name="obj">The JContainer object.</param>
+        /// <param name="obj">JSON Object.</param>
         public PositionI(JContainer obj)
         {
             X = (int)obj.SelectToken("X");
@@ -101,7 +101,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Core.Models.PositionI"/> class.
         /// </summary>
-        /// <param name="position">The position.</param>
+        /// <param name="position">Position which should be copied.</param>
         public PositionI(Position position)
         {
             X = (int)position.X;
@@ -155,21 +155,19 @@
         }
 
         /// <summary>
-        /// Serves as a hash function for a <see cref="Core.Models.PositionI"/> object.
+        /// Standard hash function
         /// </summary>
-        /// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a
-        /// hash table.</returns>
+        /// <returns>Hash code.</returns>
         public override int GetHashCode()
         {
             return (X * 1000000) + Y;
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object"/> is equal to the current <see cref="Core.Models.PositionI"/>.
+        /// tests if the given object is equal to this object.
         /// </summary>
+        /// <returns>true, if both objects are equal, otherwise false.</returns>
         /// <param name="obj">The <see cref="System.Object"/> to compare with the current <see cref="Core.Models.PositionI"/>.</param>
-        /// <returns><c>true</c> if the specified <see cref="System.Object"/> is equal to the current
-        /// <see cref="Core.Models.PositionI"/>; otherwise, <c>false</c>.</returns>
         public override bool Equals(object obj)
         {
             var pos = (PositionI)obj;
@@ -177,10 +175,11 @@
         }
 
         /// <summary>
-        /// Sqare distance to the specified positionI.
+        /// Distance from this to the specific position
+        /// Warning: NOT ROOTED.
         /// </summary>
-        /// <returns>>The Square distance</returns>
-        /// <param name="position">The positionI.</param>
+        /// <returns>Distance from this to the specific position.</returns>
+        /// <param name="position">Other Position.</param>
         public double Distance(PositionI position)
         {
             var distanceX = position.X - X;
@@ -189,10 +188,11 @@
         }
 
         /// <summary>
-        /// Sqare distance to the specified position.
+        /// Distance from this to the specific position
+        /// Warning: NOT ROOTED.
         /// </summary>
-        /// <returns>>The Square distance</returns>
-        /// <param name="position">The position.</param>
+        /// <returns>Distance from this to the specific position.</returns>
+        /// <param name="position">Other Position.</param>
         public double Distance(Position position)
         {
             var distanceX = position.X - X;

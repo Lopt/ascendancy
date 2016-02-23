@@ -1,6 +1,7 @@
 ﻿namespace Client.Common.Views.Actions
 {
     using System;
+    using Core.Helper;
 
     /// <summary>
     /// Create a unit.
@@ -21,7 +22,7 @@
         /// </summary>
         public override void BeforeDo()
         {
-            Helper.Logging.Info("CreateUnit Executed");
+            Logging.Info("CreateUnit Executed");
         }
 
         /// <summary>
