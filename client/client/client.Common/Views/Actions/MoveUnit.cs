@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using Core.Helper;
 
     /// <summary>
     /// Move a unit.
@@ -25,7 +26,7 @@
         /// </summary>
         public override void BeforeDo()
         {
-            Helper.Logging.Info("MoveUnit Executed");
+            Logging.Info("MoveUnit Executed");
 
             var action = (Core.Models.Action)Model;
             var actionC = (Core.Controllers.Actions.MoveUnit)Model.Control;
