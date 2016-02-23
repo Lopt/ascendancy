@@ -249,7 +249,6 @@
         public const short MINEWATER = ClientConstants.BUILDING_GIDS + 34;
     }
 
-
     /// <summary>
     /// Enemy Building GIDs assigned according to 'client/data/tiles/Tile assignment.PDF'.
     /// </summary>
@@ -327,6 +326,9 @@
     /// </summary>
     public class BuildingMenuGid
     {
+        /// <summary>
+        /// The MILITAR GID.
+        /// </summary>
         public const short MILITARY = ClientConstants.MENU_GIDS + 1;
         // to be replaced with MENU_GID + 3
 

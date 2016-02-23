@@ -4,7 +4,7 @@
     using CocosSharp;
 
     /// <summary>
-    /// Energy resource display. Shows the for the resource "energy".
+    /// Energy resource display. Shows the node for the resource "energy".
     /// </summary>
     public class EnergyResource : HUDNode
     {
@@ -14,7 +14,7 @@
         public EnergyResource()
             : base()
         {
-            m_background = new Button(               
+            m_background = new Button(
                 Constants.HUD.Energy.DISPLAY,
                 Constants.HUD.Energy.DISPLAY,
                 OnTouched);
@@ -49,7 +49,7 @@
                 return m_background.Size;
             }
         }
-           
+
         /// <summary>
         /// Called when added to the scene.
         /// </summary>

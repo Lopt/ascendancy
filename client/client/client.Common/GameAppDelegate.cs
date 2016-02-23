@@ -160,9 +160,7 @@
             m_currentScene = new StartScene(m_window);
             Phase = Phases.StartScene;
             m_window.RunWithScene(m_currentScene);
-
             Account = await ((StartScene)m_currentScene).InitLoadingAsync();
-
             m_currentScene = new GameScene(m_window);
             Phase = Phases.GameScene;
             m_window.DefaultDirector.ReplaceScene(m_currentScene);
