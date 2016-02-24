@@ -227,8 +227,19 @@
             CheckView(0);
             Schedule(CheckGPS);
             Schedule(CheckView);
-
+            Schedule(RefreshRegionsPeriodic);
             Schedule(Worker.Instance.Schedule);
+        }
+
+        float m_gameTime;
+        private void RefreshRegionsPeriodic(float time)
+        {
+            m_gameTime += time;
+            if (m_gameTime > ClientConstants.DATA_REFRESH_TIME)
+            {
+                RefreshRegionsAsync(time);
+                m_gameTime -= ClientConstants.DATA_REFRESH_TIME;
+            }
         }
 
         /// <summary>

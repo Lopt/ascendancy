@@ -284,5 +284,10 @@
         /// The GPS position timeout.
         /// </summary>
         public static readonly int GPS_GET_POSITION_TIMEOUT = 10000;
+
+        /// <summary>
+        /// time in which period the data should be refreshed
+        /// </summary>
+        public static readonly int DATA_REFRESH_TIME = 10;
     }
 }
