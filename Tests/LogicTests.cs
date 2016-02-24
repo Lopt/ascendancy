@@ -1,8 +1,8 @@
 namespace Tests
 {
     using System.Net.Sockets;
-    using Core.Models;
     using Core.Connection;
+    using Core.Models;
     using Newtonsoft.Json;
     using NUnit.Framework;
 
@@ -115,10 +115,95 @@ namespace Tests
         }
 
         /// <summary>
-        /// Tests the enabling and diabling of buildoptions
+        /// Tests the enabling and disabling of build options.
         /// </summary>
         [Test]
         public void BuildOptions()
+        {
+            var acc = GetTestAcc();
+
+            Assert.IsNotNull(acc.BuildableBuildings);
+            var buildOpt = acc.BuildableBuildings;
+
+            LogicRules.EnableBuildOptions((long)Core.Models.Definitions.EntityType.Headquarter, acc);
+
+            Assert.AreNotEqual(buildOpt, acc.BuildableBuildings);
+            Assert.Contains((long)Core.Models.Definitions.EntityType.Headquarter, (System.Collections.ICollection)acc.BuildableBuildings);
+
+            LogicRules.DisableBuildOptions((long)Core.Models.Definitions.EntityType.Headquarter, acc);
+
+            Assert.AreEqual(buildOpt, acc.BuildableBuildings);
+        }
+
+        /// <summary>
+        /// Tests the functions to increase and decrease the storage of an Account.
+        /// </summary>
+        [Test]
+        public void StorageTest()
+        {
+            var acc = GetTestAcc();
+
+            var oldEnergy = acc.Energy.MaximumValue;
+            var oldPopulation = acc.Population.MaximumValue;
+            var oldPlutonium = acc.Population.MaximumValue;
+            var oldScrap = acc.Scrap.MaximumValue;
+            var oldTechnology = acc.Technology.MaximumValue;
+
+            LogicRules.IncreaseWholeStorage(acc);
+
+            Assert.AreNotEqual(oldEnergy, acc.Energy.MaximumValue);
+            Assert.AreNotEqual(oldPopulation, acc.Population.MaximumValue);
+            Assert.AreNotEqual(oldPlutonium, acc.Plutonium.MaximumValue);
+            Assert.AreNotEqual(oldScrap, acc.Scrap.MaximumValue);
+            Assert.AreNotEqual(oldTechnology, acc.Technology.MaximumValue);
+
+            LogicRules.DecreaseWholeStorage(acc);
+
+            Assert.AreEqual(oldEnergy, acc.Energy.MaximumValue);
+            Assert.AreEqual(oldPopulation, acc.Population.MaximumValue);
+            Assert.AreEqual(oldPlutonium, acc.Plutonium.MaximumValue);
+            Assert.AreEqual(oldScrap, acc.Scrap.MaximumValue);
+            Assert.AreEqual(oldTechnology, acc.Technology.MaximumValue);
+
+            // Increase and Decrease Scrap Strorage
+            var entity = new Entity(336, Core.Models.Definitions.EntityType.Scrapyard, acc, new PositionI(new Position(new LatLon(50.97695325, 11.02396488))), 100, 0);
+
+            LogicRules.IncreaseStorage(acc, entity);
+
+            Assert.AreNotEqual(oldScrap, acc.Scrap.MaximumValue);
+
+            LogicRules.DecreasStorage(acc, entity);
+
+            Assert.AreEqual(oldScrap, acc.Scrap.MaximumValue);
+
+            // Increase and Decrease Population Strorage
+            entity = new Entity(342, Core.Models.Definitions.EntityType.Tent, acc, new PositionI(new Position(new LatLon(50.97695325, 11.02396488))), 100, 0);
+
+            LogicRules.IncreaseStorage(acc, entity);
+
+            Assert.AreNotEqual(oldPopulation, acc.Population.MaximumValue);
+
+            LogicRules.DecreasStorage(acc, entity);
+
+            Assert.AreEqual(oldPopulation, acc.Population.MaximumValue);
+
+            // Increase and Decrease Energy Strorage
+            entity = new Entity(330, Core.Models.Definitions.EntityType.Transformer, acc, new PositionI(new Position(new LatLon(50.97695325, 11.02396488))), 100, 0);
+
+            LogicRules.IncreaseStorage(acc, entity);
+
+            Assert.AreNotEqual(oldEnergy, acc.Energy.MaximumValue);
+
+            LogicRules.DecreasStorage(acc, entity);
+
+            Assert.AreEqual(oldEnergy, acc.Energy.MaximumValue);
+        }
+
+        /// <summary>
+        /// Gets account for testing the Logic.
+        /// </summary>
+        /// <returns> a Test account.</returns>
+        private Account GetTestAcc()
         {
             var testLoginRequest = new Core.Connections.LoginRequest(
                 new Core.Models.Position(new LatLon(50.97695325, 11.02396488)),
@@ -135,7 +220,7 @@ namespace Tests
             client.Connect(
                 Client.Common.Constants.ClientConstants.TCP_SERVER,
                 Client.Common.Constants.ClientConstants.TCP_PORT);
-            
+
             var testStream = client.GetStream();
 
             testPackage.Send(testStream);
@@ -146,19 +231,7 @@ namespace Tests
 
             var data = JsonConvert.DeserializeObject<Core.Connections.LoginResponse>(testPackageIn.Content);
 
-            var acc = new Account(data.AccountId);
-
-            Assert.IsNotNull(acc.BuildableBuildings);
-            var buildOpt = acc.BuildableBuildings;
-
-            LogicRules.EnableBuildOptions((long)Core.Models.Definitions.EntityType.Headquarter, acc);
-
-            Assert.AreNotEqual(buildOpt, acc.BuildableBuildings);
-            Assert.Contains((long)Core.Models.Definitions.EntityType.Headquarter, (System.Collections.ICollection)acc.BuildableBuildings);
-
-            LogicRules.DisableBuildOptions((long)Core.Models.Definitions.EntityType.Headquarter, acc);
-
-            Assert.AreEqual(buildOpt, acc.BuildableBuildings);
+            return new Account(data.AccountId);
         }
     }
 }
