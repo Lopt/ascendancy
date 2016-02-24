@@ -58,6 +58,7 @@
                 new Action(DeveloperFunction));
             m_question.AnchorPoint = CCPoint.AnchorLowerLeft;
             AddChild(m_question);
+            m_question.Visible = false;
         }
 
         /// <summary>
