@@ -55,6 +55,6 @@
         /// <summary>
         /// The maximum size of an packet
         /// </summary>
-        private const int MAX_PACKET_SIZE = 4096 * 4;
+        private const int MAX_PACKET_SIZE = 4096 * 4 / 16 * 1024;
     }
 }
