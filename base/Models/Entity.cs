@@ -38,8 +38,23 @@
             Owner = owner;
             Health = health;           
             Move = move;
-            ModifiedDefenseValue = 1;
-            ModfiedAttackValue = 1;
+            ModifiedDefenseValue = ((UnitDefinition)definition).Attack;
+            ModfiedAttackValue = ((UnitDefinition)definition).Defense;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Core.Models.Entity"/> class.
+        /// </summary>
+        /// <param name="id">Identifier of the entity.</param>
+        /// <param name="definitonID">Definiton ID.</param>
+        /// <param name="ownerID">Owner ID.</param>
+        /// <param name="position">Position as integer.</param>
+        /// <param name="health">Health of the entity.</param>
+        /// <param name="move">Move of the entity.</param>
+        [JsonConstructor]
+        public Entity(int id, int definitonID, int ownerID, PositionI position, int health, int move)
+            : this(id, World.Instance.DefinitionManager.GetDefinition((EntityType)definitonID), World.Instance.AccountManager.GetAccountOrEmpty(ownerID), position, health, move)
+        {            
         }
 
         /// <summary>
