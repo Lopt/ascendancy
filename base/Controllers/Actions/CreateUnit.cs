@@ -197,7 +197,7 @@
             {
                 if (regionManagerC.GetRegion(checkingpos.RegionPosition) != currentregion)
                 {
-                    list.Add(regionManagerC.RegionManager.GetRegion(buildpoint.RegionPosition).RegionPosition);
+                    list.Add(regionManagerC.RegionManager.GetRegion(checkingpos.RegionPosition).RegionPosition);
                 }
             }
             return list;
