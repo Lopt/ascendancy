@@ -173,7 +173,7 @@
             // between max and minimum
             var randomValue = (rand.NextDouble() * (2 - 0.5f)) + 0.5f;    
             result *= randomValue;
-            entity.ModfiedAttackValue = (int)result;
+            entity.ModfiedAttackValue = 150;//(int)result;
             return 0;
         }
 

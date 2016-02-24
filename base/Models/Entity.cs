@@ -157,13 +157,8 @@
         /// <value>The modified attack value.</value>
         public int ModfiedAttackValue
         {
-            get
-            {
-                return 1;
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         /// <summary>
@@ -172,13 +167,8 @@
         /// <value>The modified defense value.</value>
         public int ModifiedDefenseValue
         {
-            get
-            {
-                return 1;
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         /// <summary>
