@@ -157,7 +157,10 @@
         /// <value>The modified attack value.</value>
         public int ModfiedAttackValue
         {
-            get;
+            get
+            {
+                return 1;
+            }
             set;
         }
 
@@ -167,7 +170,10 @@
         /// <value>The modified defense value.</value>
         public int ModifiedDefenseValue
         {
-            get;
+            get
+            {
+                return 1;
+            }
             set;
         }
 
