@@ -120,15 +120,22 @@
             else
             {
                 Controllers.NetworkController.Instance.DoActionsAsync(Models.Geolocation.Instance.CurrentGamePosition, new Core.Models.Action[] { action });
-                ScheduleOnce(RefreshRegionsAsync, 0.3f);
+                ScheduleOnce(RefreshRegions, 0.3f);
             }
         }
 
         /// <summary>
-        /// Refreshs the regions async.
+        /// Refreshs the regions.
         /// </summary>
         /// <param name="time">The time.</param>
-        public void RefreshRegionsAsync(float time)
+        public async Task RefreshRegionsAsync(float time)
+        {
+            var regions = m_regionViewHexDic.Keys.ToArray();
+            await Manager.EntityManagerController.Instance.LoadEntitiesAsync(regions);
+            UglyDraw();
+        }
+
+        public void RefreshRegions(float time)
         {
             var regions = m_regionViewHexDic.Keys.ToArray();
             Manager.EntityManagerController.Instance.LoadEntitiesAsync(regions);
@@ -337,11 +344,6 @@
                 }
                 m_regionViewHexDic.Add(regionPos, regionViewHex);
             }         
-
-            if (newKeys.Count > 0)
-            {
-                ScheduleOnce(RefreshRegionsAsync, 0.3f);
-            }
         }
 
         /// <summary>

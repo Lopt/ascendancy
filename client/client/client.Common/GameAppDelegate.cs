@@ -64,6 +64,7 @@
         {
             Start,
             StartScene,
+            LoadGameScene,
             GameScene,
             Exit,
         }
@@ -162,6 +163,13 @@
             m_window.RunWithScene(m_currentScene);
             Account = await ((StartScene)m_currentScene).InitLoadingAsync();
             m_currentScene = new GameScene(m_window);
+            Phase = Phases.LoadGameScene;
+            await ((GameScene)m_currentScene).WorldLayerHex.RefreshRegionsAsync(0.0f);
+            Core.Helper.Logging.GetLog();
+            while (!Worker.Instance.Queue.IsEmpty)
+            {
+                Worker.Instance.Schedule(0.1f);
+            }
             Phase = Phases.GameScene;
             m_window.DefaultDirector.ReplaceScene(m_currentScene);
         }
