@@ -161,7 +161,9 @@
             {
                 return 1;
             }
-            set;
+            set
+            {
+            }
         }
 
         /// <summary>
@@ -174,7 +176,9 @@
             {
                 return 1;
             }
-            set;
+            set
+            {
+            }
         }
 
         /// <summary>
