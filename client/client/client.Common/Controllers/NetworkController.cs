@@ -34,7 +34,6 @@
         /// </summary>
         private NetworkController()
         {
-            ExceptionMessage = string.Empty;
             m_client = new HttpClient(new NativeMessageHandler());
             m_sessionID = Guid.Empty;
         }
@@ -54,16 +53,6 @@
         #endregion
 
         #region Networking
-
-        /// <summary>
-        /// Gets the exception message.
-        /// </summary>
-        /// <value>The exception message.</value>
-        public string ExceptionMessage
-        {
-            get;
-            private set; 
-        }
 
         /// <summary>
         /// Gets a value indicating whether this instance is logged in .
@@ -128,17 +117,22 @@
             var request = new Core.Connections.LoginRequest(currentGamePosition, user, password);
             var json = JsonConvert.SerializeObject(request);
 
-            var jsonFromServer = await TcpConnection.Connector.SendAsync(Core.Connection.MethodType.Login, json);
-
-            var loginResponse = JsonConvert.DeserializeObject<Core.Connections.LoginResponse>(jsonFromServer);
-            if (loginResponse.Status == Core.Connections.LoginResponse.ReponseStatus.OK)
+            try
             {
-                m_sessionID = loginResponse.SessionID;
-                GameAppDelegate.ServerTime = loginResponse.ServerTime; // TODO: this shouldn't be set here, change it
-                return new Account(loginResponse.AccountId, user);
-            }
+                var jsonFromServer = await TcpConnection.Connector.SendAsync(Core.Connection.MethodType.Login, json);
 
-            ExceptionMessage = "Login failure";
+                var loginResponse = JsonConvert.DeserializeObject<Core.Connections.LoginResponse>(jsonFromServer);
+                if (loginResponse.Status == Core.Connections.LoginResponse.ReponseStatus.OK)
+                {
+                    m_sessionID = loginResponse.SessionID;
+                    GameAppDelegate.ServerTime = loginResponse.ServerTime; // TODO: this shouldn't be set here, change it
+                    return new Account(loginResponse.AccountId, user);
+                }
+            }
+            catch (Exception ex)
+            {
+                Core.Helper.Logging.Error(ex.Message);
+            }
 
             return null;
         }
