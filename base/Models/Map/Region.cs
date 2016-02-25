@@ -229,7 +229,7 @@
         {
             foreach (var position in territoryList)
             {
-                if (m_territory.ContainsKey(position))
+                if (World.Instance.RegionManager.GetRegion(position.RegionPosition).m_territory.ContainsKey(position))
                 {
                     World.Instance.RegionManager.GetRegion(position.RegionPosition).m_territory.Remove(position);
                 }                        
