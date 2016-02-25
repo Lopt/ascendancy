@@ -1,4 +1,4 @@
-﻿namespace Client.iOS
+﻿namespace Client.IOS
 {
     using System;
     using System.Net;
