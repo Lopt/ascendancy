@@ -52,6 +52,39 @@
         }
 
         /// <summary>
+        /// Tests two accounts if they are the same.
+        /// </summary>
+        /// <returns>boolean if both accounts are the same or same ID. Otherwise false.</returns>
+        /// <param name="first">First Position.</param>
+        /// <param name="second">Second Position.</param>
+        public static bool operator ==(Account first, Account second)
+        {
+            if (object.ReferenceEquals(first, second))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)first == null) || ((object)second == null))
+            {
+                return false;
+            }
+
+            return first.ID == second.ID;
+        }
+
+        /// <summary>
+        /// Tests two accounts if they are NOT the same.
+        /// </summary>
+        /// <returns>boolean if both accounts are NOT the same or NOT the same ID. Otherwise false.</returns>
+        /// <param name="first">First position.</param>
+        /// <param name="second">Second position.</param>
+        public static bool operator !=(Account first, Account second)
+        {
+            return !(first == second);
+        }
+
+        /// <summary>
         /// Gets the Id
         /// </summary>
         /// <value>The Id.</value>
