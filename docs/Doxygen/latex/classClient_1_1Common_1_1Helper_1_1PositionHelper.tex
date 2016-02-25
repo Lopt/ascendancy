@@ -1,18 +1,173 @@
-\hypertarget{classClient_1_1Common_1_1Helper_1_1PositionHelper}{\section{Client.\-Common.\-Helper.\-Position\-Helper Class Reference}
-\label{classClient_1_1Common_1_1Helper_1_1PositionHelper}\index{Client.\-Common.\-Helper.\-Position\-Helper@{Client.\-Common.\-Helper.\-Position\-Helper}}
-}
+\hypertarget{classClient_1_1Common_1_1Helper_1_1PositionHelper}{}\section{Client.\+Common.\+Helper.\+Position\+Helper Class Reference}
+\label{classClient_1_1Common_1_1Helper_1_1PositionHelper}\index{Client.\+Common.\+Helper.\+Position\+Helper@{Client.\+Common.\+Helper.\+Position\+Helper}}
+
+
+Position helper convert map and tile positions.  
+
+
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Helper_1_1PositionHelper_ac77b450a32ee660ee2c141cecbc08c0c}{static \\*
-Cocos\-Sharp.\-C\-C\-Tile\-Map\-Coordinates {\bfseries Position\-To\-Tile\-Map\-Coordinates} (\hyperlink{classCore_1_1Models_1_1Position}{Position} center\-Position, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} position)}\label{classClient_1_1Common_1_1Helper_1_1PositionHelper_ac77b450a32ee660ee2c141cecbc08c0c}
+static C\+C\+Point \hyperlink{classClient_1_1Common_1_1Helper_1_1PositionHelper_a73e8150dc8ae933541741469f9aa4100}{Region\+To\+Worldspace} (\hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex}{Region\+View\+Hex} region\+View\+Hex)
+\begin{DoxyCompactList}\small\item\em Converts a region(position) to a world space position \end{DoxyCompactList}\item 
+static C\+C\+Point \hyperlink{classClient_1_1Common_1_1Helper_1_1PositionHelper_a2e018b1aff62981009186b8d6f03ff6b}{Region\+To\+Worldspace} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position} region\+Position)
+\begin{DoxyCompactList}\small\item\em Converts a region position to a world space position \end{DoxyCompactList}\item 
+static \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position} \hyperlink{classClient_1_1Common_1_1Helper_1_1PositionHelper_aa533e44b8451700c1864554a6559ce41}{Worldspace\+To\+Region} (C\+C\+Point point)
+\begin{DoxyCompactList}\small\item\em Converts a world space position to a region position \end{DoxyCompactList}\item 
+static C\+C\+Point \hyperlink{classClient_1_1Common_1_1Helper_1_1PositionHelper_a44e228caa4d6ea5a002c7b3715c67d19}{Cell\+To\+Tile} (\hyperlink{classCore_1_1Models_1_1CellPosition}{Cell\+Position} cell)
+\begin{DoxyCompactList}\small\item\em Converts a cell position to a tile position (which is a position relative to the region position) \end{DoxyCompactList}\item 
+static \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} \hyperlink{classClient_1_1Common_1_1Helper_1_1PositionHelper_a6227f63a447ea7c677565fcde05aa7e1}{Worldspace\+To\+Position\+I} (C\+C\+Point point, \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex}{World\+Layer\+Hex} world\+Layer)
+\begin{DoxyCompactList}\small\item\em Converts the given world space position to a Position\+I \end{DoxyCompactList}\item 
+static \hyperlink{classCore_1_1Models_1_1Position}{Position} \hyperlink{classClient_1_1Common_1_1Helper_1_1PositionHelper_a8b3306e465236f54530a7c140d156458}{Worldspace\+To\+Position} (C\+C\+Point point)
+\begin{DoxyCompactList}\small\item\em Converts the world spaces position to a game position. W\+A\+R\+N\+I\+N\+G\+: Do not convert the position to an Position\+I or similar -\/ it is not guaranteed to be equal. If you need Position\+I, better use the World space to Position\+I converter \end{DoxyCompactList}\item 
+static C\+C\+Point \hyperlink{classClient_1_1Common_1_1Helper_1_1PositionHelper_ab338fba1c421fd0ef2eae917215a588f}{Position\+To\+Worldspace} (\hyperlink{classCore_1_1Models_1_1Position}{Position} position)
+\begin{DoxyCompactList}\small\item\em Converts the Position to a world space position \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Position helper convert map and tile positions. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1Helper_1_1PositionHelper_a44e228caa4d6ea5a002c7b3715c67d19}{}\index{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}!Cell\+To\+Tile@{Cell\+To\+Tile}}
+\index{Cell\+To\+Tile@{Cell\+To\+Tile}!Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}}
+\subsubsection[{Cell\+To\+Tile(\+Cell\+Position cell)}]{\setlength{\rightskip}{0pt plus 5cm}static C\+C\+Point Client.\+Common.\+Helper.\+Position\+Helper.\+Cell\+To\+Tile (
+\begin{DoxyParamCaption}
+\item[{{\bf Cell\+Position}}]{cell}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Helper_1_1PositionHelper_a44e228caa4d6ea5a002c7b3715c67d19}
+
+
+Converts a cell position to a tile position (which is a position relative to the region position) 
+
+\begin{DoxyReturn}{Returns}
+The tile position.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em cell} & Cell position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Helper_1_1PositionHelper_ab338fba1c421fd0ef2eae917215a588f}{}\index{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}!Position\+To\+Worldspace@{Position\+To\+Worldspace}}
+\index{Position\+To\+Worldspace@{Position\+To\+Worldspace}!Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}}
+\subsubsection[{Position\+To\+Worldspace(\+Position position)}]{\setlength{\rightskip}{0pt plus 5cm}static C\+C\+Point Client.\+Common.\+Helper.\+Position\+Helper.\+Position\+To\+Worldspace (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Helper_1_1PositionHelper_ab338fba1c421fd0ef2eae917215a588f}
+
+
+Converts the Position to a world space position 
+
+\begin{DoxyReturn}{Returns}
+The world space position.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em position} & game position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Helper_1_1PositionHelper_a73e8150dc8ae933541741469f9aa4100}{}\index{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}!Region\+To\+Worldspace@{Region\+To\+Worldspace}}
+\index{Region\+To\+Worldspace@{Region\+To\+Worldspace}!Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}}
+\subsubsection[{Region\+To\+Worldspace(\+Region\+View\+Hex region\+View\+Hex)}]{\setlength{\rightskip}{0pt plus 5cm}static C\+C\+Point Client.\+Common.\+Helper.\+Position\+Helper.\+Region\+To\+Worldspace (
+\begin{DoxyParamCaption}
+\item[{{\bf Region\+View\+Hex}}]{region\+View\+Hex}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Helper_1_1PositionHelper_a73e8150dc8ae933541741469f9aa4100}
+
+
+Converts a region(position) to a world space position 
+
+\begin{DoxyReturn}{Returns}
+The world space position of the given region.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em region\+View\+Hex} & View of a region.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Helper_1_1PositionHelper_a2e018b1aff62981009186b8d6f03ff6b}{}\index{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}!Region\+To\+Worldspace@{Region\+To\+Worldspace}}
+\index{Region\+To\+Worldspace@{Region\+To\+Worldspace}!Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}}
+\subsubsection[{Region\+To\+Worldspace(\+Region\+Position region\+Position)}]{\setlength{\rightskip}{0pt plus 5cm}static C\+C\+Point Client.\+Common.\+Helper.\+Position\+Helper.\+Region\+To\+Worldspace (
+\begin{DoxyParamCaption}
+\item[{{\bf Region\+Position}}]{region\+Position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Helper_1_1PositionHelper_a2e018b1aff62981009186b8d6f03ff6b}
+
+
+Converts a region position to a world space position 
+
+\begin{DoxyReturn}{Returns}
+The world space position of the given region position.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em region\+Position} & region position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Helper_1_1PositionHelper_a8b3306e465236f54530a7c140d156458}{}\index{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}!Worldspace\+To\+Position@{Worldspace\+To\+Position}}
+\index{Worldspace\+To\+Position@{Worldspace\+To\+Position}!Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}}
+\subsubsection[{Worldspace\+To\+Position(\+C\+C\+Point point)}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Position} Client.\+Common.\+Helper.\+Position\+Helper.\+Worldspace\+To\+Position (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Point}]{point}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Helper_1_1PositionHelper_a8b3306e465236f54530a7c140d156458}
+
+
+Converts the world spaces position to a game position. W\+A\+R\+N\+I\+N\+G\+: Do not convert the position to an Position\+I or similar -\/ it is not guaranteed to be equal. If you need Position\+I, better use the World space to Position\+I converter 
+
+\begin{DoxyReturn}{Returns}
+The game position.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em point} & world space position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Helper_1_1PositionHelper_a6227f63a447ea7c677565fcde05aa7e1}{}\index{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}!Worldspace\+To\+Position\+I@{Worldspace\+To\+Position\+I}}
+\index{Worldspace\+To\+Position\+I@{Worldspace\+To\+Position\+I}!Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}}
+\subsubsection[{Worldspace\+To\+Position\+I(\+C\+C\+Point point, World\+Layer\+Hex world\+Layer)}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Position\+I} Client.\+Common.\+Helper.\+Position\+Helper.\+Worldspace\+To\+Position\+I (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Point}]{point, }
+\item[{{\bf World\+Layer\+Hex}}]{world\+Layer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Helper_1_1PositionHelper_a6227f63a447ea7c677565fcde05aa7e1}
+
+
+Converts the given world space position to a Position\+I 
+
+\begin{DoxyReturn}{Returns}
+Position\+I of the given world space.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em point} & Point which should be converted.\\
+\hline
+{\em world\+Layer} & World layer.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Helper_1_1PositionHelper_aa533e44b8451700c1864554a6559ce41}{}\index{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}!Worldspace\+To\+Region@{Worldspace\+To\+Region}}
+\index{Worldspace\+To\+Region@{Worldspace\+To\+Region}!Client\+::\+Common\+::\+Helper\+::\+Position\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Position\+Helper}}
+\subsubsection[{Worldspace\+To\+Region(\+C\+C\+Point point)}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Region\+Position} Client.\+Common.\+Helper.\+Position\+Helper.\+Worldspace\+To\+Region (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Point}]{point}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Helper_1_1PositionHelper_aa533e44b8451700c1864554a6559ce41}
+
+
+Converts a world space position to a region position 
+
+\begin{DoxyReturn}{Returns}
+The region position which is at the given world space position.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em point} & World space Position.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Helper_1_1PositionHelper_af2ba9ab8c3c50e5f41ba5f4cd65ca013}{static \hyperlink{classClient_1_1Common_1_1Models_1_1MapCellPosition}{Map\-Cell\-Position} {\bfseries Position\-To\-Map\-Cell\-Position} (\hyperlink{classCore_1_1Models_1_1Position}{Position} center\-Position, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} position)}\label{classClient_1_1Common_1_1Helper_1_1PositionHelper_af2ba9ab8c3c50e5f41ba5f4cd65ca013}
-
-\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
-\item 
-client/client/client.\-Common/\-Helper/Position\-Helper.\-cs\end{DoxyCompactItemize}
+client/client/client.\+Common/\+Helper/Position\+Helper.\+cs\end{DoxyCompactItemize}

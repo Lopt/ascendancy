@@ -1,0 +1,242 @@
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex}{}\section{Client.\+Common.\+Views.\+World\+Layer\+Hex Class Reference}
+\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex}\index{Client.\+Common.\+Views.\+World\+Layer\+Hex@{Client.\+Common.\+Views.\+World\+Layer\+Hex}}
+
+
+The World layer with hexagonal Tile map.  
+
+
+Inheritance diagram for Client.\+Common.\+Views.\+World\+Layer\+Hex\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classClient_1_1Common_1_1Views_1_1WorldLayerHex}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a40891eae0c33b440c8038472a5f64eb8}{View\+Modes} \{ {\bfseries Current\+G\+P\+S\+Position}, 
+{\bfseries Camera\+Position}, 
+{\bfseries Headquarter\+Position}
+ \}\begin{DoxyCompactList}\small\item\em View modes. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a748a6034c04a2dcb352f0ee616d68daf}{World\+Layer\+Hex} (\hyperlink{classClient_1_1Common_1_1Views_1_1GameScene}{Game\+Scene} game\+Scene)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex}{Client.\+Common.\+Views.\+World\+Layer\+Hex} class. \end{DoxyCompactList}\item 
+float \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_afe55e4110f8c9fb64d57689453504ef3}{Get\+Zoom} ()
+\begin{DoxyCompactList}\small\item\em Gets the zoom. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a93f463bd7023fa251b2e1e982090f01f}{Zoom\+World} (float new\+Zoom)
+\begin{DoxyCompactList}\small\item\em Zooms the world. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_aa5ce03108879cf47cca4523055576e57}{Set\+World\+Position} (C\+C\+Point world\+Point)
+\begin{DoxyCompactList}\small\item\em Sets the world position. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_aef54028ba0071869910f2e914b0bc334}{Ugly\+Draw} ()
+\begin{DoxyCompactList}\small\item\em Make a ugle draw (moves the tile layers container a little bit). \end{DoxyCompactList}\item 
+\hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex}{Region\+View\+Hex} \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a4351c7a5f55d8c2b8dfa254d61f45ba6}{Get\+Region\+View\+Hex} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position} region\+Position)
+\begin{DoxyCompactList}\small\item\em Gets the region view hex. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a33f0ef24ab7dfdf7fb1fda840066698b}{Do\+Action} (\hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action} action)
+\begin{DoxyCompactList}\small\item\em Dos the action. \end{DoxyCompactList}\item 
+async Task \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a70bd06aac88a6e2aaa6d9494da2a336f}{Refresh\+Regions\+Async} (float time)
+\begin{DoxyCompactList}\small\item\em Refreshs the regions. \end{DoxyCompactList}\item 
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a2cd386d5c039cfdd83f204173d9947cf}{}void {\bfseries Refresh\+Regions} (float time)\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a2cd386d5c039cfdd83f204173d9947cf}
+
+\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a21fb54acaab2b9d573446cca8fc1f67d}{Draw\+Borders} (\hyperlink{classCore_1_1Models_1_1Account}{Account} owner)
+\begin{DoxyCompactList}\small\item\em Draws the borders. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a40891eae0c33b440c8038472a5f64eb8}{View\+Modes} \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a03e940b1ad75c37ca44e714d700f0828}{View\+Mode}
+\begin{DoxyCompactList}\small\item\em The view mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex_aa0459e7aeab58ee69da5f5b50cdf2d79}{Added\+To\+Scene} ()
+\begin{DoxyCompactList}\small\item\em Addeds to scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The World layer with hexagonal Tile map. 
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a40891eae0c33b440c8038472a5f64eb8}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!View\+Modes@{View\+Modes}}
+\index{View\+Modes@{View\+Modes}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{View\+Modes}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Client.\+Common.\+Views.\+World\+Layer\+Hex.\+View\+Modes}\hspace{0.3cm}{\ttfamily [strong]}}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a40891eae0c33b440c8038472a5f64eb8}
+
+
+View modes. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a748a6034c04a2dcb352f0ee616d68daf}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!World\+Layer\+Hex@{World\+Layer\+Hex}}
+\index{World\+Layer\+Hex@{World\+Layer\+Hex}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{World\+Layer\+Hex(\+Game\+Scene game\+Scene)}]{\setlength{\rightskip}{0pt plus 5cm}Client.\+Common.\+Views.\+World\+Layer\+Hex.\+World\+Layer\+Hex (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Scene}}]{game\+Scene}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a748a6034c04a2dcb352f0ee616d68daf}
+
+
+Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex}{Client.\+Common.\+Views.\+World\+Layer\+Hex} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Scene} & Game scene.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_aa0459e7aeab58ee69da5f5b50cdf2d79}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!Added\+To\+Scene@{Added\+To\+Scene}}
+\index{Added\+To\+Scene@{Added\+To\+Scene}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{Added\+To\+Scene()}]{\setlength{\rightskip}{0pt plus 5cm}override void Client.\+Common.\+Views.\+World\+Layer\+Hex.\+Added\+To\+Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_aa0459e7aeab58ee69da5f5b50cdf2d79}
+
+
+Addeds to scene. 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a33f0ef24ab7dfdf7fb1fda840066698b}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!Do\+Action@{Do\+Action}}
+\index{Do\+Action@{Do\+Action}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{Do\+Action(\+Core.\+Models.\+Action action)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+World\+Layer\+Hex.\+Do\+Action (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\+Models.\+Action}}]{action}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a33f0ef24ab7dfdf7fb1fda840066698b}
+
+
+Dos the action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & The action.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a21fb54acaab2b9d573446cca8fc1f67d}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!Draw\+Borders@{Draw\+Borders}}
+\index{Draw\+Borders@{Draw\+Borders}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{Draw\+Borders(\+Account owner)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+World\+Layer\+Hex.\+Draw\+Borders (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{owner}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a21fb54acaab2b9d573446cca8fc1f67d}
+
+
+Draws the borders. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em owner} & The owner.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a4351c7a5f55d8c2b8dfa254d61f45ba6}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!Get\+Region\+View\+Hex@{Get\+Region\+View\+Hex}}
+\index{Get\+Region\+View\+Hex@{Get\+Region\+View\+Hex}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{Get\+Region\+View\+Hex(\+Region\+Position region\+Position)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Region\+View\+Hex} Client.\+Common.\+Views.\+World\+Layer\+Hex.\+Get\+Region\+View\+Hex (
+\begin{DoxyParamCaption}
+\item[{{\bf Region\+Position}}]{region\+Position}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a4351c7a5f55d8c2b8dfa254d61f45ba6}
+
+
+Gets the region view hex. 
+
+\begin{DoxyReturn}{Returns}
+The region view hex.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em region\+Position} & Region position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_afe55e4110f8c9fb64d57689453504ef3}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!Get\+Zoom@{Get\+Zoom}}
+\index{Get\+Zoom@{Get\+Zoom}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{Get\+Zoom()}]{\setlength{\rightskip}{0pt plus 5cm}float Client.\+Common.\+Views.\+World\+Layer\+Hex.\+Get\+Zoom (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_afe55e4110f8c9fb64d57689453504ef3}
+
+
+Gets the zoom. 
+
+\begin{DoxyReturn}{Returns}
+The zoom.
+\end{DoxyReturn}
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a70bd06aac88a6e2aaa6d9494da2a336f}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!Refresh\+Regions\+Async@{Refresh\+Regions\+Async}}
+\index{Refresh\+Regions\+Async@{Refresh\+Regions\+Async}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{Refresh\+Regions\+Async(float time)}]{\setlength{\rightskip}{0pt plus 5cm}async Task Client.\+Common.\+Views.\+World\+Layer\+Hex.\+Refresh\+Regions\+Async (
+\begin{DoxyParamCaption}
+\item[{float}]{time}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a70bd06aac88a6e2aaa6d9494da2a336f}
+
+
+Refreshs the regions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The time.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_aa5ce03108879cf47cca4523055576e57}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!Set\+World\+Position@{Set\+World\+Position}}
+\index{Set\+World\+Position@{Set\+World\+Position}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{Set\+World\+Position(\+C\+C\+Point world\+Point)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+World\+Layer\+Hex.\+Set\+World\+Position (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Point}]{world\+Point}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_aa5ce03108879cf47cca4523055576e57}
+
+
+Sets the world position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world\+Point} & World point.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_aef54028ba0071869910f2e914b0bc334}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!Ugly\+Draw@{Ugly\+Draw}}
+\index{Ugly\+Draw@{Ugly\+Draw}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{Ugly\+Draw()}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+World\+Layer\+Hex.\+Ugly\+Draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_aef54028ba0071869910f2e914b0bc334}
+
+
+Make a ugle draw (moves the tile layers container a little bit). 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a93f463bd7023fa251b2e1e982090f01f}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!Zoom\+World@{Zoom\+World}}
+\index{Zoom\+World@{Zoom\+World}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{Zoom\+World(float new\+Zoom)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+World\+Layer\+Hex.\+Zoom\+World (
+\begin{DoxyParamCaption}
+\item[{float}]{new\+Zoom}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a93f463bd7023fa251b2e1e982090f01f}
+
+
+Zooms the world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Zoom} & New zoom.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a03e940b1ad75c37ca44e714d700f0828}{}\index{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}!View\+Mode@{View\+Mode}}
+\index{View\+Mode@{View\+Mode}!Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex@{Client\+::\+Common\+::\+Views\+::\+World\+Layer\+Hex}}
+\subsubsection[{View\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf View\+Modes} Client.\+Common.\+Views.\+World\+Layer\+Hex.\+View\+Mode}\label{classClient_1_1Common_1_1Views_1_1WorldLayerHex_a03e940b1ad75c37ca44e714d700f0828}
+
+
+The view mode. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+client/client/client.\+Common/\+Views/World\+Layer\+Hex.\+cs\end{DoxyCompactItemize}

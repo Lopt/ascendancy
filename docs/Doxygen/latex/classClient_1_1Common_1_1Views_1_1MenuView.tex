@@ -1,56 +1,533 @@
-\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView}{\section{Client.\-Common.\-Views.\-Menu\-View Class Reference}
-\label{classClient_1_1Common_1_1Views_1_1MenuView}\index{Client.\-Common.\-Views.\-Menu\-View@{Client.\-Common.\-Views.\-Menu\-View}}
-}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView}{}\section{Client.\+Common.\+Views.\+Menu\+View Class Reference}
+\label{classClient_1_1Common_1_1Views_1_1MenuView}\index{Client.\+Common.\+Views.\+Menu\+View@{Client.\+Common.\+Views.\+Menu\+View}}
+
+
+The Menu view.  
+
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a63db164d71105de8543e3992db8c9a1c}{Menu\+Type} \{ \\*
+{\bfseries Unity}, 
+{\bfseries Headquarter}, 
+{\bfseries Major}, 
+{\bfseries Extended}, 
+\\*
+{\bfseries Empty}
+ \}\begin{DoxyCompactList}\small\item\em The view menu type. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a625e8f113e66ae12b1ebb9142ef9072d}{{\bfseries Menu\-View} (C\-C\-Tile\-Map\-Layer menu\-Layer, C\-C\-Tile\-Map\-Coordinates center, \hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Definition}\mbox{[}$\,$\mbox{]} types)}\label{classClient_1_1Common_1_1Views_1_1MenuView_a625e8f113e66ae12b1ebb9142ef9072d}
-
+\hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a96e27ee46eb6e4fe839281c61a0c7b4a}{Menu\+View} (\hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex}{World\+Layer\+Hex} worldlayer, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} center, \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a63db164d71105de8543e3992db8c9a1c}{Menu\+Type} menu\+Type)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView}{Client.\+Common.\+Views.\+Menu\+View} class. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1PositionI}{Core.\+Models.\+Position\+I} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a2d5b7057b1e79dca2236532d5dcf7f78}{Get\+Tiles} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} coord, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} oldcoord)
+\begin{DoxyCompactList}\small\item\em Gets one iteration of the expanding menu with the coordinate and the old coordinate as needed parameters to calculate the direction. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_ac4ec6daade1a30b3989f9ed77df78665}{Get\+Extended\+Coords} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} coord, \hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Core.\+Models.\+Definitions.\+Definition}\mbox{[}$\,$\mbox{]} definitions)
+\begin{DoxyCompactList}\small\item\em Gets the extended coords. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_abca68f27c340677a0fe7cfb410d8c71e}{Extend\+Menu} (short gid, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} coord)
+\begin{DoxyCompactList}\small\item\em Extends the menu. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a6fce28a445624cfdc1f9b045411c604f}{Draw\+Menu} (\hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a63db164d71105de8543e3992db8c9a1c}{Menu\+Type} menu\+Type)
+\begin{DoxyCompactList}\small\item\em Draws the menu for each type. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Core.\+Models.\+Definitions.\+Definition} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a5b45615926b800171d593f279a01e283}{Get\+Selected\+Definition} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} pos)
+\begin{DoxyCompactList}\small\item\em Gets the selected definition on a position. \end{DoxyCompactList}\item 
+C\+C\+Tile\+Gid\+And\+Flags \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_ae297dd1b9a97ab6936f51b92cc5042c2}{Get\+Selected\+Kategory} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} pos)
+\begin{DoxyCompactList}\small\item\em Gets the selected kategory gid on a position. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_aca76b1123fb7d025ca07ab120849008b}{Clear\+Extended\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Clears the extended menu Tiles. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_abd8d48d776f40caf15251786866331bc}{Close\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Closes the menu. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a80382e5069b92bf7adcae28fa0b8afa0}{Remove\+All\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Removes the Menu. \end{DoxyCompactList}\item 
+bool \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a23e2f8cb68829a8d2bfaeff729008d2f}{Is\+Extended} ()
+\begin{DoxyCompactList}\small\item\em Determines whether this instance is extended. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a962b8d352d3efcb71d529cc8234f63a4}{Get\+Center\+Position} ()
+\begin{DoxyCompactList}\small\item\em Gets the center position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_aab5290ebf833abcf80e67c46199cb53d}{C\-C\-Tile\-Map\-Coordinates\mbox{[}$\,$\mbox{]} {\bfseries Get\-Surrounded\-Tiles} ()}\label{classClient_1_1Common_1_1Views_1_1MenuView_aab5290ebf833abcf80e67c46199cb53d}
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a89a9af01e575d4fd95b93697fd1c21da}{Leftupeven}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction left Up for an even X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_abf35d055ec05de9009e4537a25f94739}{Leftupodd}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction left Up for an odd X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a9023c2bcec1cdb52198b9dc975fbc257}{Leftdowneven}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction left down for an even X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a0a5f7440839d47bbd716627bd0efc576}{Leftdownodd}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction left down for an odd X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_ad5d3faf457e317d3c0757a13ff310e0c}{Upeven}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction Up for an even X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_abb38bb872b2393e613c4e9f20498a0b2}{Upodd}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction Up for an odd X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a36b0ad902b98487477a87442d088d747}{Rightupeven}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction right Up for an even X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a4e6fa7548be9f1c327bb97a5447721ff}{Rightupodd}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction right Up for an odd X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_ae711e0210073a31a2bf15ad1d77e8478}{Rightdowneven}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction right down for an even X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_ab2619bc7970cbbdaeba9521561eabe53}{Rightdownodd}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction right down for an odd X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a3c8065c208ad29887f55bb7b7e8f2868}{Downeven}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction down for an even X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_aa734ab342ead18ae0c228040de94bf7b}{Downodd}
+\begin{DoxyCompactList}\small\item\em Tiles in the Direction down for an odd X \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a71f02725269d58057f9a0082de655ecb}{Odd}
+\begin{DoxyCompactList}\small\item\em The odd coordinates. \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a255305ea63fc1409619cea474f9fec30}{Even}
+\begin{DoxyCompactList}\small\item\em The even coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\item 
-void \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a52c67c8cd89babbf271a40f01e627b7a}{Draw\-Menu} ()
-\begin{DoxyCompactList}\small\item\em Shows the menu at a given Location. \end{DoxyCompactList}\item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_ae8d1c45d630862f67843b76195c2c5dd}{\hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Core.\-Models.\-Definitions.\-Definition} {\bfseries Get\-Selected\-Definition} (C\-C\-Tile\-Map\-Coordinates coord)}\label{classClient_1_1Common_1_1Views_1_1MenuView_ae8d1c45d630862f67843b76195c2c5dd}
 
-\item 
-void \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_abd8d48d776f40caf15251786866331bc}{Close\-Menu} ()
-\begin{DoxyCompactList}\small\item\em Closes the menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection{Detailed Description}
+The Menu view. 
 
 
-\subsection{Member Function Documentation}
-\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_abd8d48d776f40caf15251786866331bc}{\index{Client\-::\-Common\-::\-Views\-::\-Menu\-View@{Client\-::\-Common\-::\-Views\-::\-Menu\-View}!Close\-Menu@{Close\-Menu}}
-\index{Close\-Menu@{Close\-Menu}!Client::Common::Views::MenuView@{Client\-::\-Common\-::\-Views\-::\-Menu\-View}}
-\subsubsection[{Close\-Menu}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-Common.\-Views.\-Menu\-View.\-Close\-Menu (
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a63db164d71105de8543e3992db8c9a1c}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Menu\+Type@{Menu\+Type}}
+\index{Menu\+Type@{Menu\+Type}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Menu\+Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Client.\+Common.\+Views.\+Menu\+View.\+Menu\+Type}\hspace{0.3cm}{\ttfamily [strong]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_a63db164d71105de8543e3992db8c9a1c}
+
+
+The view menu type. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a96e27ee46eb6e4fe839281c61a0c7b4a}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Menu\+View@{Menu\+View}}
+\index{Menu\+View@{Menu\+View}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Menu\+View(\+World\+Layer\+Hex worldlayer, Position\+I center, Menu\+Type menu\+Type)}]{\setlength{\rightskip}{0pt plus 5cm}Client.\+Common.\+Views.\+Menu\+View.\+Menu\+View (
 \begin{DoxyParamCaption}
-{}
+\item[{{\bf World\+Layer\+Hex}}]{worldlayer, }
+\item[{{\bf Position\+I}}]{center, }
+\item[{{\bf Menu\+Type}}]{menu\+Type}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classClient_1_1Common_1_1Views_1_1MenuView_abd8d48d776f40caf15251786866331bc}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_a96e27ee46eb6e4fe839281c61a0c7b4a}
 
 
-Closes the menu. 
-
-\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a52c67c8cd89babbf271a40f01e627b7a}{\index{Client\-::\-Common\-::\-Views\-::\-Menu\-View@{Client\-::\-Common\-::\-Views\-::\-Menu\-View}!Draw\-Menu@{Draw\-Menu}}
-\index{Draw\-Menu@{Draw\-Menu}!Client::Common::Views::MenuView@{Client\-::\-Common\-::\-Views\-::\-Menu\-View}}
-\subsubsection[{Draw\-Menu}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\-Common.\-Views.\-Menu\-View.\-Draw\-Menu (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classClient_1_1Common_1_1Views_1_1MenuView_a52c67c8cd89babbf271a40f01e627b7a}
-
-
-Shows the menu at a given Location. 
+Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView}{Client.\+Common.\+Views.\+Menu\+View} class. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em location} & Touch Location.\\
+{\em worldlayer} & The worldlayer.\\
 \hline
-{\em menutype} & Menutype.\\
+{\em center} & The menu center position.\\
+\hline
+{\em menu\+Type} & The menu type.\\
 \hline
 \end{DoxyParams}
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_aca76b1123fb7d025ca07ab120849008b}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Clear\+Extended\+Menu@{Clear\+Extended\+Menu}}
+\index{Clear\+Extended\+Menu@{Clear\+Extended\+Menu}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Clear\+Extended\+Menu()}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Menu\+View.\+Clear\+Extended\+Menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_aca76b1123fb7d025ca07ab120849008b}
+
+
+Clears the extended menu Tiles. 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_abd8d48d776f40caf15251786866331bc}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Close\+Menu@{Close\+Menu}}
+\index{Close\+Menu@{Close\+Menu}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Close\+Menu()}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Menu\+View.\+Close\+Menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_abd8d48d776f40caf15251786866331bc}
+
+
+Closes the menu. 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a6fce28a445624cfdc1f9b045411c604f}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Draw\+Menu@{Draw\+Menu}}
+\index{Draw\+Menu@{Draw\+Menu}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Draw\+Menu(\+Menu\+Type menu\+Type)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Menu\+View.\+Draw\+Menu (
+\begin{DoxyParamCaption}
+\item[{{\bf Menu\+Type}}]{menu\+Type}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_a6fce28a445624cfdc1f9b045411c604f}
+
+
+Draws the menu for each type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu\+Type} & Menu type.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_abca68f27c340677a0fe7cfb410d8c71e}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Extend\+Menu@{Extend\+Menu}}
+\index{Extend\+Menu@{Extend\+Menu}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Extend\+Menu(short gid, Position\+I coord)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Menu\+View.\+Extend\+Menu (
+\begin{DoxyParamCaption}
+\item[{short}]{gid, }
+\item[{{\bf Position\+I}}]{coord}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_abca68f27c340677a0fe7cfb410d8c71e}
+
+
+Extends the menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gid} & G\+I\+D to switch between Military, Storage buildings etc..\\
+\hline
+{\em coord} & Coordinate to get the direction.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a962b8d352d3efcb71d529cc8234f63a4}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Get\+Center\+Position@{Get\+Center\+Position}}
+\index{Get\+Center\+Position@{Get\+Center\+Position}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Get\+Center\+Position()}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position\+I} Client.\+Common.\+Views.\+Menu\+View.\+Get\+Center\+Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_a962b8d352d3efcb71d529cc8234f63a4}
+
+
+Gets the center position. 
+
+\begin{DoxyReturn}{Returns}
+The center position.
+\end{DoxyReturn}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_ac4ec6daade1a30b3989f9ed77df78665}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Get\+Extended\+Coords@{Get\+Extended\+Coords}}
+\index{Get\+Extended\+Coords@{Get\+Extended\+Coords}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Get\+Extended\+Coords(\+Position\+I coord, Core.\+Models.\+Definitions.\+Definition[] definitions)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Menu\+View.\+Get\+Extended\+Coords (
+\begin{DoxyParamCaption}
+\item[{{\bf Position\+I}}]{coord, }
+\item[{{\bf Core.\+Models.\+Definitions.\+Definition}\mbox{[}$\,$\mbox{]}}]{definitions}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_ac4ec6daade1a30b3989f9ed77df78665}
+
+
+Gets the extended coords. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coord} & The position\+I.\\
+\hline
+{\em definitions} & The definitions.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a5b45615926b800171d593f279a01e283}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Get\+Selected\+Definition@{Get\+Selected\+Definition}}
+\index{Get\+Selected\+Definition@{Get\+Selected\+Definition}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Get\+Selected\+Definition(\+Position\+I pos)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Core.\+Models.\+Definitions.\+Definition} Client.\+Common.\+Views.\+Menu\+View.\+Get\+Selected\+Definition (
+\begin{DoxyParamCaption}
+\item[{{\bf Position\+I}}]{pos}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_a5b45615926b800171d593f279a01e283}
+
+
+Gets the selected definition on a position. 
+
+\begin{DoxyReturn}{Returns}
+The selected definition.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The position\+I.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_ae297dd1b9a97ab6936f51b92cc5042c2}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Get\+Selected\+Kategory@{Get\+Selected\+Kategory}}
+\index{Get\+Selected\+Kategory@{Get\+Selected\+Kategory}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Get\+Selected\+Kategory(\+Position\+I pos)}]{\setlength{\rightskip}{0pt plus 5cm}C\+C\+Tile\+Gid\+And\+Flags Client.\+Common.\+Views.\+Menu\+View.\+Get\+Selected\+Kategory (
+\begin{DoxyParamCaption}
+\item[{{\bf Position\+I}}]{pos}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_ae297dd1b9a97ab6936f51b92cc5042c2}
+
+
+Gets the selected kategory gid on a position. 
+
+\begin{DoxyReturn}{Returns}
+The selected C\+C\+Tile\+Gid\+And\+Flags.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a2d5b7057b1e79dca2236532d5dcf7f78}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Get\+Tiles@{Get\+Tiles}}
+\index{Get\+Tiles@{Get\+Tiles}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Get\+Tiles(\+Position\+I coord, Position\+I oldcoord)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Core.\+Models.\+Position\+I} Client.\+Common.\+Views.\+Menu\+View.\+Get\+Tiles (
+\begin{DoxyParamCaption}
+\item[{{\bf Position\+I}}]{coord, }
+\item[{{\bf Position\+I}}]{oldcoord}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_a2d5b7057b1e79dca2236532d5dcf7f78}
+
+
+Gets one iteration of the expanding menu with the coordinate and the old coordinate as needed parameters to calculate the direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coord} & The new Coordinate.\\
+\hline
+{\em oldcoord} & The old Coordinate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the second coordinate of the expanding menu.
+\end{DoxyReturn}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a23e2f8cb68829a8d2bfaeff729008d2f}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Is\+Extended@{Is\+Extended}}
+\index{Is\+Extended@{Is\+Extended}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Is\+Extended()}]{\setlength{\rightskip}{0pt plus 5cm}bool Client.\+Common.\+Views.\+Menu\+View.\+Is\+Extended (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_a23e2f8cb68829a8d2bfaeff729008d2f}
+
+
+Determines whether this instance is extended. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this instance is extended; otherwise, {\ttfamily false}.
+\end{DoxyReturn}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a80382e5069b92bf7adcae28fa0b8afa0}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Remove\+All\+Menu@{Remove\+All\+Menu}}
+\index{Remove\+All\+Menu@{Remove\+All\+Menu}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Remove\+All\+Menu()}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Menu\+View.\+Remove\+All\+Menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1MenuView_a80382e5069b92bf7adcae28fa0b8afa0}
+
+
+Removes the Menu. 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a3c8065c208ad29887f55bb7b7e8f2868}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Downeven@{Downeven}}
+\index{Downeven@{Downeven}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Downeven}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Downeven\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_a3c8065c208ad29887f55bb7b7e8f2868}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{   
+                \textcolor{keyword}{new} PositionI(1, 0),
+                \textcolor{keyword}{new} PositionI(0, 1),
+                \textcolor{keyword}{new} PositionI(-1, 0)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction down for an even X 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_aa734ab342ead18ae0c228040de94bf7b}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Downodd@{Downodd}}
+\index{Downodd@{Downodd}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Downodd}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Downodd\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_aa734ab342ead18ae0c228040de94bf7b}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(1, 1),
+                \textcolor{keyword}{new} PositionI(0, 1),
+                \textcolor{keyword}{new} PositionI(-1, 1)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction down for an odd X 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a255305ea63fc1409619cea474f9fec30}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Even@{Even}}
+\index{Even@{Even}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Even}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Even\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_a255305ea63fc1409619cea474f9fec30}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_ad5d3faf457e317d3c0757a13ff310e0c}{Upeven},
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a3c8065c208ad29887f55bb7b7e8f2868}{Downeven},
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a89a9af01e575d4fd95b93697fd1c21da}{Leftupeven},
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a36b0ad902b98487477a87442d088d747}{Rightupeven},
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a9023c2bcec1cdb52198b9dc975fbc257}{Leftdowneven},
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_ae711e0210073a31a2bf15ad1d77e8478}{Rightdowneven}
+            \}
+\end{DoxyCode}
+
+
+The even coordinates. 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a9023c2bcec1cdb52198b9dc975fbc257}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Leftdowneven@{Leftdowneven}}
+\index{Leftdowneven@{Leftdowneven}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Leftdowneven}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Leftdowneven\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_a9023c2bcec1cdb52198b9dc975fbc257}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(0, 1),
+                \textcolor{keyword}{new} PositionI(-1, 0),
+                \textcolor{keyword}{new} PositionI(-1, -1)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction left down for an even X 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a0a5f7440839d47bbd716627bd0efc576}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Leftdownodd@{Leftdownodd}}
+\index{Leftdownodd@{Leftdownodd}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Leftdownodd}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Leftdownodd\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_a0a5f7440839d47bbd716627bd0efc576}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(0, 1),
+                \textcolor{keyword}{new} PositionI(-1, 1),
+                \textcolor{keyword}{new} PositionI(-1, 0)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction left down for an odd X 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a89a9af01e575d4fd95b93697fd1c21da}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Leftupeven@{Leftupeven}}
+\index{Leftupeven@{Leftupeven}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Leftupeven}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Leftupeven\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_a89a9af01e575d4fd95b93697fd1c21da}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(-1, 0),
+                \textcolor{keyword}{new} PositionI(-1, -1),
+                \textcolor{keyword}{new} PositionI(0, -1)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction left Up for an even X 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_abf35d055ec05de9009e4537a25f94739}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Leftupodd@{Leftupodd}}
+\index{Leftupodd@{Leftupodd}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Leftupodd}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Leftupodd\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_abf35d055ec05de9009e4537a25f94739}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(-1, 1),
+                \textcolor{keyword}{new} PositionI(-1, 0),
+                \textcolor{keyword}{new} PositionI(0, -1)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction left Up for an odd X 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a71f02725269d58057f9a0082de655ecb}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Odd@{Odd}}
+\index{Odd@{Odd}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Odd}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Odd\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_a71f02725269d58057f9a0082de655ecb}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_abb38bb872b2393e613c4e9f20498a0b2}{Upodd},
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_aa734ab342ead18ae0c228040de94bf7b}{Downodd},
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_abf35d055ec05de9009e4537a25f94739}{Leftupodd},
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a4e6fa7548be9f1c327bb97a5447721ff}{Rightupodd},
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_a0a5f7440839d47bbd716627bd0efc576}{Leftdownodd},
+                \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView_ab2619bc7970cbbdaeba9521561eabe53}{Rightdownodd}
+            \}
+\end{DoxyCode}
+
+
+The odd coordinates. 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_ae711e0210073a31a2bf15ad1d77e8478}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Rightdowneven@{Rightdowneven}}
+\index{Rightdowneven@{Rightdowneven}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Rightdowneven}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Rightdowneven\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_ae711e0210073a31a2bf15ad1d77e8478}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(1, -1),
+                \textcolor{keyword}{new} PositionI(1, 0),
+                \textcolor{keyword}{new} PositionI(0, 1)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction right down for an even X 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_ab2619bc7970cbbdaeba9521561eabe53}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Rightdownodd@{Rightdownodd}}
+\index{Rightdownodd@{Rightdownodd}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Rightdownodd}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Rightdownodd\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_ab2619bc7970cbbdaeba9521561eabe53}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(1, 0),
+                \textcolor{keyword}{new} PositionI(1, 1),
+                \textcolor{keyword}{new} PositionI(0, 1)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction right down for an odd X 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a36b0ad902b98487477a87442d088d747}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Rightupeven@{Rightupeven}}
+\index{Rightupeven@{Rightupeven}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Rightupeven}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Rightupeven\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_a36b0ad902b98487477a87442d088d747}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(0, -1),
+                \textcolor{keyword}{new} PositionI(1, -1),
+                \textcolor{keyword}{new} PositionI(1, 0)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction right Up for an even X 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_a4e6fa7548be9f1c327bb97a5447721ff}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Rightupodd@{Rightupodd}}
+\index{Rightupodd@{Rightupodd}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Rightupodd}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Rightupodd\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_a4e6fa7548be9f1c327bb97a5447721ff}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(0, -1),
+                \textcolor{keyword}{new} PositionI(1, 0),
+                \textcolor{keyword}{new} PositionI(1, 1)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction right Up for an odd X 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_ad5d3faf457e317d3c0757a13ff310e0c}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Upeven@{Upeven}}
+\index{Upeven@{Upeven}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Upeven}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Upeven\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_ad5d3faf457e317d3c0757a13ff310e0c}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(-1, -1),
+                \textcolor{keyword}{new} PositionI(0, -1),
+                \textcolor{keyword}{new} PositionI(1, -1)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction Up for an even X 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1MenuView_abb38bb872b2393e613c4e9f20498a0b2}{}\index{Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}!Upodd@{Upodd}}
+\index{Upodd@{Upodd}!Client\+::\+Common\+::\+Views\+::\+Menu\+View@{Client\+::\+Common\+::\+Views\+::\+Menu\+View}}
+\subsubsection[{Upodd}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Client.\+Common.\+Views.\+Menu\+View.\+Upodd\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Views_1_1MenuView_abb38bb872b2393e613c4e9f20498a0b2}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+            \{
+                \textcolor{keyword}{new} PositionI(-1, 0),
+                \textcolor{keyword}{new} PositionI(0, -1),
+                \textcolor{keyword}{new} PositionI(1, 0)
+            \}
+\end{DoxyCode}
+
+
+Tiles in the Direction Up for an odd X 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-client/client/client.\-Common/\-Views/Menu\-View.\-cs\end{DoxyCompactItemize}
+client/client/client.\+Common/\+Views/Menu\+View.\+cs\end{DoxyCompactItemize}

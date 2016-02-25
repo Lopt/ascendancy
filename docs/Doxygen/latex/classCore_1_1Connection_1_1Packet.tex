@@ -1,0 +1,162 @@
+\hypertarget{classCore_1_1Connection_1_1Packet}{}\section{Core.\+Connection.\+Packet Class Reference}
+\label{classCore_1_1Connection_1_1Packet}\index{Core.\+Connection.\+Packet@{Core.\+Connection.\+Packet}}
+
+
+\hyperlink{classCore_1_1Connection_1_1Packet}{Packet}. Which contains (in this order)\+: 1 Byte for the Method 2 Byte for the Content Size 0-\/65535 Bytes for the Content (depending on the Content Size)  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classCore_1_1Connection_1_1Packet_a25212f6b6b5a40fd032510556ceee373}{Send} (Stream stream)
+\begin{DoxyCompactList}\small\item\em Send this packet at the specified stream. \end{DoxyCompactList}\item 
+async Task \hyperlink{classCore_1_1Connection_1_1Packet_af67ac3683aea5b7590008ba353bbc027}{Send\+Async} (Stream stream)
+\begin{DoxyCompactList}\small\item\em Send this packet at the specified stream. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Connection_1_1Packet_a2cef09be0adae12e3817a96b3c6a5831}{Packet} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Connection_1_1Packet}{Core.\+Connection.\+Packet} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classCore_1_1Connection_1_1Packet}{Packet} \hyperlink{classCore_1_1Connection_1_1Packet_a1805fbf5de156f012b0e3e20f37cf17c}{Receive} (Stream stream)
+\begin{DoxyCompactList}\small\item\em Receives an packet from the specified stream. \end{DoxyCompactList}\item 
+static async Task$<$ \hyperlink{classCore_1_1Connection_1_1Packet}{Packet} $>$ \hyperlink{classCore_1_1Connection_1_1Packet_ac3576e6d2fe30dbc9d1aa31d01f13c5d}{Receive\+Async} (Stream stream)
+\begin{DoxyCompactList}\small\item\em Receives an packet from the specified stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{classCore_1_1Connection_1_1Packet_a128f7cc2127e4feed69a9cd9a14e7083}{Content}
+\begin{DoxyCompactList}\small\item\em Gets or sets the content. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceCore_1_1Connection_a759585506f1f7f357beb5c5460a7f4f5}{Method\+Type} \hyperlink{classCore_1_1Connection_1_1Packet_a3a1285f0e02eb5a238b7195c36e16fbd}{Method\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the type of the method. \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Connection_1_1Packet_a78e8987a205544dffdd0b80a4277cd38}{Content\+Size}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the size of the content. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classCore_1_1Connection_1_1Packet}{Packet}. Which contains (in this order)\+: 1 Byte for the Method 2 Byte for the Content Size 0-\/65535 Bytes for the Content (depending on the Content Size) 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Connection_1_1Packet_a2cef09be0adae12e3817a96b3c6a5831}{}\index{Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}!Packet@{Packet}}
+\index{Packet@{Packet}!Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}}
+\subsubsection[{Packet()}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Connection.\+Packet.\+Packet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Connection_1_1Packet_a2cef09be0adae12e3817a96b3c6a5831}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Connection_1_1Packet}{Core.\+Connection.\+Packet} class. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Connection_1_1Packet_a1805fbf5de156f012b0e3e20f37cf17c}{}\index{Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}!Receive@{Receive}}
+\index{Receive@{Receive}!Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}}
+\subsubsection[{Receive(\+Stream stream)}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Packet} Core.\+Connection.\+Packet.\+Receive (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Connection_1_1Packet_a1805fbf5de156f012b0e3e20f37cf17c}
+
+
+Receives an packet from the specified stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & Stream (T\+C\+P Socket Stream e.\+g.).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classCore_1_1Connection_1_1Packet}{Packet} which was received
+\end{DoxyReturn}
+\hypertarget{classCore_1_1Connection_1_1Packet_ac3576e6d2fe30dbc9d1aa31d01f13c5d}{}\index{Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}!Receive\+Async@{Receive\+Async}}
+\index{Receive\+Async@{Receive\+Async}!Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}}
+\subsubsection[{Receive\+Async(\+Stream stream)}]{\setlength{\rightskip}{0pt plus 5cm}static async Task$<${\bf Packet}$>$ Core.\+Connection.\+Packet.\+Receive\+Async (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Connection_1_1Packet_ac3576e6d2fe30dbc9d1aa31d01f13c5d}
+
+
+Receives an packet from the specified stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & Stream (T\+C\+P Socket Stream e.\+g.).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classCore_1_1Connection_1_1Packet}{Packet} which was received
+\end{DoxyReturn}
+\hypertarget{classCore_1_1Connection_1_1Packet_a25212f6b6b5a40fd032510556ceee373}{}\index{Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}!Send@{Send}}
+\index{Send@{Send}!Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}}
+\subsubsection[{Send(\+Stream stream)}]{\setlength{\rightskip}{0pt plus 5cm}void Core.\+Connection.\+Packet.\+Send (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Connection_1_1Packet_a25212f6b6b5a40fd032510556ceee373}
+
+
+Send this packet at the specified stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & Stream (T\+C\+P Socket Stream e.\+g.).\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Connection_1_1Packet_af67ac3683aea5b7590008ba353bbc027}{}\index{Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}!Send\+Async@{Send\+Async}}
+\index{Send\+Async@{Send\+Async}!Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}}
+\subsubsection[{Send\+Async(\+Stream stream)}]{\setlength{\rightskip}{0pt plus 5cm}async Task Core.\+Connection.\+Packet.\+Send\+Async (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Connection_1_1Packet_af67ac3683aea5b7590008ba353bbc027}
+
+
+Send this packet at the specified stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & Stream (T\+C\+P Socket Stream e.\+g.).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Async Task.
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Connection_1_1Packet_a128f7cc2127e4feed69a9cd9a14e7083}{}\index{Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}!Content@{Content}}
+\index{Content@{Content}!Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}}
+\subsubsection[{Content}]{\setlength{\rightskip}{0pt plus 5cm}string Core.\+Connection.\+Packet.\+Content}\label{classCore_1_1Connection_1_1Packet_a128f7cc2127e4feed69a9cd9a14e7083}
+
+
+Gets or sets the content. 
+
+The content.
+
+\subsection{Property Documentation}
+\hypertarget{classCore_1_1Connection_1_1Packet_a78e8987a205544dffdd0b80a4277cd38}{}\index{Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}!Content\+Size@{Content\+Size}}
+\index{Content\+Size@{Content\+Size}!Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}}
+\subsubsection[{Content\+Size}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Connection.\+Packet.\+Content\+Size\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Connection_1_1Packet_a78e8987a205544dffdd0b80a4277cd38}
+
+
+Gets the size of the content. 
+
+The size of the content.\hypertarget{classCore_1_1Connection_1_1Packet_a3a1285f0e02eb5a238b7195c36e16fbd}{}\index{Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}!Method\+Type@{Method\+Type}}
+\index{Method\+Type@{Method\+Type}!Core\+::\+Connection\+::\+Packet@{Core\+::\+Connection\+::\+Packet}}
+\subsubsection[{Method\+Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Method\+Type} Core.\+Connection.\+Packet.\+Method\+Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Connection_1_1Packet_a3a1285f0e02eb5a238b7195c36e16fbd}
+
+
+Gets or sets the type of the method. 
+
+The type of the method.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+base/\+Connection/Packet.\+cs\end{DoxyCompactItemize}

@@ -1,73 +1,785 @@
-\hypertarget{classCore_1_1Models_1_1LogicRules}{\section{Core.\-Models.\-Logic\-Rules Class Reference}
-\label{classCore_1_1Models_1_1LogicRules}\index{Core.\-Models.\-Logic\-Rules@{Core.\-Models.\-Logic\-Rules}}
-}
+\hypertarget{classCore_1_1Models_1_1LogicRules}{}\section{Core.\+Models.\+Logic\+Rules Class Reference}
+\label{classCore_1_1Models_1_1LogicRules}\index{Core.\+Models.\+Logic\+Rules@{Core.\+Models.\+Logic\+Rules}}
+
+
+Logic rules.  
+
+
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1LogicRules_a27e2ffeb0da34f1119908281fc5a6510}{static \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I}\mbox{[}$\,$\mbox{]} {\bfseries Get\-Surrounded\-Fields} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} pos)}\label{classCore_1_1Models_1_1LogicRules_a27e2ffeb0da34f1119908281fc5a6510}
-
-\end{DoxyCompactItemize}
+static int \hyperlink{classCore_1_1Models_1_1LogicRules_a81fbf661595253620a63091f139e78e8}{Ranged\+In\+Meele\+Malus} (\hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em The ranged in melee minus point. \end{DoxyCompactList}\item 
+static I\+List \hyperlink{classCore_1_1Models_1_1LogicRules_a6f32bcf0c8d5d0de815beb46dd8e5051}{All\+Attack\+Modifier} (\hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em All the attack modifier. \end{DoxyCompactList}\item 
+static I\+List \hyperlink{classCore_1_1Models_1_1LogicRules_a839324078b8c500d9f0904aed9f2a896}{All\+Attack\+Modifier\+Ranged\+In\+Meele} (\hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em All the attack modifier. \end{DoxyCompactList}\item 
+static I\+List \hyperlink{classCore_1_1Models_1_1LogicRules_a24a0497c12320f232a258db77045ea03}{All\+Defense\+Modifier} (\hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em All the defense modifier. \end{DoxyCompactList}\item 
+static \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classCore_1_1Models_1_1LogicRules_a27e2ffeb0da34f1119908281fc5a6510}{Get\+Surrounded\+Fields} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} pos)
+\begin{DoxyCompactList}\small\item\em Gets the surrounded fields. \end{DoxyCompactList}\item 
+static Hash\+Set$<$ \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} $>$ \hyperlink{classCore_1_1Models_1_1LogicRules_acbb757cd665530aeb298e4a467051ae8}{Get\+Surrounded\+Positions} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} entity, int range)
+\begin{DoxyCompactList}\small\item\em Gets the surrounded territory around a given \hyperlink{classCore_1_1Models_1_1Position}{Position}. \end{DoxyCompactList}\item 
+static int \hyperlink{classCore_1_1Models_1_1LogicRules_a97d3cb9e89712688aadd9a55c33b1131}{Dice} (\hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Dice the specified attack damage for the entity. \end{DoxyCompactList}\item 
+static int \hyperlink{classCore_1_1Models_1_1LogicRules_afb1653a247c550abefe670ca433e0ea2}{Terrain\+Defense\+Modifier} (\hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Terrain for the defense modifier. \end{DoxyCompactList}\item 
+static int \hyperlink{classCore_1_1Models_1_1LogicRules_aa4b7023024d0ec1bff7671f7175fa748}{Terrain\+Attack\+Modifier} (\hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Terrain terrain for the attack modifier. \end{DoxyCompactList}\item 
+static List$<$ long $>$ \hyperlink{classCore_1_1Models_1_1LogicRules_ad57cefd425a49ecd97447217eddeeadd}{Enable\+Headquarter\+Build\+Options} ()
+\begin{DoxyCompactList}\small\item\em Enables the headquarter build options headquarter = 276. \end{DoxyCompactList}\item 
+static List$<$ long $>$ \hyperlink{classCore_1_1Models_1_1LogicRules_ad990bb1ba29df6cc6236d7264d598822}{Enable\+Barracks\+Build\+Options} ()
+\begin{DoxyCompactList}\small\item\em Enables the barracks build options barracks = 282. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_a16f9b1582af4ca59ac7d13044291b0bf}{Enable\+Build\+Options} (long entity\+Type, \hyperlink{classCore_1_1Models_1_1Account}{Account} account)
+\begin{DoxyCompactList}\small\item\em Enables the build options. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_a6a1f94c43009b7a9238388281ffbadf7}{Disable\+Build\+Options} (long entity\+Type, \hyperlink{classCore_1_1Models_1_1Account}{Account} account)
+\begin{DoxyCompactList}\small\item\em Disables the build options. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_a067a223a3eb6d870b2d05448d9967a22}{Increase\+Whole\+Storage} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account)
+\begin{DoxyCompactList}\small\item\em Increases the hole storage. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_af7b01bd5aae498990758b6e08542781f}{Decrease\+Whole\+Storage} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account)
+\begin{DoxyCompactList}\small\item\em Decreases the hole storage. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_ab9e45f139a56d49c34db56e9cf5b1e4c}{Increase\+Max\+Population} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, \hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Increases the population. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_ab15c9eee68f915382f717968fe107d01}{Increase\+Max\+Energy} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, \hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Increases the max energy. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_a2bf267a445128ca26bd61c8113fad7df}{Set\+Current\+Max\+Population} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account)
+\begin{DoxyCompactList}\small\item\em Sets the current max population. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_ac890759359d9ea01c51d423dbe504e89}{Set\+Current\+Max\+Energy} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account)
+\begin{DoxyCompactList}\small\item\em Sets the current energy. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_a012d1303c1d681129fd1df10b9ac194c}{Increase\+Scrap} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, \hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Increases the scrap. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_affe9e8724caf3ef5b5d8c7e2d992d389}{Decrease\+Max\+Population} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, \hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Decreases the population. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_a25f86390ccb398e269122da226220cef}{Decrease\+Max\+Energy} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, \hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Decreases the max energy. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_a5ebbe4ae42aeef6b5774882e89a5ccb4}{Decrease\+Scrap} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, \hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Decreases the population. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_ae7859acf93d2dd6153b1d7490a76bec6}{Increase\+Storage} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, \hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Increases the storage. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_a61386300d32614e241e31457ef2395ef}{Decreas\+Storage} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, \hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity)
+\begin{DoxyCompactList}\small\item\em Decreases the storage. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_ab775894692c4712e0e1920380ee9de07}{Gather\+Resources} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, Date\+Time action\+Time, \hyperlink{classCore_1_1Controllers_1_1RegionManagerController}{Controllers.\+Region\+Manager\+Controller} region\+Manager\+C, int range)
+\begin{DoxyCompactList}\small\item\em Gathers the resources. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_a8108a7426fbef7689f4b3cec1492e6cb}{Increase\+Resource\+Generation} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, Date\+Time action\+Time, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} entitypos, \hyperlink{classCore_1_1Controllers_1_1RegionManagerController}{Controllers.\+Region\+Manager\+Controller} region\+Manager\+C)
+\begin{DoxyCompactList}\small\item\em Increases the resource generation. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_afdd4a1980e815cee411b0cf5fff0427d}{Decrease\+Resource\+Generation} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, Date\+Time action\+Time, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} entitypos, \hyperlink{classCore_1_1Controllers_1_1RegionManagerController}{Controllers.\+Region\+Manager\+Controller} region\+Manager\+C)
+\begin{DoxyCompactList}\small\item\em Decreases the resource generation. \end{DoxyCompactList}\item 
+static bool \hyperlink{classCore_1_1Models_1_1LogicRules_ae686cefdb61e6caee8bc0dee09ee71f3}{Check\+Resource} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, Date\+Time server\+Time, \hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Definitions.\+Definition} entity\+Def)
+\begin{DoxyCompactList}\small\item\em Checks the resource cost of the entity. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_ad3b250727f8358799fc881cb0c00644d}{Consume\+Resource} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, Date\+Time action\+Time, \hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Definitions.\+Definition} entity\+Def)
+\begin{DoxyCompactList}\small\item\em Consumes the resource for an entity. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_aa71e5341064abab193e8cb472d4e906f}{Destroy\+Building} (\hyperlink{classCore_1_1Models_1_1Entity}{Entity} entity, \hyperlink{classCore_1_1Models_1_1Region}{Region} region\+Pos, \hyperlink{classCore_1_1Models_1_1Action}{Action} action, \hyperlink{classCore_1_1Controllers_1_1RegionManagerController}{Controllers.\+Region\+Manager\+Controller} region\+Manager\+C)
+\begin{DoxyCompactList}\small\item\em Destroy the building and undo the functionality. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Models_1_1LogicRules_a7139405da4b52991042628844749b791}{Destroy\+All\+Buildings\+Without\+Territory} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, \hyperlink{classCore_1_1Models_1_1Action}{Action} action, \hyperlink{classCore_1_1Controllers_1_1RegionManagerController}{Controllers.\+Region\+Manager\+Controller} region\+Manager\+C)
+\begin{DoxyCompactList}\small\item\em Destroy all buildings without territory. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I}\mbox{[}$\,$\mbox{]} {\bfseries Surround\-Tiles\-Even}
-\item 
-static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I}\mbox{[}$\,$\mbox{]} {\bfseries Surround\-Tiles\-Odd}
-\item 
-static readonly \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position}\mbox{[}$\,$\mbox{]} {\bfseries Surround\-Regions}
-\end{DoxyCompactItemize}
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classCore_1_1Models_1_1LogicRules_a3d587d8f781d3b37c26c501d003f3d4d}{Surround\+Tiles\+Even}
+\begin{DoxyCompactList}\small\item\em The surround tiles on even x positions. From North to North\+East in clockwise \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}\mbox{[}$\,$\mbox{]} \hyperlink{classCore_1_1Models_1_1LogicRules_ae559d0e04d49b4cea7874d1e7ca5a5b2}{Surround\+Tiles\+Odd}
+\begin{DoxyCompactList}\small\item\em The surround tiles on odd x positions. From North to North\+East in clockwise \end{DoxyCompactList}\item 
+static readonly \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position}\mbox{[}$\,$\mbox{]} \hyperlink{classCore_1_1Models_1_1LogicRules_a42380b97e68c7128580776742ef94e56}{Surround\+Regions}
+\begin{DoxyCompactList}\small\item\em Surrounded Regions from top left clockwise \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Logic rules. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a6f32bcf0c8d5d0de815beb46dd8e5051}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!All\+Attack\+Modifier@{All\+Attack\+Modifier}}
+\index{All\+Attack\+Modifier@{All\+Attack\+Modifier}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{All\+Attack\+Modifier(\+Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static I\+List Core.\+Models.\+Logic\+Rules.\+All\+Attack\+Modifier (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a6f32bcf0c8d5d0de815beb46dd8e5051}
+
+
+All the attack modifier. 
+
+\begin{DoxyReturn}{Returns}
+The attack modifier.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Current \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a839324078b8c500d9f0904aed9f2a896}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!All\+Attack\+Modifier\+Ranged\+In\+Meele@{All\+Attack\+Modifier\+Ranged\+In\+Meele}}
+\index{All\+Attack\+Modifier\+Ranged\+In\+Meele@{All\+Attack\+Modifier\+Ranged\+In\+Meele}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{All\+Attack\+Modifier\+Ranged\+In\+Meele(\+Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static I\+List Core.\+Models.\+Logic\+Rules.\+All\+Attack\+Modifier\+Ranged\+In\+Meele (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a839324078b8c500d9f0904aed9f2a896}
+
+
+All the attack modifier. 
+
+\begin{DoxyReturn}{Returns}
+The attack modifier.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Current \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a24a0497c12320f232a258db77045ea03}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!All\+Defense\+Modifier@{All\+Defense\+Modifier}}
+\index{All\+Defense\+Modifier@{All\+Defense\+Modifier}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{All\+Defense\+Modifier(\+Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static I\+List Core.\+Models.\+Logic\+Rules.\+All\+Defense\+Modifier (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a24a0497c12320f232a258db77045ea03}
+
+
+All the defense modifier. 
+
+\begin{DoxyReturn}{Returns}
+The defense modifier.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Current \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_ae686cefdb61e6caee8bc0dee09ee71f3}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Check\+Resource@{Check\+Resource}}
+\index{Check\+Resource@{Check\+Resource}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Check\+Resource(\+Account account, Date\+Time server\+Time, Definitions.\+Definition entity\+Def)}]{\setlength{\rightskip}{0pt plus 5cm}static bool Core.\+Models.\+Logic\+Rules.\+Check\+Resource (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{Date\+Time}]{server\+Time, }
+\item[{{\bf Definitions.\+Definition}}]{entity\+Def}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_ae686cefdb61e6caee8bc0dee09ee71f3}
+
+
+Checks the resource cost of the entity. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true}, if resource was checked, {\ttfamily false} otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+{\em server\+Time} & \hyperlink{namespaceServer}{Server} time.\\
+\hline
+{\em entity\+Def} & \hyperlink{classCore_1_1Models_1_1Entity}{Entity} definition.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_ad3b250727f8358799fc881cb0c00644d}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Consume\+Resource@{Consume\+Resource}}
+\index{Consume\+Resource@{Consume\+Resource}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Consume\+Resource(\+Account account, Date\+Time action\+Time, Definitions.\+Definition entity\+Def)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Consume\+Resource (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{Date\+Time}]{action\+Time, }
+\item[{{\bf Definitions.\+Definition}}]{entity\+Def}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_ad3b250727f8358799fc881cb0c00644d}
+
+
+Consumes the resource for an entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+{\em action\+Time} & \hyperlink{classCore_1_1Models_1_1Action}{Action} time.\\
+\hline
+{\em entity\+Def} & \hyperlink{classCore_1_1Models_1_1Entity}{Entity} definition.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a25f86390ccb398e269122da226220cef}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Decrease\+Max\+Energy@{Decrease\+Max\+Energy}}
+\index{Decrease\+Max\+Energy@{Decrease\+Max\+Energy}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Decrease\+Max\+Energy(\+Account account, Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Decrease\+Max\+Energy (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a25f86390ccb398e269122da226220cef}
+
+
+Decreases the max energy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+{\em entity} & Current entity.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_affe9e8724caf3ef5b5d8c7e2d992d389}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Decrease\+Max\+Population@{Decrease\+Max\+Population}}
+\index{Decrease\+Max\+Population@{Decrease\+Max\+Population}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Decrease\+Max\+Population(\+Account account, Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Decrease\+Max\+Population (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_affe9e8724caf3ef5b5d8c7e2d992d389}
+
+
+Decreases the population. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+{\em entity} & Current entity.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_afdd4a1980e815cee411b0cf5fff0427d}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Decrease\+Resource\+Generation@{Decrease\+Resource\+Generation}}
+\index{Decrease\+Resource\+Generation@{Decrease\+Resource\+Generation}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Decrease\+Resource\+Generation(\+Account account, Date\+Time action\+Time, Position\+I entitypos, Controllers.\+Region\+Manager\+Controller region\+Manager\+C)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Decrease\+Resource\+Generation (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{Date\+Time}]{action\+Time, }
+\item[{{\bf Position\+I}}]{entitypos, }
+\item[{{\bf Controllers.\+Region\+Manager\+Controller}}]{region\+Manager\+C}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_afdd4a1980e815cee411b0cf5fff0427d}
+
+
+Decreases the resource generation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+{\em action\+Time} & \hyperlink{classCore_1_1Models_1_1Action}{Action} time.\\
+\hline
+{\em entitypos} & \hyperlink{classCore_1_1Models_1_1Entity}{Entity} position.\\
+\hline
+{\em region\+Manager\+C} & \hyperlink{classCore_1_1Models_1_1Region}{Region} manager controller.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a5ebbe4ae42aeef6b5774882e89a5ccb4}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Decrease\+Scrap@{Decrease\+Scrap}}
+\index{Decrease\+Scrap@{Decrease\+Scrap}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Decrease\+Scrap(\+Account account, Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Decrease\+Scrap (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a5ebbe4ae42aeef6b5774882e89a5ccb4}
+
+
+Decreases the population. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+{\em entity} & Current entity.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_af7b01bd5aae498990758b6e08542781f}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Decrease\+Whole\+Storage@{Decrease\+Whole\+Storage}}
+\index{Decrease\+Whole\+Storage@{Decrease\+Whole\+Storage}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Decrease\+Whole\+Storage(\+Account account)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Decrease\+Whole\+Storage (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_af7b01bd5aae498990758b6e08542781f}
+
+
+Decreases the hole storage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current \hyperlink{classCore_1_1Models_1_1Account}{Account}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a61386300d32614e241e31457ef2395ef}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Decreas\+Storage@{Decreas\+Storage}}
+\index{Decreas\+Storage@{Decreas\+Storage}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Decreas\+Storage(\+Account account, Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Decreas\+Storage (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a61386300d32614e241e31457ef2395ef}
+
+
+Decreases the storage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+{\em entity} & Current entity.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a7139405da4b52991042628844749b791}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Destroy\+All\+Buildings\+Without\+Territory@{Destroy\+All\+Buildings\+Without\+Territory}}
+\index{Destroy\+All\+Buildings\+Without\+Territory@{Destroy\+All\+Buildings\+Without\+Territory}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Destroy\+All\+Buildings\+Without\+Territory(\+Account account, Action action, Controllers.\+Region\+Manager\+Controller region\+Manager\+C)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Destroy\+All\+Buildings\+Without\+Territory (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{{\bf Action}}]{action, }
+\item[{{\bf Controllers.\+Region\+Manager\+Controller}}]{region\+Manager\+C}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a7139405da4b52991042628844749b791}
+
+
+Destroy all buildings without territory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+{\em action} & \hyperlink{classCore_1_1Models_1_1Action}{Action} which is in use.\\
+\hline
+{\em region\+Manager\+C} & \hyperlink{classCore_1_1Models_1_1Region}{Region} manager controller.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_aa71e5341064abab193e8cb472d4e906f}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Destroy\+Building@{Destroy\+Building}}
+\index{Destroy\+Building@{Destroy\+Building}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Destroy\+Building(\+Entity entity, Region region\+Pos, Action action, Controllers.\+Region\+Manager\+Controller region\+Manager\+C)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Destroy\+Building (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity}}]{entity, }
+\item[{{\bf Region}}]{region\+Pos, }
+\item[{{\bf Action}}]{action, }
+\item[{{\bf Controllers.\+Region\+Manager\+Controller}}]{region\+Manager\+C}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_aa71e5341064abab193e8cb472d4e906f}
+
+
+Destroy the building and undo the functionality. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Current entity.\\
+\hline
+{\em region\+Pos} & \hyperlink{classCore_1_1Models_1_1Region}{Region} position.\\
+\hline
+{\em action} & \hyperlink{classCore_1_1Models_1_1Action}{Action} which is currently done.\\
+\hline
+{\em region\+Manager\+C} & \hyperlink{classCore_1_1Models_1_1Region}{Region} manager controller.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a97d3cb9e89712688aadd9a55c33b1131}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Dice@{Dice}}
+\index{Dice@{Dice}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Dice(\+Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static int Core.\+Models.\+Logic\+Rules.\+Dice (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a97d3cb9e89712688aadd9a55c33b1131}
+
+
+Dice the specified attack damage for the entity. 
+
+\begin{DoxyReturn}{Returns}
+0 instead it change the value via pointer.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Current \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a6a1f94c43009b7a9238388281ffbadf7}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Disable\+Build\+Options@{Disable\+Build\+Options}}
+\index{Disable\+Build\+Options@{Disable\+Build\+Options}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Disable\+Build\+Options(long entity\+Type, Account account)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Disable\+Build\+Options (
+\begin{DoxyParamCaption}
+\item[{long}]{entity\+Type, }
+\item[{{\bf Account}}]{account}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a6a1f94c43009b7a9238388281ffbadf7}
+
+
+Disables the build options. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity\+Type} & \hyperlink{classCore_1_1Models_1_1Entity}{Entity} type.\\
+\hline
+{\em account} & Current account.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_ad990bb1ba29df6cc6236d7264d598822}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Enable\+Barracks\+Build\+Options@{Enable\+Barracks\+Build\+Options}}
+\index{Enable\+Barracks\+Build\+Options@{Enable\+Barracks\+Build\+Options}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Enable\+Barracks\+Build\+Options()}]{\setlength{\rightskip}{0pt plus 5cm}static List$<$long$>$ Core.\+Models.\+Logic\+Rules.\+Enable\+Barracks\+Build\+Options (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_ad990bb1ba29df6cc6236d7264d598822}
+
+
+Enables the barracks build options barracks = 282. 
+
+\begin{DoxyReturn}{Returns}
+The barracks build options.
+\end{DoxyReturn}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a16f9b1582af4ca59ac7d13044291b0bf}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Enable\+Build\+Options@{Enable\+Build\+Options}}
+\index{Enable\+Build\+Options@{Enable\+Build\+Options}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Enable\+Build\+Options(long entity\+Type, Account account)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Enable\+Build\+Options (
+\begin{DoxyParamCaption}
+\item[{long}]{entity\+Type, }
+\item[{{\bf Account}}]{account}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a16f9b1582af4ca59ac7d13044291b0bf}
+
+
+Enables the build options. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity\+Type} & \hyperlink{classCore_1_1Models_1_1Entity}{Entity} type.\\
+\hline
+{\em account} & Current \hyperlink{classCore_1_1Models_1_1Account}{Account}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_ad57cefd425a49ecd97447217eddeeadd}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Enable\+Headquarter\+Build\+Options@{Enable\+Headquarter\+Build\+Options}}
+\index{Enable\+Headquarter\+Build\+Options@{Enable\+Headquarter\+Build\+Options}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Enable\+Headquarter\+Build\+Options()}]{\setlength{\rightskip}{0pt plus 5cm}static List$<$long$>$ Core.\+Models.\+Logic\+Rules.\+Enable\+Headquarter\+Build\+Options (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_ad57cefd425a49ecd97447217eddeeadd}
+
+
+Enables the headquarter build options headquarter = 276. 
+
+\begin{DoxyReturn}{Returns}
+The headquarter build options.
+\end{DoxyReturn}
+\hypertarget{classCore_1_1Models_1_1LogicRules_ab775894692c4712e0e1920380ee9de07}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Gather\+Resources@{Gather\+Resources}}
+\index{Gather\+Resources@{Gather\+Resources}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Gather\+Resources(\+Account account, Date\+Time action\+Time, Controllers.\+Region\+Manager\+Controller region\+Manager\+C, int range)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Gather\+Resources (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{Date\+Time}]{action\+Time, }
+\item[{{\bf Controllers.\+Region\+Manager\+Controller}}]{region\+Manager\+C, }
+\item[{int}]{range}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_ab775894692c4712e0e1920380ee9de07}
+
+
+Gathers the resources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+{\em action\+Time} & \hyperlink{classCore_1_1Models_1_1Action}{Action} time.\\
+\hline
+{\em region\+Manager\+C} & \hyperlink{classCore_1_1Models_1_1Region}{Region} manager controller.\\
+\hline
+{\em range} & Range of the building.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a27e2ffeb0da34f1119908281fc5a6510}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Get\+Surrounded\+Fields@{Get\+Surrounded\+Fields}}
+\index{Get\+Surrounded\+Fields@{Get\+Surrounded\+Fields}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Get\+Surrounded\+Fields(\+Position\+I pos)}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Position\+I} \mbox{[}$\,$\mbox{]} Core.\+Models.\+Logic\+Rules.\+Get\+Surrounded\+Fields (
+\begin{DoxyParamCaption}
+\item[{{\bf Position\+I}}]{pos}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a27e2ffeb0da34f1119908281fc5a6510}
+
+
+Gets the surrounded fields. 
+
+\begin{DoxyReturn}{Returns}
+The surrounded fields.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & Center \hyperlink{classCore_1_1Models_1_1Position}{Position}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_acbb757cd665530aeb298e4a467051ae8}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Get\+Surrounded\+Positions@{Get\+Surrounded\+Positions}}
+\index{Get\+Surrounded\+Positions@{Get\+Surrounded\+Positions}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Get\+Surrounded\+Positions(\+Position\+I entity, int range)}]{\setlength{\rightskip}{0pt plus 5cm}static Hash\+Set$<${\bf Position\+I}$>$ Core.\+Models.\+Logic\+Rules.\+Get\+Surrounded\+Positions (
+\begin{DoxyParamCaption}
+\item[{{\bf Position\+I}}]{entity, }
+\item[{int}]{range}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_acbb757cd665530aeb298e4a467051ae8}
+
+
+Gets the surrounded territory around a given \hyperlink{classCore_1_1Models_1_1Position}{Position}. 
+
+\begin{DoxyReturn}{Returns}
+The surrounded positions.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Current \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+{\em range} & Range around the position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_ab15c9eee68f915382f717968fe107d01}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Increase\+Max\+Energy@{Increase\+Max\+Energy}}
+\index{Increase\+Max\+Energy@{Increase\+Max\+Energy}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Increase\+Max\+Energy(\+Account account, Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Increase\+Max\+Energy (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_ab15c9eee68f915382f717968fe107d01}
+
+
+Increases the max energy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+{\em entity} & Current entity.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_ab9e45f139a56d49c34db56e9cf5b1e4c}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Increase\+Max\+Population@{Increase\+Max\+Population}}
+\index{Increase\+Max\+Population@{Increase\+Max\+Population}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Increase\+Max\+Population(\+Account account, Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Increase\+Max\+Population (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_ab9e45f139a56d49c34db56e9cf5b1e4c}
+
+
+Increases the population. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current \hyperlink{classCore_1_1Models_1_1Account}{Account}.\\
+\hline
+{\em entity} & Current \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a8108a7426fbef7689f4b3cec1492e6cb}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Increase\+Resource\+Generation@{Increase\+Resource\+Generation}}
+\index{Increase\+Resource\+Generation@{Increase\+Resource\+Generation}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Increase\+Resource\+Generation(\+Account account, Date\+Time action\+Time, Position\+I entitypos, Controllers.\+Region\+Manager\+Controller region\+Manager\+C)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Increase\+Resource\+Generation (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{Date\+Time}]{action\+Time, }
+\item[{{\bf Position\+I}}]{entitypos, }
+\item[{{\bf Controllers.\+Region\+Manager\+Controller}}]{region\+Manager\+C}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a8108a7426fbef7689f4b3cec1492e6cb}
+
+
+Increases the resource generation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+{\em action\+Time} & \hyperlink{classCore_1_1Models_1_1Action}{Action} time.\\
+\hline
+{\em entitypos} & \hyperlink{classCore_1_1Models_1_1Entity}{Entity} position.\\
+\hline
+{\em region\+Manager\+C} & \hyperlink{classCore_1_1Models_1_1Region}{Region} manager controller.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a012d1303c1d681129fd1df10b9ac194c}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Increase\+Scrap@{Increase\+Scrap}}
+\index{Increase\+Scrap@{Increase\+Scrap}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Increase\+Scrap(\+Account account, Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Increase\+Scrap (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a012d1303c1d681129fd1df10b9ac194c}
+
+
+Increases the scrap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current \hyperlink{classCore_1_1Models_1_1Account}{Account}.\\
+\hline
+{\em entity} & Current \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_ae7859acf93d2dd6153b1d7490a76bec6}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Increase\+Storage@{Increase\+Storage}}
+\index{Increase\+Storage@{Increase\+Storage}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Increase\+Storage(\+Account account, Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Increase\+Storage (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account, }
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_ae7859acf93d2dd6153b1d7490a76bec6}
+
+
+Increases the storage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current \hyperlink{classCore_1_1Models_1_1Account}{Account}.\\
+\hline
+{\em entity} & Current \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a067a223a3eb6d870b2d05448d9967a22}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Increase\+Whole\+Storage@{Increase\+Whole\+Storage}}
+\index{Increase\+Whole\+Storage@{Increase\+Whole\+Storage}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Increase\+Whole\+Storage(\+Account account)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Increase\+Whole\+Storage (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a067a223a3eb6d870b2d05448d9967a22}
+
+
+Increases the hole storage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current \hyperlink{classCore_1_1Models_1_1Account}{Account}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a81fbf661595253620a63091f139e78e8}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Ranged\+In\+Meele\+Malus@{Ranged\+In\+Meele\+Malus}}
+\index{Ranged\+In\+Meele\+Malus@{Ranged\+In\+Meele\+Malus}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Ranged\+In\+Meele\+Malus(\+Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static int Core.\+Models.\+Logic\+Rules.\+Ranged\+In\+Meele\+Malus (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a81fbf661595253620a63091f139e78e8}
+
+
+The ranged in melee minus point. 
+
+\begin{DoxyReturn}{Returns}
+The in melee minus point.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Current \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_ac890759359d9ea01c51d423dbe504e89}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Set\+Current\+Max\+Energy@{Set\+Current\+Max\+Energy}}
+\index{Set\+Current\+Max\+Energy@{Set\+Current\+Max\+Energy}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Set\+Current\+Max\+Energy(\+Account account)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Set\+Current\+Max\+Energy (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_ac890759359d9ea01c51d423dbe504e89}
+
+
+Sets the current energy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a2bf267a445128ca26bd61c8113fad7df}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Set\+Current\+Max\+Population@{Set\+Current\+Max\+Population}}
+\index{Set\+Current\+Max\+Population@{Set\+Current\+Max\+Population}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Set\+Current\+Max\+Population(\+Account account)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Models.\+Logic\+Rules.\+Set\+Current\+Max\+Population (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a2bf267a445128ca26bd61c8113fad7df}
+
+
+Sets the current max population. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Current account.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_aa4b7023024d0ec1bff7671f7175fa748}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Terrain\+Attack\+Modifier@{Terrain\+Attack\+Modifier}}
+\index{Terrain\+Attack\+Modifier@{Terrain\+Attack\+Modifier}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Terrain\+Attack\+Modifier(\+Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static int Core.\+Models.\+Logic\+Rules.\+Terrain\+Attack\+Modifier (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_aa4b7023024d0ec1bff7671f7175fa748}
+
+
+Terrain terrain for the attack modifier. 
+
+\begin{DoxyReturn}{Returns}
+0 instead it change the value via pointer.
+
+The attack modifier.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Current \hyperlink{classCore_1_1Models_1_1Entity}{Entity}.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1LogicRules_afb1653a247c550abefe670ca433e0ea2}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Terrain\+Defense\+Modifier@{Terrain\+Defense\+Modifier}}
+\index{Terrain\+Defense\+Modifier@{Terrain\+Defense\+Modifier}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Terrain\+Defense\+Modifier(\+Entity entity)}]{\setlength{\rightskip}{0pt plus 5cm}static int Core.\+Models.\+Logic\+Rules.\+Terrain\+Defense\+Modifier (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity}}]{entity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_afb1653a247c550abefe670ca433e0ea2}
+
+
+Terrain for the defense modifier. 
+
+\begin{DoxyReturn}{Returns}
+0 instead it change the value via pointer.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & Current entity.\\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Data Documentation}
-\hypertarget{classCore_1_1Models_1_1LogicRules_a42380b97e68c7128580776742ef94e56}{\index{Core\-::\-Models\-::\-Logic\-Rules@{Core\-::\-Models\-::\-Logic\-Rules}!Surround\-Regions@{Surround\-Regions}}
-\index{Surround\-Regions@{Surround\-Regions}!Core::Models::LogicRules@{Core\-::\-Models\-::\-Logic\-Rules}}
-\subsubsection[{Surround\-Regions}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Region\-Position} \mbox{[}$\,$\mbox{]} Core.\-Models.\-Logic\-Rules.\-Surround\-Regions\hspace{0.3cm}{\ttfamily [static]}}}\label{classCore_1_1Models_1_1LogicRules_a42380b97e68c7128580776742ef94e56}
-{\bfseries Initial value\-:}
+\hypertarget{classCore_1_1Models_1_1LogicRules_a42380b97e68c7128580776742ef94e56}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Surround\+Regions@{Surround\+Regions}}
+\index{Surround\+Regions@{Surround\+Regions}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Surround\+Regions}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Region\+Position} \mbox{[}$\,$\mbox{]} Core.\+Models.\+Logic\+Rules.\+Surround\+Regions\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a42380b97e68c7128580776742ef94e56}
+{\bfseries Initial value\+:}
 \begin{DoxyCode}
 =
-            \{
+        \{
                 \textcolor{keyword}{new} RegionPosition(-1, -1),
                 \textcolor{keyword}{new} RegionPosition(-1,  0),
-                \textcolor{keyword}{new} RegionPosition(-1, +1),
-                \textcolor{keyword}{new} RegionPosition( 0, +1),
-                \textcolor{keyword}{new} RegionPosition(+1, +1),
-                \textcolor{keyword}{new} RegionPosition(+1,  0),
-                \textcolor{keyword}{new} RegionPosition(+1, -1),
-                \textcolor{keyword}{new} RegionPosition( 0, -1)
+                \textcolor{keyword}{new} RegionPosition(-1,  1),
+                \textcolor{keyword}{new} RegionPosition(0,  1),
+                \textcolor{keyword}{new} RegionPosition(1,  1),
+                \textcolor{keyword}{new} RegionPosition(1,  0),
+                \textcolor{keyword}{new} RegionPosition(1, -1),
+                \textcolor{keyword}{new} RegionPosition(0, -1)
         \}
 \end{DoxyCode}
-\hypertarget{classCore_1_1Models_1_1LogicRules_a3d587d8f781d3b37c26c501d003f3d4d}{\index{Core\-::\-Models\-::\-Logic\-Rules@{Core\-::\-Models\-::\-Logic\-Rules}!Surround\-Tiles\-Even@{Surround\-Tiles\-Even}}
-\index{Surround\-Tiles\-Even@{Surround\-Tiles\-Even}!Core::Models::LogicRules@{Core\-::\-Models\-::\-Logic\-Rules}}
-\subsubsection[{Surround\-Tiles\-Even}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\-I} \mbox{[}$\,$\mbox{]} Core.\-Models.\-Logic\-Rules.\-Surround\-Tiles\-Even\hspace{0.3cm}{\ttfamily [static]}}}\label{classCore_1_1Models_1_1LogicRules_a3d587d8f781d3b37c26c501d003f3d4d}
-{\bfseries Initial value\-:}
+
+
+Surrounded Regions from top left clockwise 
+
+\hypertarget{classCore_1_1Models_1_1LogicRules_a3d587d8f781d3b37c26c501d003f3d4d}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Surround\+Tiles\+Even@{Surround\+Tiles\+Even}}
+\index{Surround\+Tiles\+Even@{Surround\+Tiles\+Even}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Surround\+Tiles\+Even}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Core.\+Models.\+Logic\+Rules.\+Surround\+Tiles\+Even\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_a3d587d8f781d3b37c26c501d003f3d4d}
+{\bfseries Initial value\+:}
 \begin{DoxyCode}
 =
-            \{
-                \textcolor{keyword}{new} PositionI(0, -1),
-                \textcolor{keyword}{new} PositionI(1, 0),
-                \textcolor{keyword}{new} PositionI(1, 1),
-                \textcolor{keyword}{new} PositionI(0, 1),
-                \textcolor{keyword}{new} PositionI(-1, 1),
-                \textcolor{keyword}{new} PositionI(-1, 0)
-            \}
-\end{DoxyCode}
-\hypertarget{classCore_1_1Models_1_1LogicRules_ae559d0e04d49b4cea7874d1e7ca5a5b2}{\index{Core\-::\-Models\-::\-Logic\-Rules@{Core\-::\-Models\-::\-Logic\-Rules}!Surround\-Tiles\-Odd@{Surround\-Tiles\-Odd}}
-\index{Surround\-Tiles\-Odd@{Surround\-Tiles\-Odd}!Core::Models::LogicRules@{Core\-::\-Models\-::\-Logic\-Rules}}
-\subsubsection[{Surround\-Tiles\-Odd}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\-I} \mbox{[}$\,$\mbox{]} Core.\-Models.\-Logic\-Rules.\-Surround\-Tiles\-Odd\hspace{0.3cm}{\ttfamily [static]}}}\label{classCore_1_1Models_1_1LogicRules_ae559d0e04d49b4cea7874d1e7ca5a5b2}
-{\bfseries Initial value\-:}
-\begin{DoxyCode}
-=
-            \{
-                \textcolor{keyword}{new} PositionI(0, -1),
-                \textcolor{keyword}{new} PositionI(1, -1),
-                \textcolor{keyword}{new} PositionI(1, 0),
-                \textcolor{keyword}{new} PositionI(0, 1),
-                \textcolor{keyword}{new} PositionI(-1, 0),
-                \textcolor{keyword}{new} PositionI(-1, -1)
-            \}
+        \{
+            \textcolor{keyword}{new} PositionI(0, -1),
+            \textcolor{keyword}{new} PositionI(1, 0),
+            \textcolor{keyword}{new} PositionI(1, 1),
+            \textcolor{keyword}{new} PositionI(0, 1),
+            \textcolor{keyword}{new} PositionI(-1, 1),
+            \textcolor{keyword}{new} PositionI(-1, 0)
+        \}
 \end{DoxyCode}
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+The surround tiles on even x positions. From North to North\+East in clockwise 
+
+\hypertarget{classCore_1_1Models_1_1LogicRules_ae559d0e04d49b4cea7874d1e7ca5a5b2}{}\index{Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}!Surround\+Tiles\+Odd@{Surround\+Tiles\+Odd}}
+\index{Surround\+Tiles\+Odd@{Surround\+Tiles\+Odd}!Core\+::\+Models\+::\+Logic\+Rules@{Core\+::\+Models\+::\+Logic\+Rules}}
+\subsubsection[{Surround\+Tiles\+Odd}]{\setlength{\rightskip}{0pt plus 5cm}readonly {\bf Position\+I} \mbox{[}$\,$\mbox{]} Core.\+Models.\+Logic\+Rules.\+Surround\+Tiles\+Odd\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1LogicRules_ae559d0e04d49b4cea7874d1e7ca5a5b2}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+        \{
+            \textcolor{keyword}{new} PositionI(0, -1),
+            \textcolor{keyword}{new} PositionI(1, -1),
+            \textcolor{keyword}{new} PositionI(1, 0),
+            \textcolor{keyword}{new} PositionI(0, 1),
+            \textcolor{keyword}{new} PositionI(-1, 0),
+            \textcolor{keyword}{new} PositionI(-1, -1)
+        \}
+\end{DoxyCode}
+
+
+The surround tiles on odd x positions. From North to North\+East in clockwise 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-base/\-Models/Logic\-Rules.\-cs\end{DoxyCompactItemize}
+base/\+Models/Logic\+Rules.\+cs\end{DoxyCompactItemize}

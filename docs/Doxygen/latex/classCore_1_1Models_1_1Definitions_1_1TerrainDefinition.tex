@@ -1,45 +1,126 @@
-\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{\section{Core.\-Models.\-Definitions.\-Terrain\-Definition Class Reference}
-\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}\index{Core.\-Models.\-Definitions.\-Terrain\-Definition@{Core.\-Models.\-Definitions.\-Terrain\-Definition}}
-}
+\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{}\section{Core.\+Models.\+Definitions.\+Terrain\+Definition Class Reference}
+\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}\index{Core.\+Models.\+Definitions.\+Terrain\+Definition@{Core.\+Models.\+Definitions.\+Terrain\+Definition}}
 
 
-Terrain Definiton which contains informations about a terraintype.  
+Terrain definition which contains information about a terrain type.  
 
 
-Inheritance diagram for Core.\-Models.\-Definitions.\-Terrain\-Definition\-:\begin{figure}[H]
+Inheritance diagram for Core.\+Models.\+Definitions.\+Terrain\+Definition\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}
+\includegraphics[height=3.000000cm]{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a39711d31c329fe859102166584b11ec0}{{\bfseries Terrain\-Definition} (\hyperlink{namespaceCore_1_1Models_1_1Definitions_a609ed13db028308ebc6c5fbd98615fdc}{Entity\-Type} terrain\-Type, int\mbox{[}$\,$\mbox{]} ressources, bool buildable=true, bool walkable=true, int travel\-Cost=1)}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a39711d31c329fe859102166584b11ec0}
-
-\end{DoxyCompactItemize}
+\hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_ad0abe97add8bfffa9e5ddf820c5fc6a6}{Terrain\+Definition} (\hyperlink{namespaceCore_1_1Models_1_1Definitions_a609ed13db028308ebc6c5fbd98615fdc}{Entity\+Type} terrain\+Type, int\mbox{[}$\,$\mbox{]} resources, bool buildable, bool walkable, int travel\+Cost, int defense\+Modifier, int attack\+Modifier)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Core.\+Models.\+Definitions.\+Terrain\+Definition} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a76ea185d6849c0806fb69826f6ecd5e5}{int\mbox{[}$\,$\mbox{]} {\bfseries Ressources}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a76ea185d6849c0806fb69826f6ecd5e5}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a7ea92cea864ec5076938847f78ecb186}{bool {\bfseries Buildable}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a7ea92cea864ec5076938847f78ecb186}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a6811c8cb478e3c2cbbab24fbbd746e16}{bool {\bfseries Walkable}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a6811c8cb478e3c2cbbab24fbbd746e16}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_aa1f619459353eedfb36c657b0eb370e7}{int {\bfseries Travel\-Cost}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_aa1f619459353eedfb36c657b0eb370e7}
-
-\end{DoxyCompactItemize}
+int\mbox{[}$\,$\mbox{]} \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_add68e1feb4cb4743c55e94474e69d872}{Resources}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the resources. \end{DoxyCompactList}\item 
+bool \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a7ea92cea864ec5076938847f78ecb186}{Buildable}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether this \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Core.\+Models.\+Definitions.\+Terrain\+Definition} is buildable. \end{DoxyCompactList}\item 
+bool \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a6811c8cb478e3c2cbbab24fbbd746e16}{Walkable}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether this \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Core.\+Models.\+Definitions.\+Terrain\+Definition} is walkable. \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_aa1f619459353eedfb36c657b0eb370e7}{Travel\+Cost}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the travel cost. \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_aa0bfc46b1779306a6bfb7c64eed5ebf1}{Attack\+Modifier}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the attack modifier. \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a2a06489b93795057da62a7fc004fa94f}{Defense\+Modifier}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the defense modifier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
-Terrain Definiton which contains informations about a terraintype. 
+Terrain definition which contains information about a terrain type. 
 
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_ad0abe97add8bfffa9e5ddf820c5fc6a6}{}\index{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}!Terrain\+Definition@{Terrain\+Definition}}
+\index{Terrain\+Definition@{Terrain\+Definition}!Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}}
+\subsubsection[{Terrain\+Definition(\+Entity\+Type terrain\+Type, int[] resources, bool buildable, bool walkable, int travel\+Cost, int defense\+Modifier, int attack\+Modifier)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Models.\+Definitions.\+Terrain\+Definition.\+Terrain\+Definition (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity\+Type}}]{terrain\+Type, }
+\item[{int\mbox{[}$\,$\mbox{]}}]{resources, }
+\item[{bool}]{buildable, }
+\item[{bool}]{walkable, }
+\item[{int}]{travel\+Cost, }
+\item[{int}]{defense\+Modifier, }
+\item[{int}]{attack\+Modifier}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_ad0abe97add8bfffa9e5ddf820c5fc6a6}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Core.\+Models.\+Definitions.\+Terrain\+Definition} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em terrain\+Type} & Terrain type.\\
+\hline
+{\em resources} & \hyperlink{namespaceCore_1_1Models_1_1Resources}{Resources} which the user will receive.\\
+\hline
+{\em buildable} & If set to {\ttfamily true}, it is buildable.\\
+\hline
+{\em walkable} & If set to {\ttfamily true} it is walkable.\\
+\hline
+{\em travel\+Cost} & Travel cost.\\
+\hline
+{\em defense\+Modifier} & Defense modifier.\\
+\hline
+{\em attack\+Modifier} & Attack modifier.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_aa0bfc46b1779306a6bfb7c64eed5ebf1}{}\index{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}!Attack\+Modifier@{Attack\+Modifier}}
+\index{Attack\+Modifier@{Attack\+Modifier}!Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}}
+\subsubsection[{Attack\+Modifier}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Definitions.\+Terrain\+Definition.\+Attack\+Modifier\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_aa0bfc46b1779306a6bfb7c64eed5ebf1}
+
+
+Gets the attack modifier. 
+
+The attack modifier.\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a7ea92cea864ec5076938847f78ecb186}{}\index{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}!Buildable@{Buildable}}
+\index{Buildable@{Buildable}!Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}}
+\subsubsection[{Buildable}]{\setlength{\rightskip}{0pt plus 5cm}bool Core.\+Models.\+Definitions.\+Terrain\+Definition.\+Buildable\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a7ea92cea864ec5076938847f78ecb186}
+
+
+Gets a value indicating whether this \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Core.\+Models.\+Definitions.\+Terrain\+Definition} is buildable. 
+
+{\ttfamily true} if buildable; otherwise, {\ttfamily false}.\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a2a06489b93795057da62a7fc004fa94f}{}\index{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}!Defense\+Modifier@{Defense\+Modifier}}
+\index{Defense\+Modifier@{Defense\+Modifier}!Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}}
+\subsubsection[{Defense\+Modifier}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Definitions.\+Terrain\+Definition.\+Defense\+Modifier\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a2a06489b93795057da62a7fc004fa94f}
+
+
+Gets the defense modifier. 
+
+The defense modifier.\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_add68e1feb4cb4743c55e94474e69d872}{}\index{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}!Resources@{Resources}}
+\index{Resources@{Resources}!Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}}
+\subsubsection[{Resources}]{\setlength{\rightskip}{0pt plus 5cm}int \mbox{[}$\,$\mbox{]} Core.\+Models.\+Definitions.\+Terrain\+Definition.\+Resources\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_add68e1feb4cb4743c55e94474e69d872}
+
+
+Gets the resources. 
+
+The resources.\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_aa1f619459353eedfb36c657b0eb370e7}{}\index{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}!Travel\+Cost@{Travel\+Cost}}
+\index{Travel\+Cost@{Travel\+Cost}!Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}}
+\subsubsection[{Travel\+Cost}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Definitions.\+Terrain\+Definition.\+Travel\+Cost\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_aa1f619459353eedfb36c657b0eb370e7}
+
+
+Gets the travel cost. 
+
+The travel cost.\hypertarget{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a6811c8cb478e3c2cbbab24fbbd746e16}{}\index{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}!Walkable@{Walkable}}
+\index{Walkable@{Walkable}!Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition@{Core\+::\+Models\+::\+Definitions\+::\+Terrain\+Definition}}
+\subsubsection[{Walkable}]{\setlength{\rightskip}{0pt plus 5cm}bool Core.\+Models.\+Definitions.\+Terrain\+Definition.\+Walkable\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition_a6811c8cb478e3c2cbbab24fbbd746e16}
+
+
+Gets a value indicating whether this \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Core.\+Models.\+Definitions.\+Terrain\+Definition} is walkable. 
+
+{\ttfamily true} if walkable; otherwise, {\ttfamily false}.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-base/\-Models/\-Definitions/Terrain\-Definition.\-cs\end{DoxyCompactItemize}
+base/\+Models/\+Definitions/Terrain\+Definition.\+cs\end{DoxyCompactItemize}

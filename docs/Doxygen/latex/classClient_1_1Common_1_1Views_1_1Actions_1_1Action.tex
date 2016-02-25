@@ -1,63 +1,85 @@
-\hypertarget{classClient_1_1Common_1_1Views_1_1Actions_1_1Action}{\section{Client.\-Common.\-Views.\-Actions.\-Action Class Reference}
-\label{classClient_1_1Common_1_1Views_1_1Actions_1_1Action}\index{Client.\-Common.\-Views.\-Actions.\-Action@{Client.\-Common.\-Views.\-Actions.\-Action}}
-}
-Inheritance diagram for Client.\-Common.\-Views.\-Actions.\-Action\-:\begin{figure}[H]
+\hypertarget{classClient_1_1Common_1_1Views_1_1Actions_1_1Action}{}\section{Client.\+Common.\+Views.\+Actions.\+Action Class Reference}
+\label{classClient_1_1Common_1_1Views_1_1Actions_1_1Action}\index{Client.\+Common.\+Views.\+Actions.\+Action@{Client.\+Common.\+Views.\+Actions.\+Action}}
+
+
+The View part of the \hyperlink{namespaceClient_1_1Common_1_1Views_1_1Actions}{Actions}. So an action can be displayed.  
+
+
+Inheritance diagram for Client.\+Common.\+Views.\+Actions.\+Action\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.036364cm]{classClient_1_1Common_1_1Views_1_1Actions_1_1Action}
+\includegraphics[height=2.000000cm]{classClient_1_1Common_1_1Views_1_1Actions_1_1Action}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_ae6ccd18f995bf709877f508c65308c42}{{\bfseries Action} (\hyperlink{classCore_1_1Models_1_1ModelEntity}{Core.\-Models.\-Model\-Entity} model)}\label{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_ae6ccd18f995bf709877f508c65308c42}
-
-\item 
-virtual void \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_ad129f8cb1d8079f76d8199dbc80d3c0d}{Before\-Do} ()
-\begin{DoxyCompactList}\small\item\em Gets called before Action\-Control.\-Do() gets executed. Should get and store data which will be needed in Schedule. \end{DoxyCompactList}\item 
-virtual bool \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_a92fdf89fb39016ef84e08dc3c7352d51}{Schedule} (float frame\-Times\-In\-Second)
-\begin{DoxyCompactList}\small\item\em Schedules the action. Should do anything do animate the action (e.\-g. draw the entity, animate his moving or start/end animating a fight) Returns true if the action has ended, otherwise false. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_ae6ccd18f995bf709877f508c65308c42}{Action} (\hyperlink{classCore_1_1Models_1_1ModelEntity}{Core.\+Models.\+Model\+Entity} model)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1Action}{Client.\+Common.\+Views.\+Actions.\+Action} class. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_ad129f8cb1d8079f76d8199dbc80d3c0d}{Before\+Do} ()
+\begin{DoxyCompactList}\small\item\em Gets called before Action\+Control.\+Do() gets executed. Should get and store data which will be needed in Schedule. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_a92fdf89fb39016ef84e08dc3c7352d51}{Schedule} (float frame\+Times\+In\+Second)
+\begin{DoxyCompactList}\small\item\em Schedules the action. Should do anything do animate the action (e.\+g. draw the entity, animate his moving or start/end animating a fight) Returns true if the action has ended, otherwise false. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
-\subsection{Member Function Documentation}
-\hypertarget{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_ad129f8cb1d8079f76d8199dbc80d3c0d}{\index{Client\-::\-Common\-::\-Views\-::\-Actions\-::\-Action@{Client\-::\-Common\-::\-Views\-::\-Actions\-::\-Action}!Before\-Do@{Before\-Do}}
-\index{Before\-Do@{Before\-Do}!Client::Common::Views::Actions::Action@{Client\-::\-Common\-::\-Views\-::\-Actions\-::\-Action}}
-\subsubsection[{Before\-Do}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Client.\-Common.\-Views.\-Actions.\-Action.\-Before\-Do (
+\subsection{Detailed Description}
+The View part of the \hyperlink{namespaceClient_1_1Common_1_1Views_1_1Actions}{Actions}. So an action can be displayed. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_ae6ccd18f995bf709877f508c65308c42}{}\index{Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action@{Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action}!Action@{Action}}
+\index{Action@{Action}!Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action@{Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action}}
+\subsubsection[{Action(\+Core.\+Models.\+Model\+Entity model)}]{\setlength{\rightskip}{0pt plus 5cm}Client.\+Common.\+Views.\+Actions.\+Action.\+Action (
 \begin{DoxyParamCaption}
-{}
+\item[{{\bf Core.\+Models.\+Model\+Entity}}]{model}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_ad129f8cb1d8079f76d8199dbc80d3c0d}
+)}\label{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_ae6ccd18f995bf709877f508c65308c42}
 
 
-Gets called before Action\-Control.\-Do() gets executed. Should get and store data which will be needed in Schedule. 
-
-
-
-Reimplemented in \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1MoveUnit_a781a55c5c7523ceeee2f64e275d35d09}{Client.\-Common.\-Views.\-Actions.\-Move\-Unit}, \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1CreateBuilding_ac4ae114e1751a82e521cb3dfbc346e49}{Client.\-Common.\-Views.\-Actions.\-Create\-Building}, and \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1CreateUnit_a651d26ad176e10a51065e513eec90aa8}{Client.\-Common.\-Views.\-Actions.\-Create\-Unit}.
-
-\hypertarget{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_a92fdf89fb39016ef84e08dc3c7352d51}{\index{Client\-::\-Common\-::\-Views\-::\-Actions\-::\-Action@{Client\-::\-Common\-::\-Views\-::\-Actions\-::\-Action}!Schedule@{Schedule}}
-\index{Schedule@{Schedule}!Client::Common::Views::Actions::Action@{Client\-::\-Common\-::\-Views\-::\-Actions\-::\-Action}}
-\subsubsection[{Schedule}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Client.\-Common.\-Views.\-Actions.\-Action.\-Schedule (
-\begin{DoxyParamCaption}
-\item[{float}]{frame\-Times\-In\-Second}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_a92fdf89fb39016ef84e08dc3c7352d51}
-
-
-Schedules the action. Should do anything do animate the action (e.\-g. draw the entity, animate his moving or start/end animating a fight) Returns true if the action has ended, otherwise false. 
+Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1Action}{Client.\+Common.\+Views.\+Actions.\+Action} class. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em frame\-Times\-In\-Second} & frames times in seconds.\\
+{\em model} & The action Model.\\
 \hline
 \end{DoxyParams}
 
 
-Reimplemented in \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1MoveUnit_a320dbf0d26ea3e24cfe87eedb61a2e22}{Client.\-Common.\-Views.\-Actions.\-Move\-Unit}, \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1CreateBuilding_a9124e0ed7b33ef3b674613b9dbda626f}{Client.\-Common.\-Views.\-Actions.\-Create\-Building}, and \hyperlink{classClient_1_1Common_1_1Views_1_1Actions_1_1CreateUnit_a3b0aeac3eabb7b10b3f8fb287bc96181}{Client.\-Common.\-Views.\-Actions.\-Create\-Unit}.
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_ad129f8cb1d8079f76d8199dbc80d3c0d}{}\index{Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action@{Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action}!Before\+Do@{Before\+Do}}
+\index{Before\+Do@{Before\+Do}!Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action@{Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action}}
+\subsubsection[{Before\+Do()}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Client.\+Common.\+Views.\+Actions.\+Action.\+Before\+Do (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_ad129f8cb1d8079f76d8199dbc80d3c0d}
 
 
+Gets called before Action\+Control.\+Do() gets executed. Should get and store data which will be needed in Schedule. 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\hypertarget{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_a92fdf89fb39016ef84e08dc3c7352d51}{}\index{Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action@{Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action}!Schedule@{Schedule}}
+\index{Schedule@{Schedule}!Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action@{Client\+::\+Common\+::\+Views\+::\+Actions\+::\+Action}}
+\subsubsection[{Schedule(float frame\+Times\+In\+Second)}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Client.\+Common.\+Views.\+Actions.\+Action.\+Schedule (
+\begin{DoxyParamCaption}
+\item[{float}]{frame\+Times\+In\+Second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classClient_1_1Common_1_1Views_1_1Actions_1_1Action_a92fdf89fb39016ef84e08dc3c7352d51}
+
+
+Schedules the action. Should do anything do animate the action (e.\+g. draw the entity, animate his moving or start/end animating a fight) Returns true if the action has ended, otherwise false. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame\+Times\+In\+Second} & frames times in seconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the schedule of the action is done
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-client/client/client.\-Common/\-Views/\-Actions/Action.\-cs\end{DoxyCompactItemize}
+client/client/client.\+Common/\+Views/\+Actions/Action.\+cs\end{DoxyCompactItemize}

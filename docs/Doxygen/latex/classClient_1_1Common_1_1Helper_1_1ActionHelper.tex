@@ -1,17 +1,74 @@
-\hypertarget{classClient_1_1Common_1_1Helper_1_1ActionHelper}{\section{Client.\-Common.\-Helper.\-Action\-Helper Class Reference}
-\label{classClient_1_1Common_1_1Helper_1_1ActionHelper}\index{Client.\-Common.\-Helper.\-Action\-Helper@{Client.\-Common.\-Helper.\-Action\-Helper}}
-}
+\hypertarget{classClient_1_1Common_1_1Helper_1_1ActionHelper}{}\section{Client.\+Common.\+Helper.\+Action\+Helper Class Reference}
+\label{classClient_1_1Common_1_1Helper_1_1ActionHelper}\index{Client.\+Common.\+Helper.\+Action\+Helper@{Client.\+Common.\+Helper.\+Action\+Helper}}
+
+
+The Action helper create actions.  
+
+
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Helper_1_1ActionHelper_a6ca9621c272406abb2496b33534abc06}{static \hyperlink{classCore_1_1Models_1_1Action}{Core.\-Models.\-Action} {\bfseries Create\-Entity} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} position\-I, \hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Core.\-Models.\-Definitions.\-Definition} definition)}\label{classClient_1_1Common_1_1Helper_1_1ActionHelper_a6ca9621c272406abb2496b33534abc06}
+static \hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action} \hyperlink{classClient_1_1Common_1_1Helper_1_1ActionHelper_a57696e59e0d3a58e65b720e79aeffb26}{Move\+Unit} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} start, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} end)
+\begin{DoxyCompactList}\small\item\em Creates the action to move a unit. \end{DoxyCompactList}\item 
+static \hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action} \hyperlink{classClient_1_1Common_1_1Helper_1_1ActionHelper_a0e7689f40d850a8670d803028e249711}{Create\+Entity} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} position\+I, \hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Core.\+Models.\+Definitions.\+Definition} definition, \hyperlink{classCore_1_1Models_1_1Account}{Account} account)
+\begin{DoxyCompactList}\small\item\em Creates the action which creates the unit \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+The Action helper create actions. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1Helper_1_1ActionHelper_a0e7689f40d850a8670d803028e249711}{}\index{Client\+::\+Common\+::\+Helper\+::\+Action\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Action\+Helper}!Create\+Entity@{Create\+Entity}}
+\index{Create\+Entity@{Create\+Entity}!Client\+::\+Common\+::\+Helper\+::\+Action\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Action\+Helper}}
+\subsubsection[{Create\+Entity(\+Position\+I position\+I, Core.\+Models.\+Definitions.\+Definition definition, Account account)}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Core.\+Models.\+Action} Client.\+Common.\+Helper.\+Action\+Helper.\+Create\+Entity (
+\begin{DoxyParamCaption}
+\item[{{\bf Position\+I}}]{position\+I, }
+\item[{{\bf Core.\+Models.\+Definitions.\+Definition}}]{definition, }
+\item[{{\bf Account}}]{account}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Helper_1_1ActionHelper_a0e7689f40d850a8670d803028e249711}
+
+
+Creates the action which creates the unit 
+
+\begin{DoxyReturn}{Returns}
+The entity create action.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em position\+I} & Position where the entity should be created.\\
+\hline
+{\em definition} & Definition which entity should be created.\\
+\hline
+{\em account} & Which account creates the action.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Helper_1_1ActionHelper_a57696e59e0d3a58e65b720e79aeffb26}{}\index{Client\+::\+Common\+::\+Helper\+::\+Action\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Action\+Helper}!Move\+Unit@{Move\+Unit}}
+\index{Move\+Unit@{Move\+Unit}!Client\+::\+Common\+::\+Helper\+::\+Action\+Helper@{Client\+::\+Common\+::\+Helper\+::\+Action\+Helper}}
+\subsubsection[{Move\+Unit(\+Position\+I start, Position\+I end)}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Core.\+Models.\+Action} Client.\+Common.\+Helper.\+Action\+Helper.\+Move\+Unit (
+\begin{DoxyParamCaption}
+\item[{{\bf Position\+I}}]{start, }
+\item[{{\bf Position\+I}}]{end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1Helper_1_1ActionHelper_a57696e59e0d3a58e65b720e79aeffb26}
+
+
+Creates the action to move a unit. 
+
+\begin{DoxyReturn}{Returns}
+The move unit action.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em start} & Start position of move.\\
+\hline
+{\em end} & End position of move.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Helper_1_1ActionHelper_a57696e59e0d3a58e65b720e79aeffb26}{static \hyperlink{classCore_1_1Models_1_1Action}{Core.\-Models.\-Action} {\bfseries Move\-Unit} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} start, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} end)}\label{classClient_1_1Common_1_1Helper_1_1ActionHelper_a57696e59e0d3a58e65b720e79aeffb26}
-
-\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
-\item 
-client/client/client.\-Common/\-Helper/Action\-Helper.\-cs\end{DoxyCompactItemize}
+client/client/client.\+Common/\+Helper/Action\+Helper.\+cs\end{DoxyCompactItemize}

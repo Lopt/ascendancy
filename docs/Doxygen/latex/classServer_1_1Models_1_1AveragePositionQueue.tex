@@ -1,0 +1,110 @@
+\hypertarget{classServer_1_1Models_1_1AveragePositionQueue}{}\section{Server.\+Models.\+Average\+Position\+Queue Class Reference}
+\label{classServer_1_1Models_1_1AveragePositionQueue}\index{Server.\+Models.\+Average\+Position\+Queue@{Server.\+Models.\+Average\+Position\+Queue}}
+
+
+An Class which provides an queue with an position. It is used to avoid threading collisions.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classServer_1_1Models_1_1AveragePositionQueue_a3da2fb989695de4a682ac673d302e0eb}{Average\+Position\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classServer_1_1Models_1_1AveragePositionQueue}{Server.\+Models.\+Average\+Position\+Queue} class. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action} \hyperlink{classServer_1_1Models_1_1AveragePositionQueue_af638cb421bbe8c01aa44c315b19c61b0}{Dequeue} ()
+\begin{DoxyCompactList}\small\item\em Removes an returns an action from this queue. \end{DoxyCompactList}\item 
+void \hyperlink{classServer_1_1Models_1_1AveragePositionQueue_a097132f9d12413dbf63e96eb8b7a3668}{Enqueue} (\hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action} action)
+\begin{DoxyCompactList}\small\item\em Enqueue the specified action. \end{DoxyCompactList}\item 
+double \hyperlink{classServer_1_1Models_1_1AveragePositionQueue_ab55c450d518c4956bfefc7516358ab9b}{Distance} (\hyperlink{classCore_1_1Models_1_1Position}{Core.\+Models.\+Position} position)
+\begin{DoxyCompactList}\small\item\em Distance of the queue to an specific position. \end{DoxyCompactList}\item 
+bool \hyperlink{classServer_1_1Models_1_1AveragePositionQueue_a5b234de54c4b44e317abfc29f1453a34}{Is\+Empty} ()
+\begin{DoxyCompactList}\small\item\em Determines whether this instance is empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An Class which provides an queue with an position. It is used to avoid threading collisions. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classServer_1_1Models_1_1AveragePositionQueue_a3da2fb989695de4a682ac673d302e0eb}{}\index{Server\+::\+Models\+::\+Average\+Position\+Queue@{Server\+::\+Models\+::\+Average\+Position\+Queue}!Average\+Position\+Queue@{Average\+Position\+Queue}}
+\index{Average\+Position\+Queue@{Average\+Position\+Queue}!Server\+::\+Models\+::\+Average\+Position\+Queue@{Server\+::\+Models\+::\+Average\+Position\+Queue}}
+\subsubsection[{Average\+Position\+Queue()}]{\setlength{\rightskip}{0pt plus 5cm}Server.\+Models.\+Average\+Position\+Queue.\+Average\+Position\+Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classServer_1_1Models_1_1AveragePositionQueue_a3da2fb989695de4a682ac673d302e0eb}
+
+
+Initializes a new instance of the \hyperlink{classServer_1_1Models_1_1AveragePositionQueue}{Server.\+Models.\+Average\+Position\+Queue} class. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classServer_1_1Models_1_1AveragePositionQueue_af638cb421bbe8c01aa44c315b19c61b0}{}\index{Server\+::\+Models\+::\+Average\+Position\+Queue@{Server\+::\+Models\+::\+Average\+Position\+Queue}!Dequeue@{Dequeue}}
+\index{Dequeue@{Dequeue}!Server\+::\+Models\+::\+Average\+Position\+Queue@{Server\+::\+Models\+::\+Average\+Position\+Queue}}
+\subsubsection[{Dequeue()}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Core.\+Models.\+Action} Server.\+Models.\+Average\+Position\+Queue.\+Dequeue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classServer_1_1Models_1_1AveragePositionQueue_af638cb421bbe8c01aa44c315b19c61b0}
+
+
+Removes an returns an action from this queue. 
+
+\begin{DoxyReturn}{Returns}
+Removed Action
+\end{DoxyReturn}
+\hypertarget{classServer_1_1Models_1_1AveragePositionQueue_ab55c450d518c4956bfefc7516358ab9b}{}\index{Server\+::\+Models\+::\+Average\+Position\+Queue@{Server\+::\+Models\+::\+Average\+Position\+Queue}!Distance@{Distance}}
+\index{Distance@{Distance}!Server\+::\+Models\+::\+Average\+Position\+Queue@{Server\+::\+Models\+::\+Average\+Position\+Queue}}
+\subsubsection[{Distance(\+Core.\+Models.\+Position position)}]{\setlength{\rightskip}{0pt plus 5cm}double Server.\+Models.\+Average\+Position\+Queue.\+Distance (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\+Models.\+Position}}]{position}
+\end{DoxyParamCaption}
+)}\label{classServer_1_1Models_1_1AveragePositionQueue_ab55c450d518c4956bfefc7516358ab9b}
+
+
+Distance of the queue to an specific position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & Other Position.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Distance of queue to the specific position
+\end{DoxyReturn}
+\hypertarget{classServer_1_1Models_1_1AveragePositionQueue_a097132f9d12413dbf63e96eb8b7a3668}{}\index{Server\+::\+Models\+::\+Average\+Position\+Queue@{Server\+::\+Models\+::\+Average\+Position\+Queue}!Enqueue@{Enqueue}}
+\index{Enqueue@{Enqueue}!Server\+::\+Models\+::\+Average\+Position\+Queue@{Server\+::\+Models\+::\+Average\+Position\+Queue}}
+\subsubsection[{Enqueue(\+Core.\+Models.\+Action action)}]{\setlength{\rightskip}{0pt plus 5cm}void Server.\+Models.\+Average\+Position\+Queue.\+Enqueue (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\+Models.\+Action}}]{action}
+\end{DoxyParamCaption}
+)}\label{classServer_1_1Models_1_1AveragePositionQueue_a097132f9d12413dbf63e96eb8b7a3668}
+
+
+Enqueue the specified action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & Action which should be executed.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classServer_1_1Models_1_1AveragePositionQueue_a5b234de54c4b44e317abfc29f1453a34}{}\index{Server\+::\+Models\+::\+Average\+Position\+Queue@{Server\+::\+Models\+::\+Average\+Position\+Queue}!Is\+Empty@{Is\+Empty}}
+\index{Is\+Empty@{Is\+Empty}!Server\+::\+Models\+::\+Average\+Position\+Queue@{Server\+::\+Models\+::\+Average\+Position\+Queue}}
+\subsubsection[{Is\+Empty()}]{\setlength{\rightskip}{0pt plus 5cm}bool Server.\+Models.\+Average\+Position\+Queue.\+Is\+Empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classServer_1_1Models_1_1AveragePositionQueue_a5b234de54c4b44e317abfc29f1453a34}
+
+
+Determines whether this instance is empty. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this instance is empty; otherwise, {\ttfamily false}.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tcpserver/\+Models/Average\+Position\+Queue.\+cs\end{DoxyCompactItemize}

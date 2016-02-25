@@ -1,91 +1,189 @@
-\hypertarget{classCore_1_1Models_1_1Action}{\section{Core.\-Models.\-Action Class Reference}
-\label{classCore_1_1Models_1_1Action}\index{Core.\-Models.\-Action@{Core.\-Models.\-Action}}
-}
-Inheritance diagram for Core.\-Models.\-Action\-:\begin{figure}[H]
+\hypertarget{classCore_1_1Models_1_1Action}{}\section{Core.\+Models.\+Action Class Reference}
+\label{classCore_1_1Models_1_1Action}\index{Core.\+Models.\+Action@{Core.\+Models.\+Action}}
+
+
+\hyperlink{classCore_1_1Models_1_1Action}{Action} model which should contains all needed data for the action control.  
+
+
+Inheritance diagram for Core.\+Models.\+Action\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classCore_1_1Models_1_1Action}
+\includegraphics[height=1.296296cm]{classCore_1_1Models_1_1Action}
 \end{center}
 \end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classCore_1_1Models_1_1Action_1_1ActionComparer}{Action\-Comparer}
-\end{DoxyCompactItemize}
+class \hyperlink{classCore_1_1Models_1_1Action_1_1ActionComparer}{Action\+Comparer}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1Action}{Action} comparer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bfseries Action\-Type} \{ \\*
-{\bfseries Test\-Action}, 
-{\bfseries Create\-Headquarter}, 
-{\bfseries Create\-Building}, 
-{\bfseries Create\-Unit}, 
+enum \hyperlink{classCore_1_1Models_1_1Action_a9e9cef4702eef3e7d99f5db15e8c4640}{Action\+Type} \{ \\*
+{\bfseries Test\+Action}, 
+{\bfseries Create\+Territory\+Building}, 
+{\bfseries Create\+Building}, 
+{\bfseries Create\+Unit}, 
 \\*
-{\bfseries Move\-Unit}
- \}
+{\bfseries Move\+Unit}
+ \}\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1Action}{Action} type. \end{DoxyCompactList}
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classCore_1_1Models_1_1Action_a9d3ae6b3d8edb503dae829e959d612d3}{Action} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, Action\-Type type, Dictionary$<$ string, object $>$ parameters)
-\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action}{Core.\-Controllers.\-Actions.\-Action} class. \end{DoxyCompactList}\item 
-\hypertarget{classCore_1_1Models_1_1Action_aa56eb16abbf969a7671372f309439440}{override bool {\bfseries Equals} (Object obj)}\label{classCore_1_1Models_1_1Action_aa56eb16abbf969a7671372f309439440}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Action_a29fa0c569250878b3f04d174cf5677ac}{override int {\bfseries Get\-Hash\-Code} ()}\label{classCore_1_1Models_1_1Action_a29fa0c569250878b3f04d174cf5677ac}
-
-\end{DoxyCompactItemize}
+\hyperlink{classCore_1_1Models_1_1Action_ae4a71271ac1200f42b8dad22d565c939}{Action} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account, \hyperlink{classCore_1_1Models_1_1Action_a9e9cef4702eef3e7d99f5db15e8c4640}{Action\+Type} type, Dictionary$<$ string, object $>$ parameters, Date\+Time?action\+Time=null)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action} class. \end{DoxyCompactList}\item 
+override bool \hyperlink{classCore_1_1Models_1_1Action_a300fc2dc4c503f4ea9964846f9a434f0}{Equals} (object obj)
+\begin{DoxyCompactList}\small\item\em tests if the given object is equal to this object \end{DoxyCompactList}\item 
+override int \hyperlink{classCore_1_1Models_1_1Action_a29fa0c569250878b3f04d174cf5677ac}{Get\+Hash\+Code} ()
+\begin{DoxyCompactList}\small\item\em standard hash function \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Action_a13671e1a48f3a462a366fe2768073816}{int {\bfseries I\-D}}\label{classCore_1_1Models_1_1Action_a13671e1a48f3a462a366fe2768073816}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Action_ab973fe9b8e3c6a60fa9d82cf53de57c3}{Date\-Time {\bfseries Action\-Time}}\label{classCore_1_1Models_1_1Action_ab973fe9b8e3c6a60fa9d82cf53de57c3}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Action_a1924816082b3d1173ef309581a69ef95}{\hyperlink{classCore_1_1Models_1_1Account}{Account} {\bfseries Account}}\label{classCore_1_1Models_1_1Action_a1924816082b3d1173ef309581a69ef95}
-
-\end{DoxyCompactItemize}
+int \hyperlink{classCore_1_1Models_1_1Action_a13671e1a48f3a462a366fe2768073816}{I\+D}
+\begin{DoxyCompactList}\small\item\em Gets or Sets the I\+D \end{DoxyCompactList}\item 
+Date\+Time \hyperlink{classCore_1_1Models_1_1Action_ab973fe9b8e3c6a60fa9d82cf53de57c3}{Action\+Time}
+\begin{DoxyCompactList}\small\item\em The action time. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Account}{Account} \hyperlink{classCore_1_1Models_1_1Action_a1924816082b3d1173ef309581a69ef95}{Account}
+\begin{DoxyCompactList}\small\item\em The account. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Action_a5b7b51347229bf4ca6ab02b419c476b8}{Dictionary$<$ string, object $>$ {\bfseries Parameters}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Action_a5b7b51347229bf4ca6ab02b419c476b8}
+Dictionary$<$ string, object $>$ \hyperlink{classCore_1_1Models_1_1Action_a5b7b51347229bf4ca6ab02b419c476b8}{Parameters}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the parameters. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Action_a9e9cef4702eef3e7d99f5db15e8c4640}{Action\+Type} \hyperlink{classCore_1_1Models_1_1Action_abb5ac940b539ea5f61f866c219dcd858}{Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the type. \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Models_1_1Action_ae2defe30307109c1265b4cf16c001553}{Account\+I\+D}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the account I\+D. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\item 
-\hypertarget{classCore_1_1Models_1_1Action_abb5ac940b539ea5f61f866c219dcd858}{Action\-Type {\bfseries Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Action_abb5ac940b539ea5f61f866c219dcd858}
 
-\item 
-\hypertarget{classCore_1_1Models_1_1Action_ae2defe30307109c1265b4cf16c001553}{int {\bfseries Account\-I\-D}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Action_ae2defe30307109c1265b4cf16c001553}
+\subsection{Detailed Description}
+\hyperlink{classCore_1_1Models_1_1Action}{Action} model which should contains all needed data for the action control. 
 
-\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classCore_1_1Models_1_1Action_a9e9cef4702eef3e7d99f5db15e8c4640}{}\index{Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}!Action\+Type@{Action\+Type}}
+\index{Action\+Type@{Action\+Type}!Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}}
+\subsubsection[{Action\+Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Core.\+Models.\+Action.\+Action\+Type}\hspace{0.3cm}{\ttfamily [strong]}}\label{classCore_1_1Models_1_1Action_a9e9cef4702eef3e7d99f5db15e8c4640}
+
+
+\hyperlink{classCore_1_1Models_1_1Action}{Action} type. 
+
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classCore_1_1Models_1_1Action_a9d3ae6b3d8edb503dae829e959d612d3}{\index{Core\-::\-Models\-::\-Action@{Core\-::\-Models\-::\-Action}!Action@{Action}}
-\index{Action@{Action}!Core::Models::Action@{Core\-::\-Models\-::\-Action}}
-\subsubsection[{Action}]{\setlength{\rightskip}{0pt plus 5cm}Core.\-Models.\-Action.\-Action (
+\hypertarget{classCore_1_1Models_1_1Action_ae4a71271ac1200f42b8dad22d565c939}{}\index{Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}!Action@{Action}}
+\index{Action@{Action}!Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}}
+\subsubsection[{Action(\+Account account, Action\+Type type, Dictionary$<$ string, object $>$ parameters, Date\+Time?action\+Time=null)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Models.\+Action.\+Action (
 \begin{DoxyParamCaption}
 \item[{{\bf Account}}]{account, }
-\item[{Action\-Type}]{type, }
-\item[{Dictionary$<$ string, object $>$}]{parameters}
+\item[{{\bf Action\+Type}}]{type, }
+\item[{Dictionary$<$ string, object $>$}]{parameters, }
+\item[{Date\+Time?}]{action\+Time = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classCore_1_1Models_1_1Action_a9d3ae6b3d8edb503dae829e959d612d3}
+)}\label{classCore_1_1Models_1_1Action_ae4a71271ac1200f42b8dad22d565c939}
 
 
-Initializes a new instance of the \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action}{Core.\-Controllers.\-Actions.\-Action} class. 
+Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action} class. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em action\-Type} & \hyperlink{classCore_1_1Models_1_1Action}{Action} type.\\
+{\em account} & \hyperlink{classCore_1_1Models_1_1Account}{Account} which wants to execute this action.\\
 \hline
-{\em regions} & Affected Regions of this action.\\
+{\em type} & \hyperlink{classCore_1_1Models_1_1Action}{Action} Type.\\
 \hline
-{\em parameters} & Parameters.\\
+{\em parameters} & Parameters which should contain all needed data by the action control.\\
+\hline
+{\em action\+Time} & Time when the action was executed.\\
 \hline
 \end{DoxyParams}
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Models_1_1Action_a300fc2dc4c503f4ea9964846f9a434f0}{}\index{Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}!Equals@{Equals}}
+\index{Equals@{Equals}!Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}}
+\subsubsection[{Equals(object obj)}]{\setlength{\rightskip}{0pt plus 5cm}override bool Core.\+Models.\+Action.\+Equals (
+\begin{DoxyParamCaption}
+\item[{object}]{obj}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Action_a300fc2dc4c503f4ea9964846f9a434f0}
+
+
+tests if the given object is equal to this object 
+
+\begin{DoxyReturn}{Returns}
+true, if it is equal, otherwise false.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The System.\+Object to compare with the current \hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action}.\\
+\hline
+\end{DoxyParams}
+$<$filterpriority$>$2$<$/filterpriority$>$ \hypertarget{classCore_1_1Models_1_1Action_a29fa0c569250878b3f04d174cf5677ac}{}\index{Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}!Get\+Hash\+Code@{Get\+Hash\+Code}}
+\index{Get\+Hash\+Code@{Get\+Hash\+Code}!Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}}
+\subsubsection[{Get\+Hash\+Code()}]{\setlength{\rightskip}{0pt plus 5cm}override int Core.\+Models.\+Action.\+Get\+Hash\+Code (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Action_a29fa0c569250878b3f04d174cf5677ac}
+
+
+standard hash function 
+
+\begin{DoxyReturn}{Returns}
+hash code.
+\end{DoxyReturn}
+$<$filterpriority$>$2$<$/filterpriority$>$ 
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Models_1_1Action_a1924816082b3d1173ef309581a69ef95}{}\index{Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}!Account@{Account}}
+\index{Account@{Account}!Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}}
+\subsubsection[{Account}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Account} Core.\+Models.\+Action.\+Account}\label{classCore_1_1Models_1_1Action_a1924816082b3d1173ef309581a69ef95}
+
+
+The account. 
+
+\hypertarget{classCore_1_1Models_1_1Action_ab973fe9b8e3c6a60fa9d82cf53de57c3}{}\index{Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}!Action\+Time@{Action\+Time}}
+\index{Action\+Time@{Action\+Time}!Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}}
+\subsubsection[{Action\+Time}]{\setlength{\rightskip}{0pt plus 5cm}Date\+Time Core.\+Models.\+Action.\+Action\+Time}\label{classCore_1_1Models_1_1Action_ab973fe9b8e3c6a60fa9d82cf53de57c3}
+
+
+The action time. 
+
+\hypertarget{classCore_1_1Models_1_1Action_a13671e1a48f3a462a366fe2768073816}{}\index{Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}!I\+D@{I\+D}}
+\index{I\+D@{I\+D}!Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}}
+\subsubsection[{I\+D}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Action.\+I\+D}\label{classCore_1_1Models_1_1Action_a13671e1a48f3a462a366fe2768073816}
+
+
+Gets or Sets the I\+D 
+
+
+
+\subsection{Property Documentation}
+\hypertarget{classCore_1_1Models_1_1Action_ae2defe30307109c1265b4cf16c001553}{}\index{Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}!Account\+I\+D@{Account\+I\+D}}
+\index{Account\+I\+D@{Account\+I\+D}!Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}}
+\subsubsection[{Account\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Action.\+Account\+I\+D\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Models_1_1Action_ae2defe30307109c1265b4cf16c001553}
+
+
+Gets or sets the account I\+D. 
+
+The account I\+D.\hypertarget{classCore_1_1Models_1_1Action_a5b7b51347229bf4ca6ab02b419c476b8}{}\index{Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}!Parameters@{Parameters}}
+\index{Parameters@{Parameters}!Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}}
+\subsubsection[{Parameters}]{\setlength{\rightskip}{0pt plus 5cm}Dictionary$<$string, object$>$ Core.\+Models.\+Action.\+Parameters\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Action_a5b7b51347229bf4ca6ab02b419c476b8}
+
+
+Gets the parameters. 
+
+The parameters.\hypertarget{classCore_1_1Models_1_1Action_abb5ac940b539ea5f61f866c219dcd858}{}\index{Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}!Type@{Type}}
+\index{Type@{Type}!Core\+::\+Models\+::\+Action@{Core\+::\+Models\+::\+Action}}
+\subsubsection[{Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Action\+Type} Core.\+Models.\+Action.\+Type\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Action_abb5ac940b539ea5f61f866c219dcd858}
+
+
+Gets the type. 
+
+The type.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-base/\-Models/Action.\-cs\end{DoxyCompactItemize}
+base/\+Models/Action.\+cs\end{DoxyCompactItemize}

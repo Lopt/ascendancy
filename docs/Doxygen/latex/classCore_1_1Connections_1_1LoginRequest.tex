@@ -1,12 +1,11 @@
-\hypertarget{classCore_1_1Connections_1_1LoginRequest}{\section{Core.\-Connections.\-Login\-Request Class Reference}
-\label{classCore_1_1Connections_1_1LoginRequest}\index{Core.\-Connections.\-Login\-Request@{Core.\-Connections.\-Login\-Request}}
-}
+\hypertarget{classCore_1_1Connections_1_1LoginRequest}{}\section{Core.\+Connections.\+Login\+Request Class Reference}
+\label{classCore_1_1Connections_1_1LoginRequest}\index{Core.\+Connections.\+Login\+Request@{Core.\+Connections.\+Login\+Request}}
 
 
-\hyperlink{classCore_1_1Connections_1_1Request}{Request} class which should be used to login. Should be serialised before sending, will be deserialised after recieving.  
+\hyperlink{classCore_1_1Connections_1_1Request}{Request} class which should be used to send actions to the server. Should be serialized before sending, will be deserialized after receiving.  
 
 
-Inheritance diagram for Core.\-Connections.\-Login\-Request\-:\begin{figure}[H]
+Inheritance diagram for Core.\+Connections.\+Login\+Request\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classCore_1_1Connections_1_1LoginRequest}
@@ -15,25 +14,64 @@ Inheritance diagram for Core.\-Connections.\-Login\-Request\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Connections_1_1LoginRequest_a5358029b8a55dfbcdd7567f1b812d399}{{\bfseries Login\-Request} (\hyperlink{classCore_1_1Models_1_1Position}{Core.\-Models.\-Position} position, string username, string password)}\label{classCore_1_1Connections_1_1LoginRequest_a5358029b8a55dfbcdd7567f1b812d399}
-
-\end{DoxyCompactItemize}
+\hyperlink{classCore_1_1Connections_1_1LoginRequest_a5358029b8a55dfbcdd7567f1b812d399}{Login\+Request} (\hyperlink{classCore_1_1Models_1_1Position}{Core.\+Models.\+Position} position, string username, string password)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Connections_1_1LoginRequest}{Core.\+Connections.\+Login\+Request} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Connections_1_1LoginRequest_aead391392278a11f91e5570e44942f91}{string {\bfseries Username}}\label{classCore_1_1Connections_1_1LoginRequest_aead391392278a11f91e5570e44942f91}
-
-\item 
-\hypertarget{classCore_1_1Connections_1_1LoginRequest_af3a2a4f734dcca3404687bfb8844b2ee}{string {\bfseries Password}}\label{classCore_1_1Connections_1_1LoginRequest_af3a2a4f734dcca3404687bfb8844b2ee}
-
-\end{DoxyCompactItemize}
+string \hyperlink{classCore_1_1Connections_1_1LoginRequest_aead391392278a11f91e5570e44942f91}{Username}
+\begin{DoxyCompactList}\small\item\em The Name of the user. \end{DoxyCompactList}\item 
+string \hyperlink{classCore_1_1Connections_1_1LoginRequest_af3a2a4f734dcca3404687bfb8844b2ee}{Password}
+\begin{DoxyCompactList}\small\item\em The password of the user. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\hyperlink{classCore_1_1Connections_1_1Request}{Request} class which should be used to login. Should be serialised before sending, will be deserialised after recieving. 
+\hyperlink{classCore_1_1Connections_1_1Request}{Request} class which should be used to send actions to the server. Should be serialized before sending, will be deserialized after receiving. 
 
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Connections_1_1LoginRequest_a5358029b8a55dfbcdd7567f1b812d399}{}\index{Core\+::\+Connections\+::\+Login\+Request@{Core\+::\+Connections\+::\+Login\+Request}!Login\+Request@{Login\+Request}}
+\index{Login\+Request@{Login\+Request}!Core\+::\+Connections\+::\+Login\+Request@{Core\+::\+Connections\+::\+Login\+Request}}
+\subsubsection[{Login\+Request(\+Core.\+Models.\+Position position, string username, string password)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Connections.\+Login\+Request.\+Login\+Request (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\+Models.\+Position}}]{position, }
+\item[{string}]{username, }
+\item[{string}]{password}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Connections_1_1LoginRequest_a5358029b8a55dfbcdd7567f1b812d399}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Connections_1_1LoginRequest}{Core.\+Connections.\+Login\+Request} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & Position where the user is standing (converted G\+P\+S information).\\
+\hline
+{\em username} & User Name.\\
+\hline
+{\em password} & Password of the user.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Connections_1_1LoginRequest_af3a2a4f734dcca3404687bfb8844b2ee}{}\index{Core\+::\+Connections\+::\+Login\+Request@{Core\+::\+Connections\+::\+Login\+Request}!Password@{Password}}
+\index{Password@{Password}!Core\+::\+Connections\+::\+Login\+Request@{Core\+::\+Connections\+::\+Login\+Request}}
+\subsubsection[{Password}]{\setlength{\rightskip}{0pt plus 5cm}string Core.\+Connections.\+Login\+Request.\+Password}\label{classCore_1_1Connections_1_1LoginRequest_af3a2a4f734dcca3404687bfb8844b2ee}
+
+
+The password of the user. 
+
+\hypertarget{classCore_1_1Connections_1_1LoginRequest_aead391392278a11f91e5570e44942f91}{}\index{Core\+::\+Connections\+::\+Login\+Request@{Core\+::\+Connections\+::\+Login\+Request}!Username@{Username}}
+\index{Username@{Username}!Core\+::\+Connections\+::\+Login\+Request@{Core\+::\+Connections\+::\+Login\+Request}}
+\subsubsection[{Username}]{\setlength{\rightskip}{0pt plus 5cm}string Core.\+Connections.\+Login\+Request.\+Username}\label{classCore_1_1Connections_1_1LoginRequest_aead391392278a11f91e5570e44942f91}
+
+
+The Name of the user. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-base/\-Connection/Login\-Request.\-cs\end{DoxyCompactItemize}
+base/\+Connection/Login\+Request.\+cs\end{DoxyCompactItemize}

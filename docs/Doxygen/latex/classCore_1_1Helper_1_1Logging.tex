@@ -1,0 +1,169 @@
+\hypertarget{classCore_1_1Helper_1_1Logging}{}\section{Core.\+Helper.\+Logging Class Reference}
+\label{classCore_1_1Helper_1_1Logging}\index{Core.\+Helper.\+Logging@{Core.\+Helper.\+Logging}}
+
+
+\hyperlink{classCore_1_1Helper_1_1Logging}{Logging} class. To log any relevant (or irrelevant) information about the current state of the code.  
+
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classCore_1_1Helper_1_1Logging_aff45583600750b779f0cc9fc5a63a27e}{Mode} \{ \\*
+{\bfseries Debug}, 
+{\bfseries Info}, 
+{\bfseries Warning}, 
+{\bfseries Error}, 
+\\*
+{\bfseries Critical}
+ \}\begin{DoxyCompactList}\small\item\em Mode. Relevance in this order\+: Debug Info Warning Error Critical \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classCore_1_1Helper_1_1Logging_ae3a82ba60e51f23097b39147df4f0927}{Basic\+Config} (\hyperlink{classCore_1_1Helper_1_1Logging_aff45583600750b779f0cc9fc5a63a27e}{Mode} mode)
+\begin{DoxyCompactList}\small\item\em sets the minimum mode which should be logged. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Helper_1_1Logging_a36c75ee2aabd978c354e7ad77b234118}{Debug} (string text)
+\begin{DoxyCompactList}\small\item\em Debug Log. Detailed information, typically of interest only when diagnosing problems. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Helper_1_1Logging_a361a56a134f94f27594469dbc5bf3e8e}{Info} (string text)
+\begin{DoxyCompactList}\small\item\em Confirmation that things are working as expected. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Helper_1_1Logging_ab348365b61c0d138d57ec6a2f9d395b6}{Warning} (string text)
+\begin{DoxyCompactList}\small\item\em An indication that something unexpected happened, or indicative of some problem in the near future (e.\+g. ‘disk space low’). The software is still working as expected. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Helper_1_1Logging_aae6f1ab92c199c6b55c3038134ea789e}{Error} (string text)
+\begin{DoxyCompactList}\small\item\em Due to a more serious problem, the software has not been able to perform some function. \end{DoxyCompactList}\item 
+static void \hyperlink{classCore_1_1Helper_1_1Logging_a7f38362db8ed2e6ef4b8682a0559a31a}{Critical} (string text)
+\begin{DoxyCompactList}\small\item\em A serious error, indicating that the program itself may be unable to continue running. \end{DoxyCompactList}\item 
+static List$<$ string $>$ \hyperlink{classCore_1_1Helper_1_1Logging_a68c97fa4b1d8f737d0b7f5f58e86a9f1}{Get\+Log} ()
+\begin{DoxyCompactList}\small\item\em Gets the log list (copy). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classCore_1_1Helper_1_1Logging}{Logging} class. To log any relevant (or irrelevant) information about the current state of the code. 
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classCore_1_1Helper_1_1Logging_aff45583600750b779f0cc9fc5a63a27e}{}\index{Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}!Mode@{Mode}}
+\index{Mode@{Mode}!Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}}
+\subsubsection[{Mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Core.\+Helper.\+Logging.\+Mode}\hspace{0.3cm}{\ttfamily [strong]}}\label{classCore_1_1Helper_1_1Logging_aff45583600750b779f0cc9fc5a63a27e}
+
+
+Mode. Relevance in this order\+: Debug Info Warning Error Critical 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Helper_1_1Logging_ae3a82ba60e51f23097b39147df4f0927}{}\index{Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}!Basic\+Config@{Basic\+Config}}
+\index{Basic\+Config@{Basic\+Config}!Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}}
+\subsubsection[{Basic\+Config(\+Mode mode)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Helper.\+Logging.\+Basic\+Config (
+\begin{DoxyParamCaption}
+\item[{{\bf Mode}}]{mode}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Helper_1_1Logging_ae3a82ba60e51f23097b39147df4f0927}
+
+
+sets the minimum mode which should be logged. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & \hyperlink{classCore_1_1Helper_1_1Logging}{Logging} Mode.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Helper_1_1Logging_a7f38362db8ed2e6ef4b8682a0559a31a}{}\index{Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}!Critical@{Critical}}
+\index{Critical@{Critical}!Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}}
+\subsubsection[{Critical(string text)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Helper.\+Logging.\+Critical (
+\begin{DoxyParamCaption}
+\item[{string}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Helper_1_1Logging_a7f38362db8ed2e6ef4b8682a0559a31a}
+
+
+A serious error, indicating that the program itself may be unable to continue running. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \hyperlink{classCore_1_1Helper_1_1Logging}{Logging} Text.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Helper_1_1Logging_a36c75ee2aabd978c354e7ad77b234118}{}\index{Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}!Debug@{Debug}}
+\index{Debug@{Debug}!Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}}
+\subsubsection[{Debug(string text)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Helper.\+Logging.\+Debug (
+\begin{DoxyParamCaption}
+\item[{string}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Helper_1_1Logging_a36c75ee2aabd978c354e7ad77b234118}
+
+
+Debug Log. Detailed information, typically of interest only when diagnosing problems. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \hyperlink{classCore_1_1Helper_1_1Logging}{Logging} Text.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Helper_1_1Logging_aae6f1ab92c199c6b55c3038134ea789e}{}\index{Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}!Error@{Error}}
+\index{Error@{Error}!Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}}
+\subsubsection[{Error(string text)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Helper.\+Logging.\+Error (
+\begin{DoxyParamCaption}
+\item[{string}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Helper_1_1Logging_aae6f1ab92c199c6b55c3038134ea789e}
+
+
+Due to a more serious problem, the software has not been able to perform some function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \hyperlink{classCore_1_1Helper_1_1Logging}{Logging} Text.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Helper_1_1Logging_a68c97fa4b1d8f737d0b7f5f58e86a9f1}{}\index{Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}!Get\+Log@{Get\+Log}}
+\index{Get\+Log@{Get\+Log}!Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}}
+\subsubsection[{Get\+Log()}]{\setlength{\rightskip}{0pt plus 5cm}static List$<$string$>$ Core.\+Helper.\+Logging.\+Get\+Log (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Helper_1_1Logging_a68c97fa4b1d8f737d0b7f5f58e86a9f1}
+
+
+Gets the log list (copy). 
+
+\begin{DoxyReturn}{Returns}
+a copy of the log list.
+\end{DoxyReturn}
+\hypertarget{classCore_1_1Helper_1_1Logging_a361a56a134f94f27594469dbc5bf3e8e}{}\index{Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}!Info@{Info}}
+\index{Info@{Info}!Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}}
+\subsubsection[{Info(string text)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Helper.\+Logging.\+Info (
+\begin{DoxyParamCaption}
+\item[{string}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Helper_1_1Logging_a361a56a134f94f27594469dbc5bf3e8e}
+
+
+Confirmation that things are working as expected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \hyperlink{classCore_1_1Helper_1_1Logging}{Logging} Text.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Helper_1_1Logging_ab348365b61c0d138d57ec6a2f9d395b6}{}\index{Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}!Warning@{Warning}}
+\index{Warning@{Warning}!Core\+::\+Helper\+::\+Logging@{Core\+::\+Helper\+::\+Logging}}
+\subsubsection[{Warning(string text)}]{\setlength{\rightskip}{0pt plus 5cm}static void Core.\+Helper.\+Logging.\+Warning (
+\begin{DoxyParamCaption}
+\item[{string}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Helper_1_1Logging_ab348365b61c0d138d57ec6a2f9d395b6}
+
+
+An indication that something unexpected happened, or indicative of some problem in the near future (e.\+g. ‘disk space low’). The software is still working as expected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \hyperlink{classCore_1_1Helper_1_1Logging}{Logging} Text.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+base/\+Helper/Logging.\+cs\end{DoxyCompactItemize}

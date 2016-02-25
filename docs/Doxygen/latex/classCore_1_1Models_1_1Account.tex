@@ -1,7 +1,11 @@
-\hypertarget{classCore_1_1Models_1_1Account}{\section{Core.\-Models.\-Account Class Reference}
-\label{classCore_1_1Models_1_1Account}\index{Core.\-Models.\-Account@{Core.\-Models.\-Account}}
-}
-Inheritance diagram for Core.\-Models.\-Account\-:\begin{figure}[H]
+\hypertarget{classCore_1_1Models_1_1Account}{}\section{Core.\+Models.\+Account Class Reference}
+\label{classCore_1_1Models_1_1Account}\index{Core.\+Models.\+Account@{Core.\+Models.\+Account}}
+
+
+\hyperlink{classCore_1_1Models_1_1Account}{Account} model which represents an user and information about the user.  
+
+
+Inheritance diagram for Core.\+Models.\+Account\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classCore_1_1Models_1_1Account}
@@ -10,33 +14,220 @@ Inheritance diagram for Core.\-Models.\-Account\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Account_a6142601e9f18c6453a95ebde6d8cfec3}{{\bfseries Account} (int id)}\label{classCore_1_1Models_1_1Account_a6142601e9f18c6453a95ebde6d8cfec3}
-
+\hyperlink{classCore_1_1Models_1_1Account_a6142601e9f18c6453a95ebde6d8cfec3}{Account} (int id)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Account}{Core.\+Models.\+Account} class. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Account_acb6bb3a9e0def84b5f944891937eb173}{Account} (int id, string user\+Name)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Account}{Core.\+Models.\+Account} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Account_acb6bb3a9e0def84b5f944891937eb173}{{\bfseries Account} (int id, string user\-Name)}\label{classCore_1_1Models_1_1Account_acb6bb3a9e0def84b5f944891937eb173}
-
-\end{DoxyCompactItemize}
+static bool \hyperlink{classCore_1_1Models_1_1Account_a090b2c4d7219852aafc5df14963f6762}{operator==} (\hyperlink{classCore_1_1Models_1_1Account}{Account} first, \hyperlink{classCore_1_1Models_1_1Account}{Account} second)
+\begin{DoxyCompactList}\small\item\em \hyperlink{namespaceTests}{Tests} two accounts if they are the same. \end{DoxyCompactList}\item 
+static bool \hyperlink{classCore_1_1Models_1_1Account_ac504e5ce7be8340f852b532d378389d9}{operator!=} (\hyperlink{classCore_1_1Models_1_1Account}{Account} first, \hyperlink{classCore_1_1Models_1_1Account}{Account} second)
+\begin{DoxyCompactList}\small\item\em \hyperlink{namespaceTests}{Tests} two accounts if they are N\+O\+T the same. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Dictionary$<$ long, List$<$ long $>$ $>$ \hyperlink{classCore_1_1Models_1_1Account_a3414ce3d42e302213821d9846c8fb1b9}{Buildable\+Buildings}
+\begin{DoxyCompactList}\small\item\em Gets the buildable buildings. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Resources_1_1Scrap}{Scrap} \hyperlink{classCore_1_1Models_1_1Account_afa0a8a7e0abbc6b65e60d94fabf919ed}{Scrap}
+\begin{DoxyCompactList}\small\item\em The scrap. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Resources_1_1Plutonium}{Plutonium} \hyperlink{classCore_1_1Models_1_1Account_a72ac9d63dede3a8321003ffafe1546ca}{Plutonium}
+\begin{DoxyCompactList}\small\item\em The plutonium. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Resources_1_1Energy}{Energy} \hyperlink{classCore_1_1Models_1_1Account_a903274c37ced8923aa8f271f8e3c41b4}{Energy}
+\begin{DoxyCompactList}\small\item\em The energy. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Resources_1_1Technology}{Technology} \hyperlink{classCore_1_1Models_1_1Account_acab414d9e49038c2f7c873a22621bff8}{Technology}
+\begin{DoxyCompactList}\small\item\em The technology. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Resources_1_1Population}{Population} \hyperlink{classCore_1_1Models_1_1Account_a3b9000ade8b8742512e802fa4bea3d7c}{Population}
+\begin{DoxyCompactList}\small\item\em The population. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Account_a7d03d99ad8aef36cd306111624ee9664}{int {\bfseries I\-D}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Account_a7d03d99ad8aef36cd306111624ee9664}
+int \hyperlink{classCore_1_1Models_1_1Account_a7d03d99ad8aef36cd306111624ee9664}{I\+D}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the Id \end{DoxyCompactList}\item 
+string \hyperlink{classCore_1_1Models_1_1Account_a1ffe9e8e0cfd0a45234e457a39c2de0f}{User\+Name}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the name of the user. \end{DoxyCompactList}\item 
+Dictionary$<$ \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}, long $>$ \hyperlink{classCore_1_1Models_1_1Account_a6025997911a09ad2d4917e1bd8e6cf06}{Territory\+Buildings}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the territory buildings. \end{DoxyCompactList}\item 
+Dictionary$<$ \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}, long $>$ \hyperlink{classCore_1_1Models_1_1Account_acfadcbec3d6f151ade9cd14fe3c95f9e}{Buildings}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the buildings. \end{DoxyCompactList}\item 
+Linked\+List$<$ \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} $>$ \hyperlink{classCore_1_1Models_1_1Account_a474b556453f43f821b4b3c79401288ac}{Units}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the units. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+\hyperlink{classCore_1_1Models_1_1Account}{Account} model which represents an user and information about the user. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Models_1_1Account_a6142601e9f18c6453a95ebde6d8cfec3}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!Account@{Account}}
+\index{Account@{Account}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{Account(int id)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Models.\+Account.\+Account (
+\begin{DoxyParamCaption}
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Account_a6142601e9f18c6453a95ebde6d8cfec3}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Account}{Core.\+Models.\+Account} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \hyperlink{classCore_1_1Models_1_1Account}{Account} Identifier.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1Account_acb6bb3a9e0def84b5f944891937eb173}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!Account@{Account}}
+\index{Account@{Account}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{Account(int id, string user\+Name)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Models.\+Account.\+Account (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{string}]{user\+Name}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Account_acb6bb3a9e0def84b5f944891937eb173}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Account}{Core.\+Models.\+Account} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \hyperlink{classCore_1_1Models_1_1Account}{Account} Identifier.\\
+\hline
+{\em user\+Name} & User name.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Models_1_1Account_ac504e5ce7be8340f852b532d378389d9}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{operator"!=(\+Account first, Account second)}]{\setlength{\rightskip}{0pt plus 5cm}static bool Core.\+Models.\+Account.\+operator!= (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{first, }
+\item[{{\bf Account}}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1Account_ac504e5ce7be8340f852b532d378389d9}
+
+
+\hyperlink{namespaceTests}{Tests} two accounts if they are N\+O\+T the same. 
+
+\begin{DoxyReturn}{Returns}
+boolean if both accounts are N\+O\+T the same or N\+O\+T the same I\+D. Otherwise false.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em first} & First position.\\
+\hline
+{\em second} & Second position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1Account_a090b2c4d7219852aafc5df14963f6762}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!operator==@{operator==}}
+\index{operator==@{operator==}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{operator==(\+Account first, Account second)}]{\setlength{\rightskip}{0pt plus 5cm}static bool Core.\+Models.\+Account.\+operator== (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{first, }
+\item[{{\bf Account}}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classCore_1_1Models_1_1Account_a090b2c4d7219852aafc5df14963f6762}
+
+
+\hyperlink{namespaceTests}{Tests} two accounts if they are the same. 
+
+\begin{DoxyReturn}{Returns}
+boolean if both accounts are the same or same I\+D. Otherwise false.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em first} & First \hyperlink{classCore_1_1Models_1_1Position}{Position}.\\
+\hline
+{\em second} & Second \hyperlink{classCore_1_1Models_1_1Position}{Position}.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Models_1_1Account_a3414ce3d42e302213821d9846c8fb1b9}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!Buildable\+Buildings@{Buildable\+Buildings}}
+\index{Buildable\+Buildings@{Buildable\+Buildings}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{Buildable\+Buildings}]{\setlength{\rightskip}{0pt plus 5cm}Dictionary$<$long, List$<$long$>$ $>$ Core.\+Models.\+Account.\+Buildable\+Buildings}\label{classCore_1_1Models_1_1Account_a3414ce3d42e302213821d9846c8fb1b9}
+
+
+Gets the buildable buildings. 
+
+The buildable buildings.\hypertarget{classCore_1_1Models_1_1Account_a903274c37ced8923aa8f271f8e3c41b4}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!Energy@{Energy}}
+\index{Energy@{Energy}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{Energy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Energy} Core.\+Models.\+Account.\+Energy}\label{classCore_1_1Models_1_1Account_a903274c37ced8923aa8f271f8e3c41b4}
+
+
+The energy. 
+
+\hypertarget{classCore_1_1Models_1_1Account_a72ac9d63dede3a8321003ffafe1546ca}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!Plutonium@{Plutonium}}
+\index{Plutonium@{Plutonium}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{Plutonium}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Plutonium} Core.\+Models.\+Account.\+Plutonium}\label{classCore_1_1Models_1_1Account_a72ac9d63dede3a8321003ffafe1546ca}
+
+
+The plutonium. 
+
+\hypertarget{classCore_1_1Models_1_1Account_a3b9000ade8b8742512e802fa4bea3d7c}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!Population@{Population}}
+\index{Population@{Population}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{Population}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Population} Core.\+Models.\+Account.\+Population}\label{classCore_1_1Models_1_1Account_a3b9000ade8b8742512e802fa4bea3d7c}
+
+
+The population. 
+
+\hypertarget{classCore_1_1Models_1_1Account_afa0a8a7e0abbc6b65e60d94fabf919ed}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!Scrap@{Scrap}}
+\index{Scrap@{Scrap}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{Scrap}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scrap} Core.\+Models.\+Account.\+Scrap}\label{classCore_1_1Models_1_1Account_afa0a8a7e0abbc6b65e60d94fabf919ed}
+
+
+The scrap. 
+
+\hypertarget{classCore_1_1Models_1_1Account_acab414d9e49038c2f7c873a22621bff8}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!Technology@{Technology}}
+\index{Technology@{Technology}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{Technology}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Technology} Core.\+Models.\+Account.\+Technology}\label{classCore_1_1Models_1_1Account_acab414d9e49038c2f7c873a22621bff8}
+
+
+The technology. 
+
+
+
+\subsection{Property Documentation}
+\hypertarget{classCore_1_1Models_1_1Account_acfadcbec3d6f151ade9cd14fe3c95f9e}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!Buildings@{Buildings}}
+\index{Buildings@{Buildings}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{Buildings}]{\setlength{\rightskip}{0pt plus 5cm}Dictionary$<${\bf Position\+I}, long$>$ Core.\+Models.\+Account.\+Buildings\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Account_acfadcbec3d6f151ade9cd14fe3c95f9e}
+
+
+Gets the buildings. 
+
+The buildings.\hypertarget{classCore_1_1Models_1_1Account_a7d03d99ad8aef36cd306111624ee9664}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!I\+D@{I\+D}}
+\index{I\+D@{I\+D}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{I\+D}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Account.\+I\+D\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Account_a7d03d99ad8aef36cd306111624ee9664}
+
+
+Gets the Id 
+
+The Id.\hypertarget{classCore_1_1Models_1_1Account_a6025997911a09ad2d4917e1bd8e6cf06}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!Territory\+Buildings@{Territory\+Buildings}}
+\index{Territory\+Buildings@{Territory\+Buildings}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{Territory\+Buildings}]{\setlength{\rightskip}{0pt plus 5cm}Dictionary$<${\bf Position\+I}, long$>$ Core.\+Models.\+Account.\+Territory\+Buildings\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Account_a6025997911a09ad2d4917e1bd8e6cf06}
+
+
+Gets the territory buildings. 
+
+The territory buildings.\hypertarget{classCore_1_1Models_1_1Account_a474b556453f43f821b4b3c79401288ac}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!Units@{Units}}
+\index{Units@{Units}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{Units}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<${\bf Position\+I}$>$ Core.\+Models.\+Account.\+Units\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Account_a474b556453f43f821b4b3c79401288ac}
+
+
+Gets the units. 
+
+The units.\hypertarget{classCore_1_1Models_1_1Account_a1ffe9e8e0cfd0a45234e457a39c2de0f}{}\index{Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}!User\+Name@{User\+Name}}
+\index{User\+Name@{User\+Name}!Core\+::\+Models\+::\+Account@{Core\+::\+Models\+::\+Account}}
+\subsubsection[{User\+Name}]{\setlength{\rightskip}{0pt plus 5cm}string Core.\+Models.\+Account.\+User\+Name\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Models_1_1Account_a1ffe9e8e0cfd0a45234e457a39c2de0f}
+
+
+Gets or sets the name of the user. 
+
+The name of the user.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Account_a1ffe9e8e0cfd0a45234e457a39c2de0f}{string {\bfseries User\-Name}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Account_a1ffe9e8e0cfd0a45234e457a39c2de0f}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Account_a16db715a6cb365cc3075ba8c2c24f402}{Linked\-List$<$ \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} $>$ {\bfseries Headquarters}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Account_a16db715a6cb365cc3075ba8c2c24f402}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Account_a474b556453f43f821b4b3c79401288ac}{Linked\-List$<$ \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} $>$ {\bfseries Units}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Account_a474b556453f43f821b4b3c79401288ac}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Account_a19c8dc728a99221a064867333f8555f6}{Linked\-List$<$ \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} $>$ {\bfseries Buildings}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Account_a19c8dc728a99221a064867333f8555f6}
-
-\end{DoxyCompactItemize}
-\subsection*{Additional Inherited Members}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
-\item 
-base/\-Models/Account.\-cs\end{DoxyCompactItemize}
+base/\+Models/Account.\+cs\end{DoxyCompactItemize}

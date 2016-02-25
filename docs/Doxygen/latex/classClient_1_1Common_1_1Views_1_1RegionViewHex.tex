@@ -1,0 +1,292 @@
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex}{}\section{Client.\+Common.\+Views.\+Region\+View\+Hex Class Reference}
+\label{classClient_1_1Common_1_1Views_1_1RegionViewHex}\index{Client.\+Common.\+Views.\+Region\+View\+Hex@{Client.\+Common.\+Views.\+Region\+View\+Hex}}
+
+
+Region view with hexagonal tile map to set the content of the tile map.  
+
+
+Inheritance diagram for Client.\+Common.\+Views.\+Region\+View\+Hex\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classClient_1_1Common_1_1Views_1_1RegionViewHex}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_a12e481b76f5d2aae6defc25692a677f7}{Layer\+Types} \{ \\*
+{\bfseries Terrain}, 
+{\bfseries Building}, 
+{\bfseries Unit}, 
+{\bfseries Border}, 
+\\*
+{\bfseries Indicator}, 
+{\bfseries Menu}
+ \}\begin{DoxyCompactList}\small\item\em The layer types. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_abbf078b70a18904bb0d213ebabc4fbe9}{Region\+View\+Hex} (\hyperlink{classCore_1_1Models_1_1Region}{Region} region)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex}{Client.\+Common.\+Views.\+Region\+View\+Hex} class. \end{DoxyCompactList}\item 
+C\+C\+Tile\+Map \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_a04baa3e55b66614d63689d3721aea018}{Get\+Tile\+Map} ()
+\begin{DoxyCompactList}\small\item\em Gets the tile map. \end{DoxyCompactList}\item 
+C\+C\+Node \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_a6d1d7f8cf5b23e28f621bdff01f6eb19}{Get\+Childrens} (\hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_a12e481b76f5d2aae6defc25692a677f7}{Layer\+Types} layer)
+\begin{DoxyCompactList}\small\item\em Gets the layer childrens. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_ac8c96638d54095efa54763eb7183df2f}{Ugly\+Draw} ()
+\begin{DoxyCompactList}\small\item\em Make a ugle draw (moves the tile layers container a little bit). \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_a16373731b9503b152d271246656c39cf}{Draw\+Unit} (\hyperlink{classCore_1_1Models_1_1Entity}{Entity} unit)
+\begin{DoxyCompactList}\small\item\em Draws the unit. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_aa03b7fb635e4b7193d13bac5900c1324}{Remove\+Unit} (\hyperlink{classCore_1_1Models_1_1Entity}{Entity} unit)
+\begin{DoxyCompactList}\small\item\em Removes the unit. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_a805462c8c8197d172aa0014cf5d34a31}{Remove\+Building} (\hyperlink{classCore_1_1Models_1_1Entity}{Entity} building)
+\begin{DoxyCompactList}\small\item\em Removes the building. \end{DoxyCompactList}\item 
+C\+C\+Sprite \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_a549bcaf14be905649db8aca4306d8d69}{Set\+Menu\+Tile} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} pos\+I, C\+C\+Tile\+Gid\+And\+Flags gid, bool is\+Possible=true)
+\begin{DoxyCompactList}\small\item\em Sets the menu tile. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_a1ce045fb1360582c30095314addf6ce8}{Set\+Building} (C\+C\+Tile\+Map\+Coordinates map\+Coordinat, \hyperlink{classCore_1_1Models_1_1Entity}{Entity} building)
+\begin{DoxyCompactList}\small\item\em Sets the building in the map. \end{DoxyCompactList}\item 
+C\+C\+Sprite \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_ada8489098bf54de0480ece85230008b5}{Set\+Indicator\+Gid} (\hyperlink{classCore_1_1Models_1_1CellPosition}{Cell\+Position} cell\+Pos, C\+C\+Tile\+Gid\+And\+Flags gid)
+\begin{DoxyCompactList}\small\item\em Sets the indicator gid. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_aa41679925b0df9e9509fc0b1c2ee9f31}{Draw\+Border} (Hash\+Set$<$ \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} $>$ border\+Positions, C\+C\+Color4\+B color, \hyperlink{classCore_1_1Models_1_1Account}{Account} owner)
+\begin{DoxyCompactList}\small\item\em Draws the border. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex_a29ca36596c21ba8db02e734c550d3f67}{Remove\+Border} (\hyperlink{classCore_1_1Models_1_1Account}{Account} owner)
+\begin{DoxyCompactList}\small\item\em Removes the border. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Region view with hexagonal tile map to set the content of the tile map. 
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_a12e481b76f5d2aae6defc25692a677f7}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Layer\+Types@{Layer\+Types}}
+\index{Layer\+Types@{Layer\+Types}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Layer\+Types}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Client.\+Common.\+Views.\+Region\+View\+Hex.\+Layer\+Types}\hspace{0.3cm}{\ttfamily [strong]}}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_a12e481b76f5d2aae6defc25692a677f7}
+
+
+The layer types. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_abbf078b70a18904bb0d213ebabc4fbe9}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Region\+View\+Hex@{Region\+View\+Hex}}
+\index{Region\+View\+Hex@{Region\+View\+Hex}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Region\+View\+Hex(\+Region region)}]{\setlength{\rightskip}{0pt plus 5cm}Client.\+Common.\+Views.\+Region\+View\+Hex.\+Region\+View\+Hex (
+\begin{DoxyParamCaption}
+\item[{{\bf Region}}]{region}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_abbf078b70a18904bb0d213ebabc4fbe9}
+
+
+Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex}{Client.\+Common.\+Views.\+Region\+View\+Hex} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em region} & The Region to draw.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_aa41679925b0df9e9509fc0b1c2ee9f31}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Draw\+Border@{Draw\+Border}}
+\index{Draw\+Border@{Draw\+Border}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Draw\+Border(\+Hash\+Set$<$ Position\+I $>$ border\+Positions, C\+C\+Color4\+B color, Account owner)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Region\+View\+Hex.\+Draw\+Border (
+\begin{DoxyParamCaption}
+\item[{Hash\+Set$<$ {\bf Position\+I} $>$}]{border\+Positions, }
+\item[{C\+C\+Color4\+B}]{color, }
+\item[{{\bf Account}}]{owner}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_aa41679925b0df9e9509fc0b1c2ee9f31}
+
+
+Draws the border. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em border\+Positions} & The border positions.\\
+\hline
+{\em color} & The border color.\\
+\hline
+{\em owner} & The area owner.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_a16373731b9503b152d271246656c39cf}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Draw\+Unit@{Draw\+Unit}}
+\index{Draw\+Unit@{Draw\+Unit}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Draw\+Unit(\+Entity unit)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Region\+View\+Hex.\+Draw\+Unit (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity}}]{unit}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_a16373731b9503b152d271246656c39cf}
+
+
+Draws the unit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit} & The unit\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_a6d1d7f8cf5b23e28f621bdff01f6eb19}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Get\+Childrens@{Get\+Childrens}}
+\index{Get\+Childrens@{Get\+Childrens}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Get\+Childrens(\+Layer\+Types layer)}]{\setlength{\rightskip}{0pt plus 5cm}C\+C\+Node Client.\+Common.\+Views.\+Region\+View\+Hex.\+Get\+Childrens (
+\begin{DoxyParamCaption}
+\item[{{\bf Layer\+Types}}]{layer}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_a6d1d7f8cf5b23e28f621bdff01f6eb19}
+
+
+Gets the layer childrens. 
+
+\begin{DoxyReturn}{Returns}
+The ccnode childrens.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em layer} & The layer.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_a04baa3e55b66614d63689d3721aea018}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Get\+Tile\+Map@{Get\+Tile\+Map}}
+\index{Get\+Tile\+Map@{Get\+Tile\+Map}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Get\+Tile\+Map()}]{\setlength{\rightskip}{0pt plus 5cm}C\+C\+Tile\+Map Client.\+Common.\+Views.\+Region\+View\+Hex.\+Get\+Tile\+Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_a04baa3e55b66614d63689d3721aea018}
+
+
+Gets the tile map. 
+
+\begin{DoxyReturn}{Returns}
+The tile map.
+\end{DoxyReturn}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_a29ca36596c21ba8db02e734c550d3f67}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Remove\+Border@{Remove\+Border}}
+\index{Remove\+Border@{Remove\+Border}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Remove\+Border(\+Account owner)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Region\+View\+Hex.\+Remove\+Border (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{owner}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_a29ca36596c21ba8db02e734c550d3f67}
+
+
+Removes the border. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em owner} & The area owner.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_a805462c8c8197d172aa0014cf5d34a31}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Remove\+Building@{Remove\+Building}}
+\index{Remove\+Building@{Remove\+Building}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Remove\+Building(\+Entity building)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Region\+View\+Hex.\+Remove\+Building (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity}}]{building}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_a805462c8c8197d172aa0014cf5d34a31}
+
+
+Removes the building. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em building} & The building.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_aa03b7fb635e4b7193d13bac5900c1324}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Remove\+Unit@{Remove\+Unit}}
+\index{Remove\+Unit@{Remove\+Unit}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Remove\+Unit(\+Entity unit)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Region\+View\+Hex.\+Remove\+Unit (
+\begin{DoxyParamCaption}
+\item[{{\bf Entity}}]{unit}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_aa03b7fb635e4b7193d13bac5900c1324}
+
+
+Removes the unit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit} & The unit\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_a1ce045fb1360582c30095314addf6ce8}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Set\+Building@{Set\+Building}}
+\index{Set\+Building@{Set\+Building}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Set\+Building(\+C\+C\+Tile\+Map\+Coordinates map\+Coordinat, Entity building)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Region\+View\+Hex.\+Set\+Building (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Tile\+Map\+Coordinates}]{map\+Coordinat, }
+\item[{{\bf Entity}}]{building}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_a1ce045fb1360582c30095314addf6ce8}
+
+
+Sets the building in the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map\+Coordinat} & Map coordinate.\\
+\hline
+{\em building} & Building which should be drawn (or null if it should be erased).\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_ada8489098bf54de0480ece85230008b5}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Set\+Indicator\+Gid@{Set\+Indicator\+Gid}}
+\index{Set\+Indicator\+Gid@{Set\+Indicator\+Gid}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Set\+Indicator\+Gid(\+Cell\+Position cell\+Pos, C\+C\+Tile\+Gid\+And\+Flags gid)}]{\setlength{\rightskip}{0pt plus 5cm}C\+C\+Sprite Client.\+Common.\+Views.\+Region\+View\+Hex.\+Set\+Indicator\+Gid (
+\begin{DoxyParamCaption}
+\item[{{\bf Cell\+Position}}]{cell\+Pos, }
+\item[{C\+C\+Tile\+Gid\+And\+Flags}]{gid}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_ada8489098bf54de0480ece85230008b5}
+
+
+Sets the indicator gid. 
+
+\begin{DoxyReturn}{Returns}
+The indicator gid.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em cell\+Pos} & The cell position.\\
+\hline
+{\em gid} & The gid.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_a549bcaf14be905649db8aca4306d8d69}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Set\+Menu\+Tile@{Set\+Menu\+Tile}}
+\index{Set\+Menu\+Tile@{Set\+Menu\+Tile}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Set\+Menu\+Tile(\+Position\+I pos\+I, C\+C\+Tile\+Gid\+And\+Flags gid, bool is\+Possible=true)}]{\setlength{\rightskip}{0pt plus 5cm}C\+C\+Sprite Client.\+Common.\+Views.\+Region\+View\+Hex.\+Set\+Menu\+Tile (
+\begin{DoxyParamCaption}
+\item[{{\bf Position\+I}}]{pos\+I, }
+\item[{C\+C\+Tile\+Gid\+And\+Flags}]{gid, }
+\item[{bool}]{is\+Possible = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_a549bcaf14be905649db8aca4306d8d69}
+
+
+Sets the menu tile. 
+
+\begin{DoxyReturn}{Returns}
+The menu tile.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+I} & The position\+I.\\
+\hline
+{\em gid} & The gid.\\
+\hline
+{\em is\+Possible} & If set to {\ttfamily true} is possible.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1RegionViewHex_ac8c96638d54095efa54763eb7183df2f}{}\index{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}!Ugly\+Draw@{Ugly\+Draw}}
+\index{Ugly\+Draw@{Ugly\+Draw}!Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex@{Client\+::\+Common\+::\+Views\+::\+Region\+View\+Hex}}
+\subsubsection[{Ugly\+Draw()}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Region\+View\+Hex.\+Ugly\+Draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1RegionViewHex_ac8c96638d54095efa54763eb7183df2f}
+
+
+Make a ugle draw (moves the tile layers container a little bit). 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+client/client/client.\+Common/\+Views/Region\+View\+Hex.\+cs\end{DoxyCompactItemize}

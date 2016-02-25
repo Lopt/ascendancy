@@ -1,12 +1,11 @@
-\hypertarget{classServer_1_1Controllers_1_1RegionManagerController}{\section{Server.\-Controllers.\-Region\-Manager\-Controller Class Reference}
-\label{classServer_1_1Controllers_1_1RegionManagerController}\index{Server.\-Controllers.\-Region\-Manager\-Controller@{Server.\-Controllers.\-Region\-Manager\-Controller}}
-}
+\hypertarget{classServer_1_1Controllers_1_1RegionManagerController}{}\section{Server.\+Controllers.\+Region\+Manager\+Controller Class Reference}
+\label{classServer_1_1Controllers_1_1RegionManagerController}\index{Server.\+Controllers.\+Region\+Manager\+Controller@{Server.\+Controllers.\+Region\+Manager\+Controller}}
 
 
 Contains all loaded regions and loads regions.  
 
 
-Inheritance diagram for Server.\-Controllers.\-Region\-Manager\-Controller\-:\begin{figure}[H]
+Inheritance diagram for Server.\+Controllers.\+Region\+Manager\+Controller\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classServer_1_1Controllers_1_1RegionManagerController}
@@ -15,8 +14,11 @@ Inheritance diagram for Server.\-Controllers.\-Region\-Manager\-Controller\-:\be
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-override \hyperlink{classCore_1_1Models_1_1Region}{Region} \hyperlink{classServer_1_1Controllers_1_1RegionManagerController_a14319718114aedea38984b1bf61395a4}{Get\-Region} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position} region\-Position)
+\hyperlink{classServer_1_1Controllers_1_1RegionManagerController_aa2b8b1d0c7c0d134a7d98a63c5c42784}{Region\+Manager\+Controller} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classServer_1_1Controllers_1_1RegionManagerController}{Server.\+Controllers.\+Region\+Manager\+Controller} class. \end{DoxyCompactList}\item 
+override \hyperlink{classCore_1_1Models_1_1Region}{Region} \hyperlink{classServer_1_1Controllers_1_1RegionManagerController_a14319718114aedea38984b1bf61395a4}{Get\+Region} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position} region\+Position)
 \begin{DoxyCompactList}\small\item\em Tries to get the Region. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
@@ -24,32 +26,46 @@ Contains all loaded regions and loads regions.
 
 
 
-\subsection{Member Function Documentation}
-\hypertarget{classServer_1_1Controllers_1_1RegionManagerController_a14319718114aedea38984b1bf61395a4}{\index{Server\-::\-Controllers\-::\-Region\-Manager\-Controller@{Server\-::\-Controllers\-::\-Region\-Manager\-Controller}!Get\-Region@{Get\-Region}}
-\index{Get\-Region@{Get\-Region}!Server::Controllers::RegionManagerController@{Server\-::\-Controllers\-::\-Region\-Manager\-Controller}}
-\subsubsection[{Get\-Region}]{\setlength{\rightskip}{0pt plus 5cm}override {\bf Region} Server.\-Controllers.\-Region\-Manager\-Controller.\-Get\-Region (
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classServer_1_1Controllers_1_1RegionManagerController_aa2b8b1d0c7c0d134a7d98a63c5c42784}{}\index{Server\+::\+Controllers\+::\+Region\+Manager\+Controller@{Server\+::\+Controllers\+::\+Region\+Manager\+Controller}!Region\+Manager\+Controller@{Region\+Manager\+Controller}}
+\index{Region\+Manager\+Controller@{Region\+Manager\+Controller}!Server\+::\+Controllers\+::\+Region\+Manager\+Controller@{Server\+::\+Controllers\+::\+Region\+Manager\+Controller}}
+\subsubsection[{Region\+Manager\+Controller()}]{\setlength{\rightskip}{0pt plus 5cm}Server.\+Controllers.\+Region\+Manager\+Controller.\+Region\+Manager\+Controller (
 \begin{DoxyParamCaption}
-\item[{{\bf Region\-Position}}]{region\-Position}
+{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classServer_1_1Controllers_1_1RegionManagerController_a14319718114aedea38984b1bf61395a4}
+)}\label{classServer_1_1Controllers_1_1RegionManagerController_aa2b8b1d0c7c0d134a7d98a63c5c42784}
+
+
+Initializes a new instance of the \hyperlink{classServer_1_1Controllers_1_1RegionManagerController}{Server.\+Controllers.\+Region\+Manager\+Controller} class. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classServer_1_1Controllers_1_1RegionManagerController_a14319718114aedea38984b1bf61395a4}{}\index{Server\+::\+Controllers\+::\+Region\+Manager\+Controller@{Server\+::\+Controllers\+::\+Region\+Manager\+Controller}!Get\+Region@{Get\+Region}}
+\index{Get\+Region@{Get\+Region}!Server\+::\+Controllers\+::\+Region\+Manager\+Controller@{Server\+::\+Controllers\+::\+Region\+Manager\+Controller}}
+\subsubsection[{Get\+Region(\+Region\+Position region\+Position)}]{\setlength{\rightskip}{0pt plus 5cm}override {\bf Region} Server.\+Controllers.\+Region\+Manager\+Controller.\+Get\+Region (
+\begin{DoxyParamCaption}
+\item[{{\bf Region\+Position}}]{region\+Position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classServer_1_1Controllers_1_1RegionManagerController_a14319718114aedea38984b1bf61395a4}
 
 
 Tries to get the Region. 
 
 \begin{DoxyReturn}{Returns}
-The region. If it couln't be loaded, region.\-exist is false.
+The region. If it couldn\textquotesingle{}t be loaded, region.\+exist is false.
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-{\em region\-Position} & Region position.\\
+{\em region\+Position} & Region position.\\
 \hline
 \end{DoxyParams}
 
 
-Reimplemented from \hyperlink{classCore_1_1Controllers_1_1RegionManagerController}{Core.\-Controllers.\-Region\-Manager\-Controller}.
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1RegionManagerController_a1ce55cf6fb0ba5f0b5711e70ffb86467}{Core.\+Controllers.\+Region\+Manager\+Controller}.
 
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-server/\-Controllers/Region\-Manager\-Controller.\-cs\end{DoxyCompactItemize}
+tcpserver/\+Controllers/Region\+Manager\+Controller.\+cs\end{DoxyCompactItemize}

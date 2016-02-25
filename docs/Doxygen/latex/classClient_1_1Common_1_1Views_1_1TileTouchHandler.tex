@@ -1,0 +1,169 @@
+\hypertarget{classClient_1_1Common_1_1Views_1_1TileTouchHandler}{}\section{Client.\+Common.\+Views.\+Tile\+Touch\+Handler Class Reference}
+\label{classClient_1_1Common_1_1Views_1_1TileTouchHandler}\index{Client.\+Common.\+Views.\+Tile\+Touch\+Handler@{Client.\+Common.\+Views.\+Tile\+Touch\+Handler}}
+
+
+Touch handler.  
+
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a623aafe142a2f68e0c4d969792eb0e76}{Touch\+Gesture} \{ \\*
+{\bfseries None}, 
+{\bfseries Start}, 
+{\bfseries Menu}, 
+{\bfseries Menu\+Drawn}, 
+\\*
+{\bfseries Move}, 
+{\bfseries Move\+Unit}, 
+{\bfseries Zoom}, 
+{\bfseries Area}
+ \}\begin{DoxyCompactList}\small\item\em Touch gesture states. \end{DoxyCompactList}
+\item 
+enum \hyperlink{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a037469785439a69ce6508447be45dc6a}{Area} \{ {\bfseries Movement}, 
+{\bfseries Own\+Territory}, 
+{\bfseries Enemy\+Territory}, 
+{\bfseries Ally\+Territory}
+ \}\begin{DoxyCompactList}\small\item\em The ownership area. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a35c6d3c4e3fb5c5b2db8779697f42f4e}{Tile\+Touch\+Handler} (\hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex}{World\+Layer\+Hex} world\+Layer)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Views_1_1TileTouchHandler}{Client.\+Common.\+Views.\+Tile\+Touch\+Handler} class. \end{DoxyCompactList}\item 
+bool \hyperlink{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a341619d37cbb543ed368d3f0a5dc5c07}{On\+Touches\+Moved} (List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)
+\begin{DoxyCompactList}\small\item\em On the touches moved event. Set the gesture to move or scale and scale or move the map. \end{DoxyCompactList}\item 
+bool \hyperlink{classClient_1_1Common_1_1Views_1_1TileTouchHandler_aff4ae317d43b13aa93939d1e3c788210}{On\+Touches\+Began} (List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)
+\begin{DoxyCompactList}\small\item\em On the touches began event. \end{DoxyCompactList}\item 
+bool \hyperlink{classClient_1_1Common_1_1Views_1_1TileTouchHandler_af3f147d2b21fef262ac8b2840cfe04c3}{On\+Touches\+Ended} (List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)
+\begin{DoxyCompactList}\small\item\em On the touches ended event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a623aafe142a2f68e0c4d969792eb0e76}{Touch\+Gesture} \hyperlink{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a0eb77636fe12dc2fdc5d3aec4bcabc3b}{Gesture}
+\begin{DoxyCompactList}\small\item\em The m\+\_\+touch gesture. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Touch handler. 
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a037469785439a69ce6508447be45dc6a}{}\index{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}!Area@{Area}}
+\index{Area@{Area}!Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}}
+\subsubsection[{Area}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Client.\+Common.\+Views.\+Tile\+Touch\+Handler.\+Area}\hspace{0.3cm}{\ttfamily [strong]}}\label{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a037469785439a69ce6508447be45dc6a}
+
+
+The ownership area. 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a623aafe142a2f68e0c4d969792eb0e76}{}\index{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}!Touch\+Gesture@{Touch\+Gesture}}
+\index{Touch\+Gesture@{Touch\+Gesture}!Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}}
+\subsubsection[{Touch\+Gesture}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Client.\+Common.\+Views.\+Tile\+Touch\+Handler.\+Touch\+Gesture}\hspace{0.3cm}{\ttfamily [strong]}}\label{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a623aafe142a2f68e0c4d969792eb0e76}
+
+
+Touch gesture states. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a35c6d3c4e3fb5c5b2db8779697f42f4e}{}\index{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}!Tile\+Touch\+Handler@{Tile\+Touch\+Handler}}
+\index{Tile\+Touch\+Handler@{Tile\+Touch\+Handler}!Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}}
+\subsubsection[{Tile\+Touch\+Handler(\+World\+Layer\+Hex world\+Layer)}]{\setlength{\rightskip}{0pt plus 5cm}Client.\+Common.\+Views.\+Tile\+Touch\+Handler.\+Tile\+Touch\+Handler (
+\begin{DoxyParamCaption}
+\item[{{\bf World\+Layer\+Hex}}]{world\+Layer}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a35c6d3c4e3fb5c5b2db8779697f42f4e}
+
+
+Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Views_1_1TileTouchHandler}{Client.\+Common.\+Views.\+Tile\+Touch\+Handler} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world\+Layer} & World layer.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TileTouchHandler_aff4ae317d43b13aa93939d1e3c788210}{}\index{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}!On\+Touches\+Began@{On\+Touches\+Began}}
+\index{On\+Touches\+Began@{On\+Touches\+Began}!Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}}
+\subsubsection[{On\+Touches\+Began(\+List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)}]{\setlength{\rightskip}{0pt plus 5cm}bool Client.\+Common.\+Views.\+Tile\+Touch\+Handler.\+On\+Touches\+Began (
+\begin{DoxyParamCaption}
+\item[{List$<$ C\+C\+Touch $>$}]{touches, }
+\item[{C\+C\+Event}]{touch\+Event}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TileTouchHandler_aff4ae317d43b13aa93939d1e3c788210}
+
+
+On the touches began event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em touches} & Touches, where the user touched.\\
+\hline
+{\em touch\+Event} & Touch event.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true after processing the touches.
+\end{DoxyReturn}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TileTouchHandler_af3f147d2b21fef262ac8b2840cfe04c3}{}\index{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}!On\+Touches\+Ended@{On\+Touches\+Ended}}
+\index{On\+Touches\+Ended@{On\+Touches\+Ended}!Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}}
+\subsubsection[{On\+Touches\+Ended(\+List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)}]{\setlength{\rightskip}{0pt plus 5cm}bool Client.\+Common.\+Views.\+Tile\+Touch\+Handler.\+On\+Touches\+Ended (
+\begin{DoxyParamCaption}
+\item[{List$<$ C\+C\+Touch $>$}]{touches, }
+\item[{C\+C\+Event}]{touch\+Event}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TileTouchHandler_af3f147d2b21fef262ac8b2840cfe04c3}
+
+
+On the touches ended event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em touches} & Touches, where the user touched.\\
+\hline
+{\em touch\+Event} & Touch event.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return true after processing the touch events and drawing.
+\end{DoxyReturn}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a341619d37cbb543ed368d3f0a5dc5c07}{}\index{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}!On\+Touches\+Moved@{On\+Touches\+Moved}}
+\index{On\+Touches\+Moved@{On\+Touches\+Moved}!Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}}
+\subsubsection[{On\+Touches\+Moved(\+List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)}]{\setlength{\rightskip}{0pt plus 5cm}bool Client.\+Common.\+Views.\+Tile\+Touch\+Handler.\+On\+Touches\+Moved (
+\begin{DoxyParamCaption}
+\item[{List$<$ C\+C\+Touch $>$}]{touches, }
+\item[{C\+C\+Event}]{touch\+Event}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a341619d37cbb543ed368d3f0a5dc5c07}
+
+
+On the touches moved event. Set the gesture to move or scale and scale or move the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em touches} & Touches, where the user touched.\\
+\hline
+{\em touch\+Event} & Touch event.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a true after processed the event. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a0eb77636fe12dc2fdc5d3aec4bcabc3b}{}\index{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}!Gesture@{Gesture}}
+\index{Gesture@{Gesture}!Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Tile\+Touch\+Handler}}
+\subsubsection[{Gesture}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Touch\+Gesture} Client.\+Common.\+Views.\+Tile\+Touch\+Handler.\+Gesture}\label{classClient_1_1Common_1_1Views_1_1TileTouchHandler_a0eb77636fe12dc2fdc5d3aec4bcabc3b}
+
+
+The m\+\_\+touch gesture. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+client/client/client.\+Common/\+Views/Tile\+Touch\+Handler.\+cs\end{DoxyCompactItemize}

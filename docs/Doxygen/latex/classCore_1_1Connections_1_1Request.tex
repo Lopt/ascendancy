@@ -1,7 +1,11 @@
-\hypertarget{classCore_1_1Connections_1_1Request}{\section{Core.\-Connections.\-Request Class Reference}
-\label{classCore_1_1Connections_1_1Request}\index{Core.\-Connections.\-Request@{Core.\-Connections.\-Request}}
-}
-Inheritance diagram for Core.\-Connections.\-Request\-:\begin{figure}[H]
+\hypertarget{classCore_1_1Connections_1_1Request}{}\section{Core.\+Connections.\+Request Class Reference}
+\label{classCore_1_1Connections_1_1Request}\index{Core.\+Connections.\+Request@{Core.\+Connections.\+Request}}
+
+
+\hyperlink{classCore_1_1Connections_1_1Request}{Request} class which should be used to send actions to the server. Should be serialized before sending, will be deserialized after receiving.  
+
+
+Inheritance diagram for Core.\+Connections.\+Request\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=1.536351cm]{classCore_1_1Connections_1_1Request}
@@ -10,20 +14,61 @@ Inheritance diagram for Core.\-Connections.\-Request\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Connections_1_1Request_a36b5ac4c812551bebd3310f1f54bb79e}{{\bfseries Request} (Guid session\-I\-D, \hyperlink{classCore_1_1Models_1_1Position}{Core.\-Models.\-Position} position)}\label{classCore_1_1Connections_1_1Request_a36b5ac4c812551bebd3310f1f54bb79e}
-
-\end{DoxyCompactItemize}
+\hyperlink{classCore_1_1Connections_1_1Request_a36b5ac4c812551bebd3310f1f54bb79e}{Request} (Guid session\+I\+D, \hyperlink{classCore_1_1Models_1_1Position}{Core.\+Models.\+Position} position)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Connections_1_1Request}{Core.\+Connections.\+Request} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Connections_1_1Request_a1aaa165e5028fe5a7baab44d6306cbee}{\hyperlink{classCore_1_1Models_1_1Position}{Core.\-Models.\-Position} {\bfseries Position}}\label{classCore_1_1Connections_1_1Request_a1aaa165e5028fe5a7baab44d6306cbee}
+\hyperlink{classCore_1_1Models_1_1Position}{Core.\+Models.\+Position} \hyperlink{classCore_1_1Connections_1_1Request_a1aaa165e5028fe5a7baab44d6306cbee}{Position}
+\begin{DoxyCompactList}\small\item\em The position of the user (converted current G\+P\+S information). \end{DoxyCompactList}\item 
+Guid \hyperlink{classCore_1_1Connections_1_1Request_a19082721a0c3785a77691cb3bec7dd42}{Session\+I\+D}
+\begin{DoxyCompactList}\small\item\em The session of the user. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+\hyperlink{classCore_1_1Connections_1_1Request}{Request} class which should be used to send actions to the server. Should be serialized before sending, will be deserialized after receiving. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Connections_1_1Request_a36b5ac4c812551bebd3310f1f54bb79e}{}\index{Core\+::\+Connections\+::\+Request@{Core\+::\+Connections\+::\+Request}!Request@{Request}}
+\index{Request@{Request}!Core\+::\+Connections\+::\+Request@{Core\+::\+Connections\+::\+Request}}
+\subsubsection[{Request(\+Guid session\+I\+D, Core.\+Models.\+Position position)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Connections.\+Request.\+Request (
+\begin{DoxyParamCaption}
+\item[{Guid}]{session\+I\+D, }
+\item[{{\bf Core.\+Models.\+Position}}]{position}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Connections_1_1Request_a36b5ac4c812551bebd3310f1f54bb79e}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Connections_1_1Request}{Core.\+Connections.\+Request} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session\+I\+D} & Session I\+D of the user.\\
+\hline
+{\em position} & Position where the user is standing (converted G\+P\+S information).\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Connections_1_1Request_a1aaa165e5028fe5a7baab44d6306cbee}{}\index{Core\+::\+Connections\+::\+Request@{Core\+::\+Connections\+::\+Request}!Position@{Position}}
+\index{Position@{Position}!Core\+::\+Connections\+::\+Request@{Core\+::\+Connections\+::\+Request}}
+\subsubsection[{Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Core.\+Models.\+Position} Core.\+Connections.\+Request.\+Position}\label{classCore_1_1Connections_1_1Request_a1aaa165e5028fe5a7baab44d6306cbee}
+
+
+The position of the user (converted current G\+P\+S information). 
+
+\hypertarget{classCore_1_1Connections_1_1Request_a19082721a0c3785a77691cb3bec7dd42}{}\index{Core\+::\+Connections\+::\+Request@{Core\+::\+Connections\+::\+Request}!Session\+I\+D@{Session\+I\+D}}
+\index{Session\+I\+D@{Session\+I\+D}!Core\+::\+Connections\+::\+Request@{Core\+::\+Connections\+::\+Request}}
+\subsubsection[{Session\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}Guid Core.\+Connections.\+Request.\+Session\+I\+D}\label{classCore_1_1Connections_1_1Request_a19082721a0c3785a77691cb3bec7dd42}
+
+
+The session of the user. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Connections_1_1Request_a19082721a0c3785a77691cb3bec7dd42}{Guid {\bfseries Session\-I\-D}}\label{classCore_1_1Connections_1_1Request_a19082721a0c3785a77691cb3bec7dd42}
-
-\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
-\item 
-base/\-Connection/Request.\-cs\end{DoxyCompactItemize}
+base/\+Connection/Request.\+cs\end{DoxyCompactItemize}

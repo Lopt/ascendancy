@@ -1,58 +1,66 @@
-\hypertarget{namespaceCore_1_1Models}{\section{Package Core.\-Models}
-\label{namespaceCore_1_1Models}\index{Core.\-Models@{Core.\-Models}}
-}
+\hypertarget{namespaceCore_1_1Models}{}\section{Core.\+Models Namespace Reference}
+\label{namespaceCore_1_1Models}\index{Core.\+Models@{Core.\+Models}}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-package \hyperlink{namespaceCore_1_1Models_1_1Definitions}{Definitions}
+namespace \hyperlink{namespaceCore_1_1Models_1_1Definitions}{Definitions}
+\item 
+namespace \hyperlink{namespaceCore_1_1Models_1_1Resources}{Resources}
 \end{DoxyCompactItemize}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \hyperlink{classCore_1_1Models_1_1Account}{Account}
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1Account}{Account} model which represents an user and information about the user. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1AccountManager}{Account\+Manager}
+\begin{DoxyCompactList}\small\item\em Contains all Accounts with id. \end{DoxyCompactList}\item 
 class \hyperlink{classCore_1_1Models_1_1Action}{Action}
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1Action}{Action} model which should contains all needed data for the action control. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1CellPosition}{Cell\+Position}
+\begin{DoxyCompactList}\small\item\em Represents the cell\+Position in a region. Can be only as large as the region. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1Cheats}{Cheats}
+\begin{DoxyCompactList}\small\item\em An Class which provides access to all stuff, which isn\textquotesingle{}t allowed normally. Can be used for debugging or simplify stuff. B\+U\+T\+: Cheating may cause other bugs! There is no need to fix them, unless it is essentially, nicer code or the bug could occur without the cheats \end{DoxyCompactList}\item 
 class \hyperlink{classCore_1_1Models_1_1Constants}{Constants}
-\item 
+\begin{DoxyCompactList}\small\item\em all constants which should be known by the server and client \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1DefinitionManager}{Definition\+Manager}
+\begin{DoxyCompactList}\small\item\em Contains and manages all \hyperlink{namespaceCore_1_1Models_1_1Definitions}{Definitions}. \end{DoxyCompactList}\item 
 class \hyperlink{classCore_1_1Models_1_1Entity}{Entity}
-\item 
-class \hyperlink{classCore_1_1Models_1_1IdGenerator}{Id\-Generator}
-\begin{DoxyCompactList}\small\item\em Generates Thradsafe I\-Ds. \end{DoxyCompactList}\item 
-class \hyperlink{classCore_1_1Models_1_1LogicRules}{Logic\-Rules}
-\item 
-class \hyperlink{classCore_1_1Models_1_1AccountManager}{Account\-Manager}
-\begin{DoxyCompactList}\small\item\em Contains all \hyperlink{classCore_1_1Models_1_1Account}{Account} with id. \end{DoxyCompactList}\item 
-class \hyperlink{classCore_1_1Models_1_1DefinitionManager}{Definition\-Manager}
-\begin{DoxyCompactList}\small\item\em Contains all \hyperlink{namespaceCore_1_1Models_1_1Definitions}{Definitions}. \end{DoxyCompactList}\item 
-class \hyperlink{classCore_1_1Models_1_1RegionManager}{Region\-Manager}
-\begin{DoxyCompactList}\small\item\em Contains all loaded Regions. \end{DoxyCompactList}\item 
-class \hyperlink{classCore_1_1Models_1_1Region}{Region}
-\begin{DoxyCompactList}\small\item\em A part of the world. Contains a \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position} which determinates where (in the world) the region is. Also contains all entities to a specific time and all actions which were executed on the region. \end{DoxyCompactList}\item 
-class \hyperlink{classCore_1_1Models_1_1ModelEntity}{Model\-Entity}
-\begin{DoxyCompactList}\small\item\em M\-V\-C Model. \end{DoxyCompactList}\item 
-class \hyperlink{classCore_1_1Models_1_1CellPosition}{Cell\-Position}
-\begin{DoxyCompactList}\small\item\em Represents the cell\-Position in a region. Can be only as large as the region. \end{DoxyCompactList}\item 
-class \hyperlink{classCore_1_1Models_1_1LatLon}{Lat\-Lon}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1Entity}{Entity} which represents an \char`\"{}object\char`\"{} in the game world\+: units, terrain, buildings... etc. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1IdGenerator}{Id\+Generator}
+\begin{DoxyCompactList}\small\item\em Generates thread safe I\+Ds. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1LatLon}{Lat\+Lon}
 \begin{DoxyCompactList}\small\item\em Latitude and Longitude of the real world. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1LogicRules}{Logic\+Rules}
+\begin{DoxyCompactList}\small\item\em Logic rules. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1ModelEntity}{Model\+Entity}
+\begin{DoxyCompactList}\small\item\em M\+V\+C Model. \end{DoxyCompactList}\item 
 class \hyperlink{classCore_1_1Models_1_1Position}{Position}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1Position}{Position} in the Game\-World. \end{DoxyCompactList}\item 
-class \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1Position}{Position} in the Gameworld as Integer (so it is discrete). Can be used to identify one field in the \hyperlink{classCore_1_1Models_1_1World}{World}. \end{DoxyCompactList}\item 
-class \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1Position}{Position} in the Game\+World. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1Position}{Position} in the Game world as Integer (so it is discrete). Can be used to identify one field in the \hyperlink{classCore_1_1Models_1_1World}{World}. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1Region}{Region}
+\begin{DoxyCompactList}\small\item\em A part of the world. Contains a \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position} which determinates where (in the world) the region is. Also contains all entities to a specific time and all actions which were executed on the region. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1RegionManager}{Region\+Manager}
+\begin{DoxyCompactList}\small\item\em Contains all loaded Regions. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position}
 \begin{DoxyCompactList}\small\item\em Represents a position of a region. \end{DoxyCompactList}\item 
 class \hyperlink{classCore_1_1Models_1_1World}{World}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1World}{World} which contains all datas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1World}{World} which contains all data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bfseries Ressources} \{ \\*
-{\bfseries Gold} = 0, 
-{\bfseries Fire} = 1, 
-{\bfseries Water} = 2, 
-{\bfseries Earth} = 3, 
-\\*
-{\bfseries Air} = 4, 
-{\bfseries Magic} = 5
- \}
+enum \hyperlink{namespaceCore_1_1Models_ada607f76afbafc59695c90fc5a7093a2}{Diplomatic} \{ {\bfseries own}, 
+{\bfseries allied}, 
+{\bfseries enemy}
+ \}\begin{DoxyCompactList}\small\item\em The possible diplomatic states for two players \end{DoxyCompactList}
 \end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespaceCore_1_1Models_ada607f76afbafc59695c90fc5a7093a2}{}\index{Core\+::\+Models@{Core\+::\+Models}!Diplomatic@{Diplomatic}}
+\index{Diplomatic@{Diplomatic}!Core\+::\+Models@{Core\+::\+Models}}
+\subsubsection[{Diplomatic}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Core.\+Models.\+Diplomatic}\hspace{0.3cm}{\ttfamily [strong]}}\label{namespaceCore_1_1Models_ada607f76afbafc59695c90fc5a7093a2}
+
+
+The possible diplomatic states for two players 
+

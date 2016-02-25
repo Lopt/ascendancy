@@ -1,148 +1,175 @@
-\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController}{\section{Client.\-Common.\-Controllers.\-Network\-Controller Class Reference}
-\label{classClient_1_1Common_1_1Controllers_1_1NetworkController}\index{Client.\-Common.\-Controllers.\-Network\-Controller@{Client.\-Common.\-Controllers.\-Network\-Controller}}
-}
+\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController}{}\section{Client.\+Common.\+Controllers.\+Network\+Controller Class Reference}
+\label{classClient_1_1Common_1_1Controllers_1_1NetworkController}\index{Client.\+Common.\+Controllers.\+Network\+Controller@{Client.\+Common.\+Controllers.\+Network\+Controller}}
+
+
+the Network controller is a singleton to control the network up and download to the server.  
+
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-async Task$<$ \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Terrain\-Definition}\mbox{[},\mbox{]}$>$ \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_a5d45a3e5a8fcf0a755954d782af4e780}{Load\-Terrains\-Async} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position} region\-Position)
-\begin{DoxyCompactList}\small\item\em Loads the terrains async and write it in property Json\-Terrain\-String. \end{DoxyCompactList}\item 
-async Task\\*
-$<$ \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Core.\-Models.\-Definitions.\-Terrain\-Definition}\mbox{[}$\,$\mbox{]}$>$ \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_a6e0ad22bc63585d4be358da45848063d}{Load\-Terrain\-Types\-Async} ()
-\begin{DoxyCompactList}\small\item\em Loads the terrain types async and returns an array of Terrain\-Definition \end{DoxyCompactList}\item 
-async Task\\*
-$<$ \hyperlink{classCore_1_1Models_1_1Definitions_1_1UnitDefinition}{Core.\-Models.\-Definitions.\-Unit\-Definition}\mbox{[}$\,$\mbox{]}$>$ \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_ab2e121298834c77bed8e204928fc21ff}{Load\-Unit\-Types\-Async} ()
-\begin{DoxyCompactList}\small\item\em Loads the terrain types async and returns an array of Terrain\-Definition \end{DoxyCompactList}\item 
-async Task$<$ \hyperlink{classCore_1_1Models_1_1Account}{Account} $>$ \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_af3c0e3f5073dda246d20513013286919}{Login\-Async} (\hyperlink{classCore_1_1Models_1_1Position}{Core.\-Models.\-Position} current\-Game\-Position, string user, string password)
-\begin{DoxyCompactList}\small\item\em Login async to the server and save the session\-I\-D. \end{DoxyCompactList}\item 
-async Task\\*
-$<$ \hyperlink{classCore_1_1Connections_1_1Response}{Core.\-Connections.\-Response} $>$ \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_a27e260e1481b6ec9186915a9f64c3dce}{Load\-Entities\-Async} (\hyperlink{classCore_1_1Models_1_1Position}{Core.\-Models.\-Position} current\-Game\-Position, \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position}\mbox{[}$\,$\mbox{]} region\-Positions)
-\begin{DoxyCompactList}\small\item\em Loads the entities async. \end{DoxyCompactList}\item 
-\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_a475c46ddb8c5dc4db7dea1530af9bf4b}{async Task$<$ bool $>$ {\bfseries Do\-Actions\-Async} (\hyperlink{classCore_1_1Models_1_1Position}{Core.\-Models.\-Position} current\-Game\-Position, \hyperlink{classCore_1_1Models_1_1Action}{Core.\-Models.\-Action}\mbox{[}$\,$\mbox{]} actions)}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_a475c46ddb8c5dc4db7dea1530af9bf4b}
-
-\end{DoxyCompactItemize}
+async Task$<$ \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Terrain\+Definition}\mbox{[},\mbox{]}$>$ \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_a5d45a3e5a8fcf0a755954d782af4e780}{Load\+Terrains\+Async} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position} region\+Position)
+\begin{DoxyCompactList}\small\item\em Loads the terrains async and returns it. \end{DoxyCompactList}\item 
+async Task$<$ \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Core.\+Models.\+Definitions.\+Terrain\+Definition}\mbox{[}$\,$\mbox{]}$>$ \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_a6e0ad22bc63585d4be358da45848063d}{Load\+Terrain\+Types\+Async} ()
+\begin{DoxyCompactList}\small\item\em Loads the terrain types async and returns an array of Terrain\+Definition \end{DoxyCompactList}\item 
+async Task$<$ \hyperlink{classCore_1_1Models_1_1Definitions_1_1UnitDefinition}{Core.\+Models.\+Definitions.\+Unit\+Definition}\mbox{[}$\,$\mbox{]}$>$ \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_ab2e121298834c77bed8e204928fc21ff}{Load\+Unit\+Types\+Async} ()
+\begin{DoxyCompactList}\small\item\em Loads the terrain types async and returns an array of Terrain\+Definition \end{DoxyCompactList}\item 
+async Task$<$ \hyperlink{classCore_1_1Models_1_1Account}{Account} $>$ \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_af3c0e3f5073dda246d20513013286919}{Login\+Async} (\hyperlink{classCore_1_1Models_1_1Position}{Core.\+Models.\+Position} current\+Game\+Position, string user, string password)
+\begin{DoxyCompactList}\small\item\em Login async to the server and save the session\+I\+D. \end{DoxyCompactList}\item 
+async Task$<$ \hyperlink{classCore_1_1Connections_1_1Response}{Core.\+Connections.\+Response} $>$ \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_a27e260e1481b6ec9186915a9f64c3dce}{Load\+Entities\+Async} (\hyperlink{classCore_1_1Models_1_1Position}{Core.\+Models.\+Position} current\+Game\+Position, \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position}\mbox{[}$\,$\mbox{]} region\+Positions)
+\begin{DoxyCompactList}\small\item\em Loads the entities and actions async from the server. \end{DoxyCompactList}\item 
+async Task$<$ bool $>$ \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_a475c46ddb8c5dc4db7dea1530af9bf4b}{Do\+Actions\+Async} (\hyperlink{classCore_1_1Models_1_1Position}{Core.\+Models.\+Position} current\+Game\+Position, \hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action}\mbox{[}$\,$\mbox{]} actions)
+\begin{DoxyCompactList}\small\item\em Sends the actions to the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController}{Network\-Controller} \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_a24ad367082839e77f347f4a532d023ff}{Instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+static \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController}{Network\+Controller} \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_a24ad367082839e77f347f4a532d023ff}{Instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \begin{DoxyCompactList}\small\item\em Gets the instance. \end{DoxyCompactList}\item 
-string \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_a6a99e2fc6e8db9a23ad1f4477b5e0426}{Exception\-Message}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\begin{DoxyCompactList}\small\item\em Gets the exception message. \end{DoxyCompactList}\item 
-bool \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_afd2b5bdfc0da3720c3bbb257c0f73d94}{Is\-Logged\-In}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\begin{DoxyCompactList}\small\item\em Gets a value indicating whether this instance is logedin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+bool \hyperlink{classClient_1_1Common_1_1Controllers_1_1NetworkController_afd2b5bdfc0da3720c3bbb257c0f73d94}{Is\+Logged\+In}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether this instance is logged in . \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+the Network controller is a singleton to control the network up and download to the server. 
+
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_a27e260e1481b6ec9186915a9f64c3dce}{\index{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}!Load\-Entities\-Async@{Load\-Entities\-Async}}
-\index{Load\-Entities\-Async@{Load\-Entities\-Async}!Client::Common::Controllers::NetworkController@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}}
-\subsubsection[{Load\-Entities\-Async}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<${\bf Core.\-Connections.\-Response}$>$ Client.\-Common.\-Controllers.\-Network\-Controller.\-Load\-Entities\-Async (
+\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_a475c46ddb8c5dc4db7dea1530af9bf4b}{}\index{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}!Do\+Actions\+Async@{Do\+Actions\+Async}}
+\index{Do\+Actions\+Async@{Do\+Actions\+Async}!Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}}
+\subsubsection[{Do\+Actions\+Async(\+Core.\+Models.\+Position current\+Game\+Position, Core.\+Models.\+Action[] actions)}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<$bool$>$ Client.\+Common.\+Controllers.\+Network\+Controller.\+Do\+Actions\+Async (
 \begin{DoxyParamCaption}
-\item[{{\bf Core.\-Models.\-Position}}]{current\-Game\-Position, }
-\item[{{\bf Region\-Position}\mbox{[}$\,$\mbox{]}}]{region\-Positions}
+\item[{{\bf Core.\+Models.\+Position}}]{current\+Game\+Position, }
+\item[{{\bf Core.\+Models.\+Action}\mbox{[}$\,$\mbox{]}}]{actions}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_a27e260e1481b6ec9186915a9f64c3dce}
+)}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_a475c46ddb8c5dc4db7dea1530af9bf4b}
 
 
-Loads the entities async. 
+Sends the actions to the server. 
 
 \begin{DoxyReturn}{Returns}
-The entities async.
+True if the response is ok, otherwise false.
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-{\em current\-Game\-Position} & Current game position.\\
+{\em current\+Game\+Position} & Current game position.\\
 \hline
-{\em region\-Positions} & Region positions.\\
+{\em actions} & Actions which should be executed.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_a5d45a3e5a8fcf0a755954d782af4e780}{\index{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}!Load\-Terrains\-Async@{Load\-Terrains\-Async}}
-\index{Load\-Terrains\-Async@{Load\-Terrains\-Async}!Client::Common::Controllers::NetworkController@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}}
-\subsubsection[{Load\-Terrains\-Async}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<${\bf Terrain\-Definition}\mbox{[},\mbox{]}$>$ Client.\-Common.\-Controllers.\-Network\-Controller.\-Load\-Terrains\-Async (
+\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_a27e260e1481b6ec9186915a9f64c3dce}{}\index{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}!Load\+Entities\+Async@{Load\+Entities\+Async}}
+\index{Load\+Entities\+Async@{Load\+Entities\+Async}!Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}}
+\subsubsection[{Load\+Entities\+Async(\+Core.\+Models.\+Position current\+Game\+Position, Region\+Position[] region\+Positions)}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<${\bf Core.\+Connections.\+Response}$>$ Client.\+Common.\+Controllers.\+Network\+Controller.\+Load\+Entities\+Async (
 \begin{DoxyParamCaption}
-\item[{{\bf Region\-Position}}]{region\-Position}
+\item[{{\bf Core.\+Models.\+Position}}]{current\+Game\+Position, }
+\item[{{\bf Region\+Position}\mbox{[}$\,$\mbox{]}}]{region\+Positions}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_a5d45a3e5a8fcf0a755954d782af4e780}
+)}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_a27e260e1481b6ec9186915a9f64c3dce}
 
 
-Loads the terrains async and write it in property Json\-Terrain\-String. 
+Loads the entities and actions async from the server. 
 
+\begin{DoxyReturn}{Returns}
+The entities response from the server.
+\end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-{\em json\-Region\-Server\-Path} & Json region server path.\\
+{\em current\+Game\+Position} & Current game position.\\
+\hline
+{\em region\+Positions} & Region positions.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_a6e0ad22bc63585d4be358da45848063d}{\index{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}!Load\-Terrain\-Types\-Async@{Load\-Terrain\-Types\-Async}}
-\index{Load\-Terrain\-Types\-Async@{Load\-Terrain\-Types\-Async}!Client::Common::Controllers::NetworkController@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}}
-\subsubsection[{Load\-Terrain\-Types\-Async}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<${\bf Core.\-Models.\-Definitions.\-Terrain\-Definition}\mbox{[}$\,$\mbox{]}$>$ Client.\-Common.\-Controllers.\-Network\-Controller.\-Load\-Terrain\-Types\-Async (
+\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_a5d45a3e5a8fcf0a755954d782af4e780}{}\index{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}!Load\+Terrains\+Async@{Load\+Terrains\+Async}}
+\index{Load\+Terrains\+Async@{Load\+Terrains\+Async}!Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}}
+\subsubsection[{Load\+Terrains\+Async(\+Region\+Position region\+Position)}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<${\bf Terrain\+Definition}\mbox{[},\mbox{]}$>$ Client.\+Common.\+Controllers.\+Network\+Controller.\+Load\+Terrains\+Async (
+\begin{DoxyParamCaption}
+\item[{{\bf Region\+Position}}]{region\+Position}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_a5d45a3e5a8fcf0a755954d782af4e780}
+
+
+Loads the terrains async and returns it. 
+
+\begin{DoxyReturn}{Returns}
+The terrains async.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em region\+Position} & Region position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_a6e0ad22bc63585d4be358da45848063d}{}\index{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}!Load\+Terrain\+Types\+Async@{Load\+Terrain\+Types\+Async}}
+\index{Load\+Terrain\+Types\+Async@{Load\+Terrain\+Types\+Async}!Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}}
+\subsubsection[{Load\+Terrain\+Types\+Async()}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<${\bf Core.\+Models.\+Definitions.\+Terrain\+Definition}\mbox{[}$\,$\mbox{]}$>$ Client.\+Common.\+Controllers.\+Network\+Controller.\+Load\+Terrain\+Types\+Async (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_a6e0ad22bc63585d4be358da45848063d}
+)}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_a6e0ad22bc63585d4be358da45848063d}
 
 
-Loads the terrain types async and returns an array of Terrain\-Definition 
+Loads the terrain types async and returns an array of Terrain\+Definition 
 
-\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_ab2e121298834c77bed8e204928fc21ff}{\index{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}!Load\-Unit\-Types\-Async@{Load\-Unit\-Types\-Async}}
-\index{Load\-Unit\-Types\-Async@{Load\-Unit\-Types\-Async}!Client::Common::Controllers::NetworkController@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}}
-\subsubsection[{Load\-Unit\-Types\-Async}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<${\bf Core.\-Models.\-Definitions.\-Unit\-Definition}\mbox{[}$\,$\mbox{]}$>$ Client.\-Common.\-Controllers.\-Network\-Controller.\-Load\-Unit\-Types\-Async (
+\begin{DoxyReturn}{Returns}
+The terrain types async.
+\end{DoxyReturn}
+\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_ab2e121298834c77bed8e204928fc21ff}{}\index{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}!Load\+Unit\+Types\+Async@{Load\+Unit\+Types\+Async}}
+\index{Load\+Unit\+Types\+Async@{Load\+Unit\+Types\+Async}!Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}}
+\subsubsection[{Load\+Unit\+Types\+Async()}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<${\bf Core.\+Models.\+Definitions.\+Unit\+Definition}\mbox{[}$\,$\mbox{]}$>$ Client.\+Common.\+Controllers.\+Network\+Controller.\+Load\+Unit\+Types\+Async (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_ab2e121298834c77bed8e204928fc21ff}
+)}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_ab2e121298834c77bed8e204928fc21ff}
 
 
-Loads the terrain types async and returns an array of Terrain\-Definition 
+Loads the terrain types async and returns an array of Terrain\+Definition 
 
-\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_af3c0e3f5073dda246d20513013286919}{\index{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}!Login\-Async@{Login\-Async}}
-\index{Login\-Async@{Login\-Async}!Client::Common::Controllers::NetworkController@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}}
-\subsubsection[{Login\-Async}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<${\bf Account}$>$ Client.\-Common.\-Controllers.\-Network\-Controller.\-Login\-Async (
+\begin{DoxyReturn}{Returns}
+The unit types async.
+\end{DoxyReturn}
+\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_af3c0e3f5073dda246d20513013286919}{}\index{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}!Login\+Async@{Login\+Async}}
+\index{Login\+Async@{Login\+Async}!Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}}
+\subsubsection[{Login\+Async(\+Core.\+Models.\+Position current\+Game\+Position, string user, string password)}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<${\bf Account}$>$ Client.\+Common.\+Controllers.\+Network\+Controller.\+Login\+Async (
 \begin{DoxyParamCaption}
-\item[{{\bf Core.\-Models.\-Position}}]{current\-Game\-Position, }
+\item[{{\bf Core.\+Models.\+Position}}]{current\+Game\+Position, }
 \item[{string}]{user, }
 \item[{string}]{password}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_af3c0e3f5073dda246d20513013286919}
+)}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_af3c0e3f5073dda246d20513013286919}
 
 
-Login async to the server and save the session\-I\-D. 
+Login async to the server and save the session\+I\+D. 
 
 \begin{DoxyReturn}{Returns}
-The Accoount\-Id.
+The Account.
 \end{DoxyReturn}
 
 \begin{DoxyParams}{Parameters}
-{\em current\-Game\-Position} & Current game position.\\
+{\em current\+Game\+Position} & Current game position.\\
 \hline
-{\em user} & User.\\
+{\em user} & User which wanted to log in.\\
 \hline
-{\em password} & Password.\\
+{\em password} & Password of the user.\\
 \hline
 \end{DoxyParams}
 
 
 \subsection{Property Documentation}
-\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_a6a99e2fc6e8db9a23ad1f4477b5e0426}{\index{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}!Exception\-Message@{Exception\-Message}}
-\index{Exception\-Message@{Exception\-Message}!Client::Common::Controllers::NetworkController@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}}
-\subsubsection[{Exception\-Message}]{\setlength{\rightskip}{0pt plus 5cm}string Client.\-Common.\-Controllers.\-Network\-Controller.\-Exception\-Message\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_a6a99e2fc6e8db9a23ad1f4477b5e0426}
-
-
-Gets the exception message. 
-
-The exception message.\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_a24ad367082839e77f347f4a532d023ff}{\index{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}!Instance@{Instance}}
-\index{Instance@{Instance}!Client::Common::Controllers::NetworkController@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}}
-\subsubsection[{Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Network\-Controller} Client.\-Common.\-Controllers.\-Network\-Controller.\-Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_a24ad367082839e77f347f4a532d023ff}
+\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_a24ad367082839e77f347f4a532d023ff}{}\index{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}!Instance@{Instance}}
+\index{Instance@{Instance}!Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}}
+\subsubsection[{Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Network\+Controller} Client.\+Common.\+Controllers.\+Network\+Controller.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_a24ad367082839e77f347f4a532d023ff}
 
 
 Gets the instance. 
 
-The instance.\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_afd2b5bdfc0da3720c3bbb257c0f73d94}{\index{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}!Is\-Logged\-In@{Is\-Logged\-In}}
-\index{Is\-Logged\-In@{Is\-Logged\-In}!Client::Common::Controllers::NetworkController@{Client\-::\-Common\-::\-Controllers\-::\-Network\-Controller}}
-\subsubsection[{Is\-Logged\-In}]{\setlength{\rightskip}{0pt plus 5cm}bool Client.\-Common.\-Controllers.\-Network\-Controller.\-Is\-Logged\-In\hspace{0.3cm}{\ttfamily [get]}}}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_afd2b5bdfc0da3720c3bbb257c0f73d94}
+The instance.\hypertarget{classClient_1_1Common_1_1Controllers_1_1NetworkController_afd2b5bdfc0da3720c3bbb257c0f73d94}{}\index{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}!Is\+Logged\+In@{Is\+Logged\+In}}
+\index{Is\+Logged\+In@{Is\+Logged\+In}!Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller@{Client\+::\+Common\+::\+Controllers\+::\+Network\+Controller}}
+\subsubsection[{Is\+Logged\+In}]{\setlength{\rightskip}{0pt plus 5cm}bool Client.\+Common.\+Controllers.\+Network\+Controller.\+Is\+Logged\+In\hspace{0.3cm}{\ttfamily [get]}}\label{classClient_1_1Common_1_1Controllers_1_1NetworkController_afd2b5bdfc0da3720c3bbb257c0f73d94}
 
 
-Gets a value indicating whether this instance is logedin. 
+Gets a value indicating whether this instance is logged in . 
 
-{\ttfamily true} if this instance is logedin; otherwise, {\ttfamily false}.
+{\ttfamily true} if this instance is logged in; otherwise, {\ttfamily false}.
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-client/client/client.\-Common/\-Controllers/Network\-Controller.\-cs\end{DoxyCompactItemize}
+client/client/client.\+Common/\+Controllers/Network\+Controller.\+cs\end{DoxyCompactItemize}

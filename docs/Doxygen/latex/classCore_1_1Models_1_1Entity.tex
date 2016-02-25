@@ -1,7 +1,11 @@
-\hypertarget{classCore_1_1Models_1_1Entity}{\section{Core.\-Models.\-Entity Class Reference}
-\label{classCore_1_1Models_1_1Entity}\index{Core.\-Models.\-Entity@{Core.\-Models.\-Entity}}
-}
-Inheritance diagram for Core.\-Models.\-Entity\-:\begin{figure}[H]
+\hypertarget{classCore_1_1Models_1_1Entity}{}\section{Core.\+Models.\+Entity Class Reference}
+\label{classCore_1_1Models_1_1Entity}\index{Core.\+Models.\+Entity@{Core.\+Models.\+Entity}}
+
+
+\hyperlink{classCore_1_1Models_1_1Entity}{Entity} which represents an \char`\"{}object\char`\"{} in the game world\+: units, terrain, buildings... etc.  
+
+
+Inheritance diagram for Core.\+Models.\+Entity\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classCore_1_1Models_1_1Entity}
@@ -10,33 +14,212 @@ Inheritance diagram for Core.\-Models.\-Entity\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Entity_a09638044f7fdf3b431c5144e58e53112}{{\bfseries Entity} (int id, \hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Definition} defintion, \hyperlink{classCore_1_1Models_1_1Account}{Account} account, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} position)}\label{classCore_1_1Models_1_1Entity_a09638044f7fdf3b431c5144e58e53112}
-
-\end{DoxyCompactItemize}
+\hyperlink{classCore_1_1Models_1_1Entity_ab4e03f1aca6a491f8fae7777615f1330}{Entity} (int id, \hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Definition} definition, \hyperlink{classCore_1_1Models_1_1Account}{Account} owner, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} position, int health, int move)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Entity}{Core.\+Models.\+Entity} class. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Entity_a53f50c1e8c37885db7ba432562607ccf}{Entity} (int id, int definiton\+I\+D, int owner\+I\+D, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} position, int health, int move)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Entity}{Core.\+Models.\+Entity} class. \end{DoxyCompactList}\item 
+\hyperlink{namespaceCore_1_1Models_ada607f76afbafc59695c90fc5a7093a2}{Diplomatic} \hyperlink{classCore_1_1Models_1_1Entity_aa05984e45fcbf9c35d6bc6cad2b323f5}{Get\+Diplomacy} (\hyperlink{classCore_1_1Models_1_1Account}{Account} account)
+\begin{DoxyCompactList}\small\item\em Calculates and returns the diplomatic states between the owner of the unit and the given account \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Entity_aa7b2cae79fc1801861c7cd20e273e3fd}{int {\bfseries I\-D}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Entity_aa7b2cae79fc1801861c7cd20e273e3fd}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Entity_a451f76265fc15cbcdfc1ac5233bf79e9}{int {\bfseries Definition\-I\-D}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Entity_a451f76265fc15cbcdfc1ac5233bf79e9}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Entity_a9d7325d3a3958dc2acfe798a2fb5a98c}{\hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Definition} {\bfseries Definition}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Entity_a9d7325d3a3958dc2acfe798a2fb5a98c}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Entity_a0c56e42b49dbe385d0e201a42ab1feea}{\hyperlink{classCore_1_1Models_1_1PositionI}{Position\-I} {\bfseries Position}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Entity_a0c56e42b49dbe385d0e201a42ab1feea}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Entity_a251c782d21abe40fea048ed9fc092016}{\hyperlink{classCore_1_1Models_1_1Account}{Account} {\bfseries Account}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Entity_a251c782d21abe40fea048ed9fc092016}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Entity_ae76291dccb6d9e8c2ecfb5e586ce251b}{int {\bfseries Account\-I\-D}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Models_1_1Entity_ae76291dccb6d9e8c2ecfb5e586ce251b}
-
-\end{DoxyCompactItemize}
+int \hyperlink{classCore_1_1Models_1_1Entity_aa7b2cae79fc1801861c7cd20e273e3fd}{I\+D}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the I\+D \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Models_1_1Entity_a451f76265fc15cbcdfc1ac5233bf79e9}{Definition\+I\+D}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the definition I\+D. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Definition} \hyperlink{classCore_1_1Models_1_1Entity_a9d7325d3a3958dc2acfe798a2fb5a98c}{Definition}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the definition. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} \hyperlink{classCore_1_1Models_1_1Entity_a0c56e42b49dbe385d0e201a42ab1feea}{Position}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the position. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Account}{Account} \hyperlink{classCore_1_1Models_1_1Entity_af0d2b689cfd48dc43ad41c49073497df}{Owner}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the account. \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Models_1_1Entity_adf44e0bd8e2a08cf13fcd6a783f783e5}{Owner\+I\+D}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the account I. \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Models_1_1Entity_ac054f7e992fe65ae3ffa998e4d4d1225}{Health}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the health. \end{DoxyCompactList}\item 
+float \hyperlink{classCore_1_1Models_1_1Entity_a05336fa3c927b9f1c299f55ec27a6e0c}{Health\+Percent}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the current health (in percent). \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Models_1_1Entity_a3a1f85a3d32a2decd04919d03fb84167}{Move}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the move. \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Models_1_1Entity_a7480e9bdfa56f0a21e784bf5cadcf3cd}{Modfied\+Attack\+Value}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the modified attack value. \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Models_1_1Entity_a7bb3bab5756906f8202f48d9644fc9aa}{Modified\+Defense\+Value}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the modified defense value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\subsection{Detailed Description}
+\hyperlink{classCore_1_1Models_1_1Entity}{Entity} which represents an \char`\"{}object\char`\"{} in the game world\+: units, terrain, buildings... etc. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Models_1_1Entity_ab4e03f1aca6a491f8fae7777615f1330}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Entity(int id, Definition definition, Account owner, Position\+I position, int health, int move)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Models.\+Entity.\+Entity (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{{\bf Definition}}]{definition, }
+\item[{{\bf Account}}]{owner, }
+\item[{{\bf Position\+I}}]{position, }
+\item[{int}]{health, }
+\item[{int}]{move}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Entity_ab4e03f1aca6a491f8fae7777615f1330}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Entity}{Core.\+Models.\+Entity} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identifier of the entity.\\
+\hline
+{\em definition} & Definition of the entity.\\
+\hline
+{\em owner} & Owner of the entity.\\
+\hline
+{\em position} & \hyperlink{classCore_1_1Models_1_1Position}{Position} of the entity.\\
+\hline
+{\em health} & Health of the entity.\\
+\hline
+{\em move} & Move of the entity.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1Entity_a53f50c1e8c37885db7ba432562607ccf}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Entity(int id, int definiton\+I\+D, int owner\+I\+D, Position\+I position, int health, int move)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Models.\+Entity.\+Entity (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{int}]{definiton\+I\+D, }
+\item[{int}]{owner\+I\+D, }
+\item[{{\bf Position\+I}}]{position, }
+\item[{int}]{health, }
+\item[{int}]{move}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Entity_a53f50c1e8c37885db7ba432562607ccf}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Entity}{Core.\+Models.\+Entity} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identifier of the entity.\\
+\hline
+{\em definiton\+I\+D} & Definiton I\+D.\\
+\hline
+{\em owner\+I\+D} & Owner I\+D.\\
+\hline
+{\em position} & \hyperlink{classCore_1_1Models_1_1Position}{Position} as integer.\\
+\hline
+{\em health} & Health of the entity.\\
+\hline
+{\em move} & Move of the entity.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Models_1_1Entity_aa05984e45fcbf9c35d6bc6cad2b323f5}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Get\+Diplomacy@{Get\+Diplomacy}}
+\index{Get\+Diplomacy@{Get\+Diplomacy}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Get\+Diplomacy(\+Account account)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Diplomatic} Core.\+Models.\+Entity.\+Get\+Diplomacy (
+\begin{DoxyParamCaption}
+\item[{{\bf Account}}]{account}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Entity_aa05984e45fcbf9c35d6bc6cad2b323f5}
+
+
+Calculates and returns the diplomatic states between the owner of the unit and the given account 
+
+\begin{DoxyReturn}{Returns}
+The diplomacy.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Other \hyperlink{classCore_1_1Models_1_1Account}{Account}.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{classCore_1_1Models_1_1Entity_a9d7325d3a3958dc2acfe798a2fb5a98c}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Definition@{Definition}}
+\index{Definition@{Definition}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Definition}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Definition} Core.\+Models.\+Entity.\+Definition\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Entity_a9d7325d3a3958dc2acfe798a2fb5a98c}
+
+
+Gets the definition. 
+
+The definition.\hypertarget{classCore_1_1Models_1_1Entity_a451f76265fc15cbcdfc1ac5233bf79e9}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Definition\+I\+D@{Definition\+I\+D}}
+\index{Definition\+I\+D@{Definition\+I\+D}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Definition\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Entity.\+Definition\+I\+D\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Models_1_1Entity_a451f76265fc15cbcdfc1ac5233bf79e9}
+
+
+Gets or sets the definition I\+D. 
+
+The definition I\+D.\hypertarget{classCore_1_1Models_1_1Entity_ac054f7e992fe65ae3ffa998e4d4d1225}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Health@{Health}}
+\index{Health@{Health}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Health}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Entity.\+Health\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Models_1_1Entity_ac054f7e992fe65ae3ffa998e4d4d1225}
+
+
+Gets or sets the health. 
+
+The health.\hypertarget{classCore_1_1Models_1_1Entity_a05336fa3c927b9f1c299f55ec27a6e0c}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Health\+Percent@{Health\+Percent}}
+\index{Health\+Percent@{Health\+Percent}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Health\+Percent}]{\setlength{\rightskip}{0pt plus 5cm}float Core.\+Models.\+Entity.\+Health\+Percent\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Entity_a05336fa3c927b9f1c299f55ec27a6e0c}
+
+
+Gets the current health (in percent). 
+
+health (in percent).\hypertarget{classCore_1_1Models_1_1Entity_aa7b2cae79fc1801861c7cd20e273e3fd}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!I\+D@{I\+D}}
+\index{I\+D@{I\+D}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{I\+D}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Entity.\+I\+D\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Entity_aa7b2cae79fc1801861c7cd20e273e3fd}
+
+
+Gets the I\+D 
+
+The I\+D\hypertarget{classCore_1_1Models_1_1Entity_a7480e9bdfa56f0a21e784bf5cadcf3cd}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Modfied\+Attack\+Value@{Modfied\+Attack\+Value}}
+\index{Modfied\+Attack\+Value@{Modfied\+Attack\+Value}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Modfied\+Attack\+Value}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Entity.\+Modfied\+Attack\+Value\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Models_1_1Entity_a7480e9bdfa56f0a21e784bf5cadcf3cd}
+
+
+Gets or sets the modified attack value. 
+
+The modified attack value.\hypertarget{classCore_1_1Models_1_1Entity_a7bb3bab5756906f8202f48d9644fc9aa}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Modified\+Defense\+Value@{Modified\+Defense\+Value}}
+\index{Modified\+Defense\+Value@{Modified\+Defense\+Value}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Modified\+Defense\+Value}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Entity.\+Modified\+Defense\+Value\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Models_1_1Entity_a7bb3bab5756906f8202f48d9644fc9aa}
+
+
+Gets or sets the modified defense value. 
+
+The modified defense value.\hypertarget{classCore_1_1Models_1_1Entity_a3a1f85a3d32a2decd04919d03fb84167}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Move@{Move}}
+\index{Move@{Move}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Move}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Entity.\+Move\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Models_1_1Entity_a3a1f85a3d32a2decd04919d03fb84167}
+
+
+Gets or sets the move. 
+
+The move.\hypertarget{classCore_1_1Models_1_1Entity_af0d2b689cfd48dc43ad41c49073497df}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Owner@{Owner}}
+\index{Owner@{Owner}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Owner}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Account} Core.\+Models.\+Entity.\+Owner\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Entity_af0d2b689cfd48dc43ad41c49073497df}
+
+
+Gets the account. 
+
+The account.\hypertarget{classCore_1_1Models_1_1Entity_adf44e0bd8e2a08cf13fcd6a783f783e5}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Owner\+I\+D@{Owner\+I\+D}}
+\index{Owner\+I\+D@{Owner\+I\+D}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Owner\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Models.\+Entity.\+Owner\+I\+D\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Models_1_1Entity_adf44e0bd8e2a08cf13fcd6a783f783e5}
+
+
+Gets or sets the account I. 
+
+The account I\+D.\hypertarget{classCore_1_1Models_1_1Entity_a0c56e42b49dbe385d0e201a42ab1feea}{}\index{Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}!Position@{Position}}
+\index{Position@{Position}!Core\+::\+Models\+::\+Entity@{Core\+::\+Models\+::\+Entity}}
+\subsubsection[{Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position\+I} Core.\+Models.\+Entity.\+Position\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Models_1_1Entity_a0c56e42b49dbe385d0e201a42ab1feea}
+
+
+Gets or sets the position. 
+
+The position.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-base/\-Models/Entity.\-cs\end{DoxyCompactItemize}
+base/\+Models/Entity.\+cs\end{DoxyCompactItemize}

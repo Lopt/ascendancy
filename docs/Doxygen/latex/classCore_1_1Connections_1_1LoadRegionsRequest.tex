@@ -1,12 +1,11 @@
-\hypertarget{classCore_1_1Connections_1_1LoadRegionsRequest}{\section{Core.\-Connections.\-Load\-Regions\-Request Class Reference}
-\label{classCore_1_1Connections_1_1LoadRegionsRequest}\index{Core.\-Connections.\-Load\-Regions\-Request@{Core.\-Connections.\-Load\-Regions\-Request}}
-}
+\hypertarget{classCore_1_1Connections_1_1LoadRegionsRequest}{}\section{Core.\+Connections.\+Load\+Regions\+Request Class Reference}
+\label{classCore_1_1Connections_1_1LoadRegionsRequest}\index{Core.\+Connections.\+Load\+Regions\+Request@{Core.\+Connections.\+Load\+Regions\+Request}}
 
 
-\hyperlink{classCore_1_1Connections_1_1Request}{Request} class which should be used to load regions from the server. Should be serialised before sending, will be deserialised after recieving.  
+\hyperlink{classCore_1_1Connections_1_1Request}{Request} class which should be used to send actions to the server. Should be serialized before sending, will be deserialized after receiving.  
 
 
-Inheritance diagram for Core.\-Connections.\-Load\-Regions\-Request\-:\begin{figure}[H]
+Inheritance diagram for Core.\+Connections.\+Load\+Regions\+Request\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classCore_1_1Connections_1_1LoadRegionsRequest}
@@ -15,23 +14,55 @@ Inheritance diagram for Core.\-Connections.\-Load\-Regions\-Request\-:\begin{fig
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Connections_1_1LoadRegionsRequest_ac0cb2eee50164cbd2449536ecb29956a}{{\bfseries Load\-Regions\-Request} (Guid session\-I\-D, \hyperlink{classCore_1_1Models_1_1Position}{Core.\-Models.\-Position} position, \hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\-Models.\-Region\-Position}\mbox{[}$\,$\mbox{]} region\-Positions)}\label{classCore_1_1Connections_1_1LoadRegionsRequest_ac0cb2eee50164cbd2449536ecb29956a}
-
-\end{DoxyCompactItemize}
-\subsection*{Properties}
+\hyperlink{classCore_1_1Connections_1_1LoadRegionsRequest_ac0cb2eee50164cbd2449536ecb29956a}{Load\+Regions\+Request} (Guid session\+I\+D, \hyperlink{classCore_1_1Models_1_1Position}{Core.\+Models.\+Position} position, \hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\+Models.\+Region\+Position}\mbox{[}$\,$\mbox{]} region\+Positions)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Connections_1_1LoadRegionsRequest}{Core.\+Connections.\+Load\+Regions\+Request} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Connections_1_1LoadRegionsRequest_a218b8fc9a7dc007031abe6344dc3dc64}{\hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\-Models.\-Region\-Position}\mbox{[}$\,$\mbox{]} {\bfseries Region\-Positions}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classCore_1_1Connections_1_1LoadRegionsRequest_a218b8fc9a7dc007031abe6344dc3dc64}
-
-\end{DoxyCompactItemize}
-\subsection*{Additional Inherited Members}
+\hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\+Models.\+Region\+Position}\mbox{[}$\,$\mbox{]} \hyperlink{classCore_1_1Connections_1_1LoadRegionsRequest_a218b8fc9a7dc007031abe6344dc3dc64}{Region\+Positions}
+\begin{DoxyCompactList}\small\item\em Gets or sets the region positions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\hyperlink{classCore_1_1Connections_1_1Request}{Request} class which should be used to load regions from the server. Should be serialised before sending, will be deserialised after recieving. 
+\hyperlink{classCore_1_1Connections_1_1Request}{Request} class which should be used to send actions to the server. Should be serialized before sending, will be deserialized after receiving. 
 
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Connections_1_1LoadRegionsRequest_ac0cb2eee50164cbd2449536ecb29956a}{}\index{Core\+::\+Connections\+::\+Load\+Regions\+Request@{Core\+::\+Connections\+::\+Load\+Regions\+Request}!Load\+Regions\+Request@{Load\+Regions\+Request}}
+\index{Load\+Regions\+Request@{Load\+Regions\+Request}!Core\+::\+Connections\+::\+Load\+Regions\+Request@{Core\+::\+Connections\+::\+Load\+Regions\+Request}}
+\subsubsection[{Load\+Regions\+Request(\+Guid session\+I\+D, Core.\+Models.\+Position position, Core.\+Models.\+Region\+Position[] region\+Positions)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Connections.\+Load\+Regions\+Request.\+Load\+Regions\+Request (
+\begin{DoxyParamCaption}
+\item[{Guid}]{session\+I\+D, }
+\item[{{\bf Core.\+Models.\+Position}}]{position, }
+\item[{{\bf Core.\+Models.\+Region\+Position}\mbox{[}$\,$\mbox{]}}]{region\+Positions}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Connections_1_1LoadRegionsRequest_ac0cb2eee50164cbd2449536ecb29956a}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Connections_1_1LoadRegionsRequest}{Core.\+Connections.\+Load\+Regions\+Request} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session\+I\+D} & Session I\+D of the user.\\
+\hline
+{\em position} & Position where the user is standing (converted G\+P\+S information).\\
+\hline
+{\em region\+Positions} & Region positions.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Connections_1_1LoadRegionsRequest_a218b8fc9a7dc007031abe6344dc3dc64}{}\index{Core\+::\+Connections\+::\+Load\+Regions\+Request@{Core\+::\+Connections\+::\+Load\+Regions\+Request}!Region\+Positions@{Region\+Positions}}
+\index{Region\+Positions@{Region\+Positions}!Core\+::\+Connections\+::\+Load\+Regions\+Request@{Core\+::\+Connections\+::\+Load\+Regions\+Request}}
+\subsubsection[{Region\+Positions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Core.\+Models.\+Region\+Position} \mbox{[}$\,$\mbox{]} Core.\+Connections.\+Load\+Regions\+Request.\+Region\+Positions}\label{classCore_1_1Connections_1_1LoadRegionsRequest_a218b8fc9a7dc007031abe6344dc3dc64}
+
+
+Gets or sets the region positions. 
+
+The region positions.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-base/\-Connection/Load\-Regions\-Request.\-cs\end{DoxyCompactItemize}
+base/\+Connection/Load\+Regions\+Request.\+cs\end{DoxyCompactItemize}

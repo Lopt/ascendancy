@@ -1,19 +1,18 @@
-\hypertarget{namespaceCore_1_1Models_1_1Definitions}{\section{Package Core.\-Models.\-Definitions}
-\label{namespaceCore_1_1Models_1_1Definitions}\index{Core.\-Models.\-Definitions@{Core.\-Models.\-Definitions}}
-}
+\hypertarget{namespaceCore_1_1Models_1_1Definitions}{}\section{Core.\+Models.\+Definitions Namespace Reference}
+\label{namespaceCore_1_1Models_1_1Definitions}\index{Core.\+Models.\+Definitions@{Core.\+Models.\+Definitions}}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Definition}
-\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Definition} contains static informations about entities. In which Category they belong and their id. Will be used as base-\/class for other definitions. \end{DoxyCompactList}\item 
-class \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Terrain\-Definition}
-\begin{DoxyCompactList}\small\item\em Terrain Definiton which contains informations about a terraintype. \end{DoxyCompactList}\item 
-class \hyperlink{classCore_1_1Models_1_1Definitions_1_1UnitDefinition}{Unit\-Definition}
-\begin{DoxyCompactList}\small\item\em Unit Definiton which contains informations about a unit type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Models_1_1Definitions_1_1Definition}{Definition} contains static information about entities. In which Category they belong and their id. Will be used as base-\/class for other definitions. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1Definitions_1_1TerrainDefinition}{Terrain\+Definition}
+\begin{DoxyCompactList}\small\item\em Terrain definition which contains information about a terrain type. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Models_1_1Definitions_1_1UnitDefinition}{Unit\+Definition}
+\begin{DoxyCompactList}\small\item\em Unit definition which contains information about a unit type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{namespaceCore_1_1Models_1_1Definitions_a609ed13db028308ebc6c5fbd98615fdc}{Entity\-Type} \{ \\*
+enum \hyperlink{namespaceCore_1_1Models_1_1Definitions_a609ed13db028308ebc6c5fbd98615fdc}{Entity\+Type} \{ \\*
 {\bfseries Water} = 0, 
 {\bfseries Buildings} = 1, 
 {\bfseries Woods} = 2, 
@@ -21,7 +20,7 @@ enum \hyperlink{namespaceCore_1_1Models_1_1Definitions_a609ed13db028308ebc6c5fbd
 \\*
 {\bfseries Fields} = 4, 
 {\bfseries Streets} = 5, 
-{\bfseries Not\-Defined} = 6, 
+{\bfseries Not\+Defined} = 6, 
 {\bfseries Forbidden} = 7, 
 \\*
 {\bfseries Town} = 8, 
@@ -30,7 +29,7 @@ enum \hyperlink{namespaceCore_1_1Models_1_1Definitions_a609ed13db028308ebc6c5fbd
 {\bfseries Park} = 11, 
 \\*
 {\bfseries Invalid} = 12, 
-{\bfseries Hero} = 60, 
+{\bfseries Fencer} = 60, 
 {\bfseries Mage} = 66, 
 {\bfseries Warrior} = 72, 
 \\*
@@ -39,34 +38,45 @@ enum \hyperlink{namespaceCore_1_1Models_1_1Definitions_a609ed13db028308ebc6c5fbd
 {\bfseries Unknown3} = 90, 
 {\bfseries Headquarter} = 276, 
 \\*
-{\bfseries Outposts} = 282, 
-{\bfseries Houses} = 288, 
-{\bfseries Wall} = 294, 
-{\bfseries Barracks} = 300, 
+{\bfseries Barracks} = 282, 
+{\bfseries Factory} = 288, 
+{\bfseries Attachment} = 294, 
+{\bfseries Guard\+Tower} = 300, 
 \\*
-{\bfseries Ressource\-Harvester} = 306
- \}
-\begin{DoxyCompactList}\small\item\em Contains which type a entity exactly is. \end{DoxyCompactList}\item 
-enum \hyperlink{namespaceCore_1_1Models_1_1Definitions_a8be0403c3e883fe583d7bb3893c22c65}{Category} \{ {\bfseries Invalid} = -\/1, 
+{\bfseries Hospital} = 306, 
+{\bfseries Trading\+Post} = 312, 
+{\bfseries Lab} = 318, 
+{\bfseries Furnace} = 324, 
+\\*
+{\bfseries Transformer} = 330, 
+{\bfseries Scrapyard} = 336, 
+{\bfseries Tent} = 342
+ \}\begin{DoxyCompactList}\small\item\em Contains which type a entity exactly is. \end{DoxyCompactList}
+\item 
+enum \hyperlink{namespaceCore_1_1Models_1_1Definitions_a8be0403c3e883fe583d7bb3893c22c65}{Category} \{ \\*
+{\bfseries Invalid} = -\/1, 
 {\bfseries Terrain}, 
 {\bfseries Unit}, 
-{\bfseries Building}
- \}
-\begin{DoxyCompactList}\small\item\em Contains the category of a entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\bfseries Building}, 
+\\*
+{\bfseries Menu}
+ \}\begin{DoxyCompactList}\small\item\em Contains the category of a entity. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
 
 
 \subsection{Enumeration Type Documentation}
-\hypertarget{namespaceCore_1_1Models_1_1Definitions_a8be0403c3e883fe583d7bb3893c22c65}{\index{Core\-::\-Models\-::\-Definitions@{Core\-::\-Models\-::\-Definitions}!Category@{Category}}
-\index{Category@{Category}!Core::Models::Definitions@{Core\-::\-Models\-::\-Definitions}}
-\subsubsection[{Category}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Core.\-Models.\-Definitions.\-Category}}}\label{namespaceCore_1_1Models_1_1Definitions_a8be0403c3e883fe583d7bb3893c22c65}
+\hypertarget{namespaceCore_1_1Models_1_1Definitions_a8be0403c3e883fe583d7bb3893c22c65}{}\index{Core\+::\+Models\+::\+Definitions@{Core\+::\+Models\+::\+Definitions}!Category@{Category}}
+\index{Category@{Category}!Core\+::\+Models\+::\+Definitions@{Core\+::\+Models\+::\+Definitions}}
+\subsubsection[{Category}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Core.\+Models.\+Definitions.\+Category}\hspace{0.3cm}{\ttfamily [strong]}}\label{namespaceCore_1_1Models_1_1Definitions_a8be0403c3e883fe583d7bb3893c22c65}
 
 
 Contains the category of a entity. 
 
-\hypertarget{namespaceCore_1_1Models_1_1Definitions_a609ed13db028308ebc6c5fbd98615fdc}{\index{Core\-::\-Models\-::\-Definitions@{Core\-::\-Models\-::\-Definitions}!Entity\-Type@{Entity\-Type}}
-\index{Entity\-Type@{Entity\-Type}!Core::Models::Definitions@{Core\-::\-Models\-::\-Definitions}}
-\subsubsection[{Entity\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Core.\-Models.\-Definitions.\-Entity\-Type}}}\label{namespaceCore_1_1Models_1_1Definitions_a609ed13db028308ebc6c5fbd98615fdc}
+\hypertarget{namespaceCore_1_1Models_1_1Definitions_a609ed13db028308ebc6c5fbd98615fdc}{}\index{Core\+::\+Models\+::\+Definitions@{Core\+::\+Models\+::\+Definitions}!Entity\+Type@{Entity\+Type}}
+\index{Entity\+Type@{Entity\+Type}!Core\+::\+Models\+::\+Definitions@{Core\+::\+Models\+::\+Definitions}}
+\subsubsection[{Entity\+Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Core.\+Models.\+Definitions.\+Entity\+Type}\hspace{0.3cm}{\ttfamily [strong]}}\label{namespaceCore_1_1Models_1_1Definitions_a609ed13db028308ebc6c5fbd98615fdc}
 
 
 Contains which type a entity exactly is. 
 
+Terrain Range 0-\/59 Id\textquotesingle{}s (6 $\ast$ 10 = 60) Unit Range 60-\/275 Id\textquotesingle{}s (6 $\ast$ 6 $\ast$ 6 = 216) Buildings Range 276-\/491 Id\textquotesingle{}s (6 $\ast$ 6 $\ast$ 6 = 216) 

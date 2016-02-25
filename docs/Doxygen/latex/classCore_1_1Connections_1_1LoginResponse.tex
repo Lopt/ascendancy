@@ -1,37 +1,95 @@
-\hypertarget{classCore_1_1Connections_1_1LoginResponse}{\section{Core.\-Connections.\-Login\-Response Class Reference}
-\label{classCore_1_1Connections_1_1LoginResponse}\index{Core.\-Connections.\-Login\-Response@{Core.\-Connections.\-Login\-Response}}
-}
+\hypertarget{classCore_1_1Connections_1_1LoginResponse}{}\section{Core.\+Connections.\+Login\+Response Class Reference}
+\label{classCore_1_1Connections_1_1LoginResponse}\index{Core.\+Connections.\+Login\+Response@{Core.\+Connections.\+Login\+Response}}
 
 
-\hyperlink{classCore_1_1Connections_1_1Response}{Response} class which should be used to login. Will be serialised before sending, should be deserialised after recieving.  
+\hyperlink{classCore_1_1Connections_1_1Response}{Response} class which should be used to login. Will be serialized before sending, should be deserialized after receiving.  
 
 
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bfseries Reponse\-Status} \{ {\bfseries O\-K}, 
-{\bfseries E\-R\-R\-O\-R}
- \}
+enum \hyperlink{classCore_1_1Connections_1_1LoginResponse_ad726169217eaad8b926b7548d43020d8}{Reponse\+Status} \{ {\bfseries O\+K}, 
+{\bfseries E\+R\+R\+O\+R}
+ \}\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Connections_1_1Response}{Response} status of the login response. \end{DoxyCompactList}
 \end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCore_1_1Connections_1_1LoginResponse_ab9a1fa386052ddf7917d3367bb8f1fb1}{Login\+Response} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Connections_1_1LoginResponse}{Core.\+Connections.\+Login\+Response} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Connections_1_1LoginResponse_a07d5c565863a18dc114700d9420b2d5f}{Reponse\-Status {\bfseries Status}}\label{classCore_1_1Connections_1_1LoginResponse_a07d5c565863a18dc114700d9420b2d5f}
-
-\item 
-\hypertarget{classCore_1_1Connections_1_1LoginResponse_a0852c12c3db05b5f4093ee08f5aa4107}{Guid {\bfseries Session\-I\-D}}\label{classCore_1_1Connections_1_1LoginResponse_a0852c12c3db05b5f4093ee08f5aa4107}
-
-\item 
-\hypertarget{classCore_1_1Connections_1_1LoginResponse_a2ef450c94ba6160627b8045a1829c1ff}{int {\bfseries Account\-Id}}\label{classCore_1_1Connections_1_1LoginResponse_a2ef450c94ba6160627b8045a1829c1ff}
-
-\end{DoxyCompactItemize}
+\hyperlink{classCore_1_1Connections_1_1LoginResponse_ad726169217eaad8b926b7548d43020d8}{Reponse\+Status} \hyperlink{classCore_1_1Connections_1_1LoginResponse_a07d5c565863a18dc114700d9420b2d5f}{Status}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classCore_1_1Connections_1_1Response}{Response} Status. Only use other data if Response\+Status == O\+K \end{DoxyCompactList}\item 
+Guid \hyperlink{classCore_1_1Connections_1_1LoginResponse_a0852c12c3db05b5f4093ee08f5aa4107}{Session\+I\+D}
+\begin{DoxyCompactList}\small\item\em The session which the got after the login. \end{DoxyCompactList}\item 
+int \hyperlink{classCore_1_1Connections_1_1LoginResponse_a2ef450c94ba6160627b8045a1829c1ff}{Account\+Id}
+\begin{DoxyCompactList}\small\item\em The account identifier which the user has, who logged in. \end{DoxyCompactList}\item 
+Date\+Time \hyperlink{classCore_1_1Connections_1_1LoginResponse_a1bb5d99f8fa2a5564fa2d7ba2d613fd0}{Server\+Time}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{namespaceServer}{Server} time which is be used to synchronize client and server \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\hyperlink{classCore_1_1Connections_1_1Response}{Response} class which should be used to login. Will be serialised before sending, should be deserialised after recieving. 
+\hyperlink{classCore_1_1Connections_1_1Response}{Response} class which should be used to login. Will be serialized before sending, should be deserialized after receiving. 
 
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\subsection{Member Enumeration Documentation}
+\hypertarget{classCore_1_1Connections_1_1LoginResponse_ad726169217eaad8b926b7548d43020d8}{}\index{Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}!Reponse\+Status@{Reponse\+Status}}
+\index{Reponse\+Status@{Reponse\+Status}!Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}}
+\subsubsection[{Reponse\+Status}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Core.\+Connections.\+Login\+Response.\+Reponse\+Status}\hspace{0.3cm}{\ttfamily [strong]}}\label{classCore_1_1Connections_1_1LoginResponse_ad726169217eaad8b926b7548d43020d8}
+
+
+\hyperlink{classCore_1_1Connections_1_1Response}{Response} status of the login response. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Connections_1_1LoginResponse_ab9a1fa386052ddf7917d3367bb8f1fb1}{}\index{Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}!Login\+Response@{Login\+Response}}
+\index{Login\+Response@{Login\+Response}!Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}}
+\subsubsection[{Login\+Response()}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Connections.\+Login\+Response.\+Login\+Response (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Connections_1_1LoginResponse_ab9a1fa386052ddf7917d3367bb8f1fb1}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Connections_1_1LoginResponse}{Core.\+Connections.\+Login\+Response} class. 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Connections_1_1LoginResponse_a2ef450c94ba6160627b8045a1829c1ff}{}\index{Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}!Account\+Id@{Account\+Id}}
+\index{Account\+Id@{Account\+Id}!Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}}
+\subsubsection[{Account\+Id}]{\setlength{\rightskip}{0pt plus 5cm}int Core.\+Connections.\+Login\+Response.\+Account\+Id}\label{classCore_1_1Connections_1_1LoginResponse_a2ef450c94ba6160627b8045a1829c1ff}
+
+
+The account identifier which the user has, who logged in. 
+
+\hypertarget{classCore_1_1Connections_1_1LoginResponse_a1bb5d99f8fa2a5564fa2d7ba2d613fd0}{}\index{Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}!Server\+Time@{Server\+Time}}
+\index{Server\+Time@{Server\+Time}!Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}}
+\subsubsection[{Server\+Time}]{\setlength{\rightskip}{0pt plus 5cm}Date\+Time Core.\+Connections.\+Login\+Response.\+Server\+Time}\label{classCore_1_1Connections_1_1LoginResponse_a1bb5d99f8fa2a5564fa2d7ba2d613fd0}
+
+
+The \hyperlink{namespaceServer}{Server} time which is be used to synchronize client and server 
+
+\hypertarget{classCore_1_1Connections_1_1LoginResponse_a0852c12c3db05b5f4093ee08f5aa4107}{}\index{Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}!Session\+I\+D@{Session\+I\+D}}
+\index{Session\+I\+D@{Session\+I\+D}!Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}}
+\subsubsection[{Session\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}Guid Core.\+Connections.\+Login\+Response.\+Session\+I\+D}\label{classCore_1_1Connections_1_1LoginResponse_a0852c12c3db05b5f4093ee08f5aa4107}
+
+
+The session which the got after the login. 
+
+\hypertarget{classCore_1_1Connections_1_1LoginResponse_a07d5c565863a18dc114700d9420b2d5f}{}\index{Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}!Status@{Status}}
+\index{Status@{Status}!Core\+::\+Connections\+::\+Login\+Response@{Core\+::\+Connections\+::\+Login\+Response}}
+\subsubsection[{Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Reponse\+Status} Core.\+Connections.\+Login\+Response.\+Status}\label{classCore_1_1Connections_1_1LoginResponse_a07d5c565863a18dc114700d9420b2d5f}
+
+
+The \hyperlink{classCore_1_1Connections_1_1Response}{Response} Status. Only use other data if Response\+Status == O\+K 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-base/\-Connection/Login\-Response.\-cs\end{DoxyCompactItemize}
+base/\+Connection/Login\+Response.\+cs\end{DoxyCompactItemize}

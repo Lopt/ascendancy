@@ -1,0 +1,72 @@
+\hypertarget{classClient_1_1Common_1_1TcpConnection}{}\section{Client.\+Common.\+Tcp\+Connection Class Reference}
+\label{classClient_1_1Common_1_1TcpConnection}\index{Client.\+Common.\+Tcp\+Connection@{Client.\+Common.\+Tcp\+Connection}}
+
+
+T\+C\+P connection. Provides an T\+C\+P Connection to write/read.  
+
+
+Inheritance diagram for Client.\+Common.\+Tcp\+Connection\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classClient_1_1Common_1_1TcpConnection}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual async Task$<$ string $>$ \hyperlink{classClient_1_1Common_1_1TcpConnection_a2d0457442421976a677e6f24a14a92eb}{Send\+Async} (\hyperlink{namespaceCore_1_1Connection_a759585506f1f7f357beb5c5460a7f4f5}{Core.\+Connection.\+Method\+Type} method\+Type, string json)
+\begin{DoxyCompactList}\small\item\em Send the specified method\+Type and J\+S\+O\+N to the T\+C\+P server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classClient_1_1Common_1_1TcpConnection}{Tcp\+Connection} \hyperlink{classClient_1_1Common_1_1TcpConnection_a5522f2e8a44ff38a38844642920d6b7d}{Connector}
+\begin{DoxyCompactList}\small\item\em The connector which can be used to access send. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+T\+C\+P connection. Provides an T\+C\+P Connection to write/read. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1TcpConnection_a2d0457442421976a677e6f24a14a92eb}{}\index{Client\+::\+Common\+::\+Tcp\+Connection@{Client\+::\+Common\+::\+Tcp\+Connection}!Send\+Async@{Send\+Async}}
+\index{Send\+Async@{Send\+Async}!Client\+::\+Common\+::\+Tcp\+Connection@{Client\+::\+Common\+::\+Tcp\+Connection}}
+\subsubsection[{Send\+Async(\+Core.\+Connection.\+Method\+Type method\+Type, string json)}]{\setlength{\rightskip}{0pt plus 5cm}virtual async Task$<$string$>$ Client.\+Common.\+Tcp\+Connection.\+Send\+Async (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\+Connection.\+Method\+Type}}]{method\+Type, }
+\item[{string}]{json}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classClient_1_1Common_1_1TcpConnection_a2d0457442421976a677e6f24a14a92eb}
+
+
+Send the specified method\+Type and J\+S\+O\+N to the T\+C\+P server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em method\+Type} & Method type.\\
+\hline
+{\em json} & J\+S\+O\+N serialized Request.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+J\+S\+O\+N serialized Response
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classClient_1_1Droid_1_1TcpConnection_a5eaded083b4d1bd17ddc6831e3181e60}{Client.\+Droid.\+Tcp\+Connection}, and \hyperlink{classClient_1_1IOS_1_1TcpConnection_a4042b0eb4bcf77100e9f6480f78bbd39}{Client.\+I\+O\+S.\+Tcp\+Connection}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classClient_1_1Common_1_1TcpConnection_a5522f2e8a44ff38a38844642920d6b7d}{}\index{Client\+::\+Common\+::\+Tcp\+Connection@{Client\+::\+Common\+::\+Tcp\+Connection}!Connector@{Connector}}
+\index{Connector@{Connector}!Client\+::\+Common\+::\+Tcp\+Connection@{Client\+::\+Common\+::\+Tcp\+Connection}}
+\subsubsection[{Connector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tcp\+Connection} Client.\+Common.\+Tcp\+Connection.\+Connector\hspace{0.3cm}{\ttfamily [static]}}\label{classClient_1_1Common_1_1TcpConnection_a5522f2e8a44ff38a38844642920d6b7d}
+
+
+The connector which can be used to access send. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+client/client/client.\+Common/Tcp\+Connection.\+cs\end{DoxyCompactItemize}

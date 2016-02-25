@@ -1,29 +1,62 @@
-\hypertarget{namespaceClient_1_1Common_1_1Views}{\section{Package Client.\-Common.\-Views}
-\label{namespaceClient_1_1Common_1_1Views}\index{Client.\-Common.\-Views@{Client.\-Common.\-Views}}
-}
+\hypertarget{namespaceClient_1_1Common_1_1Views}{}\section{Client.\+Common.\+Views Namespace Reference}
+\label{namespaceClient_1_1Common_1_1Views}\index{Client.\+Common.\+Views@{Client.\+Common.\+Views}}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-package \hyperlink{namespaceClient_1_1Common_1_1Views_1_1Actions}{Actions}
+namespace \hyperlink{namespaceClient_1_1Common_1_1Views_1_1Actions}{Actions}
+\item 
+namespace \hyperlink{namespaceClient_1_1Common_1_1Views_1_1Effects}{Effects}
+\item 
+namespace \hyperlink{namespaceClient_1_1Common_1_1Views_1_1HUD}{H\+U\+D}
 \end{DoxyCompactItemize}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classClient_1_1Common_1_1Views_1_1GameScene}{Game\-Scene}
-\item 
-class \hyperlink{classClient_1_1Common_1_1Views_1_1LogoLayer}{Logo\-Layer}
-\item 
-class \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView}{Menu\-View}
-\item 
-class \hyperlink{classClient_1_1Common_1_1Views_1_1RegionView}{Region\-View}
-\item 
-class \hyperlink{classClient_1_1Common_1_1Views_1_1StartScene}{Start\-Scene}
-\item 
-class \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler}{Touch\-Handler}
-\item 
-class \hyperlink{classClient_1_1Common_1_1Views_1_1ViewDefinitions}{View\-Definitions}
-\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1DebugLayer}{Debug\+Layer}
+\begin{DoxyCompactList}\small\item\em Debug layer. \end{DoxyCompactList}\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1GameScene}{Game\+Scene}
+\begin{DoxyCompactList}\small\item\em The Game scene. \end{DoxyCompactList}\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1LogoLayer}{Logo\+Layer}
+\begin{DoxyCompactList}\small\item\em Logo layer. \end{DoxyCompactList}\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1MenuView}{Menu\+View}
+\begin{DoxyCompactList}\small\item\em The Menu view. \end{DoxyCompactList}\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1RegionViewHex}{Region\+View\+Hex}
+\begin{DoxyCompactList}\small\item\em Region view with hexagonal tile map to set the content of the tile map. \end{DoxyCompactList}\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1StartScene}{Start\+Scene}
+\begin{DoxyCompactList}\small\item\em The Start scene. \end{DoxyCompactList}\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1TileTouchHandler}{Tile\+Touch\+Handler}
+\begin{DoxyCompactList}\small\item\em Touch handler. \end{DoxyCompactList}\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler}{Touch\+Handler}
+\begin{DoxyCompactList}\small\item\em The Touch handler class. Cocossharp Touch events can\textquotesingle{}t be stopped, every C\+C\+Node gets an Touch Event, even if it\textquotesingle{}s the last layer. When using this class instead of the cocossharp Touchlistener, you just need to change one thing\+: the return of the callback method is bool, not void. It is true, if the event got catched an no other should execute it -\/ and false otherwise. \end{DoxyCompactList}\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1UnitDefinitionView}{Unit\+Definition\+View}
+\begin{DoxyCompactList}\small\item\em Unit definition view. \end{DoxyCompactList}\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1UnitView}{Unit\+View}
+\begin{DoxyCompactList}\small\item\em The unit view entity. \end{DoxyCompactList}\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1ViewDefinitions}{View\+Definitions}
+\begin{DoxyCompactList}\small\item\em View definitions to set the correct pictures to the entity and terrain types. \end{DoxyCompactList}\item 
 class \hyperlink{classClient_1_1Common_1_1Views_1_1Worker}{Worker}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classClient_1_1Common_1_1Views_1_1Worker}{Worker} do the actions on the view. \end{DoxyCompactList}\item 
+class \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex}{World\+Layer\+Hex}
+\begin{DoxyCompactList}\small\item\em The World layer with hexagonal Tile map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayer}{World\-Layer}
+enum \hyperlink{namespaceClient_1_1Common_1_1Views_a6974b9f5798be7fa135e7517fa41ffe0}{Unit\+Animation} \{ \\*
+{\bfseries None}, 
+{\bfseries Idle}, 
+{\bfseries Fight}, 
+{\bfseries Die}, 
+\\*
+{\bfseries Walk}
+ \}\begin{DoxyCompactList}\small\item\em Unit animation kind. \end{DoxyCompactList}
 \end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespaceClient_1_1Common_1_1Views_a6974b9f5798be7fa135e7517fa41ffe0}{}\index{Client\+::\+Common\+::\+Views@{Client\+::\+Common\+::\+Views}!Unit\+Animation@{Unit\+Animation}}
+\index{Unit\+Animation@{Unit\+Animation}!Client\+::\+Common\+::\+Views@{Client\+::\+Common\+::\+Views}}
+\subsubsection[{Unit\+Animation}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Client.\+Common.\+Views.\+Unit\+Animation}\hspace{0.3cm}{\ttfamily [strong]}}\label{namespaceClient_1_1Common_1_1Views_a6974b9f5798be7fa135e7517fa41ffe0}
+
+
+Unit animation kind. 
+

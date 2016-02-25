@@ -1,0 +1,175 @@
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding}{}\section{Core.\+Controllers.\+Actions.\+Create\+Territory\+Building Class Reference}
+\label{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding}\index{Core.\+Controllers.\+Actions.\+Create\+Territory\+Building@{Core.\+Controllers.\+Actions.\+Create\+Territory\+Building}}
+
+
+The action which creates an building.  
+
+
+Inheritance diagram for Core.\+Controllers.\+Actions.\+Create\+Territory\+Building\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_acc4cdbdc7791656da11abab9a6bd8688}{Create\+Territory\+Building} (\hyperlink{classCore_1_1Models_1_1ModelEntity}{Core.\+Models.\+Model\+Entity} model)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding}{Core.\+Controllers.\+Actions.\+Create\+Territory\+Building} class. \end{DoxyCompactList}\item 
+override Concurrent\+Bag$<$ \hyperlink{classCore_1_1Models_1_1Region}{Core.\+Models.\+Region} $>$ \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a7bb58b17239efcaa57968cee96b77bb8}{Get\+Affected\+Regions} ()
+\begin{DoxyCompactList}\small\item\em Identify the affected region by this action. \end{DoxyCompactList}\item 
+override bool \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a972f538b1c4a17240b6d7f9d7e0b2662}{Possible} ()
+\begin{DoxyCompactList}\small\item\em Returns if the action is even possible. \end{DoxyCompactList}\item 
+override Concurrent\+Bag$<$ \hyperlink{classCore_1_1Models_1_1Region}{Core.\+Models.\+Region} $>$ \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a3cda553c756ebbe5170a477576e73c03}{Do} ()
+\begin{DoxyCompactList}\small\item\em Apply action-\/related changes to the world. \end{DoxyCompactList}\item 
+override bool \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a07c2b5afe31a65bea350ff31e39508b4}{Catch} ()
+\begin{DoxyCompactList}\small\item\em If an error occurred in do, this function will be called to set the data to the last known valid state. \end{DoxyCompactList}\item 
+override \hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\+Models.\+Region\+Position} \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a293d75e2f559ce6c456601e030597b85}{Get\+Region\+Position} ()
+\begin{DoxyCompactList}\small\item\em Override base.\+model.\+Region\+Position class and return the position\+I of the region. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a21edf4223bd88ef2e744e15545ba001e}{C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N} = \char`\"{}Create\+Position\char`\"{}
+\begin{DoxyCompactList}\small\item\em Position where the building should be build \end{DoxyCompactList}\item 
+const string \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a87dd484286167126877650654512b160}{C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E} = \char`\"{}Create\+Building\char`\"{}
+\begin{DoxyCompactList}\small\item\em Type which building should be build \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The action which creates an building. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_acc4cdbdc7791656da11abab9a6bd8688}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}!Create\+Territory\+Building@{Create\+Territory\+Building}}
+\index{Create\+Territory\+Building@{Create\+Territory\+Building}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}}
+\subsubsection[{Create\+Territory\+Building(\+Core.\+Models.\+Model\+Entity model)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Controllers.\+Actions.\+Create\+Territory\+Building.\+Create\+Territory\+Building (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\+Models.\+Model\+Entity}}]{model}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_acc4cdbdc7791656da11abab9a6bd8688}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding}{Core.\+Controllers.\+Actions.\+Create\+Territory\+Building} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & action model.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a07c2b5afe31a65bea350ff31e39508b4}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}!Catch@{Catch}}
+\index{Catch@{Catch}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}}
+\subsubsection[{Catch()}]{\setlength{\rightskip}{0pt plus 5cm}override bool Core.\+Controllers.\+Actions.\+Create\+Territory\+Building.\+Catch (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a07c2b5afe31a65bea350ff31e39508b4}
+
+
+If an error occurred in do, this function will be called to set the data to the last known valid state. 
+
+\begin{DoxyReturn}{Returns}
+true if rewind was successfully
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_ada4c77dfeee78ded10a6eb6a506defb4}{Core.\+Controllers.\+Actions.\+Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a3cda553c756ebbe5170a477576e73c03}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}!Do@{Do}}
+\index{Do@{Do}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}}
+\subsubsection[{Do()}]{\setlength{\rightskip}{0pt plus 5cm}override Concurrent\+Bag$<${\bf Core.\+Models.\+Region}$>$ Core.\+Controllers.\+Actions.\+Create\+Territory\+Building.\+Do (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a3cda553c756ebbe5170a477576e73c03}
+
+
+Apply action-\/related changes to the world. 
+
+\begin{DoxyReturn}{Returns}
+Returns System.\+Collections.\+Concurrent.\+Concurrent\+Bag class with the affected region./$>$
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_afbb091ee28eee896951fac600188d446}{Core.\+Controllers.\+Actions.\+Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a7bb58b17239efcaa57968cee96b77bb8}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}!Get\+Affected\+Regions@{Get\+Affected\+Regions}}
+\index{Get\+Affected\+Regions@{Get\+Affected\+Regions}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}}
+\subsubsection[{Get\+Affected\+Regions()}]{\setlength{\rightskip}{0pt plus 5cm}override Concurrent\+Bag$<${\bf Core.\+Models.\+Region}$>$ Core.\+Controllers.\+Actions.\+Create\+Territory\+Building.\+Get\+Affected\+Regions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a7bb58b17239efcaa57968cee96b77bb8}
+
+
+Identify the affected region by this action. 
+
+\begin{DoxyReturn}{Returns}
+Returns System.\+Collections.\+Concurrent.\+Concurrent\+Bag with the affected region. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_aa11bdeffff43ec47ac7c3d6843a85674}{Core.\+Controllers.\+Actions.\+Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a293d75e2f559ce6c456601e030597b85}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}!Get\+Region\+Position@{Get\+Region\+Position}}
+\index{Get\+Region\+Position@{Get\+Region\+Position}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}}
+\subsubsection[{Get\+Region\+Position()}]{\setlength{\rightskip}{0pt plus 5cm}override {\bf Core.\+Models.\+Region\+Position} Core.\+Controllers.\+Actions.\+Create\+Territory\+Building.\+Get\+Region\+Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a293d75e2f559ce6c456601e030597b85}
+
+
+Override base.\+model.\+Region\+Position class and return the position\+I of the region. 
+
+\begin{DoxyReturn}{Returns}
+The region position.
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_a6ffe3c30cb5648a81f50096f4f332d5a}{Core.\+Controllers.\+Actions.\+Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a972f538b1c4a17240b6d7f9d7e0b2662}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}!Possible@{Possible}}
+\index{Possible@{Possible}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}}
+\subsubsection[{Possible()}]{\setlength{\rightskip}{0pt plus 5cm}override bool Core.\+Controllers.\+Actions.\+Create\+Territory\+Building.\+Possible (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a972f538b1c4a17240b6d7f9d7e0b2662}
+
+
+Returns if the action is even possible. 
+
+\begin{DoxyReturn}{Returns}
+True if the Building is buildable at the current position, otherwise false.
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_a405b995343a9394ad19e05a699a4e6d9}{Core.\+Controllers.\+Actions.\+Action}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a21edf4223bd88ef2e744e15545ba001e}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}!C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N@{C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N}}
+\index{C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N@{C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}}
+\subsubsection[{C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}const string Core.\+Controllers.\+Actions.\+Create\+Territory\+Building.\+C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N = \char`\"{}Create\+Position\char`\"{}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a21edf4223bd88ef2e744e15545ba001e}
+
+
+Position where the building should be build 
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a87dd484286167126877650654512b160}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}!C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E@{C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E}}
+\index{C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E@{C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Territory\+Building}}
+\subsubsection[{C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E}]{\setlength{\rightskip}{0pt plus 5cm}const string Core.\+Controllers.\+Actions.\+Create\+Territory\+Building.\+C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E = \char`\"{}Create\+Building\char`\"{}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding_a87dd484286167126877650654512b160}
+
+
+Type which building should be build 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+base/\+Controllers/\+Actions/Create\+Territory\+Building.\+cs\end{DoxyCompactItemize}

@@ -1,7 +1,11 @@
-\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController}{\section{Client.\-Common.\-Manager.\-Region\-Manager\-Controller Class Reference}
-\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController}\index{Client.\-Common.\-Manager.\-Region\-Manager\-Controller@{Client.\-Common.\-Manager.\-Region\-Manager\-Controller}}
-}
-Inheritance diagram for Client.\-Common.\-Manager.\-Region\-Manager\-Controller\-:\begin{figure}[H]
+\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController}{}\section{Client.\+Common.\+Manager.\+Region\+Manager\+Controller Class Reference}
+\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController}\index{Client.\+Common.\+Manager.\+Region\+Manager\+Controller@{Client.\+Common.\+Manager.\+Region\+Manager\+Controller}}
+
+
+The Region manager controller to control the regions.  
+
+
+Inheritance diagram for Client.\+Common.\+Manager.\+Region\+Manager\+Controller\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classClient_1_1Common_1_1Manager_1_1RegionManagerController}
@@ -10,29 +14,161 @@ Inheritance diagram for Client.\-Common.\-Manager.\-Region\-Manager\-Controller\
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_aec46cc3e22d4ebc001c4e19fc0c0cf48}{\hyperlink{classCore_1_1Models_1_1Region}{Region} {\bfseries Get\-Region\-By\-Geolocator} ()}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_aec46cc3e22d4ebc001c4e19fc0c0cf48}
+\hyperlink{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a89a6a0097ec0ed4b2e26c2dcf312a27d}{Region\+Manager\+Controller} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Manager_1_1RegionManagerController}{Client.\+Common.\+Manager.\+Region\+Manager\+Controller} class. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Region}{Region} \hyperlink{classClient_1_1Common_1_1Manager_1_1RegionManagerController_aec46cc3e22d4ebc001c4e19fc0c0cf48}{Get\+Region\+By\+Geolocator} ()
+\begin{DoxyCompactList}\small\item\em Gets the region by current geo location. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Region}{Region} \hyperlink{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a449853590dde1fc7fc56388afafd6bf3}{Get\+Region\+By\+Game\+Position} (\hyperlink{classCore_1_1Models_1_1Position}{Position} game\+World\+Position)
+\begin{DoxyCompactList}\small\item\em Gets the region by game position. \end{DoxyCompactList}\item 
+override \hyperlink{classCore_1_1Models_1_1Region}{Region} \hyperlink{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a63a3b272d688663f463c29d212cdf2e9}{Get\+Region} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position} region\+Position)
+\begin{DoxyCompactList}\small\item\em Gets the region.\+If needed loads the region. \end{DoxyCompactList}\item 
+async Task$<$ bool $>$ \hyperlink{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a4e248f5877d9aa7b944cff4084ffdc67}{Do\+Action\+Async} (\hyperlink{classCore_1_1Models_1_1Position}{Core.\+Models.\+Position} current\+Game\+Position, \hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action}\mbox{[}$\,$\mbox{]} actions)
+\begin{DoxyCompactList}\small\item\em Dos the action async. Send the actions to the server and load the response. \end{DoxyCompactList}\item 
+Hash\+Set$<$ \hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position} $>$ \hyperlink{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a200816e068a646522d5ecb069c637698}{Get\+World\+Near\+Region\+Positions} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\+Position} region\+Position)
+\begin{DoxyCompactList}\small\item\em Gets the world near the region position. Around 5x5 regions at the region position. \end{DoxyCompactList}\item 
+async Task \hyperlink{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a754eab991e880017a9e21b03ee220d25}{Load\+Terrain\+Async} (\hyperlink{classCore_1_1Models_1_1Region}{Region} region)
+\begin{DoxyCompactList}\small\item\em Loads the terrain async over the network controller and adds the region to the world. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
+
+\subsection{Detailed Description}
+The Region manager controller to control the regions. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a89a6a0097ec0ed4b2e26c2dcf312a27d}{}\index{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}!Region\+Manager\+Controller@{Region\+Manager\+Controller}}
+\index{Region\+Manager\+Controller@{Region\+Manager\+Controller}!Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}}
+\subsubsection[{Region\+Manager\+Controller()}]{\setlength{\rightskip}{0pt plus 5cm}Client.\+Common.\+Manager.\+Region\+Manager\+Controller.\+Region\+Manager\+Controller (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a89a6a0097ec0ed4b2e26c2dcf312a27d}
+
+
+Initializes a new instance of the \hyperlink{classClient_1_1Common_1_1Manager_1_1RegionManagerController}{Client.\+Common.\+Manager.\+Region\+Manager\+Controller} class. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a4e248f5877d9aa7b944cff4084ffdc67}{}\index{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}!Do\+Action\+Async@{Do\+Action\+Async}}
+\index{Do\+Action\+Async@{Do\+Action\+Async}!Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}}
+\subsubsection[{Do\+Action\+Async(\+Core.\+Models.\+Position current\+Game\+Position, Core.\+Models.\+Action[] actions)}]{\setlength{\rightskip}{0pt plus 5cm}async Task$<$bool$>$ Client.\+Common.\+Manager.\+Region\+Manager\+Controller.\+Do\+Action\+Async (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\+Models.\+Position}}]{current\+Game\+Position, }
+\item[{{\bf Core.\+Models.\+Action}\mbox{[}$\,$\mbox{]}}]{actions}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a4e248f5877d9aa7b944cff4084ffdc67}
+
+
+Dos the action async. Send the actions to the server and load the response. 
+
+\begin{DoxyReturn}{Returns}
+True once the action is done.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Game\+Position} & Current game position.\\
+\hline
+{\em actions} & Actions which should be executed.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a63a3b272d688663f463c29d212cdf2e9}{}\index{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}!Get\+Region@{Get\+Region}}
+\index{Get\+Region@{Get\+Region}!Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}}
+\subsubsection[{Get\+Region(\+Region\+Position region\+Position)}]{\setlength{\rightskip}{0pt plus 5cm}override {\bf Region} Client.\+Common.\+Manager.\+Region\+Manager\+Controller.\+Get\+Region (
+\begin{DoxyParamCaption}
+\item[{{\bf Region\+Position}}]{region\+Position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a63a3b272d688663f463c29d212cdf2e9}
+
+
+Gets the region.\+If needed loads the region. 
+
+\begin{DoxyReturn}{Returns}
+The region.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em region\+Position} & Region position.\\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1RegionManagerController_a1ce55cf6fb0ba5f0b5711e70ffb86467}{Core.\+Controllers.\+Region\+Manager\+Controller}.
+
+\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a449853590dde1fc7fc56388afafd6bf3}{}\index{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}!Get\+Region\+By\+Game\+Position@{Get\+Region\+By\+Game\+Position}}
+\index{Get\+Region\+By\+Game\+Position@{Get\+Region\+By\+Game\+Position}!Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}}
+\subsubsection[{Get\+Region\+By\+Game\+Position(\+Position game\+World\+Position)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Region} Client.\+Common.\+Manager.\+Region\+Manager\+Controller.\+Get\+Region\+By\+Game\+Position (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{game\+World\+Position}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a449853590dde1fc7fc56388afafd6bf3}
+
+
+Gets the region by game position. 
+
+\begin{DoxyReturn}{Returns}
+The region by game position.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em game\+World\+Position} & Game world position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_aec46cc3e22d4ebc001c4e19fc0c0cf48}{}\index{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}!Get\+Region\+By\+Geolocator@{Get\+Region\+By\+Geolocator}}
+\index{Get\+Region\+By\+Geolocator@{Get\+Region\+By\+Geolocator}!Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}}
+\subsubsection[{Get\+Region\+By\+Geolocator()}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Region} Client.\+Common.\+Manager.\+Region\+Manager\+Controller.\+Get\+Region\+By\+Geolocator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_aec46cc3e22d4ebc001c4e19fc0c0cf48}
+
+
+Gets the region by current geo location. 
+
+\begin{DoxyReturn}{Returns}
+The region by current geo location.
+\end{DoxyReturn}
+\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a200816e068a646522d5ecb069c637698}{}\index{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}!Get\+World\+Near\+Region\+Positions@{Get\+World\+Near\+Region\+Positions}}
+\index{Get\+World\+Near\+Region\+Positions@{Get\+World\+Near\+Region\+Positions}!Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}}
+\subsubsection[{Get\+World\+Near\+Region\+Positions(\+Region\+Position region\+Position)}]{\setlength{\rightskip}{0pt plus 5cm}Hash\+Set$<${\bf Region\+Position}$>$ Client.\+Common.\+Manager.\+Region\+Manager\+Controller.\+Get\+World\+Near\+Region\+Positions (
+\begin{DoxyParamCaption}
+\item[{{\bf Region\+Position}}]{region\+Position}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a200816e068a646522d5ecb069c637698}
+
+
+Gets the world near the region position. Around 5x5 regions at the region position. 
+
+\begin{DoxyReturn}{Returns}
+The regions around the positions.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em region\+Position} & Region position.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a754eab991e880017a9e21b03ee220d25}{}\index{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}!Load\+Terrain\+Async@{Load\+Terrain\+Async}}
+\index{Load\+Terrain\+Async@{Load\+Terrain\+Async}!Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller@{Client\+::\+Common\+::\+Manager\+::\+Region\+Manager\+Controller}}
+\subsubsection[{Load\+Terrain\+Async(\+Region region)}]{\setlength{\rightskip}{0pt plus 5cm}async Task Client.\+Common.\+Manager.\+Region\+Manager\+Controller.\+Load\+Terrain\+Async (
+\begin{DoxyParamCaption}
+\item[{{\bf Region}}]{region}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a754eab991e880017a9e21b03ee220d25}
+
+
+Loads the terrain async over the network controller and adds the region to the world. 
+
+\begin{DoxyReturn}{Returns}
+The function as task.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em region} & Region which should be loaded.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a449853590dde1fc7fc56388afafd6bf3}{\hyperlink{classCore_1_1Models_1_1Region}{Region} {\bfseries Get\-Region\-By\-Game\-Position} (\hyperlink{classCore_1_1Models_1_1Position}{Position} game\-World\-Position)}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a449853590dde1fc7fc56388afafd6bf3}
-
-\item 
-\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a63a3b272d688663f463c29d212cdf2e9}{override \hyperlink{classCore_1_1Models_1_1Region}{Region} {\bfseries Get\-Region} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position} region\-Position)}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a63a3b272d688663f463c29d212cdf2e9}
-
-\item 
-\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a4f96c6b873b549b5e3689f2ed6eb67cb}{async Task {\bfseries Load\-Regions\-Async} ()}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a4f96c6b873b549b5e3689f2ed6eb67cb}
-
-\item 
-\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_acd0e178aef1c3c5efccc6e19dd3b73b4}{async Task {\bfseries Load\-Regions\-Async} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position} region\-Position)}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_acd0e178aef1c3c5efccc6e19dd3b73b4}
-
-\item 
-\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a4e248f5877d9aa7b944cff4084ffdc67}{async Task$<$ bool $>$ {\bfseries Do\-Action\-Async} (\hyperlink{classCore_1_1Models_1_1Position}{Core.\-Models.\-Position} current\-Game\-Position, \hyperlink{classCore_1_1Models_1_1Action}{Core.\-Models.\-Action}\mbox{[}$\,$\mbox{]} actions)}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a4e248f5877d9aa7b944cff4084ffdc67}
-
-\item 
-\hypertarget{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a7d1078b11690bd0b9d713fe30f10427c}{\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position}\mbox{[},\mbox{]} {\bfseries Get\-World\-Near\-Region\-Positions} (\hyperlink{classCore_1_1Models_1_1RegionPosition}{Region\-Position} region\-Position)}\label{classClient_1_1Common_1_1Manager_1_1RegionManagerController_a7d1078b11690bd0b9d713fe30f10427c}
-
-\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
-\item 
-client/client/client.\-Common/\-Manager/Region\-Manager\-Controller.\-cs\end{DoxyCompactItemize}
+client/client/client.\+Common/\+Manager/Region\+Manager\+Controller.\+cs\end{DoxyCompactItemize}

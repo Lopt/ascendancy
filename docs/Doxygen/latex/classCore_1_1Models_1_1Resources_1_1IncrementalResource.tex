@@ -1,0 +1,168 @@
+\hypertarget{classCore_1_1Models_1_1Resources_1_1IncrementalResource}{}\section{Core.\+Models.\+Resources.\+Incremental\+Resource Class Reference}
+\label{classCore_1_1Models_1_1Resources_1_1IncrementalResource}\index{Core.\+Models.\+Resources.\+Incremental\+Resource@{Core.\+Models.\+Resources.\+Incremental\+Resource}}
+
+
+An Class for all \hyperlink{namespaceCore_1_1Models_1_1Resources}{Resources} which values increments over time. It can be calculated by the when the value was set; the current time and the increment over time.  
+
+
+Inheritance diagram for Core.\+Models.\+Resources.\+Incremental\+Resource\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.333333cm]{classCore_1_1Models_1_1Resources_1_1IncrementalResource}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a0531e13b786b186772f59c3e126fa3b8}{Incremental\+Resource} (double value, double maximum\+Value, double increments)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource}{Core.\+Models.\+Resources.\+Incremental\+Resource} class. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource_aabdd81d259b9979eea4427da9508e085}{Incremental\+Resource} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource}{Core.\+Models.\+Resources.\+Incremental\+Resource} class. \end{DoxyCompactList}\item 
+void \hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a4c95456760a889b5bf6ca1bffbb4735d}{Set} (Date\+Time action\+Time, double value, double increments)
+\begin{DoxyCompactList}\small\item\em Set the specified value and increments. \end{DoxyCompactList}\item 
+double \hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource_af2eb0a0b5b7d935b313ffcf9f52624c4}{Get\+Value} (Date\+Time time)
+\begin{DoxyCompactList}\small\item\em Gets the value. \end{DoxyCompactList}\item 
+double \hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a02460d847f9be7b26a302a020e649bca}{Get\+Value\+Percent} (Date\+Time time)
+\begin{DoxyCompactList}\small\item\em Gets the value (in percent). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Date\+Time \hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a2aa8fc33796b301d8682f351e2cc0658}{Last\+State}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the last state. \end{DoxyCompactList}\item 
+double \hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource_ad761090c40b93c8987b9ec3fc244c461}{Maximum\+Value}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the maximum value. \end{DoxyCompactList}\item 
+double \hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource_acbe6bfafc812c2fc407648f577978b95}{Increments}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the increments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An Class for all \hyperlink{namespaceCore_1_1Models_1_1Resources}{Resources} which values increments over time. It can be calculated by the when the value was set; the current time and the increment over time. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a0531e13b786b186772f59c3e126fa3b8}{}\index{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}!Incremental\+Resource@{Incremental\+Resource}}
+\index{Incremental\+Resource@{Incremental\+Resource}!Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}}
+\subsubsection[{Incremental\+Resource(double value, double maximum\+Value, double increments)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Models.\+Resources.\+Incremental\+Resource.\+Incremental\+Resource (
+\begin{DoxyParamCaption}
+\item[{double}]{value, }
+\item[{double}]{maximum\+Value, }
+\item[{double}]{increments}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a0531e13b786b186772f59c3e126fa3b8}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource}{Core.\+Models.\+Resources.\+Incremental\+Resource} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Value of the resource.\\
+\hline
+{\em maximum\+Value} & Maximum value.\\
+\hline
+{\em increments} & Increments value.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classCore_1_1Models_1_1Resources_1_1IncrementalResource_aabdd81d259b9979eea4427da9508e085}{}\index{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}!Incremental\+Resource@{Incremental\+Resource}}
+\index{Incremental\+Resource@{Incremental\+Resource}!Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}}
+\subsubsection[{Incremental\+Resource()}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Models.\+Resources.\+Incremental\+Resource.\+Incremental\+Resource (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Resources_1_1IncrementalResource_aabdd81d259b9979eea4427da9508e085}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Models_1_1Resources_1_1IncrementalResource}{Core.\+Models.\+Resources.\+Incremental\+Resource} class. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Models_1_1Resources_1_1IncrementalResource_af2eb0a0b5b7d935b313ffcf9f52624c4}{}\index{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}!Get\+Value@{Get\+Value}}
+\index{Get\+Value@{Get\+Value}!Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}}
+\subsubsection[{Get\+Value(\+Date\+Time time)}]{\setlength{\rightskip}{0pt plus 5cm}double Core.\+Models.\+Resources.\+Incremental\+Resource.\+Get\+Value (
+\begin{DoxyParamCaption}
+\item[{Date\+Time}]{time}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Resources_1_1IncrementalResource_af2eb0a0b5b7d935b313ffcf9f52624c4}
+
+
+Gets the value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Current server time\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value at the given time
+\end{DoxyReturn}
+\hypertarget{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a02460d847f9be7b26a302a020e649bca}{}\index{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}!Get\+Value\+Percent@{Get\+Value\+Percent}}
+\index{Get\+Value\+Percent@{Get\+Value\+Percent}!Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}}
+\subsubsection[{Get\+Value\+Percent(\+Date\+Time time)}]{\setlength{\rightskip}{0pt plus 5cm}double Core.\+Models.\+Resources.\+Incremental\+Resource.\+Get\+Value\+Percent (
+\begin{DoxyParamCaption}
+\item[{Date\+Time}]{time}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a02460d847f9be7b26a302a020e649bca}
+
+
+Gets the value (in percent). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Current server time\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value (in percent) at the given time
+\end{DoxyReturn}
+\hypertarget{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a4c95456760a889b5bf6ca1bffbb4735d}{}\index{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}!Set@{Set}}
+\index{Set@{Set}!Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}}
+\subsubsection[{Set(\+Date\+Time action\+Time, double value, double increments)}]{\setlength{\rightskip}{0pt plus 5cm}void Core.\+Models.\+Resources.\+Incremental\+Resource.\+Set (
+\begin{DoxyParamCaption}
+\item[{Date\+Time}]{action\+Time, }
+\item[{double}]{value, }
+\item[{double}]{increments}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a4c95456760a889b5bf6ca1bffbb4735d}
+
+
+Set the specified value and increments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action\+Time} & Time when the value or increment was set\\
+\hline
+{\em value} & Value of the resource.\\
+\hline
+{\em increments} & Increment value of the resource.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{classCore_1_1Models_1_1Resources_1_1IncrementalResource_acbe6bfafc812c2fc407648f577978b95}{}\index{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}!Increments@{Increments}}
+\index{Increments@{Increments}!Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}}
+\subsubsection[{Increments}]{\setlength{\rightskip}{0pt plus 5cm}double Core.\+Models.\+Resources.\+Incremental\+Resource.\+Increments\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Resources_1_1IncrementalResource_acbe6bfafc812c2fc407648f577978b95}
+
+
+Gets the increments. 
+
+The increments.\hypertarget{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a2aa8fc33796b301d8682f351e2cc0658}{}\index{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}!Last\+State@{Last\+State}}
+\index{Last\+State@{Last\+State}!Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}}
+\subsubsection[{Last\+State}]{\setlength{\rightskip}{0pt plus 5cm}Date\+Time Core.\+Models.\+Resources.\+Incremental\+Resource.\+Last\+State\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Models_1_1Resources_1_1IncrementalResource_a2aa8fc33796b301d8682f351e2cc0658}
+
+
+Gets the last state. 
+
+The last state.\hypertarget{classCore_1_1Models_1_1Resources_1_1IncrementalResource_ad761090c40b93c8987b9ec3fc244c461}{}\index{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}!Maximum\+Value@{Maximum\+Value}}
+\index{Maximum\+Value@{Maximum\+Value}!Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource@{Core\+::\+Models\+::\+Resources\+::\+Incremental\+Resource}}
+\subsubsection[{Maximum\+Value}]{\setlength{\rightskip}{0pt plus 5cm}double Core.\+Models.\+Resources.\+Incremental\+Resource.\+Maximum\+Value\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Models_1_1Resources_1_1IncrementalResource_ad761090c40b93c8987b9ec3fc244c461}
+
+
+Gets or sets the maximum value. 
+
+The maximum value.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+base/\+Models/\+Resources/Incremental\+Resource.\+cs\end{DoxyCompactItemize}

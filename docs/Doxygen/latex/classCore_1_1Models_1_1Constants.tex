@@ -1,47 +1,230 @@
-\hypertarget{classCore_1_1Models_1_1Constants}{\section{Core.\-Models.\-Constants Class Reference}
-\label{classCore_1_1Models_1_1Constants}\index{Core.\-Models.\-Constants@{Core.\-Models.\-Constants}}
-}
+\hypertarget{classCore_1_1Models_1_1Constants}{}\section{Core.\+Models.\+Constants Class Reference}
+\label{classCore_1_1Models_1_1Constants}\index{Core.\+Models.\+Constants@{Core.\+Models.\+Constants}}
+
+
+all constants which should be known by the server and client  
+
+
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Constants_adde91f87a25a57db171667f80b72d69f}{const double {\bfseries C\-E\-L\-L\-\_\-\-S\-I\-Z\-E} = 4}\label{classCore_1_1Models_1_1Constants_adde91f87a25a57db171667f80b72d69f}
+const double \hyperlink{classCore_1_1Models_1_1Constants_adde91f87a25a57db171667f80b72d69f}{C\+E\+L\+L\+\_\+\+S\+I\+Z\+E} = 4
+\begin{DoxyCompactList}\small\item\em size of a cell at the equator (in meters) \end{DoxyCompactList}\item 
+const double \hyperlink{classCore_1_1Models_1_1Constants_ad31578c20b30dd96faf43b7a9f7b0389}{E\+A\+R\+T\+H\+\_\+\+C\+I\+R\+C\+U\+M\+F\+E\+R\+E\+N\+C\+E} = 40075036.\+0
+\begin{DoxyCompactList}\small\item\em earth size at equator (in meters) \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a2d02174b6a70404c1d8093c81eb47cb2}{R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X} = 32
+\begin{DoxyCompactList}\small\item\em amount of cells per region x \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_ad7f91cdefc9377eb37c98a50e0d1c068}{R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y} = 32
+\begin{DoxyCompactList}\small\item\em amount of cells per region y \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a26b3d6b0c7f17fdac4b0789c3a6adec6}{M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X} = 16
+\begin{DoxyCompactList}\small\item\em amount of regions per folder x \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_ad49dbef4256b0be04e921acc8bcef4a8}{M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y} = 16
+\begin{DoxyCompactList}\small\item\em amount of regions per folder y \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a04216f06fce4df1266355ba32c59ac21}{S\+T\+A\+R\+T\+\_\+\+X} = 41504
+\begin{DoxyCompactList}\small\item\em start x of playable world \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_ab564a2138347d9c65862ffe4d80c6735}{E\+N\+D\+\_\+\+X} = 41519
+\begin{DoxyCompactList}\small\item\em end x of playable world \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a0da8b0008fff8b2529d5a8e298b29e5f}{S\+T\+A\+R\+T\+\_\+\+Y} = 26184
+\begin{DoxyCompactList}\small\item\em start y of playable world \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_ae2cd96ff453731f63095739737f184b4}{E\+N\+D\+\_\+\+Y} = 26191
+\begin{DoxyCompactList}\small\item\em end y of playable world \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a09b8f7514cdf1d440f7bbaff8fe843c2}{M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+E\+S\+\_\+\+P\+E\+R\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+O\+N} = 25
+\begin{DoxyCompactList}\small\item\em if there are more than entries in a Linked\+List/array, the A\+P\+I will dismiss the request for safety reasons \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_ae34c70369e0c6c6f34f5b5275625afdb}{R\+E\+G\+I\+O\+N\+\_\+\+L\+O\+C\+K\+\_\+\+W\+A\+I\+T\+\_\+\+T\+I\+M\+E} = 0
+\begin{DoxyCompactList}\small\item\em wait time for region writer lock \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a3132eb59e27938a80a4ca4d047f4912f}{R\+A\+N\+G\+E\+\_\+\+I\+N\+\_\+\+M\+E\+E\+L\+E\+\_\+\+M\+A\+L\+U\+S} = 10
+\begin{DoxyCompactList}\small\item\em The minus point for range units in melee combat. \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a3813d958b2e6df3057078b3569fdff4c}{H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E} = 4
+\begin{DoxyCompactList}\small\item\em Get the range from the ownership radius for the headquarter. \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a64ce972b2af4cf4888944e71e9086dca}{G\+U\+A\+R\+D\+T\+O\+W\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E} = 2
+\begin{DoxyCompactList}\small\item\em Get the range from the ownership radius for the guard tower. \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_afab1e8f29a7e873783bc2c0aabaf4274}{H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E} = 100
+\begin{DoxyCompactList}\small\item\em The H\+Q storage value. \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_aa59b895c1c117046c226c8864ee6e137}{P\+O\+P\+U\+L\+A\+T\+I\+O\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E} = 25
+\begin{DoxyCompactList}\small\item\em The ground population storage. \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a7084aeeac217877ec00107e5a9b2356a}{S\+C\+R\+A\+P\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E} = 50
+\begin{DoxyCompactList}\small\item\em The ground scrap storage \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a73dd9150d21d41b1e61af6c163d8cb6c}{E\+N\+E\+R\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E} = 20
+\begin{DoxyCompactList}\small\item\em The energy value. \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a1ab07bbbce0393349cffa44d47d306cd}{T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E} = 7
+\begin{DoxyCompactList}\small\item\em The technology maximum value. \end{DoxyCompactList}\item 
+const float \hyperlink{classCore_1_1Models_1_1Constants_a2a4a1624387cb4495c03b99ef7e3086a}{T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E} = 0.\+1f
+\begin{DoxyCompactList}\small\item\em The increment value for technology resource. \end{DoxyCompactList}\item 
+const int \hyperlink{classCore_1_1Models_1_1Constants_a455082f6f12f13a8c7d4f742f9a7a7b0}{S\+C\+R\+A\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E} = 2
+\begin{DoxyCompactList}\small\item\em The increment value for scrap resource. \end{DoxyCompactList}\item 
+const float \hyperlink{classCore_1_1Models_1_1Constants_ad71a4c6614e19c0ae08b56caa5241750}{P\+L\+U\+T\+O\+N\+I\+U\+M\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E} = 0.\+3f
+\begin{DoxyCompactList}\small\item\em The increment value for plutonium resource. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+all constants which should be known by the server and client 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Models_1_1Constants_adde91f87a25a57db171667f80b72d69f}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!C\+E\+L\+L\+\_\+\+S\+I\+Z\+E@{C\+E\+L\+L\+\_\+\+S\+I\+Z\+E}}
+\index{C\+E\+L\+L\+\_\+\+S\+I\+Z\+E@{C\+E\+L\+L\+\_\+\+S\+I\+Z\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{C\+E\+L\+L\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}const double Core.\+Models.\+Constants.\+C\+E\+L\+L\+\_\+\+S\+I\+Z\+E = 4}\label{classCore_1_1Models_1_1Constants_adde91f87a25a57db171667f80b72d69f}
+
+
+size of a cell at the equator (in meters) 
+
+\hypertarget{classCore_1_1Models_1_1Constants_ad31578c20b30dd96faf43b7a9f7b0389}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!E\+A\+R\+T\+H\+\_\+\+C\+I\+R\+C\+U\+M\+F\+E\+R\+E\+N\+C\+E@{E\+A\+R\+T\+H\+\_\+\+C\+I\+R\+C\+U\+M\+F\+E\+R\+E\+N\+C\+E}}
+\index{E\+A\+R\+T\+H\+\_\+\+C\+I\+R\+C\+U\+M\+F\+E\+R\+E\+N\+C\+E@{E\+A\+R\+T\+H\+\_\+\+C\+I\+R\+C\+U\+M\+F\+E\+R\+E\+N\+C\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{E\+A\+R\+T\+H\+\_\+\+C\+I\+R\+C\+U\+M\+F\+E\+R\+E\+N\+C\+E}]{\setlength{\rightskip}{0pt plus 5cm}const double Core.\+Models.\+Constants.\+E\+A\+R\+T\+H\+\_\+\+C\+I\+R\+C\+U\+M\+F\+E\+R\+E\+N\+C\+E = 40075036.\+0}\label{classCore_1_1Models_1_1Constants_ad31578c20b30dd96faf43b7a9f7b0389}
+
+
+earth size at equator (in meters) 
+
+\hypertarget{classCore_1_1Models_1_1Constants_ab564a2138347d9c65862ffe4d80c6735}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!E\+N\+D\+\_\+\+X@{E\+N\+D\+\_\+\+X}}
+\index{E\+N\+D\+\_\+\+X@{E\+N\+D\+\_\+\+X}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{E\+N\+D\+\_\+\+X}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+E\+N\+D\+\_\+\+X = 41519}\label{classCore_1_1Models_1_1Constants_ab564a2138347d9c65862ffe4d80c6735}
+
+
+end x of playable world 
+
+\hypertarget{classCore_1_1Models_1_1Constants_ae2cd96ff453731f63095739737f184b4}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!E\+N\+D\+\_\+\+Y@{E\+N\+D\+\_\+\+Y}}
+\index{E\+N\+D\+\_\+\+Y@{E\+N\+D\+\_\+\+Y}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{E\+N\+D\+\_\+\+Y}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+E\+N\+D\+\_\+\+Y = 26191}\label{classCore_1_1Models_1_1Constants_ae2cd96ff453731f63095739737f184b4}
+
+
+end y of playable world 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a73dd9150d21d41b1e61af6c163d8cb6c}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!E\+N\+E\+R\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E@{E\+N\+E\+R\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E}}
+\index{E\+N\+E\+R\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E@{E\+N\+E\+R\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{E\+N\+E\+R\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+E\+N\+E\+R\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E = 20}\label{classCore_1_1Models_1_1Constants_a73dd9150d21d41b1e61af6c163d8cb6c}
+
+
+The energy value. 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a64ce972b2af4cf4888944e71e9086dca}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!G\+U\+A\+R\+D\+T\+O\+W\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E@{G\+U\+A\+R\+D\+T\+O\+W\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E}}
+\index{G\+U\+A\+R\+D\+T\+O\+W\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E@{G\+U\+A\+R\+D\+T\+O\+W\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{G\+U\+A\+R\+D\+T\+O\+W\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+G\+U\+A\+R\+D\+T\+O\+W\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E = 2}\label{classCore_1_1Models_1_1Constants_a64ce972b2af4cf4888944e71e9086dca}
+
+
+Get the range from the ownership radius for the guard tower. 
+
+\hypertarget{classCore_1_1Models_1_1Constants_afab1e8f29a7e873783bc2c0aabaf4274}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E@{H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E}}
+\index{H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E@{H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E = 100}\label{classCore_1_1Models_1_1Constants_afab1e8f29a7e873783bc2c0aabaf4274}
+
+
+The H\+Q storage value. 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a3813d958b2e6df3057078b3569fdff4c}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E@{H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E}}
+\index{H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E@{H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+H\+E\+A\+D\+Q\+U\+A\+R\+T\+E\+R\+\_\+\+T\+E\+R\+R\+I\+T\+O\+R\+Y\+\_\+\+R\+A\+N\+G\+E = 4}\label{classCore_1_1Models_1_1Constants_a3813d958b2e6df3057078b3569fdff4c}
+
+
+Get the range from the ownership radius for the headquarter. 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a26b3d6b0c7f17fdac4b0789c3a6adec6}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X@{M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X}}
+\index{M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X@{M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X = 16}\label{classCore_1_1Models_1_1Constants_a26b3d6b0c7f17fdac4b0789c3a6adec6}
+
+
+amount of regions per folder x 
+
+\hypertarget{classCore_1_1Models_1_1Constants_ad49dbef4256b0be04e921acc8bcef4a8}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y@{M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y}}
+\index{M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y@{M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+M\+A\+J\+O\+R\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y = 16}\label{classCore_1_1Models_1_1Constants_ad49dbef4256b0be04e921acc8bcef4a8}
+
+
+amount of regions per folder y 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a09b8f7514cdf1d440f7bbaff8fe843c2}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+E\+S\+\_\+\+P\+E\+R\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+O\+N@{M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+E\+S\+\_\+\+P\+E\+R\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+O\+N}}
+\index{M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+E\+S\+\_\+\+P\+E\+R\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+O\+N@{M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+E\+S\+\_\+\+P\+E\+R\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+O\+N}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+E\+S\+\_\+\+P\+E\+R\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+M\+A\+X\+\_\+\+E\+N\+T\+R\+I\+E\+S\+\_\+\+P\+E\+R\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+O\+N = 25}\label{classCore_1_1Models_1_1Constants_a09b8f7514cdf1d440f7bbaff8fe843c2}
+
+
+if there are more than entries in a Linked\+List/array, the A\+P\+I will dismiss the request for safety reasons 
+
+\hypertarget{classCore_1_1Models_1_1Constants_ad71a4c6614e19c0ae08b56caa5241750}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!P\+L\+U\+T\+O\+N\+I\+U\+M\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E@{P\+L\+U\+T\+O\+N\+I\+U\+M\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E}}
+\index{P\+L\+U\+T\+O\+N\+I\+U\+M\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E@{P\+L\+U\+T\+O\+N\+I\+U\+M\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{P\+L\+U\+T\+O\+N\+I\+U\+M\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}const float Core.\+Models.\+Constants.\+P\+L\+U\+T\+O\+N\+I\+U\+M\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E = 0.\+3f}\label{classCore_1_1Models_1_1Constants_ad71a4c6614e19c0ae08b56caa5241750}
+
+
+The increment value for plutonium resource. 
+
+\hypertarget{classCore_1_1Models_1_1Constants_aa59b895c1c117046c226c8864ee6e137}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!P\+O\+P\+U\+L\+A\+T\+I\+O\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E@{P\+O\+P\+U\+L\+A\+T\+I\+O\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E}}
+\index{P\+O\+P\+U\+L\+A\+T\+I\+O\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E@{P\+O\+P\+U\+L\+A\+T\+I\+O\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{P\+O\+P\+U\+L\+A\+T\+I\+O\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+P\+O\+P\+U\+L\+A\+T\+I\+O\+N\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E = 25}\label{classCore_1_1Models_1_1Constants_aa59b895c1c117046c226c8864ee6e137}
+
+
+The ground population storage. 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a3132eb59e27938a80a4ca4d047f4912f}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!R\+A\+N\+G\+E\+\_\+\+I\+N\+\_\+\+M\+E\+E\+L\+E\+\_\+\+M\+A\+L\+U\+S@{R\+A\+N\+G\+E\+\_\+\+I\+N\+\_\+\+M\+E\+E\+L\+E\+\_\+\+M\+A\+L\+U\+S}}
+\index{R\+A\+N\+G\+E\+\_\+\+I\+N\+\_\+\+M\+E\+E\+L\+E\+\_\+\+M\+A\+L\+U\+S@{R\+A\+N\+G\+E\+\_\+\+I\+N\+\_\+\+M\+E\+E\+L\+E\+\_\+\+M\+A\+L\+U\+S}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{R\+A\+N\+G\+E\+\_\+\+I\+N\+\_\+\+M\+E\+E\+L\+E\+\_\+\+M\+A\+L\+U\+S}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+R\+A\+N\+G\+E\+\_\+\+I\+N\+\_\+\+M\+E\+E\+L\+E\+\_\+\+M\+A\+L\+U\+S = 10}\label{classCore_1_1Models_1_1Constants_a3132eb59e27938a80a4ca4d047f4912f}
+
+
+The minus point for range units in melee combat. 
+
+\hypertarget{classCore_1_1Models_1_1Constants_ae34c70369e0c6c6f34f5b5275625afdb}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!R\+E\+G\+I\+O\+N\+\_\+\+L\+O\+C\+K\+\_\+\+W\+A\+I\+T\+\_\+\+T\+I\+M\+E@{R\+E\+G\+I\+O\+N\+\_\+\+L\+O\+C\+K\+\_\+\+W\+A\+I\+T\+\_\+\+T\+I\+M\+E}}
+\index{R\+E\+G\+I\+O\+N\+\_\+\+L\+O\+C\+K\+\_\+\+W\+A\+I\+T\+\_\+\+T\+I\+M\+E@{R\+E\+G\+I\+O\+N\+\_\+\+L\+O\+C\+K\+\_\+\+W\+A\+I\+T\+\_\+\+T\+I\+M\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{R\+E\+G\+I\+O\+N\+\_\+\+L\+O\+C\+K\+\_\+\+W\+A\+I\+T\+\_\+\+T\+I\+M\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+R\+E\+G\+I\+O\+N\+\_\+\+L\+O\+C\+K\+\_\+\+W\+A\+I\+T\+\_\+\+T\+I\+M\+E = 0}\label{classCore_1_1Models_1_1Constants_ae34c70369e0c6c6f34f5b5275625afdb}
+
+
+wait time for region writer lock 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a2d02174b6a70404c1d8093c81eb47cb2}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X@{R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X}}
+\index{R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X@{R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+X = 32}\label{classCore_1_1Models_1_1Constants_a2d02174b6a70404c1d8093c81eb47cb2}
+
+
+amount of cells per region x 
+
+\hypertarget{classCore_1_1Models_1_1Constants_ad7f91cdefc9377eb37c98a50e0d1c068}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y@{R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y}}
+\index{R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y@{R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+R\+E\+G\+I\+O\+N\+\_\+\+S\+I\+Z\+E\+\_\+\+Y = 32}\label{classCore_1_1Models_1_1Constants_ad7f91cdefc9377eb37c98a50e0d1c068}
+
+
+amount of cells per region y 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a455082f6f12f13a8c7d4f742f9a7a7b0}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!S\+C\+R\+A\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E@{S\+C\+R\+A\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E}}
+\index{S\+C\+R\+A\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E@{S\+C\+R\+A\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{S\+C\+R\+A\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+S\+C\+R\+A\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E = 2}\label{classCore_1_1Models_1_1Constants_a455082f6f12f13a8c7d4f742f9a7a7b0}
+
+
+The increment value for scrap resource. 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a7084aeeac217877ec00107e5a9b2356a}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!S\+C\+R\+A\+P\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E@{S\+C\+R\+A\+P\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E}}
+\index{S\+C\+R\+A\+P\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E@{S\+C\+R\+A\+P\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{S\+C\+R\+A\+P\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+S\+C\+R\+A\+P\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+V\+A\+L\+U\+E = 50}\label{classCore_1_1Models_1_1Constants_a7084aeeac217877ec00107e5a9b2356a}
+
+
+The ground scrap storage 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a04216f06fce4df1266355ba32c59ac21}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!S\+T\+A\+R\+T\+\_\+\+X@{S\+T\+A\+R\+T\+\_\+\+X}}
+\index{S\+T\+A\+R\+T\+\_\+\+X@{S\+T\+A\+R\+T\+\_\+\+X}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{S\+T\+A\+R\+T\+\_\+\+X}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+S\+T\+A\+R\+T\+\_\+\+X = 41504}\label{classCore_1_1Models_1_1Constants_a04216f06fce4df1266355ba32c59ac21}
+
+
+start x of playable world 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a0da8b0008fff8b2529d5a8e298b29e5f}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!S\+T\+A\+R\+T\+\_\+\+Y@{S\+T\+A\+R\+T\+\_\+\+Y}}
+\index{S\+T\+A\+R\+T\+\_\+\+Y@{S\+T\+A\+R\+T\+\_\+\+Y}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{S\+T\+A\+R\+T\+\_\+\+Y}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+S\+T\+A\+R\+T\+\_\+\+Y = 26184}\label{classCore_1_1Models_1_1Constants_a0da8b0008fff8b2529d5a8e298b29e5f}
+
+
+start y of playable world 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a2a4a1624387cb4495c03b99ef7e3086a}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E@{T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E}}
+\index{T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E@{T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}const float Core.\+Models.\+Constants.\+T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+I\+N\+C\+R\+E\+M\+E\+N\+T\+\_\+\+V\+A\+L\+U\+E = 0.\+1f}\label{classCore_1_1Models_1_1Constants_a2a4a1624387cb4495c03b99ef7e3086a}
+
+
+The increment value for technology resource. 
+
+\hypertarget{classCore_1_1Models_1_1Constants_a1ab07bbbce0393349cffa44d47d306cd}{}\index{Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}!T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E@{T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E}}
+\index{T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E@{T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E}!Core\+::\+Models\+::\+Constants@{Core\+::\+Models\+::\+Constants}}
+\subsubsection[{T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int Core.\+Models.\+Constants.\+T\+E\+C\+H\+N\+O\+L\+O\+G\+Y\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+U\+E = 7}\label{classCore_1_1Models_1_1Constants_a1ab07bbbce0393349cffa44d47d306cd}
+
+
+The technology maximum value. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Models_1_1Constants_ad31578c20b30dd96faf43b7a9f7b0389}{const double {\bfseries E\-A\-R\-T\-H\-\_\-\-C\-I\-R\-C\-U\-M\-F\-E\-R\-E\-N\-C\-E} = 40075036.\-0}\label{classCore_1_1Models_1_1Constants_ad31578c20b30dd96faf43b7a9f7b0389}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Constants_a2d02174b6a70404c1d8093c81eb47cb2}{const int {\bfseries R\-E\-G\-I\-O\-N\-\_\-\-S\-I\-Z\-E\-\_\-\-X} = 32}\label{classCore_1_1Models_1_1Constants_a2d02174b6a70404c1d8093c81eb47cb2}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Constants_ad7f91cdefc9377eb37c98a50e0d1c068}{const int {\bfseries R\-E\-G\-I\-O\-N\-\_\-\-S\-I\-Z\-E\-\_\-\-Y} = 32}\label{classCore_1_1Models_1_1Constants_ad7f91cdefc9377eb37c98a50e0d1c068}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Constants_a26b3d6b0c7f17fdac4b0789c3a6adec6}{const int {\bfseries M\-A\-J\-O\-R\-\_\-\-R\-E\-G\-I\-O\-N\-\_\-\-S\-I\-Z\-E\-\_\-\-X} = 16}\label{classCore_1_1Models_1_1Constants_a26b3d6b0c7f17fdac4b0789c3a6adec6}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Constants_ad49dbef4256b0be04e921acc8bcef4a8}{const int {\bfseries M\-A\-J\-O\-R\-\_\-\-R\-E\-G\-I\-O\-N\-\_\-\-S\-I\-Z\-E\-\_\-\-Y} = 16}\label{classCore_1_1Models_1_1Constants_ad49dbef4256b0be04e921acc8bcef4a8}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Constants_a04216f06fce4df1266355ba32c59ac21}{const int {\bfseries S\-T\-A\-R\-T\-\_\-\-X} = 41504}\label{classCore_1_1Models_1_1Constants_a04216f06fce4df1266355ba32c59ac21}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Constants_ab564a2138347d9c65862ffe4d80c6735}{const int {\bfseries E\-N\-D\-\_\-\-X} = 41519}\label{classCore_1_1Models_1_1Constants_ab564a2138347d9c65862ffe4d80c6735}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Constants_a0da8b0008fff8b2529d5a8e298b29e5f}{const int {\bfseries S\-T\-A\-R\-T\-\_\-\-Y} = 26184}\label{classCore_1_1Models_1_1Constants_a0da8b0008fff8b2529d5a8e298b29e5f}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Constants_ae2cd96ff453731f63095739737f184b4}{const int {\bfseries E\-N\-D\-\_\-\-Y} = 26191}\label{classCore_1_1Models_1_1Constants_ae2cd96ff453731f63095739737f184b4}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Constants_a09b8f7514cdf1d440f7bbaff8fe843c2}{const int {\bfseries M\-A\-X\-\_\-\-E\-N\-T\-R\-I\-E\-S\-\_\-\-P\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T\-I\-O\-N} = 25}\label{classCore_1_1Models_1_1Constants_a09b8f7514cdf1d440f7bbaff8fe843c2}
-
-\item 
-\hypertarget{classCore_1_1Models_1_1Constants_ae34c70369e0c6c6f34f5b5275625afdb}{const int {\bfseries R\-E\-G\-I\-O\-N\-\_\-\-L\-O\-C\-K\-\_\-\-W\-A\-I\-T\-\_\-\-T\-I\-M\-E} = 0}\label{classCore_1_1Models_1_1Constants_ae34c70369e0c6c6f34f5b5275625afdb}
-
-\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
-\item 
-base/\-Models/Constants.\-cs\end{DoxyCompactItemize}
+base/\+Models/Constants.\+cs\end{DoxyCompactItemize}

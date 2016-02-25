@@ -1,40 +1,87 @@
-\hypertarget{classCore_1_1Connections_1_1Response}{\section{Core.\-Connections.\-Response Class Reference}
-\label{classCore_1_1Connections_1_1Response}\index{Core.\-Connections.\-Response@{Core.\-Connections.\-Response}}
-}
+\hypertarget{classCore_1_1Connections_1_1Response}{}\section{Core.\+Connections.\+Response Class Reference}
+\label{classCore_1_1Connections_1_1Response}\index{Core.\+Connections.\+Response@{Core.\+Connections.\+Response}}
 
 
-\hyperlink{classCore_1_1Connections_1_1Response}{Response} class which is used at every response (except login response) Will be serialised before sending, should be deserialised after recieving.  
+Standard response class which is used at every response (except login). Will be serialized before sending, should be deserialized after receiving.  
 
 
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bfseries Reponse\-Status} \{ {\bfseries O\-K}, 
-{\bfseries E\-R\-R\-O\-R}, 
-{\bfseries I\-N\-T\-E\-R\-N\-A\-L\-\_\-\-E\-R\-R\-O\-R}
- \}
+enum \hyperlink{classCore_1_1Connections_1_1Response_a87c0ec7f5f782b30edebe2098acabab0}{Reponse\+Status} \{ {\bfseries O\+K}, 
+{\bfseries E\+R\+R\+O\+R}, 
+{\bfseries I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+E\+R\+R\+O\+R}
+ \}\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Connections_1_1Response}{Response} status, (if and) which error occurred while the server tried to execute the request. \end{DoxyCompactList}
 \end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCore_1_1Connections_1_1Response_a5b36846768c756a8c6aa045024ac834a}{Response} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Connections_1_1Response}{Core.\+Connections.\+Response} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classCore_1_1Connections_1_1Response_aa9f4fef77b99465a399e0af5111609ef}{Reponse\-Status {\bfseries Status}}\label{classCore_1_1Connections_1_1Response_aa9f4fef77b99465a399e0af5111609ef}
-
-\item 
-\hypertarget{classCore_1_1Connections_1_1Response_a4464e6ff81ca7d159485536b1f5edeec}{Linked\-List$<$ Linked\-List\\*
-$<$ \hyperlink{classCore_1_1Models_1_1Action}{Core.\-Models.\-Action} $>$ $>$ {\bfseries Actions}}\label{classCore_1_1Connections_1_1Response_a4464e6ff81ca7d159485536b1f5edeec}
-
-\item 
-\hypertarget{classCore_1_1Connections_1_1Response_a3e678090e1fb696f0e3c7dfaca9b1275}{Linked\-List$<$ Linked\-List\\*
-$<$ \hyperlink{classCore_1_1Models_1_1Entity}{Core.\-Models.\-Entity} $>$ $>$ {\bfseries Entities}}\label{classCore_1_1Connections_1_1Response_a3e678090e1fb696f0e3c7dfaca9b1275}
-
-\end{DoxyCompactItemize}
+\hyperlink{classCore_1_1Connections_1_1Response_a87c0ec7f5f782b30edebe2098acabab0}{Reponse\+Status} \hyperlink{classCore_1_1Connections_1_1Response_aa9f4fef77b99465a399e0af5111609ef}{Status}
+\begin{DoxyCompactList}\small\item\em The status, only use other data if Status == O\+K. \end{DoxyCompactList}\item 
+Linked\+List$<$ Linked\+List$<$ \hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action} $>$ $>$ \hyperlink{classCore_1_1Connections_1_1Response_a4464e6ff81ca7d159485536b1f5edeec}{Actions}
+\begin{DoxyCompactList}\small\item\em The actions which the server executed at the requested regions. \end{DoxyCompactList}\item 
+Linked\+List$<$ Linked\+List$<$ \hyperlink{classCore_1_1Models_1_1Entity}{Core.\+Models.\+Entity} $>$ $>$ \hyperlink{classCore_1_1Connections_1_1Response_a3e678090e1fb696f0e3c7dfaca9b1275}{Entities}
+\begin{DoxyCompactList}\small\item\em The entities which are at the requested regions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\hyperlink{classCore_1_1Connections_1_1Response}{Response} class which is used at every response (except login response) Will be serialised before sending, should be deserialised after recieving. 
+Standard response class which is used at every response (except login). Will be serialized before sending, should be deserialized after receiving. 
 
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\subsection{Member Enumeration Documentation}
+\hypertarget{classCore_1_1Connections_1_1Response_a87c0ec7f5f782b30edebe2098acabab0}{}\index{Core\+::\+Connections\+::\+Response@{Core\+::\+Connections\+::\+Response}!Reponse\+Status@{Reponse\+Status}}
+\index{Reponse\+Status@{Reponse\+Status}!Core\+::\+Connections\+::\+Response@{Core\+::\+Connections\+::\+Response}}
+\subsubsection[{Reponse\+Status}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Core.\+Connections.\+Response.\+Reponse\+Status}\hspace{0.3cm}{\ttfamily [strong]}}\label{classCore_1_1Connections_1_1Response_a87c0ec7f5f782b30edebe2098acabab0}
+
+
+\hyperlink{classCore_1_1Connections_1_1Response}{Response} status, (if and) which error occurred while the server tried to execute the request. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Connections_1_1Response_a5b36846768c756a8c6aa045024ac834a}{}\index{Core\+::\+Connections\+::\+Response@{Core\+::\+Connections\+::\+Response}!Response@{Response}}
+\index{Response@{Response}!Core\+::\+Connections\+::\+Response@{Core\+::\+Connections\+::\+Response}}
+\subsubsection[{Response()}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Connections.\+Response.\+Response (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Connections_1_1Response_a5b36846768c756a8c6aa045024ac834a}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Connections_1_1Response}{Core.\+Connections.\+Response} class. 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Connections_1_1Response_a4464e6ff81ca7d159485536b1f5edeec}{}\index{Core\+::\+Connections\+::\+Response@{Core\+::\+Connections\+::\+Response}!Actions@{Actions}}
+\index{Actions@{Actions}!Core\+::\+Connections\+::\+Response@{Core\+::\+Connections\+::\+Response}}
+\subsubsection[{Actions}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<$Linked\+List$<${\bf Core.\+Models.\+Action}$>$ $>$ Core.\+Connections.\+Response.\+Actions}\label{classCore_1_1Connections_1_1Response_a4464e6ff81ca7d159485536b1f5edeec}
+
+
+The actions which the server executed at the requested regions. 
+
+\hypertarget{classCore_1_1Connections_1_1Response_a3e678090e1fb696f0e3c7dfaca9b1275}{}\index{Core\+::\+Connections\+::\+Response@{Core\+::\+Connections\+::\+Response}!Entities@{Entities}}
+\index{Entities@{Entities}!Core\+::\+Connections\+::\+Response@{Core\+::\+Connections\+::\+Response}}
+\subsubsection[{Entities}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+List$<$Linked\+List$<${\bf Core.\+Models.\+Entity}$>$ $>$ Core.\+Connections.\+Response.\+Entities}\label{classCore_1_1Connections_1_1Response_a3e678090e1fb696f0e3c7dfaca9b1275}
+
+
+The entities which are at the requested regions. 
+
+\hypertarget{classCore_1_1Connections_1_1Response_aa9f4fef77b99465a399e0af5111609ef}{}\index{Core\+::\+Connections\+::\+Response@{Core\+::\+Connections\+::\+Response}!Status@{Status}}
+\index{Status@{Status}!Core\+::\+Connections\+::\+Response@{Core\+::\+Connections\+::\+Response}}
+\subsubsection[{Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Reponse\+Status} Core.\+Connections.\+Response.\+Status}\label{classCore_1_1Connections_1_1Response_aa9f4fef77b99465a399e0af5111609ef}
+
+
+The status, only use other data if Status == O\+K. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-base/\-Connection/Response.\-cs\end{DoxyCompactItemize}
+base/\+Connection/Response.\+cs\end{DoxyCompactItemize}

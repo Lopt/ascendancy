@@ -1,0 +1,175 @@
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding}{}\section{Core.\+Controllers.\+Actions.\+Create\+Building Class Reference}
+\label{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding}\index{Core.\+Controllers.\+Actions.\+Create\+Building@{Core.\+Controllers.\+Actions.\+Create\+Building}}
+
+
+The action which creates an building.  
+
+
+Inheritance diagram for Core.\+Controllers.\+Actions.\+Create\+Building\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a1a7f34a6677fffc7fec4af294836a0b3}{Create\+Building} (\hyperlink{classCore_1_1Models_1_1ModelEntity}{Core.\+Models.\+Model\+Entity} model)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding}{Core.\+Controllers.\+Actions.\+Create\+Building} class. \end{DoxyCompactList}\item 
+override Concurrent\+Bag$<$ \hyperlink{classCore_1_1Models_1_1Region}{Core.\+Models.\+Region} $>$ \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a456e8ed7d1da08bd5da0baf58600a227}{Get\+Affected\+Regions} ()
+\begin{DoxyCompactList}\small\item\em Identify the affected region by this action. \end{DoxyCompactList}\item 
+override bool \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a254e5f630e31046dfb9bdc5e8b25d7d9}{Possible} ()
+\begin{DoxyCompactList}\small\item\em Returns if the action is even possible. \end{DoxyCompactList}\item 
+override Concurrent\+Bag$<$ \hyperlink{classCore_1_1Models_1_1Region}{Core.\+Models.\+Region} $>$ \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a6f640077d26410e8ea891b7300654c61}{Do} ()
+\begin{DoxyCompactList}\small\item\em Apply action-\/related changes to the world. \end{DoxyCompactList}\item 
+override bool \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_ad63ea1b154c0f04d79ed9a6316d41382}{Catch} ()
+\begin{DoxyCompactList}\small\item\em If an error occurred in do, this function will be called to set the data to the last known valid state. \end{DoxyCompactList}\item 
+override \hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\+Models.\+Region\+Position} \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a65ab8070b1fd436ee2f48c2c84b9ff57}{Get\+Region\+Position} ()
+\begin{DoxyCompactList}\small\item\em Override base.\+model.\+Region\+Position class and return the position\+I of the region. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a645f44c080fd7a2ac4f12dbc4f6a7236}{C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N} = \char`\"{}Create\+Position\char`\"{}
+\begin{DoxyCompactList}\small\item\em Position where the building should be build \end{DoxyCompactList}\item 
+const string \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a49558a15ada07def227affd712b6498a}{C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E} = \char`\"{}Create\+Building\char`\"{}
+\begin{DoxyCompactList}\small\item\em Type which building should be build \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The action which creates an building. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a1a7f34a6677fffc7fec4af294836a0b3}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}!Create\+Building@{Create\+Building}}
+\index{Create\+Building@{Create\+Building}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}}
+\subsubsection[{Create\+Building(\+Core.\+Models.\+Model\+Entity model)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Controllers.\+Actions.\+Create\+Building.\+Create\+Building (
+\begin{DoxyParamCaption}
+\item[{{\bf Core.\+Models.\+Model\+Entity}}]{model}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a1a7f34a6677fffc7fec4af294836a0b3}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding}{Core.\+Controllers.\+Actions.\+Create\+Building} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & action model.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_ad63ea1b154c0f04d79ed9a6316d41382}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}!Catch@{Catch}}
+\index{Catch@{Catch}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}}
+\subsubsection[{Catch()}]{\setlength{\rightskip}{0pt plus 5cm}override bool Core.\+Controllers.\+Actions.\+Create\+Building.\+Catch (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_ad63ea1b154c0f04d79ed9a6316d41382}
+
+
+If an error occurred in do, this function will be called to set the data to the last known valid state. 
+
+\begin{DoxyReturn}{Returns}
+true if rewind was successfully
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_ada4c77dfeee78ded10a6eb6a506defb4}{Core.\+Controllers.\+Actions.\+Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a6f640077d26410e8ea891b7300654c61}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}!Do@{Do}}
+\index{Do@{Do}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}}
+\subsubsection[{Do()}]{\setlength{\rightskip}{0pt plus 5cm}override Concurrent\+Bag$<${\bf Core.\+Models.\+Region}$>$ Core.\+Controllers.\+Actions.\+Create\+Building.\+Do (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a6f640077d26410e8ea891b7300654c61}
+
+
+Apply action-\/related changes to the world. 
+
+\begin{DoxyReturn}{Returns}
+Returns System.\+Collections.\+Concurrent.\+Concurrent\+Bag class with the affected region./$>$
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_afbb091ee28eee896951fac600188d446}{Core.\+Controllers.\+Actions.\+Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a456e8ed7d1da08bd5da0baf58600a227}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}!Get\+Affected\+Regions@{Get\+Affected\+Regions}}
+\index{Get\+Affected\+Regions@{Get\+Affected\+Regions}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}}
+\subsubsection[{Get\+Affected\+Regions()}]{\setlength{\rightskip}{0pt plus 5cm}override Concurrent\+Bag$<${\bf Core.\+Models.\+Region}$>$ Core.\+Controllers.\+Actions.\+Create\+Building.\+Get\+Affected\+Regions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a456e8ed7d1da08bd5da0baf58600a227}
+
+
+Identify the affected region by this action. 
+
+\begin{DoxyReturn}{Returns}
+Returns System.\+Collections.\+Concurrent.\+Concurrent\+Bag with the affected region. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_aa11bdeffff43ec47ac7c3d6843a85674}{Core.\+Controllers.\+Actions.\+Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a65ab8070b1fd436ee2f48c2c84b9ff57}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}!Get\+Region\+Position@{Get\+Region\+Position}}
+\index{Get\+Region\+Position@{Get\+Region\+Position}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}}
+\subsubsection[{Get\+Region\+Position()}]{\setlength{\rightskip}{0pt plus 5cm}override {\bf Core.\+Models.\+Region\+Position} Core.\+Controllers.\+Actions.\+Create\+Building.\+Get\+Region\+Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a65ab8070b1fd436ee2f48c2c84b9ff57}
+
+
+Override base.\+model.\+Region\+Position class and return the position\+I of the region. 
+
+\begin{DoxyReturn}{Returns}
+The region position.
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_a6ffe3c30cb5648a81f50096f4f332d5a}{Core.\+Controllers.\+Actions.\+Action}.
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a254e5f630e31046dfb9bdc5e8b25d7d9}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}!Possible@{Possible}}
+\index{Possible@{Possible}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}}
+\subsubsection[{Possible()}]{\setlength{\rightskip}{0pt plus 5cm}override bool Core.\+Controllers.\+Actions.\+Create\+Building.\+Possible (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a254e5f630e31046dfb9bdc5e8b25d7d9}
+
+
+Returns if the action is even possible. 
+
+\begin{DoxyReturn}{Returns}
+True if the Building is buildable at the current position, otherwise false.
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action_a405b995343a9394ad19e05a699a4e6d9}{Core.\+Controllers.\+Actions.\+Action}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a645f44c080fd7a2ac4f12dbc4f6a7236}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}!C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N@{C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N}}
+\index{C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N@{C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}}
+\subsubsection[{C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}const string Core.\+Controllers.\+Actions.\+Create\+Building.\+C\+R\+E\+A\+T\+E\+\_\+\+P\+O\+S\+I\+T\+I\+O\+N = \char`\"{}Create\+Position\char`\"{}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a645f44c080fd7a2ac4f12dbc4f6a7236}
+
+
+Position where the building should be build 
+
+\hypertarget{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a49558a15ada07def227affd712b6498a}{}\index{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}!C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E@{C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E}}
+\index{C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E@{C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E}!Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building@{Core\+::\+Controllers\+::\+Actions\+::\+Create\+Building}}
+\subsubsection[{C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E}]{\setlength{\rightskip}{0pt plus 5cm}const string Core.\+Controllers.\+Actions.\+Create\+Building.\+C\+R\+E\+A\+T\+I\+O\+N\+\_\+\+T\+Y\+P\+E = \char`\"{}Create\+Building\char`\"{}}\label{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding_a49558a15ada07def227affd712b6498a}
+
+
+Type which building should be build 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+base/\+Controllers/\+Actions/Create\+Building.\+cs\end{DoxyCompactItemize}

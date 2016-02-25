@@ -1,37 +1,321 @@
-\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler}{\section{Client.\-Common.\-Views.\-Touch\-Handler Class Reference}
-\label{classClient_1_1Common_1_1Views_1_1TouchHandler}\index{Client.\-Common.\-Views.\-Touch\-Handler@{Client.\-Common.\-Views.\-Touch\-Handler}}
-}
-\subsection*{Public Types}
-\begin{DoxyCompactItemize}
-\item 
-enum {\bfseries Touch\-Gesture} \{ \\*
-{\bfseries None}, 
-{\bfseries Start}, 
-{\bfseries Menu}, 
-{\bfseries Menu\-Drawn}, 
-\\*
-{\bfseries Move}, 
-{\bfseries Move\-Unit}, 
-{\bfseries Zoom}
- \}
-\end{DoxyCompactItemize}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler}{}\section{Client.\+Common.\+Views.\+Touch\+Handler Class Reference}
+\label{classClient_1_1Common_1_1Views_1_1TouchHandler}\index{Client.\+Common.\+Views.\+Touch\+Handler@{Client.\+Common.\+Views.\+Touch\+Handler}}
+
+
+The Touch handler class. Cocossharp Touch events can\textquotesingle{}t be stopped, every C\+C\+Node gets an Touch Event, even if it\textquotesingle{}s the last layer. When using this class instead of the cocossharp Touchlistener, you just need to change one thing\+: the return of the callback method is bool, not void. It is true, if the event got catched an no other should execute it -\/ and false otherwise.  
+
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_aa2c2df17a66537d6201a3cf1db1b619d}{{\bfseries Touch\-Handler} (\hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayer}{World\-Layer} world\-Layer)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_aa2c2df17a66537d6201a3cf1db1b619d}
-
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_af5bb713f557a2639a2dd50aa1edda74a}{Listen\+Began} (C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)
+\begin{DoxyCompactList}\small\item\em Lists a touch began event. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_ae3428734ec720799f2bacd4edb0748d2}{Stop\+Listen\+Began} (C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)
+\begin{DoxyCompactList}\small\item\em Removes a touch began event from the list. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_a889760b6bd4835e1544aeccbf9878769}{Listen\+Moved} (C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)
+\begin{DoxyCompactList}\small\item\em Lists a touch moved event. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_a169afc80080a0c44f69d858d54ff0f86}{Stop\+Listen\+Moved} (C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)
+\begin{DoxyCompactList}\small\item\em Removes a touch moved event from the list. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_a26316a1e857db6026e022ad7c02f03dd}{Listen\+Ended} (C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)
+\begin{DoxyCompactList}\small\item\em Lists a touch ended event. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_a6dd8a14f45c06af2e5ee30d69fd470f3}{Stop\+Listen\+Ended} (C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)
+\begin{DoxyCompactList}\small\item\em Removes a touch ended event from the list. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_a0379733869488e6be83c0a00c2645339}{Listen\+Cancelled} (C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)
+\begin{DoxyCompactList}\small\item\em Lists a touch cancelled event. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_accffcba25a5555c9bec3daa164704b12}{Stop\+Listen\+Cancelled} (C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)
+\begin{DoxyCompactList}\small\item\em Removes a touch cancelled event from the list. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_a1433c96d94455a33882d847045d23474}{Init} (C\+C\+Layer scene\+Layer)
+\begin{DoxyCompactList}\small\item\em Init the specified scene\+Layer. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_ad028e4ba02913c0d9d4cb55a658b07aa}{On\+Touches\+Moved} (List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)
+\begin{DoxyCompactList}\small\item\em On the touches moved event. Set the gesture to move or scale and scale or move the map. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_a3598c47862156c696862c5017567d630}{On\+Touches\+Ended} (List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)
+\begin{DoxyCompactList}\small\item\em Raises the touches ended event. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_a0f333bcab9b32f67c642243b393f4510}{On\+Touches\+Cancelled} (List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)
+\begin{DoxyCompactList}\small\item\em Raises the touches cancelled event. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_ac21679b308098e955aecb76562481078}{On\+Touches\+Began} (List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)
+\begin{DoxyCompactList}\small\item\em Raises the touches began event. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_a2e0e9566cfdd4ce64d05d681420291c8}{Reset} ()
+\begin{DoxyCompactList}\small\item\em Reset this instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_ad028e4ba02913c0d9d4cb55a658b07aa}{void {\bfseries On\-Touches\-Moved} (List$<$ C\-C\-Touch $>$ touches, C\-C\-Event touch\-Event)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_ad028e4ba02913c0d9d4cb55a658b07aa}
+static \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler}{Touch\+Handler} \hyperlink{classClient_1_1Common_1_1Views_1_1TouchHandler_a7e254f6b907749393dd3f65a38f5bec1}{Instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+The Touch handler class. Cocossharp Touch events can\textquotesingle{}t be stopped, every C\+C\+Node gets an Touch Event, even if it\textquotesingle{}s the last layer. When using this class instead of the cocossharp Touchlistener, you just need to change one thing\+: the return of the callback method is bool, not void. It is true, if the event got catched an no other should execute it -\/ and false otherwise. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_a1433c96d94455a33882d847045d23474}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!Init@{Init}}
+\index{Init@{Init}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{Init(\+C\+C\+Layer scene\+Layer)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+Init (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Layer}]{scene\+Layer}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_a1433c96d94455a33882d847045d23474}
+
+
+Init the specified scene\+Layer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene\+Layer} & The scene layer.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_af5bb713f557a2639a2dd50aa1edda74a}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!Listen\+Began@{Listen\+Began}}
+\index{Listen\+Began@{Listen\+Began}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{Listen\+Began(\+C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+Listen\+Began (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Node}]{node, }
+\item[{Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$}]{action}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_af5bb713f557a2639a2dd50aa1edda74a}
+
+
+Lists a touch began event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Handle to a Node.\\
+\hline
+{\em action} & an Action.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_a0379733869488e6be83c0a00c2645339}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!Listen\+Cancelled@{Listen\+Cancelled}}
+\index{Listen\+Cancelled@{Listen\+Cancelled}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{Listen\+Cancelled(\+C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+Listen\+Cancelled (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Node}]{node, }
+\item[{Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$}]{action}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_a0379733869488e6be83c0a00c2645339}
+
+
+Lists a touch cancelled event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Handle to a Node.\\
+\hline
+{\em action} & an Action.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_a26316a1e857db6026e022ad7c02f03dd}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!Listen\+Ended@{Listen\+Ended}}
+\index{Listen\+Ended@{Listen\+Ended}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{Listen\+Ended(\+C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+Listen\+Ended (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Node}]{node, }
+\item[{Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$}]{action}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_a26316a1e857db6026e022ad7c02f03dd}
+
+
+Lists a touch ended event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Handle to a Node.\\
+\hline
+{\em action} & an Action.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_a889760b6bd4835e1544aeccbf9878769}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!Listen\+Moved@{Listen\+Moved}}
+\index{Listen\+Moved@{Listen\+Moved}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{Listen\+Moved(\+C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+Listen\+Moved (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Node}]{node, }
+\item[{Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$}]{action}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_a889760b6bd4835e1544aeccbf9878769}
+
+
+Lists a touch moved event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Handle to a Node.\\
+\hline
+{\em action} & an Action.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_ac21679b308098e955aecb76562481078}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!On\+Touches\+Began@{On\+Touches\+Began}}
+\index{On\+Touches\+Began@{On\+Touches\+Began}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{On\+Touches\+Began(\+List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+On\+Touches\+Began (
+\begin{DoxyParamCaption}
+\item[{List$<$ C\+C\+Touch $>$}]{touches, }
+\item[{C\+C\+Event}]{touch\+Event}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_ac21679b308098e955aecb76562481078}
+
+
+Raises the touches began event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em touches} & List of Touches.\\
+\hline
+{\em touch\+Event} & Touch event.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_a0f333bcab9b32f67c642243b393f4510}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!On\+Touches\+Cancelled@{On\+Touches\+Cancelled}}
+\index{On\+Touches\+Cancelled@{On\+Touches\+Cancelled}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{On\+Touches\+Cancelled(\+List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+On\+Touches\+Cancelled (
+\begin{DoxyParamCaption}
+\item[{List$<$ C\+C\+Touch $>$}]{touches, }
+\item[{C\+C\+Event}]{touch\+Event}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_a0f333bcab9b32f67c642243b393f4510}
+
+
+Raises the touches cancelled event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em touches} & List of Touches.\\
+\hline
+{\em touch\+Event} & Touch event.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_a3598c47862156c696862c5017567d630}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!On\+Touches\+Ended@{On\+Touches\+Ended}}
+\index{On\+Touches\+Ended@{On\+Touches\+Ended}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{On\+Touches\+Ended(\+List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+On\+Touches\+Ended (
+\begin{DoxyParamCaption}
+\item[{List$<$ C\+C\+Touch $>$}]{touches, }
+\item[{C\+C\+Event}]{touch\+Event}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_a3598c47862156c696862c5017567d630}
+
+
+Raises the touches ended event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em touches} & List of Touches.\\
+\hline
+{\em touch\+Event} & Touch event.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_ad028e4ba02913c0d9d4cb55a658b07aa}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!On\+Touches\+Moved@{On\+Touches\+Moved}}
+\index{On\+Touches\+Moved@{On\+Touches\+Moved}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{On\+Touches\+Moved(\+List$<$ C\+C\+Touch $>$ touches, C\+C\+Event touch\+Event)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+On\+Touches\+Moved (
+\begin{DoxyParamCaption}
+\item[{List$<$ C\+C\+Touch $>$}]{touches, }
+\item[{C\+C\+Event}]{touch\+Event}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_ad028e4ba02913c0d9d4cb55a658b07aa}
+
+
+On the touches moved event. Set the gesture to move or scale and scale or move the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em touches} & Touches, where the user touched.\\
+\hline
+{\em touch\+Event} & Touch event.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_a2e0e9566cfdd4ce64d05d681420291c8}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!Reset@{Reset}}
+\index{Reset@{Reset}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{Reset()}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+Reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_a2e0e9566cfdd4ce64d05d681420291c8}
+
+
+Reset this instance. 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_ae3428734ec720799f2bacd4edb0748d2}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!Stop\+Listen\+Began@{Stop\+Listen\+Began}}
+\index{Stop\+Listen\+Began@{Stop\+Listen\+Began}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{Stop\+Listen\+Began(\+C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+Stop\+Listen\+Began (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Node}]{node, }
+\item[{Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$}]{action}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_ae3428734ec720799f2bacd4edb0748d2}
+
+
+Removes a touch began event from the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Handle to a Node.\\
+\hline
+{\em action} & an Action.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_accffcba25a5555c9bec3daa164704b12}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!Stop\+Listen\+Cancelled@{Stop\+Listen\+Cancelled}}
+\index{Stop\+Listen\+Cancelled@{Stop\+Listen\+Cancelled}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{Stop\+Listen\+Cancelled(\+C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+Stop\+Listen\+Cancelled (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Node}]{node, }
+\item[{Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$}]{action}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_accffcba25a5555c9bec3daa164704b12}
+
+
+Removes a touch cancelled event from the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Handle to a Node.\\
+\hline
+{\em action} & an Action.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_a6dd8a14f45c06af2e5ee30d69fd470f3}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!Stop\+Listen\+Ended@{Stop\+Listen\+Ended}}
+\index{Stop\+Listen\+Ended@{Stop\+Listen\+Ended}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{Stop\+Listen\+Ended(\+C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+Stop\+Listen\+Ended (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Node}]{node, }
+\item[{Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$}]{action}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_a6dd8a14f45c06af2e5ee30d69fd470f3}
+
+
+Removes a touch ended event from the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Handle to a Node.\\
+\hline
+{\em action} & an Action.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_a169afc80080a0c44f69d858d54ff0f86}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!Stop\+Listen\+Moved@{Stop\+Listen\+Moved}}
+\index{Stop\+Listen\+Moved@{Stop\+Listen\+Moved}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{Stop\+Listen\+Moved(\+C\+C\+Node node, Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$ action)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Touch\+Handler.\+Stop\+Listen\+Moved (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Node}]{node, }
+\item[{Func$<$ List$<$ C\+C\+Touch $>$, C\+C\+Event, bool $>$}]{action}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_a169afc80080a0c44f69d858d54ff0f86}
+
+
+Removes a touch moved event from the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Handle to a Node.\\
+\hline
+{\em action} & an Action.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_a7e254f6b907749393dd3f65a38f5bec1}{}\index{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}!Instance@{Instance}}
+\index{Instance@{Instance}!Client\+::\+Common\+::\+Views\+::\+Touch\+Handler@{Client\+::\+Common\+::\+Views\+::\+Touch\+Handler}}
+\subsubsection[{Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Touch\+Handler} Client.\+Common.\+Views.\+Touch\+Handler.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_a7e254f6b907749393dd3f65a38f5bec1}
+
+
+Gets the instance. 
+
+The instance.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_ac21679b308098e955aecb76562481078}{void {\bfseries On\-Touches\-Began} (List$<$ C\-C\-Touch $>$ touches, C\-C\-Event touch\-Event)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_ac21679b308098e955aecb76562481078}
-
-\item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1TouchHandler_a3598c47862156c696862c5017567d630}{void {\bfseries On\-Touches\-Ended} (List$<$ C\-C\-Touch $>$ touches, C\-C\-Event touch\-Event)}\label{classClient_1_1Common_1_1Views_1_1TouchHandler_a3598c47862156c696862c5017567d630}
-
-\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
-\item 
-client/client/client.\-Common/\-Views/Touch\-Handler.\-cs\end{DoxyCompactItemize}
+client/client/client.\+Common/\+Views/Touch\+Handler.\+cs\end{DoxyCompactItemize}

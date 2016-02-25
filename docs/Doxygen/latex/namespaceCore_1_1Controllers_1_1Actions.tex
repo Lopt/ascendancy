@@ -1,18 +1,15 @@
-\hypertarget{namespaceCore_1_1Controllers_1_1Actions}{\section{Package Core.\-Controllers.\-Actions}
-\label{namespaceCore_1_1Controllers_1_1Actions}\index{Core.\-Controllers.\-Actions@{Core.\-Controllers.\-Actions}}
-}
+\hypertarget{namespaceCore_1_1Controllers_1_1Actions}{}\section{Core.\+Controllers.\+Actions Namespace Reference}
+\label{namespaceCore_1_1Controllers_1_1Actions}\index{Core.\+Controllers.\+Actions@{Core.\+Controllers.\+Actions}}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action}{Action}
-\item 
-class \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreatBuilding}{Creat\-Building}
-\item 
-class \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateHeadquarter}{Create\-Headquarter}
-\item 
-class \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateUnit}{Create\-Unit}
-\item 
-class \hyperlink{classCore_1_1Controllers_1_1Actions_1_1MoveUnit}{Move\-Unit}
-\item 
-class \hyperlink{classCore_1_1Controllers_1_1Actions_1_1TestAction}{Test\-Action}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action}{Action} class. Should be used as base for each other action. \hyperlink{namespaceCore_1_1Controllers_1_1Actions}{Actions} are part of the game logic, which can be used from the server or the client to manipulate the world. Every action should do deterministic calculations, so the client can calculate the current game state by an old game state and the list of actions which were executed since the last loaded game state. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateBuilding}{Create\+Building}
+\begin{DoxyCompactList}\small\item\em The action which creates an building. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateTerritoryBuilding}{Create\+Territory\+Building}
+\begin{DoxyCompactList}\small\item\em The action which creates an building. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Controllers_1_1Actions_1_1CreateUnit}{Create\+Unit}
+\begin{DoxyCompactList}\small\item\em Create unit. \end{DoxyCompactList}\item 
+class \hyperlink{classCore_1_1Controllers_1_1Actions_1_1MoveUnit}{Move\+Unit}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCore_1_1Controllers_1_1Actions_1_1Action}{Action} to move an unit \end{DoxyCompactList}\end{DoxyCompactItemize}

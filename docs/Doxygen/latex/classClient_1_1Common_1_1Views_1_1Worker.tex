@@ -1,30 +1,107 @@
-\hypertarget{classClient_1_1Common_1_1Views_1_1Worker}{\section{Client.\-Common.\-Views.\-Worker Class Reference}
-\label{classClient_1_1Common_1_1Views_1_1Worker}\index{Client.\-Common.\-Views.\-Worker@{Client.\-Common.\-Views.\-Worker}}
-}
+\hypertarget{classClient_1_1Common_1_1Views_1_1Worker}{}\section{Client.\+Common.\+Views.\+Worker Class Reference}
+\label{classClient_1_1Common_1_1Views_1_1Worker}\index{Client.\+Common.\+Views.\+Worker@{Client.\+Common.\+Views.\+Worker}}
+
+
+The \hyperlink{classClient_1_1Common_1_1Views_1_1Worker}{Worker} do the actions on the view.  
+
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1Worker_a0914012575e1fd70a9bbeb819dc71912}{{\bfseries Worker} (\hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayer}{Views.\-World\-Layer} world\-Layer)}\label{classClient_1_1Common_1_1Views_1_1Worker_a0914012575e1fd70a9bbeb819dc71912}
-
-\item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1Worker_a2d11d9c1897409b49838113d58621940}{void {\bfseries Schedule} (float frame\-Times\-In\-Second)}\label{classClient_1_1Common_1_1Views_1_1Worker_a2d11d9c1897409b49838113d58621940}
-
-\end{DoxyCompactItemize}
+void \hyperlink{classClient_1_1Common_1_1Views_1_1Worker_a2d11d9c1897409b49838113d58621940}{Schedule} (float frame\+Times\+In\+Second)
+\begin{DoxyCompactList}\small\item\em Do the actions. \end{DoxyCompactList}\item 
+void \hyperlink{classClient_1_1Common_1_1Views_1_1Worker_aff74f2e82c8172f6eb0ca36103d9e0b9}{Init} (\hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex}{World\+Layer\+Hex} world\+Layer)
+\begin{DoxyCompactList}\small\item\em Init the specified world\+Layer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1Worker_a0994155b4af488be620e43884074ef3d}{Concurrent\-Queue\\*
-$<$ \hyperlink{classCore_1_1Models_1_1Action}{Core.\-Models.\-Action} $>$ {\bfseries Queue}}\label{classClient_1_1Common_1_1Views_1_1Worker_a0994155b4af488be620e43884074ef3d}
-
+Concurrent\+Queue$<$ \hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action} $>$ \hyperlink{classClient_1_1Common_1_1Views_1_1Worker_a0994155b4af488be620e43884074ef3d}{Queue}
+\begin{DoxyCompactList}\small\item\em The action queue. \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action} \hyperlink{classClient_1_1Common_1_1Views_1_1Worker_a2363fe6b4fc0e8978dc53fb9bce676e1}{Action} = null
+\begin{DoxyCompactList}\small\item\em The action. \end{DoxyCompactList}\item 
+\hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayerHex}{World\+Layer\+Hex} \hyperlink{classClient_1_1Common_1_1Views_1_1Worker_ad93fe39b0876e5f1d7673e657364740d}{World\+Layer\+Hex}
+\begin{DoxyCompactList}\small\item\em The world layer hex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1Worker_a2363fe6b4fc0e8978dc53fb9bce676e1}{\hyperlink{classCore_1_1Models_1_1Action}{Core.\-Models.\-Action} {\bfseries Action} = null}\label{classClient_1_1Common_1_1Views_1_1Worker_a2363fe6b4fc0e8978dc53fb9bce676e1}
+static \hyperlink{classClient_1_1Common_1_1Views_1_1Worker}{Worker} \hyperlink{classClient_1_1Common_1_1Views_1_1Worker_a870b696110e6d83f21533e3ee250ef1a}{Instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+The \hyperlink{classClient_1_1Common_1_1Views_1_1Worker}{Worker} do the actions on the view. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1Worker_aff74f2e82c8172f6eb0ca36103d9e0b9}{}\index{Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}!Init@{Init}}
+\index{Init@{Init}!Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}}
+\subsubsection[{Init(\+World\+Layer\+Hex world\+Layer)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Worker.\+Init (
+\begin{DoxyParamCaption}
+\item[{{\bf World\+Layer\+Hex}}]{world\+Layer}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1Worker_aff74f2e82c8172f6eb0ca36103d9e0b9}
+
+
+Init the specified world\+Layer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world\+Layer} & World layer.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1Views_1_1Worker_a2d11d9c1897409b49838113d58621940}{}\index{Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}!Schedule@{Schedule}}
+\index{Schedule@{Schedule}!Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}}
+\subsubsection[{Schedule(float frame\+Times\+In\+Second)}]{\setlength{\rightskip}{0pt plus 5cm}void Client.\+Common.\+Views.\+Worker.\+Schedule (
+\begin{DoxyParamCaption}
+\item[{float}]{frame\+Times\+In\+Second}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1Views_1_1Worker_a2d11d9c1897409b49838113d58621940}
+
+
+Do the actions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame\+Times\+In\+Second} & Frame times in second.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1Worker_a2363fe6b4fc0e8978dc53fb9bce676e1}{}\index{Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}!Action@{Action}}
+\index{Action@{Action}!Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}}
+\subsubsection[{Action}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Core.\+Models.\+Action} Client.\+Common.\+Views.\+Worker.\+Action = null}\label{classClient_1_1Common_1_1Views_1_1Worker_a2363fe6b4fc0e8978dc53fb9bce676e1}
+
+
+The action. 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1Worker_a0994155b4af488be620e43884074ef3d}{}\index{Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}!Queue@{Queue}}
+\index{Queue@{Queue}!Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}}
+\subsubsection[{Queue}]{\setlength{\rightskip}{0pt plus 5cm}Concurrent\+Queue$<${\bf Core.\+Models.\+Action}$>$ Client.\+Common.\+Views.\+Worker.\+Queue}\label{classClient_1_1Common_1_1Views_1_1Worker_a0994155b4af488be620e43884074ef3d}
+
+
+The action queue. 
+
+\hypertarget{classClient_1_1Common_1_1Views_1_1Worker_ad93fe39b0876e5f1d7673e657364740d}{}\index{Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}!World\+Layer\+Hex@{World\+Layer\+Hex}}
+\index{World\+Layer\+Hex@{World\+Layer\+Hex}!Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}}
+\subsubsection[{World\+Layer\+Hex}]{\setlength{\rightskip}{0pt plus 5cm}{\bf World\+Layer\+Hex} Client.\+Common.\+Views.\+Worker.\+World\+Layer\+Hex}\label{classClient_1_1Common_1_1Views_1_1Worker_ad93fe39b0876e5f1d7673e657364740d}
+
+
+The world layer hex. 
+
+
+
+\subsection{Property Documentation}
+\hypertarget{classClient_1_1Common_1_1Views_1_1Worker_a870b696110e6d83f21533e3ee250ef1a}{}\index{Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}!Instance@{Instance}}
+\index{Instance@{Instance}!Client\+::\+Common\+::\+Views\+::\+Worker@{Client\+::\+Common\+::\+Views\+::\+Worker}}
+\subsubsection[{Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Worker} Client.\+Common.\+Views.\+Worker.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}\label{classClient_1_1Common_1_1Views_1_1Worker_a870b696110e6d83f21533e3ee250ef1a}
+
+
+Gets the instance. 
+
+The instance.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1Views_1_1Worker_af01ec626a8929a469606d68f1f7d18c1}{\hyperlink{classClient_1_1Common_1_1Views_1_1WorldLayer}{Views.\-World\-Layer} {\bfseries World\-Layer}}\label{classClient_1_1Common_1_1Views_1_1Worker_af01ec626a8929a469606d68f1f7d18c1}
-
-\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
-\item 
-client/client/client.\-Common/\-Views/Worker.\-cs\end{DoxyCompactItemize}
+client/client/client.\+Common/\+Views/Worker.\+cs\end{DoxyCompactItemize}

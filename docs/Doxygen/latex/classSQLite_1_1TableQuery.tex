@@ -1,0 +1,79 @@
+\hypertarget{classSQLite_1_1TableQuery}{}\section{S\+Q\+Lite.\+Table\+Query$<$ T $>$ Class Template Reference}
+\label{classSQLite_1_1TableQuery}\index{S\+Q\+Lite.\+Table\+Query$<$ T $>$@{S\+Q\+Lite.\+Table\+Query$<$ T $>$}}
+Inheritance diagram for S\+Q\+Lite.\+Table\+Query$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSQLite_1_1TableQuery}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a2e3874f45af10a8c44db821c7a848aab}{}{\bfseries Table\+Query} (\hyperlink{classSQLite_1_1SQLiteConnection}{S\+Q\+Lite\+Connection} conn)\label{classSQLite_1_1TableQuery_a2e3874f45af10a8c44db821c7a848aab}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a744de6c9fda8bf39de015ae41c0b2cb3}{}\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ U $>$ {\bfseries Clone$<$ U $>$} ()\label{classSQLite_1_1TableQuery_a744de6c9fda8bf39de015ae41c0b2cb3}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_aafcda8a0d85fc7708bc29cc1ae254be5}{}\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ T $>$ {\bfseries Where} (Expression$<$ Func$<$ T, bool $>$$>$ pred\+Expr)\label{classSQLite_1_1TableQuery_aafcda8a0d85fc7708bc29cc1ae254be5}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_abc1454c5581e01ee57873a8c59101d5c}{}\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ T $>$ {\bfseries Take} (int n)\label{classSQLite_1_1TableQuery_abc1454c5581e01ee57873a8c59101d5c}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a4bf49d4c603ea8a6db6d65e51bdd6458}{}\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ T $>$ {\bfseries Skip} (int n)\label{classSQLite_1_1TableQuery_a4bf49d4c603ea8a6db6d65e51bdd6458}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a1adf19dc2456239c4b4a900995b2794d}{}T {\bfseries Element\+At} (int index)\label{classSQLite_1_1TableQuery_a1adf19dc2456239c4b4a900995b2794d}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a158964fb1e56e6679ab94cf101dcc6b3}{}\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ T $>$ {\bfseries Deferred} ()\label{classSQLite_1_1TableQuery_a158964fb1e56e6679ab94cf101dcc6b3}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_ae35684d62851a521aac3419af0c565fb}{}\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ T $>$ {\bfseries Order\+By$<$ U $>$} (Expression$<$ Func$<$ T, U $>$$>$ order\+Expr)\label{classSQLite_1_1TableQuery_ae35684d62851a521aac3419af0c565fb}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_aacf40c5e9162c7f25ebdb78a2811aec9}{}\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ T $>$ {\bfseries Order\+By\+Descending$<$ U $>$} (Expression$<$ Func$<$ T, U $>$$>$ order\+Expr)\label{classSQLite_1_1TableQuery_aacf40c5e9162c7f25ebdb78a2811aec9}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a8fd46c541dda61605ecdcada1684b9b7}{}\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ T $>$ {\bfseries Then\+By$<$ U $>$} (Expression$<$ Func$<$ T, U $>$$>$ order\+Expr)\label{classSQLite_1_1TableQuery_a8fd46c541dda61605ecdcada1684b9b7}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a589fb8db3bbfe57b0f08aeea32e574ee}{}\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ T $>$ {\bfseries Then\+By\+Descending$<$ U $>$} (Expression$<$ Func$<$ T, U $>$$>$ order\+Expr)\label{classSQLite_1_1TableQuery_a589fb8db3bbfe57b0f08aeea32e574ee}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a292ef3b90067c4393cf377c369d942a1}{}\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ T\+Result $>$ {\bfseries Join$<$ T\+Inner, T\+Key, T\+Result $>$} (\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ T\+Inner $>$ inner, Expression$<$ Func$<$ T, T\+Key $>$$>$ outer\+Key\+Selector, Expression$<$ Func$<$ T\+Inner, T\+Key $>$$>$ inner\+Key\+Selector, Expression$<$ Func$<$ T, T\+Inner, T\+Result $>$$>$ result\+Selector)\label{classSQLite_1_1TableQuery_a292ef3b90067c4393cf377c369d942a1}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a3726c9bfa1bb9a0efa35f847a3d9d77e}{}\hyperlink{classSQLite_1_1TableQuery}{Table\+Query}$<$ T\+Result $>$ {\bfseries Select$<$ T\+Result $>$} (Expression$<$ Func$<$ T, T\+Result $>$$>$ selector)\label{classSQLite_1_1TableQuery_a3726c9bfa1bb9a0efa35f847a3d9d77e}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_afc74d6d1b8ca720c3a26d6a0c0ca6b86}{}int {\bfseries Count} ()\label{classSQLite_1_1TableQuery_afc74d6d1b8ca720c3a26d6a0c0ca6b86}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_abe589a906a2c592fc25587d441acca33}{}int {\bfseries Count} (Expression$<$ Func$<$ T, bool $>$$>$ pred\+Expr)\label{classSQLite_1_1TableQuery_abe589a906a2c592fc25587d441acca33}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a3929d540dd0a888291077626d4690202}{}I\+Enumerator$<$ T $>$ {\bfseries Get\+Enumerator} ()\label{classSQLite_1_1TableQuery_a3929d540dd0a888291077626d4690202}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a5d9bc1e1c29e1da74671e17033f2badb}{}T {\bfseries First} ()\label{classSQLite_1_1TableQuery_a5d9bc1e1c29e1da74671e17033f2badb}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a517c2275d7bd055d07f0b810cb8ae179}{}T {\bfseries First\+Or\+Default} ()\label{classSQLite_1_1TableQuery_a517c2275d7bd055d07f0b810cb8ae179}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a1bd298971d8227cb1b0b57c2260a681a}{}\hyperlink{classSQLite_1_1SQLiteConnection}{S\+Q\+Lite\+Connection} {\bfseries Connection}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}\label{classSQLite_1_1TableQuery_a1bd298971d8227cb1b0b57c2260a681a}
+
+\item 
+\hypertarget{classSQLite_1_1TableQuery_a9ec80a11185abc4cc6766789d1723b4c}{}\hyperlink{classSQLite_1_1TableMapping}{Table\+Mapping} {\bfseries Table}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}\label{classSQLite_1_1TableQuery_a9ec80a11185abc4cc6766789d1723b4c}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+packages/sqlite-\/net.\+1.\+0.\+8/content/S\+Q\+Lite.\+cs\end{DoxyCompactItemize}

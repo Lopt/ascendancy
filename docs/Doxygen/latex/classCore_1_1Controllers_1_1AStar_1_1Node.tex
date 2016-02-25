@@ -1,0 +1,110 @@
+\hypertarget{classCore_1_1Controllers_1_1AStar_1_1Node}{}\section{Core.\+Controllers.\+A\+Star.\+Node Class Reference}
+\label{classCore_1_1Controllers_1_1AStar_1_1Node}\index{Core.\+Controllers.\+A\+Star.\+Node@{Core.\+Controllers.\+A\+Star.\+Node}}
+
+
+Represents a single node on a grid that is being searched for a path between two points  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node_aeb30baa8c27247c0db4353875388d140}{Node} (\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} location, \hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} end\+Location)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node}{Core.\+Controllers.\+A\+Star.\+Node} class. It set the position\+I of the \hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node}{Node}, set the node state to open and calculate the travel cost to the destination tile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceCore_1_1Controllers_1_1AStar_a35790b9ccd2b721f3e90cb49769caab9}{Node\+State} \hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node_ab00b1c1216243bb73857cbee2831f662}{State}
+\begin{DoxyCompactList}\small\item\em Flags whether the node is open, closed or untested by the \hyperlink{classCore_1_1Controllers_1_1AStar_1_1PathFinder}{Path\+Finder} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCore_1_1Models_1_1PositionI}{Position\+I} \hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node_a035f31738d38e887cef34e7d1a34ea39}{Location}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the location. \end{DoxyCompactList}\item 
+double \hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node_a53a25b3c833102975ae2d3526f58abcc}{G}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the g value it stand for the costs from start to this position. \end{DoxyCompactList}\item 
+double \hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node_affebd55aa7d7b5471b1157055f5c2a7a}{H}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the h value it stand for the estimated cost from this position to end destination. \end{DoxyCompactList}\item 
+double \hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node_a41c0c83fe6dc82b87b6654ed171351b9}{F}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the f value it stand for estimated total cost (F = G + H). \end{DoxyCompactList}\item 
+\hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node}{Node} \hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node_a1965c3b218d991e0d791521cade9bec1}{Parent\+Node}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the parent node. The start node\textquotesingle{}s parent is always null. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a single node on a grid that is being searched for a path between two points 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCore_1_1Controllers_1_1AStar_1_1Node_aeb30baa8c27247c0db4353875388d140}{}\index{Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}!Node@{Node}}
+\index{Node@{Node}!Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}}
+\subsubsection[{Node(\+Position\+I location, Position\+I end\+Location)}]{\setlength{\rightskip}{0pt plus 5cm}Core.\+Controllers.\+A\+Star.\+Node.\+Node (
+\begin{DoxyParamCaption}
+\item[{{\bf Position\+I}}]{location, }
+\item[{{\bf Position\+I}}]{end\+Location}
+\end{DoxyParamCaption}
+)}\label{classCore_1_1Controllers_1_1AStar_1_1Node_aeb30baa8c27247c0db4353875388d140}
+
+
+Initializes a new instance of the \hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node}{Core.\+Controllers.\+A\+Star.\+Node} class. It set the position\+I of the \hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node}{Node}, set the node state to open and calculate the travel cost to the destination tile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & Current Position\+I of the \hyperlink{classCore_1_1Controllers_1_1AStar_1_1Node}{Node}.\\
+\hline
+{\em end\+Location} & Position\+I of the destination tile.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCore_1_1Controllers_1_1AStar_1_1Node_ab00b1c1216243bb73857cbee2831f662}{}\index{Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}!State@{State}}
+\index{State@{State}!Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}}
+\subsubsection[{State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node\+State} Core.\+Controllers.\+A\+Star.\+Node.\+State}\label{classCore_1_1Controllers_1_1AStar_1_1Node_ab00b1c1216243bb73857cbee2831f662}
+
+
+Flags whether the node is open, closed or untested by the \hyperlink{classCore_1_1Controllers_1_1AStar_1_1PathFinder}{Path\+Finder} 
+
+
+
+\subsection{Property Documentation}
+\hypertarget{classCore_1_1Controllers_1_1AStar_1_1Node_a41c0c83fe6dc82b87b6654ed171351b9}{}\index{Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}!F@{F}}
+\index{F@{F}!Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}}
+\subsubsection[{F}]{\setlength{\rightskip}{0pt plus 5cm}double Core.\+Controllers.\+A\+Star.\+Node.\+F\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Controllers_1_1AStar_1_1Node_a41c0c83fe6dc82b87b6654ed171351b9}
+
+
+Gets the f value it stand for estimated total cost (F = G + H). 
+
+The f.\hypertarget{classCore_1_1Controllers_1_1AStar_1_1Node_a53a25b3c833102975ae2d3526f58abcc}{}\index{Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}!G@{G}}
+\index{G@{G}!Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}}
+\subsubsection[{G}]{\setlength{\rightskip}{0pt plus 5cm}double Core.\+Controllers.\+A\+Star.\+Node.\+G\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Controllers_1_1AStar_1_1Node_a53a25b3c833102975ae2d3526f58abcc}
+
+
+Gets the g value it stand for the costs from start to this position. 
+
+The g.\hypertarget{classCore_1_1Controllers_1_1AStar_1_1Node_affebd55aa7d7b5471b1157055f5c2a7a}{}\index{Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}!H@{H}}
+\index{H@{H}!Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}}
+\subsubsection[{H}]{\setlength{\rightskip}{0pt plus 5cm}double Core.\+Controllers.\+A\+Star.\+Node.\+H\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Controllers_1_1AStar_1_1Node_affebd55aa7d7b5471b1157055f5c2a7a}
+
+
+Gets the h value it stand for the estimated cost from this position to end destination. 
+
+The h.\hypertarget{classCore_1_1Controllers_1_1AStar_1_1Node_a035f31738d38e887cef34e7d1a34ea39}{}\index{Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}!Location@{Location}}
+\index{Location@{Location}!Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}}
+\subsubsection[{Location}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position\+I} Core.\+Controllers.\+A\+Star.\+Node.\+Location\hspace{0.3cm}{\ttfamily [get]}}\label{classCore_1_1Controllers_1_1AStar_1_1Node_a035f31738d38e887cef34e7d1a34ea39}
+
+
+Gets the location. 
+
+The location.\hypertarget{classCore_1_1Controllers_1_1AStar_1_1Node_a1965c3b218d991e0d791521cade9bec1}{}\index{Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}!Parent\+Node@{Parent\+Node}}
+\index{Parent\+Node@{Parent\+Node}!Core\+::\+Controllers\+::\+A\+Star\+::\+Node@{Core\+::\+Controllers\+::\+A\+Star\+::\+Node}}
+\subsubsection[{Parent\+Node}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Core.\+Controllers.\+A\+Star.\+Node.\+Parent\+Node\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{classCore_1_1Controllers_1_1AStar_1_1Node_a1965c3b218d991e0d791521cade9bec1}
+
+
+Gets or sets the parent node. The start node\textquotesingle{}s parent is always null. 
+
+The parent node.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+base/\+Controllers/\+Actions/\+A\+Star/Node.\+cs\end{DoxyCompactItemize}

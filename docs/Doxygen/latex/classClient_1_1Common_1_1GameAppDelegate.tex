@@ -1,7 +1,11 @@
-\hypertarget{classClient_1_1Common_1_1GameAppDelegate}{\section{Client.\-Common.\-Game\-App\-Delegate Class Reference}
-\label{classClient_1_1Common_1_1GameAppDelegate}\index{Client.\-Common.\-Game\-App\-Delegate@{Client.\-Common.\-Game\-App\-Delegate}}
-}
-Inheritance diagram for Client.\-Common.\-Game\-App\-Delegate\-:\begin{figure}[H]
+\hypertarget{classClient_1_1Common_1_1GameAppDelegate}{}\section{Client.\+Common.\+Game\+App\+Delegate Class Reference}
+\label{classClient_1_1Common_1_1GameAppDelegate}\index{Client.\+Common.\+Game\+App\+Delegate@{Client.\+Common.\+Game\+App\+Delegate}}
+
+
+The Game app delegate is the game entry point.  
+
+
+Inheritance diagram for Client.\+Common.\+Game\+App\+Delegate\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classClient_1_1Common_1_1GameAppDelegate}
@@ -10,35 +14,128 @@ Inheritance diagram for Client.\-Common.\-Game\-App\-Delegate\-:\begin{figure}[H
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bfseries Phases} \{ {\bfseries Start}, 
-{\bfseries Start\-Scene}, 
-{\bfseries Game\-Scene}, 
+enum \hyperlink{classClient_1_1Common_1_1GameAppDelegate_aa0175b28b3986f7cf57680f07558ab3c}{Phases} \{ \\*
+{\bfseries Start}, 
+{\bfseries Start\+Scene}, 
+{\bfseries Load\+Game\+Scene}, 
+{\bfseries Game\+Scene}, 
+\\*
 {\bfseries Exit}
- \}
+ \}\begin{DoxyCompactList}\small\item\em Game phases. \end{DoxyCompactList}
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1GameAppDelegate_aacda9c043b12acf24de4bc13a688f52e}{override void {\bfseries Application\-Did\-Finish\-Launching} (C\-C\-Application application, C\-C\-Window main\-Window)}\label{classClient_1_1Common_1_1GameAppDelegate_aacda9c043b12acf24de4bc13a688f52e}
-
-\item 
-\hypertarget{classClient_1_1Common_1_1GameAppDelegate_a524d489c10652931d4ea5159a34a72e5}{override void {\bfseries Application\-Did\-Enter\-Background} (C\-C\-Application application)}\label{classClient_1_1Common_1_1GameAppDelegate_a524d489c10652931d4ea5159a34a72e5}
-
-\item 
-\hypertarget{classClient_1_1Common_1_1GameAppDelegate_ad2625495e6b5a1c5853acde2ace6eccb}{override void {\bfseries Application\-Will\-Enter\-Foreground} (C\-C\-Application application)}\label{classClient_1_1Common_1_1GameAppDelegate_ad2625495e6b5a1c5853acde2ace6eccb}
-
-\end{DoxyCompactItemize}
+override void \hyperlink{classClient_1_1Common_1_1GameAppDelegate_aacda9c043b12acf24de4bc13a688f52e}{Application\+Did\+Finish\+Launching} (C\+C\+Application application, C\+C\+Window main\+Window)
+\begin{DoxyCompactList}\small\item\em When the Application did finish launching. \end{DoxyCompactList}\item 
+override void \hyperlink{classClient_1_1Common_1_1GameAppDelegate_a524d489c10652931d4ea5159a34a72e5}{Application\+Did\+Enter\+Background} (C\+C\+Application application)
+\begin{DoxyCompactList}\small\item\em When the Application enters background. Stops listening the Geo\+Location and pause the application. \end{DoxyCompactList}\item 
+override void \hyperlink{classClient_1_1Common_1_1GameAppDelegate_ad2625495e6b5a1c5853acde2ace6eccb}{Application\+Will\+Enter\+Foreground} (C\+C\+Application application)
+\begin{DoxyCompactList}\small\item\em When the Application enters foreground, then end the pause and start listening the Geo\+Location. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1GameAppDelegate_aa626869ffdd0e3f8f46ab069bc24f0d1}{static \hyperlink{classCore_1_1Models_1_1Account}{Account} {\bfseries Account}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classClient_1_1Common_1_1GameAppDelegate_aa626869ffdd0e3f8f46ab069bc24f0d1}
+static \hyperlink{classCore_1_1Models_1_1Account}{Account} \hyperlink{classClient_1_1Common_1_1GameAppDelegate_aa626869ffdd0e3f8f46ab069bc24f0d1}{Account}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the account. \end{DoxyCompactList}\item 
+static Date\+Time \hyperlink{classClient_1_1Common_1_1GameAppDelegate_a53f8c229a2501eb9ae1fcb1c297ef406}{Server\+Time}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the server time. \end{DoxyCompactList}\item 
+\hyperlink{classClient_1_1Common_1_1GameAppDelegate_aa0175b28b3986f7cf57680f07558ab3c}{Phases} \hyperlink{classClient_1_1Common_1_1GameAppDelegate_a2fb6f0fd7533c38a555760efd3ea896b}{Phase}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the game phase. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+The Game app delegate is the game entry point. 
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classClient_1_1Common_1_1GameAppDelegate_aa0175b28b3986f7cf57680f07558ab3c}{}\index{Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}!Phases@{Phases}}
+\index{Phases@{Phases}!Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}}
+\subsubsection[{Phases}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Client.\+Common.\+Game\+App\+Delegate.\+Phases}\hspace{0.3cm}{\ttfamily [strong]}}\label{classClient_1_1Common_1_1GameAppDelegate_aa0175b28b3986f7cf57680f07558ab3c}
+
+
+Game phases. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classClient_1_1Common_1_1GameAppDelegate_a524d489c10652931d4ea5159a34a72e5}{}\index{Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}!Application\+Did\+Enter\+Background@{Application\+Did\+Enter\+Background}}
+\index{Application\+Did\+Enter\+Background@{Application\+Did\+Enter\+Background}!Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}}
+\subsubsection[{Application\+Did\+Enter\+Background(\+C\+C\+Application application)}]{\setlength{\rightskip}{0pt plus 5cm}override void Client.\+Common.\+Game\+App\+Delegate.\+Application\+Did\+Enter\+Background (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Application}]{application}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1GameAppDelegate_a524d489c10652931d4ea5159a34a72e5}
+
+
+When the Application enters background. Stops listening the Geo\+Location and pause the application. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em application} & Main Application.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1GameAppDelegate_aacda9c043b12acf24de4bc13a688f52e}{}\index{Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}!Application\+Did\+Finish\+Launching@{Application\+Did\+Finish\+Launching}}
+\index{Application\+Did\+Finish\+Launching@{Application\+Did\+Finish\+Launching}!Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}}
+\subsubsection[{Application\+Did\+Finish\+Launching(\+C\+C\+Application application, C\+C\+Window main\+Window)}]{\setlength{\rightskip}{0pt plus 5cm}override void Client.\+Common.\+Game\+App\+Delegate.\+Application\+Did\+Finish\+Launching (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Application}]{application, }
+\item[{C\+C\+Window}]{main\+Window}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1GameAppDelegate_aacda9c043b12acf24de4bc13a688f52e}
+
+
+When the Application did finish launching. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em application} & Main Application.\\
+\hline
+{\em main\+Window} & Main window.\\
+\hline
+\end{DoxyParams}
+\hypertarget{classClient_1_1Common_1_1GameAppDelegate_ad2625495e6b5a1c5853acde2ace6eccb}{}\index{Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}!Application\+Will\+Enter\+Foreground@{Application\+Will\+Enter\+Foreground}}
+\index{Application\+Will\+Enter\+Foreground@{Application\+Will\+Enter\+Foreground}!Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}}
+\subsubsection[{Application\+Will\+Enter\+Foreground(\+C\+C\+Application application)}]{\setlength{\rightskip}{0pt plus 5cm}override void Client.\+Common.\+Game\+App\+Delegate.\+Application\+Will\+Enter\+Foreground (
+\begin{DoxyParamCaption}
+\item[{C\+C\+Application}]{application}
+\end{DoxyParamCaption}
+)}\label{classClient_1_1Common_1_1GameAppDelegate_ad2625495e6b5a1c5853acde2ace6eccb}
+
+
+When the Application enters foreground, then end the pause and start listening the Geo\+Location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em application} & Main Application.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{classClient_1_1Common_1_1GameAppDelegate_aa626869ffdd0e3f8f46ab069bc24f0d1}{}\index{Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}!Account@{Account}}
+\index{Account@{Account}!Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}}
+\subsubsection[{Account}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Account} Client.\+Common.\+Game\+App\+Delegate.\+Account\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}\label{classClient_1_1Common_1_1GameAppDelegate_aa626869ffdd0e3f8f46ab069bc24f0d1}
+
+
+Gets the account. 
+
+The account.\hypertarget{classClient_1_1Common_1_1GameAppDelegate_a2fb6f0fd7533c38a555760efd3ea896b}{}\index{Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}!Phase@{Phase}}
+\index{Phase@{Phase}!Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}}
+\subsubsection[{Phase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Phases} Client.\+Common.\+Game\+App\+Delegate.\+Phase\hspace{0.3cm}{\ttfamily [get]}}\label{classClient_1_1Common_1_1GameAppDelegate_a2fb6f0fd7533c38a555760efd3ea896b}
+
+
+Gets the game phase. 
+
+The phase.\hypertarget{classClient_1_1Common_1_1GameAppDelegate_a53f8c229a2501eb9ae1fcb1c297ef406}{}\index{Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}!Server\+Time@{Server\+Time}}
+\index{Server\+Time@{Server\+Time}!Client\+::\+Common\+::\+Game\+App\+Delegate@{Client\+::\+Common\+::\+Game\+App\+Delegate}}
+\subsubsection[{Server\+Time}]{\setlength{\rightskip}{0pt plus 5cm}Date\+Time Client.\+Common.\+Game\+App\+Delegate.\+Server\+Time\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [set]}}\label{classClient_1_1Common_1_1GameAppDelegate_a53f8c229a2501eb9ae1fcb1c297ef406}
+
+
+Gets or sets the server time. 
+
+The server time.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classClient_1_1Common_1_1GameAppDelegate_a2fb6f0fd7533c38a555760efd3ea896b}{Phases {\bfseries Phase}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}}\label{classClient_1_1Common_1_1GameAppDelegate_a2fb6f0fd7533c38a555760efd3ea896b}
-
-\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
-\item 
-client/client/client.\-Common/Game\-App\-Delegate.\-cs\end{DoxyCompactItemize}
+client/client/client.\+Common/Game\+App\+Delegate.\+cs\end{DoxyCompactItemize}

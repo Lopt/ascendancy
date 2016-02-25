@@ -1,38 +1,95 @@
-\hypertarget{classServer_1_1Models_1_1ServerConstants}{\section{Server.\-Models.\-Server\-Constants Class Reference}
-\label{classServer_1_1Models_1_1ServerConstants}\index{Server.\-Models.\-Server\-Constants@{Server.\-Models.\-Server\-Constants}}
-}
+\hypertarget{classServer_1_1Models_1_1ServerConstants}{}\section{Server.\+Models.\+Server\+Constants Class Reference}
+\label{classServer_1_1Models_1_1ServerConstants}\index{Server.\+Models.\+Server\+Constants@{Server.\+Models.\+Server\+Constants}}
+
+
+Constants for the server  
+
+
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classServer_1_1Models_1_1ServerConstants_a7f75857909d69ae4f0383bd056bb7ece}{static readonly string {\bfseries T\-E\-R\-R\-A\-I\-N\-\_\-\-F\-I\-L\-E} = Path.\-Combine(\char`\"{}data\char`\"{}, \char`\"{}terrain.\-json\char`\"{})}\label{classServer_1_1Models_1_1ServerConstants_a7f75857909d69ae4f0383bd056bb7ece}
+static readonly string \hyperlink{classServer_1_1Models_1_1ServerConstants_a7f75857909d69ae4f0383bd056bb7ece}{T\+E\+R\+R\+A\+I\+N\+\_\+\+F\+I\+L\+E} = Path.\+Combine(\char`\"{}data\char`\"{}, \char`\"{}terrain.\+json\char`\"{})
+\begin{DoxyCompactList}\small\item\em path to the terrain definition file \end{DoxyCompactList}\item 
+static readonly string \hyperlink{classServer_1_1Models_1_1ServerConstants_ab3ffa60d4d7a6a7ca066f99e815b9471}{U\+N\+I\+T\+\_\+\+F\+I\+L\+E} = Path.\+Combine(\char`\"{}data\char`\"{}, \char`\"{}unit.\+json\char`\"{})
+\begin{DoxyCompactList}\small\item\em path to the unit definition file \end{DoxyCompactList}\item 
+static readonly string \hyperlink{classServer_1_1Models_1_1ServerConstants_a5d1875e241daeed9ec89b7ab3c49d3ec}{R\+E\+G\+I\+O\+N\+\_\+\+F\+I\+L\+E} = Path.\+Combine(\char`\"{}data\char`\"{}, Path.\+Combine(\char`\"{}ascendancy-\/world\char`\"{}, \char`\"{}world\char`\"{}, \char`\"{}\$Major\+Region\+X\char`\"{}, \char`\"{}\$Major\+Region\+Y\char`\"{}, \char`\"{}germany-\/\$Minor\+Region\+X-\/\$Minor\+Region\+Y.\+json\char`\"{}))
+\begin{DoxyCompactList}\small\item\em path to the region terrain file \end{DoxyCompactList}\item 
+static readonly string \hyperlink{classServer_1_1Models_1_1ServerConstants_aed13f8301da1cc1f8e0bc6c7a8936807}{D\+B\+\_\+\+P\+A\+T\+H} = Path.\+Combine(Environment.\+Current\+Directory, \char`\"{}D\+B\+\_\+\+Ascendancy\char`\"{})
+\begin{DoxyCompactList}\small\item\em path to the \hyperlink{namespaceServer_1_1DB}{D\+B} \end{DoxyCompactList}\item 
+static readonly int \hyperlink{classServer_1_1Models_1_1ServerConstants_a2627c643caf77b36fed32b74811438f2}{S\+A\+L\+T\+\_\+\+S\+I\+Z\+E} = 32
+\begin{DoxyCompactList}\small\item\em size of the salt for password encryption \end{DoxyCompactList}\item 
+static readonly int \hyperlink{classServer_1_1Models_1_1ServerConstants_a6b08db695329ec9edee41fa9d4275458}{H\+A\+S\+H\+\_\+\+C\+Y\+C\+L\+E\+S} = 32
+\begin{DoxyCompactList}\small\item\em cycles to compute the hash value \end{DoxyCompactList}\item 
+static readonly int \hyperlink{classServer_1_1Models_1_1ServerConstants_a1bfe8a7a369636cf459ee5769273b2b2}{A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+S} = 2
+\begin{DoxyCompactList}\small\item\em amount threads which execute actions \end{DoxyCompactList}\item 
+static readonly int \hyperlink{classServer_1_1Models_1_1ServerConstants_a5e2befbb0254cde1849bcc0a328fb91b}{A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+S\+L\+E\+E\+P} = 1
+\begin{DoxyCompactList}\small\item\em sleeping time of each thread when there is nothing to do \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Constants for the server 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classServer_1_1Models_1_1ServerConstants_a5e2befbb0254cde1849bcc0a328fb91b}{}\index{Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}!A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+S\+L\+E\+E\+P@{A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+S\+L\+E\+E\+P}}
+\index{A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+S\+L\+E\+E\+P@{A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+S\+L\+E\+E\+P}!Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}}
+\subsubsection[{A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+S\+L\+E\+E\+P}]{\setlength{\rightskip}{0pt plus 5cm}readonly int Server.\+Models.\+Server\+Constants.\+A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+S\+L\+E\+E\+P = 1\hspace{0.3cm}{\ttfamily [static]}}\label{classServer_1_1Models_1_1ServerConstants_a5e2befbb0254cde1849bcc0a328fb91b}
+
+
+sleeping time of each thread when there is nothing to do 
+
+\hypertarget{classServer_1_1Models_1_1ServerConstants_a1bfe8a7a369636cf459ee5769273b2b2}{}\index{Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}!A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+S@{A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+S}}
+\index{A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+S@{A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+S}!Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}}
+\subsubsection[{A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}readonly int Server.\+Models.\+Server\+Constants.\+A\+C\+T\+I\+O\+N\+\_\+\+T\+H\+R\+E\+A\+D\+S = 2\hspace{0.3cm}{\ttfamily [static]}}\label{classServer_1_1Models_1_1ServerConstants_a1bfe8a7a369636cf459ee5769273b2b2}
+
+
+amount threads which execute actions 
+
+\hypertarget{classServer_1_1Models_1_1ServerConstants_aed13f8301da1cc1f8e0bc6c7a8936807}{}\index{Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}!D\+B\+\_\+\+P\+A\+T\+H@{D\+B\+\_\+\+P\+A\+T\+H}}
+\index{D\+B\+\_\+\+P\+A\+T\+H@{D\+B\+\_\+\+P\+A\+T\+H}!Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}}
+\subsubsection[{D\+B\+\_\+\+P\+A\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}readonly string Server.\+Models.\+Server\+Constants.\+D\+B\+\_\+\+P\+A\+T\+H = Path.\+Combine(Environment.\+Current\+Directory, \char`\"{}D\+B\+\_\+\+Ascendancy\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}\label{classServer_1_1Models_1_1ServerConstants_aed13f8301da1cc1f8e0bc6c7a8936807}
+
+
+path to the \hyperlink{namespaceServer_1_1DB}{D\+B} 
+
+\hypertarget{classServer_1_1Models_1_1ServerConstants_a6b08db695329ec9edee41fa9d4275458}{}\index{Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}!H\+A\+S\+H\+\_\+\+C\+Y\+C\+L\+E\+S@{H\+A\+S\+H\+\_\+\+C\+Y\+C\+L\+E\+S}}
+\index{H\+A\+S\+H\+\_\+\+C\+Y\+C\+L\+E\+S@{H\+A\+S\+H\+\_\+\+C\+Y\+C\+L\+E\+S}!Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}}
+\subsubsection[{H\+A\+S\+H\+\_\+\+C\+Y\+C\+L\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}readonly int Server.\+Models.\+Server\+Constants.\+H\+A\+S\+H\+\_\+\+C\+Y\+C\+L\+E\+S = 32\hspace{0.3cm}{\ttfamily [static]}}\label{classServer_1_1Models_1_1ServerConstants_a6b08db695329ec9edee41fa9d4275458}
+
+
+cycles to compute the hash value 
+
+\hypertarget{classServer_1_1Models_1_1ServerConstants_a5d1875e241daeed9ec89b7ab3c49d3ec}{}\index{Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}!R\+E\+G\+I\+O\+N\+\_\+\+F\+I\+L\+E@{R\+E\+G\+I\+O\+N\+\_\+\+F\+I\+L\+E}}
+\index{R\+E\+G\+I\+O\+N\+\_\+\+F\+I\+L\+E@{R\+E\+G\+I\+O\+N\+\_\+\+F\+I\+L\+E}!Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}}
+\subsubsection[{R\+E\+G\+I\+O\+N\+\_\+\+F\+I\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}readonly string Server.\+Models.\+Server\+Constants.\+R\+E\+G\+I\+O\+N\+\_\+\+F\+I\+L\+E = Path.\+Combine(\char`\"{}data\char`\"{}, Path.\+Combine(\char`\"{}ascendancy-\/world\char`\"{}, \char`\"{}world\char`\"{}, \char`\"{}\$Major\+Region\+X\char`\"{}, \char`\"{}\$Major\+Region\+Y\char`\"{}, \char`\"{}germany-\/\$Minor\+Region\+X-\/\$Minor\+Region\+Y.\+json\char`\"{}))\hspace{0.3cm}{\ttfamily [static]}}\label{classServer_1_1Models_1_1ServerConstants_a5d1875e241daeed9ec89b7ab3c49d3ec}
+
+
+path to the region terrain file 
+
+\hypertarget{classServer_1_1Models_1_1ServerConstants_a2627c643caf77b36fed32b74811438f2}{}\index{Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}!S\+A\+L\+T\+\_\+\+S\+I\+Z\+E@{S\+A\+L\+T\+\_\+\+S\+I\+Z\+E}}
+\index{S\+A\+L\+T\+\_\+\+S\+I\+Z\+E@{S\+A\+L\+T\+\_\+\+S\+I\+Z\+E}!Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}}
+\subsubsection[{S\+A\+L\+T\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}readonly int Server.\+Models.\+Server\+Constants.\+S\+A\+L\+T\+\_\+\+S\+I\+Z\+E = 32\hspace{0.3cm}{\ttfamily [static]}}\label{classServer_1_1Models_1_1ServerConstants_a2627c643caf77b36fed32b74811438f2}
+
+
+size of the salt for password encryption 
+
+\hypertarget{classServer_1_1Models_1_1ServerConstants_a7f75857909d69ae4f0383bd056bb7ece}{}\index{Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}!T\+E\+R\+R\+A\+I\+N\+\_\+\+F\+I\+L\+E@{T\+E\+R\+R\+A\+I\+N\+\_\+\+F\+I\+L\+E}}
+\index{T\+E\+R\+R\+A\+I\+N\+\_\+\+F\+I\+L\+E@{T\+E\+R\+R\+A\+I\+N\+\_\+\+F\+I\+L\+E}!Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}}
+\subsubsection[{T\+E\+R\+R\+A\+I\+N\+\_\+\+F\+I\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}readonly string Server.\+Models.\+Server\+Constants.\+T\+E\+R\+R\+A\+I\+N\+\_\+\+F\+I\+L\+E = Path.\+Combine(\char`\"{}data\char`\"{}, \char`\"{}terrain.\+json\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}\label{classServer_1_1Models_1_1ServerConstants_a7f75857909d69ae4f0383bd056bb7ece}
+
+
+path to the terrain definition file 
+
+\hypertarget{classServer_1_1Models_1_1ServerConstants_ab3ffa60d4d7a6a7ca066f99e815b9471}{}\index{Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}!U\+N\+I\+T\+\_\+\+F\+I\+L\+E@{U\+N\+I\+T\+\_\+\+F\+I\+L\+E}}
+\index{U\+N\+I\+T\+\_\+\+F\+I\+L\+E@{U\+N\+I\+T\+\_\+\+F\+I\+L\+E}!Server\+::\+Models\+::\+Server\+Constants@{Server\+::\+Models\+::\+Server\+Constants}}
+\subsubsection[{U\+N\+I\+T\+\_\+\+F\+I\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}readonly string Server.\+Models.\+Server\+Constants.\+U\+N\+I\+T\+\_\+\+F\+I\+L\+E = Path.\+Combine(\char`\"{}data\char`\"{}, \char`\"{}unit.\+json\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}\label{classServer_1_1Models_1_1ServerConstants_ab3ffa60d4d7a6a7ca066f99e815b9471}
+
+
+path to the unit definition file 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classServer_1_1Models_1_1ServerConstants_ab3ffa60d4d7a6a7ca066f99e815b9471}{static readonly string {\bfseries U\-N\-I\-T\-\_\-\-F\-I\-L\-E} = Path.\-Combine(\char`\"{}data\char`\"{}, \char`\"{}unit.\-json\char`\"{})}\label{classServer_1_1Models_1_1ServerConstants_ab3ffa60d4d7a6a7ca066f99e815b9471}
-
-\item 
-\hypertarget{classServer_1_1Models_1_1ServerConstants_a5d1875e241daeed9ec89b7ab3c49d3ec}{static readonly string {\bfseries R\-E\-G\-I\-O\-N\-\_\-\-F\-I\-L\-E} = Path.\-Combine(\char`\"{}data\char`\"{}, Path.\-Combine(\char`\"{}ascendancy-\/world\char`\"{}, \char`\"{}world\char`\"{}, \char`\"{}\$Major\-Region\-X\char`\"{}, \char`\"{}\$Major\-Region\-Y\char`\"{}, \char`\"{}germany-\/\$Minor\-Region\-X-\/\$Minor\-Region\-Y.\-json\char`\"{}))}\label{classServer_1_1Models_1_1ServerConstants_a5d1875e241daeed9ec89b7ab3c49d3ec}
-
-\item 
-\hypertarget{classServer_1_1Models_1_1ServerConstants_aed13f8301da1cc1f8e0bc6c7a8936807}{static readonly string {\bfseries D\-B\-\_\-\-P\-A\-T\-H} = Path.\-Combine(Environment.\-Current\-Directory, \char`\"{}D\-B\-\_\-\-Ascendancy\char`\"{})}\label{classServer_1_1Models_1_1ServerConstants_aed13f8301da1cc1f8e0bc6c7a8936807}
-
-\item 
-\hypertarget{classServer_1_1Models_1_1ServerConstants_a2627c643caf77b36fed32b74811438f2}{static readonly int {\bfseries S\-A\-L\-T\-\_\-\-S\-I\-Z\-E} = 32}\label{classServer_1_1Models_1_1ServerConstants_a2627c643caf77b36fed32b74811438f2}
-
-\item 
-\hypertarget{classServer_1_1Models_1_1ServerConstants_a6b08db695329ec9edee41fa9d4275458}{static readonly int {\bfseries H\-A\-S\-H\-\_\-\-C\-Y\-C\-L\-E\-S} = 32}\label{classServer_1_1Models_1_1ServerConstants_a6b08db695329ec9edee41fa9d4275458}
-
-\item 
-\hypertarget{classServer_1_1Models_1_1ServerConstants_a484d3431882413f5a802a5f0ee9f05b9}{static readonly int {\bfseries C\-L\-E\-A\-N\-I\-N\-G\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L\-L} = 30 $\ast$ 60 $\ast$ 1000}\label{classServer_1_1Models_1_1ServerConstants_a484d3431882413f5a802a5f0ee9f05b9}
-
-\item 
-\hypertarget{classServer_1_1Models_1_1ServerConstants_a1bfe8a7a369636cf459ee5769273b2b2}{static readonly int {\bfseries A\-C\-T\-I\-O\-N\-\_\-\-T\-H\-R\-E\-A\-D\-S} = 2}\label{classServer_1_1Models_1_1ServerConstants_a1bfe8a7a369636cf459ee5769273b2b2}
-
-\item 
-\hypertarget{classServer_1_1Models_1_1ServerConstants_a5e2befbb0254cde1849bcc0a328fb91b}{static readonly int {\bfseries A\-C\-T\-I\-O\-N\-\_\-\-T\-H\-R\-E\-A\-D\-\_\-\-S\-L\-E\-E\-P} = 1}\label{classServer_1_1Models_1_1ServerConstants_a5e2befbb0254cde1849bcc0a328fb91b}
-
-\end{DoxyCompactItemize}
-
-
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
-\item 
-server/\-Models/Server\-Constants.\-cs\end{DoxyCompactItemize}
+tcpserver/\+Models/Server\+Constants.\+cs\end{DoxyCompactItemize}

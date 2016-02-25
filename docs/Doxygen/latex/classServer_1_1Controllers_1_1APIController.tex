@@ -1,57 +1,47 @@
-\hypertarget{classServer_1_1Controllers_1_1APIController}{\section{Server.\-Controllers.\-A\-P\-I\-Controller Class Reference}
-\label{classServer_1_1Controllers_1_1APIController}\index{Server.\-Controllers.\-A\-P\-I\-Controller@{Server.\-Controllers.\-A\-P\-I\-Controller}}
-}
+\hypertarget{classServer_1_1Controllers_1_1APIController}{}\section{Server.\+Controllers.\+A\+P\+I\+Controller Class Reference}
+\label{classServer_1_1Controllers_1_1APIController}\index{Server.\+Controllers.\+A\+P\+I\+Controller@{Server.\+Controllers.\+A\+P\+I\+Controller}}
 
 
-A\-P\-I Controller provides functionality to access the game. Every access from outside should use A\-P\-I Controller. As example \hyperlink{classServer_1_1Controllers_1_1HTTPController}{H\-T\-T\-P\-Controller} uses only A\-P\-I Controller. If we later switch to another protocol (or directly sockets) we just need to build another H\-T\-T\-P Controller-\/like which uses the A\-P\-I Controller functionality.  
+A\+P\+I Controller provides functionality to access the game. Every access from outside should use A\+P\+I Controller. As example H\+T\+T\+P\+Controller uses only A\+P\+I Controller. If we later switch to another protocol (or directly sockets) we just need to build another H\+T\+T\+P Controller-\/like which uses the A\+P\+I Controller functionality.  
 
 
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classServer_1_1Controllers_1_1APIController_1_1AveragePositionQueue}{Average\-Position\-Queue}
-\begin{DoxyCompactList}\small\item\em An Class which provides an queue with an position. It is used to avoid threading collisions. \end{DoxyCompactList}\item 
-class \hyperlink{classServer_1_1Controllers_1_1APIController_1_1RegionData}{Region\-Data}
-\end{DoxyCompactItemize}
+class \hyperlink{classServer_1_1Controllers_1_1APIController_1_1RegionData}{Region\+Data}
+\begin{DoxyCompactList}\small\item\em Region data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classCore_1_1Models_1_1Account}{Core.\-Models.\-Account} \hyperlink{classServer_1_1Controllers_1_1APIController_a00ed79b2c42e5c4f39319c38fc492b32}{Login} (string username, string password)
+\hyperlink{classCore_1_1Models_1_1Account}{Core.\+Models.\+Account} \hyperlink{classServer_1_1Controllers_1_1APIController_a00ed79b2c42e5c4f39319c38fc492b32}{Login} (string username, string password)
 \begin{DoxyCompactList}\small\item\em Login with a username und password, returns Account if everything worked, otherwise {\bfseries null} \end{DoxyCompactList}\item 
-void \hyperlink{classServer_1_1Controllers_1_1APIController_abca86085e8c85b2f94b0a95e47a89add}{Do\-Action} (\hyperlink{classCore_1_1Models_1_1Account}{Core.\-Models.\-Account} account, \hyperlink{classCore_1_1Models_1_1Action}{Core.\-Models.\-Action}\mbox{[}$\,$\mbox{]} actions)
+void \hyperlink{classServer_1_1Controllers_1_1APIController_abca86085e8c85b2f94b0a95e47a89add}{Do\+Action} (\hyperlink{classCore_1_1Models_1_1Account}{Core.\+Models.\+Account} account, \hyperlink{classCore_1_1Models_1_1Action}{Core.\+Models.\+Action}\mbox{[}$\,$\mbox{]} actions)
 \begin{DoxyCompactList}\small\item\em Send Actions the server so they will be executed. (but first, the actions have to wait in a queue) \end{DoxyCompactList}\item 
-\hyperlink{classServer_1_1Controllers_1_1APIController_1_1RegionData}{Region\-Data} \hyperlink{classServer_1_1Controllers_1_1APIController_a109e88f8d8e2006aa6408ae775779864}{Load\-Regions} (\hyperlink{classCore_1_1Models_1_1Account}{Core.\-Models.\-Account} account, \hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\-Models.\-Region\-Position}\mbox{[}$\,$\mbox{]} region\-Positions)
+\hyperlink{classServer_1_1Controllers_1_1APIController_1_1RegionData}{Region\+Data} \hyperlink{classServer_1_1Controllers_1_1APIController_a109e88f8d8e2006aa6408ae775779864}{Load\+Regions} (\hyperlink{classCore_1_1Models_1_1Account}{Core.\+Models.\+Account} account, \hyperlink{classCore_1_1Models_1_1RegionPosition}{Core.\+Models.\+Region\+Position}\mbox{[}$\,$\mbox{]} region\+Positions)
 \begin{DoxyCompactList}\small\item\em Loads the regions. \end{DoxyCompactList}\item 
 void \hyperlink{classServer_1_1Controllers_1_1APIController_ab0452ab5e12d38f778cc5db9b41bb3a0}{Worker} (object state)
 \begin{DoxyCompactList}\small\item\em Worker (normally an own thread) which runs until the application finishes. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{classServer_1_1Controllers_1_1APIController_aee12d29edee563a727c2309ffe94ed1c}{\hyperlink{classServer_1_1Controllers_1_1APIController_1_1AveragePositionQueue}{Average\-Position\-Queue}\mbox{[}$\,$\mbox{]} {\bfseries m\-\_\-threading\-Infos}}\label{classServer_1_1Controllers_1_1APIController_aee12d29edee563a727c2309ffe94ed1c}
-
-\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classServer_1_1Controllers_1_1APIController_aba201431eb3c55a67e96f3afb2751fc9}{static \hyperlink{classServer_1_1Controllers_1_1APIController}{A\-P\-I\-Controller} {\bfseries Instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}}\label{classServer_1_1Controllers_1_1APIController_aba201431eb3c55a67e96f3afb2751fc9}
-
-\end{DoxyCompactItemize}
+static \hyperlink{classServer_1_1Controllers_1_1APIController}{A\+P\+I\+Controller} \hyperlink{classServer_1_1Controllers_1_1APIController_aba201431eb3c55a67e96f3afb2751fc9}{Instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the singleton instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-A\-P\-I Controller provides functionality to access the game. Every access from outside should use A\-P\-I Controller. As example \hyperlink{classServer_1_1Controllers_1_1HTTPController}{H\-T\-T\-P\-Controller} uses only A\-P\-I Controller. If we later switch to another protocol (or directly sockets) we just need to build another H\-T\-T\-P Controller-\/like which uses the A\-P\-I Controller functionality. 
+A\+P\+I Controller provides functionality to access the game. Every access from outside should use A\+P\+I Controller. As example H\+T\+T\+P\+Controller uses only A\+P\+I Controller. If we later switch to another protocol (or directly sockets) we just need to build another H\+T\+T\+P Controller-\/like which uses the A\+P\+I Controller functionality. 
 
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classServer_1_1Controllers_1_1APIController_abca86085e8c85b2f94b0a95e47a89add}{\index{Server\-::\-Controllers\-::\-A\-P\-I\-Controller@{Server\-::\-Controllers\-::\-A\-P\-I\-Controller}!Do\-Action@{Do\-Action}}
-\index{Do\-Action@{Do\-Action}!Server::Controllers::APIController@{Server\-::\-Controllers\-::\-A\-P\-I\-Controller}}
-\subsubsection[{Do\-Action}]{\setlength{\rightskip}{0pt plus 5cm}void Server.\-Controllers.\-A\-P\-I\-Controller.\-Do\-Action (
+\hypertarget{classServer_1_1Controllers_1_1APIController_abca86085e8c85b2f94b0a95e47a89add}{}\index{Server\+::\+Controllers\+::\+A\+P\+I\+Controller@{Server\+::\+Controllers\+::\+A\+P\+I\+Controller}!Do\+Action@{Do\+Action}}
+\index{Do\+Action@{Do\+Action}!Server\+::\+Controllers\+::\+A\+P\+I\+Controller@{Server\+::\+Controllers\+::\+A\+P\+I\+Controller}}
+\subsubsection[{Do\+Action(\+Core.\+Models.\+Account account, Core.\+Models.\+Action[] actions)}]{\setlength{\rightskip}{0pt plus 5cm}void Server.\+Controllers.\+A\+P\+I\+Controller.\+Do\+Action (
 \begin{DoxyParamCaption}
-\item[{{\bf Core.\-Models.\-Account}}]{account, }
-\item[{{\bf Core.\-Models.\-Action}\mbox{[}$\,$\mbox{]}}]{actions}
+\item[{{\bf Core.\+Models.\+Account}}]{account, }
+\item[{{\bf Core.\+Models.\+Action}\mbox{[}$\,$\mbox{]}}]{actions}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1Controllers_1_1APIController_abca86085e8c85b2f94b0a95e47a89add}
+)}\label{classServer_1_1Controllers_1_1APIController_abca86085e8c85b2f94b0a95e47a89add}
 
 
 Send Actions the server so they will be executed. (but first, the actions have to wait in a queue) 
@@ -63,14 +53,14 @@ Send Actions the server so they will be executed. (but first, the actions have t
 {\em actions} & Array of Actions which should be executed.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classServer_1_1Controllers_1_1APIController_a109e88f8d8e2006aa6408ae775779864}{\index{Server\-::\-Controllers\-::\-A\-P\-I\-Controller@{Server\-::\-Controllers\-::\-A\-P\-I\-Controller}!Load\-Regions@{Load\-Regions}}
-\index{Load\-Regions@{Load\-Regions}!Server::Controllers::APIController@{Server\-::\-Controllers\-::\-A\-P\-I\-Controller}}
-\subsubsection[{Load\-Regions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Region\-Data} Server.\-Controllers.\-A\-P\-I\-Controller.\-Load\-Regions (
+\hypertarget{classServer_1_1Controllers_1_1APIController_a109e88f8d8e2006aa6408ae775779864}{}\index{Server\+::\+Controllers\+::\+A\+P\+I\+Controller@{Server\+::\+Controllers\+::\+A\+P\+I\+Controller}!Load\+Regions@{Load\+Regions}}
+\index{Load\+Regions@{Load\+Regions}!Server\+::\+Controllers\+::\+A\+P\+I\+Controller@{Server\+::\+Controllers\+::\+A\+P\+I\+Controller}}
+\subsubsection[{Load\+Regions(\+Core.\+Models.\+Account account, Core.\+Models.\+Region\+Position[] region\+Positions)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Region\+Data} Server.\+Controllers.\+A\+P\+I\+Controller.\+Load\+Regions (
 \begin{DoxyParamCaption}
-\item[{{\bf Core.\-Models.\-Account}}]{account, }
-\item[{{\bf Core.\-Models.\-Region\-Position}\mbox{[}$\,$\mbox{]}}]{region\-Positions}
+\item[{{\bf Core.\+Models.\+Account}}]{account, }
+\item[{{\bf Core.\+Models.\+Region\+Position}\mbox{[}$\,$\mbox{]}}]{region\+Positions}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1Controllers_1_1APIController_a109e88f8d8e2006aa6408ae775779864}
+)}\label{classServer_1_1Controllers_1_1APIController_a109e88f8d8e2006aa6408ae775779864}
 
 
 Loads the regions. 
@@ -82,35 +72,38 @@ The regions.
 \begin{DoxyParams}{Parameters}
 {\em account} & Account who wants the load the regions.\\
 \hline
-{\em region\-Positions} & Positions of the regions.\\
+{\em region\+Positions} & Positions of the regions.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classServer_1_1Controllers_1_1APIController_a00ed79b2c42e5c4f39319c38fc492b32}{\index{Server\-::\-Controllers\-::\-A\-P\-I\-Controller@{Server\-::\-Controllers\-::\-A\-P\-I\-Controller}!Login@{Login}}
-\index{Login@{Login}!Server::Controllers::APIController@{Server\-::\-Controllers\-::\-A\-P\-I\-Controller}}
-\subsubsection[{Login}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Core.\-Models.\-Account} Server.\-Controllers.\-A\-P\-I\-Controller.\-Login (
+\hypertarget{classServer_1_1Controllers_1_1APIController_a00ed79b2c42e5c4f39319c38fc492b32}{}\index{Server\+::\+Controllers\+::\+A\+P\+I\+Controller@{Server\+::\+Controllers\+::\+A\+P\+I\+Controller}!Login@{Login}}
+\index{Login@{Login}!Server\+::\+Controllers\+::\+A\+P\+I\+Controller@{Server\+::\+Controllers\+::\+A\+P\+I\+Controller}}
+\subsubsection[{Login(string username, string password)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Core.\+Models.\+Account} Server.\+Controllers.\+A\+P\+I\+Controller.\+Login (
 \begin{DoxyParamCaption}
 \item[{string}]{username, }
 \item[{string}]{password}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1Controllers_1_1APIController_a00ed79b2c42e5c4f39319c38fc492b32}
+)}\label{classServer_1_1Controllers_1_1APIController_a00ed79b2c42e5c4f39319c38fc492b32}
 
 
 Login with a username und password, returns Account if everything worked, otherwise {\bfseries null} 
 
 
 \begin{DoxyParams}{Parameters}
-{\em username} & Username.\\
+{\em username} & Account Username.\\
 \hline
-{\em password} & Password.\\
+{\em password} & Account Password.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classServer_1_1Controllers_1_1APIController_ab0452ab5e12d38f778cc5db9b41bb3a0}{\index{Server\-::\-Controllers\-::\-A\-P\-I\-Controller@{Server\-::\-Controllers\-::\-A\-P\-I\-Controller}!Worker@{Worker}}
-\index{Worker@{Worker}!Server::Controllers::APIController@{Server\-::\-Controllers\-::\-A\-P\-I\-Controller}}
-\subsubsection[{Worker}]{\setlength{\rightskip}{0pt plus 5cm}void Server.\-Controllers.\-A\-P\-I\-Controller.\-Worker (
+\begin{DoxyReturn}{Returns}
+Account if login worked. Otherwise {\bfseries null}
+\end{DoxyReturn}
+\hypertarget{classServer_1_1Controllers_1_1APIController_ab0452ab5e12d38f778cc5db9b41bb3a0}{}\index{Server\+::\+Controllers\+::\+A\+P\+I\+Controller@{Server\+::\+Controllers\+::\+A\+P\+I\+Controller}!Worker@{Worker}}
+\index{Worker@{Worker}!Server\+::\+Controllers\+::\+A\+P\+I\+Controller@{Server\+::\+Controllers\+::\+A\+P\+I\+Controller}}
+\subsubsection[{Worker(object state)}]{\setlength{\rightskip}{0pt plus 5cm}void Server.\+Controllers.\+A\+P\+I\+Controller.\+Worker (
 \begin{DoxyParamCaption}
 \item[{object}]{state}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServer_1_1Controllers_1_1APIController_ab0452ab5e12d38f778cc5db9b41bb3a0}
+)}\label{classServer_1_1Controllers_1_1APIController_ab0452ab5e12d38f778cc5db9b41bb3a0}
 
 
 Worker (normally an own thread) which runs until the application finishes. 
@@ -122,6 +115,16 @@ Worker (normally an own thread) which runs until the application finishes.
 \end{DoxyParams}
 
 
-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\subsection{Property Documentation}
+\hypertarget{classServer_1_1Controllers_1_1APIController_aba201431eb3c55a67e96f3afb2751fc9}{}\index{Server\+::\+Controllers\+::\+A\+P\+I\+Controller@{Server\+::\+Controllers\+::\+A\+P\+I\+Controller}!Instance@{Instance}}
+\index{Instance@{Instance}!Server\+::\+Controllers\+::\+A\+P\+I\+Controller@{Server\+::\+Controllers\+::\+A\+P\+I\+Controller}}
+\subsubsection[{Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf A\+P\+I\+Controller} Server.\+Controllers.\+A\+P\+I\+Controller.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}\label{classServer_1_1Controllers_1_1APIController_aba201431eb3c55a67e96f3afb2751fc9}
+
+
+Gets the singleton instance. 
+
+The instance.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-server/\-Controllers/A\-P\-I\-Controller.\-cs\end{DoxyCompactItemize}
+tcpserver/\+Controllers/A\+P\+I\+Controller.\+cs\end{DoxyCompactItemize}
