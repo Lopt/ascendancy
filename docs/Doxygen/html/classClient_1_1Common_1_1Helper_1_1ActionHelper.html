@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -101,17 +101,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6ca9621c272406abb2496b33534abc06"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCore_1_1Models_1_1Action.html">Core.Models.Action</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Helper_1_1ActionHelper.html#a6ca9621c272406abb2496b33534abc06">CreateEntity</a> (<a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> positionI, <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a> definition)</td></tr>
-<tr class="memdesc:a6ca9621c272406abb2496b33534abc06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the entity.  <a href="#a6ca9621c272406abb2496b33534abc06">More...</a><br /></td></tr>
-<tr class="separator:a6ca9621c272406abb2496b33534abc06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57696e59e0d3a58e65b720e79aeffb26"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCore_1_1Models_1_1Action.html">Core.Models.Action</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Helper_1_1ActionHelper.html#a57696e59e0d3a58e65b720e79aeffb26">MoveUnit</a> (<a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> start, <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> end)</td></tr>
-<tr class="memdesc:a57696e59e0d3a58e65b720e79aeffb26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the unit.  <a href="#a57696e59e0d3a58e65b720e79aeffb26">More...</a><br /></td></tr>
+<tr class="memdesc:a57696e59e0d3a58e65b720e79aeffb26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the action to move a unit.  <a href="#a57696e59e0d3a58e65b720e79aeffb26">More...</a><br /></td></tr>
 <tr class="separator:a57696e59e0d3a58e65b720e79aeffb26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e7689f40d850a8670d803028e249711"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCore_1_1Models_1_1Action.html">Core.Models.Action</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Helper_1_1ActionHelper.html#a0e7689f40d850a8670d803028e249711">CreateEntity</a> (<a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> positionI, <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a> definition, <a class="el" href="classCore_1_1Models_1_1Account.html">Account</a> account)</td></tr>
+<tr class="memdesc:a0e7689f40d850a8670d803028e249711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the action which creates the unit  <a href="#a0e7689f40d850a8670d803028e249711">More...</a><br /></td></tr>
+<tr class="separator:a0e7689f40d850a8670d803028e249711"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The Action helper create actions. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a6ca9621c272406abb2496b33534abc06"></a>
+<a class="anchor" id="a0e7689f40d850a8670d803028e249711"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -128,7 +128,13 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a>&#160;</td>
-          <td class="paramname"><em>definition</em>&#160;</td>
+          <td class="paramname"><em>definition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1Account.html">Account</a>&#160;</td>
+          <td class="paramname"><em>account</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -143,12 +149,13 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Creates the entity. </p>
+<p>Creates the action which creates the unit </p>
 <dl class="section return"><dt>Returns</dt><dd>The entity create action.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">positionI</td><td>Position.</td></tr>
-    <tr><td class="paramname">definition</td><td>Definition.</td></tr>
+    <tr><td class="paramname">positionI</td><td>Position where the entity should be created.</td></tr>
+    <tr><td class="paramname">definition</td><td>Definition which entity should be created.</td></tr>
+    <tr><td class="paramname">account</td><td>Which account creates the action.</td></tr>
   </table>
   </dd>
 </dl>
@@ -187,12 +194,12 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Moves the unit. </p>
+<p>Creates the action to move a unit. </p>
 <dl class="section return"><dt>Returns</dt><dd>The move unit action.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">start</td><td>Startposition.</td></tr>
-    <tr><td class="paramname">end</td><td>Endposition.</td></tr>
+    <tr><td class="paramname">start</td><td>Start position of move.</td></tr>
+    <tr><td class="paramname">end</td><td>End position of move.</td></tr>
   </table>
   </dd>
 </dl>
@@ -205,7 +212,7 @@ Static Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

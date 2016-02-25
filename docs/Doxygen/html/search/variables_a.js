@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['mage',['MAGE',['../classClient_1_1Common_1_1Constants_1_1UnitMenuGid.html#ae4ab86aa390832ec8c42f4d6e160fc33',1,'Client::Common::Constants::UnitMenuGid']]],
+  ['major_5fregion_5fsize_5fx',['MAJOR_REGION_SIZE_X',['../classCore_1_1Models_1_1Constants.html#a26b3d6b0c7f17fdac4b0789c3a6adec6',1,'Core::Models::Constants']]],
+  ['major_5fregion_5fsize_5fy',['MAJOR_REGION_SIZE_Y',['../classCore_1_1Models_1_1Constants.html#ad49dbef4256b0be04e921acc8bcef4a8',1,'Core::Models::Constants']]],
+  ['mana',['MANA',['../classClient_1_1Common_1_1Constants_1_1BuildingMenuGid.html#a336a6e66f824092f7edb0edf4bfbc1ba',1,'Client::Common::Constants::BuildingMenuGid']]],
+  ['max_5fcontent_5fsize',['MAX_CONTENT_SIZE',['../classTCPServer_1_1Config.html#a47b1681acf21be479018e3c93cbeaa5e',1,'TCPServer::Config']]],
+  ['max_5fentries_5fper_5fconnection',['MAX_ENTRIES_PER_CONNECTION',['../classCore_1_1Models_1_1Constants.html#a09b8f7514cdf1d440f7bbaff8fe843c2',1,'Core::Models::Constants']]],
+  ['max_5fheigth',['MAX_HEIGTH',['../classClient_1_1Common_1_1Constants_1_1ViewConstants_1_1Healthbar.html#a44eeb8c9930130408877a84f0e7686d9',1,'Client::Common::Constants::ViewConstants::Healthbar']]],
+  ['max_5fnoise_5ffactor',['MAX_NOISE_FACTOR',['../classClient_1_1Common_1_1Constants_1_1HUD_1_1Energy.html#a4342e8edca802497bdd5a82e58e04697',1,'Client::Common::Constants::HUD::Energy']]],
+  ['max_5fpointer',['MAX_POINTER',['../classClient_1_1Common_1_1Constants_1_1HUD_1_1Energy.html#adc5731789a04820f7ff7031687f45427',1,'Client::Common::Constants::HUD::Energy']]],
+  ['max_5fwidth',['MAX_WIDTH',['../classClient_1_1Common_1_1Constants_1_1ViewConstants_1_1Healthbar.html#ac0d0ec72a75ca7f0270fe01065888b90',1,'Client::Common::Constants::ViewConstants::Healthbar']]],
+  ['menu_5fgids',['MENU_GIDS',['../classClient_1_1Common_1_1Constants_1_1ClientConstants.html#a4d3b0e4f36481c991c9995cb20c9347d',1,'Client::Common::Constants::ClientConstants']]],
+  ['military',['MILITARY',['../classClient_1_1Common_1_1Constants_1_1BuildingMenuGid.html#a158e648c0b0d02214ed418508b80855d',1,'Client::Common::Constants::BuildingMenuGid']]],
+  ['min_5fheigth',['MIN_HEIGTH',['../classClient_1_1Common_1_1Constants_1_1ViewConstants_1_1Healthbar.html#adfac4a7fd0503eea0051df10af402a0a',1,'Client::Common::Constants::ViewConstants::Healthbar']]],
+  ['min_5fnoise_5ffactor',['MIN_NOISE_FACTOR',['../classClient_1_1Common_1_1Constants_1_1HUD_1_1Energy.html#ab7aaf06c6379be774b2709f67277b903',1,'Client::Common::Constants::HUD::Energy']]],
+  ['min_5fwidth',['MIN_WIDTH',['../classClient_1_1Common_1_1Constants_1_1ViewConstants_1_1Healthbar.html#a3178669ef5c1c802c28b99ece9344a9e',1,'Client::Common::Constants::ViewConstants::Healthbar']]],
+  ['mineair',['MINEAIR',['../classClient_1_1Common_1_1Constants_1_1BuildingGid.html#a9bf32b9e9f5bfe9e624c4629836c31fd',1,'Client::Common::Constants::BuildingGid']]],
+  ['mineearth',['MINEEARTH',['../classClient_1_1Common_1_1Constants_1_1BuildingGid.html#a57aa9dce96f92143d655a10db1ed9176',1,'Client::Common::Constants::BuildingGid']]],
+  ['minefire',['MINEFIRE',['../classClient_1_1Common_1_1Constants_1_1BuildingGid.html#a14b7f89faee6a0b0f80269398bae672b',1,'Client::Common::Constants::BuildingGid']]],
+  ['minegold',['MINEGOLD',['../classClient_1_1Common_1_1Constants_1_1BuildingGid.html#a11c21e46efe88c20b1d2ab8977ebe1a3',1,'Client::Common::Constants::BuildingGid']]],
+  ['minemana',['MINEMANA',['../classClient_1_1Common_1_1Constants_1_1BuildingGid.html#a8c2061e84d00c88b991168f0375c3024',1,'Client::Common::Constants::BuildingGid']]],
+  ['minewater',['MINEWATER',['../classClient_1_1Common_1_1Constants_1_1BuildingGid.html#a6a3a47119f9286cc5ebe703bcf3113ee',1,'Client::Common::Constants::BuildingGid']]],
+  ['move_5fspeed_5fper_5ffield',['MOVE_SPEED_PER_FIELD',['../classClient_1_1Common_1_1Constants_1_1ClientConstants.html#a1c210518a89a9a7d1f93bc3da1ff0caf',1,'Client::Common::Constants::ClientConstants']]]
+];

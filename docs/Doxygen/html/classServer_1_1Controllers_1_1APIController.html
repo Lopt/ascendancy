@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -91,7 +91,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="classServer_1_1Controllers_1_1APIController-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -99,15 +98,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>API Controller provides functionality to access the game. Every access from outside should use API Controller. As example <a class="el" href="classServer_1_1Controllers_1_1HTTPController.html" title="Handles all HTTP Accesses from the client. ">HTTPController</a> uses only API Controller. If we later switch to another protocol (or directly sockets) we just need to build another HTTP Controller-like which uses the API Controller functionality.  
+<p>API Controller provides functionality to access the game. Every access from outside should use API Controller. As example HTTPController uses only API Controller. If we later switch to another protocol (or directly sockets) we just need to build another HTTP Controller-like which uses the API Controller functionality.  
  <a href="classServer_1_1Controllers_1_1APIController.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer_1_1Controllers_1_1APIController_1_1AveragePositionQueue.html">AveragePositionQueue</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An Class which provides an queue with an position. It is used to avoid threading collisions.  <a href="classServer_1_1Controllers_1_1APIController_1_1AveragePositionQueue.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer_1_1Controllers_1_1APIController_1_1RegionData.html">RegionData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Region data.  <a href="classServer_1_1Controllers_1_1APIController_1_1RegionData.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -125,20 +122,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab0452ab5e12d38f778cc5db9b41bb3a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Worker (normally an own thread) which runs until the application finishes.  <a href="#ab0452ab5e12d38f778cc5db9b41bb3a0">More...</a><br /></td></tr>
 <tr class="separator:ab0452ab5e12d38f778cc5db9b41bb3a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:aee12d29edee563a727c2309ffe94ed1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee12d29edee563a727c2309ffe94ed1c"></a>
-<a class="el" href="classServer_1_1Controllers_1_1APIController_1_1AveragePositionQueue.html">AveragePositionQueue</a>[]&#160;</td><td class="memItemRight" valign="bottom"><b>m_threadingInfos</b></td></tr>
-<tr class="separator:aee12d29edee563a727c2309ffe94ed1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:aba201431eb3c55a67e96f3afb2751fc9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba201431eb3c55a67e96f3afb2751fc9"></a>
-static <a class="el" href="classServer_1_1Controllers_1_1APIController.html">APIController</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Instance</b><code> [get]</code></td></tr>
+<tr class="memitem:aba201431eb3c55a67e96f3afb2751fc9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classServer_1_1Controllers_1_1APIController.html">APIController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer_1_1Controllers_1_1APIController.html#aba201431eb3c55a67e96f3afb2751fc9">Instance</a><code> [get]</code></td></tr>
+<tr class="memdesc:aba201431eb3c55a67e96f3afb2751fc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the singleton instance.  <a href="#aba201431eb3c55a67e96f3afb2751fc9">More...</a><br /></td></tr>
 <tr class="separator:aba201431eb3c55a67e96f3afb2751fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>API Controller provides functionality to access the game. Every access from outside should use API Controller. As example <a class="el" href="classServer_1_1Controllers_1_1HTTPController.html" title="Handles all HTTP Accesses from the client. ">HTTPController</a> uses only API Controller. If we later switch to another protocol (or directly sockets) we just need to build another HTTP Controller-like which uses the API Controller functionality. </p>
+<div class="textblock"><p>API Controller provides functionality to access the game. Every access from outside should use API Controller. As example HTTPController uses only API Controller. If we later switch to another protocol (or directly sockets) we just need to build another HTTP Controller-like which uses the API Controller functionality. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="abca86085e8c85b2f94b0a95e47a89add"></a>
 <div class="memitem">
@@ -238,11 +229,12 @@ static <a class="el" href="classServer_1_1Controllers_1_1APIController.html">API
 <p>Login with a username und password, returns Account if everything worked, otherwise <b>null</b> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">username</td><td>Username.</td></tr>
-    <tr><td class="paramname">password</td><td>Password.</td></tr>
+    <tr><td class="paramname">username</td><td>Account Username.</td></tr>
+    <tr><td class="paramname">password</td><td>Account Password.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Account if login worked. Otherwise <b>null</b></dd></dl>
 
 </div>
 </div>
@@ -270,13 +262,37 @@ static <a class="el" href="classServer_1_1Controllers_1_1APIController.html">API
 
 </div>
 </div>
+<h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="aba201431eb3c55a67e96f3afb2751fc9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classServer_1_1Controllers_1_1APIController.html">APIController</a> Server.Controllers.APIController.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the singleton instance. </p>
+<p>The instance.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>server/Controllers/APIController.cs</li>
+<li>tcpserver/Controllers/APIController.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:51 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:47 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

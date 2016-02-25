@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['range_5fin_5fmeele_5fmalus',['RANGE_IN_MEELE_MALUS',['../classCore_1_1Models_1_1Constants.html#a3132eb59e27938a80a4ca4d047f4912f',1,'Core::Models::Constants']]],
+  ['realcreateposition',['RealCreatePosition',['../classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#a75330207d1027fb83f97d8973ae355f3',1,'Core::Controllers::Actions::CreateUnit']]],
+  ['redindicator',['REDINDICATOR',['../classClient_1_1Common_1_1Constants_1_1HelperSpritesGid.html#a07a6a82ffd0b18370c5321d648c954d5',1,'Client::Common::Constants::HelperSpritesGid']]],
+  ['redraw_5fregions_5fend_5fx',['REDRAW_REGIONS_END_X',['../classClient_1_1Common_1_1Constants_1_1ClientConstants.html#a47ccf75710080992ff0e46e829d63b7a',1,'Client::Common::Constants::ClientConstants']]],
+  ['redraw_5fregions_5fend_5fy',['REDRAW_REGIONS_END_Y',['../classClient_1_1Common_1_1Constants_1_1ClientConstants.html#a196dca9d8da3d42fe14ff8246d893c48',1,'Client::Common::Constants::ClientConstants']]],
+  ['redraw_5fregions_5fstart_5fx',['REDRAW_REGIONS_START_X',['../classClient_1_1Common_1_1Constants_1_1ClientConstants.html#a6dfd33707a009763341cd6039ede0289',1,'Client::Common::Constants::ClientConstants']]],
+  ['redraw_5fregions_5fstart_5fy',['REDRAW_REGIONS_START_Y',['../classClient_1_1Common_1_1Constants_1_1ClientConstants.html#a481e9d8491a7f31ad27b060d8738a42b',1,'Client::Common::Constants::ClientConstants']]],
+  ['region_5ffile',['REGION_FILE',['../classServer_1_1Models_1_1ServerConstants.html#a5d1875e241daeed9ec89b7ab3c49d3ec',1,'Server::Models::ServerConstants']]],
+  ['region_5flock_5fwait_5ftime',['REGION_LOCK_WAIT_TIME',['../classCore_1_1Models_1_1Constants.html#ae34c70369e0c6c6f34f5b5275625afdb',1,'Core::Models::Constants']]],
+  ['region_5fserver_5fpath',['REGION_SERVER_PATH',['../classClient_1_1Common_1_1Constants_1_1ClientConstants.html#a7fa21e9a22967348de75863f83d8324e',1,'Client::Common::Constants::ClientConstants']]],
+  ['region_5fsize_5fx',['REGION_SIZE_X',['../classCore_1_1Models_1_1Constants.html#a2d02174b6a70404c1d8093c81eb47cb2',1,'Core::Models::Constants']]],
+  ['region_5fsize_5fy',['REGION_SIZE_Y',['../classCore_1_1Models_1_1Constants.html#ad7f91cdefc9377eb37c98a50e0d1c068',1,'Core::Models::Constants']]],
+  ['regionmanager',['RegionManager',['../classCore_1_1Models_1_1World.html#a768e4edfe667a4f55d93a7c5dfd297ba',1,'Core::Models::World']]],
+  ['regionmanagercontroller',['RegionManagerController',['../classCore_1_1Controllers_1_1Controller.html#a13c0a9251d550621898cffbfcfc732a7',1,'Core::Controllers::Controller']]],
+  ['regionposition',['RegionPosition',['../classCore_1_1Models_1_1Region_1_1DatedActions.html#af5d142eb58d87b6d923f221b18b3bb20',1,'Core.Models.Region.DatedActions.RegionPosition()'],['../classCore_1_1Models_1_1Region_1_1DatedEntities.html#a9f7508c71a4e63dd41df20a6699c4359',1,'Core.Models.Region.DatedEntities.RegionPosition()']]],
+  ['regionpositions',['RegionPositions',['../classCore_1_1Connections_1_1LoadRegionsRequest.html#a218b8fc9a7dc007031abe6344dc3dc64',1,'Core::Connections::LoadRegionsRequest']]],
+  ['regions',['Regions',['../classCore_1_1Models_1_1RegionManager.html#a0c119456a8a49f28a14213dad448a5da',1,'Core::Models::RegionManager']]],
+  ['resources',['RESOURCES',['../classClient_1_1Common_1_1Constants_1_1BuildingMenuGid.html#a17d71ecf9cb1096aa783f354985fc8c8',1,'Client.Common.Constants.BuildingMenuGid.RESOURCES()'],['../classServer_1_1DB_1_1Models_1_1TableData.html#ad37f859f89ae46c48eb18469f22ba57d',1,'Server.DB.Models.TableData.Resources()']]],
+  ['rightdowneven',['Rightdowneven',['../classClient_1_1Common_1_1Views_1_1MenuView.html#ae711e0210073a31a2bf15ad1d77e8478',1,'Client::Common::Views::MenuView']]],
+  ['rightdownodd',['Rightdownodd',['../classClient_1_1Common_1_1Views_1_1MenuView.html#ab2619bc7970cbbdaeba9521561eabe53',1,'Client::Common::Views::MenuView']]],
+  ['rightupeven',['Rightupeven',['../classClient_1_1Common_1_1Views_1_1MenuView.html#a36b0ad902b98487477a87442d088d747',1,'Client::Common::Views::MenuView']]],
+  ['rightupodd',['Rightupodd',['../classClient_1_1Common_1_1Views_1_1MenuView.html#a4e6fa7548be9f1c327bb97a5447721ff',1,'Client::Common::Views::MenuView']]]
+];

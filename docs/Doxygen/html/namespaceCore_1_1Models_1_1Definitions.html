@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -97,13 +97,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Definition</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html" title="Definition contains static informations about entities. In which Category they belong and their id...">Definition</a> contains static informations about entities. In which Category they belong and their id. Will be used as base-class for other definitions.  <a href="classCore_1_1Models_1_1Definitions_1_1Definition.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html" title="Definition contains static information about entities. In which Category they belong and their id...">Definition</a> contains static information about entities. In which Category they belong and their id. Will be used as base-class for other definitions.  <a href="classCore_1_1Models_1_1Definitions_1_1Definition.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html">TerrainDefinition</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Terrain Definiton which contains informations about a terraintype.  <a href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Terrain definition which contains information about a terrain type.  <a href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html">UnitDefinition</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit Definiton which contains informations about a unit type.  <a href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit definition which contains information about a unit type.  <a href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -125,7 +125,7 @@ Enumerations</h2></td></tr>
 <b>Park</b> = 11, 
 <br />
 &#160;&#160;<b>Invalid</b> = 12, 
-<b>Hero</b> = 60, 
+<b>Fencer</b> = 60, 
 <b>Mage</b> = 66, 
 <b>Warrior</b> = 72, 
 <br />
@@ -134,20 +134,31 @@ Enumerations</h2></td></tr>
 <b>Unknown3</b> = 90, 
 <b>Headquarter</b> = 276, 
 <br />
-&#160;&#160;<b>Outposts</b> = 282, 
-<b>Houses</b> = 288, 
-<b>Wall</b> = 294, 
-<b>Barracks</b> = 300, 
+&#160;&#160;<b>Barracks</b> = 282, 
+<b>Factory</b> = 288, 
+<b>Attachment</b> = 294, 
+<b>GuardTower</b> = 300, 
 <br />
-&#160;&#160;<b>RessourceHarvester</b> = 306
+&#160;&#160;<b>Hospital</b> = 306, 
+<b>TradingPost</b> = 312, 
+<b>Lab</b> = 318, 
+<b>Furnace</b> = 324, 
+<br />
+&#160;&#160;<b>Transformer</b> = 330, 
+<b>Scrapyard</b> = 336, 
+<b>Tent</b> = 342
 <br />
  }<tr class="memdesc:a609ed13db028308ebc6c5fbd98615fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains which type a entity exactly is.  <a href="namespaceCore_1_1Models_1_1Definitions.html#a609ed13db028308ebc6c5fbd98615fdc">More...</a><br /></td></tr>
 <tr class="separator:a609ed13db028308ebc6c5fbd98615fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </td></tr>
-<tr class="memitem:a8be0403c3e883fe583d7bb3893c22c65"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a8be0403c3e883fe583d7bb3893c22c65">Category</a> { <b>Invalid</b> = -1, 
+<tr class="memitem:a8be0403c3e883fe583d7bb3893c22c65"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a8be0403c3e883fe583d7bb3893c22c65">Category</a> { <br />
+&#160;&#160;<b>Invalid</b> = -1, 
 <b>Terrain</b>, 
 <b>Unit</b>, 
-<b>Building</b>
+<b>Building</b>, 
+<br />
+&#160;&#160;<b>Menu</b>
+<br />
  }<tr class="memdesc:a8be0403c3e883fe583d7bb3893c22c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the category of a entity.  <a href="namespaceCore_1_1Models_1_1Definitions.html#a8be0403c3e883fe583d7bb3893c22c65">More...</a><br /></td></tr>
 <tr class="separator:a8be0403c3e883fe583d7bb3893c22c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </td></tr>
@@ -194,13 +205,14 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Contains which type a entity exactly is. </p>
+<p>Terrain Range 0-59 Id's (6 * 10 = 60) Unit Range 60-275 Id's (6 * 6 * 6 = 216) Buildings Range 276-491 Id's (6 * 6 * 6 = 216) </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

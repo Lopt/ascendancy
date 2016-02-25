@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -96,6 +96,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Core.Models.Entity Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classCore_1_1Models_1_1Entity.html" title="Entity which represents an &quot;object&quot; in the game world: units, terrain, buildings... etc. ">Entity</a> which represents an "object" in the game world: units, terrain, buildings... etc.  
+ <a href="classCore_1_1Models_1_1Entity.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Core.Models.Entity:</div>
 <div class="dyncontent">
@@ -108,48 +111,482 @@ Inheritance diagram for Core.Models.Entity:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a09638044f7fdf3b431c5144e58e53112"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09638044f7fdf3b431c5144e58e53112"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (int id, <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Definition</a> defintion, <a class="el" href="classCore_1_1Models_1_1Account.html">Account</a> account, <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> position)</td></tr>
-<tr class="separator:a09638044f7fdf3b431c5144e58e53112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4e03f1aca6a491f8fae7777615f1330"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#ab4e03f1aca6a491f8fae7777615f1330">Entity</a> (int id, <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Definition</a> definition, <a class="el" href="classCore_1_1Models_1_1Account.html">Account</a> owner, <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> position, int health, int move)</td></tr>
+<tr class="memdesc:ab4e03f1aca6a491f8fae7777615f1330"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1Entity.html" title="Entity which represents an &quot;object&quot; in the game world: units, terrain, buildings... etc. ">Core.Models.Entity</a> class.  <a href="#ab4e03f1aca6a491f8fae7777615f1330">More...</a><br /></td></tr>
+<tr class="separator:ab4e03f1aca6a491f8fae7777615f1330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53f50c1e8c37885db7ba432562607ccf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#a53f50c1e8c37885db7ba432562607ccf">Entity</a> (int id, int definitonID, int ownerID, <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> position, int health, int move)</td></tr>
+<tr class="memdesc:a53f50c1e8c37885db7ba432562607ccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1Entity.html" title="Entity which represents an &quot;object&quot; in the game world: units, terrain, buildings... etc. ">Core.Models.Entity</a> class.  <a href="#a53f50c1e8c37885db7ba432562607ccf">More...</a><br /></td></tr>
+<tr class="separator:a53f50c1e8c37885db7ba432562607ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa05984e45fcbf9c35d6bc6cad2b323f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceCore_1_1Models.html#ada607f76afbafc59695c90fc5a7093a2">Diplomatic</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#aa05984e45fcbf9c35d6bc6cad2b323f5">GetDiplomacy</a> (<a class="el" href="classCore_1_1Models_1_1Account.html">Account</a> account)</td></tr>
+<tr class="memdesc:aa05984e45fcbf9c35d6bc6cad2b323f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates and returns the diplomatic states between the owner of the unit and the given account  <a href="#aa05984e45fcbf9c35d6bc6cad2b323f5">More...</a><br /></td></tr>
+<tr class="separator:aa05984e45fcbf9c35d6bc6cad2b323f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classCore_1_1Models_1_1ModelEntity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCore_1_1Models_1_1ModelEntity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a></td></tr>
+<tr class="memitem:a7b738ffece3d63b0a7e22697cd2a15ef inherit pub_methods_classCore_1_1Models_1_1ModelEntity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1ModelEntity.html#a7b738ffece3d63b0a7e22697cd2a15ef">ModelEntity</a> ()</td></tr>
+<tr class="memdesc:a7b738ffece3d63b0a7e22697cd2a15ef inherit pub_methods_classCore_1_1Models_1_1ModelEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1ModelEntity.html" title="MVC Model. ">Core.Models.ModelEntity</a> class.  <a href="#a7b738ffece3d63b0a7e22697cd2a15ef">More...</a><br /></td></tr>
+<tr class="separator:a7b738ffece3d63b0a7e22697cd2a15ef inherit pub_methods_classCore_1_1Models_1_1ModelEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:aa7b2cae79fc1801861c7cd20e273e3fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7b2cae79fc1801861c7cd20e273e3fd"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b><code> [get]</code></td></tr>
+<tr class="memitem:aa7b2cae79fc1801861c7cd20e273e3fd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#aa7b2cae79fc1801861c7cd20e273e3fd">ID</a><code> [get]</code></td></tr>
+<tr class="memdesc:aa7b2cae79fc1801861c7cd20e273e3fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the ID  <a href="#aa7b2cae79fc1801861c7cd20e273e3fd">More...</a><br /></td></tr>
 <tr class="separator:aa7b2cae79fc1801861c7cd20e273e3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a451f76265fc15cbcdfc1ac5233bf79e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a451f76265fc15cbcdfc1ac5233bf79e9"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>DefinitionID</b><code> [get, set]</code></td></tr>
+<tr class="memitem:a451f76265fc15cbcdfc1ac5233bf79e9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#a451f76265fc15cbcdfc1ac5233bf79e9">DefinitionID</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a451f76265fc15cbcdfc1ac5233bf79e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the definition ID.  <a href="#a451f76265fc15cbcdfc1ac5233bf79e9">More...</a><br /></td></tr>
 <tr class="separator:a451f76265fc15cbcdfc1ac5233bf79e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d7325d3a3958dc2acfe798a2fb5a98c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d7325d3a3958dc2acfe798a2fb5a98c"></a>
-<a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Definition</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Definition</b><code> [get]</code></td></tr>
+<tr class="memitem:a9d7325d3a3958dc2acfe798a2fb5a98c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Definition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#a9d7325d3a3958dc2acfe798a2fb5a98c">Definition</a><code> [get]</code></td></tr>
+<tr class="memdesc:a9d7325d3a3958dc2acfe798a2fb5a98c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the definition.  <a href="#a9d7325d3a3958dc2acfe798a2fb5a98c">More...</a><br /></td></tr>
 <tr class="separator:a9d7325d3a3958dc2acfe798a2fb5a98c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c56e42b49dbe385d0e201a42ab1feea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c56e42b49dbe385d0e201a42ab1feea"></a>
-<a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Position</b><code> [get, set]</code></td></tr>
+<tr class="memitem:a0c56e42b49dbe385d0e201a42ab1feea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#a0c56e42b49dbe385d0e201a42ab1feea">Position</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a0c56e42b49dbe385d0e201a42ab1feea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the position.  <a href="#a0c56e42b49dbe385d0e201a42ab1feea">More...</a><br /></td></tr>
 <tr class="separator:a0c56e42b49dbe385d0e201a42ab1feea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a251c782d21abe40fea048ed9fc092016"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a251c782d21abe40fea048ed9fc092016"></a>
-<a class="el" href="classCore_1_1Models_1_1Account.html">Account</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Account</b><code> [get]</code></td></tr>
-<tr class="separator:a251c782d21abe40fea048ed9fc092016"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae76291dccb6d9e8c2ecfb5e586ce251b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae76291dccb6d9e8c2ecfb5e586ce251b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>AccountID</b><code> [get, set]</code></td></tr>
-<tr class="separator:ae76291dccb6d9e8c2ecfb5e586ce251b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0d2b689cfd48dc43ad41c49073497df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Models_1_1Account.html">Account</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#af0d2b689cfd48dc43ad41c49073497df">Owner</a><code> [get]</code></td></tr>
+<tr class="memdesc:af0d2b689cfd48dc43ad41c49073497df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the account.  <a href="#af0d2b689cfd48dc43ad41c49073497df">More...</a><br /></td></tr>
+<tr class="separator:af0d2b689cfd48dc43ad41c49073497df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf44e0bd8e2a08cf13fcd6a783f783e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#adf44e0bd8e2a08cf13fcd6a783f783e5">OwnerID</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:adf44e0bd8e2a08cf13fcd6a783f783e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the account I.  <a href="#adf44e0bd8e2a08cf13fcd6a783f783e5">More...</a><br /></td></tr>
+<tr class="separator:adf44e0bd8e2a08cf13fcd6a783f783e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac054f7e992fe65ae3ffa998e4d4d1225"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#ac054f7e992fe65ae3ffa998e4d4d1225">Health</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ac054f7e992fe65ae3ffa998e4d4d1225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the health.  <a href="#ac054f7e992fe65ae3ffa998e4d4d1225">More...</a><br /></td></tr>
+<tr class="separator:ac054f7e992fe65ae3ffa998e4d4d1225"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05336fa3c927b9f1c299f55ec27a6e0c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#a05336fa3c927b9f1c299f55ec27a6e0c">HealthPercent</a><code> [get]</code></td></tr>
+<tr class="memdesc:a05336fa3c927b9f1c299f55ec27a6e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current health (in percent).  <a href="#a05336fa3c927b9f1c299f55ec27a6e0c">More...</a><br /></td></tr>
+<tr class="separator:a05336fa3c927b9f1c299f55ec27a6e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a1f85a3d32a2decd04919d03fb84167"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#a3a1f85a3d32a2decd04919d03fb84167">Move</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a3a1f85a3d32a2decd04919d03fb84167"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the move.  <a href="#a3a1f85a3d32a2decd04919d03fb84167">More...</a><br /></td></tr>
+<tr class="separator:a3a1f85a3d32a2decd04919d03fb84167"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7480e9bdfa56f0a21e784bf5cadcf3cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#a7480e9bdfa56f0a21e784bf5cadcf3cd">ModfiedAttackValue</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a7480e9bdfa56f0a21e784bf5cadcf3cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the modified attack value.  <a href="#a7480e9bdfa56f0a21e784bf5cadcf3cd">More...</a><br /></td></tr>
+<tr class="separator:a7480e9bdfa56f0a21e784bf5cadcf3cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bb3bab5756906f8202f48d9644fc9aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Entity.html#a7bb3bab5756906f8202f48d9644fc9aa">ModifiedDefenseValue</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a7bb3bab5756906f8202f48d9644fc9aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the modified defense value.  <a href="#a7bb3bab5756906f8202f48d9644fc9aa">More...</a><br /></td></tr>
+<tr class="separator:a7bb3bab5756906f8202f48d9644fc9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_attribs_classCore_1_1Models_1_1ModelEntity"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classCore_1_1Models_1_1ModelEntity')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a></td></tr>
-<tr class="memitem:a19619acbb856f7b54c971b38f061509c inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19619acbb856f7b54c971b38f061509c"></a>
-<a class="el" href="classCore_1_1Views_1_1ViewEntity.html">Views.ViewEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><b>View</b></td></tr>
+<tr class="memitem:a19619acbb856f7b54c971b38f061509c inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Views_1_1ViewEntity.html">Views.ViewEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1ModelEntity.html#a19619acbb856f7b54c971b38f061509c">View</a></td></tr>
+<tr class="memdesc:a19619acbb856f7b54c971b38f061509c inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The view part of MVC.  <a href="#a19619acbb856f7b54c971b38f061509c">More...</a><br /></td></tr>
 <tr class="separator:a19619acbb856f7b54c971b38f061509c inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78a6ddcf09a0b517230e738c40faa813 inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78a6ddcf09a0b517230e738c40faa813"></a>
-<a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html">Controllers.ControlEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Control</b></td></tr>
+<tr class="memitem:a78a6ddcf09a0b517230e738c40faa813 inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html">Controllers.ControlEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1ModelEntity.html#a78a6ddcf09a0b517230e738c40faa813">Control</a></td></tr>
+<tr class="memdesc:a78a6ddcf09a0b517230e738c40faa813 inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The control part of MVC.  <a href="#a78a6ddcf09a0b517230e738c40faa813">More...</a><br /></td></tr>
 <tr class="separator:a78a6ddcf09a0b517230e738c40faa813 inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classCore_1_1Models_1_1Entity.html" title="Entity which represents an &quot;object&quot; in the game world: units, terrain, buildings... etc. ">Entity</a> which represents an "object" in the game world: units, terrain, buildings... etc. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ab4e03f1aca6a491f8fae7777615f1330"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Core.Models.Entity.Entity </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Definition</a>&#160;</td>
+          <td class="paramname"><em>definition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1Account.html">Account</a>&#160;</td>
+          <td class="paramname"><em>owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>health</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>move</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1Entity.html" title="Entity which represents an &quot;object&quot; in the game world: units, terrain, buildings... etc. ">Core.Models.Entity</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Identifier of the entity.</td></tr>
+    <tr><td class="paramname">definition</td><td>Definition of the entity.</td></tr>
+    <tr><td class="paramname">owner</td><td>Owner of the entity.</td></tr>
+    <tr><td class="paramname">position</td><td><a class="el" href="classCore_1_1Models_1_1Position.html" title="Position in the GameWorld. ">Position</a> of the entity.</td></tr>
+    <tr><td class="paramname">health</td><td>Health of the entity.</td></tr>
+    <tr><td class="paramname">move</td><td>Move of the entity.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a53f50c1e8c37885db7ba432562607ccf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Core.Models.Entity.Entity </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>definitonID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ownerID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>health</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>move</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1Entity.html" title="Entity which represents an &quot;object&quot; in the game world: units, terrain, buildings... etc. ">Core.Models.Entity</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Identifier of the entity.</td></tr>
+    <tr><td class="paramname">definitonID</td><td>Definiton ID.</td></tr>
+    <tr><td class="paramname">ownerID</td><td>Owner ID.</td></tr>
+    <tr><td class="paramname">position</td><td><a class="el" href="classCore_1_1Models_1_1Position.html" title="Position in the GameWorld. ">Position</a> as integer.</td></tr>
+    <tr><td class="paramname">health</td><td>Health of the entity.</td></tr>
+    <tr><td class="paramname">move</td><td>Move of the entity.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aa05984e45fcbf9c35d6bc6cad2b323f5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceCore_1_1Models.html#ada607f76afbafc59695c90fc5a7093a2">Diplomatic</a> Core.Models.Entity.GetDiplomacy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1Account.html">Account</a>&#160;</td>
+          <td class="paramname"><em>account</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates and returns the diplomatic states between the owner of the unit and the given account </p>
+<dl class="section return"><dt>Returns</dt><dd>The diplomacy.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">account</td><td>Other <a class="el" href="classCore_1_1Models_1_1Account.html" title="Account model which represents an user and information about the user. ">Account</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a9d7325d3a3958dc2acfe798a2fb5a98c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Definition</a> Core.Models.Entity.Definition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the definition. </p>
+<p>The definition.</p>
+
+</div>
+</div>
+<a class="anchor" id="a451f76265fc15cbcdfc1ac5233bf79e9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Entity.DefinitionID</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the definition ID. </p>
+<p>The definition ID.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac054f7e992fe65ae3ffa998e4d4d1225"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Entity.Health</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the health. </p>
+<p>The health.</p>
+
+</div>
+</div>
+<a class="anchor" id="a05336fa3c927b9f1c299f55ec27a6e0c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Core.Models.Entity.HealthPercent</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the current health (in percent). </p>
+<p>health (in percent).</p>
+
+</div>
+</div>
+<a class="anchor" id="aa7b2cae79fc1801861c7cd20e273e3fd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Entity.ID</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the ID </p>
+<p>The ID</p>
+
+</div>
+</div>
+<a class="anchor" id="a7480e9bdfa56f0a21e784bf5cadcf3cd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Entity.ModfiedAttackValue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the modified attack value. </p>
+<p>The modified attack value.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7bb3bab5756906f8202f48d9644fc9aa"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Entity.ModifiedDefenseValue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the modified defense value. </p>
+<p>The modified defense value.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3a1f85a3d32a2decd04919d03fb84167"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Entity.Move</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the move. </p>
+<p>The move.</p>
+
+</div>
+</div>
+<a class="anchor" id="af0d2b689cfd48dc43ad41c49073497df"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCore_1_1Models_1_1Account.html">Account</a> Core.Models.Entity.Owner</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the account. </p>
+<p>The account.</p>
+
+</div>
+</div>
+<a class="anchor" id="adf44e0bd8e2a08cf13fcd6a783f783e5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Entity.OwnerID</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the account I. </p>
+<p>The account ID.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0c56e42b49dbe385d0e201a42ab1feea"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> Core.Models.Entity.Position</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the position. </p>
+<p>The position.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>base/Models/Entity.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

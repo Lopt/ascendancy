@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -90,6 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classCore_1_1Connections_1_1LoginResponse-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -97,37 +98,145 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classCore_1_1Connections_1_1Response.html" title="Response class which is used at every response (except login response) Will be serialised before send...">Response</a> class which should be used to login. Will be serialised before sending, should be deserialised after recieving.  
+<p><a class="el" href="classCore_1_1Connections_1_1Response.html" title="Standard response class which is used at every response (except login). Will be serialized before sen...">Response</a> class which should be used to login. Will be serialized before sending, should be deserialized after receiving.  
  <a href="classCore_1_1Connections_1_1LoginResponse.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ad726169217eaad8b926b7548d43020d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad726169217eaad8b926b7548d43020d8"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ReponseStatus</b> { <b>OK</b>, 
+<tr class="memitem:ad726169217eaad8b926b7548d43020d8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1LoginResponse.html#ad726169217eaad8b926b7548d43020d8">ReponseStatus</a> { <b>OK</b>, 
 <b>ERROR</b>
- }<tr class="separator:ad726169217eaad8b926b7548d43020d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+ }<tr class="memdesc:ad726169217eaad8b926b7548d43020d8"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCore_1_1Connections_1_1Response.html" title="Standard response class which is used at every response (except login). Will be serialized before sen...">Response</a> status of the login response.  <a href="classCore_1_1Connections_1_1LoginResponse.html#ad726169217eaad8b926b7548d43020d8">More...</a><br /></td></tr>
+<tr class="separator:ad726169217eaad8b926b7548d43020d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ab9a1fa386052ddf7917d3367bb8f1fb1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1LoginResponse.html#ab9a1fa386052ddf7917d3367bb8f1fb1">LoginResponse</a> ()</td></tr>
+<tr class="memdesc:ab9a1fa386052ddf7917d3367bb8f1fb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Connections_1_1LoginResponse.html" title="Response class which should be used to login. Will be serialized before sending, should be deserializ...">Core.Connections.LoginResponse</a> class.  <a href="#ab9a1fa386052ddf7917d3367bb8f1fb1">More...</a><br /></td></tr>
+<tr class="separator:ab9a1fa386052ddf7917d3367bb8f1fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a07d5c565863a18dc114700d9420b2d5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a07d5c565863a18dc114700d9420b2d5f"></a>
-ReponseStatus&#160;</td><td class="memItemRight" valign="bottom"><b>Status</b></td></tr>
+<tr class="memitem:a07d5c565863a18dc114700d9420b2d5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Connections_1_1LoginResponse.html#ad726169217eaad8b926b7548d43020d8">ReponseStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1LoginResponse.html#a07d5c565863a18dc114700d9420b2d5f">Status</a></td></tr>
+<tr class="memdesc:a07d5c565863a18dc114700d9420b2d5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classCore_1_1Connections_1_1Response.html" title="Standard response class which is used at every response (except login). Will be serialized before sen...">Response</a> Status. Only use other data if ResponseStatus == OK  <a href="#a07d5c565863a18dc114700d9420b2d5f">More...</a><br /></td></tr>
 <tr class="separator:a07d5c565863a18dc114700d9420b2d5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0852c12c3db05b5f4093ee08f5aa4107"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0852c12c3db05b5f4093ee08f5aa4107"></a>
-Guid&#160;</td><td class="memItemRight" valign="bottom"><b>SessionID</b></td></tr>
+<tr class="memitem:a0852c12c3db05b5f4093ee08f5aa4107"><td class="memItemLeft" align="right" valign="top">Guid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1LoginResponse.html#a0852c12c3db05b5f4093ee08f5aa4107">SessionID</a></td></tr>
+<tr class="memdesc:a0852c12c3db05b5f4093ee08f5aa4107"><td class="mdescLeft">&#160;</td><td class="mdescRight">The session which the got after the login.  <a href="#a0852c12c3db05b5f4093ee08f5aa4107">More...</a><br /></td></tr>
 <tr class="separator:a0852c12c3db05b5f4093ee08f5aa4107"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ef450c94ba6160627b8045a1829c1ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ef450c94ba6160627b8045a1829c1ff"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>AccountId</b></td></tr>
+<tr class="memitem:a2ef450c94ba6160627b8045a1829c1ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1LoginResponse.html#a2ef450c94ba6160627b8045a1829c1ff">AccountId</a></td></tr>
+<tr class="memdesc:a2ef450c94ba6160627b8045a1829c1ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">The account identifier which the user has, who logged in.  <a href="#a2ef450c94ba6160627b8045a1829c1ff">More...</a><br /></td></tr>
 <tr class="separator:a2ef450c94ba6160627b8045a1829c1ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bb5d99f8fa2a5564fa2d7ba2d613fd0"><td class="memItemLeft" align="right" valign="top">DateTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1LoginResponse.html#a1bb5d99f8fa2a5564fa2d7ba2d613fd0">ServerTime</a></td></tr>
+<tr class="memdesc:a1bb5d99f8fa2a5564fa2d7ba2d613fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="namespaceServer.html">Server</a> time which is be used to synchronize client and server  <a href="#a1bb5d99f8fa2a5564fa2d7ba2d613fd0">More...</a><br /></td></tr>
+<tr class="separator:a1bb5d99f8fa2a5564fa2d7ba2d613fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classCore_1_1Connections_1_1Response.html" title="Response class which is used at every response (except login response) Will be serialised before send...">Response</a> class which should be used to login. Will be serialised before sending, should be deserialised after recieving. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p><a class="el" href="classCore_1_1Connections_1_1Response.html" title="Standard response class which is used at every response (except login). Will be serialized before sen...">Response</a> class which should be used to login. Will be serialized before sending, should be deserialized after receiving. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a class="anchor" id="ad726169217eaad8b926b7548d43020d8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classCore_1_1Connections_1_1LoginResponse.html#ad726169217eaad8b926b7548d43020d8">Core.Connections.LoginResponse.ReponseStatus</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classCore_1_1Connections_1_1Response.html" title="Standard response class which is used at every response (except login). Will be serialized before sen...">Response</a> status of the login response. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ab9a1fa386052ddf7917d3367bb8f1fb1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Core.Connections.LoginResponse.LoginResponse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="classCore_1_1Connections_1_1LoginResponse.html" title="Response class which should be used to login. Will be serialized before sending, should be deserializ...">Core.Connections.LoginResponse</a> class. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a2ef450c94ba6160627b8045a1829c1ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Connections.LoginResponse.AccountId</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The account identifier which the user has, who logged in. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1bb5d99f8fa2a5564fa2d7ba2d613fd0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DateTime Core.Connections.LoginResponse.ServerTime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The <a class="el" href="namespaceServer.html">Server</a> time which is be used to synchronize client and server </p>
+
+</div>
+</div>
+<a class="anchor" id="a0852c12c3db05b5f4093ee08f5aa4107"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Guid Core.Connections.LoginResponse.SessionID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The session which the got after the login. </p>
+
+</div>
+</div>
+<a class="anchor" id="a07d5c565863a18dc114700d9420b2d5f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCore_1_1Connections_1_1LoginResponse.html#ad726169217eaad8b926b7548d43020d8">ReponseStatus</a> Core.Connections.LoginResponse.Status</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The <a class="el" href="classCore_1_1Connections_1_1Response.html" title="Standard response class which is used at every response (except login). Will be serialized before sen...">Response</a> Status. Only use other data if ResponseStatus == OK </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>base/Connection/LoginResponse.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

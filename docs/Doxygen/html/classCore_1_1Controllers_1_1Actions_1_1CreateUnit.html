@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -96,13 +96,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Core.Controllers.Actions.CreateUnit Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Create unit.  
+ <a href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Core.Controllers.Actions.CreateUnit:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.png" usemap="#Core.Controllers.Actions.CreateUnit_map" alt=""/>
   <map id="Core.Controllers.Actions.CreateUnit_map" name="Core.Controllers.Actions.CreateUnit_map">
-<area href="classCore_1_1Controllers_1_1Actions_1_1Action.html" alt="Core.Controllers.Actions.Action" shape="rect" coords="0,56,215,80"/>
+<area href="classCore_1_1Controllers_1_1Actions_1_1Action.html" title="Action class. Should be used as base for each other action. Actions are part of the game logic..." alt="Core.Controllers.Actions.Action" shape="rect" coords="0,56,215,80"/>
 <area href="classCore_1_1Controllers_1_1ControlEntity.html" title="MVC Controller. " alt="Core.Controllers.ControlEntity" shape="rect" coords="0,0,215,24"/>
 </map>
  </div></div>
@@ -110,52 +113,54 @@ Inheritance diagram for Core.Controllers.Actions.CreateUnit:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a38e1f619d2ec42c361d1ab532b04b2cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#a38e1f619d2ec42c361d1ab532b04b2cb">CreateUnit</a> (<a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a> model)</td></tr>
-<tr class="memdesc:a38e1f619d2ec42c361d1ab532b04b2cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of the class <a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html">CreateUnit</a>.  <a href="#a38e1f619d2ec42c361d1ab532b04b2cb">More...</a><br /></td></tr>
+<tr class="memdesc:a38e1f619d2ec42c361d1ab532b04b2cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html" title="Create unit. ">Core.Controllers.Actions.CreateUnit</a> class.  <a href="#a38e1f619d2ec42c361d1ab532b04b2cb">More...</a><br /></td></tr>
 <tr class="separator:a38e1f619d2ec42c361d1ab532b04b2cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a740be9051fcd4f9a8e22d702da400ba7"><td class="memItemLeft" align="right" valign="top">override ConcurrentBag&lt; <a class="el" href="classCore_1_1Models_1_1Region.html">Core.Models.Region</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#a740be9051fcd4f9a8e22d702da400ba7">GetAffectedRegions</a> ()</td></tr>
-<tr class="memdesc:a740be9051fcd4f9a8e22d702da400ba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">///  <a href="#a740be9051fcd4f9a8e22d702da400ba7">More...</a><br /></td></tr>
+<tr class="memdesc:a740be9051fcd4f9a8e22d702da400ba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a bag of all regions which could be affected by this action.  <a href="#a740be9051fcd4f9a8e22d702da400ba7">More...</a><br /></td></tr>
 <tr class="separator:a740be9051fcd4f9a8e22d702da400ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30ceafb2aa0fb1b801a8abd659c9d70f"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#a30ceafb2aa0fb1b801a8abd659c9d70f">Possible</a> ()</td></tr>
 <tr class="memdesc:a30ceafb2aa0fb1b801a8abd659c9d70f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns if the action is even possible.  <a href="#a30ceafb2aa0fb1b801a8abd659c9d70f">More...</a><br /></td></tr>
 <tr class="separator:a30ceafb2aa0fb1b801a8abd659c9d70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0afdf65e7e04f108bb257eae3327eac0"><td class="memItemLeft" align="right" valign="top">override ConcurrentBag&lt; <a class="el" href="classCore_1_1Models_1_1Region.html">Core.Models.Region</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#a0afdf65e7e04f108bb257eae3327eac0">Do</a> ()</td></tr>
-<tr class="memdesc:a0afdf65e7e04f108bb257eae3327eac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply action-related changes to the world.  <a href="#a0afdf65e7e04f108bb257eae3327eac0">More...</a><br /></td></tr>
+<tr class="memdesc:a0afdf65e7e04f108bb257eae3327eac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply action-related changes to the world. Returns set of changed Regions if everything worked, otherwise null  <a href="#a0afdf65e7e04f108bb257eae3327eac0">More...</a><br /></td></tr>
 <tr class="separator:a0afdf65e7e04f108bb257eae3327eac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2763a79e6767ac7c5179281cb4e0a6f"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#ac2763a79e6767ac7c5179281cb4e0a6f">Catch</a> ()</td></tr>
-<tr class="memdesc:ac2763a79e6767ac7c5179281cb4e0a6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">In case of errors, revert the world data to a valid state.  <a href="#ac2763a79e6767ac7c5179281cb4e0a6f">More...</a><br /></td></tr>
+<tr class="memdesc:ac2763a79e6767ac7c5179281cb4e0a6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If an error occurred in do, this function will be called to set the data to the last known valid state.  <a href="#ac2763a79e6767ac7c5179281cb4e0a6f">More...</a><br /></td></tr>
 <tr class="separator:ac2763a79e6767ac7c5179281cb4e0a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04a85d0db9c84ca3f0e97049cca4f9c0"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="classCore_1_1Models_1_1RegionPosition.html">Core.Models.RegionPosition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#a04a85d0db9c84ca3f0e97049cca4f9c0">GetRegionPosition</a> ()</td></tr>
-<tr class="memdesc:a04a85d0db9c84ca3f0e97049cca4f9c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the region position.  <a href="#a04a85d0db9c84ca3f0e97049cca4f9c0">More...</a><br /></td></tr>
+<tr class="memdesc:a04a85d0db9c84ca3f0e97049cca4f9c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override base.model.RegionPosition class and return the positionI of the region.  <a href="#a04a85d0db9c84ca3f0e97049cca4f9c0">More...</a><br /></td></tr>
 <tr class="separator:a04a85d0db9c84ca3f0e97049cca4f9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classCore_1_1Controllers_1_1Actions_1_1Action"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCore_1_1Controllers_1_1Actions_1_1Action')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classCore_1_1Controllers_1_1Actions_1_1Action.html">Core.Controllers.Actions.Action</a></td></tr>
-<tr class="memitem:abb5103ff9280d2556e57a0fdaf090fe1 inherit pub_methods_classCore_1_1Controllers_1_1Actions_1_1Action"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb5103ff9280d2556e57a0fdaf090fe1"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Action</b> (<a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a> model)</td></tr>
+<tr class="memitem:abb5103ff9280d2556e57a0fdaf090fe1 inherit pub_methods_classCore_1_1Controllers_1_1Actions_1_1Action"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1Actions_1_1Action.html#abb5103ff9280d2556e57a0fdaf090fe1">Action</a> (<a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a> model)</td></tr>
+<tr class="memdesc:abb5103ff9280d2556e57a0fdaf090fe1 inherit pub_methods_classCore_1_1Controllers_1_1Actions_1_1Action"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Controllers_1_1Actions_1_1Action.html" title="Action class. Should be used as base for each other action. Actions are part of the game logic...">Core.Controllers.Actions.Action</a> class.  <a href="#abb5103ff9280d2556e57a0fdaf090fe1">More...</a><br /></td></tr>
 <tr class="separator:abb5103ff9280d2556e57a0fdaf090fe1 inherit pub_methods_classCore_1_1Controllers_1_1Actions_1_1Action"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classCore_1_1Controllers_1_1ControlEntity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCore_1_1Controllers_1_1ControlEntity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html">Core.Controllers.ControlEntity</a></td></tr>
-<tr class="memitem:ae658365fdb72c178ad05c27d258fcca2 inherit pub_methods_classCore_1_1Controllers_1_1ControlEntity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae658365fdb72c178ad05c27d258fcca2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ControlEntity</b> (<a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a> model)</td></tr>
+<tr class="memitem:ae658365fdb72c178ad05c27d258fcca2 inherit pub_methods_classCore_1_1Controllers_1_1ControlEntity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html#ae658365fdb72c178ad05c27d258fcca2">ControlEntity</a> (<a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a> model)</td></tr>
+<tr class="memdesc:ae658365fdb72c178ad05c27d258fcca2 inherit pub_methods_classCore_1_1Controllers_1_1ControlEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html" title="MVC Controller. ">Core.Controllers.ControlEntity</a> class.  <a href="#ae658365fdb72c178ad05c27d258fcca2">More...</a><br /></td></tr>
 <tr class="separator:ae658365fdb72c178ad05c27d258fcca2 inherit pub_methods_classCore_1_1Controllers_1_1ControlEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a35a30a8393a155c7bb8e76ecc8c08874"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35a30a8393a155c7bb8e76ecc8c08874"></a>
-const string&#160;</td><td class="memItemRight" valign="bottom"><b>CREATE_POSITION</b> = &quot;CreatePosition&quot;</td></tr>
+<tr class="memitem:a35a30a8393a155c7bb8e76ecc8c08874"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#a35a30a8393a155c7bb8e76ecc8c08874">CREATE_POSITION</a> = &quot;CreatePosition&quot;</td></tr>
+<tr class="memdesc:a35a30a8393a155c7bb8e76ecc8c08874"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of the parent-entity (e.g. position of barracks, if it spawns an unit)  <a href="#a35a30a8393a155c7bb8e76ecc8c08874">More...</a><br /></td></tr>
 <tr class="separator:a35a30a8393a155c7bb8e76ecc8c08874"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2df09d9a45946983c9d5d0ee08a0b4a3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2df09d9a45946983c9d5d0ee08a0b4a3"></a>
-const string&#160;</td><td class="memItemRight" valign="bottom"><b>CREATION_TYPE</b> = &quot;CreateUnit&quot;</td></tr>
+<tr class="memitem:a2df09d9a45946983c9d5d0ee08a0b4a3"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#a2df09d9a45946983c9d5d0ee08a0b4a3">CREATION_TYPE</a> = &quot;CreateUnit&quot;</td></tr>
+<tr class="memdesc:a2df09d9a45946983c9d5d0ee08a0b4a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit Type which should be created  <a href="#a2df09d9a45946983c9d5d0ee08a0b4a3">More...</a><br /></td></tr>
 <tr class="separator:a2df09d9a45946983c9d5d0ee08a0b4a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75330207d1027fb83f97d8973ae355f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75330207d1027fb83f97d8973ae355f3"></a>
-<a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RealCreatePosition</b></td></tr>
+<tr class="memitem:a75330207d1027fb83f97d8973ae355f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html#a75330207d1027fb83f97d8973ae355f3">RealCreatePosition</a></td></tr>
+<tr class="memdesc:a75330207d1027fb83f97d8973ae355f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position where the unit should be created  <a href="#a75330207d1027fb83f97d8973ae355f3">More...</a><br /></td></tr>
 <tr class="separator:a75330207d1027fb83f97d8973ae355f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header properties_classCore_1_1Controllers_1_1ControlEntity"><td colspan="2" onclick="javascript:toggleInherit('properties_classCore_1_1Controllers_1_1ControlEntity')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html">Core.Controllers.ControlEntity</a></td></tr>
-<tr class="memitem:ad5b9626748577b6af9b63c5d83e7739a inherit properties_classCore_1_1Controllers_1_1ControlEntity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5b9626748577b6af9b63c5d83e7739a"></a>
-<a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Model</b><code> [get]</code></td></tr>
+<tr class="memitem:ad5b9626748577b6af9b63c5d83e7739a inherit properties_classCore_1_1Controllers_1_1ControlEntity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html#ad5b9626748577b6af9b63c5d83e7739a">Model</a><code> [get]</code></td></tr>
+<tr class="memdesc:ad5b9626748577b6af9b63c5d83e7739a inherit properties_classCore_1_1Controllers_1_1ControlEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the model of the entity  <a href="#ad5b9626748577b6af9b63c5d83e7739a">More...</a><br /></td></tr>
 <tr class="separator:ad5b9626748577b6af9b63c5d83e7739a inherit properties_classCore_1_1Controllers_1_1ControlEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Create unit. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a38e1f619d2ec42c361d1ab532b04b2cb"></a>
 <div class="memitem">
 <div class="memproto">
@@ -170,10 +175,10 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructor of the class <a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html">CreateUnit</a>. </p>
+<p>Initializes a new instance of the <a class="el" href="classCore_1_1Controllers_1_1Actions_1_1CreateUnit.html" title="Create unit. ">Core.Controllers.Actions.CreateUnit</a> class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">model</td><td></td></tr>
+    <tr><td class="paramname">model</td><td>action model.</td></tr>
   </table>
   </dd>
 </dl>
@@ -202,7 +207,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>In case of errors, revert the world data to a valid state. </p>
+<p>If an error occurred in do, this function will be called to set the data to the last known valid state. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if rewind was successfully</dd></dl>
 
 <p>Reimplemented from <a class="el" href="classCore_1_1Controllers_1_1Actions_1_1Action.html#ada4c77dfeee78ded10a6eb6a506defb4">Core.Controllers.Actions.Action</a>.</p>
 
@@ -229,14 +235,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Apply action-related changes to the world. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">regionManagerC</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns System.Collections.Concurrent.ConcurrentBag&lt;t&gt; class with the affected region.</dd></dl>
+<p>Apply action-related changes to the world. Returns set of changed Regions if everything worked, otherwise null </p>
+<dl class="section return"><dt>Returns</dt><dd>all affected (changed) regions</dd></dl>
 
 <p>Reimplemented from <a class="el" href="classCore_1_1Controllers_1_1Actions_1_1Action.html#afbb091ee28eee896951fac600188d446">Core.Controllers.Actions.Action</a>.</p>
 
@@ -263,15 +263,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>/// </p>
-<p>Initializes a new instance of the base.control.action.Action class. Identify alle affected regions by this action. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">regionManagerC</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns System.Collections.Concurrent.ConcurrentBag&lt;t&gt; class with the affected regions. </dd></dl>
+<p>Returns a bag of all regions which could be affected by this action. </p>
+<dl class="section return"><dt>Returns</dt><dd>The affected regions.</dd></dl>
 
 <p>Reimplemented from <a class="el" href="classCore_1_1Controllers_1_1Actions_1_1Action.html#aa11bdeffff43ec47ac7c3d6843a85674">Core.Controllers.Actions.Action</a>.</p>
 
@@ -298,7 +291,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Gets the region position. </p>
+<p>Override base.model.RegionPosition class and return the positionI of the region. </p>
 <dl class="section return"><dt>Returns</dt><dd>The region position.</dd></dl>
 
 <p>Reimplemented from <a class="el" href="classCore_1_1Controllers_1_1Actions_1_1Action.html#a6ffe3c30cb5648a81f50096f4f332d5a">Core.Controllers.Actions.Action</a>.</p>
@@ -327,25 +320,62 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns if the action is even possible. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">regionManagerC</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the actions is possible, otherwise false.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the Building is buildable at the current position, otherwise false.</dd></dl>
 
 <p>Reimplemented from <a class="el" href="classCore_1_1Controllers_1_1Actions_1_1Action.html#a405b995343a9394ad19e05a699a4e6d9">Core.Controllers.Actions.Action</a>.</p>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a35a30a8393a155c7bb8e76ecc8c08874"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string Core.Controllers.Actions.CreateUnit.CREATE_POSITION = &quot;CreatePosition&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Position of the parent-entity (e.g. position of barracks, if it spawns an unit) </p>
+
+</div>
+</div>
+<a class="anchor" id="a2df09d9a45946983c9d5d0ee08a0b4a3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string Core.Controllers.Actions.CreateUnit.CREATION_TYPE = &quot;CreateUnit&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unit Type which should be created </p>
+
+</div>
+</div>
+<a class="anchor" id="a75330207d1027fb83f97d8973ae355f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> Core.Controllers.Actions.CreateUnit.RealCreatePosition</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Position where the unit should be created </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>base/Controllers/Action/CreateUnit.cs</li>
+<li>base/Controllers/Actions/CreateUnit.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

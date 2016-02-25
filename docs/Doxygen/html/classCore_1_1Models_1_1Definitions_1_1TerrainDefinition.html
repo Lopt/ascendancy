@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -97,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Terrain Definiton which contains informations about a terraintype.  
+<p>Terrain definition which contains information about a terrain type.  
  <a href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Core.Models.Definitions.TerrainDefinition:</div>
@@ -105,54 +105,285 @@ Inheritance diagram for Core.Models.Definitions.TerrainDefinition:</div>
  <div class="center">
   <img src="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.png" usemap="#Core.Models.Definitions.TerrainDefinition_map" alt=""/>
   <map id="Core.Models.Definitions.TerrainDefinition_map" name="Core.Models.Definitions.TerrainDefinition_map">
-<area href="classCore_1_1Models_1_1Definitions_1_1Definition.html" title="Definition contains static informations about entities. In which Category they belong and their id..." alt="Core.Models.Definitions.Definition" shape="rect" coords="0,0,246,24"/>
+<area href="classCore_1_1Models_1_1Definitions_1_1Definition.html" title="Definition contains static information about entities. In which Category they belong and their id..." alt="Core.Models.Definitions.Definition" shape="rect" coords="0,56,246,80"/>
+<area href="classCore_1_1Models_1_1ModelEntity.html" title="MVC Model. " alt="Core.Models.ModelEntity" shape="rect" coords="0,0,246,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a39711d31c329fe859102166584b11ec0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39711d31c329fe859102166584b11ec0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TerrainDefinition</b> (<a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a609ed13db028308ebc6c5fbd98615fdc">EntityType</a> terrainType, int[] ressources, bool buildable=true, bool walkable=true, int travelCost=1)</td></tr>
-<tr class="separator:a39711d31c329fe859102166584b11ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0abe97add8bfffa9e5ddf820c5fc6a6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html#ad0abe97add8bfffa9e5ddf820c5fc6a6">TerrainDefinition</a> (<a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a609ed13db028308ebc6c5fbd98615fdc">EntityType</a> terrainType, int[] resources, bool buildable, bool walkable, int travelCost, int defenseModifier, int attackModifier)</td></tr>
+<tr class="memdesc:ad0abe97add8bfffa9e5ddf820c5fc6a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html" title="Terrain definition which contains information about a terrain type. ">Core.Models.Definitions.TerrainDefinition</a> class.  <a href="#ad0abe97add8bfffa9e5ddf820c5fc6a6">More...</a><br /></td></tr>
+<tr class="separator:ad0abe97add8bfffa9e5ddf820c5fc6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a></td></tr>
-<tr class="memitem:a58b73a00c59e999041dffb2b6a273d8f inherit pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58b73a00c59e999041dffb2b6a273d8f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Definition</b> (int id)</td></tr>
+<tr class="memitem:a58b73a00c59e999041dffb2b6a273d8f inherit pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html#a58b73a00c59e999041dffb2b6a273d8f">Definition</a> (int id)</td></tr>
+<tr class="memdesc:a58b73a00c59e999041dffb2b6a273d8f inherit pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html" title="Definition contains static information about entities. In which Category they belong and their id...">Core.Models.Definitions.Definition</a> class.  <a href="#a58b73a00c59e999041dffb2b6a273d8f">More...</a><br /></td></tr>
 <tr class="separator:a58b73a00c59e999041dffb2b6a273d8f inherit pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classCore_1_1Models_1_1ModelEntity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCore_1_1Models_1_1ModelEntity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a></td></tr>
+<tr class="memitem:a7b738ffece3d63b0a7e22697cd2a15ef inherit pub_methods_classCore_1_1Models_1_1ModelEntity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1ModelEntity.html#a7b738ffece3d63b0a7e22697cd2a15ef">ModelEntity</a> ()</td></tr>
+<tr class="memdesc:a7b738ffece3d63b0a7e22697cd2a15ef inherit pub_methods_classCore_1_1Models_1_1ModelEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1ModelEntity.html" title="MVC Model. ">Core.Models.ModelEntity</a> class.  <a href="#a7b738ffece3d63b0a7e22697cd2a15ef">More...</a><br /></td></tr>
+<tr class="separator:a7b738ffece3d63b0a7e22697cd2a15ef inherit pub_methods_classCore_1_1Models_1_1ModelEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a76ea185d6849c0806fb69826f6ecd5e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a76ea185d6849c0806fb69826f6ecd5e5"></a>
-int[]&#160;</td><td class="memItemRight" valign="bottom"><b>Ressources</b><code> [get]</code></td></tr>
-<tr class="separator:a76ea185d6849c0806fb69826f6ecd5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ea92cea864ec5076938847f78ecb186"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ea92cea864ec5076938847f78ecb186"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Buildable</b><code> [get]</code></td></tr>
+<tr class="memitem:add68e1feb4cb4743c55e94474e69d872"><td class="memItemLeft" align="right" valign="top">int[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html#add68e1feb4cb4743c55e94474e69d872">Resources</a><code> [get]</code></td></tr>
+<tr class="memdesc:add68e1feb4cb4743c55e94474e69d872"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the resources.  <a href="#add68e1feb4cb4743c55e94474e69d872">More...</a><br /></td></tr>
+<tr class="separator:add68e1feb4cb4743c55e94474e69d872"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea92cea864ec5076938847f78ecb186"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html#a7ea92cea864ec5076938847f78ecb186">Buildable</a><code> [get]</code></td></tr>
+<tr class="memdesc:a7ea92cea864ec5076938847f78ecb186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a value indicating whether this <a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html" title="Terrain definition which contains information about a terrain type. ">Core.Models.Definitions.TerrainDefinition</a> is buildable.  <a href="#a7ea92cea864ec5076938847f78ecb186">More...</a><br /></td></tr>
 <tr class="separator:a7ea92cea864ec5076938847f78ecb186"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6811c8cb478e3c2cbbab24fbbd746e16"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6811c8cb478e3c2cbbab24fbbd746e16"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Walkable</b><code> [get]</code></td></tr>
+<tr class="memitem:a6811c8cb478e3c2cbbab24fbbd746e16"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html#a6811c8cb478e3c2cbbab24fbbd746e16">Walkable</a><code> [get]</code></td></tr>
+<tr class="memdesc:a6811c8cb478e3c2cbbab24fbbd746e16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a value indicating whether this <a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html" title="Terrain definition which contains information about a terrain type. ">Core.Models.Definitions.TerrainDefinition</a> is walkable.  <a href="#a6811c8cb478e3c2cbbab24fbbd746e16">More...</a><br /></td></tr>
 <tr class="separator:a6811c8cb478e3c2cbbab24fbbd746e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1f619459353eedfb36c657b0eb370e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa1f619459353eedfb36c657b0eb370e7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>TravelCost</b><code> [get]</code></td></tr>
+<tr class="memitem:aa1f619459353eedfb36c657b0eb370e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html#aa1f619459353eedfb36c657b0eb370e7">TravelCost</a><code> [get]</code></td></tr>
+<tr class="memdesc:aa1f619459353eedfb36c657b0eb370e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the travel cost.  <a href="#aa1f619459353eedfb36c657b0eb370e7">More...</a><br /></td></tr>
 <tr class="separator:aa1f619459353eedfb36c657b0eb370e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0bfc46b1779306a6bfb7c64eed5ebf1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html#aa0bfc46b1779306a6bfb7c64eed5ebf1">AttackModifier</a><code> [get]</code></td></tr>
+<tr class="memdesc:aa0bfc46b1779306a6bfb7c64eed5ebf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the attack modifier.  <a href="#aa0bfc46b1779306a6bfb7c64eed5ebf1">More...</a><br /></td></tr>
+<tr class="separator:aa0bfc46b1779306a6bfb7c64eed5ebf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a06489b93795057da62a7fc004fa94f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html#a2a06489b93795057da62a7fc004fa94f">DefenseModifier</a><code> [get]</code></td></tr>
+<tr class="memdesc:a2a06489b93795057da62a7fc004fa94f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the defense modifier.  <a href="#a2a06489b93795057da62a7fc004fa94f">More...</a><br /></td></tr>
+<tr class="separator:a2a06489b93795057da62a7fc004fa94f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td colspan="2" onclick="javascript:toggleInherit('properties_classCore_1_1Models_1_1Definitions_1_1Definition')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a></td></tr>
-<tr class="memitem:a6504fe4404e24c0b0601b0591f99fda4 inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6504fe4404e24c0b0601b0591f99fda4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b><code> [get]</code></td></tr>
+<tr class="memitem:a6504fe4404e24c0b0601b0591f99fda4 inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html#a6504fe4404e24c0b0601b0591f99fda4">ID</a><code> [get]</code></td></tr>
+<tr class="memdesc:a6504fe4404e24c0b0601b0591f99fda4 inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Identifier.  <a href="#a6504fe4404e24c0b0601b0591f99fda4">More...</a><br /></td></tr>
 <tr class="separator:a6504fe4404e24c0b0601b0591f99fda4 inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbcf001ffb2d8453d321e3524739b48e inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbcf001ffb2d8453d321e3524739b48e"></a>
-<a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a8be0403c3e883fe583d7bb3893c22c65">Category</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Category</b><code> [get]</code></td></tr>
+<tr class="memitem:abbcf001ffb2d8453d321e3524739b48e inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a8be0403c3e883fe583d7bb3893c22c65">Category</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html#abbcf001ffb2d8453d321e3524739b48e">Category</a><code> [get]</code></td></tr>
+<tr class="memdesc:abbcf001ffb2d8453d321e3524739b48e inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the category.  <a href="#abbcf001ffb2d8453d321e3524739b48e">More...</a><br /></td></tr>
 <tr class="separator:abbcf001ffb2d8453d321e3524739b48e inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae71f596d97485f31733d1b9b5144051a inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae71f596d97485f31733d1b9b5144051a"></a>
-<a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a609ed13db028308ebc6c5fbd98615fdc">EntityType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>SubType</b><code> [get]</code></td></tr>
+<tr class="memitem:ae71f596d97485f31733d1b9b5144051a inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a609ed13db028308ebc6c5fbd98615fdc">EntityType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html#ae71f596d97485f31733d1b9b5144051a">SubType</a><code> [get]</code></td></tr>
+<tr class="memdesc:ae71f596d97485f31733d1b9b5144051a inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of the sub. (also currently equal to the ID)  <a href="#ae71f596d97485f31733d1b9b5144051a">More...</a><br /></td></tr>
 <tr class="separator:ae71f596d97485f31733d1b9b5144051a inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_attribs_classCore_1_1Models_1_1ModelEntity"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classCore_1_1Models_1_1ModelEntity')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a></td></tr>
+<tr class="memitem:a19619acbb856f7b54c971b38f061509c inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Views_1_1ViewEntity.html">Views.ViewEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1ModelEntity.html#a19619acbb856f7b54c971b38f061509c">View</a></td></tr>
+<tr class="memdesc:a19619acbb856f7b54c971b38f061509c inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The view part of MVC.  <a href="#a19619acbb856f7b54c971b38f061509c">More...</a><br /></td></tr>
+<tr class="separator:a19619acbb856f7b54c971b38f061509c inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78a6ddcf09a0b517230e738c40faa813 inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html">Controllers.ControlEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1ModelEntity.html#a78a6ddcf09a0b517230e738c40faa813">Control</a></td></tr>
+<tr class="memdesc:a78a6ddcf09a0b517230e738c40faa813 inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The control part of MVC.  <a href="#a78a6ddcf09a0b517230e738c40faa813">More...</a><br /></td></tr>
+<tr class="separator:a78a6ddcf09a0b517230e738c40faa813 inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Terrain Definiton which contains informations about a terraintype. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Terrain definition which contains information about a terrain type. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ad0abe97add8bfffa9e5ddf820c5fc6a6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Core.Models.Definitions.TerrainDefinition.TerrainDefinition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a609ed13db028308ebc6c5fbd98615fdc">EntityType</a>&#160;</td>
+          <td class="paramname"><em>terrainType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int[]&#160;</td>
+          <td class="paramname"><em>resources</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>buildable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>walkable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>travelCost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>defenseModifier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attackModifier</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html" title="Terrain definition which contains information about a terrain type. ">Core.Models.Definitions.TerrainDefinition</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">terrainType</td><td>Terrain type.</td></tr>
+    <tr><td class="paramname">resources</td><td><a class="el" href="namespaceCore_1_1Models_1_1Resources.html">Resources</a> which the user will receive.</td></tr>
+    <tr><td class="paramname">buildable</td><td>If set to <code>true</code>, it is buildable.</td></tr>
+    <tr><td class="paramname">walkable</td><td>If set to <code>true</code> it is walkable.</td></tr>
+    <tr><td class="paramname">travelCost</td><td>Travel cost.</td></tr>
+    <tr><td class="paramname">defenseModifier</td><td>Defense modifier.</td></tr>
+    <tr><td class="paramname">attackModifier</td><td>Attack modifier.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="aa0bfc46b1779306a6bfb7c64eed5ebf1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.TerrainDefinition.AttackModifier</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the attack modifier. </p>
+<p>The attack modifier.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7ea92cea864ec5076938847f78ecb186"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Core.Models.Definitions.TerrainDefinition.Buildable</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets a value indicating whether this <a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html" title="Terrain definition which contains information about a terrain type. ">Core.Models.Definitions.TerrainDefinition</a> is buildable. </p>
+<p><code>true</code> if buildable; otherwise, <code>false</code>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2a06489b93795057da62a7fc004fa94f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.TerrainDefinition.DefenseModifier</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the defense modifier. </p>
+<p>The defense modifier.</p>
+
+</div>
+</div>
+<a class="anchor" id="add68e1feb4cb4743c55e94474e69d872"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int [] Core.Models.Definitions.TerrainDefinition.Resources</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the resources. </p>
+<p>The resources.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa1f619459353eedfb36c657b0eb370e7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.TerrainDefinition.TravelCost</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the travel cost. </p>
+<p>The travel cost.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6811c8cb478e3c2cbbab24fbbd746e16"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Core.Models.Definitions.TerrainDefinition.Walkable</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets a value indicating whether this <a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html" title="Terrain definition which contains information about a terrain type. ">Core.Models.Definitions.TerrainDefinition</a> is walkable. </p>
+<p><code>true</code> if walkable; otherwise, <code>false</code>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>base/Models/Definitions/TerrainDefinition.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

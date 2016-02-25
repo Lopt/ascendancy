@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -89,58 +89,163 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classClient_1_1Common_1_1Views_1_1MenuView-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Client.Common.Views.MenuView Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Menu view.  
+<p>The Menu view.  
  <a href="classClient_1_1Common_1_1Views_1_1MenuView.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a63db164d71105de8543e3992db8c9a1c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a63db164d71105de8543e3992db8c9a1c">MenuType</a> { <br />
+&#160;&#160;<b>Unity</b>, 
+<b>Headquarter</b>, 
+<b>Major</b>, 
+<b>Extended</b>, 
+<br />
+&#160;&#160;<b>Empty</b>
+<br />
+ }<tr class="memdesc:a63db164d71105de8543e3992db8c9a1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The view menu type.  <a href="classClient_1_1Common_1_1Views_1_1MenuView.html#a63db164d71105de8543e3992db8c9a1c">More...</a><br /></td></tr>
+<tr class="separator:a63db164d71105de8543e3992db8c9a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a625e8f113e66ae12b1ebb9142ef9072d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a625e8f113e66ae12b1ebb9142ef9072d">MenuView</a> (CCTileMapLayer menuLayer, CCTileMapCoordinates center, <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Definition</a>[] types)</td></tr>
-<tr class="memdesc:a625e8f113e66ae12b1ebb9142ef9072d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html" title="Menu view. ">Client.Common.Views.MenuView</a> class.  <a href="#a625e8f113e66ae12b1ebb9142ef9072d">More...</a><br /></td></tr>
-<tr class="separator:a625e8f113e66ae12b1ebb9142ef9072d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab5290ebf833abcf80e67c46199cb53d"><td class="memItemLeft" align="right" valign="top">CCTileMapCoordinates[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#aab5290ebf833abcf80e67c46199cb53d">GetSurroundedTiles</a> ()</td></tr>
-<tr class="memdesc:aab5290ebf833abcf80e67c46199cb53d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the surrounded tiles.  <a href="#aab5290ebf833abcf80e67c46199cb53d">More...</a><br /></td></tr>
-<tr class="separator:aab5290ebf833abcf80e67c46199cb53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52c67c8cd89babbf271a40f01e627b7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a52c67c8cd89babbf271a40f01e627b7a">DrawMenu</a> ()</td></tr>
-<tr class="memdesc:a52c67c8cd89babbf271a40f01e627b7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the menu at a given Location.  <a href="#a52c67c8cd89babbf271a40f01e627b7a">More...</a><br /></td></tr>
-<tr class="separator:a52c67c8cd89babbf271a40f01e627b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8d1c45d630862f67843b76195c2c5dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#ae8d1c45d630862f67843b76195c2c5dd">GetSelectedDefinition</a> (CCTileMapCoordinates coord)</td></tr>
-<tr class="memdesc:ae8d1c45d630862f67843b76195c2c5dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the selected definition.  <a href="#ae8d1c45d630862f67843b76195c2c5dd">More...</a><br /></td></tr>
-<tr class="separator:ae8d1c45d630862f67843b76195c2c5dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96e27ee46eb6e4fe839281c61a0c7b4a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a96e27ee46eb6e4fe839281c61a0c7b4a">MenuView</a> (<a class="el" href="classClient_1_1Common_1_1Views_1_1WorldLayerHex.html">WorldLayerHex</a> worldlayer, <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> center, <a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a63db164d71105de8543e3992db8c9a1c">MenuType</a> menuType)</td></tr>
+<tr class="memdesc:a96e27ee46eb6e4fe839281c61a0c7b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html" title="The Menu view. ">Client.Common.Views.MenuView</a> class.  <a href="#a96e27ee46eb6e4fe839281c61a0c7b4a">More...</a><br /></td></tr>
+<tr class="separator:a96e27ee46eb6e4fe839281c61a0c7b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d5b7057b1e79dca2236532d5dcf7f78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Models_1_1PositionI.html">Core.Models.PositionI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a2d5b7057b1e79dca2236532d5dcf7f78">GetTiles</a> (<a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> coord, <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> oldcoord)</td></tr>
+<tr class="memdesc:a2d5b7057b1e79dca2236532d5dcf7f78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets one iteration of the expanding menu with the coordinate and the old coordinate as needed parameters to calculate the direction.  <a href="#a2d5b7057b1e79dca2236532d5dcf7f78">More...</a><br /></td></tr>
+<tr class="separator:a2d5b7057b1e79dca2236532d5dcf7f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4ec6daade1a30b3989f9ed77df78665"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#ac4ec6daade1a30b3989f9ed77df78665">GetExtendedCoords</a> (<a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> coord, <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a>[] definitions)</td></tr>
+<tr class="memdesc:ac4ec6daade1a30b3989f9ed77df78665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the extended coords.  <a href="#ac4ec6daade1a30b3989f9ed77df78665">More...</a><br /></td></tr>
+<tr class="separator:ac4ec6daade1a30b3989f9ed77df78665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abca68f27c340677a0fe7cfb410d8c71e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#abca68f27c340677a0fe7cfb410d8c71e">ExtendMenu</a> (short gid, <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> coord)</td></tr>
+<tr class="memdesc:abca68f27c340677a0fe7cfb410d8c71e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extends the menu.  <a href="#abca68f27c340677a0fe7cfb410d8c71e">More...</a><br /></td></tr>
+<tr class="separator:abca68f27c340677a0fe7cfb410d8c71e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fce28a445624cfdc1f9b045411c604f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a6fce28a445624cfdc1f9b045411c604f">DrawMenu</a> (<a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a63db164d71105de8543e3992db8c9a1c">MenuType</a> menuType)</td></tr>
+<tr class="memdesc:a6fce28a445624cfdc1f9b045411c604f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the menu for each type.  <a href="#a6fce28a445624cfdc1f9b045411c604f">More...</a><br /></td></tr>
+<tr class="separator:a6fce28a445624cfdc1f9b045411c604f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b45615926b800171d593f279a01e283"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a5b45615926b800171d593f279a01e283">GetSelectedDefinition</a> (<a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> pos)</td></tr>
+<tr class="memdesc:a5b45615926b800171d593f279a01e283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the selected definition on a position.  <a href="#a5b45615926b800171d593f279a01e283">More...</a><br /></td></tr>
+<tr class="separator:a5b45615926b800171d593f279a01e283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae297dd1b9a97ab6936f51b92cc5042c2"><td class="memItemLeft" align="right" valign="top">CCTileGidAndFlags&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#ae297dd1b9a97ab6936f51b92cc5042c2">GetSelectedKategory</a> (<a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> pos)</td></tr>
+<tr class="memdesc:ae297dd1b9a97ab6936f51b92cc5042c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the selected kategory gid on a position.  <a href="#ae297dd1b9a97ab6936f51b92cc5042c2">More...</a><br /></td></tr>
+<tr class="separator:ae297dd1b9a97ab6936f51b92cc5042c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca76b1123fb7d025ca07ab120849008b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#aca76b1123fb7d025ca07ab120849008b">ClearExtendedMenu</a> ()</td></tr>
+<tr class="memdesc:aca76b1123fb7d025ca07ab120849008b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the extended menu Tiles.  <a href="#aca76b1123fb7d025ca07ab120849008b">More...</a><br /></td></tr>
+<tr class="separator:aca76b1123fb7d025ca07ab120849008b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd8d48d776f40caf15251786866331bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#abd8d48d776f40caf15251786866331bc">CloseMenu</a> ()</td></tr>
 <tr class="memdesc:abd8d48d776f40caf15251786866331bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the menu.  <a href="#abd8d48d776f40caf15251786866331bc">More...</a><br /></td></tr>
 <tr class="separator:abd8d48d776f40caf15251786866331bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80382e5069b92bf7adcae28fa0b8afa0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a80382e5069b92bf7adcae28fa0b8afa0">RemoveAllMenu</a> ()</td></tr>
+<tr class="memdesc:a80382e5069b92bf7adcae28fa0b8afa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the Menu.  <a href="#a80382e5069b92bf7adcae28fa0b8afa0">More...</a><br /></td></tr>
+<tr class="separator:a80382e5069b92bf7adcae28fa0b8afa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23e2f8cb68829a8d2bfaeff729008d2f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a23e2f8cb68829a8d2bfaeff729008d2f">IsExtended</a> ()</td></tr>
+<tr class="memdesc:a23e2f8cb68829a8d2bfaeff729008d2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether this instance is extended.  <a href="#a23e2f8cb68829a8d2bfaeff729008d2f">More...</a><br /></td></tr>
+<tr class="separator:a23e2f8cb68829a8d2bfaeff729008d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a962b8d352d3efcb71d529cc8234f63a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a962b8d352d3efcb71d529cc8234f63a4">GetCenterPosition</a> ()</td></tr>
+<tr class="memdesc:a962b8d352d3efcb71d529cc8234f63a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the center position.  <a href="#a962b8d352d3efcb71d529cc8234f63a4">More...</a><br /></td></tr>
+<tr class="separator:a962b8d352d3efcb71d529cc8234f63a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a89a9af01e575d4fd95b93697fd1c21da"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a89a9af01e575d4fd95b93697fd1c21da">Leftupeven</a></td></tr>
+<tr class="memdesc:a89a9af01e575d4fd95b93697fd1c21da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction left Up for an even X  <a href="#a89a9af01e575d4fd95b93697fd1c21da">More...</a><br /></td></tr>
+<tr class="separator:a89a9af01e575d4fd95b93697fd1c21da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf35d055ec05de9009e4537a25f94739"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#abf35d055ec05de9009e4537a25f94739">Leftupodd</a></td></tr>
+<tr class="memdesc:abf35d055ec05de9009e4537a25f94739"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction left Up for an odd X  <a href="#abf35d055ec05de9009e4537a25f94739">More...</a><br /></td></tr>
+<tr class="separator:abf35d055ec05de9009e4537a25f94739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9023c2bcec1cdb52198b9dc975fbc257"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a9023c2bcec1cdb52198b9dc975fbc257">Leftdowneven</a></td></tr>
+<tr class="memdesc:a9023c2bcec1cdb52198b9dc975fbc257"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction left down for an even X  <a href="#a9023c2bcec1cdb52198b9dc975fbc257">More...</a><br /></td></tr>
+<tr class="separator:a9023c2bcec1cdb52198b9dc975fbc257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a5f7440839d47bbd716627bd0efc576"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a0a5f7440839d47bbd716627bd0efc576">Leftdownodd</a></td></tr>
+<tr class="memdesc:a0a5f7440839d47bbd716627bd0efc576"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction left down for an odd X  <a href="#a0a5f7440839d47bbd716627bd0efc576">More...</a><br /></td></tr>
+<tr class="separator:a0a5f7440839d47bbd716627bd0efc576"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5d3faf457e317d3c0757a13ff310e0c"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#ad5d3faf457e317d3c0757a13ff310e0c">Upeven</a></td></tr>
+<tr class="memdesc:ad5d3faf457e317d3c0757a13ff310e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction Up for an even X  <a href="#ad5d3faf457e317d3c0757a13ff310e0c">More...</a><br /></td></tr>
+<tr class="separator:ad5d3faf457e317d3c0757a13ff310e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb38bb872b2393e613c4e9f20498a0b2"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#abb38bb872b2393e613c4e9f20498a0b2">Upodd</a></td></tr>
+<tr class="memdesc:abb38bb872b2393e613c4e9f20498a0b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction Up for an odd X  <a href="#abb38bb872b2393e613c4e9f20498a0b2">More...</a><br /></td></tr>
+<tr class="separator:abb38bb872b2393e613c4e9f20498a0b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36b0ad902b98487477a87442d088d747"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a36b0ad902b98487477a87442d088d747">Rightupeven</a></td></tr>
+<tr class="memdesc:a36b0ad902b98487477a87442d088d747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction right Up for an even X  <a href="#a36b0ad902b98487477a87442d088d747">More...</a><br /></td></tr>
+<tr class="separator:a36b0ad902b98487477a87442d088d747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e6fa7548be9f1c327bb97a5447721ff"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a4e6fa7548be9f1c327bb97a5447721ff">Rightupodd</a></td></tr>
+<tr class="memdesc:a4e6fa7548be9f1c327bb97a5447721ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction right Up for an odd X  <a href="#a4e6fa7548be9f1c327bb97a5447721ff">More...</a><br /></td></tr>
+<tr class="separator:a4e6fa7548be9f1c327bb97a5447721ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae711e0210073a31a2bf15ad1d77e8478"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#ae711e0210073a31a2bf15ad1d77e8478">Rightdowneven</a></td></tr>
+<tr class="memdesc:ae711e0210073a31a2bf15ad1d77e8478"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction right down for an even X  <a href="#ae711e0210073a31a2bf15ad1d77e8478">More...</a><br /></td></tr>
+<tr class="separator:ae711e0210073a31a2bf15ad1d77e8478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2619bc7970cbbdaeba9521561eabe53"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#ab2619bc7970cbbdaeba9521561eabe53">Rightdownodd</a></td></tr>
+<tr class="memdesc:ab2619bc7970cbbdaeba9521561eabe53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction right down for an odd X  <a href="#ab2619bc7970cbbdaeba9521561eabe53">More...</a><br /></td></tr>
+<tr class="separator:ab2619bc7970cbbdaeba9521561eabe53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c8065c208ad29887f55bb7b7e8f2868"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a3c8065c208ad29887f55bb7b7e8f2868">Downeven</a></td></tr>
+<tr class="memdesc:a3c8065c208ad29887f55bb7b7e8f2868"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction down for an even X  <a href="#a3c8065c208ad29887f55bb7b7e8f2868">More...</a><br /></td></tr>
+<tr class="separator:a3c8065c208ad29887f55bb7b7e8f2868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa734ab342ead18ae0c228040de94bf7b"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#aa734ab342ead18ae0c228040de94bf7b">Downodd</a></td></tr>
+<tr class="memdesc:aa734ab342ead18ae0c228040de94bf7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tiles in the Direction down for an odd X  <a href="#aa734ab342ead18ae0c228040de94bf7b">More...</a><br /></td></tr>
+<tr class="separator:aa734ab342ead18ae0c228040de94bf7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71f02725269d58057f9a0082de655ecb"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[][]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a71f02725269d58057f9a0082de655ecb">Odd</a></td></tr>
+<tr class="memdesc:a71f02725269d58057f9a0082de655ecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The odd coordinates.  <a href="#a71f02725269d58057f9a0082de655ecb">More...</a><br /></td></tr>
+<tr class="separator:a71f02725269d58057f9a0082de655ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a255305ea63fc1409619cea474f9fec30"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>[][]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a255305ea63fc1409619cea474f9fec30">Even</a></td></tr>
+<tr class="memdesc:a255305ea63fc1409619cea474f9fec30"><td class="mdescLeft">&#160;</td><td class="mdescRight">The even coordinates.  <a href="#a255305ea63fc1409619cea474f9fec30">More...</a><br /></td></tr>
+<tr class="separator:a255305ea63fc1409619cea474f9fec30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Menu view. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a625e8f113e66ae12b1ebb9142ef9072d"></a>
+<div class="textblock"><p>The Menu view. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a class="anchor" id="a63db164d71105de8543e3992db8c9a1c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a63db164d71105de8543e3992db8c9a1c">Client.Common.Views.MenuView.MenuType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The view menu type. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a96e27ee46eb6e4fe839281c61a0c7b4a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Client.Common.Views.MenuView.MenuView </td>
           <td>(</td>
-          <td class="paramtype">CCTileMapLayer&#160;</td>
-          <td class="paramname"><em>menuLayer</em>, </td>
+          <td class="paramtype"><a class="el" href="classClient_1_1Common_1_1Views_1_1WorldLayerHex.html">WorldLayerHex</a>&#160;</td>
+          <td class="paramname"><em>worldlayer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">CCTileMapCoordinates&#160;</td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td>
           <td class="paramname"><em>center</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Definition</a>[]&#160;</td>
-          <td class="paramname"><em>types</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a63db164d71105de8543e3992db8c9a1c">MenuType</a>&#160;</td>
+          <td class="paramname"><em>menuType</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -150,12 +255,12 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes a new instance of the <a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html" title="Menu view. ">Client.Common.Views.MenuView</a> class. </p>
+<p>Initializes a new instance of the <a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html" title="The Menu view. ">Client.Common.Views.MenuView</a> class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">menuLayer</td><td>Menu layer.</td></tr>
-    <tr><td class="paramname">center</td><td>Center.</td></tr>
-    <tr><td class="paramname">types</td><td>Types.</td></tr>
+    <tr><td class="paramname">worldlayer</td><td>The worldlayer.</td></tr>
+    <tr><td class="paramname">center</td><td>The menu center position.</td></tr>
+    <tr><td class="paramname">menuType</td><td>The menu type.</td></tr>
   </table>
   </dd>
 </dl>
@@ -163,6 +268,23 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aca76b1123fb7d025ca07ab120849008b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Client.Common.Views.MenuView.ClearExtendedMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clears the extended menu Tiles. </p>
+
+</div>
+</div>
 <a class="anchor" id="abd8d48d776f40caf15251786866331bc"></a>
 <div class="memitem">
 <div class="memproto">
@@ -180,61 +302,210 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a52c67c8cd89babbf271a40f01e627b7a"></a>
+<a class="anchor" id="a6fce28a445624cfdc1f9b045411c604f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void Client.Common.Views.MenuView.DrawMenu </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a63db164d71105de8543e3992db8c9a1c">MenuType</a>&#160;</td>
+          <td class="paramname"><em>menuType</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Draws the menu at a given Location. </p>
+<p>Draws the menu for each type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">location</td><td>Touch Location.</td></tr>
-    <tr><td class="paramname">menutype</td><td>Menutype.</td></tr>
+    <tr><td class="paramname">menuType</td><td>Menu type.</td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="ae8d1c45d630862f67843b76195c2c5dd"></a>
+<a class="anchor" id="abca68f27c340677a0fe7cfb410d8c71e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Client.Common.Views.MenuView.ExtendMenu </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>gid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td>
+          <td class="paramname"><em>coord</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extends the menu. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gid</td><td>GID to switch between Military, Storage buildings etc..</td></tr>
+    <tr><td class="paramname">coord</td><td>Coordinate to get the direction.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a962b8d352d3efcb71d529cc8234f63a4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> Client.Common.Views.MenuView.GetCenterPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the center position. </p>
+<dl class="section return"><dt>Returns</dt><dd>The center position.</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac4ec6daade1a30b3989f9ed77df78665"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Client.Common.Views.MenuView.GetExtendedCoords </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td>
+          <td class="paramname"><em>coord</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a>[]&#160;</td>
+          <td class="paramname"><em>definitions</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the extended coords. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord</td><td>The positionI.</td></tr>
+    <tr><td class="paramname">definitions</td><td>The definitions.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5b45615926b800171d593f279a01e283"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a> Client.Common.Views.MenuView.GetSelectedDefinition </td>
           <td>(</td>
-          <td class="paramtype">CCTileMapCoordinates&#160;</td>
-          <td class="paramname"><em>coord</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the selected definition. </p>
+<p>Gets the selected definition on a position. </p>
 <dl class="section return"><dt>Returns</dt><dd>The selected definition.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">coord</td><td>Coordinate.</td></tr>
+    <tr><td class="paramname">pos</td><td>The positionI.</td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="aab5290ebf833abcf80e67c46199cb53d"></a>
+<a class="anchor" id="ae297dd1b9a97ab6936f51b92cc5042c2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">CCTileMapCoordinates [] Client.Common.Views.MenuView.GetSurroundedTiles </td>
+          <td class="memname">CCTileGidAndFlags Client.Common.Views.MenuView.GetSelectedKategory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the selected kategory gid on a position. </p>
+<dl class="section return"><dt>Returns</dt><dd>The selected CCTileGidAndFlags.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The position.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a2d5b7057b1e79dca2236532d5dcf7f78"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCore_1_1Models_1_1PositionI.html">Core.Models.PositionI</a> Client.Common.Views.MenuView.GetTiles </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td>
+          <td class="paramname"><em>coord</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a>&#160;</td>
+          <td class="paramname"><em>oldcoord</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets one iteration of the expanding menu with the coordinate and the old coordinate as needed parameters to calculate the direction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord</td><td>The new Coordinate.</td></tr>
+    <tr><td class="paramname">oldcoord</td><td>The old Coordinate.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns the second coordinate of the expanding menu.</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a23e2f8cb68829a8d2bfaeff729008d2f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Client.Common.Views.MenuView.IsExtended </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -242,8 +513,424 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the surrounded tiles. </p>
-<dl class="section return"><dt>Returns</dt><dd>The surrounded tiles.</dd></dl>
+<p>Determines whether this instance is extended. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if this instance is extended; otherwise, <code>false</code>.</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a80382e5069b92bf7adcae28fa0b8afa0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Client.Common.Views.MenuView.RemoveAllMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes the Menu. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a3c8065c208ad29887f55bb7b7e8f2868"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Downeven</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {   </div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, 0),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, 1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, 0)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction down for an even X </p>
+
+</div>
+</div>
+<a class="anchor" id="aa734ab342ead18ae0c228040de94bf7b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Downodd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, 1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, 1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, 1)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction down for an odd X </p>
+
+</div>
+</div>
+<a class="anchor" id="a255305ea63fc1409619cea474f9fec30"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [][] Client.Common.Views.MenuView.Even</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#ad5d3faf457e317d3c0757a13ff310e0c">Upeven</a>,</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a3c8065c208ad29887f55bb7b7e8f2868">Downeven</a>,</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a89a9af01e575d4fd95b93697fd1c21da">Leftupeven</a>,</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a36b0ad902b98487477a87442d088d747">Rightupeven</a>,</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a9023c2bcec1cdb52198b9dc975fbc257">Leftdowneven</a>,</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#ae711e0210073a31a2bf15ad1d77e8478">Rightdowneven</a></div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>The even coordinates. </p>
+
+</div>
+</div>
+<a class="anchor" id="a9023c2bcec1cdb52198b9dc975fbc257"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Leftdowneven</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, 1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, 0),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, -1)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction left down for an even X </p>
+
+</div>
+</div>
+<a class="anchor" id="a0a5f7440839d47bbd716627bd0efc576"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Leftdownodd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, 1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, 1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, 0)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction left down for an odd X </p>
+
+</div>
+</div>
+<a class="anchor" id="a89a9af01e575d4fd95b93697fd1c21da"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Leftupeven</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, 0),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, -1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, -1)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction left Up for an even X </p>
+
+</div>
+</div>
+<a class="anchor" id="abf35d055ec05de9009e4537a25f94739"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Leftupodd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, 1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, 0),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, -1)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction left Up for an odd X </p>
+
+</div>
+</div>
+<a class="anchor" id="a71f02725269d58057f9a0082de655ecb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [][] Client.Common.Views.MenuView.Odd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#abb38bb872b2393e613c4e9f20498a0b2">Upodd</a>,</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#aa734ab342ead18ae0c228040de94bf7b">Downodd</a>,</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#abf35d055ec05de9009e4537a25f94739">Leftupodd</a>,</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a4e6fa7548be9f1c327bb97a5447721ff">Rightupodd</a>,</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#a0a5f7440839d47bbd716627bd0efc576">Leftdownodd</a>,</div>
+<div class="line">                <a class="code" href="classClient_1_1Common_1_1Views_1_1MenuView.html#ab2619bc7970cbbdaeba9521561eabe53">Rightdownodd</a></div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>The odd coordinates. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae711e0210073a31a2bf15ad1d77e8478"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Rightdowneven</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, -1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, 0),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, 1)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction right down for an even X </p>
+
+</div>
+</div>
+<a class="anchor" id="ab2619bc7970cbbdaeba9521561eabe53"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Rightdownodd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, 0),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, 1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, 1)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction right down for an odd X </p>
+
+</div>
+</div>
+<a class="anchor" id="a36b0ad902b98487477a87442d088d747"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Rightupeven</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, -1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, -1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, 0)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction right Up for an even X </p>
+
+</div>
+</div>
+<a class="anchor" id="a4e6fa7548be9f1c327bb97a5447721ff"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Rightupodd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, -1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, 0),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, 1)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction right Up for an odd X </p>
+
+</div>
+</div>
+<a class="anchor" id="ad5d3faf457e317d3c0757a13ff310e0c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Upeven</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, -1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, -1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, -1)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction Up for an even X </p>
+
+</div>
+</div>
+<a class="anchor" id="abb38bb872b2393e613c4e9f20498a0b2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="classCore_1_1Models_1_1PositionI.html">PositionI</a> [] Client.Common.Views.MenuView.Upodd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keyword">new</span> PositionI(-1, 0),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(0, -1),</div>
+<div class="line">                <span class="keyword">new</span> PositionI(1, 0)</div>
+<div class="line">            }</div>
+</div><!-- fragment -->
+<p>Tiles in the Direction Up for an odd X </p>
 
 </div>
 </div>
@@ -253,7 +940,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

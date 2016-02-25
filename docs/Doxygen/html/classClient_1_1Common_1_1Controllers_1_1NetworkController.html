@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -97,13 +97,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>the Network controller is a singleton to controll the network up and download to the server.  
+<p>the Network controller is a singleton to control the network up and download to the server.  
  <a href="classClient_1_1Common_1_1Controllers_1_1NetworkController.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5d45a3e5a8fcf0a755954d782af4e780"><td class="memItemLeft" align="right" valign="top">async Task&lt; <a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html">TerrainDefinition</a>[,]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Controllers_1_1NetworkController.html#a5d45a3e5a8fcf0a755954d782af4e780">LoadTerrainsAsync</a> (<a class="el" href="classCore_1_1Models_1_1RegionPosition.html">RegionPosition</a> regionPosition)</td></tr>
-<tr class="memdesc:a5d45a3e5a8fcf0a755954d782af4e780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the terrains async and write it in property JsonTerrainString.  <a href="#a5d45a3e5a8fcf0a755954d782af4e780">More...</a><br /></td></tr>
+<tr class="memdesc:a5d45a3e5a8fcf0a755954d782af4e780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the terrains async and returns it.  <a href="#a5d45a3e5a8fcf0a755954d782af4e780">More...</a><br /></td></tr>
 <tr class="separator:a5d45a3e5a8fcf0a755954d782af4e780"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e0ad22bc63585d4be358da45848063d"><td class="memItemLeft" align="right" valign="top">async Task&lt; <a class="el" href="classCore_1_1Models_1_1Definitions_1_1TerrainDefinition.html">Core.Models.Definitions.TerrainDefinition</a>[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Controllers_1_1NetworkController.html#a6e0ad22bc63585d4be358da45848063d">LoadTerrainTypesAsync</a> ()</td></tr>
 <tr class="memdesc:a6e0ad22bc63585d4be358da45848063d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the terrain types async and returns an array of TerrainDefinition  <a href="#a6e0ad22bc63585d4be358da45848063d">More...</a><br /></td></tr>
@@ -126,15 +126,12 @@ Properties</h2></td></tr>
 <tr class="memitem:a24ad367082839e77f347f4a532d023ff"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classClient_1_1Common_1_1Controllers_1_1NetworkController.html">NetworkController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Controllers_1_1NetworkController.html#a24ad367082839e77f347f4a532d023ff">Instance</a><code> [get]</code></td></tr>
 <tr class="memdesc:a24ad367082839e77f347f4a532d023ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the instance.  <a href="#a24ad367082839e77f347f4a532d023ff">More...</a><br /></td></tr>
 <tr class="separator:a24ad367082839e77f347f4a532d023ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a99e2fc6e8db9a23ad1f4477b5e0426"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Controllers_1_1NetworkController.html#a6a99e2fc6e8db9a23ad1f4477b5e0426">ExceptionMessage</a><code> [get]</code></td></tr>
-<tr class="memdesc:a6a99e2fc6e8db9a23ad1f4477b5e0426"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the exception message.  <a href="#a6a99e2fc6e8db9a23ad1f4477b5e0426">More...</a><br /></td></tr>
-<tr class="separator:a6a99e2fc6e8db9a23ad1f4477b5e0426"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd2b5bdfc0da3720c3bbb257c0f73d94"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1Controllers_1_1NetworkController.html#afd2b5bdfc0da3720c3bbb257c0f73d94">IsLoggedIn</a><code> [get]</code></td></tr>
-<tr class="memdesc:afd2b5bdfc0da3720c3bbb257c0f73d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a value indicating whether this instance is logedin.  <a href="#afd2b5bdfc0da3720c3bbb257c0f73d94">More...</a><br /></td></tr>
+<tr class="memdesc:afd2b5bdfc0da3720c3bbb257c0f73d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a value indicating whether this instance is logged in .  <a href="#afd2b5bdfc0da3720c3bbb257c0f73d94">More...</a><br /></td></tr>
 <tr class="separator:afd2b5bdfc0da3720c3bbb257c0f73d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>the Network controller is a singleton to controll the network up and download to the server. </p>
+<div class="textblock"><p>the Network controller is a singleton to control the network up and download to the server. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a475c46ddb8c5dc4db7dea1530af9bf4b"></a>
 <div class="memitem">
@@ -165,7 +162,7 @@ Properties</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">currentGamePosition</td><td>Current game position.</td></tr>
-    <tr><td class="paramname">actions</td><td>Actions.</td></tr>
+    <tr><td class="paramname">actions</td><td>Actions which should be executed.</td></tr>
   </table>
   </dd>
 </dl>
@@ -222,10 +219,11 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Loads the terrains async and write it in property JsonTerrainString. </p>
+<p>Loads the terrains async and returns it. </p>
+<dl class="section return"><dt>Returns</dt><dd>The terrains async.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">jsonRegionServerPath</td><td>Json region server path.</td></tr>
+    <tr><td class="paramname">regionPosition</td><td>Region position.</td></tr>
   </table>
   </dd>
 </dl>
@@ -246,6 +244,7 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Loads the terrain types async and returns an array of TerrainDefinition </p>
+<dl class="section return"><dt>Returns</dt><dd>The terrain types async.</dd></dl>
 
 </div>
 </div>
@@ -263,6 +262,7 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Loads the terrain types async and returns an array of TerrainDefinition </p>
+<dl class="section return"><dt>Returns</dt><dd>The unit types async.</dd></dl>
 
 </div>
 </div>
@@ -297,12 +297,12 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Login async to the server and save the sessionID. </p>
-<dl class="section return"><dt>Returns</dt><dd>The Accoount.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The Account.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">currentGamePosition</td><td>Current game position.</td></tr>
-    <tr><td class="paramname">user</td><td>User.</td></tr>
-    <tr><td class="paramname">password</td><td>Password.</td></tr>
+    <tr><td class="paramname">user</td><td>User which wanted to log in.</td></tr>
+    <tr><td class="paramname">password</td><td>Password of the user.</td></tr>
   </table>
   </dd>
 </dl>
@@ -310,29 +310,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a class="anchor" id="a6a99e2fc6e8db9a23ad1f4477b5e0426"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Client.Common.Controllers.NetworkController.ExceptionMessage</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets the exception message. </p>
-<p>The exception message.</p>
-
-</div>
-</div>
 <a class="anchor" id="a24ad367082839e77f347f4a532d023ff"></a>
 <div class="memitem">
 <div class="memproto">
@@ -374,8 +351,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Gets a value indicating whether this instance is logedin. </p>
-<p><code>true</code> if this instance is logedin; otherwise, <code>false</code>.</p>
+<p>Gets a value indicating whether this instance is logged in . </p>
+<p><code>true</code> if this instance is logged in; otherwise, <code>false</code>.</p>
 
 </div>
 </div>
@@ -385,7 +362,7 @@ Properties</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

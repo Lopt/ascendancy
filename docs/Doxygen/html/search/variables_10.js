@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['salt_5fsize',['SALT_SIZE',['../classServer_1_1Models_1_1ServerConstants.html#a2627c643caf77b36fed32b74811438f2',1,'Server::Models::ServerConstants']]],
+  ['scrap',['Scrap',['../classCore_1_1Models_1_1Account.html#afa0a8a7e0abbc6b65e60d94fabf919ed',1,'Core.Models.Account.Scrap()'],['../classClient_1_1Common_1_1Constants_1_1ClientConstants.html#a4dbf6aab0cfaf32bde33786ce254a15c',1,'Client.Common.Constants.ClientConstants.SCRAP()']]],
+  ['scrap_5fincrement_5fvalue',['SCRAP_INCREMENT_VALUE',['../classCore_1_1Models_1_1Constants.html#a455082f6f12f13a8c7d4f742f9a7a7b0',1,'Core::Models::Constants']]],
+  ['scrap_5fstorage_5fvalue',['SCRAP_STORAGE_VALUE',['../classCore_1_1Models_1_1Constants.html#a7084aeeac217877ec00107e5a9b2356a',1,'Core::Models::Constants']]],
+  ['scrapyard',['SCRAPYARD',['../classClient_1_1Common_1_1Constants_1_1BuildingGid.html#a733cb9902af81d9ca9bc0fa64e44a1e0',1,'Client.Common.Constants.BuildingGid.SCRAPYARD()'],['../classClient_1_1Common_1_1Constants_1_1EnemyBuildingGid.html#aa87a987b13415a6a9d806405416a6f62',1,'Client.Common.Constants.EnemyBuildingGid.SCRAPYARD()'],['../classClient_1_1Common_1_1Constants_1_1BuildingMenuGid.html#a95f094cd2083fab3716e64697fbe8a55',1,'Client.Common.Constants.BuildingMenuGid.SCRAPYARD()']]],
+  ['server',['SERVER',['../classTCPServer_1_1Config.html#a22ee5c50b7d042facea60ec7ee40d836',1,'TCPServer::Config']]],
+  ['servertime',['ServerTime',['../classCore_1_1Connections_1_1LoginResponse.html#a1bb5d99f8fa2a5564fa2d7ba2d613fd0',1,'Core::Connections::LoginResponse']]],
+  ['sessionid',['SessionID',['../classCore_1_1Connections_1_1LoginResponse.html#a0852c12c3db05b5f4093ee08f5aa4107',1,'Core.Connections.LoginResponse.SessionID()'],['../classCore_1_1Connections_1_1Request.html#a19082721a0c3785a77691cb3bec7dd42',1,'Core.Connections.Request.SessionID()']]],
+  ['sounds',['SOUNDS',['../classClient_1_1Common_1_1Constants_1_1ClientConstants.html#ae00a816305ea5351060f814be2949c9a',1,'Client::Common::Constants::ClientConstants']]],
+  ['start_5fposition',['START_POSITION',['../classCore_1_1Controllers_1_1Actions_1_1MoveUnit.html#aa00af18610776c1a0eebde8ae273286a',1,'Core::Controllers::Actions::MoveUnit']]],
+  ['start_5fx',['START_X',['../classCore_1_1Models_1_1Constants.html#a04216f06fce4df1266355ba32c59ac21',1,'Core::Models::Constants']]],
+  ['start_5fy',['START_Y',['../classCore_1_1Models_1_1Constants.html#a0da8b0008fff8b2529d5a8e298b29e5f',1,'Core::Models::Constants']]],
+  ['startlocation',['StartLocation',['../classCore_1_1Controllers_1_1AStar_1_1SearchParameters.html#a9addbcd3d571eb694d893e56984d5611',1,'Core::Controllers::AStar::SearchParameters']]],
+  ['state',['State',['../classCore_1_1Controllers_1_1AStar_1_1Node.html#ab00b1c1216243bb73857cbee2831f662',1,'Core::Controllers::AStar::Node']]],
+  ['status',['Status',['../classCore_1_1Connections_1_1LoginResponse.html#a07d5c565863a18dc114700d9420b2d5f',1,'Core.Connections.LoginResponse.Status()'],['../classCore_1_1Connections_1_1Response.html#aa9f4fef77b99465a399e0af5111609ef',1,'Core.Connections.Response.Status()']]],
+  ['storage',['STORAGE',['../classClient_1_1Common_1_1Constants_1_1BuildingMenuGid.html#a140226a4ce1dde3dfb4d0f04097544cf',1,'Client::Common::Constants::BuildingMenuGid']]],
+  ['streets',['STREETS',['../classClient_1_1Common_1_1Constants_1_1TerrainGid.html#a2f9d7a90ad19d1eded7bff4c418adae0',1,'Client::Common::Constants::TerrainGid']]],
+  ['surroundregions',['SurroundRegions',['../classCore_1_1Models_1_1LogicRules.html#a42380b97e68c7128580776742ef94e56',1,'Core::Models::LogicRules']]],
+  ['surroundtileseven',['SurroundTilesEven',['../classCore_1_1Models_1_1LogicRules.html#a3d587d8f781d3b37c26c501d003f3d4d',1,'Core.Models.LogicRules.SurroundTilesEven()'],['../classTests_1_1LogicTests.html#a2dd37ad286d8ed279769b04765374f4a',1,'Tests.LogicTests.SurroundTilesEven()']]],
+  ['surroundtilesodd',['SurroundTilesOdd',['../classCore_1_1Models_1_1LogicRules.html#ae559d0e04d49b4cea7874d1e7ca5a5b2',1,'Core.Models.LogicRules.SurroundTilesOdd()'],['../classTests_1_1LogicTests.html#af254999d6b4e9ce25e101b28d71292ab',1,'Tests.LogicTests.SurroundTilesOdd()']]]
+];

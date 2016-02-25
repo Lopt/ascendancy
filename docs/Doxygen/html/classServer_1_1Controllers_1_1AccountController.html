@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -111,36 +111,72 @@ Inheritance diagram for Server.Controllers.AccountController:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac35adf7e9f6d20dfbf584df2723b320c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac35adf7e9f6d20dfbf584df2723b320c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AccountController</b> (<a class="el" href="classCore_1_1Models_1_1Account.html">Core.Models.Account</a> account, string password)</td></tr>
+<tr class="memitem:ac35adf7e9f6d20dfbf584df2723b320c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer_1_1Controllers_1_1AccountController.html#ac35adf7e9f6d20dfbf584df2723b320c">AccountController</a> (<a class="el" href="classCore_1_1Models_1_1Account.html">Core.Models.Account</a> account, string password)</td></tr>
+<tr class="memdesc:ac35adf7e9f6d20dfbf584df2723b320c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classServer_1_1Controllers_1_1AccountController.html" title="Manages an account. Which includes Login, holding password and session and the last time when each re...">Server.Controllers.AccountController</a> class.  <a href="#ac35adf7e9f6d20dfbf584df2723b320c">More...</a><br /></td></tr>
 <tr class="separator:ac35adf7e9f6d20dfbf584df2723b320c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2326ec6c25856d4dcf65d9422b753c97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer_1_1Controllers_1_1AccountController.html#a2326ec6c25856d4dcf65d9422b753c97">RefreshRegion</a> (<a class="el" href="classCore_1_1Models_1_1RegionPosition.html">Core.Models.RegionPosition</a> regionPosition, DateTime dateTime)</td></tr>
-<tr class="memdesc:a2326ec6c25856d4dcf65d9422b753c97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Everytime the client is loading a region, this function should be called with the datetime of the last action of the region. So it is known which data version the client has.  <a href="#a2326ec6c25856d4dcf65d9422b753c97">More...</a><br /></td></tr>
+<tr class="memdesc:a2326ec6c25856d4dcf65d9422b753c97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Every time the client is loading a region, this function should be called with the date time of the last action of the region. So it is known which data version the client has.  <a href="#a2326ec6c25856d4dcf65d9422b753c97">More...</a><br /></td></tr>
 <tr class="separator:a2326ec6c25856d4dcf65d9422b753c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae318dc148368d8a293c7fdf6dabceab6"><td class="memItemLeft" align="right" valign="top">DateTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer_1_1Controllers_1_1AccountController.html#ae318dc148368d8a293c7fdf6dabceab6">GetRegionStatus</a> (<a class="el" href="classCore_1_1Models_1_1RegionPosition.html">Core.Models.RegionPosition</a> regionPosition)</td></tr>
-<tr class="memdesc:ae318dc148368d8a293c7fdf6dabceab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the DateTime of the specific region, when the last status was transfered.  <a href="#ae318dc148368d8a293c7fdf6dabceab6">More...</a><br /></td></tr>
+<tr class="memdesc:ae318dc148368d8a293c7fdf6dabceab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the DateTime of the specific region, when the last status was transferred.  <a href="#ae318dc148368d8a293c7fdf6dabceab6">More...</a><br /></td></tr>
 <tr class="separator:ae318dc148368d8a293c7fdf6dabceab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73d7223e39a37a1adfb3b04ab7513031"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer_1_1Controllers_1_1AccountController.html#a73d7223e39a37a1adfb3b04ab7513031">Login</a> (string username, string password)</td></tr>
 <tr class="memdesc:a73d7223e39a37a1adfb3b04ab7513031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to login the user, return true if everything worked.  <a href="#a73d7223e39a37a1adfb3b04ab7513031">More...</a><br /></td></tr>
 <tr class="separator:a73d7223e39a37a1adfb3b04ab7513031"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classCore_1_1Controllers_1_1ControlEntity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCore_1_1Controllers_1_1ControlEntity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html">Core.Controllers.ControlEntity</a></td></tr>
-<tr class="memitem:ae658365fdb72c178ad05c27d258fcca2 inherit pub_methods_classCore_1_1Controllers_1_1ControlEntity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae658365fdb72c178ad05c27d258fcca2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ControlEntity</b> (<a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a> model)</td></tr>
+<tr class="memitem:ae658365fdb72c178ad05c27d258fcca2 inherit pub_methods_classCore_1_1Controllers_1_1ControlEntity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html#ae658365fdb72c178ad05c27d258fcca2">ControlEntity</a> (<a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a> model)</td></tr>
+<tr class="memdesc:ae658365fdb72c178ad05c27d258fcca2 inherit pub_methods_classCore_1_1Controllers_1_1ControlEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html" title="MVC Controller. ">Core.Controllers.ControlEntity</a> class.  <a href="#ae658365fdb72c178ad05c27d258fcca2">More...</a><br /></td></tr>
 <tr class="separator:ae658365fdb72c178ad05c27d258fcca2 inherit pub_methods_classCore_1_1Controllers_1_1ControlEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a243d08e18b7e88f0ed33f3283aaf5709"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a243d08e18b7e88f0ed33f3283aaf5709"></a>
-Guid&#160;</td><td class="memItemRight" valign="bottom"><b>SessionID</b><code> [get]</code></td></tr>
+<tr class="memitem:a243d08e18b7e88f0ed33f3283aaf5709"><td class="memItemLeft" align="right" valign="top">Guid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer_1_1Controllers_1_1AccountController.html#a243d08e18b7e88f0ed33f3283aaf5709">SessionID</a><code> [get]</code></td></tr>
+<tr class="memdesc:a243d08e18b7e88f0ed33f3283aaf5709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the session ID.  <a href="#a243d08e18b7e88f0ed33f3283aaf5709">More...</a><br /></td></tr>
 <tr class="separator:a243d08e18b7e88f0ed33f3283aaf5709"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_classCore_1_1Controllers_1_1ControlEntity"><td colspan="2" onclick="javascript:toggleInherit('properties_classCore_1_1Controllers_1_1ControlEntity')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html">Core.Controllers.ControlEntity</a></td></tr>
-<tr class="memitem:ad5b9626748577b6af9b63c5d83e7739a inherit properties_classCore_1_1Controllers_1_1ControlEntity"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5b9626748577b6af9b63c5d83e7739a"></a>
-<a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Model</b><code> [get]</code></td></tr>
+<tr class="memitem:ad5b9626748577b6af9b63c5d83e7739a inherit properties_classCore_1_1Controllers_1_1ControlEntity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html#ad5b9626748577b6af9b63c5d83e7739a">Model</a><code> [get]</code></td></tr>
+<tr class="memdesc:ad5b9626748577b6af9b63c5d83e7739a inherit properties_classCore_1_1Controllers_1_1ControlEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the model of the entity  <a href="#ad5b9626748577b6af9b63c5d83e7739a">More...</a><br /></td></tr>
 <tr class="separator:ad5b9626748577b6af9b63c5d83e7739a inherit properties_classCore_1_1Controllers_1_1ControlEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages an account. Which includes Login, holding password and session and the last time when each region was loaded. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ac35adf7e9f6d20dfbf584df2723b320c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Server.Controllers.AccountController.AccountController </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1Account.html">Core.Models.Account</a>&#160;</td>
+          <td class="paramname"><em>account</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>password</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="classServer_1_1Controllers_1_1AccountController.html" title="Manages an account. Which includes Login, holding password and session and the last time when each re...">Server.Controllers.AccountController</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">account</td><td>User Account.</td></tr>
+    <tr><td class="paramname">password</td><td>User Password.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="ae318dc148368d8a293c7fdf6dabceab6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -155,8 +191,8 @@ Guid&#160;</td><td class="memItemRight" valign="bottom"><b>SessionID</b><code> [
       </table>
 </div><div class="memdoc">
 
-<p>Returns the DateTime of the specific region, when the last status was transfered. </p>
-<dl class="section return"><dt>Returns</dt><dd>A DateTime when the last action of a specific region was transfered. <b>null</b> if it wasn't loaded before.</dd></dl>
+<p>Returns the DateTime of the specific region, when the last status was transferred. </p>
+<dl class="section return"><dt>Returns</dt><dd>A DateTime when the last action of a specific region was transferred. <b>null</b> if it wasn't loaded before.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">regionPosition</td><td>Region Position.</td></tr>
@@ -193,8 +229,8 @@ Guid&#160;</td><td class="memItemRight" valign="bottom"><b>SessionID</b><code> [
 <p>Tries to login the user, return true if everything worked. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">username</td><td>Username</td></tr>
-    <tr><td class="paramname">password</td><td>Password</td></tr>
+    <tr><td class="paramname">username</td><td>Account Username</td></tr>
+    <tr><td class="paramname">password</td><td>Account Password</td></tr>
   </table>
   </dd>
 </dl>
@@ -225,7 +261,7 @@ Guid&#160;</td><td class="memItemRight" valign="bottom"><b>SessionID</b><code> [
       </table>
 </div><div class="memdoc">
 
-<p>Everytime the client is loading a region, this function should be called with the datetime of the last action of the region. So it is known which data version the client has. </p>
+<p>Every time the client is loading a region, this function should be called with the date time of the last action of the region. So it is known which data version the client has. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">regionPosition</td><td>Region position.</td></tr>
@@ -236,13 +272,37 @@ Guid&#160;</td><td class="memItemRight" valign="bottom"><b>SessionID</b><code> [
 
 </div>
 </div>
+<h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a243d08e18b7e88f0ed33f3283aaf5709"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Guid Server.Controllers.AccountController.SessionID</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the session ID. </p>
+<p>The session ID.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>server/Controllers/AccountController.cs</li>
+<li>tcpserver/Controllers/AccountController.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:51 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:47 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

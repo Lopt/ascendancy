@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -111,10 +111,14 @@ Inheritance diagram for Client.Common.GameAppDelegate:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:aa0175b28b3986f7cf57680f07558ab3c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1GameAppDelegate.html#aa0175b28b3986f7cf57680f07558ab3c">Phases</a> { <b>Start</b>, 
+<tr class="memitem:aa0175b28b3986f7cf57680f07558ab3c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1GameAppDelegate.html#aa0175b28b3986f7cf57680f07558ab3c">Phases</a> { <br />
+&#160;&#160;<b>Start</b>, 
 <b>StartScene</b>, 
+<b>LoadGameScene</b>, 
 <b>GameScene</b>, 
-<b>Exit</b>
+<br />
+&#160;&#160;<b>Exit</b>
+<br />
  }<tr class="memdesc:aa0175b28b3986f7cf57680f07558ab3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game phases.  <a href="classClient_1_1Common_1_1GameAppDelegate.html#aa0175b28b3986f7cf57680f07558ab3c">More...</a><br /></td></tr>
 <tr class="separator:aa0175b28b3986f7cf57680f07558ab3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </td></tr>
@@ -125,10 +129,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aacda9c043b12acf24de4bc13a688f52e"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the Application did finish launching.  <a href="#aacda9c043b12acf24de4bc13a688f52e">More...</a><br /></td></tr>
 <tr class="separator:aacda9c043b12acf24de4bc13a688f52e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a524d489c10652931d4ea5159a34a72e5"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1GameAppDelegate.html#a524d489c10652931d4ea5159a34a72e5">ApplicationDidEnterBackground</a> (CCApplication application)</td></tr>
-<tr class="memdesc:a524d489c10652931d4ea5159a34a72e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the Application did enter background. Stop listening the geolocation and pause the application.  <a href="#a524d489c10652931d4ea5159a34a72e5">More...</a><br /></td></tr>
+<tr class="memdesc:a524d489c10652931d4ea5159a34a72e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the Application enters background. Stops listening the GeoLocation and pause the application.  <a href="#a524d489c10652931d4ea5159a34a72e5">More...</a><br /></td></tr>
 <tr class="separator:a524d489c10652931d4ea5159a34a72e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2625495e6b5a1c5853acde2ace6eccb"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1GameAppDelegate.html#ad2625495e6b5a1c5853acde2ace6eccb">ApplicationWillEnterForeground</a> (CCApplication application)</td></tr>
-<tr class="memdesc:ad2625495e6b5a1c5853acde2ace6eccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the Application will enter foreground end the pause and start listening the geolocation.  <a href="#ad2625495e6b5a1c5853acde2ace6eccb">More...</a><br /></td></tr>
+<tr class="memdesc:ad2625495e6b5a1c5853acde2ace6eccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the Application enters foreground, then end the pause and start listening the GeoLocation.  <a href="#ad2625495e6b5a1c5853acde2ace6eccb">More...</a><br /></td></tr>
 <tr class="separator:ad2625495e6b5a1c5853acde2ace6eccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
@@ -136,6 +140,9 @@ Properties</h2></td></tr>
 <tr class="memitem:aa626869ffdd0e3f8f46ab069bc24f0d1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classCore_1_1Models_1_1Account.html">Account</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1GameAppDelegate.html#aa626869ffdd0e3f8f46ab069bc24f0d1">Account</a><code> [get]</code></td></tr>
 <tr class="memdesc:aa626869ffdd0e3f8f46ab069bc24f0d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the account.  <a href="#aa626869ffdd0e3f8f46ab069bc24f0d1">More...</a><br /></td></tr>
 <tr class="separator:aa626869ffdd0e3f8f46ab069bc24f0d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53f8c229a2501eb9ae1fcb1c297ef406"><td class="memItemLeft" align="right" valign="top">static DateTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1GameAppDelegate.html#a53f8c229a2501eb9ae1fcb1c297ef406">ServerTime</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a53f8c229a2501eb9ae1fcb1c297ef406"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the server time.  <a href="#a53f8c229a2501eb9ae1fcb1c297ef406">More...</a><br /></td></tr>
+<tr class="separator:a53f8c229a2501eb9ae1fcb1c297ef406"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fb6f0fd7533c38a555760efd3ea896b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classClient_1_1Common_1_1GameAppDelegate.html#aa0175b28b3986f7cf57680f07558ab3c">Phases</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient_1_1Common_1_1GameAppDelegate.html#a2fb6f0fd7533c38a555760efd3ea896b">Phase</a><code> [get]</code></td></tr>
 <tr class="memdesc:a2fb6f0fd7533c38a555760efd3ea896b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the game phase.  <a href="#a2fb6f0fd7533c38a555760efd3ea896b">More...</a><br /></td></tr>
 <tr class="separator:a2fb6f0fd7533c38a555760efd3ea896b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,10 +187,10 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>When the Application did enter background. Stop listening the geolocation and pause the application. </p>
+<p>When the Application enters background. Stops listening the GeoLocation and pause the application. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">application</td><td>Application.</td></tr>
+    <tr><td class="paramname">application</td><td>Main Application.</td></tr>
   </table>
   </dd>
 </dl>
@@ -217,7 +224,7 @@ Properties</h2></td></tr>
 <p>When the Application did finish launching. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">application</td><td>Application.</td></tr>
+    <tr><td class="paramname">application</td><td>Main Application.</td></tr>
     <tr><td class="paramname">mainWindow</td><td>Main window.</td></tr>
   </table>
   </dd>
@@ -239,10 +246,10 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>When the Application will enter foreground end the pause and start listening the geolocation. </p>
+<p>When the Application enters foreground, then end the pause and start listening the GeoLocation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">application</td><td>Application.</td></tr>
+    <tr><td class="paramname">application</td><td>Main Application.</td></tr>
   </table>
   </dd>
 </dl>
@@ -296,13 +303,36 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a53f8c229a2501eb9ae1fcb1c297ef406"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DateTime Client.Common.GameAppDelegate.ServerTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the server time. </p>
+<p>The server time.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>client/client/client.Common/GameAppDelegate.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

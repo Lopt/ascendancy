@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['cellx',['CellX',['../classClient_1_1Common_1_1Models_1_1MapCellPosition.html#a3698c44e12f74fef06625e4bf751620c',1,'Client::Common::Models::MapCellPosition']]],
-  ['celly',['CellY',['../classClient_1_1Common_1_1Models_1_1MapCellPosition.html#a4051441b879311d5f933fa6a801ed2cd',1,'Client::Common::Models::MapCellPosition']]],
-  ['centerposition',['CenterPosition',['../classClient_1_1Common_1_1Views_1_1WorldLayer.html#afd03e15ab33d9374896b26f270b4ed49',1,'Client::Common::Views::WorldLayer']]],
-  ['currentcellposition',['CurrentCellPosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#af3cd420ed76212d5399fbceea41ba03a',1,'Client::Common::Models::Geolocation']]],
-  ['currentgameposition',['CurrentGamePosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#ad14334db3507a02eb7ecf245d0e4154c',1,'Client::Common::Models::Geolocation']]],
-  ['currentposition',['CurrentPosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#a481303a3e49d4ab404050ca8ca7d3e86',1,'Client::Common::Models::Geolocation']]],
-  ['currentregionposition',['CurrentRegionPosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#accfb783b87b9df12f895053cb865f016',1,'Client::Common::Models::Geolocation']]]
+  ['category',['Category',['../classCore_1_1Models_1_1Definitions_1_1Definition.html#abbcf001ffb2d8453d321e3524739b48e',1,'Core::Models::Definitions::Definition']]],
+  ['cellposition',['CellPosition',['../classCore_1_1Models_1_1Position.html#afee231a72dbd2f57329e2bdd2fbc25bb',1,'Core.Models.Position.CellPosition()'],['../classCore_1_1Models_1_1PositionI.html#a205a6a5cdd2e73781c2adf0b370402a9',1,'Core.Models.PositionI.CellPosition()']]],
+  ['cellx',['CellX',['../classCore_1_1Models_1_1CellPosition.html#a4daf526cdfe22a21d679d3e1b032d096',1,'Core::Models::CellPosition']]],
+  ['celly',['CellY',['../classCore_1_1Models_1_1CellPosition.html#a91ba33cce7deac7d2ec875812c3f73dc',1,'Core::Models::CellPosition']]],
+  ['contentsize',['ContentSize',['../classCore_1_1Connection_1_1Packet.html#a78e8987a205544dffdd0b80a4277cd38',1,'Core::Connection::Packet']]],
+  ['currentgameposition',['CurrentGamePosition',['../classClient_1_1Common_1_1Models_1_1Geolocation.html#ad14334db3507a02eb7ecf245d0e4154c',1,'Client::Common::Models::Geolocation']]]
 ];

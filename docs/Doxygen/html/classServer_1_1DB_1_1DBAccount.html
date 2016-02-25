@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -102,10 +102,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a09329b7a7cc362eca6d1d54571159395"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer_1_1DB_1_1DBAccount.html#a09329b7a7cc362eca6d1d54571159395">DBAccount</a> (<a class="el" href="classSQLite_1_1SQLiteConnection.html">SQLiteConnection</a> con)</td></tr>
-<tr class="memdesc:a09329b7a7cc362eca6d1d54571159395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the server.DB.DBAccount class.  <a href="#a09329b7a7cc362eca6d1d54571159395">More...</a><br /></td></tr>
+<tr class="memdesc:a09329b7a7cc362eca6d1d54571159395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classServer_1_1DB_1_1DBAccount.html" title="DB account. ">Server.DB.DBAccount</a> class.  <a href="#a09329b7a7cc362eca6d1d54571159395">More...</a><br /></td></tr>
 <tr class="separator:a09329b7a7cc362eca6d1d54571159395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b7e2921efb6f6e7ceecba07d3068a1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer_1_1DB_1_1DBAccount.html#a3b7e2921efb6f6e7ceecba07d3068a1f">CreateAccount</a> (<a class="el" href="classCore_1_1Models_1_1Account.html">Account</a> account, string password)</td></tr>
-<tr class="memdesc:a3b7e2921efb6f6e7ceecba07d3068a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the account with username, password, and the calculated salt value.  <a href="#a3b7e2921efb6f6e7ceecba07d3068a1f">More...</a><br /></td></tr>
+<tr class="memdesc:a3b7e2921efb6f6e7ceecba07d3068a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the account.  <a href="#a3b7e2921efb6f6e7ceecba07d3068a1f">More...</a><br /></td></tr>
 <tr class="separator:a3b7e2921efb6f6e7ceecba07d3068a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53bbc0085fc15347e5d67ff1ee9ee925"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer_1_1DB_1_1DBAccount.html#a53bbc0085fc15347e5d67ff1ee9ee925">Login</a> (string username, string password)</td></tr>
 <tr class="memdesc:a53bbc0085fc15347e5d67ff1ee9ee925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Login the specified username and password.  <a href="#a53bbc0085fc15347e5d67ff1ee9ee925">More...</a><br /></td></tr>
@@ -128,10 +128,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes a new instance of the server.DB.DBAccount class. </p>
+<p>Initializes a new instance of the <a class="el" href="classServer_1_1DB_1_1DBAccount.html" title="DB account. ">Server.DB.DBAccount</a> class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">con</td><td>Connection to the databank.</td></tr>
+    <tr><td class="paramname">con</td><td>Connection to the <a class="el" href="namespaceServer_1_1DB.html">DB</a>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -163,11 +163,11 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Creates the account with username, password, and the calculated salt value. </p>
+<p>Creates the account. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">account</td><td>Account.</td></tr>
-    <tr><td class="paramname">password</td><td>Password.</td></tr>
+    <tr><td class="paramname">account</td><td>Account access.</td></tr>
+    <tr><td class="paramname">password</td><td>Password for the <a class="el" href="namespaceServer_1_1DB.html">DB</a>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -201,21 +201,22 @@ Public Member Functions</h2></td></tr>
 <p>Login the specified username and password. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">username</td><td>Username.</td></tr>
-    <tr><td class="paramname">password</td><td>Password.</td></tr>
+    <tr><td class="paramname">username</td><td>Username for <a class="el" href="namespaceServer_1_1DB.html">DB</a>.</td></tr>
+    <tr><td class="paramname">password</td><td>Password for <a class="el" href="namespaceServer_1_1DB.html">DB</a>.</td></tr>
   </table>
   </dd>
 </dl>
+<p>/// </p><dl class="section return"><dt>Returns</dt><dd>True or false.</dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>server/DB/DBAccount.cs</li>
+<li>tcpserver/DB/DBAccount.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:51 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:47 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -97,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Unit Definiton which contains informations about a unit type.  
+<p>Unit definition which contains information about a unit type.  
  <a href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Core.Models.Definitions.UnitDefinition:</div>
@@ -105,60 +105,450 @@ Inheritance diagram for Core.Models.Definitions.UnitDefinition:</div>
  <div class="center">
   <img src="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.png" usemap="#Core.Models.Definitions.UnitDefinition_map" alt=""/>
   <map id="Core.Models.Definitions.UnitDefinition_map" name="Core.Models.Definitions.UnitDefinition_map">
-<area href="classCore_1_1Models_1_1Definitions_1_1Definition.html" title="Definition contains static informations about entities. In which Category they belong and their id..." alt="Core.Models.Definitions.Definition" shape="rect" coords="0,0,226,24"/>
+<area href="classCore_1_1Models_1_1Definitions_1_1Definition.html" title="Definition contains static information about entities. In which Category they belong and their id..." alt="Core.Models.Definitions.Definition" shape="rect" coords="0,56,226,80"/>
+<area href="classCore_1_1Models_1_1ModelEntity.html" title="MVC Model. " alt="Core.Models.ModelEntity" shape="rect" coords="0,0,226,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aabb22d9859f7268641bd815cf23e0cfa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aabb22d9859f7268641bd815cf23e0cfa"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>UnitDefinition</b> (<a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a609ed13db028308ebc6c5fbd98615fdc">EntityType</a> unitType, string[] actions, int attack, int defense, int health, int moves)</td></tr>
-<tr class="separator:aabb22d9859f7268641bd815cf23e0cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4556a0d5a8520d4133696961add95887"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#a4556a0d5a8520d4133696961add95887">UnitDefinition</a> (<a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a609ed13db028308ebc6c5fbd98615fdc">EntityType</a> unitType, string[] actions, int attack, int defense, int health, int moves, int attackRange, int population, int scrapcost, int energycost, int plutoniumcost, int techcost)</td></tr>
+<tr class="memdesc:a4556a0d5a8520d4133696961add95887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html" title="Unit definition which contains information about a unit type. ">Core.Models.Definitions.UnitDefinition</a> class.  <a href="#a4556a0d5a8520d4133696961add95887">More...</a><br /></td></tr>
+<tr class="separator:a4556a0d5a8520d4133696961add95887"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a></td></tr>
-<tr class="memitem:a58b73a00c59e999041dffb2b6a273d8f inherit pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58b73a00c59e999041dffb2b6a273d8f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Definition</b> (int id)</td></tr>
+<tr class="memitem:a58b73a00c59e999041dffb2b6a273d8f inherit pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html#a58b73a00c59e999041dffb2b6a273d8f">Definition</a> (int id)</td></tr>
+<tr class="memdesc:a58b73a00c59e999041dffb2b6a273d8f inherit pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html" title="Definition contains static information about entities. In which Category they belong and their id...">Core.Models.Definitions.Definition</a> class.  <a href="#a58b73a00c59e999041dffb2b6a273d8f">More...</a><br /></td></tr>
 <tr class="separator:a58b73a00c59e999041dffb2b6a273d8f inherit pub_methods_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classCore_1_1Models_1_1ModelEntity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCore_1_1Models_1_1ModelEntity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a></td></tr>
+<tr class="memitem:a7b738ffece3d63b0a7e22697cd2a15ef inherit pub_methods_classCore_1_1Models_1_1ModelEntity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1ModelEntity.html#a7b738ffece3d63b0a7e22697cd2a15ef">ModelEntity</a> ()</td></tr>
+<tr class="memdesc:a7b738ffece3d63b0a7e22697cd2a15ef inherit pub_methods_classCore_1_1Models_1_1ModelEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1ModelEntity.html" title="MVC Model. ">Core.Models.ModelEntity</a> class.  <a href="#a7b738ffece3d63b0a7e22697cd2a15ef">More...</a><br /></td></tr>
+<tr class="separator:a7b738ffece3d63b0a7e22697cd2a15ef inherit pub_methods_classCore_1_1Models_1_1ModelEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a22944789885c1239e3d91559e6851c1b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22944789885c1239e3d91559e6851c1b"></a>
-Ressources&#160;</td><td class="memItemRight" valign="bottom"><b>Ressource</b><code> [get]</code></td></tr>
-<tr class="separator:a22944789885c1239e3d91559e6851c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fe8e6ee0edb611becffc14e79326797"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fe8e6ee0edb611becffc14e79326797"></a>
-string[]&#160;</td><td class="memItemRight" valign="bottom"><b>Actions</b><code> [get]</code></td></tr>
+<tr class="memitem:a5fe8e6ee0edb611becffc14e79326797"><td class="memItemLeft" align="right" valign="top">string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#a5fe8e6ee0edb611becffc14e79326797">Actions</a><code> [get]</code></td></tr>
+<tr class="memdesc:a5fe8e6ee0edb611becffc14e79326797"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the actions.  <a href="#a5fe8e6ee0edb611becffc14e79326797">More...</a><br /></td></tr>
 <tr class="separator:a5fe8e6ee0edb611becffc14e79326797"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa796297ed1001668bc576763a1491c31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa796297ed1001668bc576763a1491c31"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Attack</b><code> [get]</code></td></tr>
+<tr class="memitem:aa796297ed1001668bc576763a1491c31"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#aa796297ed1001668bc576763a1491c31">Attack</a><code> [get]</code></td></tr>
+<tr class="memdesc:aa796297ed1001668bc576763a1491c31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the attack value.  <a href="#aa796297ed1001668bc576763a1491c31">More...</a><br /></td></tr>
 <tr class="separator:aa796297ed1001668bc576763a1491c31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19782c411903ddedb9a3d35fc2afee55"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19782c411903ddedb9a3d35fc2afee55"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Defense</b><code> [get]</code></td></tr>
+<tr class="memitem:a19782c411903ddedb9a3d35fc2afee55"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#a19782c411903ddedb9a3d35fc2afee55">Defense</a><code> [get]</code></td></tr>
+<tr class="memdesc:a19782c411903ddedb9a3d35fc2afee55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the defense value.  <a href="#a19782c411903ddedb9a3d35fc2afee55">More...</a><br /></td></tr>
 <tr class="separator:a19782c411903ddedb9a3d35fc2afee55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0a91bec79fd1a79137e5c27668bd089"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae0a91bec79fd1a79137e5c27668bd089"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Health</b><code> [get]</code></td></tr>
+<tr class="memitem:ae0a91bec79fd1a79137e5c27668bd089"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#ae0a91bec79fd1a79137e5c27668bd089">Health</a><code> [get]</code></td></tr>
+<tr class="memdesc:ae0a91bec79fd1a79137e5c27668bd089"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current health.  <a href="#ae0a91bec79fd1a79137e5c27668bd089">More...</a><br /></td></tr>
 <tr class="separator:ae0a91bec79fd1a79137e5c27668bd089"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fe401df39765664e20eb9b1d3df4c06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0fe401df39765664e20eb9b1d3df4c06"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>Moves</b><code> [get]</code></td></tr>
+<tr class="memitem:a0fe401df39765664e20eb9b1d3df4c06"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#a0fe401df39765664e20eb9b1d3df4c06">Moves</a><code> [get]</code></td></tr>
+<tr class="memdesc:a0fe401df39765664e20eb9b1d3df4c06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the amount of moves per turn for this kind of units.  <a href="#a0fe401df39765664e20eb9b1d3df4c06">More...</a><br /></td></tr>
 <tr class="separator:a0fe401df39765664e20eb9b1d3df4c06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cabb28335201dd47dc52d2d37144ac7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#a3cabb28335201dd47dc52d2d37144ac7">AttackRange</a><code> [get]</code></td></tr>
+<tr class="memdesc:a3cabb28335201dd47dc52d2d37144ac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the attack range.  <a href="#a3cabb28335201dd47dc52d2d37144ac7">More...</a><br /></td></tr>
+<tr class="separator:a3cabb28335201dd47dc52d2d37144ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a748b77e28ada4746ed63b0f02e3500b0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#a748b77e28ada4746ed63b0f02e3500b0">Population</a><code> [get]</code></td></tr>
+<tr class="memdesc:a748b77e28ada4746ed63b0f02e3500b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the population.  <a href="#a748b77e28ada4746ed63b0f02e3500b0">More...</a><br /></td></tr>
+<tr class="separator:a748b77e28ada4746ed63b0f02e3500b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f72b3b6dc4fdffa692d7545fd2fac6e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#a3f72b3b6dc4fdffa692d7545fd2fac6e">Scrapecost</a><code> [get]</code></td></tr>
+<tr class="memdesc:a3f72b3b6dc4fdffa692d7545fd2fac6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the scrap cost.  <a href="#a3f72b3b6dc4fdffa692d7545fd2fac6e">More...</a><br /></td></tr>
+<tr class="separator:a3f72b3b6dc4fdffa692d7545fd2fac6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b9702e7e97e0038bc52cff2276a1846"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#a0b9702e7e97e0038bc52cff2276a1846">Energycost</a><code> [get]</code></td></tr>
+<tr class="memdesc:a0b9702e7e97e0038bc52cff2276a1846"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the energy cost.  <a href="#a0b9702e7e97e0038bc52cff2276a1846">More...</a><br /></td></tr>
+<tr class="separator:a0b9702e7e97e0038bc52cff2276a1846"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf9bdfe102042bfc92207d6e08fcf995"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#acf9bdfe102042bfc92207d6e08fcf995">Plutoniumcost</a><code> [get]</code></td></tr>
+<tr class="memdesc:acf9bdfe102042bfc92207d6e08fcf995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the plutonium cost.  <a href="#acf9bdfe102042bfc92207d6e08fcf995">More...</a><br /></td></tr>
+<tr class="separator:acf9bdfe102042bfc92207d6e08fcf995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33eddf22531ef2f351a5efd21733c276"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html#a33eddf22531ef2f351a5efd21733c276">Techcost</a><code> [get]</code></td></tr>
+<tr class="memdesc:a33eddf22531ef2f351a5efd21733c276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the tech cost.  <a href="#a33eddf22531ef2f351a5efd21733c276">More...</a><br /></td></tr>
+<tr class="separator:a33eddf22531ef2f351a5efd21733c276"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td colspan="2" onclick="javascript:toggleInherit('properties_classCore_1_1Models_1_1Definitions_1_1Definition')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html">Core.Models.Definitions.Definition</a></td></tr>
-<tr class="memitem:a6504fe4404e24c0b0601b0591f99fda4 inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6504fe4404e24c0b0601b0591f99fda4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b><code> [get]</code></td></tr>
+<tr class="memitem:a6504fe4404e24c0b0601b0591f99fda4 inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html#a6504fe4404e24c0b0601b0591f99fda4">ID</a><code> [get]</code></td></tr>
+<tr class="memdesc:a6504fe4404e24c0b0601b0591f99fda4 inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Identifier.  <a href="#a6504fe4404e24c0b0601b0591f99fda4">More...</a><br /></td></tr>
 <tr class="separator:a6504fe4404e24c0b0601b0591f99fda4 inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbcf001ffb2d8453d321e3524739b48e inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbcf001ffb2d8453d321e3524739b48e"></a>
-<a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a8be0403c3e883fe583d7bb3893c22c65">Category</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Category</b><code> [get]</code></td></tr>
+<tr class="memitem:abbcf001ffb2d8453d321e3524739b48e inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a8be0403c3e883fe583d7bb3893c22c65">Category</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html#abbcf001ffb2d8453d321e3524739b48e">Category</a><code> [get]</code></td></tr>
+<tr class="memdesc:abbcf001ffb2d8453d321e3524739b48e inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the category.  <a href="#abbcf001ffb2d8453d321e3524739b48e">More...</a><br /></td></tr>
 <tr class="separator:abbcf001ffb2d8453d321e3524739b48e inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae71f596d97485f31733d1b9b5144051a inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae71f596d97485f31733d1b9b5144051a"></a>
-<a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a609ed13db028308ebc6c5fbd98615fdc">EntityType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>SubType</b><code> [get]</code></td></tr>
+<tr class="memitem:ae71f596d97485f31733d1b9b5144051a inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a609ed13db028308ebc6c5fbd98615fdc">EntityType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1Definitions_1_1Definition.html#ae71f596d97485f31733d1b9b5144051a">SubType</a><code> [get]</code></td></tr>
+<tr class="memdesc:ae71f596d97485f31733d1b9b5144051a inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of the sub. (also currently equal to the ID)  <a href="#ae71f596d97485f31733d1b9b5144051a">More...</a><br /></td></tr>
 <tr class="separator:ae71f596d97485f31733d1b9b5144051a inherit properties_classCore_1_1Models_1_1Definitions_1_1Definition"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_attribs_classCore_1_1Models_1_1ModelEntity"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classCore_1_1Models_1_1ModelEntity')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classCore_1_1Models_1_1ModelEntity.html">Core.Models.ModelEntity</a></td></tr>
+<tr class="memitem:a19619acbb856f7b54c971b38f061509c inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Views_1_1ViewEntity.html">Views.ViewEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1ModelEntity.html#a19619acbb856f7b54c971b38f061509c">View</a></td></tr>
+<tr class="memdesc:a19619acbb856f7b54c971b38f061509c inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The view part of MVC.  <a href="#a19619acbb856f7b54c971b38f061509c">More...</a><br /></td></tr>
+<tr class="separator:a19619acbb856f7b54c971b38f061509c inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78a6ddcf09a0b517230e738c40faa813 inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Controllers_1_1ControlEntity.html">Controllers.ControlEntity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Models_1_1ModelEntity.html#a78a6ddcf09a0b517230e738c40faa813">Control</a></td></tr>
+<tr class="memdesc:a78a6ddcf09a0b517230e738c40faa813 inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The control part of MVC.  <a href="#a78a6ddcf09a0b517230e738c40faa813">More...</a><br /></td></tr>
+<tr class="separator:a78a6ddcf09a0b517230e738c40faa813 inherit pub_attribs_classCore_1_1Models_1_1ModelEntity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Unit Definiton which contains informations about a unit type. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Unit definition which contains information about a unit type. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a4556a0d5a8520d4133696961add95887"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Core.Models.Definitions.UnitDefinition.UnitDefinition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceCore_1_1Models_1_1Definitions.html#a609ed13db028308ebc6c5fbd98615fdc">EntityType</a>&#160;</td>
+          <td class="paramname"><em>unitType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string[]&#160;</td>
+          <td class="paramname"><em>actions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>defense</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>health</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>moves</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attackRange</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>population</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>scrapcost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>energycost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>plutoniumcost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>techcost</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="classCore_1_1Models_1_1Definitions_1_1UnitDefinition.html" title="Unit definition which contains information about a unit type. ">Core.Models.Definitions.UnitDefinition</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unitType</td><td>Unit type.</td></tr>
+    <tr><td class="paramname">actions</td><td>Actions which are possible.</td></tr>
+    <tr><td class="paramname">attack</td><td>Attack damage.</td></tr>
+    <tr><td class="paramname">defense</td><td>Defense of the entity.</td></tr>
+    <tr><td class="paramname">health</td><td>Health of the entity.</td></tr>
+    <tr><td class="paramname">moves</td><td>Move range.</td></tr>
+    <tr><td class="paramname">attackRange</td><td>Attack range.</td></tr>
+    <tr><td class="paramname">population</td><td>Population cost.</td></tr>
+    <tr><td class="paramname">scrapcost</td><td>Scrap cost.</td></tr>
+    <tr><td class="paramname">energycost</td><td>Energy cost.</td></tr>
+    <tr><td class="paramname">plutoniumcost</td><td>Plutonium cost.</td></tr>
+    <tr><td class="paramname">techcost</td><td>Tech cost.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a5fe8e6ee0edb611becffc14e79326797"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string [] Core.Models.Definitions.UnitDefinition.Actions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the actions. </p>
+<p>The actions which can be used by this kind of units.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa796297ed1001668bc576763a1491c31"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.UnitDefinition.Attack</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the attack value. </p>
+<p>The attack value.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3cabb28335201dd47dc52d2d37144ac7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.UnitDefinition.AttackRange</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the attack range. </p>
+<p>The attack range.</p>
+
+</div>
+</div>
+<a class="anchor" id="a19782c411903ddedb9a3d35fc2afee55"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.UnitDefinition.Defense</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the defense value. </p>
+<p>The defense value.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0b9702e7e97e0038bc52cff2276a1846"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.UnitDefinition.Energycost</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the energy cost. </p>
+<p>The energy cost.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae0a91bec79fd1a79137e5c27668bd089"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.UnitDefinition.Health</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the current health. </p>
+<p>The current health.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0fe401df39765664e20eb9b1d3df4c06"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.UnitDefinition.Moves</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the amount of moves per turn for this kind of units. </p>
+<p>The moves per turn.</p>
+
+</div>
+</div>
+<a class="anchor" id="acf9bdfe102042bfc92207d6e08fcf995"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.UnitDefinition.Plutoniumcost</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the plutonium cost. </p>
+<p>The plutonium cost.</p>
+
+</div>
+</div>
+<a class="anchor" id="a748b77e28ada4746ed63b0f02e3500b0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.UnitDefinition.Population</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the population. </p>
+<p>The population.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3f72b3b6dc4fdffa692d7545fd2fac6e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.UnitDefinition.Scrapecost</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the scrap cost. </p>
+<p>The scrap cost.</p>
+
+</div>
+</div>
+<a class="anchor" id="a33eddf22531ef2f351a5efd21733c276"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Core.Models.Definitions.UnitDefinition.Techcost</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the tech cost. </p>
+<p>The tech cost.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>base/Models/Definitions/UnitDefinition.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

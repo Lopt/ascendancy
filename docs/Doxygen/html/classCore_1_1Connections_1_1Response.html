@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -90,6 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classCore_1_1Connections_1_1Response-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -97,38 +98,129 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classCore_1_1Connections_1_1Response.html" title="Response class which is used at every response (except login response) Will be serialised before send...">Response</a> class which is used at every response (except login response) Will be serialised before sending, should be deserialised after recieving.  
+<p>Standard response class which is used at every response (except login). Will be serialized before sending, should be deserialized after receiving.  
  <a href="classCore_1_1Connections_1_1Response.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a87c0ec7f5f782b30edebe2098acabab0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87c0ec7f5f782b30edebe2098acabab0"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ReponseStatus</b> { <b>OK</b>, 
+<tr class="memitem:a87c0ec7f5f782b30edebe2098acabab0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1Response.html#a87c0ec7f5f782b30edebe2098acabab0">ReponseStatus</a> { <b>OK</b>, 
 <b>ERROR</b>, 
 <b>INTERNAL_ERROR</b>
- }<tr class="separator:a87c0ec7f5f782b30edebe2098acabab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+ }<tr class="memdesc:a87c0ec7f5f782b30edebe2098acabab0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCore_1_1Connections_1_1Response.html" title="Standard response class which is used at every response (except login). Will be serialized before sen...">Response</a> status, (if and) which error occurred while the server tried to execute the request.  <a href="classCore_1_1Connections_1_1Response.html#a87c0ec7f5f782b30edebe2098acabab0">More...</a><br /></td></tr>
+<tr class="separator:a87c0ec7f5f782b30edebe2098acabab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a5b36846768c756a8c6aa045024ac834a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1Response.html#a5b36846768c756a8c6aa045024ac834a">Response</a> ()</td></tr>
+<tr class="memdesc:a5b36846768c756a8c6aa045024ac834a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Connections_1_1Response.html" title="Standard response class which is used at every response (except login). Will be serialized before sen...">Core.Connections.Response</a> class.  <a href="#a5b36846768c756a8c6aa045024ac834a">More...</a><br /></td></tr>
+<tr class="separator:a5b36846768c756a8c6aa045024ac834a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aa9f4fef77b99465a399e0af5111609ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9f4fef77b99465a399e0af5111609ef"></a>
-ReponseStatus&#160;</td><td class="memItemRight" valign="bottom"><b>Status</b></td></tr>
+<tr class="memitem:aa9f4fef77b99465a399e0af5111609ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Connections_1_1Response.html#a87c0ec7f5f782b30edebe2098acabab0">ReponseStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1Response.html#aa9f4fef77b99465a399e0af5111609ef">Status</a></td></tr>
+<tr class="memdesc:aa9f4fef77b99465a399e0af5111609ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">The status, only use other data if Status == OK.  <a href="#aa9f4fef77b99465a399e0af5111609ef">More...</a><br /></td></tr>
 <tr class="separator:aa9f4fef77b99465a399e0af5111609ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4464e6ff81ca7d159485536b1f5edeec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4464e6ff81ca7d159485536b1f5edeec"></a>
-LinkedList&lt; LinkedList&lt; <a class="el" href="classCore_1_1Models_1_1Action.html">Core.Models.Action</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Actions</b></td></tr>
+<tr class="memitem:a4464e6ff81ca7d159485536b1f5edeec"><td class="memItemLeft" align="right" valign="top">LinkedList&lt; LinkedList&lt; <a class="el" href="classCore_1_1Models_1_1Action.html">Core.Models.Action</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1Response.html#a4464e6ff81ca7d159485536b1f5edeec">Actions</a></td></tr>
+<tr class="memdesc:a4464e6ff81ca7d159485536b1f5edeec"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actions which the server executed at the requested regions.  <a href="#a4464e6ff81ca7d159485536b1f5edeec">More...</a><br /></td></tr>
 <tr class="separator:a4464e6ff81ca7d159485536b1f5edeec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e678090e1fb696f0e3c7dfaca9b1275"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e678090e1fb696f0e3c7dfaca9b1275"></a>
-LinkedList&lt; LinkedList&lt; <a class="el" href="classCore_1_1Models_1_1Entity.html">Core.Models.Entity</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Entities</b></td></tr>
+<tr class="memitem:a3e678090e1fb696f0e3c7dfaca9b1275"><td class="memItemLeft" align="right" valign="top">LinkedList&lt; LinkedList&lt; <a class="el" href="classCore_1_1Models_1_1Entity.html">Core.Models.Entity</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1Response.html#a3e678090e1fb696f0e3c7dfaca9b1275">Entities</a></td></tr>
+<tr class="memdesc:a3e678090e1fb696f0e3c7dfaca9b1275"><td class="mdescLeft">&#160;</td><td class="mdescRight">The entities which are at the requested regions.  <a href="#a3e678090e1fb696f0e3c7dfaca9b1275">More...</a><br /></td></tr>
 <tr class="separator:a3e678090e1fb696f0e3c7dfaca9b1275"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classCore_1_1Connections_1_1Response.html" title="Response class which is used at every response (except login response) Will be serialised before send...">Response</a> class which is used at every response (except login response) Will be serialised before sending, should be deserialised after recieving. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Standard response class which is used at every response (except login). Will be serialized before sending, should be deserialized after receiving. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a class="anchor" id="a87c0ec7f5f782b30edebe2098acabab0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classCore_1_1Connections_1_1Response.html#a87c0ec7f5f782b30edebe2098acabab0">Core.Connections.Response.ReponseStatus</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classCore_1_1Connections_1_1Response.html" title="Standard response class which is used at every response (except login). Will be serialized before sen...">Response</a> status, (if and) which error occurred while the server tried to execute the request. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a5b36846768c756a8c6aa045024ac834a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Core.Connections.Response.Response </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="classCore_1_1Connections_1_1Response.html" title="Standard response class which is used at every response (except login). Will be serialized before sen...">Core.Connections.Response</a> class. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a4464e6ff81ca7d159485536b1f5edeec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinkedList&lt;LinkedList&lt;<a class="el" href="classCore_1_1Models_1_1Action.html">Core.Models.Action</a>&gt; &gt; Core.Connections.Response.Actions</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The actions which the server executed at the requested regions. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3e678090e1fb696f0e3c7dfaca9b1275"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinkedList&lt;LinkedList&lt;<a class="el" href="classCore_1_1Models_1_1Entity.html">Core.Models.Entity</a>&gt; &gt; Core.Connections.Response.Entities</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The entities which are at the requested regions. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa9f4fef77b99465a399e0af5111609ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCore_1_1Connections_1_1Response.html#a87c0ec7f5f782b30edebe2098acabab0">ReponseStatus</a> Core.Connections.Response.Status</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The status, only use other data if Status == OK. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>base/Connection/Response.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

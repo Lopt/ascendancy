@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -88,17 +88,57 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classSQLite_1_1AsyncTableQuery-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">SQLite.AsyncTableQuery&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a0255986ac768d5fca5b4e2c9840da35d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0255986ac768d5fca5b4e2c9840da35d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>AsyncTableQuery</b> (<a class="el" href="classSQLite_1_1TableQuery.html">TableQuery</a>&lt; T &gt; innerQuery)</td></tr>
+<tr class="separator:a0255986ac768d5fca5b4e2c9840da35d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe04f8363082a033b984230c7a245dea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe04f8363082a033b984230c7a245dea"></a>
+<a class="el" href="classSQLite_1_1AsyncTableQuery.html">AsyncTableQuery</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Where</b> (Expression&lt; Func&lt; T, bool &gt;&gt; predExpr)</td></tr>
+<tr class="separator:afe04f8363082a033b984230c7a245dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1b8210413273abe6bc9383bc4f7ea9c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1b8210413273abe6bc9383bc4f7ea9c"></a>
+<a class="el" href="classSQLite_1_1AsyncTableQuery.html">AsyncTableQuery</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Skip</b> (int n)</td></tr>
+<tr class="separator:ab1b8210413273abe6bc9383bc4f7ea9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c47c652b3b8123e2d4961263c289af9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c47c652b3b8123e2d4961263c289af9"></a>
+<a class="el" href="classSQLite_1_1AsyncTableQuery.html">AsyncTableQuery</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Take</b> (int n)</td></tr>
+<tr class="separator:a6c47c652b3b8123e2d4961263c289af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41540b08c3c49c123b57de8a0a5e3aea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41540b08c3c49c123b57de8a0a5e3aea"></a>
+<a class="el" href="classSQLite_1_1AsyncTableQuery.html">AsyncTableQuery</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>OrderBy&lt; U &gt;</b> (Expression&lt; Func&lt; T, U &gt;&gt; orderExpr)</td></tr>
+<tr class="separator:a41540b08c3c49c123b57de8a0a5e3aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a45b5c81ccf4459f17d66fba6a18c3f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a45b5c81ccf4459f17d66fba6a18c3f"></a>
+<a class="el" href="classSQLite_1_1AsyncTableQuery.html">AsyncTableQuery</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>OrderByDescending&lt; U &gt;</b> (Expression&lt; Func&lt; T, U &gt;&gt; orderExpr)</td></tr>
+<tr class="separator:a4a45b5c81ccf4459f17d66fba6a18c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7343ff525af21bdc055935f46a39ae72"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7343ff525af21bdc055935f46a39ae72"></a>
+Task&lt; List&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ToListAsync</b> ()</td></tr>
+<tr class="separator:a7343ff525af21bdc055935f46a39ae72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70df4365834cfe29d0adb1c1841266b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a70df4365834cfe29d0adb1c1841266b0"></a>
+Task&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>CountAsync</b> ()</td></tr>
+<tr class="separator:a70df4365834cfe29d0adb1c1841266b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade7303c76081c4b9cd80b4d25806ca30"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade7303c76081c4b9cd80b4d25806ca30"></a>
+Task&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ElementAtAsync</b> (int index)</td></tr>
+<tr class="separator:ade7303c76081c4b9cd80b4d25806ca30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e3bae8cc7dc0b16abd95d4516d61971"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e3bae8cc7dc0b16abd95d4516d61971"></a>
+Task&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>FirstAsync</b> ()</td></tr>
+<tr class="separator:a2e3bae8cc7dc0b16abd95d4516d61971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac82a5fa254a7f1c6a1a08f534989604"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac82a5fa254a7f1c6a1a08f534989604"></a>
+Task&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>FirstOrDefaultAsync</b> ()</td></tr>
+<tr class="separator:aac82a5fa254a7f1c6a1a08f534989604"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>packages/sqlite-net.1.0.8/content/SQLiteAsync.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:51 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:47 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>

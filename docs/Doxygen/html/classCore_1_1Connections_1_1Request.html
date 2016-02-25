@@ -22,7 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="Icon_180x180.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="Icon-60@2x.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Ascendancy
    </div>
@@ -96,40 +96,110 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Core.Connections.Request Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classCore_1_1Connections_1_1Request.html" title="Request class which should be used to send actions to the server. Should be serialized before sending...">Request</a> class which should be used to send actions to the server. Should be serialized before sending, will be deserialized after receiving.  
+ <a href="classCore_1_1Connections_1_1Request.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Core.Connections.Request:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classCore_1_1Connections_1_1Request.png" usemap="#Core.Connections.Request_map" alt=""/>
   <map id="Core.Connections.Request_map" name="Core.Connections.Request_map">
-<area href="classCore_1_1Connections_1_1DoActionsRequest.html" title="Request class which should be used to send actions to the server. Should be serialised before sending..." alt="Core.Connections.DoActionsRequest" shape="rect" coords="0,56,235,80"/>
-<area href="classCore_1_1Connections_1_1LoadRegionsRequest.html" title="Request class which should be used to load regions from the server. Should be serialised before sendi..." alt="Core.Connections.LoadRegionsRequest" shape="rect" coords="245,56,480,80"/>
-<area href="classCore_1_1Connections_1_1LoginRequest.html" title="Request class which should be used to login. Should be serialised before sending, will be deserialise..." alt="Core.Connections.LoginRequest" shape="rect" coords="490,56,725,80"/>
+<area href="classCore_1_1Connections_1_1DoActionsRequest.html" title="Request class which should be used to send actions to the server. Should be serialized before sending..." alt="Core.Connections.DoActionsRequest" shape="rect" coords="0,56,235,80"/>
+<area href="classCore_1_1Connections_1_1LoadRegionsRequest.html" title="Request class which should be used to send actions to the server. Should be serialized before sending..." alt="Core.Connections.LoadRegionsRequest" shape="rect" coords="245,56,480,80"/>
+<area href="classCore_1_1Connections_1_1LoginRequest.html" title="Request class which should be used to send actions to the server. Should be serialized before sending..." alt="Core.Connections.LoginRequest" shape="rect" coords="490,56,725,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a36b5ac4c812551bebd3310f1f54bb79e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36b5ac4c812551bebd3310f1f54bb79e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Request</b> (Guid sessionID, <a class="el" href="classCore_1_1Models_1_1Position.html">Core.Models.Position</a> position)</td></tr>
+<tr class="memitem:a36b5ac4c812551bebd3310f1f54bb79e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1Request.html#a36b5ac4c812551bebd3310f1f54bb79e">Request</a> (Guid sessionID, <a class="el" href="classCore_1_1Models_1_1Position.html">Core.Models.Position</a> position)</td></tr>
+<tr class="memdesc:a36b5ac4c812551bebd3310f1f54bb79e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="classCore_1_1Connections_1_1Request.html" title="Request class which should be used to send actions to the server. Should be serialized before sending...">Core.Connections.Request</a> class.  <a href="#a36b5ac4c812551bebd3310f1f54bb79e">More...</a><br /></td></tr>
 <tr class="separator:a36b5ac4c812551bebd3310f1f54bb79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a1aaa165e5028fe5a7baab44d6306cbee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1aaa165e5028fe5a7baab44d6306cbee"></a>
-<a class="el" href="classCore_1_1Models_1_1Position.html">Core.Models.Position</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Position</b></td></tr>
+<tr class="memitem:a1aaa165e5028fe5a7baab44d6306cbee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCore_1_1Models_1_1Position.html">Core.Models.Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1Request.html#a1aaa165e5028fe5a7baab44d6306cbee">Position</a></td></tr>
+<tr class="memdesc:a1aaa165e5028fe5a7baab44d6306cbee"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position of the user (converted current GPS information).  <a href="#a1aaa165e5028fe5a7baab44d6306cbee">More...</a><br /></td></tr>
 <tr class="separator:a1aaa165e5028fe5a7baab44d6306cbee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19082721a0c3785a77691cb3bec7dd42"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19082721a0c3785a77691cb3bec7dd42"></a>
-Guid&#160;</td><td class="memItemRight" valign="bottom"><b>SessionID</b></td></tr>
+<tr class="memitem:a19082721a0c3785a77691cb3bec7dd42"><td class="memItemLeft" align="right" valign="top">Guid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCore_1_1Connections_1_1Request.html#a19082721a0c3785a77691cb3bec7dd42">SessionID</a></td></tr>
+<tr class="memdesc:a19082721a0c3785a77691cb3bec7dd42"><td class="mdescLeft">&#160;</td><td class="mdescRight">The session of the user.  <a href="#a19082721a0c3785a77691cb3bec7dd42">More...</a><br /></td></tr>
 <tr class="separator:a19082721a0c3785a77691cb3bec7dd42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classCore_1_1Connections_1_1Request.html" title="Request class which should be used to send actions to the server. Should be serialized before sending...">Request</a> class which should be used to send actions to the server. Should be serialized before sending, will be deserialized after receiving. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a36b5ac4c812551bebd3310f1f54bb79e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Core.Connections.Request.Request </td>
+          <td>(</td>
+          <td class="paramtype">Guid&#160;</td>
+          <td class="paramname"><em>sessionID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCore_1_1Models_1_1Position.html">Core.Models.Position</a>&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="classCore_1_1Connections_1_1Request.html" title="Request class which should be used to send actions to the server. Should be serialized before sending...">Core.Connections.Request</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sessionID</td><td>Session ID of the user.</td></tr>
+    <tr><td class="paramname">position</td><td>Position where the user is standing (converted GPS information).</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a1aaa165e5028fe5a7baab44d6306cbee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCore_1_1Models_1_1Position.html">Core.Models.Position</a> Core.Connections.Request.Position</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The position of the user (converted current GPS information). </p>
+
+</div>
+</div>
+<a class="anchor" id="a19082721a0c3785a77691cb3bec7dd42"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Guid Core.Connections.Request.SessionID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The session of the user. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>base/Connection/Request.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jul 30 2015 19:53:50 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 25 2016 13:19:45 for Ascendancy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>
