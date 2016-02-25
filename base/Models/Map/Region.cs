@@ -231,7 +231,7 @@
             {
                 if (m_territory.ContainsKey(position))
                 {
-                    m_territory.Remove(position);
+                    World.Instance.RegionManager.GetRegion(position.RegionPosition).m_territory.Remove(position);
                 }                        
             }
         }
