@@ -53,7 +53,7 @@
             global::Xamarin.Forms.Forms.Init();
 
             // activating tcp connection for iOS
-            TcpConnection.Connector = new TcpConnection();
+            TcpConnection.Connector = new Client.IOS.TcpConnection();
 
             CCApplication application = new CCApplication();
             application.ApplicationDelegate = new GameAppDelegate();
