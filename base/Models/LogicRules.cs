@@ -12,43 +12,35 @@
     public class LogicRules
     {
         /// <summary>
-        /// The ranged in melee minus point.
+        /// Rangeds the in meele malus.
         /// </summary>
-        /// <returns>The in melee minus point.</returns>
-        /// <param name="entity">Current Entity.</param>
-        public static int RangedInMeeleMalus(Entity entity)
+        /// <param name="entity">Entity.</param>
+        public static void RangedInMeeleMalus(Entity entity)
         {
             entity.ModfiedAttackValue -= Constants.RANGE_IN_MEELE_MALUS;
-            return 0;
         }
 
         /// <summary>
         /// All the attack modifier.
         /// </summary>
-        /// <returns>The attack modifier.</returns>
-        /// <param name="entity">Current Entity.</param>
-        public static IList AllAttackModifier(Entity entity)
+        /// <param name="entity">Entity.</param>
+        public static void AllAttackModifier(Entity entity)
         {
-            List<int> allMod = new List<int>();
-            // Dice should be the last method in the list !
-            allMod.Add(TerrainAttackModifier(entity));
-            allMod.Add(Dice(entity));
-            return allMod;
+            TerrainAttackModifier(entity);
+            // Dice should be the last method!
+            Dice(entity);
         }
 
         /// <summary>
-        /// All the attack modifier.
+        /// All the attack modifier ranged in meele.
         /// </summary>
-        /// <returns>The attack modifier.</returns>
-        /// <param name="entity">Current Entity.</param>
-        public static IList AllAttackModifierRangedInMeele(Entity entity)
+        /// <param name="entity">Entity.</param>
+        public static void AllAttackModifierRangedInMeele(Entity entity)
         {
-            List<int> allMod = new List<int>();
-            // Dice should be the last method in the list !
-            allMod.Add(RangedInMeeleMalus(entity));
-            allMod.Add(TerrainAttackModifier(entity));
-            allMod.Add(Dice(entity));
-            return allMod;
+            RangedInMeeleMalus(entity);
+            TerrainAttackModifier(entity);
+            // Dice should be the last method!
+            Dice(entity);
         }
 
         /// <summary>
@@ -56,11 +48,9 @@
         /// </summary>
         /// <returns>The defense modifier.</returns>
         /// <param name="entity">Current Entity.</param>
-       public static IList AllDefenseModifier(Entity entity)
+       public static void AllDefenseModifier(Entity entity)
        {
-            List<int> allMod = new List<int>();
-            allMod.Add(TerrainDefenseModifier(entity));
-            return allMod;
+           TerrainDefenseModifier(entity);           
        }
 
         /// <summary>
@@ -178,28 +168,23 @@
         }
 
         /// <summary>
-        /// Terrain for the defense modifier.
+        /// Terrain for the the defense modifier.
         /// </summary>
-        /// <returns>0 instead it change the value via pointer.</returns>
-        /// <param name="entity">Current entity.</param>
-        public static int TerrainDefenseModifier(Entity entity)
+        /// <param name="entity">Entity.</param>
+        public static void TerrainDefenseModifier(Entity entity)
         {
             entity.ModfiedAttackValue = ((Definitions.UnitDefinition)entity.Definition).Defense * 
-                                            World.Instance.RegionManager.GetRegion(entity.Position.RegionPosition).GetTerrain(entity.Position.CellPosition).DefenseModifier;
-            return 0;
+                                            World.Instance.RegionManager.GetRegion(entity.Position.RegionPosition).GetTerrain(entity.Position.CellPosition).DefenseModifier;           
         }
 
         /// <summary>
-        /// Terrain terrain for the attack modifier.
+        /// Terrain for the attack modifier.
         /// </summary>
-        /// <returns>0 instead it change the value via pointer.</returns>
-        /// <returns>The attack modifier.</returns>
-        /// <param name="entity">Current Entity.</param>
-        public static int TerrainAttackModifier(Entity entity)
+        /// <param name="entity">Entity.</param>
+        public static void TerrainAttackModifier(Entity entity)
         {
             entity.ModfiedAttackValue = ((Definitions.UnitDefinition)entity.Definition).Attack * 
                                            World.Instance.RegionManager.GetRegion(entity.Position.RegionPosition).GetTerrain(entity.Position.CellPosition).AttackModifier;
-            return 0;
         }
 
         /// <summary>
